@@ -46,9 +46,10 @@ Prettier formats CSS, JavaScript, Markdown, JSON, YAML and the docs' HTML
 [linting and formatting](DEVELOPMENT.md#linting-and-formatting).
 
 For the docs and for text in examples, follow the
-[writing conventions](https://cmu-web.github.io/cmu-web-kit/docs/about.html#writing):
-Title Case for headings, buttons and labels; buttons and calls to action
-that start with a verb; and the Oxford comma. Otherwise, follow the
-[GitHub Docs style guide](https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide)
-and, for grammar and punctuation, the
-[Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
+[conventions](https://cmu-web.github.io/cmu-web-kit/docs/conventions.html):
+Title Case for headings, buttons and labels, and buttons and calls to action
+that start with a verb. For university names and terminology, follow the
+[CMU Brand Standards writing guide](https://brand.cmu.edu/applying-brand/writing).
+For grammar, punctuation, numbers and dates, follow
+[The Associated Press Stylebook](https://www.apstylebook.com/), CMU's preferred
+standard.

@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About - Carnegie Mellon Web Kit - Carnegie Mellon University</title>
+    <meta
+      name="description"
+      content="Where the Carnegie Mellon Web Kit's components come from, how they work and how to get help with a CMU app."
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
       rel="stylesheet"
@@ -36,7 +40,7 @@
         </div>
         <div id="sitename">
           <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
-          <h2>Components for the CMU web template</h2>
+          <h2>Build on the CMU web template</h2>
         </div>
       </header>
 
@@ -48,108 +52,165 @@
           <div>
             <h1>About the Carnegie Mellon Web Kit</h1>
             <p class="cmu-lead">
-              The Carnegie Mellon Web Kit builds on Carnegie Mellon's web template with components
-              for a unified look across Cascade sites and the web apps around them.
+              The Carnegie Mellon Web Kit adds components to CMU's web template for Cascade sites
+              and web apps that need to look and feel like part of the university.
             </p>
 
-            <h2 id="origin" class="rule-top">Where It Comes From</h2>
+            <h2 id="origin" class="rule-top">A Starting Point for App Developers</h2>
             <p>
-              The Office of the Vice Provost for Teaching and Learning Innovation built the kit
-              while rewriting the Syllabus Registry, an app and a Cascade site that had to match
-              each other and the rest of cmu.edu. Each component started from a real CMU page that
-              already does it well, and the docs name those pages, so you can see the pattern in
-              use.
+              CMU's web template already includes useful widgets for building pages. The kit
+              documents what's available, with live examples and markup you can copy, so app
+              developers can find and use those pieces in their own projects.
             </p>
             <p>
-              The kit builds on CMU's web template, which the university hosts at
-              www.cmu.edu/common/standard-v6. For brand questions, see
-              <a class="external" href="https://brand.cmu.edu/">brand.cmu.edu</a>.
+              It also adds a few civilizing conveniences for app development: status labels, copy
+              buttons, file drop zones and other controls that everyday tasks call for. The aim is
+              to make building an app in CMU's style easier, with less custom CSS and fewer pieces
+              to reinvent.
             </p>
 
-            <h2 id="rules" class="rule-top">Rules</h2>
+            <h2 id="how" class="rule-top">How It Works</h2>
+            <p>
+              CMU's template supplies the page structure, navigation, typography, buttons and links.
+              The kit uses those styles and adds components such as callouts, status labels, tabs
+              and file drop zones.
+            </p>
             <ul class="cmu-checks">
               <li>
-                <strong>The template comes first.</strong> See what it already has on
-                <a href="standard.html">CMU Standard</a>, and use its classes as they are:
-                <code>btn</code>, <code>btn small</code>, <code>ghost</code>, <code>cta</code>,
-                <code>table.alternate</code>, <code>.sidebar</code>, <code>.sr-only</code>. The kit
-                never copies the template's rules or values, and adds a class only for what the
-                template doesn't already do.
+                <strong>In Cascade,</strong> add the content stylesheet to your site, then paste
+                components into a content section's Source code view.
               </li>
               <li>
-                <strong>Everything in the kit starts with <code>cmu-</code></strong
-                >: classes, custom properties (<code>--cmu-red</code>), and JavaScript hooks
-                (<code>data-cmu-copy</code>). Variations use a double hyphen
-                (<code>cmu-pill--green</code>). Give your own classes your own prefix, never
-                <code>cmu-</code>.
+                <strong>In an app,</strong> load the kit after CMU's template and use the components
+                in your existing pages. Your app handles its own data and actions.
               </li>
               <li>
-                <strong>Versions follow semver.</strong> Renaming or removing a class is a new major
-                version.
+                <strong>Use a specific release,</strong> so your pages change only when you choose
+                to update.
               </li>
             </ul>
-
-            <h2 id="writing" class="rule-top">Writing Conventions</h2>
-            <ul class="cmu-checks">
-              <li>
-                Title Case for buttons, headings, labels and navigation; sentence case for
-                sentences. "Sign In", not "Log In".
-              </li>
-              <li>Links go somewhere; buttons do something.</li>
-              <li>
-                Button and call-to-action (<code>btn</code>, <code>cta</code>) text starts with a
-                verb and says what people will do: "See the Options", "Upload Syllabus", "Add
-                Categories, Random Photos and More". Not a topic, a list of nouns ("Categories,
-                grayscale, and more", "Options") or a bare "Learn More". Let the action lead;
-                echoing the destination page's heading is nice when it fits, but not required.
-              </li>
-              <li>
-                A button (<code>btn</code>) is the page's main action, and can go wherever that
-                action happens: your app, its sign-in or a request form in another system. A call to
-                action (<code>cta</code>) is a next step on your own site or app. Any other link to
-                another site is an ordinary link with the template's <code>external</code> class, in
-                sentence case: "Browse the code on GitHub". A link is a <code>cta</code> or
-                <code>external</code>, never both.
-              </li>
-              <li>
-                A hero has two: a button for the page's main action ("Install the Kit"), then a "Get
-                Started" call to action that jumps to the first section below it, headed Get
-                Started.
-              </li>
-              <li>
-                End a section with its one call to action, after everything that makes the case for
-                it, rather than scattering them through the section.
-              </li>
-              <li>Headings and hero titles don't end in a period.</li>
-              <li>Use the Oxford comma: "red, white and blue".</li>
-              <li>
-                A link that needs sign-in gets plain text " [login required]" after it; a link to a
-                file gets its type, " [PDF]". Use one label, never both.
-              </li>
-              <li>
-                Never leave a lone "a" at the end of a line: join it to the next word with
-                <code>&amp;nbsp;</code>.
-              </li>
-            </ul>
-
-            <h2 id="versions" class="rule-top">Versions and Checks</h2>
             <p>
-              Each release is a Git tag, served at a fixed address by jsDelivr, so a page links one
-              exact version and never changes until you move it to a newer one; see
-              <a href="install.html#versions">Install</a>. Every week, and on every change, a check
-              downloads the live template and fails if it has started using a class name the kit
-              uses, so a template update can't collide with the kit unnoticed.
+              The kit is two stylesheets and a small browser script, with no build step or required
+              JavaScript framework. The <a href="install.html">installation guide</a> shows which
+              files to load for your project.
             </p>
-
-            <h2 id="code" class="rule-top">Code and License</h2>
             <p>
-              The kit's code is public, under the BSD 3-Clause License. The
+              The
               <a class="external" href="https://github.com/cmu-web/cmu-web-kit"
                 >GitHub repository</a
               >
-              has the CSS, the script, these docs and how to work on them. To report a problem or
-              ask for a component, open an issue or send a pull request. The license doesn't cover
-              Carnegie Mellon's names and marks, including Scotty or the template itself.
+              has the code and documentation. To report a problem or suggest a component, open an
+              issue or send a pull request.
+            </p>
+          </div>
+        </div>
+        <div class="grid column3">
+          <h1 id="in-use">See the Kit in Use</h1>
+          <p class="cmu-grid-full">
+            A few sites and apps using the kit. Explore the gallery for ideas for your own project.
+          </p>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="gallery.html#binder" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="images/gallery-binder.jpg"
+                  alt="Spring Carnival Binder home page with a countdown and a sign-in box."
+                  width="1040"
+                  height="656"
+                  loading="lazy"
+              /></a>
+            </figure>
+            <h2><a href="gallery.html#binder">Spring Carnival Binder</a></h2>
+            <p>Booth and operations management for Spring Carnival.</p>
+          </div>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="gallery.html#syllabus-registry" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="images/gallery-syllabus-registry.jpg"
+                  alt="Syllabus Registry search results with course sections, filters and status labels."
+                  width="1040"
+                  height="656"
+                  loading="lazy"
+              /></a>
+            </figure>
+            <h2><a href="gallery.html#syllabus-registry">Syllabus Registry</a></h2>
+            <p>Searchable course tables and syllabus uploads.</p>
+          </div>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="gallery.html#core4" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="images/gallery-core4.jpg"
+                  alt="Core4 Student Dashboard home page with a welcome and a sign-in box."
+                  width="1040"
+                  height="656"
+                  loading="lazy"
+              /></a>
+            </figure>
+            <h2><a href="gallery.html#core4">Core4 Student Dashboard</a></h2>
+            <p>A student dashboard for the Core Competencies.</p>
+          </div>
+          <p class="cmu-grid-full"><a class="cta" href="gallery.html">Browse the Gallery</a></p>
+        </div>
+        <div class="content wide">
+          <div>
+            <h1 id="partner">Help With a University-Wide App</h1>
+            <p>
+              Building an app for people across CMU, or giving an existing service a CMU look? We
+              can help you fit its navigation, forms and other screens to the university's template
+              and choose components that work together.
+            </p>
+            <p>
+              Tell us who will use it, what you're building and where you need help. An existing
+              app, a prototype or a few screenshots is a good place to start.
+            </p>
+            <p><a class="cta" href="partner.html">Tell Us About Your Project</a></p>
+          </div>
+        </div>
+        <div class="grid column2 grey boxes">
+          <h1 id="cmu-web">More CMU Web Tools</h1>
+          <p class="cmu-grid-full">
+            The Carnegie Mellon Web Kit is one of three CMU Web projects for building Carnegie
+            Mellon websites and web apps.
+          </p>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="https://cmu-web.github.io/cmu-web-markdown/" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="images/gallery-web-markdown.jpg"
+                  alt="Carnegie Mellon Web Markdown's docs: plain Markdown in CMU's template, with a code block and its copy icon."
+                  width="1040"
+                  height="656"
+              /></a>
+            </figure>
+            <h2>Carnegie Mellon Web Markdown</h2>
+            <p>A GitHub Pages theme that turns plain Markdown into pages in CMU style.</p>
+            <p>
+              <a class="external" href="https://cmu-web.github.io/cmu-web-markdown/"
+                >Visit Web Markdown</a
+              >
+            </p>
+          </div>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a
+                href="https://cmu-web.github.io/cmu-web-placemellon/"
+                tabindex="-1"
+                aria-hidden="true"
+                ><img
+                  src="images/gallery-placemellon.jpg"
+                  alt="PlaceMellon's home page: a hero with a Build Your Placeholder button beside a photo of Dr. Bunsen Honeydew."
+                  width="1040"
+                  height="656"
+              /></a>
+            </figure>
+            <h2>PlaceMellon</h2>
+            <p>Placeholder photos of Carnegie Mellon at any size, for mockups and prototypes.</p>
+            <p>
+              <a class="external" href="https://cmu-web.github.io/cmu-web-placemellon/"
+                >Visit PlaceMellon</a
+              >
             </p>
           </div>
         </div>
@@ -206,17 +267,10 @@
                   </li>
                 </ul>
               </li>
+              <li><a href="conventions.html">Conventions</a></li>
               <li class="active"><a href="about.html" aria-current="page">About</a></li>
-              <li>
-                <a class="external" href="https://cmu-web.github.io/cmu-web-placemellon/"
-                  >PlaceMellon</a
-                >
-              </li>
-              <li class="secondary">
-                <a class="external" href="https://github.com/cmu-web/cmu-web-kit"
-                  >Carnegie Mellon Web Kit on GitHub</a
-                >
-              </li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
             </ul>
           </nav>
         </div>

@@ -1,0 +1,33 @@
+name: Bug Report
+description: Something looks wrong or doesn't work.
+labels: [bug]
+body:
+  - type: textarea
+    id: where
+    attributes:
+      label: Where
+      description: The page, component or PlaceMellon address, with a link if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What Happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What You Expected
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and Width
+      description: For example, "Firefox, phone width" or "Chrome, 1300px".
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything Else
+      description: Screenshots help, especially at desktop and phone widths.

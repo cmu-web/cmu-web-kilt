@@ -1,0 +1,48 @@
+name: Add to the Gallery
+description: A site or app that uses the kit, for the docs' Gallery page.
+title: "Gallery: "
+labels: [gallery]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The [Gallery](https://cmu-web.github.io/cmu-web-kit/docs/gallery.html) shows CMU sites and
+        apps built with the kit. We'll take the screenshot ourselves, from what anyone can see
+        without signing in.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: What the site or app is called.
+    validations:
+      required: true
+  - type: input
+    id: address
+    attributes:
+      label: Address
+      placeholder: https://www.cmu.edu/…
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Who Runs It
+      description: The office, department or group.
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: What It Does
+      description: A sentence or two, for the caption.
+    validations:
+      required: true
+  - type: checkboxes
+    id: ok
+    attributes:
+      label: Before We Add It
+      options:
+        - label: It's public, and its owner is happy for it to be listed.
+          required: true
+        - label: Its public pages show no private information, such as students' names or records.
+          required: true

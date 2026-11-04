@@ -1,0 +1,21 @@
+name: Feature Request
+description: Something the project should do that it doesn't yet.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use
+    attributes:
+      label: What You're Trying to Do
+      description: Where you'd use it, and what's missing today.
+    validations:
+      required: true
+  - type: input
+    id: example
+    attributes:
+      label: A CMU Page That Does Something Like It
+      description: A link, if you know one. New components start from a real CMU page.
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What You'd Want
+      description: A rough shape is fine.
