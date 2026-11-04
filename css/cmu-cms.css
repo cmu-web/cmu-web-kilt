@@ -35,15 +35,13 @@
 /* Small capitals: eyebrow (red, above a heading), label (gray) */
 .cmu-eyebrow {
   margin: 0 0 0.5rem;
+  /* The template pads paragraphs; an eyebrow sits right on its heading. */
+  padding-bottom: 0;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cmu-red);
-}
-/* The template pads every heading and paragraph; an eyebrow sits right on its heading */
-.cmu-eyebrow {
-  padding-bottom: 0;
 }
 .cmu-eyebrow + h1,
 .cmu-eyebrow + h2,
