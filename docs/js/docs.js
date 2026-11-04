@@ -138,40 +138,29 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
     .replace(/ data-preview/g, "")
     .replace(/ data-kit-[\w-]+="[^"]*"/g, "");
   pre.appendChild(code);
-  // A wide example is a real page section, edge to edge. Its code and any
-  // notes (in a kit-follow block right after it) go inside the section when
-  // it has a background, so the color and pattern run on unbroken;
-  // otherwise at the top of the text block after it.
+  // A wide example is a real page section, edge to edge, shown at its real
+  // size: its code goes at the top of the text block after it, or of its notes
+  // (a kit-follow block right after it), never inside the section.
   if (demo.classList.contains("kit-demo--wide")) {
     var follow = demo.nextElementSibling;
     if (follow && !follow.classList.contains("kit-follow")) follow = null;
     var section = demo.querySelector(".content, .grid");
-    var banded =
+    if (
       section &&
       BAND.some(function (c) {
         return section.classList.contains(c);
-      });
-    if (banded) {
+      })
+    )
       demo.classList.add("kit-demo--banded");
-      // A grid takes them as rows; a content section, inside its one div
-      var into = section.classList.contains("content") ? section.firstElementChild : section;
-      into.appendChild(pre);
-      if (follow) {
-        while (follow.firstElementChild.firstChild)
-          into.appendChild(follow.firstElementChild.firstChild);
-        follow.remove();
-      }
-    } else {
-      var next = follow || demo.nextElementSibling;
-      // Last on the page, or right before another example: a text block of its own
-      if (!next || !next.matches(".content, .kit-follow")) {
-        next = document.createElement("div");
-        next.className = "content wide";
-        next.appendChild(document.createElement("div"));
-        demo.after(next);
-      }
-      next.firstElementChild.prepend(pre);
+    var next = follow || demo.nextElementSibling;
+    // Last on the page, or right before another example: a text block of its own
+    if (!next || !next.matches(".content, .kit-follow")) {
+      next = document.createElement("div");
+      next.className = "content wide";
+      next.appendChild(document.createElement("div"));
+      demo.after(next);
     }
+    next.firstElementChild.prepend(pre);
   } else {
     demo.after(pre);
   }

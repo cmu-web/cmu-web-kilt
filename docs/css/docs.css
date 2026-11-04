@@ -17,16 +17,6 @@
 #content .kit-code {
   padding: 1rem 1.25rem;
 }
-/* A banded wide example's code and notes join its grid: a row each */
-#content .kit-demo--wide .grid > :is(.kit-code, .cmu-note) {
-  flex: 0 0 100%;
-  min-width: 0; /* long lines scroll instead of widening the row */
-}
-/* Code in a dark band keeps dark text on its light box (invert whitens it) */
-#content .invert .kit-code,
-#content .invert .kit-code code {
-  color: var(--cmu-ink);
-}
 /* After a band with a background, the change of color marks the next
    section, so its heading needs no line */
 #content
@@ -38,10 +28,6 @@
   > div
   > h2.rule-top:first-child {
   border-top: 0;
-}
-/* Code under a testimonial in its band */
-.cmu-testimonial + .kit-code {
-  margin-top: 2rem;
 }
 /* A wide example is a real section of the page: no box around it */
 .kit-demo--wide {
