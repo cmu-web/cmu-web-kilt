@@ -121,7 +121,8 @@
   border-top: 0;
   box-shadow: 0 18px 40px rgba(23, 44, 75, 0.16);
 }
-.cmu-hero-art::before {
+.cmu-hero-art::before,
+.cmu-shot--browser::before {
   /* browser-window bar with three dots */
   content: "";
   display: block;
@@ -378,8 +379,38 @@ ol.cmu-flow > li > strong {
   }
 }
 
+/* A screenshot with a border and an optional caption. --browser draws it in
+   a browser window; its bar is shared with the hero's, above */
 .cmu-shot {
   margin: 0 0 1.75rem;
+}
+.cmu-shot img {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid var(--cmu-line);
+  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.1);
+}
+/* The window is as wide as its screenshot, never wider than the column */
+.cmu-shot--browser {
+  width: fit-content;
+  max-width: 100%;
+}
+.cmu-shot--browser img {
+  border-top: 0;
+}
+/* A linked screenshot: the link wraps the image exactly, with no underline.
+   The template pads and underlines every link in #content with
+   #content a:not(.btn):not(.cta):not(.box):not(.scrolldown), so this
+   matches its weight. */
+:is(#content, body) .cmu-shot a:not(.btn):not(.cta):not(.box):not(.scrolldown) {
+  display: block;
+  padding: 0;
+  border: 0;
+}
+/* Captioned like the template's own photos (figure.image) */
+.cmu-shot figcaption {
+  margin-top: 0.5rem;
+  font-style: italic;
 }
 
 /* A kit block that ends its content section (as each does in Cascade, one
@@ -557,16 +588,6 @@ p:has(+ :is(.cmu-snippet, .cmu-copyable)) {
 }
 .cmu-copy[data-cmu-copy-state="copied"]::before {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'/%3E%3C/svg%3E");
-}
-.cmu-shot img {
-  display: block;
-  border: 1px solid var(--cmu-line);
-  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.1);
-}
-.cmu-shot figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--cmu-muted);
 }
 
 /* Lists: check marks, numbered steps */
