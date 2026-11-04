@@ -1,6 +1,6 @@
 // Docs only: show each live example's markup under it, so every example is
 // written once. Elements marked data-demo-skip are left out of the code.
-// A section's background classes: its color, invert for dark ones, and its pattern
+// A section's background classes: its color, invert for dark ones and its pattern
 var BAND = [
   "grey",
   "darkgrey",
@@ -230,7 +230,7 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
 });
 
 // Try the header (Page Layout): the roof's color, the search box, signed in
-// or out, and acting as another user, on the real header of every docs
+// or out and acting as another user, on the real header of every docs
 // page. Choices last while you browse the docs, until Reset.
 (function () {
   var roof = document.querySelector(".roof");

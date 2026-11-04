@@ -608,7 +608,7 @@ a.cmu-link-button:hover {
 }
 /* Pager (<div class="cmu-pager" role="navigation">; not <nav>, whose links
    the template strips of borders): one list of first, previous, the page
-   numbers, next, and last. The current page has aria-current="page"; an
+   numbers, next and last. The current page has aria-current="page"; an
    arrow that goes nowhere has no href and aria-disabled="true". On phones
    the first and last arrows (cmu-pager-end) give way to the numbers. */
 .cmu-pager {

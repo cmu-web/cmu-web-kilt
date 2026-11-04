@@ -31,7 +31,7 @@ but browsers do: hard-refresh after changing CSS or JavaScript.
 ### Pre-commit Hooks
 
 The hooks in `.pre-commit-config.yaml` run ESLint and Prettier's check on
-every commit. When the docs, README, or `package.json` change, they also
+every commit. When the docs, README or `package.json` change, they also
 check that every version in an example matches `package.json`, and that the
 Components table is up to date. If a hook fails, fix what it reports and
 commit again. To run them all by hand:
@@ -47,16 +47,16 @@ npm run check
 ```
 
 This runs ESLint, Prettier's check, the version and Components table
-checks, and the template check: it downloads CMU's live template CSS and
+checks and the template check: it downloads CMU's live template CSS and
 fails if the template has started defining a class name the kit uses. CI
 runs the same command on every push and pull request, and weekly, since the
 template can change on its own.
 
 ### Linting and Formatting
 
-ESLint (`eslint.config.mjs`) checks the kit's script, the docs' script,
+ESLint (`eslint.config.mjs`) checks the kit's script, the docs' script
 and the tools with the recommended rules. Prettier (`.prettierrc.json`)
-formats CSS, JavaScript, Markdown, JSON, YAML, and the docs' HTML.
+formats CSS, JavaScript, Markdown, JSON, YAML and the docs' HTML.
 
 Two kinds of HTML are marked `<!-- prettier-ignore -->` so Prettier leaves
 them as written:
@@ -96,7 +96,7 @@ in the kit. To add one:
    each example's markup under it, so write the example once.
    For a whole page section (a color band, a grid, content with a sidebar),
    make it a wide example instead: close the page's text block, add
-   `<div class="kit-demo kit-demo--wide">` directly in `#content`, and open
+   `<div class="kit-demo kit-demo--wide">` directly in `#content` and open
    a new text block after it. It runs the full width like a real section.
    Notes about it go in a `<div class="content wide kit-follow">` right
    after it, as `<p class="cmu-note">`. When the section has a background,
@@ -118,13 +118,13 @@ working on markup added later. Pages load it after the template's scripts.
 Named the way CMU's own sites name them (`/common/standard-v6/css/`,
 `/common/standard-v6/js/`, `/common/standard-v6/images/`):
 
-| Path         | What                                                                |
-| ------------ | ------------------------------------------------------------------- |
-| `css/`       | The kit's stylesheets: `cmu-cms.css` and `cmu-app.css`              |
-| `js/`        | The kit's browser script, `cmu-app.js`                              |
-| `docs/`      | The docs site: pages, plus their own `css/`, `js/`, and `images/`   |
-| `tools/`     | Command-line tools: the checks, the Components table, and releasing |
-| `index.html` | Sends the GitHub Pages root to `docs/`                              |
+| Path         | What                                                               |
+| ------------ | ------------------------------------------------------------------ |
+| `css/`       | The kit's stylesheets: `cmu-cms.css` and `cmu-app.css`             |
+| `js/`        | The kit's browser script, `cmu-app.js`                             |
+| `docs/`      | The docs site: pages, plus their own `css/`, `js/` and `images/`   |
+| `tools/`     | Command-line tools: the checks, the Components table and releasing |
+| `index.html` | Sends the GitHub Pages root to `docs/`                             |
 
 `js/` is only for browser JavaScript, never `javascript/` or `scripts/`.
 Images go in `images/`, never `img/`. A `scripts/` folder, where a project
@@ -133,8 +133,8 @@ has one, is only for command-line and operations scripts.
 ## Releasing
 
 Releases follow semver. A patch fixes things, a minor version adds
-components or behavior, and a major version renames or removes a class,
-custom property, or `data-cmu-*` hook.
+components or behavior and a major version renames or removes a class,
+custom property or `data-cmu-*` hook.
 
 1. Release from an up-to-date `main` whose latest CI run passed.
 2. Set the version in `package.json` and in every example in the docs and
@@ -144,7 +144,7 @@ custom property, or `data-cmu-*` hook.
    npm run release -- 0.2.0
    ```
 
-3. Commit, tag, and push, as the command prints:
+3. Commit, tag and push, as the command prints:
 
    ```bash
    git commit -am "chore: release 0.2.0"

@@ -1,5 +1,5 @@
 // The Components page lists every component in the docs, built from the
-// section headings of the CMU Standard, CMS, and App pages and the classes
+// section headings of the CMU Standard, CMS and App pages and the classes
 // listed under each. This rewrites that table.
 //   node tools/components.mjs            write the table into docs/components.html
 //   node tools/components.mjs --check    fail if the table is out of date

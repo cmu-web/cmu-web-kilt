@@ -85,7 +85,7 @@
                   <td>CMS sites and apps</td>
                   <td>
                     Colors and page content: hero, path cards, steps, check lists, callouts and
-                    notes, text with a screenshot, pills, and tables
+                    notes, text with a screenshot, pills and tables
                   </td>
                 </tr>
                 <tr>
@@ -93,7 +93,7 @@
                   <td>Apps, after <code>cmu-cms.css</code></td>
                   <td>
                     Forms, tabs, flash messages, dialogs and file drop zones, the bulk selection
-                    bar, row buttons, sortable headers, filters, progress bars, folded lists, and
+                    bar, row buttons, sortable headers, filters, progress bars, folded lists and
                     panels
                   </td>
                 </tr>
@@ -194,9 +194,9 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
 
             <h2 id="node" class="rule-top">Node Apps</h2>
             <p>
-              Install the tagged release as a dependency, serve its <code>css</code> folder, and
-              link it from your page layout. The app then keeps its own copy, so it doesn't depend
-              on jsDelivr being up, and the version is in <code>package.json</code> with everything
+              Install the tagged release as a dependency, serve its <code>css</code> folder and link
+              it from your page layout. The app then keeps its own copy, so it doesn't depend on
+              jsDelivr being up, and the version is in <code>package.json</code> with everything
               else.
             </p>
             <ol class="cmu-steps">
@@ -235,7 +235,7 @@ app.use("/vendor/cmu-web-kit", express.static(kit));</code></pre>
 
             <h2 id="other" class="rule-top">Other Apps</h2>
             <p>
-              For Python, PHP, Java, or anything else: copy a release's two files into your app's
+              For Python, PHP, Java or anything else: copy a release's two files into your app's
               static folder and commit them, with the version in the folder name so it's obvious
               which one you have.
             </p>
@@ -251,7 +251,7 @@ done</code></pre>
 
             <h2 id="prototype" class="rule-top">Prototypes and Static Pages</h2>
             <p>
-              For a mockup, a one-off page, or a page served while your app is down, link the CDN
+              For a mockup, a one-off page or a page served while your app is down, link the CDN
               directly. It's the quickest way to start, at the cost of depending on jsDelivr.
             </p>
             <pre

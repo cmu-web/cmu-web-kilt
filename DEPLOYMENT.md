@@ -1,7 +1,7 @@
 # Deployment
 
 The kit has no server. A release is a Git tag, and three places serve it:
-jsDelivr for pages that link the kit, GitHub for apps that install it, and
+jsDelivr for pages that link the kit, GitHub for apps that install it and
 GitHub Pages for the docs. [DEVELOPMENT.md](DEVELOPMENT.md#releasing)
 covers making a release; this page covers where it goes and how to check it.
 
@@ -38,7 +38,7 @@ Each line should read `HTTP/2 200`.
 ### Never Move a Tag
 
 jsDelivr caches a version's files for a long time, and pages link them
-expecting them never to change. Don't delete, move, or re-push a released
+expecting them never to change. Don't delete, move or re-push a released
 tag. If a release has a mistake, fix it on `main` and release a patch
 version.
 

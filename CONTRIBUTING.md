@@ -1,11 +1,11 @@
 # Contributing
 
-See [DEVELOPMENT.md](DEVELOPMENT.md) for setup, checks, and releasing, and
+See [DEVELOPMENT.md](DEVELOPMENT.md) for setup, checks and releasing, and
 [DEPLOYMENT.md](DEPLOYMENT.md) for how releases reach jsDelivr.
 
 ## Issues
 
-For a problem, include the page or app, the browser, what happened, and
+For a problem, include the page or app, the browser, what happened and
 what you expected; a screenshot helps. For a new component, describe where
 you'd use it and link a CMU page that does something like it. Check
 existing issues first.
@@ -25,7 +25,7 @@ Update the docs whenever a component changes.
   `table.alternate`, `.sidebar`, `.sr-only`. Never copy its rules or
   values. Add a component only for what the template doesn't already do, and prefer
   the template's own spacing to an override.
-- **Prefix `cmu-`** for every class, custom property (`--cmu-red`), and
+- **Prefix `cmu-`** for every class, custom property (`--cmu-red`) and
   JavaScript hook (`data-cmu-copy`). Modifiers use `--` (`cmu-pill--green`).
 - **`cmu-cms.css`** is for anything a Cascade page could use;
   **`cmu-app.css`** and **`cmu-app.js`** are for what only apps need.
@@ -41,13 +41,13 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Style
 
-Prettier formats CSS, JavaScript, Markdown, JSON, YAML, and the docs' HTML
-(except the live examples), and ESLint checks the JavaScript; see
+Prettier formats CSS, JavaScript, Markdown, JSON, YAML and the docs' HTML
+(except the live examples) and ESLint checks the JavaScript; see
 [linting and formatting](DEVELOPMENT.md#linting-and-formatting).
 
 For the docs and for text in examples, follow the
 [writing conventions](https://cmu-web.github.io/cmu-web-kit/docs/about.html#writing):
-Title Case for headings, buttons, and labels; buttons and calls to action
+Title Case for headings, buttons and labels; buttons and calls to action
 that start with a verb; and the Oxford comma. Otherwise, follow the
 [GitHub Docs style guide](https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide)
 and, for grammar and punctuation, the

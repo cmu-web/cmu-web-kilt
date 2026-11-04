@@ -70,7 +70,7 @@
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-search-bar">
-          <p>Search by course number, title, or instructor.</p>
+          <p>Search by course number, title or instructor.</p>
           <label for="kit-search" class="sr-only">Find a Syllabus</label>
           <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;">
         </div>
@@ -136,10 +136,10 @@
             <h2 id="people" class="rule-top">People List</h2>
             <p>
               A list of people with a small round headshot beside each name and title, as on CMU's
-              experts page, for a directory, a team, or the instructors of a course. With more than
-              a screenful, put a <a href="#search">search</a> above it that matches names, titles,
-              and each row's <code>data-keywords</code> as people type, and a count under it. The
-              filter is your app's script; try this one.
+              experts page, for a directory, a team or the instructors of a course. With more than a
+              screenful, put a <a href="#search">search</a> above it that matches names, titles and
+              each row's <code>data-keywords</code> as people type, and a count under it. The filter
+              is your app's script; try this one.
             </p>
             <p class="kit-classes">
               <code>cmu-people</code>, <code>cmu-search-bar</code>, <code>cmu-results-count</code>
@@ -147,7 +147,7 @@
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-search-bar">
-          <p>Search by name, title, or topic.</p>
+          <p>Search by name, title or topic.</p>
           <label for="kit-find-person" class="sr-only">Find a Person</label>
           <input type="text" id="kit-find-person" placeholder="Find a person&hellip;" data-kit-filter="kit-people" data-kit-count="kit-people-count">
         </div>
@@ -316,7 +316,7 @@
               goes nowhere, such as previous on the first page, keeps its place but loses its
               <code>href</code> and gets <code>aria-disabled="true"</code>, which grays it out. Keep
               the numbers to seven slots, so the pager stays the same width as people move through:
-              the first page, the last, and the pages around the current one, with an ellipsis for
+              the first page, the last and the pages around the current one, with an ellipsis for
               each gap (1 2 3 4 5 &hellip; 16 near the start, 1 &hellip; 7 8 9 &hellip; 16 in the
               middle, 1 &hellip; 12 13 14 15 16 near the end). With seven pages or fewer, show them
               all. Use the same batch size as Load More, such as 20. On phones, &laquo; and &raquo;
@@ -324,7 +324,7 @@
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <p class="cmu-results-count">Showing 21&ndash;40 of 312 sections</p>
+        <p class="cmu-results-count">Showing 21-40 of 312 sections</p>
         <div class="cmu-pager" role="navigation" aria-label="Pages">
           <ol>
             <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=1" aria-label="First page">&laquo;</a></li>
