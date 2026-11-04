@@ -75,4 +75,34 @@
       announce("Copied.");
     }, fallback);
   });
+
+  // In-page links: the template's script turns href="#id" into
+  // javascript:void(0) (keeping the target in data-jump) and scrolls with its
+  // own animation, so the address never shows the section and Back doesn't
+  // return. Put the real links back once it has run, and add the section to
+  // the address as the template scrolls to it.
+  function restoreJumps() {
+    document.querySelectorAll("a[data-jump]").forEach(function (a) {
+      var target = a.getAttribute("data-jump");
+      if (target.length > 1 && /^javascript:/.test(a.getAttribute("href")))
+        a.setAttribute("href", target);
+    });
+  }
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(restoreJumps);
+    });
+  else setTimeout(restoreJumps);
+  document.addEventListener(
+    "click",
+    function (e) {
+      var a = e.target.closest && e.target.closest("a[data-jump]");
+      if (!a || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var target = a.getAttribute("data-jump");
+      if (target.length < 2) return;
+      e.preventDefault(); // the template does the scrolling
+      if (location.hash !== target) history.pushState(null, "", target);
+    },
+    true,
+  );
 })();
