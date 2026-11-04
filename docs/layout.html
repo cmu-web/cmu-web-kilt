@@ -133,98 +133,6 @@
         </div>
         <div class="content wide">
           <div>
-            <h2 id="skeleton" class="rule-top">The Whole Page</h2>
-            <p>
-              Every part has a fixed place. The navigation goes in the footer: the template's script
-              copies it into the header and the menu, and without the script it stays a plain list
-              in the footer.
-            </p>
-            <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Page - Site Name - Carnegie Mellon University&lt;/title&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/print.min.css" media="print" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/favicon.ico" rel="icon"&gt;
-  &lt;link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed"&gt;
-  &lt;meta content="#9f0000" name="msapplication-TileColor"&gt;
-  &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
-
-  &lt;!-- The kit, after the template, then your own stylesheet last --&gt;
-  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
-  &lt;link href="/css/your-site.css" rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body class="no-js"&gt;
-&lt;div id="container"&gt;
-  &lt;header&gt;
-    &lt;div class="roof red invert"&gt;
-      &lt;div&gt;
-        &lt;a class="wordmark" href="https://www.cmu.edu/"&gt;Carnegie Mellon University&lt;/a&gt;
-        &lt;button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav"&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div id="sitename"&gt; &lt;!-- Site Name, below --&gt; &lt;/div&gt;
-  &lt;/header&gt;
-
-  &lt;main id="content"&gt;
-    &lt;div class="breadcrumbs"&gt; &lt;!-- Breadcrumbs, below --&gt; &lt;/div&gt;
-    &lt;div class="content"&gt;
-      &lt;div&gt;
-        &lt;h1&gt;Page Title&lt;/h1&gt;
-        &lt;!-- the page --&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/main&gt;
-
-  &lt;footer class="grid column3 invert"&gt;
-    &lt;div&gt;
-      &lt;p&gt;Your Site or App&lt;br&gt;Carnegie Mellon University&lt;br&gt;5000 Forbes Avenue&lt;br&gt;Pittsburgh, PA 15213&lt;/p&gt;
-      &lt;ul&gt;&lt;li&gt;&lt;a href="https://www.cmu.edu/legal/"&gt;Legal Info&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.cmu.edu/"&gt;www.cmu.edu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-      &lt;ul&gt;&lt;li&gt;&amp;copy; 2026 Carnegie Mellon University&lt;/li&gt;&lt;/ul&gt;
-    &lt;/div&gt;
-    &lt;div&gt;&lt;/div&gt;
-    &lt;div&gt;
-      &lt;nav id="nav"&gt; &lt;!-- Navigation, below --&gt; &lt;/nav&gt;
-    &lt;/div&gt;
-  &lt;/footer&gt;
-&lt;/div&gt;
-
-&lt;!-- The template's scripts (see Scripts, below), then the kit's --&gt;
-&lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- for copy buttons and countdowns --&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            <ul>
-              <li>
-                <strong>Keep <code>no-js</code> on <code>&lt;body&gt;</code>.</strong> The
-                template's script removes it, and the template styles the page differently until
-                then.
-              </li>
-              <li>
-                <strong>The roof</strong> (<code>div.roof</code>) is the strip across the top with
-                the wordmark. Add <code>red invert</code> for a red roof, as here, or
-                <code>darkgrey invert</code> for dark gray; without either it's white.
-              </li>
-              <li>
-                <strong>The favicon</strong> is CMU's own, from www.cmu.edu, as on every CMS site:
-                the four lines after the stylesheets.
-              </li>
-              <li>
-                <strong>The footer</strong> starts with the site or app name, the same as in the
-                header, on the line above Carnegie Mellon University's address.
-              </li>
-              <li>
-                Add <code>cmu-app</code> to <code>&lt;body&gt;</code> in an app (see
-                <a href="app.html#setup">App Components</a>).
-              </li>
-            </ul>
-
             <h2 id="site-name" class="rule-top">Site Name</h2>
             <p>
               The site's name links to its home page. Under it, an optional
@@ -235,6 +143,15 @@
   &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Seminars &amp;amp; Workshops&lt;/a&gt;&lt;/span&gt;
   &lt;h2&gt;&lt;a href="https://www.cmu.edu/teaching/"&gt;Eberly Center&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;</code></pre>
+            <figure class="cmu-shot cmu-shot--browser">
+              <img
+                src="images/seminars-header.png"
+                alt="The Seminars &amp; Workshops header: the CMU roof, then the name with Eberly Center under it."
+                width="1300"
+                height="185"
+              />
+              <figcaption>The Seminars &amp; Workshops header, from the Eberly Center.</figcaption>
+            </figure>
 
             <p>
               For a logo, wrap the name and the <code>&lt;h2&gt;</code> in a
@@ -417,6 +334,51 @@
               <a href="app-users.html#account">Sign In and Sign Out</a>.
             </p>
 
+            <h2 id="which-nav" class="rule-top">Navigation, Tabs or Sidebar?</h2>
+            <p>
+              <strong>Pages of the site</strong> go in the navigation, which the template shows as
+              tabs in the header: Browse, My Courses, Help.
+            </p>
+            <figure class="cmu-shot">
+              <img
+                src="images/layout-tabs-header.png"
+                alt="The header tabs on these docs, with Components in red as the current section."
+                width="1248"
+                height="59"
+              />
+            </figure>
+            <p>
+              <strong>Views of one page</strong> go in
+              <a href="app-structure.html#tabs">tabs</a> (<code>cmu-tabs</code>) at the top of the
+              content, such as one tab for each semester of the same list of courses.
+            </p>
+            <figure class="cmu-shot">
+              <img
+                src="images/layout-tabs-view.png"
+                alt="Tabs for Spring 2027, Fall 2026 and Summer 2026, with Spring 2027 underlined in red, and a 2 More link."
+                width="1248"
+                height="58"
+              />
+            </figure>
+            <p>
+              <strong>Sections of one long page</strong> go in an
+              <a href="standard-sidebar.html#on-this-page">On This Page</a> box at the top of the
+              sidebar, as on <a href="conventions.html">Conventions</a>. Leave it off pages short
+              enough to see at a glance.
+            </p>
+            <figure class="cmu-shot">
+              <img
+                src="images/layout-tabs-sidebar.png"
+                alt="An On This Page box listing three sections: What You Can Borrow, How Long You Can Keep It and Late Returns."
+                width="298"
+                height="283"
+              />
+            </figure>
+            <p>
+              <strong>Where you are</strong> goes in the <a href="#breadcrumbs">breadcrumbs</a>,
+              when a page sits below another.
+            </p>
+
             <h2 id="breadcrumbs" class="rule-top">Breadcrumbs</h2>
             <p>Breadcrumbs show the path from the site's home to the current page.</p>
             <ul class="cmu-checks">
@@ -534,25 +496,140 @@
               spans, and opens and closes the template's <code>.collapsed</code> headings.
             </p>
 
-            <h2 id="which-nav" class="rule-top">Navigation, Tabs or Sidebar?</h2>
-            <ul class="cmu-checks">
+            <h2 id="skeleton" class="rule-top">The Whole Page</h2>
+            <p>
+              All the parts above in one page, with every optional extra in place and marked: the
+              app stylesheet and <code>cmu-app</code>, icons, search, Sign In, a sidebar and the
+              kit's script. Leave out what you don't use. The navigation goes in the footer: the
+              template's script copies it into the header and the menu, and without the script it
+              stays a plain list in the footer.
+            </p>
+            <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Open Office Hours - Office Hours Queue - Carnegie Mellon University&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/print.min.css" media="print" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/favicon.ico" rel="icon"&gt;
+  &lt;link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed"&gt;
+  &lt;meta content="#9f0000" name="msapplication-TileColor"&gt;
+  &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
+
+  &lt;!-- The kit, after the template --&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
+  &lt;!-- Optional: Bootstrap Icons, if the page uses icons --&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"&gt;
+  &lt;!-- Your own stylesheet, last --&gt;
+  &lt;link href="/css/your-site.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="no-js cmu-app"&gt;  &lt;!-- cmu-app in apps only --&gt;
+&lt;div id="container"&gt;
+  &lt;header&gt;
+    &lt;div class="roof red invert"&gt;
+      &lt;div&gt;
+        &lt;a class="wordmark" href="https://www.cmu.edu/"&gt;Carnegie Mellon University&lt;/a&gt;
+        &lt;!-- Optional: search cmu.edu; set "your-site-id" to your Cascade site ID --&gt;
+        &lt;form action="https://search.cmu.edu" class="search search-form" method="get" name="customForm"&gt;
+          &lt;input name="form_id" type="hidden" value="basic-form"&gt;
+          &lt;input name="site" type="hidden" value=""&gt;
+          &lt;input name="ie" type="hidden" value="UTF-8"&gt;
+          &lt;label&gt;&lt;span&gt;Search&lt;/span&gt; &lt;input aria-label="Search" name="q" placeholder="Search"&gt;&lt;/label&gt;
+          &lt;button title="Submit" type="submit"&gt;Search&lt;/button&gt;
+          &lt;label class="searchSite"&gt;&lt;span&gt;Search this site only&lt;/span&gt; &lt;input checked name="site" type="checkbox" value="your-site-id"&gt;&lt;/label&gt;
+        &lt;/form&gt;
+        &lt;!-- Optional: Sign In, or the signed-in person's name, before the menu button --&gt;
+        &lt;a class="cmu-account" href="/login"&gt;Sign In&lt;/a&gt;
+        &lt;button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav"&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="sitename"&gt;
+      &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&lt;/span&gt;
+      &lt;h2&gt;Your Office&lt;/h2&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main id="content"&gt;
+    &lt;div class="breadcrumbs"&gt;
+      &lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;&lt;a href="/help"&gt;Help&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;&lt;a href="/help/staff"&gt;For Course Staff&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;Open Office Hours
+    &lt;/div&gt;
+    &lt;!-- Optional: a sidebar; it must touch the page's &lt;/div&gt;, or it drops below the page --&gt;
+    &lt;div class="content"&gt;
+      &lt;div&gt;
+        &lt;h1&gt;Open Office Hours&lt;/h1&gt;
+        &lt;p&gt;The page.&lt;/p&gt;
+      &lt;/div&gt;&lt;div class="sidebar"&gt;
+        &lt;div class="simple"&gt;
+          &lt;a class="btn wide" href="/queues/new"&gt;Open a Queue&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="grid column3 invert"&gt;
+    &lt;div&gt;
+      &lt;p&gt;Office Hours Queue&lt;br&gt;Carnegie Mellon University&lt;br&gt;5000 Forbes Avenue&lt;br&gt;Pittsburgh, PA 15213&lt;/p&gt;
+      &lt;ul&gt;&lt;li&gt;&lt;a href="https://www.cmu.edu/legal/"&gt;Legal Info&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.cmu.edu/"&gt;www.cmu.edu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      &lt;ul&gt;&lt;li&gt;&amp;copy; 2026 Carnegie Mellon University&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;&lt;/div&gt;
+    &lt;div&gt;
+      &lt;nav id="nav"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/queues"&gt;Queues&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/my-courses"&gt;My Courses&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href="/help"&gt;Help&lt;/a&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href="/help/students"&gt;For Students&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href="/help/staff"&gt;For Course Staff&lt;/a&gt;
+                &lt;ul&gt;
+                  &lt;li class="active"&gt;&lt;a href="/help/staff/open" aria-current="page"&gt;Open Office Hours&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href="/help/staff/canvas"&gt;Link It From Canvas&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;!-- The template's scripts, in this order --&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+&lt;!-- The kit's script, last, for copy buttons, countdowns and screenshots that enlarge --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <ul>
               <li>
-                <strong>Pages of the site</strong> go in the navigation: Browse, My Courses, Help.
+                <strong>Keep <code>no-js</code> on <code>&lt;body&gt;</code>.</strong> The
+                template's script removes it, and the template styles the page differently until
+                then.
               </li>
               <li>
-                <strong>Views of one page</strong> go in
-                <a href="app-structure.html#tabs">tabs</a> (<code>cmu-tabs</code>) at the top of the
-                content, such as one tab for each semester of the same list of courses.
+                <strong>The roof</strong> (<code>div.roof</code>) is the strip across the top with
+                the wordmark. Add <code>red invert</code> for a red roof, as here, or
+                <code>darkgrey invert</code> for dark gray; without either it's white.
               </li>
               <li>
-                <strong>Sections of one long page</strong> go in an
-                <a href="standard-sidebar.html#on-this-page">On This Page</a> box at the top of the
-                sidebar, as on <a href="conventions.html">Conventions</a>. Leave it off pages short
-                enough to see at a glance.
+                <strong>The favicon</strong> is CMU's own, from www.cmu.edu, as on every CMS site:
+                the four lines after the stylesheets.
               </li>
               <li>
-                <strong>Where you are</strong> goes in the breadcrumbs, when a page sits below
-                another.
+                <strong>The footer</strong> starts with the site or app name, the same as in the
+                header, on the line above Carnegie Mellon University's address.
+              </li>
+              <li>
+                Add <code>cmu-app</code> to <code>&lt;body&gt;</code> in an app (see
+                <a href="app.html#setup">App Components</a>).
               </li>
             </ul>
           </div>
