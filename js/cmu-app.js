@@ -110,7 +110,7 @@
   // the image over the page, with the page dimmed behind it; Escape, the close
   // button or a click anywhere closes it, and focus goes back to the link.
   // Without the script (or a browser without <dialog>), the link opens the image.
-  // See Enlarge on Click in the docs (cms-content.html).
+  // See Enlarge on Click in the docs (content.html).
   var zoom;
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[data-cmu-zoom]");
@@ -139,7 +139,7 @@
   // with a sentence inside that gives the same moment. Shows days, hours,
   // minutes and seconds on flip cards and stops at zero; screen readers get
   // the sentence instead of the ticking cards. See Countdown in the docs
-  // (cms-content.html). Adapted from a CodePen by Shaw
+  // (content.html). Adapted from a CodePen by Shaw
   // (codepen.io/shshaw/pen/vKzoLL, MIT).
   var UNITS = [
     ["Days", 864e5, Infinity],
@@ -215,12 +215,75 @@
     if (scope.querySelectorAll) scope.querySelectorAll("[data-cmu-countdown]").forEach(countdown);
     if (scope.matches && scope.matches("[data-cmu-countdown]")) countdown(scope);
   }
+  // Sorting: <ol class="cmu-sort" data-cmu-sort> whose items people put in
+  // order. Adds Up and Down buttons to each item (named for the item, for
+  // screen readers), keeps focus on the moved item and says where it went. A
+  // hidden input in each item moves with it, so a form sends the new order.
+  // Without the script the list keeps its first order. See Sorting in the
+  // docs (forms.html).
+  function sortable(list) {
+    if (list.cmuSort) return;
+    list.cmuSort = true;
+    list.querySelectorAll(":scope > li").forEach(function (li) {
+      li.cmuName = li.textContent.trim().replace(/\s+/g, " ");
+      var moves = document.createElement("span");
+      moves.className = "cmu-sort-moves";
+      [
+        ["-1", "Up"],
+        ["1", "Down"],
+      ].forEach(function (m) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "btn ghost small";
+        b.setAttribute("data-cmu-move", m[0]);
+        b.setAttribute("aria-label", "Move " + li.cmuName + " " + m[1].toLowerCase());
+        b.textContent = m[1];
+        moves.appendChild(b);
+      });
+      li.appendChild(moves);
+    });
+    sortEnds(list);
+  }
+  // The first item can't go up, and the last can't go down
+  function sortEnds(list) {
+    var items = list.querySelectorAll(":scope > li");
+    items.forEach(function (li, i) {
+      li.querySelector('[data-cmu-move="-1"]').disabled = i === 0;
+      li.querySelector('[data-cmu-move="1"]').disabled = i === items.length - 1;
+    });
+  }
+  function startSorts(scope) {
+    if (scope.querySelectorAll) scope.querySelectorAll("[data-cmu-sort]").forEach(sortable);
+    if (scope.matches && scope.matches("[data-cmu-sort]")) sortable(scope);
+  }
+  startSorts(document);
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-cmu-sort] [data-cmu-move]");
+    if (!b) return;
+    var li = b.closest("li"),
+      list = li.parentElement,
+      dir = Number(b.getAttribute("data-cmu-move")),
+      other = dir < 0 ? li.previousElementSibling : li.nextElementSibling;
+    if (!other) return;
+    list.insertBefore(dir < 0 ? li : other, dir < 0 ? other : li);
+    sortEnds(list);
+    // At the top or bottom now, focus the other button
+    (b.disabled ? li.querySelector('[data-cmu-move="' + -dir + '"]') : b).focus();
+    var at = Array.prototype.indexOf.call(list.children, li) + 1;
+    announce(li.cmuName + ", " + at + " of " + list.children.length);
+  });
+
   startCountdowns(document);
-  // Countdowns added later start, and one whose date changes restarts
+  // Countdowns and sorting lists added later start, and a countdown whose
+  // date changes restarts
   new MutationObserver(function (changes) {
     changes.forEach(function (c) {
       if (c.type === "attributes") countdown(c.target);
-      else c.addedNodes.forEach(startCountdowns);
+      else
+        c.addedNodes.forEach(function (n) {
+          startCountdowns(n);
+          startSorts(n);
+        });
     });
   }).observe(document.documentElement, {
     childList: true,

@@ -9,7 +9,7 @@ body.cmu-framed {
   padding: 1.5rem;
 }
 
-/* Forms; see Page Setup and Forms in the docs (app.html) */
+/* Forms; see Page Setup and Forms in the docs (forms.html) */
 body.cmu-app fieldset > ul {
   list-style-type: none;
   margin: 0;
@@ -289,6 +289,279 @@ body.cmu-app .cmu-sub-options > ul + p.cmu-hint {
   padding: 0;
   margin: 0.35rem 0 0;
 }
+/* Choice rows: each radio button or checkbox with its label in a large row,
+   the whole row a target, for a question with a few answers; see Choice Rows
+   in the docs (forms.html) */
+.cmu-choices ul {
+  margin: 0;
+  padding: 0;
+}
+.cmu-choices li {
+  list-style: none;
+  margin: 0 0 0.6em;
+  padding: 0;
+}
+body.cmu-app .cmu-choices label {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin: 0;
+  padding: 0.85em 1em;
+  border: 1px solid var(--cmu-line);
+  background: #fff;
+  font-weight: 400;
+  cursor: pointer;
+}
+body.cmu-app .cmu-choices input {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0;
+}
+.cmu-choices label:hover {
+  background: var(--cmu-tint);
+}
+.cmu-choices label:has(:checked) {
+  border-color: var(--cmu-red);
+  background: var(--cmu-red-tint);
+}
+/* Inside the row, so a list or box around it doesn't clip the ring */
+.cmu-choices label:has(:focus-visible) {
+  outline: 2px solid var(--cmu-red);
+  outline-offset: -3px;
+}
+/* A question card: one question and its choice rows on a white card, with a
+   rule under the question and the button centered; put it in a colored band */
+.cmu-question {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2em 2.5em;
+  background: #fff;
+  color: var(--cmu-ink);
+}
+body.cmu-app .cmu-question legend {
+  width: 100%;
+  margin-bottom: 1.25em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--cmu-ink);
+  font-size: 1.1em;
+  font-weight: 400;
+}
+.cmu-question fieldset {
+  margin-bottom: 1.5em;
+}
+.cmu-question > :last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .cmu-question {
+    padding: 1.25em;
+  }
+}
+
+/* Matching: each item and a menu of answers beside it, drawn as two puzzle
+   pieces: the item has a socket on its right, the menu a tab on its left.
+   Once an answer is picked, the pieces snap together. Under 600px the menu
+   goes under its item, without the puzzle shapes. See Matching in the docs
+   (forms.html) */
+.cmu-match ul {
+  margin: 0;
+  padding: 0;
+}
+.cmu-match li {
+  --cmu-piece: #e4909c; /* the pieces' colored ends, red once matched */
+  list-style: none;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 2.5em;
+  margin: 0 0 1em;
+  padding: 0;
+  transition: column-gap 0.2s;
+}
+.cmu-match li:has(option:checked:not([value=""])) {
+  --cmu-piece: var(--cmu-red);
+  column-gap: 0;
+}
+body.cmu-app .cmu-match li > label,
+body.cmu-app .cmu-match li > select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-height: 4.5em;
+  margin: 0;
+  border: 1px solid var(--cmu-line);
+  background-color: #fff;
+}
+body.cmu-app .cmu-match li > label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.75em 1.75em 0.75em 1em;
+  border-left: 1.25em solid var(--cmu-piece);
+  font-weight: 400;
+}
+body.cmu-app .cmu-match li > select {
+  padding: 0.75em 1em 0.75em 1.75em;
+  border-right: 1.25em solid var(--cmu-piece);
+}
+/* The socket: a half circle cut into the item's right edge */
+.cmu-match label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  box-sizing: border-box;
+  width: 0.9em;
+  height: 1.8em;
+  margin-top: -0.9em;
+  border: 1px solid var(--cmu-line);
+  border-right: 0;
+  border-radius: 0.9em 0 0 0.9em;
+  background: #fff;
+}
+/* The tab: a half circle on the menu's left edge, into the socket */
+.cmu-match li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 1.25em - 0.9em);
+  box-sizing: border-box;
+  width: calc(0.9em + 1px); /* over the menu's left border */
+  height: 1.8em;
+  margin-top: -0.9em;
+  border: 1px solid var(--cmu-line);
+  border-right: 0;
+  border-radius: 0.9em 0 0 0.9em;
+  background: #fff;
+  pointer-events: none;
+  transition: left 0.2s;
+}
+.cmu-match li:has(option:checked:not([value=""]))::after {
+  left: calc(50% - 0.9em);
+}
+@media (max-width: 600px) {
+  .cmu-match li,
+  .cmu-match li:has(option:checked:not([value=""])) {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+  }
+  .cmu-match label::after,
+  .cmu-match li::after {
+    display: none;
+  }
+  body.cmu-app .cmu-match li > label {
+    min-height: 0;
+    border-bottom: 0;
+  }
+  body.cmu-app .cmu-match li > select {
+    min-height: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmu-match li,
+  .cmu-match li::after {
+    transition: none;
+  }
+}
+
+/* Card sort: each card, a white card with its words, gets one of a few
+   groups, picked from large tiles under it (radio buttons). See Card Sort
+   in the docs (forms.html) */
+.cmu-card-sort {
+  display: grid;
+  gap: 1.5em;
+}
+body.cmu-app .cmu-card-sort > fieldset {
+  margin: 0;
+  padding: 1.5em;
+  border: 0;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+/* The card's words: the fieldset's legend, inside the card */
+body.cmu-app .cmu-card-sort > fieldset > legend {
+  float: left;
+  width: 100%;
+  margin: 0 0 1.25em;
+  font-size: 1.1em;
+}
+body.cmu-app .cmu-card-sort > fieldset > ul {
+  clear: both;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+  gap: 0.75em;
+  margin: 0;
+  padding: 0;
+}
+body.cmu-app .cmu-card-sort > fieldset > ul > li {
+  margin: 0;
+  padding: 0;
+}
+body.cmu-app .cmu-card-sort label {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 1.5em 1em;
+  background: var(--cmu-tint);
+  color: var(--cmu-ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+/* The radio button stays in the tile for keyboards, out of sight */
+body.cmu-app .cmu-card-sort input {
+  position: absolute;
+  opacity: 0;
+}
+body.cmu-app .cmu-card-sort label:hover {
+  background: var(--cmu-gray-tint);
+}
+body.cmu-app .cmu-card-sort label:has(:checked) {
+  background: var(--cmu-red);
+  color: #fff;
+}
+body.cmu-app .cmu-card-sort label:has(:focus-visible) {
+  outline: 2px solid var(--cmu-ink);
+  outline-offset: 2px;
+}
+
+/* Sorting (needs cmu-app.js): an ordered list people put in order with Up and
+   Down buttons the script adds to each item, numbered in red. See Sorting in
+   the docs (forms.html) */
+ol.cmu-sort {
+  counter-reset: cmu-sort;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ol.cmu-sort > li {
+  counter-increment: cmu-sort;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin: 0 0 0.6em;
+  padding: 0.6em 0.75em 0.6em 1em;
+  border: 1px solid var(--cmu-line);
+  background: #fff;
+}
+ol.cmu-sort > li::before {
+  content: counter(cmu-sort);
+  flex: none;
+  min-width: 1.25em;
+  color: var(--cmu-red);
+  font-weight: 700;
+}
+.cmu-sort-moves {
+  display: flex;
+  flex: none;
+  gap: 0.4em;
+  margin-left: auto;
+}
+.cmu-sort-moves .btn {
+  margin: 0;
+}
+
 /* A short note beside a button, centered on it; wraps under it when narrow */
 .cmu-button-note {
   display: flex;
@@ -569,7 +842,7 @@ a.cmu-link-button:hover {
   min-width: 3em;
 }
 /* More rows folded under a breakdown, in a details.cmu-more; see Progress in
-   the docs (app-messages.html) */
+   the docs (messages.html) */
 .cmu-breakdown-more {
   flex-basis: 100%;
   margin-top: 0.5em;
@@ -578,6 +851,81 @@ a.cmu-link-button:hover {
 }
 .cmu-breakdown-more .cmu-breakdown {
   border-top: 0;
+}
+
+/* A meter across its whole box, and white on a colored box (invert) */
+.cmu-meter--full {
+  display: block;
+  width: 100%;
+}
+.invert .cmu-meter {
+  background: rgba(255, 255, 255, 0.35);
+}
+.invert .cmu-meter > div {
+  background: #fff;
+}
+/* In a sidebar box, a meter is a bar, not one of the template's padded boxes */
+.content .sidebar .cmu-meter,
+.content .sidebar .cmu-meter > div {
+  margin: 0;
+  padding: 0;
+}
+/* A label on a colored box takes the box's white */
+.invert .cmu-label {
+  color: inherit;
+}
+
+/* Course outline: the parts of a course or task in order, each done, current or not
+   started, with a marker on the right; see Course Outline in the docs
+   (messages.html) */
+.cmu-outline {
+  list-style: none;
+  margin: 0 0 1.5em;
+  padding: 0;
+  border-top: 1px solid var(--cmu-line);
+}
+.cmu-outline > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--cmu-line);
+  border-left: 4px solid transparent;
+}
+:is(#content, body) .cmu-outline > li > a:not(.btn):not(.cta):not(.box):not(.scrolldown),
+.cmu-outline > li > span {
+  display: block;
+  padding: 1em 3em 1em 1em;
+  border: 0;
+  color: var(--cmu-ink);
+}
+:is(#content, body) .cmu-outline > li > a:not(.btn):not(.cta):not(.box):not(.scrolldown):hover {
+  background: var(--cmu-tint);
+}
+.cmu-outline > li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  box-sizing: border-box;
+  width: 1.15em;
+  height: 1.15em;
+  margin-top: -0.575em;
+  border: 2px solid #b9bfc5;
+  border-radius: 50%;
+}
+.cmu-outline > li.cmu-outline-current {
+  border-left-color: var(--cmu-red);
+  font-weight: 700;
+}
+.cmu-outline > li.cmu-outline-current::after {
+  border-color: var(--cmu-red);
+  border-right-color: transparent;
+}
+.cmu-outline > li.cmu-outline-done::after {
+  border-color: var(--cmu-red);
+  background: var(--cmu-red)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 80% no-repeat;
 }
 
 /* Folded long lists (<details class="cmu-more">): the summary reads as a
