@@ -432,29 +432,33 @@
 
             <h2 id="icons" class="rule-top">Icons</h2>
             <p>
-              Small pictures for actions people recognize, from
-              <a class="external" href="https://icons.getbootstrap.com/">Bootstrap Icons</a>, an
-              optional extra the kit doesn't load for you; see
-              <a href="install.html#icons">Install</a>. Each icon is an <code>&lt;i&gt;</code> with
-              <code>bi</code> and the icon's name, from the Bootstrap Icons site, and it takes the
-              color and size of the text around it. In a card, with the template's
-              <code>floatright</code>, the kit draws it larger and in CMU red, as in
-              <a href="standard-sections.html#timeline">Timeline Cards</a>.
+              Use icons to reinforce familiar actions such as downloading, printing or sending
+              email. <a href="install.html#icons">Load the icon stylesheet</a> to use them on your
+              pages.
+            </p>
+            <p>
+              Each icon is an <code>&lt;i&gt;</code> with the <code>bi</code> class and its name,
+              such as <code>bi-download</code>. It inherits the surrounding text's size and color.
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Next to words, hide it from screen readers</strong> with
-                <code>aria-hidden="true"</code>: the words already say it.
+                <strong>Hide decorative icons from screen readers.</strong> Use
+                <code>aria-hidden="true"</code> when the surrounding words already explain the icon.
               </li>
               <li>
-                <strong>On its own, name the button</strong> with <code>aria-label</code> and
-                <code>title</code>, as the kit's copy icon does.
+                <strong>Name buttons that have no visible text.</strong> If a button contains only
+                an icon, give the button an <code>aria-label</code> and <code>title</code> that
+                describe its action.
               </li>
               <li>
                 <strong>Use them sparingly</strong>, for actions people recognize (download, print,
                 email), and never as the only way to tell things apart.
               </li>
             </ul>
+            <p>
+              Browse <a class="external" href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
+              to see the available icons and their class names.
+            </p>
             <p class="kit-classes">
               <code>bi</code>, <code>bi-</code><em>name</em>, <code>floatright</code>
             </p>
@@ -466,6 +470,21 @@
       </div>
           </div>
         </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column2 grey boxes">
+          <div>
+            <h2><i class="bi bi-camera floatright" aria-hidden="true"></i>Borrow Equipment</h2>
+            <p>Reserve cameras, laptops and lights for your class project.</p>
+            <p><a class="cta" href="#icons">Browse Equipment</a></p>
+          </div>
+          <div>
+            <h2><i class="bi bi-calendar-event floatright" aria-hidden="true"></i>Attend a Workshop</h2>
+            <p>Find a teaching workshop that fits your schedule.</p>
+            <p><a class="cta" href="#icons">Find a Workshop</a></p>
+          </div>
+        </div>
+      </div>
       </main>
 
       <footer class="grid column3 invert">
