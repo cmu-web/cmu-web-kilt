@@ -52,7 +52,7 @@
           <div>
             <h1>About the Carnegie Mellon Web Kit</h1>
             <p class="cmu-lead">
-              The Carnegie Mellon Web Kit adds components to CMU's web template for Cascade sites
+              The Carnegie Mellon Web Kit adds components to CMU's web template for sites in a CMS
               and web apps that need to look and feel like part of the university.
             </p>
 
@@ -77,12 +77,18 @@
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>In Cascade,</strong> add the content stylesheet to your site, then paste
-                components into a content section's Source code view.
+                <strong>In a CMS,</strong> add the content stylesheet to your site's head code, then
+                paste components into a page's HTML. In Cascade, that's a content section's Source
+                code view.
               </li>
               <li>
                 <strong>In an app,</strong> load the kit after CMU's template and use the components
                 in your existing pages. Your app handles its own data and actions.
+              </li>
+              <li>
+                <strong>In a hosted service</strong> that lets you add your own styles, such as a
+                form, survey or help-desk tool, the kit's stylesheets can bring its pages closer to
+                CMU's look. How close depends on how much of the page the service lets you change.
               </li>
               <li>
                 <strong>Use a specific release,</strong> so your pages change only when you choose
@@ -110,10 +116,10 @@
             <figure class="cmu-shot cmu-shot--browser">
               <a href="gallery.html#minecraft" tabindex="-1" aria-hidden="true"
                 ><img
-                  src="images/hero-mc.jpg"
+                  src="images/gallery-minecraft.jpg"
                   alt="The Minecraft Multiplayer Server home page: a slideshow of the CMU letters built in Minecraft."
-                  width="2400"
-                  height="1800"
+                  width="1040"
+                  height="656"
                   loading="lazy"
               /></a>
             </figure>
@@ -124,10 +130,10 @@
             <figure class="cmu-shot cmu-shot--browser">
               <a href="gallery.html#binder" tabindex="-1" aria-hidden="true"
                 ><img
-                  src="images/hero-binder.jpg"
+                  src="images/gallery-binder.jpg"
                   alt="The Spring Carnival Binder home page: a countdown to Move On beside a red Sign in to Binder box."
-                  width="2400"
-                  height="1800"
+                  width="1040"
+                  height="656"
                   loading="lazy"
               /></a>
             </figure>
@@ -138,10 +144,10 @@
             <figure class="cmu-shot cmu-shot--browser">
               <a href="gallery.html#syllabus-registry" tabindex="-1" aria-hidden="true"
                 ><img
-                  src="images/hero-sr.jpg"
-                  alt="The Syllabus Registry's My Departments page for an admin of three departments, with completion meters for each."
-                  width="2400"
-                  height="1800"
+                  src="images/gallery-syllabus-registry.jpg"
+                  alt="The Syllabus Registry home page: a search box over a table of course sections with status pills, and filters on the left."
+                  width="1040"
+                  height="656"
                   loading="lazy"
               /></a>
             </figure>
@@ -233,32 +239,16 @@
               <li>
                 <a href="components.html">Components</a>
                 <ul>
-                  <li>
-                    <a href="standard.html">CMU Standard</a>
-                    <ul>
-                      <li><a href="standard-sections.html">Page Sections</a></li>
-                      <li><a href="standard-sidebar.html">Sidebars</a></li>
-                      <li><a href="standard-news.html">News and Events</a></li>
-                      <li><a href="standard-people.html">People</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="cms.html">CMS Components</a>
-                    <ul>
-                      <li><a href="cms-top.html">Page Tops</a></li>
-                      <li><a href="cms-content.html">Content Blocks</a></li>
-                      <li><a href="cms-data.html">Pills and Tables</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="app.html">App Components</a>
-                    <ul>
-                      <li><a href="app-structure.html">Page Structure</a></li>
-                      <li><a href="app-messages.html">Messages and Dialogs</a></li>
-                      <li><a href="app-lists.html">Lists and Tables</a></li>
-                      <li><a href="app-users.html">Users</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
                 </ul>
               </li>
               <li><a href="conventions.html">Conventions</a></li>

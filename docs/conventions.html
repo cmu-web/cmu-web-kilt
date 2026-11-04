@@ -199,7 +199,7 @@
             </div>
             <div class="cmu-split">
               <div>
-                <p><a class="cta" href="cms-content.html">Explore the Content Blocks</a></p>
+                <p><a class="cta" href="content.html">Explore the Content Blocks</a></p>
               </div>
               <div>
                 <p>
@@ -250,16 +250,16 @@
             </p>
             <figure class="cmu-shot">
               <img
-                src="images/conventions-hero.png"
-                alt="The kit's home page hero: the title Build CMU Sites and Apps, a one-sentence lead, an Install the Kit button and a Get Started link, beside stacked screenshots of the Syllabus Registry."
+                src="images/conventions-hero.jpg"
+                alt="The kit's home page hero: the title Build CMU Sites and Apps, a one-sentence lead, an Install the Kit button and a Get Started link, beside stacked screenshots of three CMU sites."
                 width="1248"
-                height="623"
+                height="612"
               />
             </figure>
             <p>
               The title names the purpose, the lead says who it's for and the button names the
               action. The screenshot shows what people can expect. Use the
-              <a href="cms-top.html#hero">hero component</a> to build your own.
+              <a href="tops.html#hero">hero component</a> to build your own.
             </p>
 
             <h2 id="instructions" class="rule-top">Instructions</h2>
@@ -296,7 +296,7 @@
             <p>
               "An error occurred" leaves the reader stuck. An error message names the problem and
               offers a way forward; a success message confirms what changed. Say it in words, not
-              just color: each of these sample <a href="app-messages.html#flash">flash messages</a>
+              just color: each of these sample <a href="messages.html#flash">flash messages</a>
               starts with what happened, so it reads the same without the red or green.
             </p>
             <p class="cmu-flash cmu-flash--error">
@@ -306,6 +306,153 @@
               <strong>Your syllabus was uploaded.</strong> Students can now find it in the course
               list.
             </p>
+
+            <h2 id="colors" class="rule-top">Colors</h2>
+            <p>
+              Keep a site to one or two colors, and use each for the same job everywhere, such as
+              red for every sign-in box. Color goes on whole bands and boxes, not on text, and the
+              template sets its text color to match. Two tools do it: the template's color classes
+              for bands and boxes, and the kit's color variables for your own stylesheet. A band can
+              also take a <a href="sections.html#backgrounds">background pattern</a>, the globe or
+              the plaid.
+            </p>
+            <h3 id="color-classes">Color Classes</h3>
+            <p>
+              A color class goes on a sidebar box or on a whole grid; boxes inside a grid stay
+              white. Add <code>invert</code> for white text on every color except
+              <code>grey</code> and <code>gold</code>, which take dark text. Under each class is the brand color it is, from
+              <a href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, or
+              "template" where cmu.edu uses its own shade, a little darker so white text on it stays
+              readable. See also the kit's <a href="#color-tokens">color variables</a>.
+            </p>
+            <p class="kit-classes">
+              <code>red</code>, <code>darkgrey</code>, <code>grey</code>, <code>blue</code>,
+              <code>teal</code>, <code>green</code>, <code>darkgreen</code>, <code>gold</code>
+            </p>
+            <div class="kit-swatches">
+              <div class="red invert">red<br /><small>Carnegie Red</small></div>
+              <div class="darkgrey invert">darkgrey<br /><small>template</small></div>
+              <div class="grey">grey<br /><small>Steel Gray</small></div>
+              <div class="blue invert">blue<br /><small>Blue Thread</small></div>
+              <div class="teal invert">teal<br /><small>template, near Teal Thread</small></div>
+              <div class="green invert">green<br /><small>template, near Green Thread</small></div>
+              <div class="darkgreen invert">darkgreen<br /><small>Hornbostel Teal</small></div>
+              <div class="gold">gold<br /><small>Gold Thread</small></div>
+            </div>
+            <pre class="kit-code"><code>&lt;div class="sidebar"&gt;
+  &lt;div class="teal invert"&gt; &hellip; &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="grid column3 blue invert boxes"&gt; &hellip; &lt;/div&gt;</code></pre>
+
+            <h3 id="color-tokens">Color Variables</h3>
+            <p>
+              Use these custom properties in your own stylesheet instead of copying the values, so
+              every site moves together if they change. Each comes from one of three places:
+            </p>
+            <ul>
+              <li>
+                <strong>Brand:</strong> CMU's official colors, from
+                <a href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, such as
+                Carnegie Red and the Tartan palette's threads.
+              </li>
+              <li>
+                <strong>Template:</strong> the colors cmu.edu's template draws on the web. Some are
+                brand colors exactly; others are a shade darker so text on them stays readable, such
+                as its green, close to Green Thread. The template's own color classes are on
+                <a href="#color-classes">the color classes</a>.
+              </li>
+              <li>
+                <strong>Kit:</strong> pale tints for backgrounds and dark shades for small text on
+                them, such as the green of a "Syllabus Available" pill. They aren't brand colors: no
+                brand color is pale enough for a background behind text, or dark enough for small
+                text on a tint, in every hue. Use them only for those jobs, and a brand or template
+                color for anything large, such as a band or a bar.
+              </li>
+            </ul>
+            <table class="alternate cmu-full">
+              <thead>
+                <tr>
+                  <th scope="col">Property</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">Used for</th>
+                  <th scope="col">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>--cmu-red</code></td>
+                  <td>#c41230</td>
+                  <td>Carnegie Red: accents, step numbers, active tabs, errors</td>
+                  <td>Brand</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-ink</code></td>
+                  <td>#22262a</td>
+                  <td>Body text on tinted backgrounds</td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-muted</code></td>
+                  <td>#5b6670</td>
+                  <td>Secondary text, labels, captions</td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-line</code></td>
+                  <td>#d9dde1</td>
+                  <td>Borders and rules</td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-tint</code></td>
+                  <td>#f4f5f6</td>
+                  <td>Tinted panels: callouts, notes, the bulk bar</td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-green</code>, <code>--cmu-green-tint</code></td>
+                  <td>#1d5a3a, #e3f1ea</td>
+                  <td>
+                    Done, available, success: text on its tint. Darker than any brand green, so
+                    small text stays readable
+                  </td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-green-fill</code></td>
+                  <td>#00853e</td>
+                  <td>
+                    Progress bars: the template's own green (its <code>green</code> bands), close to
+                    CMU's Green Thread
+                  </td>
+                  <td>Template</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-amber</code>, <code>--cmu-amber-tint</code></td>
+                  <td>#6b4d00, #fff4d6</td>
+                  <td>Waiting, missing (amber, not red: not an error)</td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-gold</code></td>
+                  <td>#fdb515</td>
+                  <td>CMU's Gold Thread: the rule on a notice flash</td>
+                  <td>Brand</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-gray</code>, <code>--cmu-gray-tint</code></td>
+                  <td>#4a535b, #eceef0</td>
+                  <td>Neutral, not applicable</td>
+                  <td>Kit</td>
+                </tr>
+                <tr>
+                  <td><code>--cmu-red-tint</code></td>
+                  <td>#fdf2f3</td>
+                  <td>Error flash background</td>
+                  <td>Kit</td>
+                </tr>
+              </tbody>
+            </table>
 
             <h2 id="images" class="rule-top">Images</h2>
             <ul class="cmu-checks">
@@ -321,11 +468,11 @@
               <li>
                 <strong>Captions add what alt text doesn't:</strong> who's in the photo, where and
                 when, and the credit. Don't repeat the caption in the alt text. See
-                <a href="standard.html#captions">Photo Captions and Credits</a>.
+                <a href="content.html#captions">Photo Captions and Credits</a>.
               </li>
               <li>
                 <strong>A photo set as a background</strong>, such as the template's
-                <a href="standard-sections.html#hero">hero</a>, gets <code>role="img"</code> and an
+                <a href="tops.html#photo-hero">hero</a>, gets <code>role="img"</code> and an
                 <code>aria-label</code> describing it, since it has no <code>alt</code>.
               </li>
               <li>
@@ -334,7 +481,7 @@
               </li>
               <li>
                 <strong>Videos need checked captions</strong> and a <code>title</code> on the
-                frame. See <a href="standard.html#videos">Videos</a>.
+                frame. See <a href="content.html#videos">Videos</a>.
               </li>
             </ul>
 
@@ -360,6 +507,7 @@
                 <li><a href="#hero">Heroes</a></li>
                 <li><a href="#instructions">Instructions</a></li>
                 <li><a href="#messages">Messages</a></li>
+                <li><a href="#colors">Colors</a></li>
                 <li><a href="#images">Images</a></li>
                 <li><a href="#accessibility">Accessibility</a></li>
               </ul>
@@ -391,37 +539,19 @@
               <li>
                 <a href="components.html">Components</a>
                 <ul>
-                  <li>
-                    <a href="standard.html">CMU Standard</a>
-                    <ul>
-                      <li><a href="standard-sections.html">Page Sections</a></li>
-                      <li><a href="standard-sidebar.html">Sidebars</a></li>
-                      <li><a href="standard-news.html">News and Events</a></li>
-                      <li><a href="standard-people.html">People</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="cms.html">CMS Components</a>
-                    <ul>
-                      <li><a href="cms-top.html">Page Tops</a></li>
-                      <li><a href="cms-content.html">Content Blocks</a></li>
-                      <li><a href="cms-data.html">Pills and Tables</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="app.html">App Components</a>
-                    <ul>
-                      <li><a href="app-structure.html">Page Structure</a></li>
-                      <li><a href="app-messages.html">Messages and Dialogs</a></li>
-                      <li><a href="app-lists.html">Lists and Tables</a></li>
-                      <li><a href="app-users.html">Users</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
                 </ul>
               </li>
-              <li class="active">
-                <a href="conventions.html" aria-current="page">Conventions</a>
-              </li>
+              <li class="active"><a href="conventions.html" aria-current="page">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
               <li class="secondary"><a href="partner.html">Partner With Us</a></li>

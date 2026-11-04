@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Messages and Progress - Components - Carnegie Mellon Web Kit - Carnegie Mellon University
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js cmu-app">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
+          <h2>Build on the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="index.html">Carnegie Mellon Web Kit</a>&nbsp;&rsaquo;&nbsp;<a
+            href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;Messages and Progress
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Messages and Progress</h1>
+            <p class="cmu-lead">
+              Telling people what happened, asking for a file in a dialog and showing how far along
+              something is.
+            </p>
+
+            <h2 id="flash" class="rule-top">
+              Flash Messages
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              The result of what someone just did, shown once: "You're in line: 3 people ahead of
+              you," or what went wrong. A tinted box with a colored rule at the left: green when it
+              worked, red when it didn't and gold for something to know that's neither, such as a
+              deadline or a change that came with it.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>After a form sends someone to a new page</strong>, put it at the top of the
+                page's content, above everything else, and show it only that once.
+              </li>
+              <li>
+                <strong>For an error in one place</strong>, such as a dialog or one part of a form,
+                put it right there.
+              </li>
+              <li>
+                <strong>Use <code>role="alert"</code></strong> on a message that appears without a
+                page load, so screen readers announce it.
+              </li>
+              <li>
+                <strong>Not for standing notices</strong> that everyone should see, such as who a
+                page is for: those are <a href="sections.html#announcements">announcements</a>, the
+                template's full-width color bands. An aside within a page's content, such as a tip
+                or a warning, is a <a href="content.html#callout">callout</a>.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>cmu-flash</code>, <code>cmu-flash--success</code>,
+              <code>cmu-flash--notice</code>, <code>cmu-flash--error</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-flash cmu-flash--success">You're in line: 3 people ahead of you.</div>
+        <div class="cmu-flash cmu-flash--notice">Reserved. Pick it up at the Hunt Library desk; it closes at 8 p.m. tonight.</div>
+        <div class="cmu-flash cmu-flash--error">That camera is already reserved for May 4. Choose another day.</div>
+      </div>
+            <p>
+              CMU's red alert bar at the very top of the page (<code>#campusAlert</code>) is for
+              campus emergencies. Don't use it for an app's messages.
+            </p>
+
+            <h2 id="dialog" class="rule-top">
+              Dialog and File Drop Zone
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              Use the native <code>&lt;dialog&gt;</code> element with <code>showModal()</code>; the
+              browser handles focus, Escape and the backdrop. Inside a
+              <code>method="dialog"</code> form, Cancel submits with <code>formnovalidate</code>
+              so it closes even when a required field is empty. The drop zone is a label wrapping a
+              file input, so it works by click and keyboard as well as by dragging.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-dialog</code>, <code>cmu-dialog-buttons</code>, <code>cmu-drop</code>,
+              <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>
+            </p>
+            <p>
+              Your script sets these on the drop zone: <code>cmu-drop-over</code> while a file is
+              dragged over it, and <code>cmu-drop-has-file</code> once a file is chosen, with the
+              file's name in <code>cmu-drop-file</code>. Inside the dialog, the
+              <code>hidden</code> attribute works on anything, including buttons.
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p data-demo-skip><button type="button" class="btn small" data-open-dialog="kit-dialog">Open the Dialog</button></p>
+        <dialog class="cmu-dialog" id="kit-dialog" aria-labelledby="kit-dialog-title" data-preview>
+          <form method="dialog">
+            <h2 id="kit-dialog-title">Upload Syllabus</h2>
+            <p>For 15-112 A and 15-112 B.</p>
+            <label class="cmu-drop">
+              <input type="file">
+              <span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span>
+              <span class="cmu-drop-file" hidden></span>
+            </label>
+            <p class="cmu-hint">Any document up to 20&nbsp;MB.</p>
+            <div class="cmu-dialog-buttons">
+              <button class="btn" type="submit">Upload File</button>
+              <button class="btn ghost" type="submit" value="cancel" formnovalidate>Cancel</button>
+            </div>
+          </form>
+        </dialog>
+      </div>
+            <p>
+              The drop zone in its three states: waiting, a file dragged over it and a file chosen.
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <label class="cmu-drop"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span></label>
+        <label class="cmu-drop cmu-drop-over"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span></label>
+        <label class="cmu-drop cmu-drop-has-file"><input type="file"><span>Drag a different file here, or <span class="cmu-drop-pick">choose one</span></span><span class="cmu-drop-file">15112-syllabus.pdf</span></label>
+      </div>
+
+            <h2 id="errors" class="rule-top">
+              Error Pages
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              When a page can't be shown, say what happened in plain words and give people a way
+              forward, inside the usual header, navigation and footer. Send the real HTTP status
+              with the page, so browsers, search engines and monitoring see the error too.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>404, Not Found:</strong> the address is wrong or the page moved. Offer the
+                home page and the site's search, or its main list.
+              </li>
+              <li>
+                <strong>500, Something Went Wrong:</strong> the problem is on your end, so say so.
+                Offer to try again, and say who to contact if it keeps happening. Serve it as a
+                plain file the web server can send even when the app is down.
+              </li>
+              <li>
+                <strong>503, Down for Maintenance:</strong> say when it will be back, in AP style:
+                "until 6 p.m. Eastern." The web server sends this one too.
+              </li>
+              <li>
+                <strong>403, a page that isn't theirs:</strong> see
+                <a href="users.html#no-access">No Access</a>.
+              </li>
+              <li>
+                <strong>Keep codes and details out of the heading.</strong> The number can go in
+                small text at the bottom, for anyone reporting it; stack traces and server messages
+                belong in the logs.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>cmu-lead</code>, <code>cmu-cta-row</code>, <code>cmu-muted</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h1>We Can't Find That Page</h1>
+            <p class="cmu-lead">The page may have moved, or the address may have a&nbsp;typo.</p>
+            <p>Check the address, or start again from the home page.</p>
+            <div class="cmu-cta-row">
+              <a class="btn" href="#errors">Go to the Home Page</a>
+              <a class="cta" href="#errors">Search Syllabi</a>
+            </div>
+            <p class="cmu-muted">Error 404</p>
+          </div>
+        </div>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h1>Something Went Wrong</h1>
+            <p class="cmu-lead">This page didn't load because of a problem on our end, not anything you&nbsp;did.</p>
+            <p>Try again in a few minutes. If it keeps happening, email <a href="#errors">the team</a> with the page's address and what you were doing.</p>
+            <div class="cmu-cta-row">
+              <a class="btn" href="#errors">Try Again</a>
+              <a class="cta" href="#errors">Go to the Home Page</a>
+            </div>
+            <p class="cmu-muted">Error 500</p>
+          </div>
+        </div>
+      </div>
+
+            <h2 id="progress" class="rule-top">
+              Progress
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A headline number with a bar, and optional per-item rows below it. Set a bar's width
+              with an inline style on a div (the template strips inline styles from spans). Color
+              the percentage by how far along it is.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-stat</code>, <code>cmu-stat-value</code>, <code>cmu-stat-sub</code>,
+              <code>cmu-meter</code>, <code>cmu-pct</code> with <code>--high</code>,
+              <code>--mid</code>, <code>--low</code>, <code>cmu-breakdown</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-stat">
+          <div>
+            <div class="cmu-label">Completion</div>
+            <div class="cmu-stat-value">62%</div>
+            <div class="cmu-stat-sub">42 sections across 3 departments</div>
+          </div>
+          <div class="cmu-meter"><div style="width: 62%"></div></div>
+          <ul class="cmu-breakdown">
+            <li><span class="cmu-code">ARC</span><div class="cmu-meter"><div style="width: 90%"></div></div><span class="cmu-pct cmu-pct--high">90%</span></li>
+            <li><span class="cmu-code">CS</span><div class="cmu-meter"><div style="width: 55%"></div></div><span class="cmu-pct cmu-pct--mid">55%</span></li>
+            <li><span class="cmu-code">ECE</span><div class="cmu-meter"><div style="width: 20%"></div></div><span class="cmu-pct cmu-pct--low">20%</span></li>
+          </ul>
+        </div>
+      </div>
+
+            <p>In use, on a page for someone who looks after three departments:</p>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="images/hero-sr.jpg" data-cmu-zoom
+                ><img
+                  src="images/hero-sr.jpg"
+                  alt="A departments page with an overall completion bar, then a bar and a percentage for each of three departments."
+                  width="600"
+                  height="450"
+                  loading="lazy"
+              /></a>
+              <figcaption>Select the screenshot to enlarge it.</figcaption>
+            </figure>
+
+            <h3 id="outline">Course Outline</h3>
+            <p>
+              Progress through the parts of a training, a course or a task that takes several
+              sittings, in order. A red box at the top of the sidebar gives the name and a progress
+              bar; under it, each step is done, current or not started, with a marker on the right.
+              Mark the states in words too, for screen readers: a hidden "Done:", "Current:" or "Not
+              started:" before each name (<code>sr-only</code>), and
+              <code>aria-current="step"</code> on the current step's link. A step that can't be
+              opened yet is a <code>&lt;span&gt;</code> instead of a link. On phones the template
+              puts the sidebar under the content, so say where people are at the top of the content
+              too, such as "Step 3 of 6."
+            </p>
+            <p class="kit-classes">
+              <code>cmu-outline</code>, <code>cmu-outline-done</code>,
+              <code>cmu-outline-current</code>,
+              <code>cmu-meter--full</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <p class="cmu-label">Step 3 of 6</p>
+            <h2>Office Hours</h2>
+            <p>The step's own content goes here, beside the steps.</p>
+          </div><div class="sidebar">
+            <div class="red invert">
+              <h1>TA Orientation</h1>
+              <p class="cmu-label">2 of 6 Done</p>
+              <div class="cmu-meter cmu-meter--full" role="progressbar" aria-label="TA Orientation progress" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><div style="width: 33%"></div></div>
+            </div>
+            <ol class="cmu-outline">
+              <li class="cmu-outline-done"><a href="#outline"><span class="sr-only">Done: </span>Welcome</a></li>
+              <li class="cmu-outline-done"><a href="#outline"><span class="sr-only">Done: </span>Your Course Site</a></li>
+              <li class="cmu-outline-current"><a href="#outline" aria-current="step"><span class="sr-only">Current: </span>Office Hours</a></li>
+              <li><a href="#outline"><span class="sr-only">Not started: </span>Grading</a></li>
+              <li><a href="#outline"><span class="sr-only">Not started: </span>Academic Integrity</a></li>
+              <li><span><span class="sr-only">Not started: </span>Getting Help</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kit<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="install.html">Install</a></li>
+              <li><a href="layout.html">Page Layout</a></li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li class="active">
+                    <a href="messages.html" aria-current="page">Messages and Progress</a>
+                  </li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="../js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

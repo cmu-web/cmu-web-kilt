@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Lists and Tables - Components - Carnegie Mellon Web Kit - Carnegie Mellon University
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js cmu-app">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
+          <h2>Build on the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="index.html">Carnegie Mellon Web Kit</a>&nbsp;&rsaquo;&nbsp;<a
+            href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;Lists and Tables
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Lists and Tables</h1>
+            <p class="cmu-lead">
+              Finding things in a long list: search, filters, tables with and without actions, files
+              to download, Load More and pages, and folded lists.
+            </p>
+
+            <h2 id="search" class="rule-top">
+              Search
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              One search box over a list: a sentence saying what you can search by, then a box
+              across the full width, searching as people type. The sentence does the label's job on
+              screen, so the
+              <code>&lt;label&gt;</code> is for screen readers only (<code>sr-only</code>). The
+              placeholder says what you'll find, ending in an ellipsis.
+            </p>
+            <p class="kit-classes"><code>cmu-search-bar</code>, <code>sr-only</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-search-bar">
+          <p>Search by course number, title or instructor.</p>
+          <label for="kit-search" class="sr-only">Find a Syllabus</label>
+          <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;">
+        </div>
+      </div>
+            <ul>
+              <li>
+                <strong>One box</strong> over a list is a search.
+                <strong>Several groups</strong> side by side, such as a search box and checkboxes,
+                are <a href="#filters">filters</a>, each with its own small label.
+              </li>
+              <li>
+                <strong>Say how many are showing</strong> under the list, in the same words
+                everywhere: "Showing 20 of 312 sections," "Showing all 312 sections," "Showing 1
+                section," and with nothing found, the template's own "Sorry, no results to display."
+              </li>
+            </ul>
+
+            <h2 id="filters" class="rule-top">
+              Filters
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A row of filter groups above a list, each with a small label over a search box or
+              checkboxes. For a single search box, use a <a href="#search">search</a> instead.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-filters</code>, <code>cmu-filter-group</code>,
+              <code>cmu-filter-checks</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-filters">
+          <div class="cmu-filter-group">
+            <label class="cmu-label" for="kit-find">Find Sections</label>
+            <input type="text" id="kit-find" placeholder="Course number or title">
+          </div>
+          <div class="cmu-filter-group">
+            <div class="cmu-label">Status</div>
+            <div class="cmu-filter-checks">
+              <label><input type="checkbox"> Available</label>
+              <label><input type="checkbox"> Unavailable</label>
+            </div>
+          </div>
+        </div>
+      </div>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Filter as people type</strong>, and say how many rows are showing under the
+                table (see <a href="#paging">Load More and Pages</a>).
+              </li>
+              <li>
+                <strong>Keep the stripes even:</strong> move hidden rows to the end of the table, so
+                <code>table.alternate</code> still alternates.
+              </li>
+              <li>
+                <strong>Put the filters in the URL</strong>, so a filtered list can be bookmarked
+                and shared.
+              </li>
+              <li>
+                <strong>To match words that aren't shown</strong>, such as other names for the same
+                thing, put them in a <code>data-keywords</code> attribute on the row for your filter
+                to read, not in a hidden cell.
+              </li>
+            </ul>
+
+            <h2 id="tables" class="rule-top">
+              Tables
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Use the template's <code>table.alternate</code> for striped rows. Add
+              <code>cmu-full</code> to stretch a table to full width from 768px up (below that, the
+              template lets it scroll sideways). <code>cmu-compare</code> splits a two-column table
+              evenly, for before-and-after comparisons. Cells are centered top to bottom, so a
+              one-line cell sits level with a wrapped one or a picture beside it; to center pictures
+              of different widths across their column too, add the template's
+              <code>aligncenter</code> to those cells.
+            </p>
+            <p>
+              Give every table a header row, with <code>&lt;th scope="col"&gt;</code> for each
+              column, so screen readers can say which column a cell is in. A column of buttons gets
+              a header too, hidden with <code>sr-only</code>, such as "Actions."
+            </p>
+            <p class="kit-classes"><code>table.cmu-full</code>, <code>table.cmu-compare</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <table class="alternate cmu-full cmu-compare">
+          <thead><tr><th scope="col">Before</th><th scope="col">Now</th></tr></thead>
+          <tbody>
+            <tr><td>One file per section</td><td>One file can cover many sections</td></tr>
+            <tr><td>Count modules to see where you stand</td><td>A completion bar and status filters</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+            <h2 id="table-actions" class="rule-top">
+              Tables With Actions
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              The bulk bar sits on top of a <code>table.alternate</code>: the selection count, then
+              actions for the selected rows. Its height is fixed, so buttons appearing don't push
+              the table down. Row buttons repeat the bulk bar's actions in each row, with the same
+              words, at one fixed width and the height of a two-line button, so rows stay even.
+              Pairs stack below 1200px.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-bulk-bar</code>, <code>cmu-selection-count</code>,
+              <code>cmu-has-selection</code>, <code>cmu-select-cell</code>, <code>cmu-sort</code>,
+              <code>cmu-sort-arrow</code>, <code>cmu-fit</code>, <code>cmu-row-buttons</code>,
+              <code>num</code>
+            </p>
+            <ul>
+              <li>
+                <strong>Selection:</strong> your script adds <code>cmu-has-selection</code> to the
+                count when anything is selected, and shows the bulk buttons by removing
+                <code>hidden</code>.
+              </li>
+              <li>
+                <strong>Checkbox cells:</strong> the label fills the cell, so the whole cell is the
+                click target.
+              </li>
+              <li>
+                <strong>Sorting:</strong> put <code>data-sort-key</code> on the header and a
+                <code>button.cmu-sort</code> inside it; set <code>aria-sort</code> on the sorted
+                column.
+              </li>
+              <li>
+                <strong>Filtering:</strong> move hidden rows to the end of the table body, so the
+                template's stripes stay even.
+              </li>
+              <li>
+                <strong><code>cmu-fit</code></strong> shrinks a column to its content.
+                <code>num</code> (on <code>th</code> and <code>td</code>) right-aligns numbers.
+              </li>
+              <li>
+                <strong>Keep labels together</strong> with <code>&amp;nbsp;</code>, so "a" never
+                ends a line inside a button.
+              </li>
+            </ul>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-bulk-bar">
+          <span class="cmu-selection-count cmu-has-selection">1 section selected</span>
+          <button class="btn small" type="button">Upload Syllabus</button>
+          <button class="btn small ghost" type="button" hidden>Remove Syllabus</button>
+        </div>
+        <table class="alternate cmu-full">
+          <thead>
+            <tr>
+              <th class="cmu-select-cell"><label><input type="checkbox" aria-label="Select all"></label></th>
+              <th data-sort-key="course" aria-sort="ascending" class="cmu-fit"><button class="cmu-sort" type="button">Course<span class="cmu-sort-arrow"> ▲</span></button></th>
+              <th data-sort-key="title"><button class="cmu-sort" type="button">Title<span class="cmu-sort-arrow"></span></button></th>
+              <th class="num cmu-fit">Seats</th>
+              <th class="cmu-fit">Status</th>
+              <th class="cmu-fit">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cmu-select-cell"><label><input type="checkbox" checked aria-label="Select 15-112 A"></label></td>
+              <td class="cmu-fit">15-112 A</td>
+              <td>Fundamentals of Programming</td>
+              <td class="num">120</td>
+              <td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td>
+              <td class="cmu-fit"><div class="cmu-row-buttons"><button class="btn small" type="button">Upload Syllabus</button><button class="btn small ghost" type="button">Do&nbsp;Not&nbsp;Expect a&nbsp;Syllabus</button></div></td>
+            </tr>
+            <tr>
+              <td class="cmu-select-cell"><label><input type="checkbox" aria-label="Select 15-122 A"></label></td>
+              <td class="cmu-fit">15-122 A</td>
+              <td>Principles of Imperative Computation</td>
+              <td class="num">95</td>
+              <td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td>
+              <td class="cmu-fit"><div class="cmu-row-buttons"><button class="btn small ghost" type="button">Replace Syllabus</button><button class="btn small ghost" type="button">Remove Syllabus</button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+            <h2 id="files" class="rule-top">
+              File Table
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A list of forms or documents to download, with when each was last changed, as on the
+              HUB's Forms &amp; Documents. Use <code>table.alternate</code> with real column
+              headings, and put the file type after each link in plain text. The HUB puts its links
+              in <code>&lt;h4&gt;</code> headings to make them stand out; don't, since screen
+              readers then announce every row as a heading. A long page of them can go under
+              collapsed headings, as below.
+            </p>
+            <p class="kit-classes"><code>table.alternate</code>, <code>cmu-full</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <table class="alternate cmu-full">
+          <thead><tr><th scope="col">Form</th><th scope="col" class="cmu-fit">Last Updated</th></tr></thead>
+          <tbody>
+            <tr><td><a href="#files">Syllabus Template</a> [Word]</td><td>August 2026</td></tr>
+            <tr><td><a href="#files">Accessibility Checklist</a> [PDF]</td><td>June 2026</td></tr>
+            <tr><td><a href="#files">Department Administrator Guide</a> [PDF]</td><td>October 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+            <h2 id="paging" class="rule-top">
+              Load More and Pages
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              Two ways to split a long list of results. Both go under the list, after a count of
+              what's showing.
+            </p>
+            <ul>
+              <li>
+                <strong>Load More</strong> adds the next batch to the list, like the news indexes on
+                Cascade sites. Use it for browsing and search results, where people scan down.
+              </li>
+              <li>
+                <strong>Pages</strong> show one batch at a time, each with its own address. Use them
+                when people need to come back to a place in the list, or the list is too long to
+                keep adding to.
+              </li>
+            </ul>
+            <p>
+              Your app loads the results and updates the count; neither needs the template's script.
+              Load More is a ghost button half the page wide, as on Cascade's news pages, and the
+              full width on phones. Hide its paragraph (<code>hidden</code>) once everything is
+              showing. Name what it loads, the same noun as the count: &ldquo;Load More
+              Sections&rdquo;, not just &ldquo;Load More&rdquo;.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-results-count</code>, <code>cmu-load-more</code>, <code>cmu-pager</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p class="cmu-results-count" aria-live="polite">Showing 20 of 312 sections</p>
+        <p class="cmu-load-more"><button type="button" class="btn ghost wide">Load More Sections</button></p>
+      </div>
+            <p>
+              A pager is one list: first (&laquo;), previous (&lsaquo;), the page numbers, next
+              (&rsaquo;), and last (&raquo;). Mark the current page with
+              <code>aria-current="page"</code>, and give each arrow an
+              <code>aria-label</code> ("First page" and so on) for screen readers. An arrow that
+              goes nowhere, such as previous on the first page, keeps its place but loses its
+              <code>href</code> and gets <code>aria-disabled="true"</code>, which grays it out. Keep
+              the numbers to seven slots, so the pager stays the same width as people move through:
+              the first page, the last and the pages around the current one, with an ellipsis for
+              each gap (1 2 3 4 5 &hellip; 16 near the start, 1 &hellip; 7 8 9 &hellip; 16 in the
+              middle, 1 &hellip; 12 13 14 15 16 near the end). With seven pages or fewer, show them
+              all. Use the same batch size as Load More, such as 20. On phones, &laquo; and &raquo;
+              give way to the numbers.
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p class="cmu-results-count">Showing 21-40 of 312 sections</p>
+        <div class="cmu-pager" role="navigation" aria-label="Pages">
+          <ol>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=1" aria-label="First page">&laquo;</a></li>
+            <li><a class="cmu-pager-arrow" href="?page=1" rel="prev" aria-label="Previous page">&lsaquo;</a></li>
+            <li><a href="?page=1">1</a></li>
+            <li><a href="?page=2" aria-current="page">2</a></li>
+            <li><a href="?page=3">3</a></li>
+            <li><a href="?page=4">4</a></li>
+            <li><a href="?page=5">5</a></li>
+            <li><span>&hellip;</span></li>
+            <li><a href="?page=16">16</a></li>
+            <li><a class="cmu-pager-arrow" href="?page=3" rel="next" aria-label="Next page">&rsaquo;</a></li>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=16" aria-label="Last page">&raquo;</a></li>
+          </ol>
+        </div>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-pager" role="navigation" aria-label="Pages">
+          <ol>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=1" aria-label="First page">&laquo;</a></li>
+            <li><a class="cmu-pager-arrow" href="?page=7" rel="prev" aria-label="Previous page">&lsaquo;</a></li>
+            <li><a href="?page=1">1</a></li>
+            <li><span>&hellip;</span></li>
+            <li><a href="?page=7">7</a></li>
+            <li><a href="?page=8" aria-current="page">8</a></li>
+            <li><a href="?page=9">9</a></li>
+            <li><span>&hellip;</span></li>
+            <li><a href="?page=16">16</a></li>
+            <li><a class="cmu-pager-arrow" href="?page=9" rel="next" aria-label="Next page">&rsaquo;</a></li>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=16" aria-label="Last page">&raquo;</a></li>
+          </ol>
+        </div>
+      </div>
+
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-pager" role="navigation" aria-label="Pages">
+          <ol>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=1" aria-label="First page">&laquo;</a></li>
+            <li><a class="cmu-pager-arrow" href="?page=15" rel="prev" aria-label="Previous page">&lsaquo;</a></li>
+            <li><a href="?page=1">1</a></li>
+            <li><span>&hellip;</span></li>
+            <li><a href="?page=12">12</a></li>
+            <li><a href="?page=13">13</a></li>
+            <li><a href="?page=14">14</a></li>
+            <li><a href="?page=15">15</a></li>
+            <li><a href="?page=16" aria-current="page">16</a></li>
+            <li><a class="cmu-pager-arrow" aria-disabled="true" aria-label="Next page">&rsaquo;</a></li>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" aria-disabled="true" aria-label="Last page">&raquo;</a></li>
+          </ol>
+        </div>
+      </div>
+
+            <h2 id="more" class="rule-top">
+              Folded Lists
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A <code>&lt;details&gt;</code> whose summary reads as a line of text ending in a
+              template <code>cta</code> that turns red on hover. Closed, the link is the count of
+              what's hidden ("6 More"); open, it says Show Fewer, and the whole list shows. It needs
+              no script. <a href="layout.html#tabs">Tabs</a> fold the same way.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-more</code>, <code>cmu-more-link</code>, <code>cmu-more-closed</code>,
+              <code>cmu-more-open</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <details class="cmu-more">
+          <summary><span class="cmu-more-closed">ARC, CS, ECE and</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">6 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
+          <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>
+        </details>
+      </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kit<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="install.html">Install</a></li>
+              <li><a href="layout.html">Page Layout</a></li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li class="active">
+                    <a href="lists.html" aria-current="page">Lists and Tables</a>
+                  </li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="../js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

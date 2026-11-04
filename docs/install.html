@@ -48,8 +48,8 @@
           <div>
             <h1>Install the Kit</h1>
             <p class="cmu-lead">
-              Add the kit to a Cascade site or a web app. Either way you pin one exact version, and
-              nothing changes until you move to a newer one.
+              Add the kit to a site in a CMS, such as Cascade, or to a web app. Either way you pin
+              one exact version, and nothing changes until you move to a newer one.
             </p>
 
             <h2 id="files" class="rule-top">What to Load</h2>
@@ -122,13 +122,13 @@
             <pre
               class="kit-code"
             ><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"&gt;</code></pre>
-            <p><a class="cta" href="cms-content.html#icons">Use Icons</a></p>
+            <p><a class="cta" href="content.html#icons">Use Icons</a></p>
 
             <h2 id="template" class="rule-top">Working With the Template</h2>
             <ul class="cmu-checks">
               <li>
                 <strong>The template comes first.</strong> See what it already has on
-                <a href="standard.html">CMU Standard</a>, and use its classes as they are:
+                <a href="components.html">CMU Standard</a>, and use its classes as they are:
                 <code>btn</code>, <code>btn small</code>, <code>ghost</code>, <code>cta</code>,
                 <code>table.alternate</code>, <code>.sidebar</code>, <code>.sr-only</code>. The kit
                 never copies the template's rules or values, and adds a class only for what the
@@ -165,11 +165,20 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
               </li>
             </ul>
 
-            <h2 id="cascade" class="rule-top">Cascade Sites</h2>
+            <h2 id="cms" class="rule-top">CMS Sites</h2>
             <p>
-              Cascade sites load only <code>cmu-cms.css</code>, from jsDelivr. Cascade adds extra
-              code to every page's head from a text block, which the site's <code>setup</code> block
-              points to.
+              A site in a CMS loads only <code>cmu-cms.css</code>, from jsDelivr, with one line in
+              the head of every page: after the template's stylesheet and before the site's own, so
+              the site's styles come last. Where that line goes depends on the CMS.
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
+
+            <h3 id="cascade">In Cascade</h3>
+            <p>
+              Cascade adds extra code to every page's head from a text block, which the site's
+              <code>setup</code> block points to.
             </p>
             <ol class="cmu-steps">
               <li>
@@ -199,10 +208,18 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
                 code when they're published.
               </li>
             </ol>
+
+            <h3 id="other-cms">In Another CMS</h3>
+            <p>
+              In Drupal or another CMS on CMU's template, add the same line where the theme puts
+              code in each page's head, such as the theme's page template or a setting for extra
+              head code. If you don't manage the theme, ask whoever does. Then preview a page to
+              check before you publish.
+            </p>
             <ul class="cmu-checks">
               <li>
                 <strong>Paste components</strong> into a content section's Source code view. Each
-                one on the <a href="cms.html">CMS Components</a> page shows its markup.
+                one on the <a href="components.html">CMS Components</a> page shows its markup.
               </li>
               <li>
                 <strong>Keep the site's own stylesheet</strong> for anything particular to the site,
@@ -291,12 +308,10 @@ done</code></pre>
                 major version, they list every renamed or removed class.
               </li>
               <li>
-                Change the version: in the Cascade head block, in <code>package.json</code> (then
-                <code>npm install</code>), or in your copied folder.
+                Change the version: in your CMS's head code (in Cascade, the head block), in
+                <code>package.json</code> (then <code>npm install</code>), or in your copied folder.
               </li>
-              <li>
-                Check your pages, on staging for a Cascade site, before you publish or deploy.
-              </li>
+              <li>Check your pages, on staging for a CMS site, before you publish or deploy.</li>
             </ol>
           </div>
         </div>
@@ -325,32 +340,16 @@ done</code></pre>
               <li>
                 <a href="components.html">Components</a>
                 <ul>
-                  <li>
-                    <a href="standard.html">CMU Standard</a>
-                    <ul>
-                      <li><a href="standard-sections.html">Page Sections</a></li>
-                      <li><a href="standard-sidebar.html">Sidebars</a></li>
-                      <li><a href="standard-news.html">News and Events</a></li>
-                      <li><a href="standard-people.html">People</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="cms.html">CMS Components</a>
-                    <ul>
-                      <li><a href="cms-top.html">Page Tops</a></li>
-                      <li><a href="cms-content.html">Content Blocks</a></li>
-                      <li><a href="cms-data.html">Pills and Tables</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="app.html">App Components</a>
-                    <ul>
-                      <li><a href="app-structure.html">Page Structure</a></li>
-                      <li><a href="app-messages.html">Messages and Dialogs</a></li>
-                      <li><a href="app-lists.html">Lists and Tables</a></li>
-                      <li><a href="app-users.html">Users</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
                 </ul>
               </li>
               <li><a href="conventions.html">Conventions</a></li>

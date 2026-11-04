@@ -108,8 +108,8 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
   copy.querySelectorAll("[data-demo-skip]").forEach(function (el) {
     el.remove();
   });
-  // What the kit's script added: a countdown's cards
-  copy.querySelectorAll(".cmu-countdown-clock").forEach(function (el) {
+  // What the kit's script added: a countdown's cards, sorting buttons
+  copy.querySelectorAll(".cmu-countdown-clock, .cmu-sort-moves").forEach(function (el) {
     el.remove();
   });
   copy.querySelectorAll(".cmu-countdown-on").forEach(function (el) {
@@ -308,7 +308,7 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
             inn
               ? '<li class="secondary right cmu-account-menu kit-try-added"><a class="cmu-account-name">' +
                   pic +
-                  'Andrew Carnegie</a><a href="app-users.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
+                  'Andrew Carnegie</a><a href="users.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
               : '<li class="secondary right cmu-account-menu kit-try-added"><a href="layout.html#try-header">Sign In</a></li>',
           ),
         );
@@ -448,3 +448,35 @@ if (document.readyState === "loading")
     setTimeout(unHeroNav);
   });
 else setTimeout(unHeroNav);
+
+// Code blocks, examples' and written ones alike: one block per line, so a
+// long line wraps with its continuation hanging under its own indent instead
+// of scrolling. The newlines between them keep copied code as it was.
+document.querySelectorAll("pre.kit-code > code").forEach(function (code) {
+  var lines = code.textContent.split("\n");
+  code.textContent = "";
+  lines.forEach(function (l, i) {
+    if (i) code.appendChild(document.createTextNode("\n"));
+    var line = document.createElement("div");
+    line.className = "kit-line";
+    line.style.paddingLeft = l.match(/^ */)[0].length + 4 + "ch";
+    line.textContent = l;
+    code.appendChild(line);
+  });
+});
+
+// A heading's labels (kit-where) never sit on a line by themselves: they wrap
+// together with the heading's last word
+document.querySelectorAll(".kit-where").forEach(function (where) {
+  var text = where.previousSibling;
+  while (text && text.nodeType === 3 && !text.textContent.trim()) text = text.previousSibling;
+  if (!text || text.nodeType !== 3) return;
+  var words = text.textContent.replace(/\s+$/, "");
+  var at = words.lastIndexOf(" ") + 1;
+  var keep = document.createElement("span");
+  keep.className = "kit-keep";
+  keep.textContent = words.slice(at) + " ";
+  text.textContent = words.slice(0, at);
+  where.parentNode.insertBefore(keep, where);
+  keep.appendChild(where);
+});

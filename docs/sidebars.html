@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebars - Components - Carnegie Mellon Web Kit - Carnegie Mellon University</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
+          <h2>Build on the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="index.html">Carnegie Mellon Web Kit</a>&nbsp;&rsaquo;&nbsp;<a
+            href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;Sidebars
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Sidebars</h1>
+            <p class="cmu-lead">
+              Boxes beside the content: plain and colored boxes, sign-in, a button box, quick links
+              and On This Page.
+            </p>
+
+            <h2 id="sidebar" class="rule-top">
+              Sidebar Boxes
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Each <code>div</code> in a <code>.sidebar</code> is a box. A plain one is gray; add a
+              color, a link list or a thin rule instead of a box. For which color to use, see
+              <a href="conventions.html#colors">Colors</a>.
+            </p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>simple</code>, <code>left-rule</code>, <code>list</code>,
+              a color with <code>invert</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h2>Page Content</h2>
+            <p>The sidebar sits to the right from 768px up and drops below on phones.</p>
+          </div><div class="sidebar">
+            <div>
+              <h2>A Plain Box</h2>
+              <p>Gray, for help and contacts.</p>
+            </div>
+            <div class="list blue invert">
+              <h1>Relevant Documents</h1>
+              <ul>
+                <li><a href="#sidebar">University Policy</a></li>
+                <li><a href="#sidebar">Guidelines</a></li>
+              </ul>
+            </div>
+            <div class="left-rule">
+              <h2>A Left Rule</h2>
+              <p>A note with a line beside it instead of a box.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <h2 id="sign-in" class="rule-top">
+              Sign In
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Every page has the <a href="users.html#account">Sign In link</a> in the header, beside
+              the menu button. A home page can also offer sign-in at the top of its sidebar, in one
+              of two ways, depending on how much the page does for people who aren't signed in.
+            </p>
+
+            <h3 id="sign-in-button">A Sign In Button</h3>
+            <p>
+              For a page that's useful signed out, where signing in adds more, such as a search
+              anyone can use that shows more once you sign in. One large outline button at the top
+              of the sidebar, beside the page's lead. It's the template's
+              <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
+              <code>&lt;h1&gt;</code>.
+            </p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h1>Find a Syllabus</h1>
+            <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>
+          </div><div class="sidebar">
+            <div class="simple">
+              <h1><a class="btn ghost wide" href="#sign-in-button">Sign In</a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <h3 id="sign-in-box">A Sign In Box</h3>
+            <p>
+              For a page that does little until you sign in. A red box says what signing in lets you
+              do, with one wide outline Sign In button, and a note under it about who can sign in.
+              It's the template's sidebar box with <code>red invert</code>, and
+              <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
+            </p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
+              <code>left-rule</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h2>Watch the Safety Video</h2>
+            <p>The page's own content goes here, beside the box.</p>
+          </div><div class="sidebar">
+            <div class="red invert">
+              <h1>Sign In to Watch</h1>
+              <p>Sign in with your Andrew ID to watch the safety video and sign the&nbsp;waiver.</p>
+              <h4><a class="btn ghost wide" href="#sign-in-box">Sign In</a></h4>
+            </div>
+            <div class="left-rule">
+              <p>An active @andrew.cmu.edu account is required to sign in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+            <p>
+              If signing in has to be a form's button, such as one that posts, use
+              <code>&lt;button class="btn ghost wide"&gt;</code> in the same place. With
+              <code>cmu-app.css</code>, it matches the link.
+            </p>
+
+            <h3 id="sign-in-which">Button, Box or Header Link?</h3>
+            <ul class="cmu-checks">
+              <li>
+                <strong>The button</strong> is for a page people can use without signing in. The
+                page's own content comes first, and the button is there for the extras.
+              </li>
+              <li>
+                <strong>The box</strong> is for a page with little to show until you sign in. Say
+                what signing in lets you do, not just that you must.
+              </li>
+              <li>
+                <strong>The header link alone</strong> is enough past the home page, and on pages
+                where signing in adds nothing.
+              </li>
+              <li>
+                <strong>A link that needs sign-in</strong> keeps its place in the text with " [login
+                required]" after it.
+              </li>
+              <li>Always "Sign In" and "Sign Out," never "Log In."</li>
+            </ul>
+
+            <h2 id="button-box" class="rule-top">
+              Button Box
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              One wide button at the top of the sidebar, for the one thing to do or take away from
+              the page. Two ways, both from CMU pages:
+            </p>
+            <ul>
+              <li>
+                <strong>In a colored box,</strong> with a <code>ghost</code> button, as on
+                University Communications &amp; Marketing's Guidelines for News Images, which offers
+                the guidelines as a PDF.
+              </li>
+              <li>
+                <strong>On its own,</strong> a solid button in a <code>simple</code> box (no
+                background), as on Computing Services' video production page, where each section's
+                sidebar has a Request button for that service.
+              </li>
+            </ul>
+            <p>Say what the button does and, for a file, what kind it is.</p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>red invert</code>, <code>simple</code>,
+              <code>btn wide</code>, <code>ghost</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h2>Loan Policies</h2>
+            <p>The page's own content goes here, beside the button.</p>
+          </div><div class="sidebar">
+            <div class="red invert">
+              <a class="btn ghost wide" href="#button-box">Download the Loan Policies [PDF]</a>
+            </div>
+          </div>
+        </div>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h2>Camera Kits</h2>
+            <p>The page's own content goes here, beside the button.</p>
+          </div><div class="sidebar">
+            <div class="simple">
+              <a class="btn wide" href="#button-box">Reserve a Camera Kit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <h2 id="quick-links" class="rule-top">
+              Quick Links
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A list box with a left rule at the top of the sidebar, for the handful of places
+              people come to the page for, as on CMU's Fifth Year Scholars page. Each link gets a
+              rule above it and an arrow. A dark box with a ruled heading under it is the usual
+              place for questions and contacts.
+            </p>
+            <p class="kit-classes">
+              <code>list left-rule</code>, <code>darkgrey invert</code>, <code>rule-bottom</code>,
+              <code>cta</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h2>Equipment Checkout</h2>
+            <p>The page's own content goes here, beside the links.</p>
+          </div><div class="sidebar">
+            <div class="list left-rule">
+              <h1>Quick Links</h1>
+              <ul>
+                <li><a href="#quick-links">Browse Equipment</a></li>
+                <li><a href="#quick-links">My Reservations</a></li>
+                <li><a href="#quick-links">Loan Policies</a></li>
+              </ul>
+            </div>
+            <div class="darkgrey invert">
+              <h2 class="rule-bottom">Questions?</h2>
+              <p>The checkout desk answers email within one business&nbsp;day.</p>
+              <p><a class="cta" href="#quick-links">Email the Checkout Desk</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <h2 id="on-this-page" class="rule-top">
+              On This Page
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Links to the sections of a long page go in a sidebar link list, as on First-Year
+              Orientation's schedule page. It's the template's <code>list left-rule</code> box: each
+              link points to a section heading's <code>id</code>, and the template scrolls to it.
+              Put it first in the sidebar, and leave it off pages short enough to see at a glance.
+            </p>
+            <p class="kit-classes"><code>list left-rule</code>, links to <code>#id</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h2>Borrowing Equipment</h2>
+            <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>
+          </div><div class="sidebar">
+            <div class="list left-rule">
+              <h1>On This Page</h1>
+              <ul>
+                <li><a href="#on-this-page">What You Can Borrow</a></li>
+                <li><a href="#on-this-page">How Long You Can Keep It</a></li>
+                <li><a href="#on-this-page">Late Returns</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kit<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="install.html">Install</a></li>
+              <li><a href="layout.html">Page Layout</a></li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li class="active"><a href="sidebars.html" aria-current="page">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="../js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

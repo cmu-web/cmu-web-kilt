@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>People - Components - Carnegie Mellon Web Kit - Carnegie Mellon University</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js cmu-app">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
+          <h2>Build on the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="index.html">Carnegie Mellon Web Kit</a>&nbsp;&rsaquo;&nbsp;<a
+            href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;People
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>People</h1>
+            <p class="cmu-lead">
+              Who's who: team and leadership grids, contact cards, a bio page and a list of people
+              in an app.
+            </p>
+
+            <h2 id="team" class="rule-top">
+              Team Grid
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A grid of the people in an office, each with a portrait, their name, their title and a
+              link to their full bio, as on Enrollment Management's Our Team page. It's a
+              <code>grid column4 boxes</code> (or <code>column3</code>), with an optional
+              <code>&lt;h1&gt;</code> for the group. Use portraits of the same shape (Enrollment
+              Management's are 560 &times; 800) so the names line up.
+            </p>
+            <p class="kit-classes"><code>grid column4 boxes</code>, <code>cta</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column4 boxes">
+          <h1>Our Team</h1>
+          <div>
+            <p><img src="https://placemellon.andrew.cmu.edu/560/800.svg?solid&amp;text" alt="Placeholder for a portrait."></p>
+            <h2><a href="#bio">Andrew Carnegie</a></h2>
+            <p>Director of Teaching Technology</p>
+            <p><a class="cta" href="#bio">Read Full Bio</a></p>
+          </div>
+          <div>
+            <p><img src="https://placemellon.andrew.cmu.edu/560/800.svg?solid&amp;text" alt="Placeholder for a portrait."></p>
+            <h2><a href="#bio">Alex Lee</a></h2>
+            <p>Teaching Consultant</p>
+            <p><a class="cta" href="#bio">Read Full Bio</a></p>
+          </div>
+          <div>
+            <p><img src="https://placemellon.andrew.cmu.edu/560/800.svg?solid&amp;text" alt="Placeholder for a portrait."></p>
+            <h2><a href="#bio">Maria Garcia</a></h2>
+            <p>Data Analyst</p>
+            <p><a class="cta" href="#bio">Read Full Bio</a></p>
+          </div>
+          <div>
+            <p><img src="https://placemellon.andrew.cmu.edu/560/800.svg?solid&amp;text" alt="Placeholder for a portrait."></p>
+            <h2><a href="#bio">Sam Patel</a></h2>
+            <p>Web Developer</p>
+            <p><a class="cta" href="#bio">Read Full Bio</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>
+              Say "Read Full Bio" the same way on every card. With no bio pages, leave out the links
+              and the <code>cta</code>.
+            </p>
+
+            <h2 id="leadership" class="rule-top">
+              Leadership Grid
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Square photos with each person's name and title centered under them, on a gray band,
+              as on Human Resources' annual report. Use it to introduce a few leaders on an overview
+              page, without links to bios. It's a <code>grid column3 grey boxes</code>; center the
+              text with the template's <code>aligncenter</code> rather than inline styles.
+            </p>
+            <p class="kit-classes">
+              <code>grid column3 grey boxes</code>, <code>aligncenter</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 grey boxes">
+          <h1>Leadership</h1>
+          <div class="aligncenter">
+            <img src="images/scotty.png" alt="Scotty, standing in for a photo." width="320" height="320">
+            <h2>Andrew Carnegie</h2>
+            <h3>Director of Teaching Technology</h3>
+          </div>
+          <div class="aligncenter">
+            <img src="images/scotty.png" alt="Scotty, standing in for a photo." width="320" height="320">
+            <h2>Alex Lee</h2>
+            <h3>Associate Director, Office Hours Queue</h3>
+          </div>
+          <div class="aligncenter">
+            <img src="images/scotty.png" alt="Scotty, standing in for a photo." width="320" height="320">
+            <h2>Maria Garcia</h2>
+            <h3>Manager, Equipment Checkout</h3>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="contacts" class="rule-top">
+              Contact Cards
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A card for each person with their photo, name, title and how to reach them, grouped by
+              team, as on Campus Design and Facility Development's About page. Each team is its own
+              <code>grid column3 grey boxes</code> (or <code>column4</code>) with an
+              <code>&lt;h1&gt;</code> and an <code>id</code>, so a sidebar link or the
+              <a href="sidebars.html#on-this-page">On This Page</a> box can jump to it.
+            </p>
+            <ul>
+              <li>
+                <strong>Photos</strong> all the same shape (CDFD's are 3:2), before the heading
+                rather than inside it, so screen readers don't read the photo as part of the name.
+              </li>
+              <li>
+                <strong>Name | title</strong> in a <code>rule-bottom</code> heading, then the
+                contact details.
+              </li>
+              <li>
+                <strong>Email addresses</strong> in a <code>span.protect</code>, written
+                <code>andrewid(through)andrew.cmu.edu</code>, which the template's script turns into
+                an email link, as on a <a href="#bio">bio page</a>.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>grid column3 grey boxes</code>, <code>rule-bottom</code>, <code>protect</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 grey boxes" id="kit-team">
+          <h1>Management Team</h1>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            <h2 class="rule-bottom">Andrew Carnegie | Director</h2>
+            <p><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></p>
+            <p>Office: 412-555-0101</p>
+          </div>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            <h2 class="rule-bottom">Alex Lee | Associate Director</h2>
+            <p><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></p>
+            <p>Office: 412-555-0102</p>
+          </div>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            <h2 class="rule-bottom">Maria Garcia | Office Coordinator</h2>
+            <p><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></p>
+            <p>Office: 412-555-0103</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="bio" class="rule-top">
+              Bio Page
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              One person's page: their portrait floated beside their name and title, a Contact link
+              that opens to show their email address, then their bio. In Cascade it's the Bio page
+              type, which writes all of this; the markup is for knowing the parts.
+            </p>
+            <ul>
+              <li>
+                <strong>The portrait</strong> is <code>p.floatleft.caption.thumb</code> around the
+                image. It sits beside the name only when both are directly in the page's
+                <code>.content</code> column, as here; anywhere else, the heading drops below it.
+              </li>
+              <li>
+                <strong>The email address</strong> is written as
+                <code>andrewid(through)andrew.cmu.edu</code> in a <code>span.protect</code>, which
+                the template's script turns into an email link, so the plain address never appears
+                in the page for spammers to collect.
+              </li>
+              <li>
+                <strong>Contact</strong> is a <code>collapsed</code> heading, like the
+                <a href="content.html#faq">FAQ</a>'s.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>floatleft caption thumb</code>, <code>contact</code>, <code>address</code>,
+              <code>protect</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide">
+          <div>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/560/800.svg?solid&amp;text" alt="Placeholder for a portrait." width="200"></p>
+            <h1>Andrew Carnegie</h1>
+            <h2 style="font-size:1.15em">Director of Teaching Technology</h2>
+            <div class="contact rule-bottom">
+              <span class="collapsed floatright">Contact</span>
+              <div class="address">
+                <address>
+                  <ul>
+                    <li><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></li>
+                  </ul>
+                </address>
+              </div>
+            </div>
+            <h2>Bio</h2>
+            <p>Carnegie leads Teaching Technology, the office behind the Office Hours Queue and Equipment Checkout.</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="people-list" class="rule-top">
+              People List
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A list of people with a small round headshot beside each name and title, as on CMU's
+              experts page, for a directory, a team or the instructors of a course. With more than a
+              screenful, put a <a href="lists.html#search">search</a> above it that matches names,
+              titles and each row's <code>data-keywords</code> as people type, and a count under it.
+              The filter is your app's script; try this one.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-people</code>, <code>cmu-search-bar</code>, <code>cmu-results-count</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-search-bar">
+          <p>Search by name, title or topic.</p>
+          <label for="kit-find-person" class="sr-only">Find a Person</label>
+          <input type="text" id="kit-find-person" placeholder="Find a person&hellip;" data-kit-filter="kit-people" data-kit-count="kit-people-count">
+        </div>
+        <ul class="cmu-people" id="kit-people">
+          <li data-keywords="algorithms data structures">
+            <img src="images/scotty.png" alt="">
+            <div>
+              <p><a href="#people-list">Priya Raman</a></p>
+              <p>Associate Teaching Professor, Computer Science</p>
+            </div>
+          </li>
+          <li data-keywords="organic synthesis">
+            <img src="images/scotty.png" alt="">
+            <div>
+              <p><a href="#people-list">Marcus Johnson</a></p>
+              <p>Assistant Professor, Chemistry</p>
+            </div>
+          </li>
+          <li data-keywords="course design assessment">
+            <img src="images/scotty.png" alt="">
+            <div>
+              <p><a href="#people-list">Elena Petrova</a></p>
+              <p>Teaching Consultant, Eberly Center</p>
+            </div>
+          </li>
+          <li data-keywords="machine learning sports analytics">
+            <img src="images/scotty.png" alt="">
+            <div>
+              <p><a href="#people-list">Daniel Kim</a></p>
+              <p>Associate Professor, Statistics and Data Science</p>
+            </div>
+          </li>
+          <li data-keywords="writing rhetoric">
+            <img src="images/scotty.png" alt="">
+            <div>
+              <p><a href="#people-list">Aisha Bello</a></p>
+              <p>Director of Undergraduate Studies, English</p>
+            </div>
+          </li>
+        </ul>
+        <p class="cmu-results-count" id="kit-people-count" aria-live="polite">Showing all 5 people</p>
+      </div>
+            <p>
+              Use a real photo cropped to a square; the kit makes it round. With no photo, leave the
+              image out rather than showing a blank one. On a public page, show only people who've
+              agreed to be listed.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kit<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="install.html">Install</a></li>
+              <li><a href="layout.html">Page Layout</a></li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li class="active"><a href="people.html" aria-current="page">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="../js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

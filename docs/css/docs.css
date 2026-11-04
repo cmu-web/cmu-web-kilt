@@ -122,3 +122,71 @@
 .kit-try-date label {
   font-weight: 700;
 }
+
+/* Example code: each line wraps, its continuation hanging four characters in
+   from where the line starts (docs.js sets the padding from its indent) */
+/* The newlines between lines are for copying; the lines are blocks */
+#content .kit-code code:has(> .kit-line) {
+  white-space: normal;
+}
+#content .kit-code .kit-line {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  text-indent: -4ch;
+}
+#content .kit-code .kit-line:empty::before {
+  content: " ";
+}
+
+/* What a component needs, after its heading's name: Template, CMS
+   (cmu-cms.css) or App (cmu-app.css), and Script when it needs cmu-app.js. Shaped like the kit's
+   pills (cmu-pill) */
+.kit-where {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  line-height: 1.4;
+}
+.kit-where span {
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: help;
+}
+.kit-where-template {
+  background: var(--cmu-gray-tint);
+  color: var(--cmu-gray);
+}
+.kit-where-cms {
+  background: var(--cmu-blue-tint);
+  color: var(--cmu-blue);
+}
+.kit-where-app {
+  background: var(--cmu-green-tint);
+  color: var(--cmu-green);
+}
+.kit-where-script {
+  background: var(--cmu-amber-tint);
+  color: var(--cmu-amber);
+}
+/* The same labels in running text, as a key */
+.kit-key {
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* A heading's last word and its labels, kept on one line (docs.js) */
+.kit-keep {
+  white-space: nowrap;
+}
+.kit-keep .kit-where {
+  white-space: normal;
+}

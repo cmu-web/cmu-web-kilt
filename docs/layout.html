@@ -23,7 +23,7 @@
     <meta content="#9f0000" name="msapplication-TileColor" />
     <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
   </head>
-  <body class="no-js">
+  <body class="no-js cmu-app">
     <div id="container">
       <header>
         <div class="roof red invert">
@@ -48,8 +48,8 @@
           <div>
             <h1>Page Layout</h1>
             <p class="cmu-lead">
-              The CMU template's own header, navigation, breadcrumbs and footer, as on this page.
-              Cascade builds them for you; an app writes them itself, using this markup.
+              The CMU template's own header, navigation, breadcrumbs and footer, as on this page. A
+              CMS builds them for you; an app writes them itself, using this markup.
             </p>
 
             <div class="cmu-callout">
@@ -106,8 +106,8 @@
               <li>
                 <strong>The roof</strong>, the template's name for the strip across the top with the
                 wordmark: <code>red invert</code> for red, <code>darkgrey invert</code> for dark
-                gray (as on Human Resources' pages) or nothing for white. Cascade sites set it in
-                the setup block.
+                gray (as on Human Resources' pages) or nothing for white. A CMS sets it for the
+                whole site; in Cascade, it's in the setup block.
               </li>
               <li>
                 <strong>A logo</strong> sits right of the site's name. On phones the template moves
@@ -121,27 +121,32 @@
                 <strong>Signed out</strong>, a Sign In link sits in the roof and at the top of the
                 menu. <strong>Signed in</strong>, your name sits in the roof and opens the menu,
                 which starts with your name and Sign Out. On phones only the menu has them. See
-                <a href="app-users.html#account">Sign In and Sign Out</a>.
+                <a href="users.html#account">Sign In and Sign Out</a>.
               </li>
               <li>
                 <strong>Acting as another user</strong> frames the whole window; see
-                <a href="app-users.html#acting-as">Acting as Another User</a>.
+                <a href="users.html#acting-as">Acting as Another User</a>.
               </li>
             </ul>
           </div>
         </div>
         <div class="content wide">
           <div>
-            <h2 id="site-name" class="rule-top">Site Name</h2>
+            <h2 id="site-name" class="rule-top">
+              Site Name
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
             <p>
               The site's name links to its home page. Under it, an optional
               <code>&lt;h2&gt;</code> names who runs it, such as a department, as a link to their
               site or as plain text. It can also be a slogan, as on these docs.
             </p>
-            <pre class="kit-code"><code>&lt;div id="sitename"&gt;
-  &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Seminars &amp;amp; Workshops&lt;/a&gt;&lt;/span&gt;
-  &lt;h2&gt;&lt;a href="https://www.cmu.edu/teaching/"&gt;Eberly Center&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;</code></pre>
             <figure class="cmu-shot cmu-shot--browser">
               <img
                 src="images/seminars-header.png"
@@ -151,6 +156,10 @@
               />
               <figcaption>The Seminars &amp; Workshops header, from the Eberly Center.</figcaption>
             </figure>
+            <pre class="kit-code"><code>&lt;div id="sitename"&gt;
+  &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Seminars &amp;amp; Workshops&lt;/a&gt;&lt;/span&gt;
+  &lt;h2&gt;&lt;a href="https://www.cmu.edu/teaching/"&gt;Eberly Center&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
 
             <p>
               For a logo, wrap the name and the <code>&lt;h2&gt;</code> in a
@@ -165,12 +174,6 @@
               the logo below the name and subtitle, at up to half the screen's width, so keep the
               image no larger than you want it shown there.
             </p>
-            <pre class="kit-code"><code>&lt;div id="sitename"&gt;
-  &lt;div&gt;
-    &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Core4 Student Dashboard&lt;/a&gt;&lt;/span&gt;
-    &lt;h2&gt;&lt;a href="https://www.cmu.edu/corecompetencies/"&gt;Core Competencies Initiative&lt;/a&gt;&lt;/h2&gt;
-  &lt;/div&gt;&lt;a href="/"&gt;&lt;img src="/images/cci-wordmark.png" alt="Core Competencies Initiative Wordmark"&gt;&lt;/a&gt;
-&lt;/div&gt;</code></pre>
             <figure class="cmu-shot cmu-shot--browser">
               <img
                 src="images/core4-header.png"
@@ -180,13 +183,29 @@
               />
               <figcaption>The Core4 Student Dashboard's header, with its logo.</figcaption>
             </figure>
+            <pre class="kit-code"><code>&lt;div id="sitename"&gt;
+  &lt;div&gt;
+    &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Core4 Student Dashboard&lt;/a&gt;&lt;/span&gt;
+    &lt;h2&gt;&lt;a href="https://www.cmu.edu/corecompetencies/"&gt;Core Competencies Initiative&lt;/a&gt;&lt;/h2&gt;
+  &lt;/div&gt;&lt;a href="/"&gt;&lt;img src="/images/cci-wordmark.png" alt="Core Competencies Initiative Wordmark"&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
 
-            <h2 id="search" class="rule-top">Search</h2>
+            <h2 id="search" class="rule-top">
+              Search
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
             <p>
               The template's search box goes in the roof, after the menu button. It searches
               cmu.edu, with a "Search this site only" box that appears when someone clicks in it;
-              set that box's <code>value</code> to your Cascade site's ID. The template also puts a
-              copy at the top of the menu, and on phones shows it as a row under the wordmark.
+              set that box's <code>value</code> to your site's ID (in Cascade, its Cascade site ID).
+              The template also puts a copy at the top of the menu, and on phones shows it as a row
+              under the wordmark.
             </p>
             <figure class="cmu-shot cmu-shot--browser">
               <img
@@ -209,7 +228,8 @@
 &lt;/form&gt;</code></pre>
             <ul class="cmu-checks">
               <li>
-                <strong>Cascade sites</strong> get it from the site's settings; you don't write it.
+                <strong>A CMS site</strong> gets it from the site's settings, as in Cascade; you
+                don't write it.
               </li>
               <li>
                 <strong>Apps usually leave it out.</strong> It searches cmu.edu, not your app, so it
@@ -218,7 +238,7 @@
               </li>
               <li>
                 <strong
-                  >Put the <a href="app-users.html#account">account link</a> after the search
+                  >Put the <a href="users.html#account">account link</a> after the search
                   form</strong
                 >, whether it's Sign In or the signed-in person's name. The kit lines them up as
                 search, the account link, then the menu button, so the name sits beside the menu it
@@ -226,7 +246,16 @@
               </li>
             </ul>
 
-            <h2 id="navigation" class="rule-top">Navigation</h2>
+            <h2 id="navigation" class="rule-top">
+              Navigation
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
             <p>
               One list, <code>nav#nav</code>, in the footer's third column. The template's script
               turns it into two things:
@@ -329,7 +358,7 @@
               This site's own menu is an example: Components is a section, with its three pages
               under it. Keep labels short and in Title Case, and keep to about six top-level items
               so the tabs fit on one row. To show the signed-in person beside the menu button, see
-              <a href="app-users.html#account">Sign In and Sign Out</a>.
+              <a href="users.html#account">Sign In and Sign Out</a>.
             </p>
 
             <h2 id="which-nav" class="rule-top">Navigation, Tabs or Sidebar?</h2>
@@ -347,8 +376,8 @@
             </figure>
             <p>
               <strong>Views of one page</strong> go in
-              <a href="app-structure.html#tabs">tabs</a> (<code>cmu-tabs</code>) at the top of the
-              content, such as one tab for each semester of the same list of courses.
+              <a href="#tabs">tabs</a> (<code>cmu-tabs</code>) at the top of the content, such as
+              one tab for each semester of the same list of courses.
             </p>
             <figure class="cmu-shot">
               <img
@@ -360,9 +389,9 @@
             </figure>
             <p>
               <strong>Sections of one long page</strong> go in an
-              <a href="standard-sidebar.html#on-this-page">On This Page</a> box at the top of the
-              sidebar, as on <a href="conventions.html">Conventions</a>. Leave it off pages short
-              enough to see at a glance.
+              <a href="sidebars.html#on-this-page">On This Page</a> box at the top of the sidebar,
+              as on <a href="conventions.html">Conventions</a>. Leave it off pages short enough to
+              see at a glance.
             </p>
             <figure class="cmu-shot">
               <img
@@ -377,7 +406,52 @@
               when a page sits below another.
             </p>
 
-            <h2 id="breadcrumbs" class="rule-top">Breadcrumbs</h2>
+            <h2 id="tabs" class="rule-top">
+              Tabs
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              Links between views of the same page, such as semesters. Mark the current one with
+              <code>aria-current="page"</code>. Use a <code>div</code> with
+              <code>role="navigation"</code>, not a <code>nav</code>: the template takes the borders
+              off every link in a <code>nav</code>, including the underline that marks the current
+              tab. To fold a long row, put the rest in a
+              <code>details.cmu-more.cmu-tabs-more</code> at the end, like a
+              <a href="lists.html#more">folded list</a>: a "2 More" link stays at the end of the
+              first row, and when it opens, the rest wrap onto the next line and the link says Show
+              Fewer. Keep the current tab out of the folded part, so it always shows.
+            </p>
+            <p class="kit-classes"><code>cmu-tabs</code>, <code>cmu-tabs-more</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-tabs" role="navigation" aria-label="Semester">
+          <a href="#tabs" aria-current="page">Spring 2027</a>
+          <a href="#tabs">Fall 2026</a>
+          <a href="#tabs">Summer 2026</a>
+          <details class="cmu-more cmu-tabs-more">
+            <summary><span class="cmu-more-link cta"><span class="cmu-more-closed">2 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
+            <div>
+              <a href="#tabs">Spring 2026</a>
+              <a href="#tabs">Fall 2025</a>
+            </div>
+          </details>
+        </div>
+      </div>
+
+            <h2 id="breadcrumbs" class="rule-top">
+              Breadcrumbs
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
             <p>Breadcrumbs show the path from the site's home to the current page.</p>
             <ul class="cmu-checks">
               <li><strong>Place the trail first</strong> inside <code>#content</code>.</li>
@@ -410,7 +484,16 @@
               so a step never starts a new line with the arrow.
             </p>
 
-            <h2 id="content-area" class="rule-top">Content and Sidebar</h2>
+            <h2 id="content-area" class="rule-top">
+              Content and Sidebar
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
             <p>
               <code>.content</code> lays out its direct children as columns. Put the page in one
               <code>&lt;div&gt;</code> inside it, and for a sidebar, add a second
@@ -472,7 +555,46 @@
                 Several <code>.content</code> blocks can follow one another, for a page in bands.
               </li>
             </ul>
-            <p><a class="cta" href="standard-sidebar.html">See the Sidebar Boxes</a></p>
+            <p><a class="cta" href="sidebars.html">See the Sidebar Boxes</a></p>
+
+            <h2 id="panels" class="rule-top">
+              Panels for Framed Pages
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              For pages inside another tool (<code>body.cmu-framed</code>): plain and left-aligned,
+              since the host already frames them, with the actions at the bottom right.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-panel</code>, <code>cmu-panel-header</code>, <code>cmu-panel-body</code>,
+              <code>cmu-panel-footer</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-panel">
+          <div class="cmu-panel-header">
+            <h2>Choose a Page</h2>
+            <p class="cmu-muted">Pages in this Canvas course.</p>
+          </div>
+          <div class="cmu-panel-body">
+            <fieldset class="cmu-choices">
+              <legend>Pages</legend>
+              <ul>
+                <li><label><input type="radio" name="kit-page">Course Syllabus</label></li>
+                <li><label><input type="radio" name="kit-page">Welcome</label></li>
+              </ul>
+            </fieldset>
+          </div>
+          <div class="cmu-panel-footer">
+            <a class="btn ghost" href="#panels">Cancel</a>
+            <button class="btn" type="button">Confirm Selection</button>
+          </div>
+        </div>
+      </div>
 
             <h2 id="scripts" class="rule-top">Scripts</h2>
             <p>
@@ -627,7 +749,7 @@
               </li>
               <li>
                 Add <code>cmu-app</code> to <code>&lt;body&gt;</code> in an app (see
-                <a href="app.html#setup">App Components</a>).
+                <a href="forms.html#setup">App Components</a>).
               </li>
             </ul>
           </div>
@@ -702,32 +824,16 @@
               <li>
                 <a href="components.html">Components</a>
                 <ul>
-                  <li>
-                    <a href="standard.html">CMU Standard</a>
-                    <ul>
-                      <li><a href="standard-sections.html">Page Sections</a></li>
-                      <li><a href="standard-sidebar.html">Sidebars</a></li>
-                      <li><a href="standard-news.html">News and Events</a></li>
-                      <li><a href="standard-people.html">People</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="cms.html">CMS Components</a>
-                    <ul>
-                      <li><a href="cms-top.html">Page Tops</a></li>
-                      <li><a href="cms-content.html">Content Blocks</a></li>
-                      <li><a href="cms-data.html">Pills and Tables</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="app.html">App Components</a>
-                    <ul>
-                      <li><a href="app-structure.html">Page Structure</a></li>
-                      <li><a href="app-messages.html">Messages and Dialogs</a></li>
-                      <li><a href="app-lists.html">Lists and Tables</a></li>
-                      <li><a href="app-users.html">Users</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
                 </ul>
               </li>
               <li><a href="conventions.html">Conventions</a></li>

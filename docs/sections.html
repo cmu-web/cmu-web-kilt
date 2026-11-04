@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Sections - Components - Carnegie Mellon Web Kit - Carnegie Mellon University</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
+          <h2>Build on the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="index.html">Carnegie Mellon Web Kit</a>&nbsp;&rsaquo;&nbsp;<a
+            href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;Page Sections
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Page Sections</h1>
+            <p class="cmu-lead">
+              The full-width bands a page is made of: cards, path cards, features, carousels,
+              timelines, testimonials and more.
+            </p>
+
+            <h2 id="home" class="rule-top">Home Page for a Service Description</h2>
+            <p>
+              A service description is a site, in Cascade or another CMS, that explains an app or
+              service and sends people to it. Its home page works best in this order:
+            </p>
+            <ol class="cmu-steps">
+              <li>
+                <a href="tops.html#hero">Hero</a>: a tagline, one sentence, a button into the app
+                and screenshots.
+              </li>
+              <li>
+                <a href="#paths">Path cards</a>: one per audience (students, instructors,
+                administrators), each leading to its own page.
+              </li>
+              <li>
+                <a href="#flow">How it works</a>: three or four short steps, with a
+                <a href="content.html#callout">callout</a> under them for the one thing people most
+                need to know.
+              </li>
+              <li><a href="#qa">FAQ teaser</a>: the most common questions, linking to the FAQ.</li>
+            </ol>
+
+            <h2 id="sections" class="rule-top">
+              Page Sections
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A page can be a run of full-width sections, one after another: a
+              <code>.content</code> block, a grid, a section bar, another grid. On a real page they
+              go straight inside <code>#content</code>, not inside one another; the examples below
+              sit in boxes only so the page can show them. In Cascade, each is a content section of
+              its own (WYSIWYG, Grid or Wide).
+            </p>
+            <pre class="kit-code"><code>&lt;main id="content"&gt;
+  &lt;div class="breadcrumbs"&gt; &hellip; &lt;/div&gt;
+  &lt;div class="content"&gt; &hellip; &lt;/div&gt;
+  &lt;div class="grid column2 red invert"&gt; &hellip; &lt;/div&gt;
+  &lt;div class="grid column2 grey boxes"&gt; &hellip; &lt;/div&gt;
+  &lt;div class="content wide red invert globe"&gt; &hellip; &lt;/div&gt;
+  &lt;div class="grid column2"&gt; &hellip; &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+            <p>
+              <strong>Each section's heading is an <code>&lt;h1&gt;</code></strong
+              >, as on CMU's Cascade pages, and headings inside a section (a card, a sub-topic) are
+              <code>&lt;h2&gt;</code> and below. That holds for every section, including the first
+              one after a hero: the hero's tagline is an <code>&lt;h1&gt;</code> too, and stays the
+              biggest heading on the page. Pick levels by what a heading contains, never by where it
+              falls on the page; screen reader users skim a page by its heading levels.
+            </p>
+
+            <h2 id="rule-top" class="rule-top">
+              Section Headings With a Line
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              An optional thin line over a section's heading, to mark where one topic ends and the
+              next begins on a long page, as on Computing Services' video production page. Add the
+              template's <code>rule-top</code> to the heading. The line sits right on top of the
+              heading; the section's own padding gives the space above it. On a color band
+              (<code>invert</code>) the line turns white. Its partner, <code>rule-bottom</code>,
+              puts the line under a heading instead, as in the
+              <a href="sidebars.html#quick-links">sidebar</a>.
+            </p>
+            <p class="kit-classes"><code>rule-top</code>, <code>rule-bottom</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h1 class="rule-top">Lecture Recording</h1>
+            <p>We record your lecture or event and send you a link to the video, captioned.</p>
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <h1 class="rule-top">Captioning</h1>
+            <p>Send us a video and we'll caption it, usually within a week.</p>
+          </div>
+        </div>
+      </div>
+
+            <h2 id="grid" class="rule-top">
+              Cards on Gray
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A grid is two, three or four columns that stack on phones. With
+              <code>grey boxes</code>, each column is a white card on a gray band. An
+              <code>&lt;h1&gt;</code> first in the grid is the band's heading, across the top. Good
+              for short cards that each lead somewhere. For a line across the band's full width,
+              such as an introduction under the heading or a link to see more after the cards, use
+              <code>&lt;p class="cmu-grid-full"&gt;</code> (the kit's only addition here). For which
+              color to use, see <a href="conventions.html#colors">Colors</a>.
+            </p>
+            <p class="kit-classes">
+              <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
+              <code>boxes</code>, <code>cmu-grid-full</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 grey boxes">
+          <h1>Ways to Get Started</h1>
+          <div>
+            <h2>Write a Syllabus</h2>
+            <p>Communicate expectations, policies and a roadmap for the course.</p>
+            <p><a class="cta" href="#grid">Get Started</a></p>
+          </div>
+          <div>
+            <h2>Design a Course</h2>
+            <p>Set learning objectives and align assessments with them.</p>
+            <p><a class="cta" href="#grid">See Course Design Strategies</a></p>
+          </div>
+          <div>
+            <h2>Teach It</h2>
+            <p>Strategies for the classroom, in person and online.</p>
+            <p><a class="cta" href="#grid">See Strategies</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="paths" class="rule-top">
+              Path Cards
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Whole-card links that send each audience to its own page. They fit as many columns as
+              the width allows; <code>cmu-paths--two</code> keeps a pair side by side. The
+              <code>cta</code> line is the template's own.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-paths</code>, <code>cmu-paths--two</code>, <code>cmu-path</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-paths">
+          <a class="cmu-path" href="#paths">
+            <span class="cmu-eyebrow">Students</span>
+            <strong>Find a Syllabus</strong>
+            <span>Search by course number, title or instructor.</span>
+            <span class="cta">See How to Browse</span>
+          </a>
+          <a class="cmu-path" href="#paths">
+            <span class="cmu-eyebrow">Instructors</span>
+            <strong>Add Your Syllabus</strong>
+            <span>Upload a file on the web, or pick it from Canvas.</span>
+            <span class="cta">Read the Instructor Guide</span>
+          </a>
+          <a class="cmu-path" href="#paths">
+            <span class="cmu-eyebrow">Administrators</span>
+            <strong>Track Your Department</strong>
+            <span>See what's missing and upload for many sections at once.</span>
+            <span class="cta">Read the Quick-Start Guide</span>
+          </a>
+        </div>
+      </div>
+
+            <h2 id="flow" class="rule-top">
+              How It Works
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A process in a few numbered columns, for an overview. For instructions people follow,
+              use numbered steps instead.
+            </p>
+            <p class="kit-classes"><code>ol.cmu-flow</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <ol class="cmu-flow">
+          <li><strong>Instructors add syllabi</strong>On the web or from Canvas.</li>
+          <li><strong>Departments fill the gaps</strong>Upload for many sections at once.</li>
+          <li><strong>Everyone can find them</strong>Search by course, semester or department.</li>
+        </ol>
+      </div>
+
+            <h2 id="i-want" class="rule-top">
+              I Want To&hellip;
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              The same grid without a color: white boxes with a thin border on the page's own
+              background, headed by what people come to do, as on CMU's ID+ page. Here each box's
+              title is the link, in the template's red, instead of a <code>cta</code> under the
+              text. Use linked titles when the title says it all, and a <code>cta</code> when the
+              action needs its own words. Phrase the titles as the end of the heading's sentence: "I
+              want to&hellip; Borrow a Camera".
+            </p>
+            <p class="kit-classes">
+              <code>grid column3 boxes</code>, a linked <code>&lt;h2&gt;</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 boxes">
+          <h1>I Want To&hellip;</h1>
+          <div>
+            <h2><a href="#i-want">Borrow a Camera</a></h2>
+            <p>Cameras, lenses and tripods for any CMU course, free for up to a week.</p>
+          </div>
+          <div>
+            <h2><a href="#i-want">Reserve a Laptop</a></h2>
+            <p>Pick a day and a laptop, and it's ready at the desk when you arrive.</p>
+          </div>
+          <div>
+            <h2><a href="#i-want">Return Equipment</a></h2>
+            <p>Drop it off at the desk, or see when it's due.</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="feature" class="rule-top">
+              Feature Section
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A red band with a picture on one side and a heading, a few sentences and a button on
+              the other, to make one thing stand out on a page, as on CMU's Get Involved page. It's
+              a two-column grid in <code>red invert</code>: the first column holds the image. On
+              red, use the white outline button, <code>btn ghost</code>.
+            </p>
+            <p class="kit-classes"><code>grid column2 red invert</code>, <code>btn ghost</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column2 red invert">
+          <h1>New This Semester</h1>
+          <div>
+            <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, each with a syllabus status, and a Sign In button.">
+          </div>
+          <div>
+            <h2>Find a Syllabus Before You Register</h2>
+            <p>Every course section and its syllabus, from this semester back to 2015, in one place.</p>
+            <p><a class="btn ghost" href="#feature">Browse Syllabi</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="carousel" class="rule-top">
+              Carousel
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Feature sections that slide, with arrows at the sides and a dot for each slide, as on
+              CMU's Visit page. Put two or more <code>grid column2</code> slides in a
+              <code>js-flickityCustom</code>, and load the template's carousel script after its main
+              one (Cascade adds it for you):
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;script src="https://www.cmu.edu/common/standard-v6/js/flickity.pkgd.min.js"&gt;&lt;/script&gt;</code></pre>
+            <p>
+              It never moves by itself. Turn off the dots or arrows with
+              <code>data-navDotsVisible="false"</code> or
+              <code>data-navArrowsVisible="false"</code>, and stop it going round from the last
+              slide to the first with <code>data-wrapAround="false"</code>. A color on the wrapper
+              colors every slide. On phones the arrows sit over the slides' headings; turn them off
+              there if your headings are long, since people can swipe instead.
+            </p>
+            <p>
+              Use it sparingly: people rarely look past the first slide, so put the most important
+              one first, and never hide something people need in a later slide.
+            </p>
+            <p class="kit-classes"><code>js-flickityCustom</code>, <code>grid column2</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="js-flickityCustom">
+          <div class="grid column2">
+            <div>
+              <img src="images/photo-screenshot.jpg" alt="A table of course sections with a syllabus status for each.">
+            </div><div>
+              <h2>Find a Syllabus Before You Register</h2>
+              <p>Every course section and its syllabus, from this semester back to 2015.</p>
+              <p><a class="btn" href="#carousel">Browse Syllabi</a></p>
+            </div>
+          </div>
+          <div class="grid column2">
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            </div><div>
+              <h2>Office Hours Without the Line</h2>
+              <p>Join the queue from anywhere and see how many are ahead of you.</p>
+              <p><a class="btn" href="#carousel">Join a Queue</a></p>
+            </div>
+          </div>
+          <div class="grid column2">
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            </div><div>
+              <h2>Borrow What Your Project Needs</h2>
+              <p>Cameras, laptops and lights, free for CMU courses.</p>
+              <p><a class="btn" href="#carousel">Browse Equipment</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="circles" class="rule-top">
+              Circle Photos
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Square photos cropped to circles, beside a few paragraphs each, as on First-Year
+              Orientation's schedule. Add <code>circle</code> to the image, use a square photo and
+              alternate which side it's on. A <code>content wide</code> block holding an
+              <code>&lt;hr&gt;</code> separates each pair.
+            </p>
+            <p class="kit-classes"><code>circle</code>, <code>grid column2</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column2">
+          <div>
+            <img class="circle" src="images/scotty.png" alt="Scotty, standing in for a square photo." width="400" height="400">
+          </div><div>
+            <h3>Students</h3>
+            <p>Join the queue for any of your courses, and see how many people are ahead of you.</p>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <hr>
+          </div>
+        </div>
+        <div class="grid column2">
+          <div>
+            <h3>Course Staff</h3>
+            <p>Open office hours, call the next student and see who's waiting.</p>
+          </div><div>
+            <img class="circle" src="images/scotty.png" alt="Scotty, standing in for a square photo." width="400" height="400">
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="timeline" class="rule-top">
+              Timeline Cards
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              The steps of a process in date order, a card for each with a small icon, the step's
+              name and its dates, on a dark band, as on Human Resources' performance management
+              page. It's a <code>grid column4 darkgreen boxes</code> (or <code>column3</code>) with
+              an <code>&lt;h1&gt;</code>.
+            </p>
+            <ul>
+              <li>
+                <strong>Each step's name is an <code>&lt;h2&gt;</code></strong
+                >, right after its icon. Names may wrap to two lines. A name can link to its section
+                further down the page; it then shows in the template's link red.
+              </li>
+              <li>
+                <strong>Choose an icon for each step.</strong> Use <code>floatright</code> to place
+                it beside the heading. See <a href="content.html#icons">Icons</a> for setup and
+                usage.
+              </li>
+              <li>
+                <strong>Put the icon, name and any text in a <code>&lt;div&gt;</code></strong
+                >, then the rule and the date after it. The kit sets the rule and date at the bottom
+                of each card, so the dates line up across a row.
+              </li>
+              <li>
+                <strong>The dates</strong> go under a rule, bold and centered with
+                <code>aligncenter</code>. Write ranges with a hyphen. See
+                <a href="conventions.html#ap">Conventions</a> for date formatting.
+              </li>
+              <li>
+                <strong>Keep to the same years</strong> in each card, or show the year on every
+                date, so the order is clear at a glance.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>grid column4 darkgreen boxes</code>, <code>floatright</code>,
+              <code>aligncenter</code>, <code>bi</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column4 darkgreen boxes">
+          <h1>Spring 2027 Timeline</h1>
+          <div>
+            <div>
+              <i class="bi bi-flag floatright" aria-hidden="true"></i><h2>Uploads Open</h2>
+              <p>Upload from the web or <a href="#timeline">from Canvas</a>, in any common file format, and replace it any time before classes end.</p>
+            </div>
+            <hr>
+            <p class="aligncenter"><strong>Nov. 2, 2026</strong></p>
+          </div>
+          <div>
+            <div>
+              <i class="bi bi-bell floatright" aria-hidden="true"></i><h2>Reminders to Instructors</h2>
+            </div>
+            <hr>
+            <p class="aligncenter"><strong>Dec. 7-18, 2026</strong></p>
+          </div>
+          <div>
+            <div>
+              <i class="bi bi-card-checklist floatright" aria-hidden="true"></i><h2>Syllabi Due</h2>
+              <p><a class="cta" href="#timeline">See What's Due</a></p>
+            </div>
+            <hr>
+            <p class="aligncenter"><strong>Jan. 11, 2027</strong></p>
+          </div>
+          <div>
+            <div>
+              <i class="bi bi-calendar-event floatright" aria-hidden="true"></i><h2>Classes End</h2>
+            </div>
+            <hr>
+            <p class="aligncenter"><strong>May 7, 2027</strong></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="photos" class="rule-top">
+              Photo Grid
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Linked photos with a title over each, as on the HUB's Academic Calendar (three across)
+              and Family Programs' Parents page (four across). The whole photo is the link. Use
+              <code>column2</code>, <code>column3</code> or <code>column4</code>; an
+              <code>&lt;h1&gt;</code> first in the grid is its heading, across the full width. Only
+              an <code>&lt;h1&gt;</code> spans the grid: a paragraph inside it becomes one of the
+              cells, so put any sentence about the photos in their titles instead. Use photos that
+              are all the same shape (the HUB's are 3:2, such as 900 &times; 600), or the rows come
+              out ragged and the titles don't line up. At four across, keep titles to two or three
+              words, or they wrap; a sentence under the title fits at two or three across. On phones
+              the photos stack.
+            </p>
+            <p>
+              No photos yet? Fill the grid with CMU photos from
+              <a class="external" href="https://placemellon.andrew.cmu.edu/">PlaceMellon</a>
+              while you build, and swap in the real ones when they're ready.
+            </p>
+            <p class="kit-classes">
+              <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
+              <code>photos</code>, <code>photo</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column4 photos">
+          <h1>Borrow Equipment</h1>
+          <div class="photo">
+            <a href="#photos">
+              <div>
+                <h2>Cameras</h2>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/900/600?category=campus" alt="Placeholder for a photo of a camera kit."></span>
+            </a>
+          </div><div class="photo">
+            <a href="#photos">
+              <div>
+                <h2>Laptops</h2>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/900/600?category=classrooms" alt="Placeholder for a photo of a laptop."></span>
+            </a>
+          </div><div class="photo">
+            <a href="#photos">
+              <div>
+                <h2>Lights</h2>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/900/600?category=labs" alt="Placeholder for a photo of a light kit."></span>
+            </a>
+          </div><div class="photo">
+            <a href="#photos">
+              <div>
+                <h2>Tripods</h2>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="Placeholder for a photo of a tripod."></span>
+            </a>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="testimonial" class="rule-top">
+              Testimonial
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A quote from a student, alumnus or colleague, with their name, their role and a square
+              photo beside it, as on CMU Global's and Dietrich College's home pages. Put it in its
+              own section on a color, such as <code>content wide grey</code>. On phones the photo
+              goes above the quote.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Quote real people, with their permission</strong>, and keep it to a sentence
+                or two. Quotation marks around the words are optional; the red mark already says
+                it's a quote.
+              </li>
+              <li>
+                <strong>Put their name in <code>&lt;strong&gt;</code></strong> inside the
+                <code>&lt;cite&gt;</code>, then their role or class on the next line.
+              </li>
+              <li>
+                <strong>Describe the person in the photo's <code>alt</code></strong
+                >, not the quote. Use a square photo; the kit crops other shapes to a square.
+              </li>
+            </ul>
+            <p class="kit-classes"><code>cmu-testimonial</code>, <code>content wide grey</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+          <div class="content wide grey">
+            <div>
+              <div class="cmu-testimonial">
+                <figure>
+                  <blockquote><p>Reserving a camera took a minute, and the kit had everything our film needed.</p></blockquote>
+                  <figcaption><cite><strong>Margaret Morrison</strong><br>Senior, School of Drama</cite></figcaption>
+                </figure>
+                <img src="https://placemellon.andrew.cmu.edu/500?category=life" alt="Placeholder photo of Carnegie Mellon student life." width="500" height="500">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h2 id="split" class="rule-top">
+              Text With a Screenshot
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Two columns: text on the left, a framed screenshot with a caption on the right. One
+              column below 760px. Add <code>cmu-shot--browser</code> (see
+              <a href="content.html#screenshots">Screenshots</a>) to draw the screenshot in a
+              browser window, like the hero's art, as the <a href="gallery.html">Gallery</a> does.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-split</code>, <code>figure.cmu-shot</code>, <code>cmu-shot--browser</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-split">
+          <div>
+            <ol class="cmu-steps">
+              <li>Search by course number, title or instructor.</li>
+              <li>Narrow it down with the filters on the left.</li>
+            </ol>
+          </div>
+          <figure class="cmu-shot">
+            <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left.">
+            <figcaption>Search, then filter.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+            <h2 id="qa" class="rule-top">
+              FAQ Teaser
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A few common questions and short answers in columns, followed by a link to the full
+              <a href="content.html#faq">FAQ</a>.
+            </p>
+            <p class="kit-classes"><code>cmu-faq-teaser</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-faq-teaser">
+          <div>
+            <h3>Who can see my question?</h3>
+            <p>Only your course's staff. Other students see just how many are ahead of them.</p>
+          </div>
+          <div>
+            <h3>Can I leave the queue?</h3>
+            <p>Yes, at any time. Your place goes to the next person.</p>
+          </div>
+        </div>
+        <p><a class="cta" href="#qa">See All Questions</a></p>
+      </div>
+
+            <h2 id="big-buttons" class="rule-top">
+              Big Buttons
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Two wide buttons side by side for the two things most people come to do, as at the top
+              of Dining Services' home page. Each is a <code>btn wide</code> inside an
+              <code>&lt;h2&gt;</code>, which makes its text large.
+            </p>
+            <p class="kit-classes">
+              <code>grid column2</code>, <code>btn wide</code>, <code>aligncenter</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column2">
+          <div>
+            <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Have a Question? Join the Queue</a></h2>
+          </div><div>
+            <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Course Staff? Open Office Hours</a></h2>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="bar" class="rule-top">
+              Section Bar
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A full-width colored bar with a heading, to start a new part of a long page, often
+              with the globe. It's a <code>.content wide</code> block with a color; give it an
+              <code>id</code> to link to it.
+            </p>
+            <p class="kit-classes"><code>content wide</code>, <code>red invert globe</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide red invert globe" id="kit-bar-example">
+          <div>
+            <h2>2026-27 Fellows</h2>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>
+              For a statement rather than a heading, such as a mission, use a lighter band with the
+              text centered, as on the Tartan Bike Project's page: <code>grey plaid</code>, which
+              the template fades so dark text stays readable. On phones it's plain white, since the
+              template drops the plaid there (see <a href="#backgrounds">Background Patterns</a>),
+              so don't count on it to set the statement apart.
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide grey plaid">
+          <div>
+            <p class="aligncenter"><em>Equipment Checkout is run by Teaching Technology. <strong>Our mission is to put the tools for great class projects in every student's hands.</strong></em></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="announcements" class="rule-top">
+              Announcements
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A full-width band across the top of a page, right under the breadcrumbs, for something
+              everyone who comes to the page should know first: who the page is for, a deadline, a
+              change. Site authors write it and take it down; it says the same thing to everyone.
+              It's a <code>content wide</code> block in a template color. Keep to one at a time, and
+              a sentence or two.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Dark gray</strong> (<code>darkgrey invert</code>) for who a page is for,
+                with the text in bold, as on Stellic's page for staff and faculty.
+              </li>
+              <li>
+                <strong>Gold</strong> for a time-sensitive update, with a bold lead-in, as on CMU's
+                Visit page. Gold takes dark text, so it needs no <code>invert</code>. When the whole
+                notice is one short statement, make it a centered <code>&lt;h3&gt;</code> instead,
+                as on the Tartan Bike Project's page; center it with the template's
+                <code>aligncenter</code>, not an inline style.
+              </li>
+              <li>
+                <strong>Blue</strong> (<code>blue invert</code>) for a note set apart lower on the
+                page, with an <code>&lt;h4&gt;</code> for small bold capitals, as on the HUB's
+                Academic Calendar.
+              </li>
+              <li>
+                <strong>Not red:</strong> a red band reads as a campus alert. And not for the result
+                of something someone just did: that's a
+                <a href="messages.html#flash">flash message</a>. For an aside within a section, such
+                as a tip or a warning, use a <a href="content.html#callout">callout</a>.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>content wide</code>, <code>darkgrey invert</code>, <code>gold</code>,
+              <code>blue invert</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide darkgrey invert">
+          <div>
+            <p><strong>Students: this page is for instructors and department administrators. To find a syllabus, <a href="#announcements">browse the registry</a>.</strong></p>
+          </div>
+        </div>
+      </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide gold">
+          <div>
+            <p><strong>Finals Week:</strong> Office hours run on a reduced schedule from May 4 to 12. <a href="#announcements">See this week's hours</a>.</p>
+          </div>
+        </div>
+      </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide gold">
+          <div>
+            <h3 class="aligncenter">Camera kits are limited this month. More arrive by mid-September; check back here for updates.</h3>
+          </div>
+        </div>
+      </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide blue invert">
+          <div>
+            <h4>Holiday Hours</h4>
+            <p>The checkout desk closes Dec. 19 and reopens Jan. 12. Return borrowed equipment <a href="#announcements">before the break</a>.</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="link-bank" class="rule-top">
+              Link Bank
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Red columns of links at the bottom of a page, to the site's main pages and its
+              neighbors, as on the HUB. It's a grid with <code>nav</code>, and each column a
+              <code>nav-list</code>; <code>darkgrey invert</code> works too, as on the ID+ pages.
+              Keep it to links: a way into an app goes in the page, not here. A column can start
+              with an <code>&lt;h1&gt;</code>, which shows as a small bold label.
+            </p>
+            <p class="kit-classes">
+              <code>grid column3 red invert nav</code>, <code>nav-list</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 red invert nav">
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#link-bank">Join a Queue</a></li>
+                <li><a href="#link-bank">For Students</a></li>
+                <li><a href="#link-bank">For Course Staff</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#link-bank">Frequently Asked Questions</a></li>
+                <li><a href="#link-bank">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#link-bank">Teach, Learn, Innovate</a></li>
+                <li><a href="#link-bank">Course Schedule</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="backgrounds" class="rule-top">
+              Background Patterns
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Two background patterns that go with a color: <code>globe</code>, a faint map, and
+              <code>plaid</code>, the university tartan. Both come from the template's own image
+              files, so they follow the brand rules; never draw your own tartan. Use one for a
+              section bar or a feature section, not behind long text. The template shows them only
+              from 768px up; on phones the color is plain, and <code>grey plaid</code> has no gray
+              at all, so don't count on the pattern to set a section apart.
+            </p>
+            <p class="kit-classes"><code>globe</code>, <code>plaid</code>, with a color</p>
+            <div class="kit-swatches kit-swatches--tall">
+              <div class="red invert globe">red invert globe</div>
+              <div class="darkgrey invert globe">darkgrey invert globe</div>
+              <div class="grey globe">grey globe</div>
+              <div class="red invert plaid">red invert plaid</div>
+              <div class="darkgrey invert plaid">darkgrey invert plaid</div>
+              <div class="grey plaid">grey plaid</div>
+            </div>
+            <pre
+              class="kit-code"
+            ><code>&lt;div class="content wide red invert globe"&gt; &hellip; &lt;/div&gt;
+&lt;div class="grid column3 darkgrey invert plaid"&gt; &hellip; &lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kit<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="install.html">Install</a></li>
+              <li><a href="layout.html">Page Layout</a></li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li class="active">
+                    <a href="sections.html" aria-current="page">Page Sections</a>
+                  </li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="users.html">Users</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/flickity.pkgd.min.js"></script>
+    <script src="../js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>
