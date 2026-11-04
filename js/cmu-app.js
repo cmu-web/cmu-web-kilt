@@ -216,7 +216,7 @@
     if (scope.matches && scope.matches("[data-cmu-countdown]")) countdown(scope);
   }
   // Sorting: <ol class="cmu-sort" data-cmu-sort> whose items people put in
-  // order. Adds Up and Down buttons to each item (named for the item, for
+  // order. Adds up and down arrow buttons to each item (named for the item, for
   // screen readers), keeps focus on the moved item and says where it went. A
   // hidden input in each item moves with it, so a form sends the new order.
   // Without the script the list keeps its first order. See Sorting in the
@@ -228,16 +228,18 @@
       li.cmuName = li.textContent.trim().replace(/\s+/g, " ");
       var moves = document.createElement("span");
       moves.className = "cmu-sort-moves";
+      // Arrows, like the sortable table headers; the label names the item
       [
-        ["-1", "Up"],
-        ["1", "Down"],
+        ["-1", "up", "\u25B2"],
+        ["1", "down", "\u25BC"],
       ].forEach(function (m) {
         var b = document.createElement("button");
         b.type = "button";
         b.className = "btn ghost small";
         b.setAttribute("data-cmu-move", m[0]);
-        b.setAttribute("aria-label", "Move " + li.cmuName + " " + m[1].toLowerCase());
-        b.textContent = m[1];
+        b.setAttribute("aria-label", "Move " + li.cmuName + " " + m[1]);
+        b.title = "Move " + m[1];
+        b.textContent = m[2];
         moves.appendChild(b);
       });
       li.appendChild(moves);

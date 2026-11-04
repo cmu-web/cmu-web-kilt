@@ -526,8 +526,8 @@ body.cmu-app .cmu-card-sort label:has(:focus-visible) {
   outline-offset: 2px;
 }
 
-/* Sorting (needs cmu-app.js): an ordered list people put in order with Up and
-   Down buttons the script adds to each item, numbered in red. See Sorting in
+/* Sorting (needs cmu-app.js): an ordered list people put in order with up and
+   down arrow buttons the script adds to each item, numbered in red. See Sorting in
    the docs (forms.html) */
 ol.cmu-sort {
   counter-reset: cmu-sort;
@@ -560,6 +560,11 @@ ol.cmu-sort > li::before {
 }
 .cmu-sort-moves .btn {
   margin: 0;
+}
+/* The first item can't go up, and the last can't go down */
+.cmu-sort-moves .btn:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 /* A short note beside a button, centered on it; wraps under it when narrow */
