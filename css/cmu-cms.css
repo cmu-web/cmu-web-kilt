@@ -30,6 +30,9 @@
   --cmu-red-tint: #fdf2f3;
   --cmu-blue: #043673; /* the template's blue */
   --cmu-blue-tint: #e9eff7;
+  /* Checkboxes, radio buttons, sliders and progress bars in CMU red instead
+     of the browser's blue */
+  accent-color: var(--cmu-red);
 }
 
 /* Small capitals: eyebrow (red, above a heading), label (gray) */
