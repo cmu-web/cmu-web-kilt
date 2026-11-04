@@ -56,20 +56,38 @@
   text-transform: uppercase;
   color: var(--cmu-muted);
 }
+/* A block label sits just above what it labels, whatever that is: a
+   paragraph, a list, a field or a code block. The template pads both. (A
+   span label sits beside its controls instead.) */
+:is(p, div, legend).cmu-label {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+:is(p, div, legend).cmu-label + * {
+  margin-top: 0;
+  padding-top: 0;
+}
 .cmu-lead {
   font-size: 1.2rem;
   line-height: 1.55;
   max-width: 44em;
   margin: 0 0 1.75rem;
 }
-.cmu-cta-row {
+/* A button with a call to action beside it: a cmu-cta-row, or any paragraph
+   that holds a button and then a call to action. (Not any div: a card's div
+   holds its heading and text too.) */
+.cmu-cta-row,
+p:has(> .btn + .cta) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem 1.75rem;
+}
+.cmu-cta-row {
   margin: 0 0 2.5rem;
 }
-.cmu-cta-row a.btn {
+.cmu-cta-row .btn,
+p:has(> .btn + .cta) > .btn {
   margin: 0;
 }
 .cmu-cta-note {
@@ -521,7 +539,7 @@ ol.cmu-flow > li > strong {
    wraps long lines (URLs, HTML) so all of it stays in view. It belongs to
    the sentence that introduces it, so it sits close under it (like a line
    break), then a paragraph's space before what follows. */
-p:has(+ :is(.cmu-snippet, .cmu-copyable)) {
+p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   padding-bottom: 0.5em;
 }
 .cmu-snippet {

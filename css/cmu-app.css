@@ -911,9 +911,6 @@ body.cmu-app .cmu-filter-group input[type="text"] {
 .cmu-panel-body {
   padding: 1.5rem 0;
 }
-.cmu-panel-body > .cmu-label {
-  margin: 0 0 0.5rem;
-}
 .cmu-panel-body table.alternate {
   margin-bottom: 1.25rem;
 }
