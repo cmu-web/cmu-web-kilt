@@ -55,7 +55,7 @@
             <h1>Content Blocks</h1>
             <p class="cmu-lead">
               Blocks for the body of a page: path cards, how it works, steps, check lists, callouts,
-              questions, text with a screenshot, and code blocks with a copy button.
+              questions, text with a screenshot, code blocks with a copy button, and countdowns.
             </p>
 
             <h2 id="paths" class="rule-top">Path Cards</h2>
@@ -381,6 +381,26 @@
         <h3>Your Address</h3>
         <pre class="cmu-snippet cmu-snippet--wrap" id="kit-copy-address"><code>https://www.cmu.edu/example/photos/campus?width=900&amp;height=600</code></pre>
         <p><button class="btn" type="button" data-cmu-copy="#kit-copy-address">Copy Address</button></p>
+      </div>
+
+            <h2 id="countdown" class="rule-top">Countdown</h2>
+            <p>
+              Days, hours, minutes and seconds to a moment, on flip cards, as on Spring Carnival's
+              Binder. Put the date and time, with its time zone, in
+              <code>data-cmu-countdown</code>, and write the same moment as a sentence inside. The
+              script hides the sentence and shows the cards; screen readers and pages without the
+              script get the sentence. It stops at zero, and the cards don't flip for people who ask
+              their device for less motion. A page can have as many as it needs; each runs on its
+              own. Needs <code>cmu-app.js</code>.
+            </p>
+            <p class="kit-classes"><code>cmu-countdown</code>, <code>data-cmu-countdown</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p class="kit-try-date" data-demo-skip><label for="kit-countdown-date">Try a Date</label> <input type="datetime-local" id="kit-countdown-date" data-kit-countdown></p>
+        <h3>Spring Carnival Opening Ceremonies Start In</h3>
+        <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
+          <p>Spring Carnival's opening ceremonies start Thursday, April 8, 2027, at noon.</p>
+        </div>
       </div>
           </div>
         </div>

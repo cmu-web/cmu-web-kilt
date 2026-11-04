@@ -105,4 +105,98 @@
     },
     true,
   );
+
+  // Countdown: <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
+  // with a sentence inside that gives the same moment. Shows days, hours,
+  // minutes and seconds on flip cards and stops at zero; screen readers get
+  // the sentence instead of the ticking cards. See Countdown in the docs
+  // (cms-content.html). Adapted from a CodePen by Shaw
+  // (codepen.io/shshaw/pen/vKzoLL, MIT).
+  var UNITS = [
+    ["Days", 864e5, Infinity],
+    ["Hours", 36e5, 24],
+    ["Minutes", 6e4, 60],
+    ["Seconds", 1e3, 60],
+  ];
+  function card(unit) {
+    var el = document.createElement("div");
+    el.className = "cmu-countdown-unit";
+    el.innerHTML =
+      '<b class="cmu-countdown-card"><b class="cmu-countdown-top"></b>' +
+      '<b class="cmu-countdown-bottom"></b><b class="cmu-countdown-back">' +
+      '<b class="cmu-countdown-bottom"></b></b></b>' +
+      '<span class="cmu-countdown-label">' +
+      unit +
+      "</span>";
+    return el;
+  }
+  function flip(el, value) {
+    if (el.cmuValue === value) return;
+    var top = el.querySelector(".cmu-countdown-top");
+    var bottom = el.querySelector(".cmu-countdown-bottom");
+    var back = el.querySelector(".cmu-countdown-back");
+    // The bottom half shows the old value until the new one flips down over
+    // it; the first time there's no old value, so it starts with the new one
+    var old = el.cmuValue === undefined ? value : el.cmuValue;
+    back.setAttribute("data-value", old);
+    bottom.setAttribute("data-value", old);
+    el.cmuValue = value;
+    top.textContent = value;
+    back.querySelector(".cmu-countdown-bottom").setAttribute("data-value", value);
+    el.classList.remove("cmu-countdown-flip");
+    void el.offsetWidth; // restart the animation
+    el.classList.add("cmu-countdown-flip");
+    // Once the flip is done, the front catches up, so a narrower old value
+    // (02 before 155) doesn't show at the edge
+    clearTimeout(el.cmuSync);
+    el.cmuSync = setTimeout(function () {
+      back.setAttribute("data-value", value);
+      bottom.setAttribute("data-value", value);
+    }, 650);
+  }
+  function countdown(root) {
+    var end = new Date(root.getAttribute("data-cmu-countdown"));
+    if (isNaN(end)) return;
+    clearInterval(root.cmuCountdown);
+    var clock = root.querySelector(".cmu-countdown-clock");
+    if (!clock) {
+      clock = document.createElement("div");
+      clock.className = "cmu-countdown-clock";
+      clock.setAttribute("aria-hidden", "true");
+      UNITS.forEach(function (u) {
+        clock.appendChild(card(u[0]));
+      });
+      root.appendChild(clock);
+      root.classList.add("cmu-countdown-on");
+    }
+    var units = clock.children;
+    function tick() {
+      var left = Math.max(end - new Date(), 0);
+      UNITS.forEach(function (u, i) {
+        var n = Math.floor(left / u[1]);
+        if (u[2] !== Infinity) n %= u[2];
+        flip(units[i], String(n).padStart(2, "0"));
+      });
+      if (!left) clearInterval(root.cmuCountdown);
+    }
+    root.cmuCountdown = setInterval(tick, 1000);
+    tick();
+  }
+  function startCountdowns(scope) {
+    if (scope.querySelectorAll) scope.querySelectorAll("[data-cmu-countdown]").forEach(countdown);
+    if (scope.matches && scope.matches("[data-cmu-countdown]")) countdown(scope);
+  }
+  startCountdowns(document);
+  // Countdowns added later start, and one whose date changes restarts
+  new MutationObserver(function (changes) {
+    changes.forEach(function (c) {
+      if (c.type === "attributes") countdown(c.target);
+      else c.addedNodes.forEach(startCountdowns);
+    });
+  }).observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["data-cmu-countdown"],
+  });
 })();

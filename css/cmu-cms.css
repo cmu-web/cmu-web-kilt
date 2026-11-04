@@ -617,6 +617,140 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'/%3E%3C/svg%3E");
 }
 
+/* Countdown (needs cmu-app.js): days, hours, minutes and seconds on flip
+   cards; see Countdown in the docs (cms-content.html). The sentence inside is
+   the fallback and what screen readers get; the script hides it visually. */
+.cmu-countdown-on > :not(.cmu-countdown-clock) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.cmu-countdown-clock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 2rem;
+  perspective: 400px;
+}
+.cmu-countdown-clock *,
+.cmu-countdown-clock *::before,
+.cmu-countdown-clock *::after {
+  box-sizing: border-box;
+}
+.cmu-countdown-unit {
+  text-align: center;
+}
+.cmu-countdown-label {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+  color: var(--cmu-muted);
+}
+.cmu-countdown-card {
+  display: block;
+  position: relative;
+  padding-bottom: 0.72em;
+  font-size: 3.25rem;
+  line-height: 1.25;
+}
+@media (max-width: 767px) {
+  .cmu-countdown-card {
+    font-size: 2.25rem;
+  }
+}
+.cmu-countdown-top,
+.cmu-countdown-bottom,
+.cmu-countdown-back::before,
+.cmu-countdown-back::after {
+  display: block;
+  width: fit-content;
+  min-width: 1.8em;
+  height: 0.72em;
+  padding: 0 0.25em;
+  border-radius: 0.15em 0.15em 0 0;
+  background: #222;
+  color: #ccc;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+}
+.cmu-countdown-bottom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  overflow: hidden;
+  border-top: 1px solid #000;
+  border-radius: 0 0 0.15em 0.15em;
+  background: #393939;
+  color: #fff;
+  pointer-events: none;
+}
+.cmu-countdown-bottom::after {
+  content: attr(data-value);
+  display: block;
+  margin-top: -0.72em;
+}
+.cmu-countdown-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  pointer-events: none;
+}
+.cmu-countdown-back::before {
+  content: attr(data-value);
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+}
+.cmu-countdown-flip .cmu-countdown-back::before {
+  animation: cmu-countdown-top 0.3s cubic-bezier(0.37, 0.01, 0.94, 0.35) both;
+  transform-origin: center bottom;
+}
+.cmu-countdown-flip .cmu-countdown-back .cmu-countdown-bottom {
+  animation: cmu-countdown-bottom 0.6s cubic-bezier(0.15, 0.45, 0.28, 1) both;
+  transform-origin: center top;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmu-countdown-flip .cmu-countdown-back::before,
+  .cmu-countdown-flip .cmu-countdown-back .cmu-countdown-bottom {
+    animation: none;
+  }
+}
+@keyframes cmu-countdown-top {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 2;
+  }
+  0%,
+  99% {
+    opacity: 0.99;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
+@keyframes cmu-countdown-bottom {
+  0%,
+  50% {
+    z-index: -1;
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  51% {
+    opacity: 0.99;
+  }
+  100% {
+    opacity: 0.99;
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+}
+
 /* Lists: check marks, numbered steps */
 /* Replace the template's list indent, including its extra indent from the
    tenth ordered item onward. Nested ordinary lists keep their own indent. */

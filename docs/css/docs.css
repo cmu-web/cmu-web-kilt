@@ -114,3 +114,14 @@
 .kit-try .btn {
   margin: 0;
 }
+/* The countdown example's date field */
+.kit-try-date {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 1.5rem;
+}
+.kit-try-date label {
+  font-weight: 700;
+}

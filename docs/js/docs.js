@@ -14,10 +14,106 @@ var BAND = [
   "plaid",
   "globe",
 ];
+// The countdown example: a date field, three days from now at 9 a.m. to
+// start, that resets the countdown, its sentence and (below) its code.
+// The sentence is in AP style: "Monday, Jan. 11, 2027, at 9 a.m."
+var AP_MONTHS = [
+  "Jan.",
+  "Feb.",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug.",
+  "Sept.",
+  "Oct.",
+  "Nov.",
+  "Dec.",
+];
+var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+function apMoment(d) {
+  var h = d.getHours(),
+    m = d.getMinutes();
+  var time =
+    h === 12 && !m
+      ? "noon"
+      : h === 0 && !m
+        ? "midnight"
+        : (h % 12 || 12) +
+          (m ? ":" + String(m).padStart(2, "0") : "") +
+          (h < 12 ? " a.m." : " p.m.");
+  return (
+    DAYS[d.getDay()] +
+    ", " +
+    AP_MONTHS[d.getMonth()] +
+    " " +
+    d.getDate() +
+    ", " +
+    d.getFullYear() +
+    ", at " +
+    time
+  );
+}
+function isoLocal(d) {
+  var off = -d.getTimezoneOffset(),
+    pad = function (n) {
+      return String(Math.floor(Math.abs(n))).padStart(2, "0");
+    };
+  return (
+    d.getFullYear() +
+    "-" +
+    pad(d.getMonth() + 1) +
+    "-" +
+    pad(d.getDate()) +
+    "T" +
+    pad(d.getHours()) +
+    ":" +
+    pad(d.getMinutes()) +
+    ":00" +
+    (off < 0 ? "-" : "+") +
+    pad(off / 60) +
+    ":" +
+    pad(off % 60)
+  );
+}
+document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
+  var target = field.closest(".kit-demo").querySelector(".cmu-countdown");
+  var sentence = target.querySelector("p");
+  var lead = sentence.textContent.replace(/ [A-Z][a-z]+day, .*$/, " ");
+  function set(d) {
+    var code = target.closest(".kit-demo").nextElementSibling;
+    code = code && code.classList.contains("kit-code") ? code.querySelector("code") : null;
+    var oldIso = target.getAttribute("data-cmu-countdown"),
+      oldText = sentence.textContent;
+    var iso = isoLocal(d),
+      text = lead + apMoment(d).replace(/\.?$/, ".");
+    target.setAttribute("data-cmu-countdown", iso);
+    sentence.textContent = text;
+    if (code) code.textContent = code.textContent.replace(oldIso, iso).replace(oldText, text);
+  }
+  var start = new Date();
+  start.setDate(start.getDate() + 3);
+  start.setHours(9, 0, 0, 0);
+  field.value = isoLocal(start).slice(0, 16);
+  set(start);
+  field.addEventListener("change", function () {
+    var d = new Date(field.value);
+    if (!isNaN(d)) set(d);
+  });
+});
+
 document.querySelectorAll(".kit-demo").forEach(function (demo) {
   var copy = demo.cloneNode(true);
   copy.querySelectorAll("[data-demo-skip]").forEach(function (el) {
     el.remove();
+  });
+  // What the kit's script added: a countdown's cards
+  copy.querySelectorAll(".cmu-countdown-clock").forEach(function (el) {
+    el.remove();
+  });
+  copy.querySelectorAll(".cmu-countdown-on").forEach(function (el) {
+    el.classList.remove("cmu-countdown-on");
   });
   var lines = copy.innerHTML.replace(/^\s*\n|\s+$/g, "").split("\n");
   var indent = Math.min.apply(
