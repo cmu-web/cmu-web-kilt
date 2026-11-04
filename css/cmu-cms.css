@@ -167,11 +167,22 @@ p:has(> .btn + .cta) > .btn {
 .cmu-hero-art--stack::before {
   display: none;
 }
+/* Each image, or a link around it (such as to enlarge it), is one window */
+.cmu-hero-art--stack > * {
+  grid-area: 1 / 1;
+  width: 66%;
+}
+:is(#content, body) .cmu-hero-art--stack > a:not(.btn):not(.cta):not(.box):not(.scrolldown) {
+  display: block;
+  padding: 0;
+  border: 0;
+}
+.cmu-hero-art--stack > a img {
+  width: 100%;
+}
 /* Each window draws its own bar, with the dots, in its top padding */
 .cmu-hero-art--stack img {
-  grid-area: 1 / 1;
   box-sizing: content-box;
-  width: 82%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: top;
@@ -186,11 +197,13 @@ p:has(> .btn + .cta) > .btn {
       no-repeat,
     #e4e7ea;
 }
-.cmu-hero-art--stack img:nth-child(2) {
-  margin: 9% 0 0 9%;
+.cmu-hero-art--stack > :nth-child(2) {
+  margin: 17% 0 0 17%;
 }
-.cmu-hero-art--stack img:nth-child(3) {
-  margin: 18% 0 0 18%;
+/* The third, or the second of two, goes all the way to the right */
+.cmu-hero-art--stack > :nth-child(3),
+.cmu-hero-art--stack > :nth-child(2):last-child {
+  margin: 34% 0 0 34%;
 }
 /* A photo or a tartan pattern file, with no browser frame */
 .cmu-hero-art--plain::before {
@@ -704,9 +717,12 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 .cmu-countdown-back::before,
 .cmu-countdown-back::after {
   display: block;
+  /* Whole-pixel widths: each half is drawn on its own layer, and halves of a
+     fractional width can land a pixel apart */
   width: fit-content;
   min-width: 1.8em;
   height: 0.72em;
+  min-width: round(up, 1.8em, 1px);
   padding: 0 0.25em;
   border-radius: 0.15em 0.15em 0 0;
   background: #222;
