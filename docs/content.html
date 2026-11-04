@@ -624,7 +624,7 @@
                 <code>title</code> ("Copy Code," "Copy HTML") for screen readers and the tooltip.
               </li>
               <li>
-                <strong>Anything else gets a named button under the block,</strong> for people who
+                <strong>Anything else gets a named button beside the block,</strong> for people who
                 don't copy code every day: a link to share, an address to paste or a code to type
                 somewhere else. Say what it copies, such as "Copy Link," not just "Copy."
               </li>
@@ -639,7 +639,7 @@
             </ul>
             <p class="kit-classes">
               <code>data-cmu-copy</code>, <code>cmu-copyable</code>, <code>cmu-copy</code>,
-              <code>cmu-snippet</code>, <code>btn</code>
+              <code>cmu-snippet</code>, <code>cmu-copy-row</code>, <code>btn</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -650,8 +650,10 @@
       </div>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <pre class="cmu-snippet" id="kit-copy-link"><code>https://www.cmu.edu/teaching/</code></pre>
-        <p><button class="btn small" type="button" data-cmu-copy="#kit-copy-link">Copy Link</button></p>
+        <div class="cmu-copy-row">
+          <pre class="cmu-snippet" id="kit-copy-link"><code>https://www.cmu.edu/teaching/</code></pre>
+          <button class="btn" type="button" data-cmu-copy="#kit-copy-link">Copy Link</button>
+        </div>
       </div>
 
             <h2 id="countdown" class="rule-top">

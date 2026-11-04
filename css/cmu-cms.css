@@ -620,14 +620,21 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-/* A named copy button right under its block (data-cmu-copy), close to it so
-   they read as one */
-.cmu-snippet:has(+ p > [data-cmu-copy]) {
-  margin-bottom: 0;
+/* A named copy button beside its block, on the right; under it on phones */
+.cmu-copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin: 0 0 1em;
 }
-:is(#content, body) .cmu-snippet + p:has(> [data-cmu-copy]) {
-  margin-top: 0;
-  padding-top: 0.5rem;
+.cmu-copy-row > .cmu-snippet {
+  flex: 1 1 18rem;
+  min-width: 0;
+  margin: 0;
+}
+.cmu-copy-row > .btn {
+  margin: 0;
 }
 /* In a copy box, room on the right so the text never runs under the icon */
 .cmu-copyable > .cmu-snippet {
