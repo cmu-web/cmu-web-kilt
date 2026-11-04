@@ -234,7 +234,7 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
 // page. Choices last while you browse the docs, until Reset.
 (function () {
   var roof = document.querySelector(".roof");
-  if (!roof || document.body.dataset.kitNoTry !== undefined) return;
+  if (!roof) return;
   var state = { roof: "red", search: "off", account: "none", acting: "off", logo: "off" };
   try {
     Object.assign(state, JSON.parse(sessionStorage.getItem("kit-header") || "{}"));

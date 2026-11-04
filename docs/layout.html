@@ -53,11 +53,12 @@
             </p>
 
             <div class="cmu-callout">
-              <p class="cmu-label">Cascade Sites</p>
+              <p class="cmu-label">Using a CMS?</p>
               <p>
-                Cascade writes all of this from the site's folders and settings, so on a Cascade
-                site you only write what goes inside the content area. This page is for apps, and
-                for knowing what the parts are called.
+                Content Management Systems (CMSs), like Cascade, generate the page structure from
+                your site's folders and settings; you write the content that goes inside it. Use
+                this page to learn the names of the parts and, if you're building an app, what page
+                markup to generate.
               </p>
             </div>
           </div>
@@ -196,7 +197,7 @@
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- apps only --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- for copy buttons and countdowns --&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
             <ul>
@@ -231,8 +232,8 @@
               site or as plain text.
             </p>
             <pre class="kit-code"><code>&lt;div id="sitename"&gt;
-  &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&lt;/span&gt;
-  &lt;h2&gt;&lt;a href="https://www.cmu.edu/tli-office/"&gt;Teach, Learn, Innovate&lt;/a&gt;&lt;/h2&gt;
+  &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Seminars &amp;amp; Workshops&lt;/a&gt;&lt;/span&gt;
+  &lt;h2&gt;&lt;a href="https://www.cmu.edu/teaching/"&gt;Eberly Center&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;</code></pre>
 
             <p>
@@ -251,11 +252,19 @@
             </p>
             <pre class="kit-code"><code>&lt;div id="sitename"&gt;
   &lt;div&gt;
-    &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&lt;/span&gt;
-    &lt;h2&gt;&lt;a href="https://www.cmu.edu/tli-office/"&gt;Teach, Learn, Innovate&lt;/a&gt;&lt;/h2&gt;
-  &lt;/div&gt;&lt;a href="https://www.cmu.edu/tli-office/"&gt;&lt;img src="/images/logo.png" alt="Teach, Learn, Innovate"&gt;&lt;/a&gt;
+    &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Core4 Student Dashboard&lt;/a&gt;&lt;/span&gt;
+    &lt;h2&gt;&lt;a href="https://www.cmu.edu/corecompetencies/"&gt;Core Competencies Initiative&lt;/a&gt;&lt;/h2&gt;
+  &lt;/div&gt;&lt;a href="/"&gt;&lt;img src="/images/cci-wordmark.png" alt="Core Competencies Initiative Wordmark"&gt;&lt;/a&gt;
 &lt;/div&gt;</code></pre>
-            <p><a class="cta" href="sample.html">See a Logo on the Sample Page</a></p>
+            <figure class="cmu-shot cmu-shot--browser">
+              <img
+                src="images/core4-header.png"
+                alt="The Core4 Student Dashboard's header: the CMU roof, then its name with Core Competencies Initiative under it and the initiative's round logo on the right."
+                width="1300"
+                height="232"
+              />
+              <figcaption>The Core4 Student Dashboard's header, with its logo.</figcaption>
+            </figure>
 
             <h2 id="search" class="rule-top">Search</h2>
             <p>
@@ -264,6 +273,15 @@
               set that box's <code>value</code> to your Cascade site's ID. The template also puts a
               copy at the top of the menu, and on phones shows it as a row under the wordmark.
             </p>
+            <figure class="cmu-shot cmu-shot--browser">
+              <img
+                src="images/layout-search.png"
+                alt="This site's header with search on: a dark red search box in the roof, left of the menu button."
+                width="1300"
+                height="160"
+              />
+              <figcaption>Search in the roof, on these docs with search turned on.</figcaption>
+            </figure>
             <pre
               class="kit-code"
             ><code>&lt;form action="https://search.cmu.edu" class="search search-form" method="get" name="customForm"&gt;
@@ -285,12 +303,13 @@
               </li>
               <li>
                 <strong
-                  >With a <a href="app-users.html#account">Sign In link or your name</a> too</strong
-                >, put it after the form. The kit lines them up as search, your name, then the menu
-                button, keeping your name beside the menu it opens.
+                  >Put the <a href="app-users.html#account">account link</a> after the search
+                  form</strong
+                >, whether it's Sign In or the signed-in person's name. The kit lines them up as
+                search, the account link, then the menu button, so the name sits beside the menu it
+                opens.
               </li>
             </ul>
-            <p><a class="cta" href="sample.html">See Search on the Sample Page</a></p>
 
             <h2 id="navigation" class="rule-top">Navigation</h2>
             <p>
@@ -307,6 +326,17 @@
                 sub-list. Phones use only the menu.
               </li>
             </ul>
+            <figure class="cmu-shot cmu-shot--browser">
+              <img
+                src="images/layout-navigation.png"
+                alt="A page of these docs with the header tabs under the site name, Components in red and the menu open on the right with the Components section expanded."
+                width="1300"
+                height="560"
+              />
+              <figcaption>
+                The header tabs, and the menu open with the current section expanded.
+              </figcaption>
+            </figure>
             <p>
               Nest pages the way the site is organized: the top level holds a few sections, and each
               section's pages go in a sub-list under it, as deep as the site needs. The tabs then
@@ -388,11 +418,29 @@
             </p>
 
             <h2 id="breadcrumbs" class="rule-top">Breadcrumbs</h2>
-            <p>
-              The trail from the site's home to the page, first inside <code>#content</code>. Each
-              step before the current page is a link; the current page is plain text at the end.
-              Leave them off the home page.
-            </p>
+            <p>Breadcrumbs show the path from the site's home to the current page.</p>
+            <ul class="cmu-checks">
+              <li><strong>Place the trail first</strong> inside <code>#content</code>.</li>
+              <li>
+                <strong>Link each preceding step.</strong> Leave the current page as plain text at
+                the end.
+              </li>
+              <li>
+                <strong>Match the navigation labels.</strong> Use "Install" rather than "Install the
+                Kit," and "Gallery" rather than "Sites and Apps Built With the Kit," so the trail
+                matches the tabs and menu.
+              </li>
+              <li><strong>Omit breadcrumbs on the home page.</strong></li>
+            </ul>
+            <figure class="cmu-shot cmu-shot--browser">
+              <img
+                src="images/layout-breadcrumbs.png"
+                alt="The breadcrumbs under the header tabs: Carnegie Mellon Web Kit, Components, CMU Standard, then People as plain text."
+                width="1300"
+                height="292"
+              />
+              <figcaption>Breadcrumbs on a page three levels down.</figcaption>
+            </figure>
             <pre class="kit-code"><code>&lt;div class="breadcrumbs"&gt;
   &lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;&lt;a href="/help"&gt;Help&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;For Course Staff
 &lt;/div&gt;</code></pre>
@@ -408,14 +456,41 @@
               <code>&lt;div&gt;</code> inside it, and for a sidebar, add a second
               <code>div.sidebar</code> beside it; on phones the sidebar drops below.
             </p>
+            <figure class="cmu-shot cmu-shot--browser">
+              <img
+                src="images/layout-sidebar.png"
+                alt="An Equipment Checkout page: the page's text on the left, and a sidebar on the right with a Reserve a Camera Kit button, a blue Quick Links box, a gold Holiday Hours note and a Questions note with a line beside it and a link to email the desk."
+                width="1300"
+                height="809"
+              />
+              <figcaption>A page with a sidebar.</figcaption>
+            </figure>
             <pre class="kit-code"><code>&lt;div class="content"&gt;
   &lt;div&gt;
-    &lt;h1&gt;Page Title&lt;/h1&gt;
-    &lt;p&gt;The page.&lt;/p&gt;
+    &lt;h1&gt;Equipment Checkout&lt;/h1&gt;
+    &lt;p class="cmu-lead"&gt;Cameras, lights, microphones and tripods for any CMU course, free for up to a&amp;nbsp;week.&lt;/p&gt;
+    &lt;p&gt;Reserve a kit online, then pick it up at the checkout desk&hellip;&lt;/p&gt;
+    &lt;p&gt;Return kits to the desk by closing time on their due date&hellip;&lt;/p&gt;
   &lt;/div&gt;&lt;div class="sidebar"&gt;
-    &lt;div&gt;
-      &lt;h2&gt;Need Help?&lt;/h2&gt;
-      &lt;p&gt;Boxes in the sidebar.&lt;/p&gt;
+    &lt;div class="simple"&gt;
+      &lt;a class="btn wide" href="#"&gt;Reserve a Camera Kit&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="list blue invert"&gt;
+      &lt;h1&gt;Quick Links&lt;/h1&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Browse Equipment&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;My Reservations&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Loan Policies&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="gold"&gt;
+      &lt;h2&gt;Holiday Hours&lt;/h2&gt;
+      &lt;p&gt;The desk closes Dec. 19 and reopens Jan. 12.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="left-rule"&gt;
+      &lt;h2&gt;Questions?&lt;/h2&gt;
+      &lt;p&gt;The checkout desk answers email within one business&amp;nbsp;day.&lt;/p&gt;
+      &lt;p&gt;&lt;a class="cta" href="#"&gt;Email the Checkout Desk&lt;/a&gt;&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -437,6 +512,7 @@
                 Several <code>.content</code> blocks can follow one another, for a page in bands.
               </li>
             </ul>
+            <p><a class="cta" href="standard-sidebar.html">See the Sidebar Boxes</a></p>
 
             <h2 id="scripts" class="rule-top">Scripts</h2>
             <p>
@@ -448,17 +524,17 @@
             ><code>&lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- apps only --&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- for copy buttons and countdowns --&gt;</code></pre>
             <p>
-              In an app, the kit's <code>cmu-app.js</code> comes last, after the template's, for the
-              components that need a script, such as copy buttons.
+              On a page with copy buttons or countdowns, the kit's <code>cmu-app.js</code> comes
+              last, after the template's.
             </p>
             <p>
               Besides the navigation, the template's script removes <code>style=""</code> from
               spans, and opens and closes the template's <code>.collapsed</code> headings.
             </p>
 
-            <h2 id="which-nav" class="rule-top">Navigation or Tabs?</h2>
+            <h2 id="which-nav" class="rule-top">Navigation, Tabs or Sidebar?</h2>
             <ul class="cmu-checks">
               <li>
                 <strong>Pages of the site</strong> go in the navigation: Browse, My Courses, Help.
@@ -466,7 +542,13 @@
               <li>
                 <strong>Views of one page</strong> go in
                 <a href="app-structure.html#tabs">tabs</a> (<code>cmu-tabs</code>) at the top of the
-                content: semesters, or a list's sections.
+                content, such as one tab for each semester of the same list of courses.
+              </li>
+              <li>
+                <strong>Sections of one long page</strong> go in an
+                <a href="standard-sidebar.html#on-this-page">On This Page</a> box at the top of the
+                sidebar, as on <a href="conventions.html">Conventions</a>. Leave it off pages short
+                enough to see at a glance.
               </li>
               <li>
                 <strong>Where you are</strong> goes in the breadcrumbs, when a page sits below
@@ -510,6 +592,12 @@
               <li>
                 <code>.btn</code> and other classes that set <code>display</code> override a bare
                 <code>hidden</code> attribute. The kit makes <code>hidden</code> always hide.
+              </li>
+              <li>
+                The template's script turns every in-page link (<code>href="#id"</code>) into
+                <code>javascript:void(0)</code> and scrolls with its own animation, so the address
+                never shows the section and Back doesn't return. With <code>cmu-app.js</code>, the
+                links stay real: the address shows the section, and Back works.
               </li>
             </ul>
           </div>

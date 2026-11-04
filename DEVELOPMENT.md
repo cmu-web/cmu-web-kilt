@@ -67,8 +67,8 @@ them as written:
 - **Places where the template needs elements to touch**, outside an
   example: a sidebar right after the content's `</div>`, and a header logo
   right after the site name's `</div>`. Whitespace between them breaks the
-  layout. Only the sample page has these; say why in a comment above the
-  mark.
+  layout. Only Conventions has one (its On This Page sidebar); say why in a comment
+  above the mark.
 
 Prettier's HTML formatting otherwise changes no pixels; compare screenshots
 of a page before and after if you're unsure.
