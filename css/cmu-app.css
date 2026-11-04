@@ -28,7 +28,8 @@ body.cmu-app
     + input[type="email"],
     + input[type="search"],
     + input[type="number"],
-    + input[type="date"]
+    + input[type="date"],
+    + input[type="datetime-local"]
   ),
 body.cmu-app fieldset > legend {
   display: block;
@@ -398,6 +399,19 @@ body.cmu-acting-as .scrolltop {
   background: var(--cmu-amber-tint);
   border-color: var(--cmu-gold);
   color: var(--cmu-amber);
+}
+
+/* A <button class="btn"> where a form needs one, such as a sign-in that
+   must POST: wide fills its line, as a.btn.wide does, and in a heading
+   (<h4> on a red box) it takes the heading's type, as a link would */
+button.btn.wide {
+  display: block;
+  width: 100%;
+}
+:is(h1, h2, h3, h4, h5, h6) button.btn {
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
 }
 
 /* Buttons that look like links (POST actions next to plain links) */
