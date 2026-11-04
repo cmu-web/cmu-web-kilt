@@ -259,8 +259,8 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
       sitename.appendChild(wrap);
       sitename.appendChild(
         html(
-          // A placeholder from PlaceMellon: the round Scotty profile picture
-          '<a class="kit-try-logo" href="https://cmu-web.github.io/cmu-web-placemellon/"><img src="https://placemellon.andrew.cmu.edu/150?profile" width="150" height="150" alt="Logo placeholder"></a>',
+          // A placeholder from PlaceMellon: Scotty on white, about as tall as the name and h2
+          '<a class="kit-try-logo" href="https://cmu-web.github.io/cmu-web-placemellon/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty&white" width="110" height="110" alt="Logo placeholder"></a>',
         ),
       );
     } else if (!on && wrap) {
