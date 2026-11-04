@@ -189,12 +189,12 @@
 /* Card links: one per audience or option */
 .cmu-paths {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 1.25rem;
   margin: 0 0 3.5rem;
 }
 .cmu-paths--two {
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
   margin-bottom: 2.75rem;
 }
 a.cmu-path,
@@ -245,18 +245,18 @@ ol.cmu-flow {
   counter-reset: cmu-flow;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   gap: 1.5rem;
   margin: 0 0 3.5rem;
   padding: 0;
 }
-ol.cmu-flow li {
+ol.cmu-flow > li {
   counter-increment: cmu-flow;
   position: relative;
   padding-top: 3.4rem;
   line-height: 1.55;
 }
-ol.cmu-flow li::before {
+ol.cmu-flow > li::before {
   content: counter(cmu-flow);
   position: absolute;
   left: 0;
@@ -272,7 +272,7 @@ ol.cmu-flow li::before {
   font-weight: 700;
   font-size: 1.1rem;
 }
-ol.cmu-flow li strong {
+ol.cmu-flow > li > strong {
   display: block;
   font-size: 1.15rem;
   margin-bottom: 0.25rem;
@@ -345,7 +345,7 @@ ol.cmu-flow li strong {
 /* Question teasers in columns */
 .cmu-qa {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   gap: 1.25rem 2rem;
   margin: 0 0 1.25rem;
 }
@@ -489,13 +489,16 @@ p:has(+ :is(.cmu-snippet, .cmu-copyable)) {
 }
 .cmu-snippet {
   margin: 0 0 1em;
-  padding: 1rem 1.25rem;
   overflow-x: auto;
   background: var(--cmu-tint);
   border: 1px solid var(--cmu-line);
   font-size: 0.85rem;
   line-height: 1.5;
   white-space: pre; /* the template wraps pre */
+}
+/* Keep the inset when the template zeroes a pre's first/last-child padding. */
+:is(#content, body) .cmu-snippet {
+  padding: 1rem 1.25rem;
 }
 .cmu-snippet code {
   font-family: Menlo, Consolas, monospace;
@@ -567,17 +570,22 @@ p:has(+ :is(.cmu-snippet, .cmu-copyable)) {
 }
 
 /* Lists: check marks, numbered steps */
+/* Replace the template's list indent, including its extra indent from the
+   tenth ordered item onward. Nested ordinary lists keep their own indent. */
+:is(#content, body) :is(.cmu-flow, .cmu-steps, .cmu-checks) > li {
+  margin-left: 0;
+}
 .cmu-checks {
   list-style: none;
   margin: 0 0 1rem;
   padding: 0;
 }
-.cmu-checks li {
+.cmu-checks > li {
   position: relative;
   padding: 0 0 0.7rem 1.7rem;
   line-height: 1.5;
 }
-.cmu-checks li::before {
+.cmu-checks > li::before {
   content: "";
   position: absolute;
   left: 0.25rem;
@@ -696,7 +704,7 @@ table.cmu-compare {
 #content .cmu-event-cards,
 .cmu-event-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
   gap: 1.5rem;
   list-style: none;
   margin: 0 0 1.5em;
