@@ -76,10 +76,22 @@
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-search-bar">
-          <p>Search by course number, title or instructor.</p>
+          <p>Search by course number or title.</p>
           <label for="kit-search" class="sr-only">Find a Syllabus</label>
-          <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;">
+          <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;" data-kit-filter="kit-search-rows" data-kit-count="kit-search-count" data-kit-noun="section">
         </div>
+          <table class="alternate cmu-full">
+            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
+            <tbody id="kit-search-rows">
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+            </tbody>
+          </table>
+          <p class="cmu-muted" id="kit-search-count" aria-live="polite">Showing all 6 sections</p>
       </div>
             <ul>
               <li>
@@ -112,7 +124,7 @@
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-filters">
+        <div class="cmu-filters" data-kit-filters="kit-filter-rows" data-kit-count="kit-filter-count" data-kit-noun="section">
           <div class="cmu-filter-group">
             <label class="cmu-label" for="kit-find">Find Sections</label>
             <input type="text" id="kit-find" placeholder="Course number or title">
@@ -120,11 +132,23 @@
           <div class="cmu-filter-group">
             <div class="cmu-label">Status</div>
             <div class="cmu-filter-checks">
-              <label><input type="checkbox"> Available</label>
-              <label><input type="checkbox"> Unavailable</label>
+              <label><input type="checkbox" value="available"> Available</label>
+              <label><input type="checkbox" value="unavailable"> Unavailable</label>
             </div>
           </div>
         </div>
+          <table class="alternate cmu-full">
+            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
+            <tbody id="kit-filter-rows">
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+            </tbody>
+          </table>
+          <p class="cmu-muted" id="kit-filter-count" aria-live="polite">Showing all 6 sections</p>
       </div>
             <ul class="cmu-checks">
               <li>
@@ -328,8 +352,25 @@
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <p class="cmu-results-count" aria-live="polite">Showing 20 of 312 sections</p>
-        <p class="cmu-load-more"><button type="button" class="btn ghost wide">Load More Sections</button></p>
+          <table class="alternate cmu-full">
+            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
+            <tbody id="kit-more-rows">
+              <tr><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr><td class="cmu-fit"><span class="cmu-code">15-150</span></td><td>Principles of Functional Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr><td class="cmu-fit"><span class="cmu-code">15-210</span></td><td>Parallel and Sequential Data Structures and Algorithms</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">21-122</span></td><td>Integration and Approximation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">48-200</span></td><td>Architecture Design Studio: Composition</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">76-106</span></td><td>Writing About Literature, Art and Culture</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr hidden><td class="cmu-fit"><span class="cmu-code">85-211</span></td><td>Cognitive Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+            </tbody>
+          </table>
+        <p class="cmu-results-count" id="kit-more-count" aria-live="polite">Showing 4 of 12 sections</p>
+        <p class="cmu-load-more"><button type="button" class="btn ghost wide" data-kit-load-more="kit-more-rows" data-kit-count="kit-more-count" data-kit-batch="4">Load More Sections</button></p>
       </div>
             <p>
               A pager is one list: first (&laquo;), previous (&lsaquo;), the page numbers, next

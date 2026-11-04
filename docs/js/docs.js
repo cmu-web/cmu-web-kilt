@@ -195,29 +195,69 @@ document.querySelectorAll("[data-open-dialog]").forEach(function (b) {
   });
 });
 
-// A demo filter: an input with data-kit-filter="list id" hides the list's
-// items that don't match (text or data-keywords) and updates the count
-document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
-  var list = document.getElementById(input.dataset.kitFilter);
-  var count = document.getElementById(input.dataset.kitCount);
-  input.addEventListener("input", function () {
-    var q = input.value.trim().toLowerCase(),
-      shown = 0,
-      items = list.children;
-    Array.prototype.forEach.call(items, function (li) {
-      var hit =
-        !q || (li.textContent + " " + (li.dataset.keywords || "")).toLowerCase().indexOf(q) >= 0;
-      li.hidden = !hit;
-      if (hit) shown++;
+// Demo filters. An input with data-kit-filter="list id" hides the list's
+// items (or a table body's rows) that don't match its text or data-keywords.
+// A cmu-filters box with data-kit-filters="table body id" also hides rows
+// whose data-status isn't among the checked boxes. Hidden rows go to the end,
+// so table.alternate's stripes stay even, and a count says how many show.
+function kitFilter(list, count, noun, keep) {
+  var items = Array.prototype.slice.call(list.children);
+  return function () {
+    var shown = items.filter(keep),
+      hidden = items.filter(function (el) {
+        return shown.indexOf(el) < 0;
+      });
+    shown.concat(hidden).forEach(function (el) {
+      el.hidden = hidden.indexOf(el) >= 0;
+      list.appendChild(el);
     });
-    count.textContent = !shown
+    var n = shown.length,
+      all = items.length,
+      one = noun.split("|")[0],
+      many = noun.split("|")[1] || one + "s";
+    count.textContent = !n
       ? "Sorry, no results to display."
-      : shown === items.length
-        ? "Showing all " + shown + " people"
-        : shown === 1
-          ? "Showing 1 of " + items.length + " people"
-          : "Showing " + shown + " of " + items.length + " people";
-  });
+      : n === all
+        ? "Showing all " + all + " " + many
+        : "Showing " + n + " of " + all + " " + (all === 1 ? one : many);
+  };
+}
+function kitMatches(el, q) {
+  return !q || (el.textContent + " " + (el.dataset.keywords || "")).toLowerCase().indexOf(q) >= 0;
+}
+document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
+  var run = kitFilter(
+    document.getElementById(input.dataset.kitFilter),
+    document.getElementById(input.dataset.kitCount),
+    input.dataset.kitNoun || "person|people",
+    function (el) {
+      return kitMatches(el, input.value.trim().toLowerCase());
+    },
+  );
+  input.addEventListener("input", run);
+});
+document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
+  var text = box.querySelector('input[type="text"]'),
+    checks = box.querySelectorAll('input[type="checkbox"]');
+  var run = kitFilter(
+    document.getElementById(box.dataset.kitFilters),
+    document.getElementById(box.dataset.kitCount),
+    box.dataset.kitNoun || "item",
+    function (el) {
+      var on = Array.prototype.filter
+        .call(checks, function (c) {
+          return c.checked;
+        })
+        .map(function (c) {
+          return c.value;
+        });
+      return (
+        kitMatches(el, text.value.trim().toLowerCase()) &&
+        (!on.length || on.indexOf(el.dataset.status) >= 0)
+      );
+    },
+  );
+  box.addEventListener("input", run);
 });
 
 // Try the header (Page Layout): the roof's color, the search box, signed in
@@ -479,4 +519,37 @@ document.querySelectorAll(".kit-where").forEach(function (where) {
   text.textContent = words.slice(0, at);
   where.parentNode.insertBefore(keep, where);
   keep.appendChild(where);
+});
+
+// Demo Load More: a button with data-kit-load-more="table body id" shows the
+// next data-kit-batch hidden rows, updates the count, moves focus to the first
+// new row and hides its paragraph once everything is showing. A real app loads
+// the rows from the server instead.
+document.querySelectorAll("[data-kit-load-more]").forEach(function (button) {
+  var body = document.getElementById(button.dataset.kitLoadMore),
+    count = document.getElementById(button.dataset.kitCount),
+    batch = Number(button.dataset.kitBatch) || 20;
+  button.addEventListener("click", function () {
+    var rows = Array.prototype.slice.call(body.rows),
+      next = rows
+        .filter(function (r) {
+          return r.hidden;
+        })
+        .slice(0, batch);
+    next.forEach(function (r) {
+      r.hidden = false;
+    });
+    var shown = rows.filter(function (r) {
+      return !r.hidden;
+    }).length;
+    count.textContent =
+      shown === rows.length
+        ? "Showing all " + rows.length + " sections"
+        : "Showing " + shown + " of " + rows.length + " sections";
+    if (next[0]) {
+      next[0].tabIndex = -1;
+      next[0].focus();
+    }
+    if (shown === rows.length) button.closest("p").hidden = true;
+  });
 });
