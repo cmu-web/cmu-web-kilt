@@ -106,6 +106,35 @@
     true,
   );
 
+  // Enlarge on click: <a href="big.jpg" data-cmu-zoom><img alt="..."></a> opens
+  // the image over the page, with the page dimmed behind it; Escape, the close
+  // button or a click anywhere closes it, and focus goes back to the link.
+  // Without the script (or a browser without <dialog>), the link opens the image.
+  // See Enlarge on Click in the docs (cms-content.html).
+  var zoom;
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-cmu-zoom]");
+    if (!a || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (!window.HTMLDialogElement) return;
+    e.preventDefault();
+    if (!zoom || !zoom.isConnected) {
+      zoom = document.createElement("dialog");
+      zoom.className = "cmu-zoom";
+      zoom.innerHTML =
+        '<button type="button" class="cmu-zoom-close" aria-label="Close">&times;</button>' +
+        '<img alt="">';
+      zoom.addEventListener("click", function () {
+        zoom.close();
+      });
+      document.body.appendChild(zoom);
+    }
+    var small = a.querySelector("img"),
+      big = zoom.querySelector("img");
+    big.src = a.href;
+    big.alt = small ? small.alt : "";
+    zoom.showModal();
+  });
+
   // Countdown: <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
   // with a sentence inside that gives the same moment. Shows days, hours,
   // minutes and seconds on flip cards and stops at zero; screen readers get

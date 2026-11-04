@@ -65,7 +65,7 @@
 &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
 &lt;link href="/your-site.css" rel="stylesheet"&gt;</code></pre>
             <p>
-              On a page with copy buttons or countdowns, the kit's script goes just before
+              On a page with components that need a script, the kit's script goes just before
               <code>&lt;/body&gt;</code>, after the template's scripts:
             </p>
             <pre
@@ -99,8 +99,11 @@
                 </tr>
                 <tr>
                   <td class="cmu-fit"><code>cmu-app.js</code></td>
-                  <td>Pages with copy buttons or countdowns, after the template's scripts</td>
-                  <td>Behavior for the components that need it: copy buttons and countdowns</td>
+                  <td>Pages with components that need it, after the template's scripts</td>
+                  <td>
+                    Behavior for the components that need it: copy buttons, countdowns and
+                    screenshots that enlarge
+                  </td>
                 </tr>
               </tbody>
             </table>
