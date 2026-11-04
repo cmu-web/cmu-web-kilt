@@ -413,6 +413,12 @@ ol.cmu-flow > li > strong {
   font-style: italic;
 }
 
+/* A line across a grid band's full width, above or below its cards, such as
+   an introduction or a link to see more (the template spans only a first h1) */
+.grid > .cmu-grid-full {
+  flex: 0 0 100%;
+}
+
 /* A kit block that ends its content section (as each does in Cascade, one
    block per section) leaves the space below to the section's own padding */
 #content .content > div > [class^="cmu-"]:last-child,
