@@ -720,9 +720,10 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   /* Whole-pixel widths: each half is drawn on its own layer, and halves of a
      fractional width can land a pixel apart */
   width: fit-content;
+  width: calc-size(fit-content, round(up, size, 1px));
   min-width: 1.8em;
-  height: 0.72em;
   min-width: round(up, 1.8em, 1px);
+  height: 0.72em;
   padding: 0 0.25em;
   border-radius: 0.15em 0.15em 0 0;
   background: #222;
