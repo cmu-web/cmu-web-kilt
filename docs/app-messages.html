@@ -103,7 +103,9 @@
             <h2 id="dialog" class="rule-top">Dialog and File Drop Zone</h2>
             <p>
               Use the native <code>&lt;dialog&gt;</code> element with <code>showModal()</code>; the
-              browser handles focus, Escape and the backdrop. The drop zone is a label wrapping a
+              browser handles focus, Escape and the backdrop. Inside a
+              <code>method="dialog"</code> form, Cancel submits with <code>formnovalidate</code>
+              so it closes even when a required field is empty. The drop zone is a label wrapping a
               file input, so it works by click and keyboard as well as by dragging.
             </p>
             <p class="kit-classes">
@@ -131,7 +133,7 @@
             <p class="cmu-hint">Any document up to 20&nbsp;MB.</p>
             <div class="cmu-dialog-buttons">
               <button class="btn" type="submit">Upload File</button>
-              <button class="btn ghost" type="button" data-close>Cancel</button>
+              <button class="btn ghost" type="submit" value="cancel" formnovalidate>Cancel</button>
             </div>
           </form>
         </dialog>

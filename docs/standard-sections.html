@@ -122,7 +122,8 @@
               900 &times; 600 version in <code>style</code> for phones, and a 1400 &times; 700
               version in <code>data-img</code>, which the template's script swaps in on wider
               screens. Give it <code>role="img"</code> and an <code>aria-label</code> describing the
-              photo. In Cascade, it's the page's Hero.
+              photo. In Cascade, it's the page's Hero. On a page with a hero, the template drops the
+              line under the header's tabs, since the photo sits right below them.
             </p>
             <p>
               Over the photo, either a line of text in a dark band (<code>div.text</code>, with an
@@ -133,8 +134,10 @@
             <p class="kit-classes">
               <code>hero</code>, <code>text</code>, <code>box left</code>, <code>box right</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="hero" role="img" aria-label="Placeholder for a photo." data-img="images/photo-1400x700.svg" style="background-image:url(images/photo-900x600.svg)">
           <div class="text">
             <h1>Get Help Without the Line</h1>
@@ -142,8 +145,8 @@
           </div>
         </div>
       </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="hero" role="img" aria-label="Placeholder for a photo." data-img="images/photo-1400x700.svg" style="background-image:url(images/photo-900x600.svg)">
           <a class="box left" href="#hero">
             <h1>Camera Kits Are Back for Spring</h1>
@@ -152,6 +155,8 @@
           </a>
         </div>
       </div>
+        <div class="content wide">
+          <div>
             <p>
               Several heroes in a <code>section.js-flickityCustom</code> make a slideshow, with the
               same <a href="#carousel">carousel</a> script. For an app's info site, the kit's
@@ -164,14 +169,18 @@
               A grid is two, three or four columns that stack on phones. With
               <code>grey boxes</code>, each column is a white card on a gray band. An
               <code>&lt;h1&gt;</code> first in the grid is the band's heading, across the top. Good
-              for short cards that each lead somewhere.
+              for short cards that each lead somewhere. For a line across the band's full width,
+              such as an introduction under the heading or a link to see more after the cards, use
+              <code>&lt;p class="cmu-grid-full"&gt;</code> (the kit's only addition here).
             </p>
             <p class="kit-classes">
               <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
-              <code>boxes</code>
+              <code>boxes</code>, <code>cmu-grid-full</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column3 grey boxes">
           <h1>Ways to Get Started</h1>
           <div>
@@ -191,7 +200,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="i-want" class="rule-top">I Want To&hellip;</h2>
             <p>
               The same grid without a color: white boxes with a thin border on the page's own
@@ -204,8 +214,10 @@
             <p class="kit-classes">
               <code>grid column3 boxes</code>, a linked <code>&lt;h2&gt;</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column3 boxes">
           <h1>I Want To&hellip;</h1>
           <div>
@@ -222,7 +234,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="feature" class="rule-top">Feature Section</h2>
             <p>
               A red band with a picture on one side and a heading, a few sentences and a button on
@@ -230,8 +243,10 @@
               a two-column grid in <code>red invert</code>: the first column holds the image.
             </p>
             <p class="kit-classes"><code>grid column2 red invert</code>, <code>btn</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column2 red invert">
           <h1>New This Semester</h1>
           <div>
@@ -244,7 +259,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="carousel" class="rule-top">Carousel</h2>
             <p>
               Feature sections that slide, with arrows at the sides and a dot for each slide, as on
@@ -268,8 +284,10 @@
               one first, and never hide something people need in a later slide.
             </p>
             <p class="kit-classes"><code>js-flickityCustom</code>, <code>grid column2</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="js-flickityCustom">
           <div class="grid column2">
             <div>
@@ -300,7 +318,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="circles" class="rule-top">Circle Photos</h2>
             <p>
               Square photos cropped to circles, beside a few paragraphs each, as on First-Year
@@ -309,8 +328,10 @@
               <code>&lt;hr&gt;</code> separates each pair.
             </p>
             <p class="kit-classes"><code>circle</code>, <code>grid column2</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column2">
           <div>
             <img class="circle" src="images/scotty.png" alt="Scotty, standing in for a square photo." width="400" height="400">
@@ -333,7 +354,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="timeline" class="rule-top">Timeline Cards</h2>
             <p>
               The steps of a process in date order, a card for each with a small icon, the step's
@@ -363,17 +385,19 @@
               <code>grid column4 darkgreen boxes</code>, <code>floatright</code>,
               <code>aligncenter</code>, <code>bi</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column4 darkgreen boxes">
           <h1>Spring 2027 Timeline</h1>
           <div>
-            <i class="bi bi-flag floatright" aria-hidden="true"></i><a href="#timeline">Semester Opens</a>
+            <i class="bi bi-flag floatright" aria-hidden="true"></i><a href="#timeline">Uploads Open</a>
             <hr>
             <p class="aligncenter"><strong>Nov. 2, 2026</strong></p>
           </div>
           <div>
-            <i class="bi bi-bell floatright" aria-hidden="true"></i><a href="#timeline">Reminders to Instructors</a>
+            <i class="bi bi-bell floatright" aria-hidden="true"></i><a href="#timeline">Reminders</a>
             <hr>
             <p class="aligncenter"><strong>Dec. 7-18, 2026</strong></p>
           </div>
@@ -389,7 +413,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="photos" class="rule-top">Photo Grid</h2>
             <p>
               Linked photos with a title over each, as on the HUB's Academic Calendar (three across)
@@ -403,12 +428,21 @@
               words, or they wrap; a sentence under the title fits at two or three across. On phones
               the photos stack.
             </p>
+            <p>
+              No photos yet? Fill the grid with CMU photos from
+              <a class="external" href="https://cmu-web.github.io/cmu-web-placemellon/"
+                >PlaceMellon</a
+              >
+              while you build, and swap in the real ones when they're ready.
+            </p>
             <p class="kit-classes">
               <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
               <code>photos</code>, <code>photo</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column4 photos">
           <h1>Borrow Equipment</h1>
           <div class="photo">
@@ -442,7 +476,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="big-buttons" class="rule-top">Big Buttons</h2>
             <p>
               Two wide buttons side by side for the two things most people come to do, as at the top
@@ -452,8 +487,10 @@
             <p class="kit-classes">
               <code>grid column2</code>, <code>btn wide</code>, <code>aligncenter</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column2">
           <div>
             <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Have a Question? Join the Queue</a></h2>
@@ -462,7 +499,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="bar" class="rule-top">Section Bar</h2>
             <p>
               A full-width colored bar with a heading, to start a new part of a long page, often
@@ -470,14 +508,18 @@
               <code>id</code> to link to it.
             </p>
             <p class="kit-classes"><code>content wide</code>, <code>red invert globe</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide red invert globe" id="kit-bar-example">
           <div>
             <h2>2026-27 Fellows</h2>
           </div>
         </div>
       </div>
+        <div class="content wide">
+          <div>
             <p>
               For a statement rather than a heading, such as a mission, use a lighter band with the
               text centered, as on the Tartan Bike Project's page: <code>grey plaid</code>, which
@@ -486,15 +528,18 @@
               <a href="standard.html#backgrounds">Globe and Plaid</a>), so don't count on it to set
               the statement apart.
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide grey plaid">
           <div>
             <p class="aligncenter"><em>Equipment Checkout is run by Teaching Technology. <strong>Our mission is to put the tools for great class projects in every student's hands.</strong></em></p>
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="announcements" class="rule-top">Announcements</h2>
             <p>
               A full-width band across the top of a page, right under the breadcrumbs, for something
@@ -531,32 +576,34 @@
               <code>content wide</code>, <code>darkgrey invert</code>, <code>gold</code>,
               <code>blue invert</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide darkgrey invert">
           <div>
             <p><strong>Students: this page is for instructors and department administrators. To find a syllabus, <a href="#announcements">browse the registry</a>.</strong></p>
           </div>
         </div>
       </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide gold">
           <div>
             <p><strong>Finals Week:</strong> Office hours run on a reduced schedule from May 4 to 12. <a href="#announcements">See this week's hours</a>.</p>
           </div>
         </div>
       </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide gold">
           <div>
             <h3 class="aligncenter">Camera kits are limited this month. More arrive by mid-September; check back here for updates.</h3>
           </div>
         </div>
       </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide blue invert">
           <div>
             <h4>Holiday Hours</h4>
@@ -564,7 +611,8 @@
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="link-bank" class="rule-top">Link Bank</h2>
             <p>
               Red columns of links at the bottom of a page, to the site's main pages and its
@@ -576,8 +624,10 @@
             <p class="kit-classes">
               <code>grid column3 red invert nav</code>, <code>nav-list</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="grid column3 red invert nav">
           <div>
             <div class="nav-list">
@@ -606,8 +656,6 @@
           </div>
         </div>
       </div>
-          </div>
-        </div>
       </main>
 
       <footer class="grid column3 invert">

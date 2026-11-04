@@ -163,6 +163,13 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
       }
     } else {
       var next = follow || demo.nextElementSibling;
+      // Last on the page, or right before another example: a text block of its own
+      if (!next || !next.matches(".content, .kit-follow")) {
+        next = document.createElement("div");
+        next.className = "content wide";
+        next.appendChild(document.createElement("div"));
+        demo.after(next);
+      }
       next.firstElementChild.prepend(pre);
     }
   } else {
@@ -196,11 +203,6 @@ document.querySelectorAll("[data-open-dialog]").forEach(function (b) {
     d.close();
     d.classList.remove("kit-inline");
     d.showModal();
-  });
-});
-document.querySelectorAll("dialog [data-close]").forEach(function (b) {
-  b.addEventListener("click", function () {
-    b.closest("dialog").close();
   });
 });
 
@@ -438,3 +440,22 @@ document.querySelectorAll("table[data-kit-sortable]").forEach(function (table) {
   if (input) input.addEventListener("input", render);
   render();
 });
+
+// The template gives the header's tabs its hero-page style (nav.b, no line
+// under the tabs) when the page has any .hero, even one in an example. Once
+// it has run, take that off unless the page's own hero is there.
+function unHeroNav() {
+  var heroes = document.querySelectorAll(".hero");
+  var own = Array.prototype.some.call(heroes, function (h) {
+    return !h.closest(".kit-demo");
+  });
+  if (!own)
+    document.querySelectorAll("header nav.b").forEach(function (n) {
+      n.classList.remove("b");
+    });
+}
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(unHeroNav);
+  });
+else setTimeout(unHeroNav);

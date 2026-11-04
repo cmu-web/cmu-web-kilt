@@ -1,7 +1,7 @@
 # Carnegie Mellon Web Kit
 
 The Carnegie Mellon Web Kit (`cmu-web-kit`) builds on Carnegie Mellon's web
-template with components for a unified look across Cascade sites and the web
+template with components for a unified look across CMU websites and the web
 apps around them: path cards, callouts, testimonials, embedded pages, status
 pills, tabs, dialogs, file drop zones, bulk selection bars, copy buttons and
 more. It works alongside the template without changing how it looks.

@@ -20,6 +20,12 @@
 /* A banded wide example's code and notes join its grid: a row each */
 #content .kit-demo--wide .grid > :is(.kit-code, .cmu-note) {
   flex: 0 0 100%;
+  min-width: 0; /* long lines scroll instead of widening the row */
+}
+/* Code in a dark band keeps dark text on its light box (invert whitens it) */
+#content .invert .kit-code,
+#content .invert .kit-code code {
+  color: var(--cmu-ink);
 }
 /* After a band with a background, the change of color marks the next
    section, so its heading needs no line */
@@ -82,11 +88,16 @@
 .cmu-steps .kit-code {
   margin: 0.5rem 0 0;
 }
+/* A chart of colors or patterns: framed like an example, with its code below */
 .kit-swatches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
   gap: 0.5rem;
   margin: 1rem 0 0;
+  padding: 1.5rem;
+  border: 1px solid var(--cmu-line);
+  border-bottom: 0;
+  background: #fff;
 }
 .kit-swatches > div {
   padding: 1.5rem 0.75rem 0.5rem;
