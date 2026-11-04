@@ -216,8 +216,9 @@
             </h2>
             <p>
               One question at a time, such as in a training, a quiz or a poll: a white card on a
-              colored band, with the question over a rule, its choice rows and one centered button.
-              The card is <code>cmu-question</code> on the form; the band is the template's
+              colored band, with the question over a rule, its choice rows and a centered Submit
+              button, with a ghost Previous button beside it when people can go back. The card is
+              <code>cmu-question</code> on the form; the band is the template's
               <code>content wide</code> with a color, here <code>red</code>. Checking the answer,
               and what happens next, is up to the app.
             </p>
@@ -235,7 +236,7 @@
                   <li><label><input type="radio" name="kit-q">Report it as phishing and delete it</label></li>
                 </ul>
               </fieldset>
-              <p class="aligncenter"><button type="submit" class="btn">Submit</button></p>
+              <p class="aligncenter"><button type="button" class="btn ghost">Previous</button> <button type="submit" class="btn">Submit</button></p>
             </form>
           </div>
         </div>
