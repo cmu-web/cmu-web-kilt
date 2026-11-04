@@ -39,10 +39,13 @@ for (const [prefix, set] of SETS) {
     for (const part of parts) {
       const [, id, name] = part.match(/^([\w-]+)"[^>]*>(.*?)<\/h2>/s);
       if (SKIP.has(id)) continue;
-      const kit = part.match(/<p class="kit-classes">(.*?)<\/p>/s);
-      const classes = kit
-        ? [...kit[1].matchAll(/<code>(.*?)<\/code>/g)].map((m) => m[1]).join(", ")
-        : "";
+      // Every class list in the section, such as one per variant, each class once
+      const lists = [...part.matchAll(/<p class="kit-classes">(.*?)<\/p>/gs)];
+      const classes = [
+        ...new Set(
+          lists.flatMap((l) => [...l[1].matchAll(/<code>(.*?)<\/code>/g)].map((m) => m[1])),
+        ),
+      ].join(", ");
       // A kit component shown among the template's (marked "From the kit")
       const fromKit = prefix === "standard" && /<strong>From the kit<\/strong>/.test(part);
       rows.push({
