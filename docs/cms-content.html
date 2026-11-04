@@ -19,6 +19,11 @@
     />
     <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
     <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link href="css/docs.css" rel="stylesheet" type="text/css" />
     <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
     <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
@@ -55,7 +60,8 @@
             <h1>Content Blocks</h1>
             <p class="cmu-lead">
               Blocks for the body of a page: path cards, how it works, steps, check lists, callouts,
-              questions, text with a screenshot, code blocks with a copy button, and countdowns.
+              questions, text with a screenshot, code blocks with a copy button, countdowns, and
+              icons.
             </p>
 
             <h2 id="paths" class="rule-top">Path Cards</h2>
@@ -401,6 +407,41 @@
         <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
           <p>Spring Carnival's opening ceremonies start Thursday, April 8, 2027, at noon.</p>
         </div>
+      </div>
+
+            <h2 id="icons" class="rule-top">Icons</h2>
+            <p>
+              Small pictures for actions people recognize, from
+              <a class="external" href="https://icons.getbootstrap.com/">Bootstrap Icons</a>, an
+              optional extra the kit doesn't load for you; see
+              <a href="install.html#icons">Install</a>. Each icon is an <code>&lt;i&gt;</code> with
+              <code>bi</code> and the icon's name, from the Bootstrap Icons site, and it takes the
+              color and size of the text around it. In a card, with the template's
+              <code>floatright</code>, the kit draws it larger and in CMU red, as in
+              <a href="standard-sections.html#timeline">Timeline Cards</a>.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Next to words, hide it from screen readers</strong> with
+                <code>aria-hidden="true"</code>: the words already say it.
+              </li>
+              <li>
+                <strong>On its own, name the button</strong> with <code>aria-label</code> and
+                <code>title</code>, as the kit's copy icon does.
+              </li>
+              <li>
+                <strong>Use them sparingly</strong>, for actions people recognize (download, print,
+                email), and never as the only way to tell things apart.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>bi</code>, <code>bi-</code><em>name</em>, <code>floatright</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p><a class="btn" href="#icons"><i class="bi bi-download" aria-hidden="true"></i> Download the Loan Policies</a> [PDF]</p>
+        <p><a class="cta" href="#icons"><i class="bi bi-envelope" aria-hidden="true"></i> Email the Checkout Desk</a></p>
+        <p><button class="btn ghost small" type="button" aria-label="Print This Page" title="Print This Page"><i class="bi bi-printer" aria-hidden="true"></i></button></p>
       </div>
           </div>
         </div>
