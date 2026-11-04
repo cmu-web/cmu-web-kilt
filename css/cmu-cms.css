@@ -797,6 +797,27 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   color: var(--cmu-red);
 }
 
+/* A heading right after a floated icon in a card sits beside it, level
+   with its top, as if it came first (the template has every heading clear
+   floats, and pads all but a first heading) */
+.grid.boxes .floatright + h2 {
+  clear: none;
+  padding-top: 0;
+}
+/* A card with a rule (timeline cards): the rule and what follows it sit at
+   the bottom, so the dates line up across a row of cards */
+.grid.boxes > div:has(> hr) {
+  display: flex;
+  flex-direction: column;
+}
+.grid.boxes > div:has(> hr) > hr {
+  margin-top: auto;
+}
+/* Space above the rule when nothing stretches the card (stacked on phones) */
+.grid.boxes > div:has(> hr) > :first-child {
+  margin-bottom: 1rem;
+}
+
 /* Lists: check marks, numbered steps */
 /* Replace the template's list indent, including its extra indent from the
    tenth ordered item onward. Nested ordinary lists keep their own indent. */
