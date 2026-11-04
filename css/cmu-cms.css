@@ -97,6 +97,15 @@
   font-size: clamp(2.2rem, 4.6vw, 3.3rem);
   letter-spacing: -0.01em;
 }
+/* A heading right after a hero, in the same block, starts a new section:
+   leave what two sections' padding would (as when the hero is its own
+   section), not the hero's margin plus the template's heading padding */
+:is(#content, body) .cmu-hero:has(+ :is(h1, h2)) {
+  margin-bottom: 4rem;
+}
+:is(#content, body) .cmu-hero + :is(h1, h2) {
+  padding-top: 0;
+}
 .cmu-hero .cmu-cta-row {
   margin-bottom: 0.9rem;
 }
@@ -109,6 +118,7 @@
 }
 .cmu-hero-art img {
   display: block;
+  box-sizing: border-box; /* the border fits inside the window's width */
   border: 1px solid var(--cmu-line);
   border-top: 0;
   box-shadow: 0 18px 40px rgba(23, 44, 75, 0.16);
@@ -137,13 +147,24 @@
 .cmu-hero-art--stack::before {
   display: none;
 }
+/* Each window draws its own bar, with the dots, in its top padding */
 .cmu-hero-art--stack img {
   grid-area: 1 / 1;
+  box-sizing: content-box;
   width: 82%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: top;
-  border-top: 1.6rem solid #e4e7ea;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--cmu-line);
+  background:
+    radial-gradient(circle, #b9bfc5 0.28rem, transparent 0.3rem) 0.7rem 0.35rem / 0.9rem 0.9rem
+      no-repeat,
+    radial-gradient(circle, #b9bfc5 0.28rem, transparent 0.3rem) 1.6rem 0.35rem / 0.9rem 0.9rem
+      no-repeat,
+    radial-gradient(circle, #b9bfc5 0.28rem, transparent 0.3rem) 2.5rem 0.35rem / 0.9rem 0.9rem
+      no-repeat,
+    #e4e7ea;
 }
 .cmu-hero-art--stack img:nth-child(2) {
   margin: 9% 0 0 9%;
