@@ -233,8 +233,8 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
     /* storage can be blocked; keep going */
   }
   var actingBar =
-    '<form class="cmu-acting-bar kit-try-added"><p>You\u2019re acting as Jane Doe (jdoe)</p>' +
-    '<button type="submit" class="btn ghost small">Stop Acting as Jane Doe</button></form>';
+    '<form class="cmu-acting-bar kit-try-added"><p>You\u2019re acting as Andrew Carnegie (ac00)</p>' +
+    '<button type="submit" class="btn ghost small">Stop Acting as Andrew Carnegie</button></form>';
   var searchForm =
     '<form action="https://search.cmu.edu" class="search search-form kit-try-added" method="get">' +
     '<label><span>Search</span> <input aria-label="Search" name="q" placeholder="Search"></label>' +
@@ -293,7 +293,7 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
         inn
           ? '<a class="cmu-account cmu-account-open kit-try-added" href="#nav">' +
               pic +
-              "Jane Doe</a>"
+              "Andrew Carnegie</a>"
           : '<a class="cmu-account kit-try-added" href="layout.html#try-header">Sign In</a>',
       );
       if (inn)
@@ -308,7 +308,7 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
             inn
               ? '<li class="secondary right cmu-account-menu kit-try-added"><a class="cmu-account-name">' +
                   pic +
-                  'Jane Doe</a><a href="app-users.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
+                  'Andrew Carnegie</a><a href="app-users.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
               : '<li class="secondary right cmu-account-menu kit-try-added"><a href="layout.html#try-header">Sign In</a></li>',
           ),
         );
