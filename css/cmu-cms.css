@@ -620,6 +620,15 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+/* A named copy button right under its block (data-cmu-copy), close to it so
+   they read as one */
+.cmu-snippet:has(+ p > [data-cmu-copy]) {
+  margin-bottom: 0;
+}
+:is(#content, body) .cmu-snippet + p:has(> [data-cmu-copy]) {
+  margin-top: 0;
+  padding-top: 0.5rem;
+}
 /* In a copy box, room on the right so the text never runs under the icon */
 .cmu-copyable > .cmu-snippet {
   padding-right: 3rem;
@@ -675,13 +684,6 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 .cmu-copy[data-cmu-copy-state="copied"]::before {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'/%3E%3C/svg%3E");
 }
-/* A feature carousel's dots (js-flickityCustom, on white): the gray of the
-   template's buttons rather than its slate blue. Carousels over a photo keep
-   the template's white dots. */
-.js-flickityCustom .flickity-page-dot {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
 /* Countdown (needs cmu-app.js): days, hours, minutes and seconds on flip
    cards; see Countdown in the docs (content.html). The sentence inside is
    the fallback and what screen readers get; the script hides it visually. */
