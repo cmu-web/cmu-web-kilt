@@ -92,13 +92,46 @@
 
             <h2 id="sign-in" class="rule-top">Sign In</h2>
             <p>
-              For a page that needs you signed in, as on Binder: a red box at the top of the sidebar
-              that says why, with one wide Sign In button, and a note under it about who can sign
-              in. It's the template's sidebar box with <code>red invert</code> and
-              <code>btn wide</code>.
+              Every page has the <a href="app-users.html#account">Sign In link</a> in the header,
+              beside the menu button. A home page can also offer sign-in at the top of its sidebar,
+              in one of two ways, depending on how much the page does for people who aren't signed
+              in.
+            </p>
+
+            <h3 id="sign-in-button">A Sign In Button</h3>
+            <p>
+              For a page that's useful signed out, where signing in adds more, such as a search
+              anyone can use that shows more once you sign in. One large outline button at the top
+              of the sidebar, beside the page's lead. It's the template's
+              <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
+              <code>&lt;h1&gt;</code>.
             </p>
             <p class="kit-classes">
-              <code>sidebar</code>, <code>red invert</code>, <code>btn wide</code>,
+              <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="content">
+          <div>
+            <h1>Find a Syllabus</h1>
+            <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>
+          </div><div class="sidebar">
+            <div class="simple">
+              <h1><a class="btn ghost wide" href="#sign-in-button">Sign In</a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <h3 id="sign-in-box">A Sign In Box</h3>
+            <p>
+              For a page that does little until you sign in. A red box says what signing in lets you
+              do, with one wide outline Sign In button, and a note under it about who can sign in.
+              It's the template's sidebar box with <code>red invert</code>, and
+              <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
+            </p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
               <code>left-rule</code>
             </p>
             <!-- prettier-ignore -->
@@ -111,7 +144,7 @@
             <div class="red invert">
               <h1>Sign In to Watch</h1>
               <p>Sign in with your Andrew ID to watch the safety video and sign the&nbsp;waiver.</p>
-              <a class="btn wide" href="#sign-in">Sign In</a>
+              <h4><a class="btn ghost wide" href="#sign-in-box">Sign In</a></h4>
             </div>
             <div class="left-rule">
               <p>An active @andrew.cmu.edu account is required to sign in.</p>
@@ -119,22 +152,25 @@
           </div>
         </div>
       </div>
-            <h3>Header Link or Sidebar Box?</h3>
             <p>
-              Every page has the <a href="app-users.html#account">Sign In link</a> in the header,
-              beside the menu button. Add the sidebar box when there's little to do until you
-              sign&nbsp;in.
+              If signing in has to be a form's button, such as one that posts, use
+              <code>&lt;button class="btn ghost wide"&gt;</code> in the same place. With
+              <code>cmu-app.css</code>, it matches the link.
             </p>
+
+            <h3 id="sign-in-which">Button, Box or Header Link?</h3>
             <ul class="cmu-checks">
               <li>
-                <strong>The sidebar box</strong> is for a page that does little for people who
-                aren't signed in, as on Binder, which shows only a countdown until you sign in. Say
+                <strong>The button</strong> is for a page people can use without signing in. The
+                page's own content comes first, and the button is there for the extras.
+              </li>
+              <li>
+                <strong>The box</strong> is for a page with little to show until you sign in. Say
                 what signing in lets you do, not just that you must.
               </li>
               <li>
-                <strong>The header link alone</strong> is for a page that's useful signed out. On
-                the Syllabus Registry's Browse page, anyone can search the course sections; signing
-                in adds the instructors and uploading.
+                <strong>The header link alone</strong> is enough past the home page, and on pages
+                where signing in adds nothing.
               </li>
               <li>
                 <strong>A link that needs sign-in</strong> keeps its place in the text with " [login
