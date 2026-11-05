@@ -316,8 +316,8 @@
         </table>
       </div>
 
-            <h2 id="paging" class="rule-top">
-              Load More and Pages
+            <h2 id="load-more" class="rule-top">
+              Load More
               <span class="kit-where"
                 ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
                   >App</span
@@ -325,30 +325,19 @@
               >
             </h2>
             <p>
-              Two ways to split a long list of results. Both go under the list, after a count of
-              what's showing.
+              A button under a long list that adds the next batch to it, after a count of what's
+              showing. Use it for browsing and search results, where people scan down. For a list
+              people need to come back to a place in, use <a href="#pagination">Pagination</a>
+              instead.
             </p>
-            <ul>
-              <li>
-                <strong>Load More</strong> adds the next batch to the list, like the news indexes on
-                Cascade sites. Use it for browsing and search results, where people scan down.
-              </li>
-              <li>
-                <strong>Pages</strong> show one batch at a time, each with its own address. Use them
-                when people need to come back to a place in the list, or the list is too long to
-                keep adding to.
-              </li>
-            </ul>
             <p>
-              Your app loads the results and updates the count; neither needs the template's script.
-              Load More is a ghost button half the page wide, and the full width on phones. Hide its
-              paragraph (<code>hidden</code>) once everything is showing. Name what it loads, the
-              same noun as the count: &ldquo;Load More Sections&rdquo;, not just &ldquo;Load
-              More&rdquo;.
+              Your app loads the results and updates the count; it doesn't need the template's
+              script. Load More is a ghost button half the page wide, and the full width on phones.
+              Hide its paragraph (<code>hidden</code>) once everything is showing. Name what it
+              loads, the same noun as the count: &ldquo;Load More Sections&rdquo;, not just
+              &ldquo;Load More&rdquo;.
             </p>
-            <p class="kit-classes">
-              <code>cmu-results-count</code>, <code>cmu-load-more</code>, <code>cmu-pager</code>
-            </p>
+            <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-load-more</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
           <table class="alternate cmu-full">
@@ -371,9 +360,23 @@
         <p class="cmu-results-count" id="kit-more-count" aria-live="polite">Showing 4 of 12 sections</p>
         <p class="cmu-load-more"><button type="button" class="btn ghost wide" data-kit-load-more="kit-more-rows" data-kit-count="kit-more-count" data-kit-batch="4">Load More Sections</button></p>
       </div>
+
+            <h2 id="pagination" class="rule-top">
+              Pagination
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              One batch of results at a time, each with its own address, under a count of what's
+              showing. Use it when people need to come back to a place in the list, or the list is
+              too long to keep adding to with <a href="#load-more">Load More</a>.
+            </p>
             <p>
               A pager is one list: first (&laquo;), previous (&lsaquo;), the page numbers, next
-              (&rsaquo;), and last (&raquo;). Mark the current page with
+              (&rsaquo;) and last (&raquo;). Mark the current page with
               <code>aria-current="page"</code>, and give each arrow an
               <code>aria-label</code> ("First page" and so on) for screen readers. An arrow that
               goes nowhere, such as previous on the first page, keeps its place but loses its
@@ -385,6 +388,7 @@
               all. Use the same batch size as Load More, such as 20. On phones, &laquo; and &raquo;
               give way to the numbers.
             </p>
+            <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-pager</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <p class="cmu-results-count">Showing 21-40 of 312 sections</p>

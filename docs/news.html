@@ -58,7 +58,7 @@
             </p>
 
             <h2 id="news" class="rule-top">
-              News Grid and Load More
+              News Grid
               <span class="kit-where"
                 ><span
                   class="kit-where-template"
@@ -78,11 +78,11 @@
                 fill the space, so any shape works.
               </li>
               <li>
-                <strong>Load More</strong> needs the template's script and a
-                <code>.section-id</code> around the grid. Mark the items to hold back
-                <code>hide</code>, with the picture in <code>data-img</code> so it loads only when
-                shown. Each click shows 12 more, and the button goes away when none are left. Try it
-                below: three more are hidden.
+                <strong>Load More</strong> is the template's: put a <code>.section-id</code> around
+                the grid and mark the items to hold back <code>hide</code>, with the picture in
+                <code>data-img</code> so it loads only when shown. Each click shows 12 more. Try it
+                below: three more are hidden. In an app, use the kit's
+                <a href="lists.html#load-more">Load More</a>.
               </li>
               <li>
                 Add a color (<code>grey</code>, <code>darkgrey</code>, and so on) to put the stories
@@ -109,7 +109,7 @@
           <div class="grid column3 news grey plaid">
             <div class="filterable">
               <a href="#news">
-                <div class="img" role="img" aria-label="" style="background-image:url(images/photo-screenshot.jpg)"></div>
+                <div class="img" role="img" aria-label="" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=campus)"></div>
                 <small>Monday, Oct. 19, 2026</small>
                 <h2 class="name">Spring Syllabi Are Due Jan. 11</h2>
                 <span>Upload yours from the web or from Canvas.</span>
@@ -117,7 +117,7 @@
             </div>
             <div class="filterable">
               <a href="#news">
-                <div class="img" role="img" aria-label="" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text)"></div>
+                <div class="img" role="img" aria-label="" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=classrooms)"></div>
                 <small>Monday, Oct. 5, 2026</small>
                 <h2 class="name">Office Hours Queue Now Shows Wait Times</h2>
                 <span>See about how long you'll wait before you join.</span>
@@ -125,13 +125,13 @@
             </div>
             <div class="filterable">
               <a href="#news">
-                <div class="img" role="img" aria-label="" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text)"></div>
+                <div class="img" role="img" aria-label="" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=labs)"></div>
                 <small>Friday, Sept. 18, 2026</small>
                 <h2 class="name">Equipment Checkout Adds Camera Kits</h2>
                 <span>Everything for a class video, in one bag.</span>
               </a>
             </div>
-            <div class="hide filterable" data-img="images/photo-dashboard.jpg">
+            <div class="hide filterable" data-img="https://placemellon.andrew.cmu.edu/900/600?category=life">
               <a href="#news">
                 <div class="img" role="img" aria-label="">Fall Syllabi at a Glance</div>
                 <small>Tuesday, Aug. 25, 2026</small>
@@ -139,7 +139,7 @@
                 <span>Nine in ten sections have a syllabus.</span>
               </a>
             </div>
-            <div class="hide filterable" data-img="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text">
+            <div class="hide filterable" data-img="https://placemellon.andrew.cmu.edu/900/600?category=campus">
               <a href="#news">
                 <div class="img" role="img" aria-label="">Course Staff Can Now Pause the Queue</div>
                 <small>Monday, Aug. 10, 2026</small>
@@ -147,7 +147,7 @@
                 <span>Take a break without losing anyone's place.</span>
               </a>
             </div>
-            <div class="hide filterable" data-img="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text">
+            <div class="hide filterable" data-img="https://placemellon.andrew.cmu.edu/900/600?category=labs">
               <a href="#news">
                 <div class="img" role="img" aria-label="">Equipment Checkout Opens in Hunt Library</div>
                 <small>Wednesday, July 1, 2026</small>
@@ -159,15 +159,6 @@
           </div>
         </div>
       </div>
-        <div class="content wide kit-follow">
-          <div>
-            <p class="cmu-note">
-              An app showing its own results should use the kit's
-              <a href="lists.html#paging">Load More</a> instead, which doesn't depend on the
-              template's script.
-            </p>
-          </div>
-        </div>
         <div class="content wide">
           <div>
             <h2 id="event-list" class="rule-top">
@@ -286,19 +277,19 @@
             <div class="kit-demo">
         <ul class="cmu-event-cards">
           <li>
-            <img src="images/photo-screenshot.jpg" alt="">
+            <img src="https://placemellon.andrew.cmu.edu/900/600?category=classrooms" alt="">
             <time class="cmu-date cmu-date--red" datetime="2027-01-11"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">11</span></time>
             <h3><a href="#dates">Spring Syllabi Due</a></h3>
             <p>11:59 p.m.</p>
           </li>
           <li>
-            <img src="images/photo-dashboard.jpg" alt="">
+            <img src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="">
             <time class="cmu-date cmu-date--red" datetime="2027-01-20"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">20</span></time>
             <h3><a href="#dates">Training for Course Staff</a></h3>
             <p>2-3 p.m., Zoom</p>
           </li>
           <li>
-            <img src="images/photo-upload.jpg" alt="">
+            <img src="https://placemellon.andrew.cmu.edu/900/600?category=labs" alt="">
             <time class="cmu-date cmu-date--red" datetime="2027-02-03"><span class="cmu-date-month">Feb</span> <span class="cmu-date-day">3</span></time>
             <h3><a href="#dates">Camera Kit Workshop</a></h3>
             <p>Noon-1 p.m., Hunt Library</p>
