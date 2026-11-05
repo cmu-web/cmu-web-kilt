@@ -108,7 +108,8 @@
 
   // Enlarge on click: <a href="big.jpg" data-cmu-zoom><img alt="..."></a> opens
   // the image over the page, with the page dimmed behind it; Escape, the close
-  // button or a click anywhere closes it, and focus goes back to the link.
+  // button or a click anywhere closes it, and focus goes back to the link. An
+  // image much taller than the window opens at full width and scrolls.
   // Without the script (or a browser without <dialog>), the link opens the image.
   // See Enlarge on Click in the docs (content.html).
   var zoom;
@@ -122,16 +123,31 @@
       zoom.className = "cmu-zoom";
       zoom.innerHTML =
         '<button type="button" class="cmu-zoom-close" aria-label="Close">&times;</button>' +
-        '<img alt="">';
+        '<div class="cmu-zoom-frame"><img alt=""></div>';
       zoom.addEventListener("click", function () {
         zoom.close();
       });
       document.body.appendChild(zoom);
     }
     var small = a.querySelector("img"),
-      big = zoom.querySelector("img");
+      big = zoom.querySelector("img"),
+      frame = zoom.querySelector(".cmu-zoom-frame");
+    // Tall: at the widest it can show, the image is over a quarter taller
+    // than the window, so fitting it whole would shrink it too far
+    function fit() {
+      var w = Math.min(big.naturalWidth, window.innerWidth * 0.92, 1400),
+        tall =
+          big.naturalWidth > 0 &&
+          (big.naturalHeight * w) / big.naturalWidth > window.innerHeight * 0.92 * 1.25;
+      zoom.classList.toggle("cmu-zoom--tall", tall);
+      if (tall) frame.tabIndex = 0;
+      else frame.removeAttribute("tabindex");
+      frame.scrollTop = 0;
+    }
+    big.onload = fit;
     big.src = a.href;
     big.alt = small ? small.alt : "";
+    if (big.complete) fit();
     zoom.showModal();
   });
 

@@ -466,12 +466,21 @@ a[data-cmu-zoom] {
 .cmu-zoom::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
+.cmu-zoom-frame {
+  max-height: 92vh;
+  overflow: auto;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
 .cmu-zoom img {
   display: block;
   max-width: 100%;
   max-height: 92vh;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   cursor: zoom-out;
+}
+/* An image much taller than the window: full width, scrolling (the script
+   decides) */
+.cmu-zoom--tall img {
+  max-height: none;
 }
 /* The template darkens every button on hover; this one stays a plain white x */
 .cmu-zoom .cmu-zoom-close,
