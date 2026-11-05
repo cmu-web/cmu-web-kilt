@@ -255,10 +255,6 @@
     width: 46%;
     z-index: 1;
   }
-  /* The intro stays clear of the screenshot; only the steps overlap it */
-  .kit-annotated-text > p {
-    margin-right: 10%;
-  }
   .kit-annotated-steps {
     margin: 0;
   }
