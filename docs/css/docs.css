@@ -122,8 +122,8 @@
 .kit-swatches--tall > div {
   min-height: 9rem;
 }
-/* Try the Header: a form of radio buttons and checkboxes in a box, at full
-   size like any form (the template sets text in a white box at 90%) */
+/* Try the Header: a form of radio buttons and checkboxes in three groups
+   side by side, at full size like any form */
 .kit-try {
   font-size: 1rem;
   display: grid;
@@ -131,8 +131,6 @@
   gap: 0 2rem;
   align-items: start;
   margin: 0 0 1.5rem;
-  padding: 1.25rem 1.5rem 0.25rem;
-  border: 1px solid var(--cmu-line);
 }
 .kit-try > p {
   grid-column: 1 / -1;
