@@ -336,7 +336,8 @@ body.cmu-app .cmu-choices input {
   outline-offset: -3px;
 }
 /* A question card: one question and its choice rows on a white card, with a
-   rule under the question and the button centered; put it in a colored band */
+   rule under the question; put it in a colored band. Its buttons: back on
+   the left, forward (Next, or Submit on the last question) on the right */
 .cmu-question {
   max-width: 46rem;
   margin: 0 auto;
@@ -357,6 +358,15 @@ body.cmu-app .cmu-question legend {
 }
 .cmu-question > :last-child {
   margin-bottom: 0;
+}
+.cmu-question-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.cmu-question-buttons > :last-child {
+  margin-left: auto;
 }
 @media (max-width: 767px) {
   .cmu-question {
@@ -475,29 +485,33 @@ body.cmu-app .cmu-match li > select {
    in the docs (forms.html) */
 .cmu-card-sort {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1.5em;
 }
+/* Cards in a row are the same height, with the tiles at the bottom */
 body.cmu-app .cmu-card-sort > fieldset {
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  padding: 1.5em;
+  padding: 2em 1.5em 1.5em;
   border: 0;
   background: #fff;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
   text-align: center;
 }
 /* The card's words: the fieldset's legend, inside the card */
 body.cmu-app .cmu-card-sort > fieldset > legend {
   float: left;
   width: 100%;
-  margin: 0 0 1.25em;
-  font-size: 1.1em;
+  margin: 0 0 1.75em;
+  font-size: 1.15em;
+  line-height: 1.45;
 }
 body.cmu-app .cmu-card-sort > fieldset > ul {
   clear: both;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
   gap: 0.75em;
-  margin: 0;
+  margin: auto 0 0;
   padding: 0;
 }
 body.cmu-app .cmu-card-sort > fieldset > ul > li {

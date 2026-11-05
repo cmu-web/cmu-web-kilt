@@ -222,15 +222,20 @@
             </h2>
             <p>
               One question at a time, such as in a training, a quiz or a poll: a white card on a
-              colored band, with the question over a rule, its choice rows and a centered Submit
-              button, with a ghost Previous button beside it when people can go back. The card is
+              colored band, with the question over a rule and its choice rows. Under them,
+              <code>cmu-question-buttons</code> puts a ghost Previous button on the left, when
+              people can go back, and Next on the right, or Submit on the last question. The card is
               <code>cmu-question</code> on the form; the band is the template's
               <code>content wide</code> with a color, here <code>red</code>. Checking the answer,
               and what happens next, is up to the app.
             </p>
-            <p class="kit-classes"><code>cmu-question</code>, <code>cmu-choices</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo kit-demo--wide">
+            <p class="kit-classes">
+              <code>cmu-question</code>, <code>cmu-question-buttons</code>, <code>cmu-choices</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide red">
           <div>
             <form class="cmu-question">
@@ -242,12 +247,13 @@
                   <li><label><input type="radio" name="kit-q">Report it as phishing and delete it</label></li>
                 </ul>
               </fieldset>
-              <p class="aligncenter"><button type="button" class="btn ghost">Previous</button> <button type="submit" class="btn">Submit</button></p>
+              <p class="cmu-question-buttons"><button type="button" class="btn ghost">Previous</button> <button type="submit" class="btn">Next</button></p>
             </form>
           </div>
         </div>
       </div>
-
+        <div class="content wide">
+          <div>
             <h2 id="match" class="rule-top">
               Matching
               <span class="kit-where"
@@ -319,15 +325,18 @@
             </h2>
             <p>
               Things to sort into groups, such as uses of AI into public and protected tools: each
-              thing is a white card, with a large tile for each group under it. Picking a tile turns
-              it red. Each card is a <code>&lt;fieldset&gt;</code> whose
-              <code>&lt;legend&gt;</code> holds its words, with a radio button in each tile, so
-              keyboards and screen readers work as with any radio buttons. Put the cards on a
-              colored band, as with the <a href="#question">question card</a>.
+              thing is a white card, with a large tile for each group at its bottom. Cards sit side
+              by side, as many as fit, and one above another on phones. Picking a tile turns it red.
+              Each card is a <code>&lt;fieldset&gt;</code> whose <code>&lt;legend&gt;</code> holds
+              its words, with a radio button in each tile, so keyboards and screen readers work as
+              with any radio buttons. Put the cards on a colored band, as with the
+              <a href="#question">question card</a>.
             </p>
             <p class="kit-classes"><code>cmu-card-sort</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo kit-demo--wide">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
         <div class="content wide red">
           <div>
             <form class="cmu-card-sort">
@@ -336,6 +345,13 @@
                 <ul>
                   <li><label><input type="radio" name="kit-c1" value="public" checked>Public AI</label></li>
                   <li><label><input type="radio" name="kit-c1" value="protected">Protected AI</label></li>
+                </ul>
+              </fieldset>
+              <fieldset>
+                <legend>Drafting a public event announcement with a chatbot</legend>
+                <ul>
+                  <li><label><input type="radio" name="kit-c3" value="public">Public AI</label></li>
+                  <li><label><input type="radio" name="kit-c3" value="protected">Protected AI</label></li>
                 </ul>
               </fieldset>
               <fieldset>
@@ -349,8 +365,6 @@
           </div>
         </div>
       </div>
-          </div>
-        </div>
       </main>
 
       <footer class="grid column3 invert">
