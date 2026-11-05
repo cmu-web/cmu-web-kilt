@@ -260,6 +260,14 @@
                 page, such as a form's Submit or a call-to-action row, get no rule.
               </li>
               <li>
+                <strong>Link a home page by its folder, never <code>index.html</code>:</strong> A
+                site's home is <code>./</code> from its own pages and <code>../</code> from a page
+                one folder down, and another site's is its folder's address, such as
+                <code>https://www.cmu.edu/syllabusregistry/</code>. The address stays short and
+                stays right if the site moves. Use <code>./</code> rather than <code>/</code>, which
+                skips past a site that isn't at the server's root.
+              </li>
+              <li>
                 <strong>Never write "click here."</strong> A link should make sense on its own,
                 because people scan links and screen readers list them: "Read the Instructor Guide,"
                 not "Click here for the guide." Give links on the same page different words, so
