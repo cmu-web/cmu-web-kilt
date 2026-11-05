@@ -569,6 +569,39 @@ document.querySelectorAll("[data-kit-select]").forEach(function (bar) {
   update();
 });
 
+// Demo question card: a form with data-kit-steps holds one fieldset per
+// question. The arrows show the one before or after; the back arrow hides on
+// the first question, and Submit takes the forward arrow's place on the last.
+document.querySelectorAll("[data-kit-steps]").forEach(function (form) {
+  var steps = Array.prototype.slice.call(form.querySelectorAll("fieldset")),
+    back = form.querySelector(".cmu-question-back"),
+    next = form.querySelector('[aria-label="Next question"]'),
+    submit = form.querySelector('[type="submit"]');
+  function show(i) {
+    steps.forEach(function (s, j) {
+      s.hidden = j !== i;
+    });
+    back.hidden = i === 0;
+    next.hidden = i === steps.length - 1;
+    submit.hidden = !next.hidden;
+  }
+  function current() {
+    return steps.findIndex(function (s) {
+      return !s.hidden;
+    });
+  }
+  back.addEventListener("click", function () {
+    show(current() - 1);
+  });
+  next.addEventListener("click", function () {
+    show(current() + 1);
+  });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+  });
+  show(current());
+});
+
 // Demo Load More: a button with data-kit-load-more="table body id" shows the
 // next data-kit-batch hidden rows, updates the count, moves focus to the first
 // new row and hides its paragraph once everything is showing. A real app loads

@@ -244,15 +244,27 @@
             </h2>
             <p>
               One question at a time, such as in a training, a quiz or a poll: a white card on a
-              colored band, with the question over a rule and its choice rows. Under them,
-              <code>cmu-question-buttons</code> puts a ghost Previous button on the left, when
-              people can go back, and Next on the right, or Submit on the last question. The card is
+              colored band, with the question over a rule and its choice rows. The card is
               <code>cmu-question</code> on the form; the band is the template's
               <code>content wide</code> with a color, here <code>red</code>. Checking the answer,
               and what happens next, is up to the app.
             </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Under the choices</strong>, <code>cmu-question-buttons</code> puts &#9654;
+                on the right to go forward and, when people can go back, &#9664; on the left
+                (<code>cmu-question-back</code>).
+              </li>
+              <li><strong>On the last question</strong>, a Submit button takes &#9654;'s place.</li>
+              <li>
+                <strong>Give each arrow an <code>aria-label</code></strong> and a matching
+                <code>title</code>, "Previous question" and "Next question," as with the arrows in
+                <a href="#sort">Sorting</a>.
+              </li>
+            </ul>
             <p class="kit-classes">
-              <code>cmu-question</code>, <code>cmu-question-buttons</code>, <code>cmu-choices</code>
+              <code>cmu-question</code>, <code>cmu-question-buttons</code>,
+              <code>cmu-question-back</code>, <code>cmu-choices</code>
             </p>
           </div>
         </div>
@@ -260,16 +272,32 @@
         <div class="kit-demo kit-demo--wide">
         <div class="content wide red">
           <div>
-            <form class="cmu-question">
-              <fieldset class="cmu-choices">
+            <form class="cmu-question" data-kit-steps>
+              <fieldset class="cmu-choices" hidden>
                 <legend><strong>Scenario:</strong> An email asks you to confirm your Andrew password at a link, or lose your account by Friday. What should you&nbsp;do?</legend>
                 <ul>
-                  <li><label><input type="radio" name="kit-q">Sign in at the link to check</label></li>
-                  <li><label><input type="radio" name="kit-q">Reply and ask whether it's real</label></li>
-                  <li><label><input type="radio" name="kit-q">Report it as phishing and delete it</label></li>
+                  <li><label><input type="radio" name="kit-q1">Sign in at the link to check</label></li>
+                  <li><label><input type="radio" name="kit-q1">Reply and ask whether it's real</label></li>
+                  <li><label><input type="radio" name="kit-q1">Report it as phishing and delete it</label></li>
                 </ul>
               </fieldset>
-              <p class="cmu-question-buttons"><button type="button" class="btn ghost">Previous</button> <button type="submit" class="btn">Next</button></p>
+              <fieldset class="cmu-choices">
+                <legend><strong>Scenario:</strong> A text says a package can't be delivered and asks you to tap a link to reschedule. What is it most likely to&nbsp;be?</legend>
+                <ul>
+                  <li><label><input type="radio" name="kit-q2">A real delivery notice</label></li>
+                  <li><label><input type="radio" name="kit-q2">Smishing: phishing by text</label></li>
+                  <li><label><input type="radio" name="kit-q2">A wrong number</label></li>
+                </ul>
+              </fieldset>
+              <fieldset class="cmu-choices" hidden>
+                <legend><strong>Scenario:</strong> Someone you don't know follows you through a door that needs your ID card. What should you&nbsp;do?</legend>
+                <ul>
+                  <li><label><input type="radio" name="kit-q3">Hold the door; it's polite</label></li>
+                  <li><label><input type="radio" name="kit-q3">Ask them to use their own card</label></li>
+                  <li><label><input type="radio" name="kit-q3">Say nothing and keep walking</label></li>
+                </ul>
+              </fieldset>
+              <p class="cmu-question-buttons"><button type="button" class="btn ghost cmu-question-back" aria-label="Previous question" title="Previous question">&#9664;</button> <button type="button" class="btn ghost" aria-label="Next question" title="Next question">&#9654;</button> <button type="submit" class="btn" hidden>Submit</button></p>
             </form>
           </div>
         </div>
