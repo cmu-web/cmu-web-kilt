@@ -149,9 +149,10 @@
             </h2>
             <p>
               Options that only apply to one choice go inside that choice's list item, lined up with
-              its label, in a <code>cmu-sub-options</code> block. Show them only while that choice
-              is picked: set <code>hidden</code> on the block when another one is. Menus and text
-              boxes inside fill the block, as they fill a column elsewhere.
+              its label, in a <code>cmu-sub-options</code> block. The kit shows them only while that
+              choice is picked, with no script: put the radio button or checkbox right inside the
+              list item, before its label. Menus and text boxes inside fill the block, as they fill
+              a column elsewhere. Try it: pick A Logo.
             </p>
             <p class="kit-classes"><code>cmu-sub-options</code></p>
             <!-- prettier-ignore -->
@@ -170,7 +171,12 @@
                   <p class="cmu-hint" id="kit-random-hint">A different photo each time the page loads.</p>
                 </div>
               </li>
-              <li><input type="radio" name="kit-kind" id="kit-kind-logo"><label for="kit-kind-logo">A Logo</label></li>
+              <li><input type="radio" name="kit-kind" id="kit-kind-logo"><label for="kit-kind-logo">A Logo</label>
+                <div class="cmu-sub-options">
+                  <label for="kit-logo-color">Color</label>
+                  <select id="kit-logo-color"><option>Red</option><option>White</option></select>
+                </div>
+              </li>
             </ul>
           </fieldset>
         </form>
