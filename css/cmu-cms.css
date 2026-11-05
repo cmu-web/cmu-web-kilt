@@ -791,8 +791,9 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   padding-right: 3rem;
 }
 
-/* A code block with a copy icon in its top right corner, as on GitHub. The
-   wrapper holds the button still while the code scrolls sideways under it.
+/* A code block with a copy icon in its top right corner, where people look
+   for it. The wrapper holds the button still while the code scrolls
+   sideways under it.
    Needs cmu-app.js. Icons: GitHub's Octicons copy and check, MIT license,
    Copyright (c) 2023 GitHub Inc. */
 .cmu-copyable {

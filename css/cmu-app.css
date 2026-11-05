@@ -2,7 +2,7 @@
    template CSS and cmu-cms.css, then the app's own stylesheet.
 
    Body classes: cmu-app on pages with the full CMU chrome, cmu-framed on
-   pages shown inside another tool (such as a Canvas LTI frame) without it. */
+   pages shown inside another tool (such as a learning platform) without it. */
 
 /* Pages framed by another tool: no CMU chrome */
 body.cmu-framed {
