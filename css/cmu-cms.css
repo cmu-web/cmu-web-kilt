@@ -423,12 +423,12 @@ ol.cmu-flow > li > strong {
   box-sizing: border-box;
 }
 
-/* Annotated screenshot: a tall screenshot on the right, with numbered
-   callouts on the left, each pinned beside its part of the screenshot
-   (--cmu-at on the callout: how far down, 0 to 1) and overlapping its edge.
-   Where the component is narrower than 50rem (70rem with --wide), the text,
-   the callouts and the screenshot stack. See Annotated Screenshot in the docs
-   (sections.html). */
+/* Annotated image: a tall image, such as a screenshot or a diagram, on the
+   right, with numbered callouts on the left, each pinned beside its part of
+   the image (--cmu-at on the callout: how far down, 0 to 1) and overlapping
+   its edge. Where the component is narrower than 50rem (70rem with --wide),
+   the text, the callouts and the image stack. See Annotated Image in the
+   docs (sections.html). */
 .cmu-annotated {
   --cmu-annotated-bar: 0px;
   container-type: inline-size;
