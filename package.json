@@ -8,15 +8,17 @@
     "js"
   ],
   "scripts": {
-    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:template",
+    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:template && npm run check:opengraph",
     "check:template": "node tools/check-template.mjs",
     "check:versions": "node tools/versions.mjs",
     "check:components": "node tools/components.mjs --check",
+    "check:opengraph": "node tools/opengraph.mjs --check",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "components": "node tools/components.mjs",
+    "opengraph": "node tools/opengraph.mjs",
     "release": "node tools/versions.mjs"
   },
   "private": true,
