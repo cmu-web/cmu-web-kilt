@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Link Previews - Page Layout - Carnegie Mellon Web Kit - Carnegie Mellon University
+    </title>
+    <!-- Link previews: written by tools/opengraph.mjs -->
+    <meta
+      name="description"
+      content="The title, sentence and picture that show when someone shares a page in Slack, Teams, a text or a post. Every page should have one, so a shared link looks like CMU and says what it leads to."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Carnegie Mellon Web Kit" />
+    <meta property="og:title" content="Link Previews - Carnegie Mellon Web Kit" />
+    <meta
+      property="og:description"
+      content="The title, sentence and picture that show when someone shares a page in Slack, Teams, a text or a post. Every page should have one, so a shared link looks like CMU and says what it leads to."
+    />
+    <meta property="og:url" content="https://webkit.andrew.cmu.edu/previews.html" />
+    <meta property="og:image" content="https://webkit.andrew.cmu.edu/images/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Carnegie Mellon Web Kit's home page: Build CMU Sites and Apps, beside screenshots of three sites built with it."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- End of link previews -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="index.html">Carnegie Mellon Web Kit</a></span>
+          <h2>Build on the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="index.html">Carnegie Mellon Web Kit</a>&nbsp;&rsaquo;&nbsp;<a href="layout.html"
+            >Page Layout</a
+          >&nbsp;&rsaquo;&nbsp;Link Previews
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Link Previews</h1>
+            <p class="cmu-lead">
+              The title, sentence and picture that show when someone shares a page in Slack, Teams,
+              a text or a post. Every page should have one, so a shared link looks like CMU and says
+              what it leads to.
+            </p>
+
+            <h2 id="tags" class="rule-top">What a Preview Needs</h2>
+            <p>
+              A few tags in the page's <code>&lt;head&gt;</code>, from the Open Graph standard that
+              most apps read:
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
+&lt;meta property="og:title" content="Reserve a Camera Kit - Equipment Checkout"&gt;
+&lt;meta property="og:description" content="Cameras, laptops and lights, free for CMU courses."&gt;
+&lt;meta property="og:url" content="https://www.cmu.edu/equipment/reserve.html"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:image" content="https://www.cmu.edu/equipment/images/preview.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="A camera kit laid out on a table: a camera, two lenses and a light."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Title:</strong> the page's name, then the site's, as in its
+                <code>&lt;title&gt;</code>.
+              </li>
+              <li>
+                <strong>Description:</strong> one sentence about the page, the same as its
+                <code>&lt;meta name="description"&gt;</code>. Apps cut it off after about 160
+                characters.
+              </li>
+              <li>
+                <strong>Address:</strong> the page's full address, from <code>https://</code>.
+              </li>
+              <li>
+                <strong>Image:</strong> 1200 &times; 630 pixels, a JPEG or PNG, at a full
+                <code>https://</code> address, with alt text. Keep what matters away from the edges,
+                since some apps crop it to a square.
+              </li>
+              <li>
+                <strong><code>twitter:card</code></strong> asks apps that read Twitter's tags for
+                the large picture rather than a small square.
+              </li>
+            </ul>
+
+            <h2 id="cms" class="rule-top">In a CMS</h2>
+            <p>
+              In Cascade, CMU's template already writes the title, description, address and type on
+              every page, from the page's own settings. The description comes from each page's
+              Description field, so fill it in for every page. What it doesn't add is a picture.
+            </p>
+            <h3 id="cms-image">Add a Picture</h3>
+            <ol class="cmu-steps">
+              <li>
+                Make an image 1200 &times; 630 pixels. A screenshot of the site's home page at that
+                size works, or a photo the site has the right to use.
+              </li>
+              <li>Upload it to the site's <code>images</code> folder.</li>
+              <li>
+                Add these lines to the text block the site's <code>setup</code> block puts in the
+                head, the same one that links the kit (see
+                <a href="install.html#cascade">In Cascade</a>), with your image's address and a
+                description of it:
+                <pre
+                  class="kit-code"
+                ><code>&lt;meta property="og:image" content="https://www.cmu.edu/equipment/images/preview.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="A camera kit laid out on a table: a camera, two lenses and a light."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+              </li>
+              <li>Publish the site's pages, then <a href="#check">check a preview</a>.</li>
+            </ol>
+            <p>
+              The head block is the same on every page, so the whole site shares one picture. Don't
+              add the title, description or address tags there too: Cascade writes those, and a
+              second copy confuses apps. In another CMS, look for the theme's settings for link
+              previews or head code, and add what it doesn't already write.
+            </p>
+
+            <h2 id="app" class="rule-top">In an App</h2>
+            <p>
+              Write all the tags in the layout's head, filled in for each page: its own title,
+              description and address, and the app's picture unless a page has a better one. Use the
+              page's full public address, not a path, and serve the image from the app itself so it
+              lives as long as the app does.
+            </p>
+
+            <h2 id="check" class="rule-top">Check a Preview</h2>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Paste the address into a message to yourself</strong> in Slack or Teams and
+                look at the preview before sending it anywhere.
+              </li>
+              <li>
+                <strong>Expect a delay after changes:</strong> Apps keep a page's preview for days.
+                LinkedIn's Post Inspector shows what it sees and fetches the page again.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kit<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="install.html">Install</a></li>
+              <li class="active">
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li class="active">
+                    <a href="previews.html" aria-current="page">Link Previews</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="tops.html">Page Tops</a></li>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="accounts.html">Accounts</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

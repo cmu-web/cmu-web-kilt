@@ -790,6 +790,10 @@
               template's script copies it into the header and the menu, and without the script it
               stays a plain list in the footer.
             </p>
+            <p>
+              Its head also needs the tags that give a shared link its title, sentence and picture;
+              see <a href="previews.html">Link Previews</a>.
+            </p>
             <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -986,7 +990,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li class="active"><a href="layout.html" aria-current="page">Page Layout</a></li>
+              <li class="active">
+                <a href="layout.html" aria-current="page">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="components.html">Components</a>
                 <ul>
