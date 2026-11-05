@@ -7,17 +7,17 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="The title, sentence and picture that show when someone shares a page in Slack, Teams, a text or a post. Every page should have one, so a shared link looks like CMU and says what it leads to."
+      content="Give shared links a clear title, a short description and a recognizable image."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kit" />
     <meta property="og:title" content="Link Previews - Carnegie Mellon Web Kit" />
     <meta
       property="og:description"
-      content="The title, sentence and picture that show when someone shares a page in Slack, Teams, a text or a post. Every page should have one, so a shared link looks like CMU and says what it leads to."
+      content="Give shared links a clear title, a short description and a recognizable image."
     />
     <meta property="og:url" content="https://webkit.andrew.cmu.edu/previews.html" />
-    <meta property="og:image" content="https://webkit.andrew.cmu.edu/images/og.jpg" />
+    <meta property="og:image" content="https://webkit.andrew.cmu.edu/images/preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -72,9 +72,86 @@
           <div>
             <h1>Link Previews</h1>
             <p class="cmu-lead">
-              The title, sentence and picture that show when someone shares a page in Slack, Teams,
-              a text or a post. Every page should have one, so a shared link looks like CMU and says
-              what it leads to.
+              Give shared links a clear title, a short description and a recognizable image.
+            </p>
+            <h2 id="what" class="rule-top">What People See</h2>
+            <div class="cmu-split">
+              <div>
+                <p>
+                  When someone shares your page in Slack, Teams or a social post, its preview helps
+                  people decide whether to open it. The app builds that preview from information in
+                  the page's HTML.
+                </p>
+                <ul>
+                  <li><strong>Title:</strong> Name the page and the site it belongs to.</li>
+                  <li>
+                    <strong>Description:</strong> Say what people will find in one short sentence.
+                  </li>
+                  <li>
+                    <strong>Image:</strong> Show the site, usually the top of its home page; see
+                    <a href="#image">The Preview Image</a>.
+                  </li>
+                </ul>
+                <p>The app controls the layout, so the same link may look different in each one.</p>
+              </div>
+              <div>
+                <figure class="cmu-shot">
+                  <div class="kit-link-preview">
+                    <img
+                      src="images/preview.jpg"
+                      width="1200"
+                      height="630"
+                      alt="The Web Kit home page, with the heading Build CMU Sites and Apps beside screenshots of three CMU sites."
+                    />
+                    <div class="kit-link-preview-text">
+                      <span>webkit.andrew.cmu.edu</span>
+                      <strong>Carnegie Mellon Web Kit</strong>
+                      <span
+                        >Components for CMU sites and apps, built on the university's web
+                        template.</span
+                      >
+                    </div>
+                  </div>
+                  <figcaption>An illustrative preview using this guide's image.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <h2 id="image" class="rule-top">The Preview Image</h2>
+            <p>
+              Every site needs one image for its previews. Unless a page has a better picture of its
+              own, use the top of the site's home page:
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>What it shows:</strong> The home page at 1200 pixels wide, cropped to the
+                top 630, roof and site name included, with the menu closed and no one signed in.
+              </li>
+              <li><strong>Size and type:</strong> 1200 &times; 630 pixels, a JPEG under 300 KB.</li>
+              <li>
+                <strong>Name and place:</strong> <code>images/preview.jpg</code> in the site's top
+                folder, so it's at <code>/images/preview.jpg</code> on the site. For a site built
+                from a repository, commit it there, beside the pages.
+              </li>
+              <li>
+                <strong>Alt text:</strong> Name the site and say what the page shows, such as
+                &ldquo;Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a
+                camera kit.&rdquo;
+              </li>
+              <li>
+                <strong>Nothing private:</strong> No one's name, data or messages. Use sample data
+                if the page shows any.
+              </li>
+              <li>
+                <strong>Only what you can share without a credit:</strong> A preview shows no
+                caption, so swap out any photo whose license asks for one.
+              </li>
+            </ul>
+            <p>
+              To make it, open the home page in Chrome, open the developer tools and turn on the
+              device toolbar. Set the size to 1200 &times; 630, then choose
+              <strong>Capture screenshot</strong> from its menu. Save it as a JPEG. Retake it when
+              the home page changes.
             </p>
 
             <h2 id="tags" class="rule-top">
@@ -88,8 +165,9 @@
               >
             </h2>
             <p>
-              A few tags in the page's <code>&lt;head&gt;</code>, from the Open Graph standard that
-              most apps read:
+              <a class="external" href="https://ogp.me/">Open Graph tags</a> describe the page for
+              apps that generate previews. Add them to the page's <code>&lt;head&gt;</code>. This
+              example is for an equipment reservation page:
             </p>
             <pre
               class="kit-code"
@@ -101,84 +179,136 @@
 &lt;meta property="og:image" content="https://www.cmu.edu/equipment/images/preview.jpg"&gt;
 &lt;meta property="og:image:width" content="1200"&gt;
 &lt;meta property="og:image:height" content="630"&gt;
-&lt;meta property="og:image:alt" content="A camera kit laid out on a table: a camera, two lenses and a light."&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
 &lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
             <ul class="cmu-checks">
               <li>
-                <strong>Title:</strong> the page's name, then the site's, as in its
-                <code>&lt;title&gt;</code>.
+                <strong>Keep the title specific:</strong> Use the page's name followed by the site's
+                name, as in its <code>&lt;title&gt;</code>.
               </li>
               <li>
-                <strong>Description:</strong> one sentence about the page, the same as its
-                <code>&lt;meta name="description"&gt;</code>. Apps cut it off after about 160
-                characters.
+                <strong>Keep the description short:</strong> Use the same sentence as the page's
+                <code>&lt;meta name="description"&gt;</code>. Put the useful information first; apps
+                may shorten it.
               </li>
               <li>
-                <strong>Address:</strong> the page's full address, from <code>https://</code>.
+                <strong>Use full addresses:</strong> Give both the page and image a public
+                <code>https://</code> address, rather than a path such as
+                <code>/images/preview.jpg</code>.
               </li>
               <li>
-                <strong>Image:</strong> 1200 &times; 630 pixels, a JPEG or PNG, at a full
-                <code>https://</code> address, with alt text. Keep what matters away from the edges,
-                since some apps crop it to a square.
+                <strong>Use the preview image:</strong> The site's
+                <a href="#image"><code>images/preview.jpg</code></a
+                >, with its size and alt text.
               </li>
               <li>
-                <strong><code>twitter:card</code></strong> asks apps that read Twitter's tags for
-                the large picture rather than a small square.
+                <strong>Request a large image:</strong> <code>twitter:card</code> with
+                <code>summary_large_image</code> requests the larger preview on platforms that
+                support Twitter Cards.
               </li>
             </ul>
 
             <h2 id="cms" class="rule-top">In a CMS</h2>
             <p>
-              In Cascade, CMU's template already writes the title, description, address and type on
-              every page, from the page's own settings. The description comes from each page's
-              Description field, so fill it in for every page. What it doesn't add is a picture.
+              CMU's Cascade template supplies each page's title, description, address and type. Fill
+              in the page's Description field, then add a preview image for the site.
             </p>
             <h3 id="cms-image">Add a Picture</h3>
             <ol class="cmu-steps">
+              <li>Make the site's <a href="#image">preview image</a>.</li>
               <li>
-                Make an image 1200 &times; 630 pixels. A screenshot of the site's home page at that
-                size works, or a photo the site has the right to use.
+                Upload it to the site's <code>images</code> folder as <code>preview.jpg</code>.
               </li>
-              <li>Upload it to the site's <code>images</code> folder.</li>
               <li>
-                Add these lines to the text block the site's <code>setup</code> block puts in the
-                head, the same one that links the kit (see
-                <a href="install.html#cascade">In Cascade</a>), with your image's address and a
-                description of it:
+                Open the head text block referenced by the site's <code>setup</code> block, the same
+                place you <a href="install.html#cascade">link the kit</a>. Add these tags, replacing
+                the image address and alt text with your own:
                 <pre
                   class="kit-code"
                 ><code>&lt;meta property="og:image" content="https://www.cmu.edu/equipment/images/preview.jpg"&gt;
 &lt;meta property="og:image:width" content="1200"&gt;
 &lt;meta property="og:image:height" content="630"&gt;
-&lt;meta property="og:image:alt" content="A camera kit laid out on a table: a camera, two lenses and a light."&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
 &lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
               </li>
               <li>Publish the site's pages, then <a href="#check">check a preview</a>.</li>
             </ol>
             <p>
-              The head block is the same on every page, so the whole site shares one picture. Don't
-              add the title, description or address tags there too: Cascade writes those, and a
-              second copy confuses apps. In another CMS, look for the theme's settings for link
-              previews or head code, and add what it doesn't already write.
+              The shared head block gives every page the same image. Keep the title, description and
+              page address in the page settings so each page has its own. Avoid adding a second copy
+              of those tags.
+            </p>
+
+            <p>
+              In another CMS, check its link-preview or social-sharing settings first. Add only the
+              tags it doesn't already provide.
             </p>
 
             <h2 id="app" class="rule-top">In an App</h2>
             <p>
-              Write all the tags in the layout's head, filled in for each page: its own title,
-              description and address, and the app's picture unless a page has a better one. Use the
-              page's full public address, not a path, and serve the image from the app itself so it
-              lives as long as the app does.
+              An app writes every tag itself, so its previews are only as good as its layout. Put
+              the tags in the one layout every page uses, filled in from each page, so no page goes
+              out without them.
             </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;!-- In the layout's &lt;head&gt;, from each page's own values --&gt;
+&lt;meta name="description" content="{{ page.description }}"&gt;
+&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
+&lt;meta property="og:title" content="{{ page.title }} - Equipment Checkout"&gt;
+&lt;meta property="og:description" content="{{ page.description }}"&gt;
+&lt;meta property="og:url" content="https://equipment.andrew.cmu.edu{{ page.path }}"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:image" content="https://equipment.andrew.cmu.edu/images/preview.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Give every page a description:</strong> Make it part of what a page must
+                set, as a title is, and use the app's own one-sentence description as the fallback.
+              </li>
+              <li>
+                <strong>Build addresses from one setting:</strong> Keep the app's public address,
+                such as <code>https://equipment.andrew.cmu.edu</code>, in its configuration and join
+                each page's path to it. Don't use the address a request came in on: behind a proxy
+                or on a test copy, it's the wrong one.
+              </li>
+              <li>
+                <strong>Serve the image from the app:</strong> Put
+                <code>images/preview.jpg</code> with its other static files, open to everyone, so it
+                lasts as long as the app and loads without signing in.
+              </li>
+              <li>
+                <strong>Plan for sign-in:</strong> The apps that build previews aren't signed in. A
+                link to a page behind sign-in shows whatever a signed-out visitor gets, usually the
+                sign-in page, so give that page the app's own title, description and image.
+              </li>
+              <li>
+                <strong>Never put a user's data in the tags:</strong> No names, course numbers or
+                anything else from the signed-in page, even where it would be more specific.
+              </li>
+              <li>
+                <strong>Check them automatically:</strong> A test that fetches a few pages and looks
+                for <code>og:title</code>, <code>og:description</code> and <code>og:image</code>
+                catches a layout that lost them. These docs write and check theirs with a script.
+              </li>
+            </ul>
 
             <h2 id="check" class="rule-top">Check a Preview</h2>
             <ul class="cmu-checks">
               <li>
-                <strong>Paste the address into a message to yourself</strong> in Slack or Teams and
-                look at the preview before sending it anywhere.
+                <strong>Check the published page, signed out:</strong> Paste its address into a
+                message to yourself in Slack or Teams. Check the title, description and image.
               </li>
               <li>
-                <strong>Expect a delay after changes:</strong> Apps keep a page's preview for days.
-                LinkedIn's Post Inspector shows what it sees and fetches the page again.
+                <strong>Allow time for updates:</strong> Apps cache previews, so changes may not
+                appear immediately. Use
+                <a class="external" href="https://www.linkedin.com/post-inspector/"
+                  >LinkedIn's Post Inspector</a
+                >
+                to check what LinkedIn sees.
               </li>
             </ul>
           </div>

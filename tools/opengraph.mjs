@@ -10,7 +10,7 @@ import * as prettier from "prettier";
 const BASE = "https://webkit.andrew.cmu.edu/";
 const SITE = "Carnegie Mellon Web Kit";
 const IMAGE = {
-  src: "images/og.jpg",
+  src: "images/preview.jpg",
   width: 1200,
   height: 630,
   alt: "The Carnegie Mellon Web Kit's home page: Build CMU Sites and Apps, beside screenshots of three sites built with it.",
