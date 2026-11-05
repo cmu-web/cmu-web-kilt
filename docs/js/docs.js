@@ -112,6 +112,9 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
   copy.querySelectorAll(".cmu-countdown-clock, .cmu-sort-moves").forEach(function (el) {
     el.remove();
   });
+  copy.querySelectorAll("a[data-cmu-email]").forEach(function (el) {
+    el.removeAttribute("href");
+  });
   copy.querySelectorAll(".cmu-countdown-on").forEach(function (el) {
     el.classList.remove("cmu-countdown-on");
   });

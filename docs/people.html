@@ -183,13 +183,13 @@
                 contact details.
               </li>
               <li>
-                <strong>Email</strong> as a plain link that names the person, such as "Email Andrew
-                Carnegie." Skip the template's <code>span.protect</code>: it hides the address from
-                spam bots, but adds an envelope icon.
+                <strong>Email</strong> as an <a href="content.html#email">email link</a> that names
+                the person, such as "Email Andrew Carnegie."
               </li>
             </ul>
             <p class="kit-classes">
-              <code>grid column3 grey boxes</code>, <code>rule-bottom</code>
+              <code>grid column3 grey boxes</code>, <code>rule-bottom</code>,
+              <code>data-cmu-email</code>
             </p>
           </div>
         </div>
@@ -200,19 +200,19 @@
           <div>
             <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Andrew Carnegie | Director</h2>
-            <p><a href="mailto:ac00@andrew.cmu.edu">Email Andrew Carnegie</a></p>
+            <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
             <p>Office: 412-555-0101</p>
           </div>
           <div>
             <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Andrew Mellon | Associate Director</h2>
-            <p><a href="mailto:andrewid@andrew.cmu.edu">Email Andrew Mellon</a></p>
+            <p><a data-cmu-email="andrewid(through)andrew.cmu.edu">Email Andrew Mellon</a></p>
             <p>Office: 412-555-0102</p>
           </div>
           <div>
             <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Margaret Morrison | Office Coordinator</h2>
-            <p><a href="mailto:andrewid@andrew.cmu.edu">Email Margaret Morrison</a></p>
+            <p><a data-cmu-email="andrewid(through)andrew.cmu.edu">Email Margaret Morrison</a></p>
             <p>Office: 412-555-0103</p>
           </div>
         </div>
@@ -241,7 +241,8 @@
                 <code>.content</code> column, as here; anywhere else, the heading drops below it.
               </li>
               <li>
-                <strong>The email address</strong> is a plain link, as on the
+                <strong>The email address</strong> is an
+                <a href="content.html#email">email link</a>, as on the
                 <a href="#contacts">contact cards</a>.
               </li>
               <li>
@@ -264,7 +265,7 @@
               <div class="address">
                 <address>
                   <ul>
-                    <li><a href="mailto:ac00@andrew.cmu.edu">ac00@andrew.cmu.edu</a></li>
+                    <li><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></li>
                   </ul>
                 </address>
               </div>

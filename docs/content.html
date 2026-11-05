@@ -656,6 +656,35 @@
         </div>
       </div>
 
+            <h2 id="email" class="rule-top">
+              Email Links
+              <span class="kit-where"
+                ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              An email link whose address isn't in the page's HTML, so simple scrapers can't harvest
+              it. Write the address with <code>(through)</code> for the <code>@</code> in
+              <code>data-cmu-email</code>, and give the link words that name the person or office,
+              such as "Email Andrew Carnegie." <code>cmu-app.js</code> makes it a working link and
+              leaves the words alone. Without the script, it's plain text.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Use it for people,</strong> such as staff or student workers on a team page.
+                A shared office address people should copy, like a help desk's, can just be shown.
+              </li>
+              <li>
+                <strong>It doesn't replace the template's <code>span.protect</code></strong
+                >, which hides the address too but always says "Email" and adds an envelope icon.
+              </li>
+            </ul>
+            <p class="kit-classes"><code>data-cmu-email</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
+      </div>
+
             <h2 id="countdown" class="rule-top">
               Countdown
               <span class="kit-where"

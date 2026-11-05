@@ -215,6 +215,20 @@
     if (scope.querySelectorAll) scope.querySelectorAll("[data-cmu-countdown]").forEach(countdown);
     if (scope.matches && scope.matches("[data-cmu-countdown]")) countdown(scope);
   }
+  // Email links: <a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew
+  // Carnegie</a> gets its mailto: address here, so the address isn't in the
+  // page's HTML for scrapers. The link keeps its own words. Without the script
+  // it stays plain text. See Email Links in the docs (content.html).
+  function emailLink(a) {
+    var to = a.getAttribute("data-cmu-email").replace("(through)", "@");
+    a.href = "mailto:" + to;
+  }
+  function startEmails(scope) {
+    if (scope.querySelectorAll) scope.querySelectorAll("a[data-cmu-email]").forEach(emailLink);
+    if (scope.matches && scope.matches("a[data-cmu-email]")) emailLink(scope);
+  }
+  startEmails(document);
+
   // Sorting: <ol class="cmu-sort" data-cmu-sort> whose items people put in
   // order. Adds up and down arrow buttons to each item (named for the item, for
   // screen readers), keeps focus on the moved item and says where it went. A
@@ -276,7 +290,7 @@
   });
 
   startCountdowns(document);
-  // Countdowns and sorting lists added later start, and a countdown whose
+  // Countdowns, sorting lists and email links added later start, and a countdown whose
   // date changes restarts
   new MutationObserver(function (changes) {
     changes.forEach(function (c) {
@@ -285,6 +299,7 @@
         c.addedNodes.forEach(function (n) {
           startCountdowns(n);
           startSorts(n);
+          startEmails(n);
         });
     });
   }).observe(document.documentElement, {
