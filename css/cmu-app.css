@@ -171,15 +171,22 @@ nav#nav li.cmu-account-menu > a {
 nav#nav li.cmu-account-menu > .cmu-account-name {
   display: block;
   padding-bottom: 0.4em;
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-weight: 700;
 }
 nav#nav li.cmu-account-menu:has(.cmu-avatar) > a {
   max-width: calc(100% - 56px - 3rem); /* clear of the photo */
 }
-/* The template indents menu links 2em; at the name's larger size, scale it
-   back down so the name lines up with Preferences under it */
+/* Preferences and Sign Out a step larger than the menu's links. The
+   template indents menu links 2em; at these larger sizes, scale it back so
+   the name and Preferences line up with the menu */
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a {
+  font-size: 1.1em;
+}
 nav#nav li.cmu-account-menu > .cmu-account-name {
+  padding-left: calc(2em / 1.2);
+}
+nav#nav li.cmu-account-menu > .cmu-account-name + a {
   padding-left: calc(2em / 1.1);
 }
 nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a {
