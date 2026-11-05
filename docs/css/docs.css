@@ -206,3 +206,53 @@
 .kit-keep .kit-where {
   white-space: normal;
 }
+
+/* Home Page for a Service Description: each step in a gray box, pinned
+   beside its section of the screenshot (--at: how far down, 0 to 1) and
+   overlapping its edge. One column on phones. */
+.kit-annotated ol.cmu-steps > li {
+  margin-bottom: 0.5rem;
+  padding: 0.85rem 1rem 0.85rem 3.2rem;
+  background: var(--cmu-gray-tint);
+  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
+}
+.kit-annotated ol.cmu-steps > li::before {
+  left: 1rem;
+  top: 0.9rem;
+}
+@media (min-width: 760px) {
+  .kit-annotated {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+  }
+  .kit-annotated > figure {
+    width: 56%;
+    margin: 0;
+  }
+  .kit-annotated-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 46%;
+    z-index: 1;
+  }
+  /* The intro stays clear of the screenshot; only the steps overlap it */
+  .kit-annotated-text > p {
+    margin-right: 10%;
+  }
+  .kit-annotated ol.cmu-steps {
+    margin: 0;
+  }
+  /* 1.6rem is the browser window's bar above the screenshot */
+  .kit-annotated ol.cmu-steps > li {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(1.6rem + (100% - 1.6rem) * var(--at));
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
