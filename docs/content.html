@@ -658,8 +658,8 @@
                 button reads "Copied" for two seconds and screen readers hear "Copied."
               </li>
               <li>
-                <strong>Without the clipboard</strong> (a page on plain http, or an old browser), it
-                selects the text instead and says which keys copy it.
+                <strong>If automatic copying isn't available,</strong> the button selects the text
+                and tells you to press Ctrl+C or Command+C to copy it.
               </li>
             </ul>
             <p class="kit-classes">
@@ -688,8 +688,8 @@
               >
             </h2>
             <p>
-              An email link whose address isn't in the page's HTML, so simple scrapers can't harvest
-              it. Write the address with <code>(through)</code> for the <code>@</code> in
+              An email link whose address isn't in the page's HTML, so very simple scrapers can't
+              harvest it. Write the address with <code>(through)</code> for the <code>@</code> in
               <code>data-cmu-email</code>, and give the link words that name the person or office,
               such as "Email Andrew Carnegie." <code>cmu-app.js</code> fills in the address only
               when someone points at, focuses or taps the link, so scrapers that just load the page
@@ -701,8 +701,8 @@
                 A shared office address people should copy, like a help desk's, can just be shown.
               </li>
               <li>
-                <strong>It doesn't replace the template's <code>span.protect</code></strong
-                >, which hides the address too but always says "Email" and adds an envelope icon.
+                <strong>Alternative to the template's email link,</strong>
+                <code>span.protect</code>, which only displays "Email" with an envelope icon.
               </li>
             </ul>
             <p class="kit-classes"><code>data-cmu-email</code></p>
