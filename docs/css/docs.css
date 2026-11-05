@@ -22,7 +22,7 @@
 #content
   > :is(
     .kit-demo--banded,
-    .content:is(.grey, .darkgrey, .red, .gold, .blue, .teal, .green, .darkgreen)
+    .content:is(.grey, .cmu-lightgrey, .darkgrey, .red, .gold, .blue, .teal, .green, .darkgreen)
   )
   + .content
   > div
@@ -112,7 +112,12 @@
 }
 /* Background patterns: three to a row, wide enough to see the pattern */
 .kit-swatches--tall {
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 600px) {
+  .kit-swatches--tall {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .kit-swatches--tall > div {
   min-height: 9rem;
