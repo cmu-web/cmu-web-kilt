@@ -473,9 +473,11 @@ body.cmu-app .cmu-match li > select {
 /* Card sort: each card, a white card with its words, gets one of a few
    groups, picked from large tiles under it (radio buttons). See Card Sort
    in the docs (forms.html) */
+/* Cards up to 20rem wide, centered when they don't fill the row */
 .cmu-card-sort {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 20rem));
+  justify-content: center;
   gap: 1.5em;
 }
 /* Cards in a row are the same height, with the tiles at the bottom */
