@@ -86,13 +86,13 @@
               >
             </h2>
             <p>
-              Your name (or Sign In) in the template's roof, the strip across the top, beside the
-              menu button, and again in the menu. The roof's copy hides when the menu opens and
-              below 768px, where the menu has it instead. Signed out, it looks like the template's
-              header links. Signed in, add <code>cmu-account-open</code>: it's plain text that opens
-              the menu. If the bar also has the template's <a href="layout.html#search">search</a>,
-              put the Sign In link (or your name) after the search form; the kit places it between
-              the search and the menu button.
+              The signed-in user's name (or Sign In) in the template's roof, the strip across the
+              top, beside the menu button, and again in the menu. The roof's copy hides when the
+              menu opens and below 768px, where the menu has it instead. Signed out, it looks like
+              the template's header links. Signed in, add <code>cmu-account-open</code>: it's plain
+              text that opens the menu. If the bar also has the template's
+              <a href="layout.html#search">search</a>, put the Sign In link (or your name) after the
+              search form; the kit places it between the search and the menu button.
             </p>
             <figure class="cmu-shot">
               <img
@@ -134,7 +134,7 @@
   &lt;a href="/logout"&gt;Sign Out&lt;/a&gt;
 &lt;/li&gt;</code></pre>
             <p>
-              Signed in, the menu starts with your name, then
+              Signed in, the menu starts with the user's name, then
               <a href="#preferences">Preferences</a> if the app has any, then Sign Out.
             </p>
 
@@ -147,9 +147,10 @@
               >
             </h2>
             <p>
-              Your photo, also called an avatar or account photo. When the app knows it, put it
-              before your name, round: small in the roof, larger at the top of the menu. Add
-              <code>cmu-avatar</code> to the image, with empty <code>alt</code> text, since your
+              The signed-in user's photo, also called an avatar or account photo. When the app has
+              it, put it before their name, round: small in the roof, larger at the top of the menu.
+              Add
+              <code>cmu-avatar</code> to the image, with empty <code>alt</code> text, since their
               name is right beside it. With no photo, leave the image out rather than showing a
               blank one.
               <a href="layout.html#try-header">Try it on this site's header.</a>
@@ -184,8 +185,8 @@
             <h3 id="sign-in-button">A Sign In Button</h3>
             <p>
               For a page that's useful signed out, where signing in adds more, such as a search
-              anyone can use that shows more once you sign in. One large outline button at the top
-              of the sidebar, beside the page's lead. It's the template's
+              anyone can use that shows more once the user signs in. One large outline button at the
+              top of the sidebar, beside the page's lead. It's the template's
               <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
               <code>&lt;h1&gt;</code>.
             </p>
@@ -211,9 +212,9 @@
           <div>
             <h3 id="sign-in-box">A Sign In Box</h3>
             <p>
-              For a page that does little until you sign in. A red box says what signing in lets you
-              do, with one wide outline Sign In button, and a note under it about who can sign in.
-              It's the template's sidebar box with <code>red invert</code>, and
+              For a page that does little until the user signs in. A red box says what signing in
+              lets them do, with one wide outline Sign In button, and a note under it about who can
+              sign in. It's the template's sidebar box with <code>red invert</code>, and
               <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
             </p>
             <p class="kit-classes">
@@ -255,8 +256,8 @@
                 page's own content comes first, and the button is there for the extras.
               </li>
               <li>
-                <strong>The box</strong> is for a page with little to show until you sign in. Say
-                what signing in lets you do, not just that you must.
+                <strong>The box</strong> is for a page with little to show until the user signs in.
+                Say what signing in lets them do, not just that they must.
               </li>
               <li>
                 <strong>The header link alone</strong> is enough past the home page, and on pages
@@ -379,7 +380,7 @@
               </li>
               <li>
                 Name the person and their Andrew ID, and make Stop a button that ends the session
-                and returns you to your own account.
+                and returns the administrator to their own account.
               </li>
               <li>
                 Don't use the template's red alert bar (<code>#campusAlert</code>) for this: it's
