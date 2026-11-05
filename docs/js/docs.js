@@ -526,6 +526,49 @@ document.querySelectorAll(".kit-where").forEach(function (where) {
   keep.appendChild(where);
 });
 
+// Demo selection: a bulk bar with data-kit-select="table body id" counts the
+// checked rows, and shows each data-kit-bulk button with how many selected
+// rows have that data-kit-status. The header checkbox selects all.
+document.querySelectorAll("[data-kit-select]").forEach(function (bar) {
+  var body = document.getElementById(bar.dataset.kitSelect),
+    all = body.closest("table").querySelector("thead input[type=checkbox]"),
+    count = bar.querySelector(".cmu-selection-count"),
+    buttons = bar.querySelectorAll("[data-kit-bulk]"),
+    labels = Array.prototype.map.call(buttons, function (b) {
+      return b.textContent.replace(/ \(\d+\)$/, "");
+    });
+  function boxes() {
+    return Array.prototype.slice.call(body.querySelectorAll("input[type=checkbox]"));
+  }
+  function update() {
+    var picked = boxes().filter(function (b) {
+        return b.checked;
+      }),
+      n = picked.length;
+    count.textContent = n
+      ? n + " section" + (n === 1 ? "" : "s") + " selected"
+      : "No sections selected";
+    count.classList.toggle("cmu-has-selection", n > 0);
+    buttons.forEach(function (b, i) {
+      var k = picked.filter(function (box) {
+        return box.closest("tr").dataset.kitStatus === b.dataset.kitBulk;
+      }).length;
+      b.textContent = labels[i] + " (" + k + ")";
+      b.hidden = !k;
+    });
+    all.checked = n > 0 && n === boxes().length;
+    all.indeterminate = n > 0 && n < boxes().length;
+  }
+  body.addEventListener("change", update);
+  all.addEventListener("change", function () {
+    boxes().forEach(function (b) {
+      b.checked = all.checked;
+    });
+    update();
+  });
+  update();
+});
+
 // Demo Load More: a button with data-kit-load-more="table body id" shows the
 // next data-kit-batch hidden rows, updates the count, moves focus to the first
 // new row and hides its paragraph once everything is showing. A real app loads

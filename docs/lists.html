@@ -225,9 +225,10 @@
             </p>
             <ul>
               <li>
-                <strong>Selection:</strong> your script adds <code>cmu-has-selection</code> to the
-                count when anything is selected, and shows the bulk buttons by removing
-                <code>hidden</code>.
+                <strong>Selection:</strong> your script keeps the count current ("No sections
+                selected" when there are none), adds <code>cmu-has-selection</code> to it when
+                anything is selected and shows each bulk button only when it applies to a selected
+                row, with how many: "Upload Syllabus (2)". Try it above.
               </li>
               <li>
                 <strong>Checkbox cells:</strong> the label fills the cell, so the whole cell is the
@@ -253,10 +254,10 @@
             </ul>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-bulk-bar">
-          <span class="cmu-selection-count cmu-has-selection">1 section selected</span>
-          <button class="btn small" type="button">Upload Syllabus</button>
-          <button class="btn small ghost" type="button" hidden>Remove Syllabus</button>
+        <div class="cmu-bulk-bar" data-kit-select="kit-select-rows">
+          <span class="cmu-selection-count cmu-has-selection" aria-live="polite">1 section selected</span>
+          <button class="btn small" type="button" data-kit-bulk="unavailable">Upload Syllabus (1)</button>
+          <button class="btn small ghost" type="button" data-kit-bulk="available" hidden>Remove Syllabus</button>
         </div>
         <table class="alternate cmu-full">
           <thead>
@@ -266,11 +267,11 @@
               <th data-sort-key="title"><button class="cmu-sort" type="button">Title<span class="cmu-sort-arrow"></span></button></th>
               <th class="num cmu-fit">Seats</th>
               <th class="cmu-fit">Status</th>
-              <th class="cmu-fit">Actions</th>
+              <th class="cmu-fit"><span class="sr-only">Actions</span></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody id="kit-select-rows">
+            <tr data-kit-status="unavailable">
               <td class="cmu-select-cell"><label><input type="checkbox" checked aria-label="Select 15-112 A"></label></td>
               <td class="cmu-fit">15-112 A</td>
               <td>Fundamentals of Programming</td>
@@ -278,7 +279,7 @@
               <td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td>
               <td class="cmu-fit"><div class="cmu-row-buttons"><button class="btn small" type="button">Upload Syllabus</button><button class="btn small ghost" type="button">Do&nbsp;Not&nbsp;Expect a&nbsp;Syllabus</button></div></td>
             </tr>
-            <tr>
+            <tr data-kit-status="available">
               <td class="cmu-select-cell"><label><input type="checkbox" aria-label="Select 15-122 A"></label></td>
               <td class="cmu-fit">15-122 A</td>
               <td>Principles of Imperative Computation</td>
