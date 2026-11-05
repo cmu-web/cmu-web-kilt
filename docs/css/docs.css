@@ -152,6 +152,10 @@
 .kit-try-date label {
   font-weight: 700;
 }
+/* A second line of options sits close under the first */
+.kit-try-date + .kit-try-date {
+  margin-top: -0.75rem;
+}
 
 /* Example code: each line wraps, its continuation hanging four characters in
    from where the line starts (docs.js sets the padding from its indent) */

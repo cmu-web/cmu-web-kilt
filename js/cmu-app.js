@@ -155,7 +155,9 @@
   // with a sentence inside that gives the same moment. Shows days, hours,
   // minutes and seconds on flip cards and stops at zero; screen readers get
   // the sentence instead of the ticking cards. An optional
-  // <div class="cmu-countdown-done" hidden> inside shows once it reaches zero. See Countdown in the docs
+  // <div class="cmu-countdown-done" hidden> inside shows once it reaches zero,
+  // when the countdown also gets cmu-countdown-ended; with
+  // cmu-countdown--replace, the cards then go. See Countdown in the docs
   // (content.html). Adapted from a CodePen by Shaw
   // (codepen.io/shshaw/pen/vKzoLL, MIT).
   var UNITS = [
@@ -226,6 +228,7 @@
         flip(units[i], String(n).padStart(2, "0"));
       });
       if (done) done.hidden = left > 0;
+      root.classList.toggle("cmu-countdown-ended", !left);
       if (!left) clearInterval(root.cmuCountdown);
     }
     root.cmuCountdown = setInterval(tick, 1000);

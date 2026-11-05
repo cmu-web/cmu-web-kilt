@@ -850,6 +850,10 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+/* --replace: once it's done, the done message takes the cards' place */
+.cmu-countdown--replace.cmu-countdown-ended > .cmu-countdown-clock {
+  display: none;
+}
 .cmu-countdown-clock {
   display: flex;
   flex-wrap: wrap;

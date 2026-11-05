@@ -101,6 +101,17 @@ document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
     var d = new Date(field.value);
     if (!isNaN(d)) set(d);
   });
+  // The --replace option, in the countdown and in the code under it
+  var replace = field.closest(".kit-demo").querySelector("[data-kit-countdown-replace]");
+  if (replace)
+    replace.addEventListener("change", function () {
+      target.classList.toggle("cmu-countdown--replace", replace.checked);
+      var code = target.closest(".kit-demo").nextElementSibling.querySelector("code");
+      code.textContent = code.textContent.replace(
+        replace.checked ? 'class="cmu-countdown"' : 'class="cmu-countdown cmu-countdown--replace"',
+        replace.checked ? 'class="cmu-countdown cmu-countdown--replace"' : 'class="cmu-countdown"',
+      );
+    });
 });
 
 document.querySelectorAll(".kit-demo").forEach(function (demo) {
@@ -118,7 +129,7 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
     });
   });
   copy.querySelectorAll(".cmu-countdown-on").forEach(function (el) {
-    el.classList.remove("cmu-countdown-on");
+    el.classList.remove("cmu-countdown-on", "cmu-countdown-ended");
   });
   var lines = copy.innerHTML.replace(/^\s*\n|\s+$/g, "").split("\n");
   var indent = Math.min.apply(
