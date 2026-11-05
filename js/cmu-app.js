@@ -216,18 +216,45 @@
     if (scope.matches && scope.matches("[data-cmu-countdown]")) countdown(scope);
   }
   // Email links: <a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew
-  // Carnegie</a> gets its mailto: address here, so the address isn't in the
-  // page's HTML for scrapers. The link keeps its own words. Without the script
-  // it stays plain text. See Email Links in the docs (content.html).
-  function emailLink(a) {
-    var to = a.getAttribute("data-cmu-email").replace("(through)", "@");
-    a.href = "mailto:" + to;
+  // Carnegie</a>. The address isn't in the page's HTML, and the link isn't
+  // built until someone points at it, focuses it or taps it, so scrapers that
+  // only read or load the page don't find it. Until then it's announced and
+  // focusable as a link. The link keeps its own words. See Email Links in the
+  // docs (content.html).
+  function emailReady(a) {
+    if (a.hasAttribute("href")) return;
+    a.setAttribute("role", "link");
+    a.tabIndex = 0;
+  }
+  function emailOpen(a) {
+    if (a.hasAttribute("href")) return;
+    a.href = "mailto:" + a.getAttribute("data-cmu-email").replace("(through)", "@");
+    a.removeAttribute("role");
+    a.removeAttribute("tabindex");
   }
   function startEmails(scope) {
-    if (scope.querySelectorAll) scope.querySelectorAll("a[data-cmu-email]").forEach(emailLink);
-    if (scope.matches && scope.matches("a[data-cmu-email]")) emailLink(scope);
+    if (scope.querySelectorAll) scope.querySelectorAll("a[data-cmu-email]").forEach(emailReady);
+    if (scope.matches && scope.matches("a[data-cmu-email]")) emailReady(scope);
   }
   startEmails(document);
+  ["mouseover", "focusin", "pointerdown", "touchstart"].forEach(function (type) {
+    document.addEventListener(
+      type,
+      function (e) {
+        var a = e.target.closest && e.target.closest("a[data-cmu-email]");
+        if (a) emailOpen(a);
+      },
+      { passive: true },
+    );
+  });
+  // Enter on the focused link: build it (if focus didn't already) and follow it
+  document.addEventListener("keydown", function (e) {
+    var a = e.key === "Enter" && e.target.closest && e.target.closest("a[data-cmu-email]");
+    if (a && !a.hasAttribute("href")) {
+      emailOpen(a);
+      a.click();
+    }
+  });
 
   // Sorting: <ol class="cmu-sort" data-cmu-sort> whose items people put in
   // order. Adds up and down arrow buttons to each item (named for the item, for

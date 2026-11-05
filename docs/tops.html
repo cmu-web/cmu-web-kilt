@@ -61,15 +61,21 @@
                 ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
               >
             </h2>
-            <p>
-              An eyebrow is an optional short red line right above a heading. Use it on a page or
-              card meant for one group ("For Students," as on path cards), or to flag something new
-              ("New for Spring 2027"). Leave it off a page for everyone, such as an app's home page,
-              and never repeat the site's name in it: that's already the big title at the top of
-              every page. A lead is the larger first paragraph under a page title. The
-              call-to-action row lines up a button, a link and an optional note. A paragraph with
-              just a button and then a call to action gets the same spacing without it.
-            </p>
+            <ul>
+              <li>
+                <strong>Eyebrow:</strong> An optional short red line right above a heading. Use it
+                on a page or card meant for one group ("For Students," as on path cards), or to flag
+                something new ("New for Spring 2027"). Leave it off a page for everyone, such as an
+                app's home page, and never repeat the site's name in it: that's already the big
+                title at the top of every page.
+              </li>
+              <li><strong>Lead:</strong> The larger first paragraph under a page title.</li>
+              <li>
+                <strong>Call-to-action row:</strong> Lines up a button, a link and an optional note.
+                A paragraph with just a button and then a call to action gets the same spacing
+                without it.
+              </li>
+            </ul>
             <p class="kit-classes">
               <code>cmu-eyebrow</code>, <code>cmu-lead</code>, <code>cmu-cta-row</code>,
               <code>cmu-cta-note</code>
@@ -87,7 +93,7 @@
       </div>
 
             <h2 id="hero" class="rule-top">
-              Hero
+              Split Hero
               <span class="kit-where"
                 ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span
                 ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
@@ -151,7 +157,7 @@
 &lt;/div&gt;</code></pre>
 
             <h2 id="photo-hero" class="rule-top">
-              Hero
+              Full-Width Photo Hero
               <span class="kit-where"
                 ><span
                   class="kit-where-template"
@@ -161,19 +167,18 @@
               >
             </h2>
             <p>
-              A full-width photo at the top of a page, before the breadcrumbs, as on First-Year
-              Orientation's pages. It's a <code>div.hero</code> with the photo as its background: a
-              900 &times; 600 version in <code>style</code> for phones, and a 1400 &times; 700
-              version in <code>data-img</code>, which the template's script swaps in on wider
-              screens. Give it <code>role="img"</code> and an <code>aria-label</code> describing the
-              photo. In Cascade, it's the page's Hero. On a page with a hero, the template drops the
-              line under the header's tabs, since the photo sits right below them.
+              A full-width photo at the top of a page, before the breadcrumbs. It's a
+              <code>div.hero</code> with the photo as its background: a 900 &times; 600 version in
+              <code>style</code> for phones, and a 1400 &times; 700 version in
+              <code>data-img</code>, which the template's script swaps in on wider screens. Give it
+              <code>role="img"</code> and an <code>aria-label</code> describing the photo. In
+              Cascade, it's the page's Hero. On a page with a hero, the template drops the line
+              under the header's tabs, since the photo sits right below them.
             </p>
             <p>
               Over the photo, either a line of text in a dark band (<code>div.text</code>, with an
               <code>&lt;h1&gt;</code> and an optional <code>&lt;h2&gt;</code>), or a white box that
-              links somewhere (<code>a.box</code>, with <code>left</code> or <code>right</code>), as
-              on University Health Services' home page.
+              links somewhere (<code>a.box</code>, with <code>left</code> or <code>right</code>).
             </p>
             <p class="kit-classes">
               <code>hero</code>, <code>text</code>, <code>box left</code>, <code>box right</code>
@@ -204,7 +209,7 @@
             <p>
               Several heroes in a <code>section.js-flickityCustom</code> make a slideshow, with the
               same <a href="sections.html#carousel">carousel</a> script. For a service description,
-              the kit's <a href="#hero">hero card</a> with screenshots usually says more than a
+              the kit's <a href="#hero">split hero</a> with screenshots usually says more than a
               photo.
             </p>
 

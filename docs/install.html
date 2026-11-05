@@ -273,6 +273,32 @@ app.use("/vendor/cmu-web-kit", express.static(kit));</code></pre>
               instead, as below.
             </p>
 
+            <h2 id="rails" class="rule-top">Rails Apps</h2>
+            <p>
+              The kit also builds a <code>cmu-web-kit</code> gem that makes its stylesheets and
+              script available to the Rails asset pipeline. It supplies an importmap pin when your
+              app uses importmap. This first pass works from a local checkout and has not been
+              published to RubyGems.
+            </p>
+            <p>Add the checkout to your app's <code>Gemfile</code>, adjusting the path:</p>
+            <pre class="kit-code"><code>gem 'cmu-web-kit', path: '../cmu-web-kit'</code></pre>
+            <p>
+              Run <code>bundle install</code> and restart Rails. After CMU's template stylesheet,
+              load the kit before your app's own styles:
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;%= stylesheet_link_tag 'cmu-cms', 'cmu-app', 'application', 'data-turbo-track': 'reload' %&gt;</code></pre>
+            <p>
+              For importmap apps, import <code>"cmu-web-kit"</code> once in
+              <code>app/javascript/application.js</code>, after your existing template script.
+              Remove previous copies of the kit's assets and their script import. The
+              <a href="https://github.com/cmu-web/cmu-web-kit/blob/main/RAILS.md" class="external"
+                >Rails setup guide</a
+              >
+              covers the full setup, including apps without importmap and local gem builds.
+            </p>
+
             <h2 id="other" class="rule-top">Other Apps</h2>
             <p>
               For Python, PHP, Java or anything else: copy a release's two files into your app's

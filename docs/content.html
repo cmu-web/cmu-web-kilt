@@ -371,7 +371,7 @@
               >
             </h2>
             <p>
-              A photo with a caption under it, as on CMU News stories. Use Cascade's image block, or
+              A photo with a caption under it. Use Cascade's image block, or
               <code>figure.image</code> with a <code>&lt;figcaption&gt;</code>: the template sets
               the caption in italics and spaces the figure from the text below. Put
               <code>floatright</code> or <code>floatleft</code> on the image to set the figure
@@ -496,8 +496,8 @@
               >
             </h2>
             <p>
-              A YouTube video in the page, or beside a few sentences about it on a band, as on
-              Wellbeing's home page. Paste YouTube's embed code (Share, then Embed) and keep its
+              A YouTube video in the page, or beside a few sentences about it on a band. Paste
+              YouTube's embed code (Share, then Embed) and keep its
               <code>width</code> and <code>height</code>: the template's script fits the video to
               its column and keeps that shape, on phones too.
             </p>
@@ -546,8 +546,7 @@
               >
             </h2>
             <p>
-              A page from another site shown in a frame, such as a dashboard or a form, as on
-              Environment at CMU's Campus Environmental Sustainability Dashboard. Give the
+              A page from another site shown in a frame, such as a dashboard or a form. Give the
               <code>&lt;iframe&gt;</code> the <code>cmu-embed</code> class, and it fills its column
               at any screen size; set its height in the <code>height</code> attribute, tall enough
               for what's in it. The template sizes YouTube and other video frames itself (see
@@ -618,10 +617,10 @@
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Code gets an icon in its corner,</strong> as on GitHub, where anyone who
-                copies code expects it. Put the block and the button in a
-                <code>cmu-copyable</code> box, and name the button with <code>aria-label</code> and
-                <code>title</code> ("Copy Code," "Copy HTML") for screen readers and the tooltip.
+                <strong>Code gets an icon in its corner,</strong> where anyone who copies code
+                expects it. Put the block and the button in a <code>cmu-copyable</code> box, and
+                name the button with <code>aria-label</code> and <code>title</code> ("Copy Code,"
+                "Copy HTML") for screen readers and the tooltip.
               </li>
               <li>
                 <strong>Anything else gets a named button beside the block,</strong> for people who
@@ -666,8 +665,9 @@
               An email link whose address isn't in the page's HTML, so simple scrapers can't harvest
               it. Write the address with <code>(through)</code> for the <code>@</code> in
               <code>data-cmu-email</code>, and give the link words that name the person or office,
-              such as "Email Andrew Carnegie." <code>cmu-app.js</code> makes it a working link and
-              leaves the words alone. Without the script, it's plain text.
+              such as "Email Andrew Carnegie." <code>cmu-app.js</code> fills in the address only
+              when someone points at, focuses or taps the link, so scrapers that just load the page
+              don't get it, and it leaves the words alone. Without the script, it's plain text.
             </p>
             <ul class="cmu-checks">
               <li>
@@ -808,8 +808,8 @@
         </div>
       </div>
             <p>
-              A long FAQ divides into categories, as on Transportation Services' FAQ. Each category
-              is its own <code>.content</code> block with an <code>id</code>, headed by an
+              A long FAQ divides into categories. Each category is its own
+              <code>.content</code> block with an <code>id</code>, headed by an
               <code>&lt;h1&gt;</code> whose text is in a <code>rule-bottom</code> span, so the rule
               runs under the words. Give each question an <code>id</code> too: a link to it, such as
               <code>faq.html#miss-turn</code>, opens that answer when the page loads. With more than

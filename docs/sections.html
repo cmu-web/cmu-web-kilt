@@ -109,11 +109,11 @@
 &lt;/main&gt;</code></pre>
             <p>
               <strong>Each section's heading is an <code>&lt;h1&gt;</code></strong
-              >, as on CMU's Cascade pages, and headings inside a section (a card, a sub-topic) are
-              <code>&lt;h2&gt;</code> and below. That holds for every section, including the first
-              one after a hero: the hero's tagline is an <code>&lt;h1&gt;</code> too, and stays the
-              biggest heading on the page. Pick levels by what a heading contains, never by where it
-              falls on the page; screen reader users skim a page by its heading levels.
+              >, and headings inside a section (a card, a sub-topic) are <code>&lt;h2&gt;</code> and
+              below. That holds for every section, including the first one after a hero: the hero's
+              tagline is an <code>&lt;h1&gt;</code> too, and stays the biggest heading on the page.
+              Pick levels by what a heading contains, never by where it falls on the page; screen
+              reader users skim a page by its heading levels.
             </p>
 
             <h2 id="rule-top" class="rule-top">
@@ -128,11 +128,10 @@
             </h2>
             <p>
               An optional thin line over a section's heading, to mark where one topic ends and the
-              next begins on a long page, as on Computing Services' video production page. Add the
-              template's <code>rule-top</code> to the heading. The line sits right on top of the
-              heading; the section's own padding gives the space above it. On a color band
-              (<code>invert</code>) the line turns white. Its partner, <code>rule-bottom</code>,
-              puts the line under a heading instead, as in the
+              next begins on a long page. Add the template's <code>rule-top</code> to the heading.
+              The line sits right on top of the heading; the section's own padding gives the space
+              above it. On a color band (<code>invert</code>) the line turns white. Its partner,
+              <code>rule-bottom</code>, puts the line under a heading instead, as in the
               <a href="sidebars.html#quick-links">sidebar</a>.
             </p>
             <p class="kit-classes"><code>rule-top</code>, <code>rule-bottom</code></p>
@@ -266,11 +265,11 @@
             </h2>
             <p>
               The same grid without a color: white boxes with a thin border on the page's own
-              background, headed by what people come to do, as on CMU's ID+ page. Here each box's
-              title is the link, in the template's red, instead of a <code>cta</code> under the
-              text. Use linked titles when the title says it all, and a <code>cta</code> when the
-              action needs its own words. Phrase the titles as the end of the heading's sentence: "I
-              want to&hellip; Borrow a Camera".
+              background, headed by what people come to do. Here each box's title is the link, in
+              the template's red, instead of a <code>cta</code> under the text. Use linked titles
+              when the title says it all, and a <code>cta</code> when the action needs its own
+              words. Phrase the titles as the end of the heading's sentence: "I want to&hellip;
+              Borrow a Camera".
             </p>
             <p class="kit-classes">
               <code>grid column3 boxes</code>, a linked <code>&lt;h2&gt;</code>
@@ -309,9 +308,9 @@
             </h2>
             <p>
               A red band with a picture on one side and a heading, a few sentences and a button on
-              the other, to make one thing stand out on a page, as on CMU's Get Involved page. It's
-              a two-column grid in <code>red invert</code>: the first column holds the image. On
-              red, use the white outline button, <code>btn ghost</code>.
+              the other, to make one thing stand out on a page. It's a two-column grid in
+              <code>red invert</code>: the first column holds the image. On red, use the white
+              outline button, <code>btn ghost</code>.
             </p>
             <p class="kit-classes"><code>grid column2 red invert</code>, <code>btn ghost</code></p>
           </div>
@@ -343,10 +342,9 @@
               >
             </h2>
             <p>
-              Feature sections that slide, with arrows at the sides and a dot for each slide, as on
-              CMU's Visit page. Put two or more <code>grid column2</code> slides in a
-              <code>js-flickityCustom</code>, and load the template's carousel script after its main
-              one (Cascade adds it for you):
+              Feature sections that slide, with arrows at the sides and a dot for each slide. Put
+              two or more <code>grid column2</code> slides in a <code>js-flickityCustom</code>, and
+              load the template's carousel script after its main one (Cascade adds it for you):
             </p>
             <pre
               class="kit-code"
@@ -450,10 +448,10 @@
               >
             </h2>
             <p>
-              Square photos cropped to circles, beside a few paragraphs each, as on First-Year
-              Orientation's schedule. Add <code>circle</code> to the image, use a square photo and
-              alternate which side it's on. A <code>content wide</code> block holding an
-              <code>&lt;hr&gt;</code> separates each pair.
+              Square photos cropped to circles, beside a few paragraphs each. Add
+              <code>circle</code> to the image, use a square photo and alternate which side it's on.
+              A <code>content wide</code> block holding an <code>&lt;hr&gt;</code> separates each
+              pair.
             </p>
             <p class="kit-classes"><code>circle</code>, <code>grid column2</code></p>
           </div>
@@ -496,9 +494,9 @@
             </h2>
             <p>
               The steps of a process in date order, a card for each with a small icon, the step's
-              name and its dates, on a dark band, as on Human Resources' performance management
-              page. It's a <code>grid column4 darkgreen boxes</code> (or <code>column3</code>) with
-              an <code>&lt;h1&gt;</code>.
+              name and its dates, on a dark band. It's a
+              <code>grid column4 darkgreen boxes</code> (or <code>column3</code>) with an
+              <code>&lt;h1&gt;</code>.
             </p>
             <ul>
               <li>
@@ -581,16 +579,16 @@
               >
             </h2>
             <p>
-              Linked photos with a title over each, as on the HUB's Academic Calendar (three across)
-              and Family Programs' Parents page (four across). The whole photo is the link. Use
+              Linked photos with a title over each, three or four across. The whole photo is the
+              link. Use
               <code>column2</code>, <code>column3</code> or <code>column4</code>; an
               <code>&lt;h1&gt;</code> first in the grid is its heading, across the full width. Only
               an <code>&lt;h1&gt;</code> spans the grid: a paragraph inside it becomes one of the
               cells, so put any sentence about the photos in their titles instead. Use photos that
-              are all the same shape (the HUB's are 3:2, such as 900 &times; 600), or the rows come
-              out ragged and the titles don't line up. At four across, keep titles to two or three
-              words, or they wrap; a sentence under the title fits at two or three across. On phones
-              the photos stack.
+              are all the same shape (such as 3:2, at 900 &times; 600), or the rows come out ragged
+              and the titles don't line up. At four across, keep titles to two or three words, or
+              they wrap; a sentence under the title fits at two or three across. On phones the
+              photos stack.
             </p>
             <p>
               No photos yet? Fill the grid with CMU photos from
@@ -648,9 +646,8 @@
             </h2>
             <p>
               A quote from a student, alumnus or colleague, with their name, their role and a square
-              photo beside it, as on CMU Global's and Dietrich College's home pages. Put it in its
-              own section on a color, such as <code>content wide grey</code>. On phones the photo
-              goes above the quote.
+              photo beside it. Put it in its own section on a color, such as
+              <code>content wide grey</code>. On phones the photo goes above the quote.
             </p>
             <ul class="cmu-checks">
               <li>
@@ -754,9 +751,8 @@
               >
             </h2>
             <p>
-              Two wide buttons side by side for the two things most people come to do, as at the top
-              of Dining Services' home page. Each is a <code>btn wide</code> inside an
-              <code>&lt;h2&gt;</code>, which makes its text large.
+              Two wide buttons side by side for the two things most people come to do. Each is a
+              <code>btn wide</code> inside an <code>&lt;h2&gt;</code>, which makes its text large.
             </p>
             <p class="kit-classes">
               <code>grid column2</code>, <code>btn wide</code>, <code>aligncenter</code>
@@ -805,10 +801,10 @@
           <div>
             <p>
               For a statement rather than a heading, such as a mission, use a lighter band with the
-              text centered, as on the Tartan Bike Project's page: <code>grey plaid</code>, which
-              the template fades so dark text stays readable. On phones it's plain white, since the
-              template drops the plaid there (see <a href="#backgrounds">Background Patterns</a>),
-              so don't count on it to set the statement apart.
+              text centered: <code>grey plaid</code>, which the template fades so dark text stays
+              readable. On phones it's plain white, since the template drops the plaid there (see
+              <a href="#backgrounds">Background Patterns</a>), so don't count on it to set the
+              statement apart.
             </p>
           </div>
         </div>
@@ -842,19 +838,17 @@
             <ul class="cmu-checks">
               <li>
                 <strong>Dark gray</strong> (<code>darkgrey invert</code>) for who a page is for,
-                with the text in bold, as on Stellic's page for staff and faculty.
+                with the text in bold.
               </li>
               <li>
-                <strong>Gold</strong> for a time-sensitive update, with a bold lead-in, as on CMU's
-                Visit page. Gold takes dark text, so it needs no <code>invert</code>. When the whole
-                notice is one short statement, make it a centered <code>&lt;h3&gt;</code> instead,
-                as on the Tartan Bike Project's page; center it with the template's
-                <code>aligncenter</code>, not an inline style.
+                <strong>Gold</strong> for a time-sensitive update, with a bold lead-in. Gold takes
+                dark text, so it needs no <code>invert</code>. When the whole notice is one short
+                statement, make it a centered <code>&lt;h3&gt;</code> instead; center it with the
+                template's <code>aligncenter</code>, not an inline style.
               </li>
               <li>
                 <strong>Blue</strong> (<code>blue invert</code>) for a note set apart lower on the
-                page, with an <code>&lt;h4&gt;</code> for small bold capitals, as on the HUB's
-                Academic Calendar.
+                page, with an <code>&lt;h4&gt;</code> for small bold capitals.
               </li>
               <li>
                 <strong>Not red:</strong> a red band reads as a campus alert. And not for the result
@@ -916,10 +910,10 @@
             </h2>
             <p>
               Red columns of links at the bottom of a page, to the site's main pages and its
-              neighbors, as on the HUB. It's a grid with <code>nav</code>, and each column a
-              <code>nav-list</code>; <code>darkgrey invert</code> works too, as on the ID+ pages.
-              Keep it to links: a way into an app goes in the page, not here. A column can start
-              with an <code>&lt;h1&gt;</code>, which shows as a small bold label.
+              neighbors. It's a grid with <code>nav</code>, and each column a <code>nav-list</code>;
+              <code>darkgrey invert</code> works too. Keep it to links: a way into an app goes in
+              the page, not here. A column can start with an <code>&lt;h1&gt;</code>, which shows as
+              a small bold label.
             </p>
             <p class="kit-classes">
               <code>grid column3 red invert nav</code>, <code>nav-list</code>
