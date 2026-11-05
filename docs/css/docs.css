@@ -141,7 +141,15 @@
 .kit-try .btn {
   margin: 0;
 }
-/* The countdown example's date field */
+/* Options that apply only to one choice above, such as Signed In: indented
+   under it, and hidden otherwise (docs.js) */
+.kit-try > div[hidden] {
+  display: none;
+}
+.kit-try-sub .cmu-label {
+  box-sizing: border-box;
+  padding-left: 1.25rem;
+}
 /* The countdown's Try a Date line, with its option on a line of its own */
 .kit-try-date {
   margin: 0 0 1.5rem;

@@ -299,11 +299,25 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
 (function () {
   var roof = document.querySelector(".roof");
   if (!roof) return;
-  var state = { roof: "red", search: "off", account: "none", acting: "off", logo: "off" };
+  var DEFAULTS = {
+    roof: "red",
+    search: "off",
+    account: "none",
+    photo: "off",
+    prefs: "on",
+    acting: "off",
+    logo: "off",
+  };
+  var state = Object.assign({}, DEFAULTS);
   try {
     Object.assign(state, JSON.parse(sessionStorage.getItem("kit-header") || "{}"));
   } catch {
     /* storage can be blocked; keep going */
+  }
+  // "Signed in, with photo" used to be a choice of its own
+  if (state.account === "photo") {
+    state.account = "in";
+    state.photo = "on";
   }
   var actingBar =
     '<form class="cmu-acting-bar kit-try-added"><p>You\u2019re acting as Andrew Carnegie (ac00)</p>' +
@@ -357,11 +371,9 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       if (tree) tree.querySelector(".menu-btn").after(html(searchForm));
     }
     if (state.account !== "none") {
-      var inn = state.account !== "out",
-        pic =
-          state.account === "photo"
-            ? '<img class="cmu-avatar" src="images/scotty.png" alt="">'
-            : "";
+      var inn = state.account === "in",
+        pic = state.photo === "on" ? '<img class="cmu-avatar" src="images/scotty.png" alt="">' : "",
+        prefs = state.prefs === "on" ? '<a href="accounts.html#preferences">Preferences</a>' : "";
       var a = html(
         inn
           ? '<a class="cmu-account cmu-account-open kit-try-added" href="#nav">' +
@@ -381,7 +393,9 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
             inn
               ? '<li class="secondary cmu-account-menu kit-try-added"><a class="cmu-account-name">' +
                   pic +
-                  'Andrew Carnegie</a><a href="accounts.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
+                  "Andrew Carnegie</a>" +
+                  prefs +
+                  '<a href="layout.html#try-header">Sign Out</a></li>'
               : '<li class="secondary cmu-account-menu kit-try-added"><a href="layout.html#try-header">Sign In</a></li>',
           ),
         );
@@ -397,6 +411,10 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       });
       document.body.appendChild(bar);
     }
+    document.querySelectorAll("[data-kit-when]").forEach(function (row) {
+      var kv = row.dataset.kitWhen.split(":");
+      row.hidden = state[kv[0]] !== kv[1];
+    });
     document.querySelectorAll("[data-kit-set]").forEach(function (b) {
       var kv = b.dataset.kitSet.split(":"),
         on = state[kv[0]] === kv[1];
@@ -429,7 +447,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
   });
   document.querySelectorAll("[data-kit-reset]").forEach(function (b) {
     b.addEventListener("click", function () {
-      state = { roof: "red", search: "off", account: "none", acting: "off", logo: "off" };
+      state = Object.assign({}, DEFAULTS);
       try {
         sessionStorage.removeItem("kit-header");
       } catch {

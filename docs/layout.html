@@ -115,7 +115,16 @@
                 <button type="button" data-kit-set="account:none">None</button>
                 <button type="button" data-kit-set="account:out">Signed Out</button>
                 <button type="button" data-kit-set="account:in">Signed In</button>
-                <button type="button" data-kit-set="account:photo">Signed In, With Photo</button>
+              </div>
+              <div class="kit-try-sub" data-kit-when="account:in">
+                <span class="cmu-label">Photo</span>
+                <button type="button" data-kit-set="photo:off">Off</button>
+                <button type="button" data-kit-set="photo:on">On</button>
+              </div>
+              <div class="kit-try-sub" data-kit-when="account:in">
+                <span class="cmu-label">Preferences</span>
+                <button type="button" data-kit-set="prefs:off">Off</button>
+                <button type="button" data-kit-set="prefs:on">On</button>
               </div>
               <div>
                 <span class="cmu-label">Acting as Another User</span>
@@ -142,8 +151,9 @@
               <li>
                 <strong>Signed out</strong>, a Sign In link sits in the roof and at the top of the
                 menu. <strong>Signed in</strong>, the user's name sits in the roof and opens the
-                menu, which starts with their name and Sign Out. On phones only the menu has them.
-                See <a href="accounts.html#account">Account Status</a>.
+                menu, which starts with their name, then Preferences (if the app has any) and Sign
+                Out. On phones only the menu has them. See
+                <a href="accounts.html#account">Account Status</a>.
               </li>
               <li>
                 <strong>Acting as another user</strong> frames the whole window; see
