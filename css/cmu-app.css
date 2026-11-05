@@ -154,7 +154,7 @@ body.cmu-app .cmu-field-row + p.cmu-hint {
   }
 }
 /* The account block at the top of the menu: the name, then Preferences and
-   Sign Out on one line, the photo (if any) on the right, and a rule under it
+   Sign Out side by side under it, the photo (if any) on the right, and a rule under it
    that sets it apart from the menu's sections */
 nav#nav li.cmu-account-menu {
   position: relative;
@@ -181,21 +181,18 @@ nav#nav li.cmu-account-menu:has(.cmu-avatar) > a {
    template indents menu links 2em; at these larger sizes, scale it back so
    the name and Preferences line up with the menu */
 nav#nav li.cmu-account-menu > .cmu-account-name ~ a {
+  margin-right: 0.5em;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
   font-size: 1.1em;
 }
 nav#nav li.cmu-account-menu > .cmu-account-name {
   padding-left: calc(2em / 1.2);
 }
+/* The indent goes outside Preferences, so its pressed and focus highlight
+   sits evenly around the word, as Sign Out's does */
 nav#nav li.cmu-account-menu > .cmu-account-name + a {
-  padding-left: calc(2em / 1.1);
-}
-nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a {
-  padding-left: 0;
-}
-/* A dot between Preferences and Sign Out; decoration, so screen readers skip it */
-nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a::before {
-  content: "\00b7" / "";
-  padding: 0 0.6em;
+  margin-left: calc(2em / 1.1 - 0.4em);
 }
 .cmu-account-name,
 .cmu-account-name:hover {
