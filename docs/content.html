@@ -725,15 +725,23 @@
               script hides the sentence and shows the cards; screen readers and pages without the
               script get the sentence. It stops at zero, and the cards don't flip for people who ask
               their device for less motion. A page can have as many as it needs; each runs on its
-              own. Needs <code>cmu-app.js</code>.
+              own. To show something once it reaches zero, such as a link to the schedule, put it
+              inside in a <code>&lt;div class="cmu-countdown-done" hidden&gt;</code>; the script
+              shows it under the cards then. Try a past date. Needs <code>cmu-app.js</code>.
             </p>
-            <p class="kit-classes"><code>cmu-countdown</code>, <code>data-cmu-countdown</code></p>
+            <p class="kit-classes">
+              <code>cmu-countdown</code>, <code>data-cmu-countdown</code>,
+              <code>cmu-countdown-done</code>
+            </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <p class="kit-try-date" data-demo-skip><label for="kit-countdown-date">Try a Date</label> <input type="datetime-local" id="kit-countdown-date" data-kit-countdown></p>
         <h3>Spring Carnival Opening Ceremonies Start In</h3>
         <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
           <p>Spring Carnival's opening ceremonies start Thursday, April 8, 2027, at noon.</p>
+          <div class="cmu-countdown-done" hidden>
+            <p><strong>Opening ceremonies have started.</strong> <a class="cta" href="#countdown">See the Schedule</a></p>
+          </div>
         </div>
       </div>
 

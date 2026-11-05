@@ -154,7 +154,8 @@
   // Countdown: <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
   // with a sentence inside that gives the same moment. Shows days, hours,
   // minutes and seconds on flip cards and stops at zero; screen readers get
-  // the sentence instead of the ticking cards. See Countdown in the docs
+  // the sentence instead of the ticking cards. An optional
+  // <div class="cmu-countdown-done" hidden> inside shows once it reaches zero. See Countdown in the docs
   // (content.html). Adapted from a CodePen by Shaw
   // (codepen.io/shshaw/pen/vKzoLL, MIT).
   var UNITS = [
@@ -211,10 +212,12 @@
       UNITS.forEach(function (u) {
         clock.appendChild(card(u[0]));
       });
-      root.appendChild(clock);
+      // Before the done message, if there is one, so it shows under the cards
+      root.insertBefore(clock, root.querySelector(":scope > .cmu-countdown-done"));
       root.classList.add("cmu-countdown-on");
     }
-    var units = clock.children;
+    var units = clock.children,
+      done = root.querySelector(":scope > .cmu-countdown-done");
     function tick() {
       var left = Math.max(end - new Date(), 0);
       UNITS.forEach(function (u, i) {
@@ -222,6 +225,7 @@
         if (u[2] !== Infinity) n %= u[2];
         flip(units[i], String(n).padStart(2, "0"));
       });
+      if (done) done.hidden = left > 0;
       if (!left) clearInterval(root.cmuCountdown);
     }
     root.cmuCountdown = setInterval(tick, 1000);

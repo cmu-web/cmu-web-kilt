@@ -842,7 +842,7 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 /* Countdown (needs cmu-app.js): days, hours, minutes and seconds on flip
    cards; see Countdown in the docs (content.html). The sentence inside is
    the fallback and what screen readers get; the script hides it visually. */
-.cmu-countdown-on > :not(.cmu-countdown-clock) {
+.cmu-countdown-on > :not(.cmu-countdown-clock, .cmu-countdown-done) {
   position: absolute;
   width: 1px;
   height: 1px;
