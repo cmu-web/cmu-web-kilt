@@ -920,7 +920,12 @@ ol.cmu-steps > li::before {
 }
 
 /* Tables. The template makes tables display: block so they scroll on
-   phones, which won't stretch them; cmu-full stretches them from 768px. */
+   phones, which won't stretch them; cmu-full stretches them from 768px.
+   position: relative keeps screen-reader-only text (.sr-only, positioned
+   absolutely) inside that scroll, so it can't widen the page. */
+table {
+  position: relative;
+}
 table.cmu-full {
   width: 100%;
 }
