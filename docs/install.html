@@ -83,8 +83,8 @@
             <pre
               class="kit-code"
             ><code>&lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css" rel="stylesheet"&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
 &lt;link href="/your-site.css" rel="stylesheet"&gt;</code></pre>
             <p>
               On a page with components that need a script, the kit's script goes just before
@@ -92,7 +92,7 @@
             </p>
             <pre
               class="kit-code"
-            ><code>&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
+            ><code>&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
             <table class="alternate cmu-full">
               <thead>
                 <tr>
@@ -173,8 +173,8 @@
             </p>
             <pre
               class="kit-code"
-            ><code>https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pre>
+            ><code>https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css
+https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-app.css</code></pre>
             <ul class="cmu-checks">
               <li>
                 <strong>Always pin an exact version.</strong> An address with a version range
@@ -195,7 +195,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
             </p>
             <pre
               class="kit-code"
-            ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
+            ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
 
             <h3 id="cascade">In Cascade</h3>
             <p>
@@ -214,7 +214,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
                 site's own stylesheet, so the site's styles come last:
                 <pre
                   class="kit-code"
-                ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;
+                ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;
 &lt;link href="/css/style.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
                 Then save it.
               </li>
@@ -276,7 +276,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
                 Install the version you want:
                 <pre
                   class="kit-code"
-                ><code>npm install github:cmu-web/cmu-web-kit#0.1.0</code></pre>
+                ><code>npm install github:cmu-web/cmu-web-kit#0.1.1</code></pre>
               </li>
               <li>
                 Serve its files. With Express:
@@ -331,7 +331,7 @@ app.use("/vendor/cmu-web-kit", express.static(kit));</code></pre>
               Copy a release's files into one of your Django apps' <code>static</code> folders and
               commit them, with the version in the folder name so it's obvious which one you have:
             </p>
-            <pre class="kit-code"><code>V=0.1.0
+            <pre class="kit-code"><code>V=0.1.1
 D=yourapp/static/vendor/cmu-web-kit-$V
 mkdir -p $D
 for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
@@ -365,8 +365,8 @@ done</code></pre>
             <pre
               class="kit-code"
             ><code>&lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css" rel="stylesheet"&gt;</code></pre>
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css" rel="stylesheet"&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-app.css" rel="stylesheet"&gt;</code></pre>
 
             <h2 id="upgrade" class="rule-top">Moving to a New Version</h2>
             <ol class="cmu-steps">
