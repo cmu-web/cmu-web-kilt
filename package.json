@@ -18,6 +18,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "components": "node tools/components.mjs",
+    "docs": "node tools/serve.mjs",
     "opengraph": "node tools/opengraph.mjs",
     "release": "node tools/versions.mjs"
   },

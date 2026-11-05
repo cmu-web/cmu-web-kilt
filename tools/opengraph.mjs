@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import * as prettier from "prettier";
 
-const BASE = "https://webkit.andrew.cmu.edu/docs/";
+const BASE = "https://webkit.andrew.cmu.edu/";
 const SITE = "Carnegie Mellon Web Kit";
 const IMAGE = {
   src: "images/og.jpg",

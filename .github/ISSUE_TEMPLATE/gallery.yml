@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        The [Gallery](https://cmu-web.github.io/cmu-web-kit/docs/gallery.html) shows CMU sites and
+        The [Gallery](https://webkit.andrew.cmu.edu/gallery.html) shows CMU sites and
         apps built with the kit. We'll take the screenshot ourselves, from what anyone can see
         without signing in.
   - type: input

@@ -2,7 +2,7 @@
 
 The kit has no server. A release is a Git tag, and three places serve it:
 jsDelivr for pages that link the kit, GitHub for apps that install it and
-GitHub Pages for the docs. [DEVELOPMENT.md](DEVELOPMENT.md#releasing)
+webkit.andrew.cmu.edu for the docs, with a test copy on GitHub Pages. [DEVELOPMENT.md](DEVELOPMENT.md#releasing)
 covers making a release; this page covers where it goes and how to check it.
 
 ## jsDelivr
@@ -78,15 +78,21 @@ npm install github:cmu-web/cmu-web-kit#0.1.0
 
 `package.json` limits the install to `css/` and `js/`. Apps on other stacks
 copy a release's files from jsDelivr into their own static folder, as the
-[Install](https://cmu-web.github.io/cmu-web-kit/docs/install.html) page
+[Install](https://webkit.andrew.cmu.edu/install.html) page
 shows.
 
-## GitHub Pages
+## The Docs Site
 
-GitHub Pages publishes `main` (root folder) at
-https://cmu-web.github.io/cmu-web-kit/ within a minute or two of each push.
-The docs load `../css/` and `../js/`, so they always show `main`, released
-or not.
+The docs are served at the site's root, with the kit's own `css/` and `js/`
+beside the docs' own `css/` and `js/`. The pages link `css/cmu-cms.css` and
+the rest, so they always show the kit as it is in the repo, released or not.
+
+The [Pages workflow](.github/workflows/pages.yml) builds that layout from
+`main` and publishes it at https://cmu-web.github.io/cmu-web-kit/ within a
+minute or two of each push (the repository's Pages source is set to GitHub
+Actions). That copy is for testing; webkit.andrew.cmu.edu serves the same
+layout: `docs/` as the root, and the repository's `css/*.css` and `js/*.js`
+in its `css/` and `js/`.
 
 Pages is for the docs and for trying unreleased changes. Production pages
 link a released version on jsDelivr instead: anything on Pages changes the

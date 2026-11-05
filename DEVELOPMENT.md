@@ -16,15 +16,15 @@ npx prek install
 
 ## View the Docs
 
-Serve the repository root, not `docs/`, since the docs load `../css/` and
-`../js/`:
+Serve them the way the site publishes them, with `docs/` at the root and the
+kit's own `css/` and `js/` beside the docs':
 
 ```bash
-python3 -m http.server 8123
+npm run docs
 ```
 
-Then open http://127.0.0.1:8123/docs/. The server caches nothing itself,
-but browsers do: hard-refresh after changing CSS or JavaScript.
+Then open http://127.0.0.1:8123/. Nothing is cached, so a reload shows each
+change.
 
 ## Checks
 
@@ -118,13 +118,12 @@ working on markup added later. Pages load it after the template's scripts.
 Named the way CMU's own sites name them (`/common/standard-v6/css/`,
 `/common/standard-v6/js/`, `/common/standard-v6/images/`):
 
-| Path         | What                                                               |
-| ------------ | ------------------------------------------------------------------ |
-| `css/`       | The kit's stylesheets: `cmu-cms.css` and `cmu-app.css`             |
-| `js/`        | The kit's browser script, `cmu-app.js`                             |
-| `docs/`      | The docs site: pages, plus their own `css/`, `js/` and `images/`   |
-| `tools/`     | Command-line tools: the checks, the Components table and releasing |
-| `index.html` | Sends the GitHub Pages root to `docs/`                             |
+| Path     | What                                                               |
+| -------- | ------------------------------------------------------------------ |
+| `css/`   | The kit's stylesheets: `cmu-cms.css` and `cmu-app.css`             |
+| `js/`    | The kit's browser script, `cmu-app.js`                             |
+| `docs/`  | The docs site: pages, plus their own `css/`, `js/` and `images/`   |
+| `tools/` | Command-line tools: the checks, the Components table and releasing |
 
 `js/` is only for browser JavaScript, never `javascript/` or `scripts/`.
 Images go in `images/`, never `img/`. A `scripts/` folder, where a project

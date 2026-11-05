@@ -6,7 +6,7 @@ apps around them: path cards, callouts, testimonials, embedded pages, status
 pills, tabs, dialogs, file drop zones, bulk selection bars, copy buttons and
 more. It works alongside the template without changing how it looks.
 
-**Documentation and live examples: https://cmu-web.github.io/cmu-web-kit/**
+**Documentation and live examples: https://webkit.andrew.cmu.edu/**
 
 ## Three Files
 
@@ -26,7 +26,7 @@ in the head, above your site's own stylesheet:
 ```
 
 Then paste components into a content section's Source code view. The
-[Install](https://cmu-web.github.io/cmu-web-kit/docs/install.html) page
+[Install](https://webkit.andrew.cmu.edu/install.html) page
 walks through it step by step.
 
 ## Add It to an App
@@ -50,7 +50,7 @@ The kit's script goes just before `</body>`, after the template's scripts:
 ```
 
 For an app in production, keep your own copy of a release instead; the
-[Install](https://cmu-web.github.io/cmu-web-kit/docs/install.html) page
+[Install](https://webkit.andrew.cmu.edu/install.html) page
 shows how for Node and other stacks.
 
 ## Versions
@@ -65,7 +65,7 @@ version changed.
 The Office of the Vice Provost for Teaching and Learning Innovation built the
 kit while rewriting the Syllabus Registry. Each component starts from a real
 CMU page that already does it well; the
-[About](https://cmu-web.github.io/cmu-web-kit/docs/about.html) page has more.
+[About](https://webkit.andrew.cmu.edu/about.html) page has more.
 
 ## License
 
