@@ -20,7 +20,7 @@ const PAGES = [
   "messages.html",
   "people.html",
   "news.html",
-  "users.html",
+  "accounts.html",
   "layout.html",
 ];
 // Sections that explain rather than show a component

@@ -353,7 +353,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
             inn
               ? '<li class="secondary right cmu-account-menu kit-try-added"><a class="cmu-account-name">' +
                   pic +
-                  'Andrew Carnegie</a><a href="users.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
+                  'Andrew Carnegie</a><a href="accounts.html#preferences">Preferences</a><a href="layout.html#try-header">Sign Out</a></li>'
               : '<li class="secondary right cmu-account-menu kit-try-added"><a href="layout.html#try-header">Sign In</a></li>',
           ),
         );
