@@ -729,37 +729,33 @@
               >
             </h2>
             <p>
-              A tall image, such as a screenshot of a whole page or a diagram, with numbered
-              callouts beside it. Each callout is pinned next to the part it describes and overlaps
-              the image's edge a little, so people can read it part by part.
+              A tall image, such as a screenshot of a whole page or a diagram, with callouts beside
+              it. Each callout is pinned next to the part it describes and overlaps the image's edge
+              a little, so people can read it part by part.
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Each callout</strong> is the kit's
-                <a href="content.html#callout">callout</a> in a list item, with a
-                <code>cmu-label</code> title. Add a call to action when the part has a page of its
-                own.
+                <strong>Name each part.</strong> Use a
+                <a href="content.html#callout">callout</a> with a <code>cmu-label</code> title. If a
+                part has its own page, add a call to action linking to it.
               </li>
               <li>
-                <strong>Place it with <code>--cmu-at</code></strong
-                >, from 0 at the top of the image to 1 at the bottom: the middle of the part it
-                describes.
+                <strong>Position each callout.</strong> Set <code>--cmu-at</code> to the middle of
+                the part it describes: 0 is the top of the image, 0.5 is halfway down, and 1 is the
+                bottom.
               </li>
               <li>
-                <strong>Text before the callouts</strong>, such as an introduction, goes in the same
-                column. Keep it short enough to end above the first callout.
+                <strong>Keep the introduction short.</strong> Put it in the same column as the
+                callouts, with enough room to end above the first one.
               </li>
               <li>
-                <strong>Where it's narrower than 50rem</strong> (800px), such as on a phone or
-                beside an open menu, it stacks: the text, the callouts, then the image. With long
-                text or callouts, add <code>cmu-annotated--wide</code>: it waits for 70rem (1120px)
-                before going side by side.
+                <strong>Give longer text more room.</strong> Below 50rem (800px), the component
+                stacks the introduction, callouts, and image. Add <code>cmu-annotated--wide</code>
+                for longer introductions or callouts; it keeps them stacked until the component has
+                70rem (1120px) of space.
               </li>
             </ul>
-            <p>
-              For a screenshot with calls to action, see
-              <a href="layout.html#service-home">Home Page for a Service Description</a>.
-            </p>
+            <p><a class="cta" href="layout.html#service-home">See How This Guide Uses It</a></p>
             <p class="kit-classes">
               <code>cmu-annotated</code>, <code>cmu-annotated-text</code>,
               <code>cmu-annotated-notes</code>, <code>cmu-annotated--wide</code>,
@@ -928,6 +924,10 @@
                 template's <code>aligncenter</code>, not an inline style.
               </li>
               <li>
+                <strong>Green</strong> (<code>green invert</code>) for something newly available,
+                with a call to action when there's a next step people can take.
+              </li>
+              <li>
                 <strong>Blue</strong> (<code>blue invert</code>) for a note set apart lower on the
                 page, with an <code>&lt;h4&gt;</code> for small bold capitals.
               </li>
@@ -940,7 +940,7 @@
             </ul>
             <p class="kit-classes">
               <code>content wide</code>, <code>darkgrey invert</code>, <code>gold</code>,
-              <code>blue invert</code>
+              <code>green invert</code>, <code>blue invert</code>
             </p>
           </div>
         </div>
@@ -948,7 +948,7 @@
         <div class="kit-demo kit-demo--wide">
         <div class="content wide darkgrey invert">
           <div>
-            <p><strong>Students: this page is for instructors and department administrators. To find a syllabus, <a href="#announcements">browse the registry</a>.</strong></p>
+            <p><strong>Students: this page is for instructors and department administrators. Syllabi are available in <a href="#announcements">the syllabus registry</a>.</strong></p>
           </div>
         </div>
       </div>
@@ -956,7 +956,7 @@
         <div class="kit-demo kit-demo--wide">
         <div class="content wide gold">
           <div>
-            <p><strong>Finals Week:</strong> Office hours run on a reduced schedule from May 4 to 12. <a href="#announcements">See this week's hours</a>.</p>
+            <p><strong>Finals Week:</strong> Office hours follow <a href="#announcements">a reduced schedule</a> from May 4 to 12.</p>
           </div>
         </div>
       </div>
@@ -965,6 +965,14 @@
         <div class="content wide gold">
           <div>
             <h3 class="aligncenter">Camera kits are limited this month. More arrive by mid-September; check back here for updates.</h3>
+          </div>
+        </div>
+      </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide green invert">
+          <div>
+            <p>Ready for your next class project? <a class="cta" href="#announcements">Reserve a Camera Kit</a></p>
           </div>
         </div>
       </div>
