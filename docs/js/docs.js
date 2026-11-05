@@ -411,15 +411,10 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       });
       document.body.appendChild(bar);
     }
-    document.querySelectorAll("[data-kit-when]").forEach(function (row) {
-      var kv = row.dataset.kitWhen.split(":");
-      row.hidden = state[kv[0]] !== kv[1];
-    });
-    document.querySelectorAll("[data-kit-set]").forEach(function (b) {
-      var kv = b.dataset.kitSet.split(":"),
-        on = state[kv[0]] === kv[1];
-      b.setAttribute("aria-pressed", on);
-      b.className = on ? "btn small" : "btn small ghost";
+    // The form shows the state: radio buttons by value, checkboxes on or off
+    document.querySelectorAll("[data-kit-key]").forEach(function (input) {
+      var v = state[input.dataset.kitKey];
+      input.checked = input.type === "radio" ? v === input.value : v === "on";
     });
     document.querySelectorAll("[data-kit-acting]").forEach(function (b) {
       b.textContent = acting ? "Hide the Frame" : "Show the Frame on This Page";
@@ -434,10 +429,12 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     }
     apply();
   }
-  document.querySelectorAll("[data-kit-set]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var kv = b.dataset.kitSet.split(":");
-      set(kv[0], kv[1]);
+  document.querySelectorAll("[data-kit-key]").forEach(function (input) {
+    input.addEventListener("change", function () {
+      set(
+        input.dataset.kitKey,
+        input.type === "radio" ? input.value : input.checked ? "on" : "off",
+      );
     });
   });
   document.querySelectorAll("[data-kit-acting]").forEach(function (b) {

@@ -93,46 +93,112 @@
               there. Your choices stay as you browse the rest of these pages, until you reset them
               or close the tab.
             </p>
-            <div class="kit-try">
-              <div>
-                <span class="cmu-label">Roof</span>
-                <button type="button" data-kit-set="roof:red">Red</button>
-                <button type="button" data-kit-set="roof:gray">Gray</button>
-                <button type="button" data-kit-set="roof:white">White</button>
-              </div>
-              <div>
-                <span class="cmu-label">Logo</span>
-                <button type="button" data-kit-set="logo:off">None</button>
-                <button type="button" data-kit-set="logo:on">Placeholder</button>
-              </div>
-              <div>
-                <span class="cmu-label">Search</span>
-                <button type="button" data-kit-set="search:off">Off</button>
-                <button type="button" data-kit-set="search:on">On</button>
-              </div>
-              <div>
-                <span class="cmu-label">Sign In</span>
-                <button type="button" data-kit-set="account:none">None</button>
-                <button type="button" data-kit-set="account:out">Signed Out</button>
-                <button type="button" data-kit-set="account:in">Signed In</button>
-              </div>
-              <div class="kit-try-sub" data-kit-when="account:in">
-                <span class="cmu-label">Photo</span>
-                <button type="button" data-kit-set="photo:off">Off</button>
-                <button type="button" data-kit-set="photo:on">On</button>
-              </div>
-              <div class="kit-try-sub" data-kit-when="account:in">
-                <span class="cmu-label">Preferences</span>
-                <button type="button" data-kit-set="prefs:off">Off</button>
-                <button type="button" data-kit-set="prefs:on">On</button>
-              </div>
-              <div>
-                <span class="cmu-label">Acting as Another User</span>
-                <button type="button" data-kit-set="acting:off">Off</button>
-                <button type="button" data-kit-set="acting:on">On</button>
-              </div>
-              <div><button type="button" class="btn small ghost" data-kit-reset>Reset</button></div>
-            </div>
+            <form class="kit-try">
+              <fieldset>
+                <legend>Roof</legend>
+                <ul>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-roof"
+                      id="kit-try-roof-red"
+                      value="red"
+                      data-kit-key="roof"
+                    /><label for="kit-try-roof-red">Red</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-roof"
+                      id="kit-try-roof-gray"
+                      value="gray"
+                      data-kit-key="roof"
+                    /><label for="kit-try-roof-gray">Gray</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-roof"
+                      id="kit-try-roof-white"
+                      value="white"
+                      data-kit-key="roof"
+                    /><label for="kit-try-roof-white">White</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset>
+                <legend>Sign In</legend>
+                <ul>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-account"
+                      id="kit-try-acc-none"
+                      value="none"
+                      data-kit-key="account"
+                    /><label for="kit-try-acc-none">None</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-account"
+                      id="kit-try-acc-out"
+                      value="out"
+                      data-kit-key="account"
+                    /><label for="kit-try-acc-out">Signed Out</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-account"
+                      id="kit-try-acc-in"
+                      value="in"
+                      data-kit-key="account"
+                    /><label for="kit-try-acc-in">Signed In</label>
+                    <div class="cmu-sub-options">
+                      <ul>
+                        <li>
+                          <input type="checkbox" id="kit-try-photo" data-kit-key="photo" /><label
+                            for="kit-try-photo"
+                            >Photo</label
+                          >
+                        </li>
+                        <li>
+                          <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
+                            for="kit-try-prefs"
+                            >Preferences</label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset>
+                <legend>Also Show</legend>
+                <ul>
+                  <li>
+                    <input type="checkbox" id="kit-try-logo" data-kit-key="logo" /><label
+                      for="kit-try-logo"
+                      >Logo Placeholder</label
+                    >
+                  </li>
+                  <li>
+                    <input type="checkbox" id="kit-try-search" data-kit-key="search" /><label
+                      for="kit-try-search"
+                      >Search</label
+                    >
+                  </li>
+                  <li>
+                    <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
+                      for="kit-try-acting"
+                      >Acting as Another User</label
+                    >
+                  </li>
+                </ul>
+              </fieldset>
+              <p><button type="button" class="btn small ghost" data-kit-reset>Reset</button></p>
+            </form>
             <ul>
               <li>
                 <strong>The roof</strong>, the template's name for the strip across the top with the
