@@ -159,7 +159,7 @@ body.cmu-app .cmu-field-row + p.cmu-hint {
 nav#nav li.cmu-account-menu {
   position: relative;
   display: block;
-  padding: 0.35rem 0;
+  padding: 0.9rem 0;
   border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
 }
 nav#nav li.cmu-account-menu > a {
@@ -170,17 +170,17 @@ nav#nav li.cmu-account-menu > a {
 }
 nav#nav li.cmu-account-menu > .cmu-account-name {
   display: block;
+  padding-bottom: 0.4em;
+  font-size: 1.1em;
+  font-weight: 700;
 }
 nav#nav li.cmu-account-menu:has(.cmu-avatar) > a {
-  max-width: calc(100% - 48px - 3rem); /* clear of the photo */
+  max-width: calc(100% - 56px - 3rem); /* clear of the photo */
 }
-nav#nav li.cmu-account-menu > .cmu-account-name ~ a {
-  font-size: 0.9em;
-}
-/* The template indents menu links 2em; at the smaller size, scale it back up
-   so Preferences lines up under the name */
-nav#nav li.cmu-account-menu > .cmu-account-name + a {
-  padding-left: calc(2em / 0.9);
+/* The template indents menu links 2em; at the name's larger size, scale it
+   back down so the name lines up with Preferences under it */
+nav#nav li.cmu-account-menu > .cmu-account-name {
+  padding-left: calc(2em / 1.1);
 }
 nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a {
   padding-left: 0;
@@ -211,8 +211,8 @@ nav li.cmu-account-menu .cmu-avatar {
   position: absolute;
   top: 50%;
   right: 1.5rem;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   transform: translateY(-50%);
 }
 
