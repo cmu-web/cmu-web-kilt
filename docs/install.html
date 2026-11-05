@@ -254,11 +254,21 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css</code></pr
               </li>
             </ul>
 
-            <h2 id="node" class="rule-top">Node Apps</h2>
+            <h2 id="apps" class="rule-top">Apps</h2>
+            <p>
+              An app loads both stylesheets, <code>cmu-cms.css</code> and <code>cmu-app.css</code>,
+              after the template's stylesheet and before its own, and keeps its own copy of a
+              release, so it doesn't depend on jsDelivr being up. Add <code>cmu-app.js</code> for
+              the components marked Script. Put <code>cmu-app</code> on <code>&lt;body&gt;</code> on
+              pages with the CMU header and footer, or <code>cmu-framed</code> on pages shown inside
+              another tool (such as a Canvas LTI frame) without them. How you get the files depends
+              on the framework.
+            </p>
+
+            <h3 id="node">In Node</h3>
             <p>
               Install the tagged release as a dependency, serve its <code>css</code> folder and link
-              it from your page layout. The app then keeps its own copy, so it doesn't depend on
-              jsDelivr being up, and the version is in <code>package.json</code> with everything
+              it from your page layout. The version is in <code>package.json</code> with everything
               else.
             </p>
             <ol class="cmu-steps">
@@ -284,18 +294,13 @@ app.use("/vendor/cmu-web-kit", express.static(kit));</code></pre>
 &lt;link href="/vendor/cmu-web-kit/cmu-app.css" rel="stylesheet"&gt;
 &lt;link href="/css/your-app.css" rel="stylesheet"&gt;</code></pre>
               </li>
-              <li>
-                Put <code>cmu-app</code> on <code>&lt;body&gt;</code> on pages with the CMU header
-                and footer, or <code>cmu-framed</code> on pages shown inside another tool (such as a
-                Canvas LTI frame) without them.
-              </li>
             </ol>
             <p>
               Builds need to reach GitHub to install the package. If yours can't, copy the files in
-              instead, as below.
+              instead, as in <a href="#django">Django</a>.
             </p>
 
-            <h2 id="rails" class="rule-top">Rails Apps</h2>
+            <h3 id="rails">In Rails</h3>
             <p>
               The kit also builds a <code>cmu-web-kit</code> gem that makes its stylesheets and
               script available to the Rails asset pipeline. It supplies an importmap pin when your
@@ -321,20 +326,35 @@ app.use("/vendor/cmu-web-kit", express.static(kit));</code></pre>
               covers the full setup, including apps without importmap and local gem builds.
             </p>
 
-            <h2 id="other" class="rule-top">Other Apps</h2>
+            <h3 id="django">In Django</h3>
             <p>
-              For Python, PHP, Java or anything else: copy a release's two files into your app's
-              static folder and commit them, with the version in the folder name so it's obvious
-              which one you have.
+              Copy a release's files into one of your Django apps' <code>static</code> folders and
+              commit them, with the version in the folder name so it's obvious which one you have:
             </p>
             <pre class="kit-code"><code>V=0.1.0
-mkdir -p static/vendor/cmu-web-kit-$V
-for f in cmu-cms.css cmu-app.css; do
-  curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@$V/css/$f" -o "static/vendor/cmu-web-kit-$V/$f"
+D=yourapp/static/vendor/cmu-web-kit-$V
+mkdir -p $D
+for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
+  curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@$V/$f" -o "$D/${f#*/}"
 done</code></pre>
+            <p>Then link them from your base template:</p>
+            <pre class="kit-code"><code>{% load static %}
+&lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
+&lt;link href="{% static 'vendor/cmu-web-kit-0.1.0/cmu-cms.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'vendor/cmu-web-kit-0.1.0/cmu-app.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'css/your-app.css' %}" rel="stylesheet"&gt;
+&lt;!-- After the template's scripts, before &lt;/body&gt;: --&gt;
+&lt;script src="{% static 'vendor/cmu-web-kit-0.1.0/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
             <p>
-              Then link them as in step 3 above. Don't edit the copied files; change your own
-              stylesheet, or ask for a change to the kit.
+              <code>collectstatic</code> picks them up with the rest of your static files. Don't
+              edit the copied files; change your own stylesheet, or ask for a change to the kit.
+            </p>
+
+            <h3 id="other">In Another Stack</h3>
+            <p>
+              For PHP, Java or anything else, copy the same files into your app's static folder, as
+              for Django, and link them the same way with your framework's own paths. Commit them,
+              keep the version in the folder name and don't edit them.
             </p>
 
             <h2 id="prototype" class="rule-top">Prototypes and Static Pages</h2>
