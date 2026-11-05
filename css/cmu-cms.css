@@ -415,6 +415,14 @@ ol.cmu-flow > li > strong {
   }
 }
 
+/* Carousel: the template makes each slide (.grid) width: 100%, but on wide
+   screens it also pads .grid on both sides, so each slide came out wider
+   than the carousel and the slides drifted out of line. Count the padding
+   inside the width. */
+.js-flickityCustom .grid {
+  box-sizing: border-box;
+}
+
 /* Annotated screenshot: a tall screenshot on the right, with numbered
    callouts on the left, each pinned beside its part of the screenshot
    (--cmu-at on the callout: how far down, 0 to 1) and overlapping its edge.
