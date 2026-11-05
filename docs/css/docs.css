@@ -163,8 +163,7 @@
 #content .kit-code .kit-line {
   display: block;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  text-indent: -4ch;
+  overflow-wrap: anywhere; /* docs.js sets the padding and the matching text-indent */
 }
 #content .kit-code .kit-line:empty::before {
   content: " ";

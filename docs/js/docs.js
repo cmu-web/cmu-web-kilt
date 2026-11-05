@@ -77,6 +77,19 @@ function isoLocal(d) {
     pad(off % 60)
   );
 }
+// Change text in a demo's code without disturbing its lines (each a .kit-line
+// once the code is drawn, which the hanging indents depend on)
+function kitCodeReplace(code, from, to) {
+  var lines = code.querySelectorAll(".kit-line");
+  if (!lines.length) {
+    code.textContent = code.textContent.replace(from, to);
+    return;
+  }
+  lines.forEach(function (line) {
+    if (line.textContent.indexOf(from) > -1) line.textContent = line.textContent.replace(from, to);
+  });
+}
+
 document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
   var target = field.closest(".kit-demo").querySelector(".cmu-countdown");
   var sentence = target.querySelector("p");
@@ -90,7 +103,10 @@ document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
       text = lead + apMoment(d).replace(/\.?$/, ".");
     target.setAttribute("data-cmu-countdown", iso);
     sentence.textContent = text;
-    if (code) code.textContent = code.textContent.replace(oldIso, iso).replace(oldText, text);
+    if (code) {
+      kitCodeReplace(code, oldIso, iso);
+      kitCodeReplace(code, oldText, text);
+    }
   }
   var start = new Date();
   start.setDate(start.getDate() + 3);
@@ -107,7 +123,8 @@ document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
     replace.addEventListener("change", function () {
       target.classList.toggle("cmu-countdown--replace", replace.checked);
       var code = target.closest(".kit-demo").nextElementSibling.querySelector("code");
-      code.textContent = code.textContent.replace(
+      kitCodeReplace(
+        code,
         replace.checked ? 'class="cmu-countdown"' : 'class="cmu-countdown cmu-countdown--replace"',
         replace.checked ? 'class="cmu-countdown cmu-countdown--replace"' : 'class="cmu-countdown"',
       );
@@ -515,7 +532,12 @@ document.querySelectorAll("pre.kit-code > code").forEach(function (code) {
     if (i) code.appendChild(document.createTextNode("\n"));
     var line = document.createElement("div");
     line.className = "kit-line";
-    line.style.paddingLeft = l.match(/^ */)[0].length + 4 + "ch";
+    // The line keeps its own leading spaces (they're copied with it), so its
+    // first row is pulled back by the whole padding; wrapped rows hang 4
+    // characters deeper than the line's indent
+    var hang = l.match(/^ */)[0].length + 4 + "ch";
+    line.style.paddingLeft = hang;
+    line.style.textIndent = "-" + hang;
     line.textContent = l;
     code.appendChild(line);
   });
