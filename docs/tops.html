@@ -7,14 +7,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="The top of a page: an eyebrow, a lead and a row of buttons, a hero with screenshots or a photo, and an app page's title row."
+      content="The top of a page: an eyebrow, a lead and a row of buttons, and a hero with screenshots or a photo."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kit" />
     <meta property="og:title" content="Page Tops - Carnegie Mellon Web Kit" />
     <meta
       property="og:description"
-      content="The top of a page: an eyebrow, a lead and a row of buttons, a hero with screenshots or a photo, and an app page's title row."
+      content="The top of a page: an eyebrow, a lead and a row of buttons, and a hero with screenshots or a photo."
     />
     <meta property="og:url" content="https://webkit.andrew.cmu.edu/docs/tops.html" />
     <meta property="og:image" content="https://webkit.andrew.cmu.edu/docs/images/og.jpg" />
@@ -73,8 +73,8 @@
           <div>
             <h1>Page Tops</h1>
             <p class="cmu-lead">
-              The top of a page: an eyebrow, a lead and a row of buttons, a hero with screenshots or
-              a photo, and an app page's title row.
+              The top of a page: an eyebrow, a lead and a row of buttons, and a hero with
+              screenshots or a photo.
             </p>
 
             <h2 id="intro" class="rule-top">
@@ -96,6 +96,10 @@
                 <strong>Call-to-action row:</strong> Lines up a button, a link and an optional note.
                 A paragraph with just a button and then a call to action gets the same spacing
                 without it.
+              </li>
+              <li>
+                <strong>An app page's actions</strong>, such as New Semester on a list of semesters,
+                go in a row under the heading and its lead, never beside the heading.
               </li>
             </ul>
             <p class="kit-classes">
@@ -234,27 +238,6 @@
               the kit's <a href="#hero">split hero</a> with screenshots usually says more than a
               photo.
             </p>
-
-            <h2 id="title" class="rule-top">
-              Page Title Row
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              The page heading with an action on the right. They wrap onto two lines when there
-              isn't room.
-            </p>
-            <p class="kit-classes"><code>cmu-page-title</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-page-title">
-          <h1>Semesters</h1>
-          <a class="btn small" href="#title">Add a Semester</a>
-        </div>
-      </div>
           </div>
         </div>
       </main>

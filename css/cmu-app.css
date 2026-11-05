@@ -237,18 +237,6 @@ nav li.cmu-account-menu .cmu-avatar {
   gap: 0 1.75em;
 }
 
-/* Page title row: h1 with actions on the right */
-.cmu-page-title {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5em 1em;
-}
-.cmu-page-title form {
-  margin: 0;
-}
-
 /* Small text */
 .cmu-muted,
 .cmu-hint {
