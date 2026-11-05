@@ -189,6 +189,19 @@ nav#nav li.cmu-account-menu > .cmu-account-name ~ a {
 nav#nav li.cmu-account-menu > .cmu-account-name {
   padding-left: calc(2em / 1.2);
 }
+/* A short line between Preferences and Sign Out, in the gap between them;
+   decoration, so screen readers skip it */
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a {
+  position: relative;
+}
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a::before {
+  content: "" / "";
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+  left: -0.3em;
+  border-left: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+}
 /* The indent goes outside Preferences, so its pressed and focus highlight
    sits evenly around the word, as Sign Out's does */
 nav#nav li.cmu-account-menu > .cmu-account-name + a {

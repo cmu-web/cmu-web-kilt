@@ -122,6 +122,12 @@
 .kit-swatches--tall > div {
   min-height: 9rem;
 }
+/* Try the Header's "Try It" eyebrow takes the section's rule, with room
+   between them, since its small text has none of a heading's line height */
+#content .cmu-eyebrow.rule-top {
+  margin-top: 2rem;
+  padding-top: 0.9rem;
+}
 /* Try the Header: a form of radio buttons and checkboxes in three groups
    side by side, at full size like any form */
 .kit-try {
