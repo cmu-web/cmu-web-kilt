@@ -153,18 +153,50 @@ body.cmu-app .cmu-field-row + p.cmu-hint {
     display: none;
   }
 }
+/* The account block at the top of the menu: the name, then Preferences and
+   Sign Out on one line, the photo (if any) on the right, and a rule under it
+   that sets it apart from the menu's sections */
 nav#nav li.cmu-account-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  position: relative;
+  display: block;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+}
+nav#nav li.cmu-account-menu > a {
+  display: inline-block;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-right: 0;
+}
+nav#nav li.cmu-account-menu > .cmu-account-name {
+  display: block;
+}
+nav#nav li.cmu-account-menu:has(.cmu-avatar) > a {
+  max-width: calc(100% - 48px - 3rem); /* clear of the photo */
+}
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a {
+  font-size: 0.9em;
+}
+/* The template indents menu links 2em; at the smaller size, scale it back up
+   so Preferences lines up under the name */
+nav#nav li.cmu-account-menu > .cmu-account-name + a {
+  padding-left: calc(2em / 0.9);
+}
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a {
+  padding-left: 0;
+}
+/* A dot between Preferences and Sign Out; decoration, so screen readers skip it */
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a::before {
+  content: "\00b7" / "";
+  padding: 0 0.6em;
 }
 .cmu-account-name,
 .cmu-account-name:hover {
   cursor: default;
   color: inherit;
 }
-/* With your photo (cmu-avatar): small and round before your name in the
-   roof, larger above it at the top of the menu */
+/* The signed-in user's photo (cmu-avatar): small and round before their
+   name in the roof, larger on the right of the menu's account block */
 .cmu-avatar {
   width: 28px;
   height: 28px;
@@ -175,15 +207,13 @@ nav#nav li.cmu-account-menu {
 .roof .cmu-account .cmu-avatar {
   margin-right: 0.5em;
 }
-nav li.cmu-account-menu .cmu-account-name:has(.cmu-avatar) {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4em;
-}
 nav li.cmu-account-menu .cmu-avatar {
-  width: 56px;
-  height: 56px;
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
 }
 
 /* Tabs: the one you're on is red and underlined, like the active nav tab */
