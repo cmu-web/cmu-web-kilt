@@ -85,7 +85,8 @@
             </div>
           </div>
         </div>
-        <div class="content wide grey boxes">
+        <!-- prettier-ignore -->
+        <div class="content grey boxes">
           <div>
             <h2 id="try-header">Try the Header</h2>
             <p>
@@ -93,114 +94,115 @@
               there. Your choices stay as you browse the rest of these pages, until you reset them
               or close the tab.
             </p>
-            <div class="kit-try-split">
-              <form class="kit-try">
-                <fieldset>
-                  <legend>Roof</legend>
-                  <ul>
-                    <li>
-                      <input
-                        type="radio"
-                        name="kit-try-roof"
-                        id="kit-try-roof-red"
-                        value="red"
-                        data-kit-key="roof"
-                      /><label for="kit-try-roof-red">Red</label>
-                    </li>
-                    <li>
-                      <input
-                        type="radio"
-                        name="kit-try-roof"
-                        id="kit-try-roof-gray"
-                        value="gray"
-                        data-kit-key="roof"
-                      /><label for="kit-try-roof-gray">Gray</label>
-                    </li>
-                    <li>
-                      <input
-                        type="radio"
-                        name="kit-try-roof"
-                        id="kit-try-roof-white"
-                        value="white"
-                        data-kit-key="roof"
-                      /><label for="kit-try-roof-white">White</label>
-                    </li>
-                  </ul>
-                </fieldset>
-                <fieldset>
-                  <legend>Sign In</legend>
-                  <ul>
-                    <li>
-                      <input
-                        type="radio"
-                        name="kit-try-account"
-                        id="kit-try-acc-none"
-                        value="none"
-                        data-kit-key="account"
-                      /><label for="kit-try-acc-none">None</label>
-                    </li>
-                    <li>
-                      <input
-                        type="radio"
-                        name="kit-try-account"
-                        id="kit-try-acc-out"
-                        value="out"
-                        data-kit-key="account"
-                      /><label for="kit-try-acc-out">Signed Out</label>
-                    </li>
-                    <li>
-                      <input
-                        type="radio"
-                        name="kit-try-account"
-                        id="kit-try-acc-in"
-                        value="in"
-                        data-kit-key="account"
-                      /><label for="kit-try-acc-in">Signed In</label>
-                      <div class="cmu-sub-options">
-                        <ul>
-                          <li>
-                            <input type="checkbox" id="kit-try-photo" data-kit-key="photo" /><label
-                              for="kit-try-photo"
-                              >Photo</label
-                            >
-                          </li>
-                          <li>
-                            <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
-                              for="kit-try-prefs"
-                              >Preferences</label
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </fieldset>
-                <fieldset>
-                  <legend>Extras</legend>
-                  <ul>
-                    <li>
-                      <input type="checkbox" id="kit-try-logo" data-kit-key="logo" /><label
-                        for="kit-try-logo"
-                        >Logo Placeholder</label
-                      >
-                    </li>
-                    <li>
-                      <input type="checkbox" id="kit-try-search" data-kit-key="search" /><label
-                        for="kit-try-search"
-                        >Search</label
-                      >
-                    </li>
-                    <li>
-                      <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
-                        for="kit-try-acting"
-                        >Acting as Another User</label
-                      >
-                    </li>
-                  </ul>
-                </fieldset>
-                <p><button type="button" class="btn ghost" data-kit-reset>Reset</button></p>
-              </form>
-              <ul class="kit-try-notes">
+            <form class="kit-try">
+              <fieldset>
+                <legend>Roof</legend>
+                <ul>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-roof"
+                      id="kit-try-roof-red"
+                      value="red"
+                      data-kit-key="roof"
+                    /><label for="kit-try-roof-red">Red</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-roof"
+                      id="kit-try-roof-gray"
+                      value="gray"
+                      data-kit-key="roof"
+                    /><label for="kit-try-roof-gray">Gray</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-roof"
+                      id="kit-try-roof-white"
+                      value="white"
+                      data-kit-key="roof"
+                    /><label for="kit-try-roof-white">White</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset>
+                <legend>Sign In</legend>
+                <ul>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-account"
+                      id="kit-try-acc-none"
+                      value="none"
+                      data-kit-key="account"
+                    /><label for="kit-try-acc-none">None</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-account"
+                      id="kit-try-acc-out"
+                      value="out"
+                      data-kit-key="account"
+                    /><label for="kit-try-acc-out">Signed Out</label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="kit-try-account"
+                      id="kit-try-acc-in"
+                      value="in"
+                      data-kit-key="account"
+                    /><label for="kit-try-acc-in">Signed In</label>
+                    <div class="cmu-sub-options">
+                      <ul>
+                        <li>
+                          <input type="checkbox" id="kit-try-photo" data-kit-key="photo" /><label
+                            for="kit-try-photo"
+                            >Photo</label
+                          >
+                        </li>
+                        <li>
+                          <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
+                            for="kit-try-prefs"
+                            >Preferences</label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset>
+                <legend>Extras</legend>
+                <ul>
+                  <li>
+                    <input type="checkbox" id="kit-try-logo" data-kit-key="logo" /><label
+                      for="kit-try-logo"
+                      >Logo Placeholder</label
+                    >
+                  </li>
+                  <li>
+                    <input type="checkbox" id="kit-try-search" data-kit-key="search" /><label
+                      for="kit-try-search"
+                      >Search</label
+                    >
+                  </li>
+                  <li>
+                    <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
+                      for="kit-try-acting"
+                      >Acting as Another User</label
+                    >
+                  </li>
+                </ul>
+              </fieldset>
+              <p><button type="button" class="btn ghost" data-kit-reset>Reset</button></p>
+            </form>
+          </div><div class="sidebar">
+            <div>
+              <ul>
                 <li>
                   <strong>The roof</strong>, the template's name for the strip across the top with
                   the wordmark: <code>red invert</code> for red, <code>darkgrey invert</code> for
