@@ -214,7 +214,8 @@
 
 /* Home Page for a Service Description: each step is a callout, pinned
    beside its section of the screenshot (--at: how far down, 0 to 1) and
-   overlapping its edge. One column on phones. */
+   overlapping its edge. One column below 1200px, where the menu leaves too
+   little room beside the screenshot. */
 .kit-annotated-steps {
   list-style: none;
   margin: 0 0 1.5rem;
@@ -229,7 +230,7 @@
 .kit-annotated-steps > li.cmu-callout > p {
   flex-basis: 100%;
 }
-@media (min-width: 760px) {
+@media (min-width: 1200px) {
   .kit-annotated {
     position: relative;
     display: flex;
@@ -254,6 +255,10 @@
     left: 0;
     width: 46%;
     z-index: 1;
+  }
+  /* The intro stays clear of the screenshot; only the steps overlap it */
+  .kit-annotated-text > p {
+    margin-right: 13%;
   }
   .kit-annotated-steps {
     margin: 0;
