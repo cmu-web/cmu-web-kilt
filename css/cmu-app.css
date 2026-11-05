@@ -692,26 +692,30 @@ button.btn.wide {
   text-transform: inherit;
 }
 
-/* Buttons that look like links (POST actions next to plain links) */
+/* Buttons that look like links (POST actions next to plain links): the
+   template's link color and its 1px rule, with line-height: normal so the
+   rule sits where a link's does */
 .cmu-link-button {
   background: none;
   border: 0;
-  padding: 0;
+  border-bottom: 1px solid;
+  padding: 0 0 1px;
   margin: 0;
   font: inherit;
-  color: var(--cmu-red);
-  text-decoration: underline;
+  line-height: normal;
+  color: var(--cmu-link);
   text-align: left;
   cursor: pointer;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
 }
 .cmu-link-button:hover {
   background: none;
-  color: #f00;
+  color: var(--cmu-link-hover);
 }
-/* The same look on a real link: drop the template's border underline */
-a.cmu-link-button,
-a.cmu-link-button:hover {
-  border-bottom: none;
+.invert .cmu-link-button {
+  color: inherit;
 }
 
 /* Dialog (<dialog>), with a file drop zone and buttons at the bottom */
