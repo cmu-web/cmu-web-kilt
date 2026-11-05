@@ -987,8 +987,8 @@ button.btn.wide {
 }
 
 /* Long results: a count under the list, then either Load More or a pager.
-   Load More is a ghost btn half the width of the page, as in Cascade's news
-   indexes (the template's .loadmore); full width on phones. */
+   Load More is a ghost btn half the width of the page, like the template's
+   .loadmore; full width on phones. */
 .cmu-results-count {
   text-align: center;
   color: var(--cmu-muted);

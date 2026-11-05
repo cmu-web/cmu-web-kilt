@@ -646,14 +646,16 @@ a[data-cmu-zoom] {
   vertical-align: middle;
 }
 
-/* Testimonial: a quote from a person, with their name, role and square
-   photo beside it, as on CMU Global's and Dietrich College's home pages. Put
-   it in a band such as content wide grey. Stacks on phones, photo first. */
 /* A light gray section, the gray of the kit's code snippets: lighter than
    the template's grey, for a testimonial or a quiet band. Text stays dark. */
 .cmu-lightgrey {
   background-color: var(--cmu-tint);
 }
+
+/* Testimonial: a quote from a person, with their name, role and square
+   photo beside it. Put it in a section such as content wide cmu-lightgrey.
+   Stacks on phones, photo first. See Testimonial in the docs
+   (sections.html). */
 .cmu-testimonial {
   display: grid;
   grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
