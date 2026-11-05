@@ -201,6 +201,12 @@
   background: var(--cmu-green-tint);
   color: var(--cmu-green);
 }
+/* On the Gallery: what a site is built with, a plain label beside the colors */
+.kit-where-stack {
+  background: #fff;
+  color: var(--cmu-muted);
+  box-shadow: inset 0 0 0 1px var(--cmu-line);
+}
 .kit-where-script {
   background: var(--cmu-amber-tint);
   color: var(--cmu-amber);
