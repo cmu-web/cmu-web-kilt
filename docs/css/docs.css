@@ -110,8 +110,12 @@
   padding: 1.5rem 0.75rem 0.5rem;
   font-size: 0.85rem;
 }
+/* Background patterns: three to a row, wide enough to see the pattern */
+.kit-swatches--tall {
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+}
 .kit-swatches--tall > div {
-  min-height: 7rem;
+  min-height: 9rem;
 }
 .kit-try {
   display: grid;

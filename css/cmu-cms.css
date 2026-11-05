@@ -681,10 +681,12 @@ a[data-cmu-zoom] {
   overflow: hidden;
 }
 /* The template's blockquote is 2.35em and light; here the quote is set at
-   about lead size, semibold, keeping the template's thin rule beside it */
+   about lead size, semibold, with a thin rule beside it at the original
+   Drupal testimonial's 20% black (the template's 15% fades on gray) */
 #content .cmu-testimonial blockquote {
   margin: 1.75rem 0 0;
   padding: 0 0 0 2rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.5;
