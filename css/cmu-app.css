@@ -347,19 +347,27 @@ body.cmu-app .cmu-question legend {
 .cmu-question > :last-child {
   margin-bottom: 0;
 }
-/* Forward (the arrow, or Submit on the last question) on the right; the
-   back arrow, when there is one, on the left */
+/* Three columns: the back arrow on the left, the forward arrow on the
+   right and Submit, on the last question, centered, away from where people
+   have been clicking forward */
 .cmu-question-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
   gap: 0.75rem;
   padding-top: 1rem;
   border-top: 1px solid var(--cmu-line);
 }
 .cmu-question-buttons > .cmu-question-back {
-  margin-right: auto;
+  grid-column: 1;
+  justify-self: start;
+}
+.cmu-question-buttons > [type="submit"] {
+  grid-column: 2;
+}
+.cmu-question-buttons > :not(.cmu-question-back, [type="submit"]) {
+  grid-column: 3;
+  justify-self: end;
 }
 @media (max-width: 767px) {
   .cmu-question {
