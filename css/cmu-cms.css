@@ -415,6 +415,110 @@ ol.cmu-flow > li > strong {
   }
 }
 
+/* Annotated screenshot: a tall screenshot on the right, with numbered
+   callouts on the left, each pinned beside its part of the screenshot
+   (--cmu-at on the callout: how far down, 0 to 1) and overlapping its edge.
+   Where the component is narrower than 50rem (70rem with --wide), the text,
+   the callouts and the screenshot stack. See Annotated Screenshot in the docs
+   (sections.html). */
+.cmu-annotated {
+  --cmu-annotated-bar: 0px;
+  container-type: inline-size;
+  position: relative;
+  margin: 0 0 1.5rem;
+  padding-bottom: 2.25rem; /* room for the caption, which hangs below */
+}
+.cmu-annotated:has(> .cmu-shot--browser) {
+  --cmu-annotated-bar: 1.6rem; /* the browser window's bar, above the image */
+}
+.cmu-annotated-notes {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+.cmu-annotated-notes > li.cmu-callout {
+  margin: 0 0 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
+}
+/* Title, words and call to action, one above another in every callout */
+.cmu-annotated-notes > li.cmu-callout > p {
+  flex-basis: 100%;
+}
+@container (min-width: 50rem) {
+  .cmu-annotated:not(.cmu-annotated--wide) > figure {
+    position: relative;
+    width: 56%;
+    margin: 0 0 0 auto;
+  }
+  /* The caption hangs below the screenshot, so the callouts line up with
+     the image alone */
+  .cmu-annotated:not(.cmu-annotated--wide) > figure > figcaption {
+    position: absolute;
+    top: 100%;
+  }
+  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-text {
+    position: absolute;
+    top: 0;
+    bottom: 2.25rem; /* the image alone, not the caption\'s room */
+    left: 0;
+    width: 46%;
+    z-index: 1;
+  }
+  /* Text above the callouts stays clear of the screenshot */
+  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-text > p {
+    margin-right: 13%;
+  }
+  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-notes {
+    margin: 0;
+  }
+  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-notes > li.cmu-callout {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--cmu-annotated-bar) + (100% - var(--cmu-annotated-bar)) * var(--cmu-at, 0));
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+/* --wide, for long text or callouts: side by side only from 70rem */
+@container (min-width: 70rem) {
+  .cmu-annotated--wide > figure {
+    position: relative;
+    width: 56%;
+    margin: 0 0 0 auto;
+  }
+  /* The caption hangs below the screenshot, so the callouts line up with
+     the image alone */
+  .cmu-annotated--wide > figure > figcaption {
+    position: absolute;
+    top: 100%;
+  }
+  .cmu-annotated--wide .cmu-annotated-text {
+    position: absolute;
+    top: 0;
+    bottom: 2.25rem; /* the image alone, not the caption\'s room */
+    left: 0;
+    width: 46%;
+    z-index: 1;
+  }
+  /* Text above the callouts stays clear of the screenshot */
+  .cmu-annotated--wide .cmu-annotated-text > p {
+    margin-right: 13%;
+  }
+  .cmu-annotated--wide .cmu-annotated-notes {
+    margin: 0;
+  }
+  .cmu-annotated--wide .cmu-annotated-notes > li.cmu-callout {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--cmu-annotated-bar) + (100% - var(--cmu-annotated-bar)) * var(--cmu-at, 0));
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+
 /* A screenshot with a border and an optional caption. --browser draws it in
    a browser window; its bar is shared with the hero's, above */
 .cmu-shot {

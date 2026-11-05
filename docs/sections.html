@@ -714,6 +714,75 @@
         </div>
       </div>
 
+            <h2 id="annotated" class="rule-top">
+              Annotated Screenshot
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A tall screenshot, such as a whole page, with numbered callouts beside it. Each
+              callout is pinned next to the part it describes and overlaps the screenshot's edge a
+              little, so people can read a page part by part.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Each callout</strong> is the kit's
+                <a href="content.html#callout">callout</a> in a list item, with a
+                <code>cmu-label</code> title. Add a call to action when the part has a page of its
+                own.
+              </li>
+              <li>
+                <strong>Place it with <code>--cmu-at</code></strong
+                >, from 0 at the top of the image to 1 at the bottom: the middle of the part it
+                describes.
+              </li>
+              <li>
+                <strong>Text before the callouts</strong>, such as an introduction, goes in the same
+                column. Keep it short enough to end above the first callout.
+              </li>
+              <li>
+                <strong>Where it's narrower than 50rem</strong> (800px), such as on a phone or
+                beside an open menu, it stacks: the text, the callouts, then the screenshot. With
+                long text or callouts, add <code>cmu-annotated--wide</code>: it waits for 70rem
+                (1120px) before going side by side.
+              </li>
+            </ul>
+            <p>
+              In use, see
+              <a href="layout.html#service-home">Home Page for a Service Description</a>.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-annotated</code>, <code>cmu-annotated-text</code>,
+              <code>cmu-annotated-notes</code>, <code>cmu-annotated--wide</code>,
+              <code>--cmu-at</code>, <code>cmu-callout</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-annotated">
+          <div class="cmu-annotated-text">
+            <ol class="cmu-annotated-notes">
+              <li class="cmu-callout" style="--cmu-at: 0.12">
+                <p class="cmu-label">1. Site Name and Tabs</p>
+                <p>The service's name, a line about it and tabs for its few pages.</p>
+              </li>
+              <li class="cmu-callout" style="--cmu-at: 0.39">
+                <p class="cmu-label">2. Hero</p>
+                <p>What it does in one sentence, a button into the builder and an example of what you get.</p>
+              </li>
+              <li class="cmu-callout" style="--cmu-at: 0.8">
+                <p class="cmu-label">3. Get Started</p>
+                <p>The one line people copy, then three things to know about it.</p>
+              </li>
+            </ol>
+          </div>
+          <figure class="cmu-shot cmu-shot--browser">
+            <a href="images/annotated-placemellon-full.jpg" data-cmu-zoom><img src="images/annotated-placemellon.jpg" alt="A placeholder-image service's home page: the site name and three tabs, a hero with a Build Your Placeholder button beside Scotty, then a Get Started section with a line of code and three checks." width="900" height="942"></a>
+            <figcaption>Select the screenshot to enlarge it.</figcaption>
+          </figure>
+        </div>
+      </div>
+
             <h2 id="qa" class="rule-top">
               FAQ Teaser
               <span class="kit-where"
