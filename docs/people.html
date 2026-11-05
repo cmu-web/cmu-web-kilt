@@ -175,21 +175,21 @@
             </p>
             <ul>
               <li>
-                <strong>Photos</strong> all the same shape (CDFD's are 3:2), before the heading
-                rather than inside it, so screen readers don't read the photo as part of the name.
+                <strong>Photos</strong> all the same shape, such as 3:2, before the heading rather
+                than inside it, so screen readers don't read the photo as part of the name.
               </li>
               <li>
                 <strong>Name | title</strong> in a <code>rule-bottom</code> heading, then the
                 contact details.
               </li>
               <li>
-                <strong>Email addresses</strong> in a <code>span.protect</code>, written
-                <code>andrewid(through)andrew.cmu.edu</code>, which the template's script turns into
-                an email link, as on a <a href="#bio">bio page</a>.
+                <strong>Email</strong> as a plain link that names the person, such as "Email Andrew
+                Carnegie." Skip the template's <code>span.protect</code>: it hides the address from
+                spam bots, but adds an envelope icon.
               </li>
             </ul>
             <p class="kit-classes">
-              <code>grid column3 grey boxes</code>, <code>rule-bottom</code>, <code>protect</code>
+              <code>grid column3 grey boxes</code>, <code>rule-bottom</code>
             </p>
           </div>
         </div>
@@ -198,21 +198,21 @@
         <div class="grid column3 grey boxes" id="kit-team">
           <h1>Management Team</h1>
           <div>
-            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Andrew Carnegie | Director</h2>
-            <p><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></p>
+            <p><a href="mailto:ac00@andrew.cmu.edu">Email Andrew Carnegie</a></p>
             <p>Office: 412-555-0101</p>
           </div>
           <div>
-            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Andrew Mellon | Associate Director</h2>
-            <p><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></p>
+            <p><a href="mailto:andrewid@andrew.cmu.edu">Email Andrew Mellon</a></p>
             <p>Office: 412-555-0102</p>
           </div>
           <div>
-            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?solid&amp;text" alt="Placeholder for a photo.">
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Margaret Morrison | Office Coordinator</h2>
-            <p><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></p>
+            <p><a href="mailto:andrewid@andrew.cmu.edu">Email Margaret Morrison</a></p>
             <p>Office: 412-555-0103</p>
           </div>
         </div>
@@ -241,10 +241,8 @@
                 <code>.content</code> column, as here; anywhere else, the heading drops below it.
               </li>
               <li>
-                <strong>The email address</strong> is written as
-                <code>andrewid(through)andrew.cmu.edu</code> in a <code>span.protect</code>, which
-                the template's script turns into an email link, so the plain address never appears
-                in the page for spammers to collect.
+                <strong>The email address</strong> is a plain link, as on the
+                <a href="#contacts">contact cards</a>.
               </li>
               <li>
                 <strong>Contact</strong> is a <code>collapsed</code> heading, like the
@@ -252,16 +250,13 @@
               </li>
             </ul>
             <p class="kit-classes">
-              <code>floatleft caption thumb</code>, <code>contact</code>, <code>address</code>,
-              <code>protect</code>
+              <code>floatleft caption thumb</code>, <code>contact</code>, <code>address</code>
             </p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
         <div class="content wide">
           <div>
-            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/560/800.svg?solid&amp;text" alt="Placeholder for a portrait." width="200"></p>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="200" height="200"></p>
             <h1>Andrew Carnegie</h1>
             <h2 style="font-size:1.15em">Director of Teaching Technology</h2>
             <div class="contact rule-bottom">
@@ -269,7 +264,7 @@
               <div class="address">
                 <address>
                   <ul>
-                    <li><span class="protect hidden">andrewid(through)andrew.cmu.edu</span></li>
+                    <li><a href="mailto:ac00@andrew.cmu.edu">ac00@andrew.cmu.edu</a></li>
                   </ul>
                 </address>
               </div>
@@ -279,8 +274,6 @@
           </div>
         </div>
       </div>
-        <div class="content wide">
-          <div>
             <h2 id="people-list" class="rule-top">
               People List
               <span class="kit-where"
