@@ -93,139 +93,141 @@
               there. Your choices stay as you browse the rest of these pages, until you reset them
               or close the tab.
             </p>
-            <ul>
-              <li>
-                <strong>The roof</strong>, the template's name for the strip across the top with the
-                wordmark: <code>red invert</code> for red, <code>darkgrey invert</code> for dark
-                gray or nothing for white. A CMS sets it for the whole site; in Cascade, it's in the
-                setup block.
-              </li>
-              <li>
-                <strong>A logo</strong> sits right of the site's name. On phones the template moves
-                it below the name. See <a href="#site-name">Site Name</a>.
-              </li>
-              <li>
-                <strong>Search</strong> sits left of the menu button; see
-                <a href="#search">Search</a>.
-              </li>
-              <li>
-                <strong>Signed out</strong>, a Sign In link sits in the roof and at the top of the
-                menu. <strong>Signed in</strong>, the user's name sits in the roof and opens the
-                menu, which starts with their name, then Preferences (if the app has any) and Sign
-                Out. On phones only the menu has them. See
-                <a href="accounts.html#account">Account Status</a>.
-              </li>
-              <li>
-                <strong>Acting as another user</strong> frames the whole window; see
-                <a href="accounts.html#acting-as">Acting as Another User</a>.
-              </li>
-            </ul>
-            <form class="kit-try">
-              <fieldset>
-                <legend>Roof</legend>
-                <ul>
-                  <li>
-                    <input
-                      type="radio"
-                      name="kit-try-roof"
-                      id="kit-try-roof-red"
-                      value="red"
-                      data-kit-key="roof"
-                    /><label for="kit-try-roof-red">Red</label>
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="kit-try-roof"
-                      id="kit-try-roof-gray"
-                      value="gray"
-                      data-kit-key="roof"
-                    /><label for="kit-try-roof-gray">Gray</label>
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="kit-try-roof"
-                      id="kit-try-roof-white"
-                      value="white"
-                      data-kit-key="roof"
-                    /><label for="kit-try-roof-white">White</label>
-                  </li>
-                </ul>
-              </fieldset>
-              <fieldset>
-                <legend>Sign In</legend>
-                <ul>
-                  <li>
-                    <input
-                      type="radio"
-                      name="kit-try-account"
-                      id="kit-try-acc-none"
-                      value="none"
-                      data-kit-key="account"
-                    /><label for="kit-try-acc-none">None</label>
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="kit-try-account"
-                      id="kit-try-acc-out"
-                      value="out"
-                      data-kit-key="account"
-                    /><label for="kit-try-acc-out">Signed Out</label>
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="kit-try-account"
-                      id="kit-try-acc-in"
-                      value="in"
-                      data-kit-key="account"
-                    /><label for="kit-try-acc-in">Signed In</label>
-                    <div class="cmu-sub-options">
-                      <ul>
-                        <li>
-                          <input type="checkbox" id="kit-try-photo" data-kit-key="photo" /><label
-                            for="kit-try-photo"
-                            >Photo</label
-                          >
-                        </li>
-                        <li>
-                          <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
-                            for="kit-try-prefs"
-                            >Preferences</label
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </fieldset>
-              <fieldset>
-                <legend>Extras</legend>
-                <ul>
-                  <li>
-                    <input type="checkbox" id="kit-try-logo" data-kit-key="logo" /><label
-                      for="kit-try-logo"
-                      >Logo Placeholder</label
-                    >
-                  </li>
-                  <li>
-                    <input type="checkbox" id="kit-try-search" data-kit-key="search" /><label
-                      for="kit-try-search"
-                      >Search</label
-                    >
-                  </li>
-                  <li>
-                    <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
-                      for="kit-try-acting"
-                      >Acting as Another User</label
-                    >
-                  </li>
-                </ul>
-              </fieldset>
-              <p><button type="button" class="btn ghost" data-kit-reset>Reset</button></p>
-            </form>
+            <div class="kit-try-split">
+              <form class="kit-try">
+                <fieldset>
+                  <legend>Roof</legend>
+                  <ul>
+                    <li>
+                      <input
+                        type="radio"
+                        name="kit-try-roof"
+                        id="kit-try-roof-red"
+                        value="red"
+                        data-kit-key="roof"
+                      /><label for="kit-try-roof-red">Red</label>
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="kit-try-roof"
+                        id="kit-try-roof-gray"
+                        value="gray"
+                        data-kit-key="roof"
+                      /><label for="kit-try-roof-gray">Gray</label>
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="kit-try-roof"
+                        id="kit-try-roof-white"
+                        value="white"
+                        data-kit-key="roof"
+                      /><label for="kit-try-roof-white">White</label>
+                    </li>
+                  </ul>
+                </fieldset>
+                <fieldset>
+                  <legend>Sign In</legend>
+                  <ul>
+                    <li>
+                      <input
+                        type="radio"
+                        name="kit-try-account"
+                        id="kit-try-acc-none"
+                        value="none"
+                        data-kit-key="account"
+                      /><label for="kit-try-acc-none">None</label>
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="kit-try-account"
+                        id="kit-try-acc-out"
+                        value="out"
+                        data-kit-key="account"
+                      /><label for="kit-try-acc-out">Signed Out</label>
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="kit-try-account"
+                        id="kit-try-acc-in"
+                        value="in"
+                        data-kit-key="account"
+                      /><label for="kit-try-acc-in">Signed In</label>
+                      <div class="cmu-sub-options">
+                        <ul>
+                          <li>
+                            <input type="checkbox" id="kit-try-photo" data-kit-key="photo" /><label
+                              for="kit-try-photo"
+                              >Photo</label
+                            >
+                          </li>
+                          <li>
+                            <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
+                              for="kit-try-prefs"
+                              >Preferences</label
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </fieldset>
+                <fieldset>
+                  <legend>Extras</legend>
+                  <ul>
+                    <li>
+                      <input type="checkbox" id="kit-try-logo" data-kit-key="logo" /><label
+                        for="kit-try-logo"
+                        >Logo Placeholder</label
+                      >
+                    </li>
+                    <li>
+                      <input type="checkbox" id="kit-try-search" data-kit-key="search" /><label
+                        for="kit-try-search"
+                        >Search</label
+                      >
+                    </li>
+                    <li>
+                      <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
+                        for="kit-try-acting"
+                        >Acting as Another User</label
+                      >
+                    </li>
+                  </ul>
+                </fieldset>
+                <p><button type="button" class="btn ghost" data-kit-reset>Reset</button></p>
+              </form>
+              <ul class="kit-try-notes">
+                <li>
+                  <strong>The roof</strong>, the template's name for the strip across the top with
+                  the wordmark: <code>red invert</code> for red, <code>darkgrey invert</code> for
+                  dark gray or nothing for white. A CMS sets it for the whole site; in Cascade, it's
+                  in the setup block.
+                </li>
+                <li>
+                  <strong>A logo</strong> sits right of the site's name. On phones the template
+                  moves it below the name. See <a href="#site-name">Site Name</a>.
+                </li>
+                <li>
+                  <strong>Search</strong> sits left of the menu button; see
+                  <a href="#search">Search</a>.
+                </li>
+                <li>
+                  <strong>Signed out</strong>, a Sign In link sits in the roof and at the top of the
+                  menu. <strong>Signed in</strong>, the user's name sits in the roof and opens the
+                  menu, which starts with their name, then Preferences (if the app has any) and Sign
+                  Out. On phones only the menu has them. See
+                  <a href="accounts.html#account">Account Status</a>.
+                </li>
+                <li>
+                  <strong>Acting as another user</strong> frames the whole window; see
+                  <a href="accounts.html#acting-as">Acting as Another User</a>.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="content wide">
