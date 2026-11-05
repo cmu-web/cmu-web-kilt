@@ -15,14 +15,14 @@ const PAGES = [
   "sections.html",
   "content.html",
   "sidebars.html",
+  "previews.html",
+  "people.html",
+  "news.html",
   "lists.html",
   "forms.html",
   "messages.html",
-  "people.html",
-  "news.html",
   "accounts.html",
   "layout.html",
-  "previews.html",
 ];
 // Sections that explain rather than show a component
 const SKIP = new Set(["sections", "more-template", "service-home", "colors", "color-tokens"]);
