@@ -17,9 +17,10 @@ body.cmu-app fieldset > ul {
 body.cmu-app fieldset > ul > li {
   margin-left: 0;
 }
-/* A label right before a text box or menu, and a fieldset's legend: bold, on
-   their own line (the template leaves them plain). Checkbox labels stay as
-   they are. */
+/* A label right before a text box or menu, and a fieldset's legend: on their
+   own line, in small gray capitals like cmu-label. Checkbox and radio button
+   labels stay as they are, and so does a legend that asks a question (choice
+   rows, a question card, matching, sorting, a card sort). */
 body.cmu-app
   label:has(
     + select,
@@ -31,11 +32,32 @@ body.cmu-app
     + input[type="date"],
     + input[type="datetime-local"]
   ),
-body.cmu-app fieldset > legend {
+body.cmu-app
+  fieldset:not(.cmu-choices, .cmu-match, .cmu-question *, .cmu-card-sort *, :has(> .cmu-sort))
+  > legend {
   display: block;
-  font-weight: 700;
   margin: 0 0 0.35em;
   padding: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cmu-muted);
+}
+/* A legend that asks a question: bold, in sentence case */
+body.cmu-app fieldset:is(.cmu-choices, .cmu-match, :has(> .cmu-sort)) > legend {
+  display: block;
+  margin: 0 0 0.35em;
+  padding: 0;
+  font-weight: 700;
+}
+/* A group: a fieldset whose legend names fields in a row (Size: Width and
+   Height). The fields' own labels are quieter, in ordinary case. */
+body.cmu-app fieldset .cmu-field-row label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
 }
 body.cmu-app fieldset {
   margin: 0 0 2em 0;

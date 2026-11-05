@@ -88,15 +88,17 @@
             <p>
               Put <code>cmu-app</code> on <code>&lt;body&gt;</code> on pages with the CMU header and
               footer, or <code>cmu-framed</code> on pages shown inside another tool (such as a
-              Canvas LTI frame) without them. <code>cmu-app</code> also styles forms: a bold label
-              over each text box or menu, which fills its column; a bold legend over each group of
-              checkboxes or radio buttons, listed without bullets, with each label beside its box;
-              and room under each. On any page with the kit, checkboxes, radio buttons, sliders and
-              progress bars are CMU red. A <code>p.cmu-hint</code> right after a field (or after a
-              fieldset's list) sits just under it, with the room below moved under the hint; point
-              the field's <code>aria-describedby</code> at it. Add <code>inline</code> to a text box
-              or menu to keep its natural width. Group checkboxes in a <code>fieldset</code> so the
-              legend names them for screen readers.
+              Canvas LTI frame) without them. <code>cmu-app</code> also styles forms: a label in
+              small gray capitals over each text box or menu, which fills its column; a legend in
+              the same style over each group of checkboxes or radio buttons, listed without bullets,
+              with each label beside its box; and room under each. On any page with the kit,
+              checkboxes, radio buttons, sliders and progress bars are CMU red. A
+              <code>p.cmu-hint</code> right after a field (or after a fieldset's list) sits just
+              under it, with the room below moved under the hint; point the field's
+              <code>aria-describedby</code> at it. Add <code>inline</code> to a text box or menu to
+              keep its natural width. Group checkboxes in a <code>fieldset</code> so the legend
+              names them for screen readers. A legend that asks a question, as in Choice Rows,
+              Matching or Sorting, stays bold and in sentence case.
             </p>
             <p class="kit-classes"><code>body.cmu-app</code>, <code>body.cmu-framed</code></p>
             <!-- prettier-ignore -->
@@ -139,7 +141,10 @@
               since the labels already say what each field is. A hint under the row works as under a
               single field. When the row is too narrow, the fields wrap onto the next line. For
               short values, such as numbers or codes, add <code>cmu-field-row--short</code> so the
-              boxes keep a short width instead of sharing the whole row.
+              boxes keep a short width instead of sharing the whole row. To name the pair, such as
+              Size for a width and a height, put the row in a <code>fieldset</code> with a
+              <code>&lt;legend&gt;</code>: the legend takes the small capitals, and the
+              fields&rsquo; own labels turn quieter, in ordinary case.
             </p>
             <p class="kit-classes">
               <code>cmu-field-row</code>, <code>cmu-field-row--short</code>, <code>cmu-hint</code>
@@ -147,12 +152,15 @@
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <form>
-          <div class="cmu-field-row cmu-field-row--short">
-            <div><label for="kit-w">Width</label><input type="text" id="kit-w" inputmode="numeric" value="400" aria-describedby="kit-size-hint"></div>
-            <span aria-hidden="true">&times;</span>
-            <div><label for="kit-h">Height</label><input type="text" id="kit-h" inputmode="numeric" value="300" aria-describedby="kit-size-hint"></div>
-          </div>
-          <p class="cmu-hint" id="kit-size-hint">In pixels, from 1 to 2048.</p>
+          <fieldset>
+            <legend>Size</legend>
+            <div class="cmu-field-row cmu-field-row--short">
+              <div><label for="kit-w">Width</label><input type="text" id="kit-w" inputmode="numeric" value="400" aria-describedby="kit-size-hint"></div>
+              <span aria-hidden="true">&times;</span>
+              <div><label for="kit-h">Height</label><input type="text" id="kit-h" inputmode="numeric" value="300" aria-describedby="kit-size-hint"></div>
+            </div>
+            <p class="cmu-hint" id="kit-size-hint">In pixels, from 1 to 2048.</p>
+          </fieldset>
           <div class="cmu-field-row">
             <div><label for="kit-from">From</label><input type="date" id="kit-from"></div>
             <span aria-hidden="true">to</span>
