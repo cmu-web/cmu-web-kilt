@@ -422,6 +422,24 @@ ol.cmu-flow > li > strong {
 .js-flickityCustom .grid {
   box-sizing: border-box;
 }
+/* The carousel script measures its height once, at load; when the page then
+   narrows (the menu opening, images arriving) the slides shrink but the
+   carousel keeps the old height, leaving a gap below. Stack the slides in
+   one grid cell instead, so the carousel is always as tall as its tallest
+   slide. The script still moves them sideways with transforms. */
+.js-flickityCustom .flickity-viewport {
+  height: auto !important; /* over the script's inline height */
+}
+.js-flickityCustom .flickity-slider {
+  position: relative;
+  display: grid;
+  height: auto;
+}
+.js-flickityCustom .flickity-slider > * {
+  grid-area: 1 / 1;
+  position: relative !important; /* over the script's inline position */
+  left: 0 !important;
+}
 
 /* Annotated image: a tall image, such as a screenshot or a diagram, on the
    right, with numbered callouts on the left, each pinned beside its part of
