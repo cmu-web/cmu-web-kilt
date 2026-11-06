@@ -25,9 +25,9 @@
   "private": true,
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@j178/prek": "^0.5.7",
-    "eslint": "^10.13.0",
-    "globals": "^17.13.0",
+    "@j178/prek": "^0.5.9",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
     "prettier": "^3.9.10"
   }
 }
