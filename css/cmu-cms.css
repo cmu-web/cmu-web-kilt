@@ -37,6 +37,23 @@
   accent-color: var(--cmu-red);
 }
 
+/* A section heading with the template's line over it (rule-top): the
+   template zeroes the top padding of a section's first heading, which puts
+   the words right against the line; keep the room between them */
+:is(h1, h2, h3, h4).rule-top:first-child {
+  padding-top: 1em;
+}
+/* Mid-section, room above the line, so it doesn't crowd a table, code block
+   or callout just before it */
+:is(h1, h2, h3, h4).rule-top:not(:first-child) {
+  margin-top: 2rem;
+}
+/* An eyebrow can take the line instead of its heading; its small text has
+   no line height to spare, so give it room under the line */
+.cmu-eyebrow.rule-top {
+  padding-top: 0.9rem;
+}
+
 /* Small capitals: eyebrow (red, above a heading), label (gray) */
 .cmu-eyebrow {
   margin: 0 0 0.5rem;
