@@ -1,7 +1,7 @@
 name: Pages
 
 # Publishes the docs at the site's root, with the kit's own files beside the
-# docs' in css/ and js/, as webkit.andrew.cmu.edu serves them. Locally,
+# docs' in css/ and js/, as webkilt.andrew.cmu.edu serves them. Locally,
 # npm run docs serves the same layout.
 
 on:

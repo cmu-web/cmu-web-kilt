@@ -1,5 +1,5 @@
 // The docs and README show the current release in every copy-paste example
-// (cmu-web-kit@X.Y.Z, cmu-web-kit#X.Y.Z, V=X.Y.Z). This keeps them equal to
+// (cmu-web-kilt@X.Y.Z, cmu-web-kilt#X.Y.Z, V=X.Y.Z). This keeps them equal to
 // package.json's version.
 //   node tools/versions.mjs            check: fail if any differ
 //   node tools/versions.mjs 0.2.0      release: set package.json and every mention
@@ -12,7 +12,8 @@ const files = [
     .filter((f) => f.endsWith(".html"))
     .map((f) => "docs/" + f),
 ];
-const MENTION = /(cmu-web-kit[@#]|\bV=)(\d+\.\d+\.\d+)/g;
+const MENTION =
+  /(cmu-web-kilt?[@#]|cmu-web-kilt?-(?=\d+\.\d+\.\d+(?:\.gem|\/))|\bV=)(\d+\.\d+\.\d+)/g;
 const pkgUrl = new URL("package.json", root);
 const pkg = JSON.parse(readFileSync(pkgUrl, "utf8"));
 const next = process.argv[2];
@@ -35,7 +36,7 @@ if (next) {
   }
   console.log(`package.json and ${n} mentions now say ${next}. Next:
   git commit -am "chore: release ${next}"
-  git tag -a ${next} -m "Carnegie Mellon Web Kit ${next}"
+  git tag -a ${next} -m "Carnegie Mellon Web Kilt ${next}"
   git push origin main ${next}
 Then check jsDelivr (DEPLOYMENT.md#check-a-release) and add release notes on GitHub.`);
 } else {

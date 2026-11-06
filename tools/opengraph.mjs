@@ -7,13 +7,13 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import * as prettier from "prettier";
 
-const BASE = "https://webkit.andrew.cmu.edu/";
-const SITE = "Carnegie Mellon Web Kit";
+const BASE = "https://webkilt.andrew.cmu.edu/";
+const SITE = "Carnegie Mellon Web Kilt";
 const IMAGE = {
   src: "images/preview.jpg",
   width: 1200,
   height: 630,
-  alt: "The Carnegie Mellon Web Kit's home page: Build CMU Sites and Apps, beside screenshots of three sites built with it.",
+  alt: "The Carnegie Mellon Web Kilt's home page: Build CMU Sites and Apps, beside screenshots of three sites built with it.",
 };
 const START = "<!-- Link previews: written by tools/opengraph.mjs -->";
 const END = "<!-- End of link previews -->";
@@ -27,7 +27,7 @@ const text = (html) =>
 const attr = (s) => s.replace(/&(?![a-z]+;|#\d+;)/g, "&amp;").replace(/"/g, "&quot;");
 
 function tags(file, html) {
-  // "Accounts - Components - Carnegie Mellon Web Kit - ..." -> "Accounts - Carnegie Mellon Web Kit"
+  // "Accounts - Components - Carnegie Mellon Web Kilt - ..." -> "Accounts - Carnegie Mellon Web Kilt"
   const page = text(html.match(/<title>(.*?)<\/title>/s)[1]).split(" - ")[0];
   const title = page === SITE ? SITE : `${page} - ${SITE}`;
   const own = html.match(/<meta\s+name="description"\s+content="([^"]*)"/s);

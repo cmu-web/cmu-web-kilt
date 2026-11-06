@@ -46,7 +46,7 @@ Prettier formats CSS, JavaScript, Markdown, JSON, YAML and the docs' HTML
 [linting and formatting](DEVELOPMENT.md#linting-and-formatting).
 
 For the docs and for text in examples, follow the
-[conventions](https://cmu-web.github.io/cmu-web-kit/docs/conventions.html):
+[conventions](https://cmu-web.github.io/cmu-web-kilt/docs/conventions.html):
 Title Case for headings, buttons and labels, and buttons and calls to action
 that start with a verb. For university names and terminology, follow the
 [CMU Brand Standards writing guide](https://brand.cmu.edu/applying-brand/writing).

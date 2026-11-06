@@ -1,12 +1,12 @@
-# Carnegie Mellon Web Kit
+# Carnegie Mellon Web Kilt
 
-The Carnegie Mellon Web Kit (`cmu-web-kit`) builds on Carnegie Mellon's web
+The Carnegie Mellon Web Kilt (`cmu-web-kilt`) builds on Carnegie Mellon's web
 template with components for a unified look across CMU websites and the web
 apps around them: path cards, callouts, testimonials, embedded pages, status
 pills, tabs, dialogs, file drop zones, bulk selection bars, copy buttons and
 more. It works alongside the template without changing how it looks.
 
-**Documentation and live examples: https://webkit.andrew.cmu.edu/**
+**Documentation and live examples: https://webkilt.andrew.cmu.edu/**
 
 ## Three Files
 
@@ -22,11 +22,11 @@ in the head, above your site's own stylesheet:
 
 <!-- prettier-ignore -->
 ```html
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/>
 ```
 
 Then paste components into a content section's Source code view. The
-[Install](https://webkit.andrew.cmu.edu/install.html) page
+[Install](https://webkilt.andrew.cmu.edu/install.html) page
 walks through it step by step.
 
 ## Add It to an App
@@ -37,8 +37,8 @@ own stylesheet:
 <!-- prettier-ignore -->
 ```html
 <link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-cms.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/css/cmu-app.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-cms.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-app.css" rel="stylesheet">
 <link href="/css/your-app.css" rel="stylesheet">
 ```
 
@@ -46,18 +46,18 @@ The kit's script goes just before `</body>`, after the template's scripts:
 
 <!-- prettier-ignore -->
 ```html
-<script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.1/js/cmu-app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/js/cmu-app.js"></script>
 ```
 
 For an app in production, keep your own copy of a release instead; the
-[Install](https://webkit.andrew.cmu.edu/install.html) page
+[Install](https://webkilt.andrew.cmu.edu/install.html) page
 shows how for Node and other stacks.
 
 ## Versions
 
 Every link names an exact version, so your pages never change until you
 choose to move to a newer one. See the
-[releases](https://github.com/cmu-web/cmu-web-kit/releases) for what each
+[releases](https://github.com/cmu-web/cmu-web-kilt/releases) for what each
 version changed.
 
 ## About
@@ -65,7 +65,7 @@ version changed.
 The Office of the Vice Provost for Teaching and Learning Innovation built the
 kit while rewriting the Syllabus Registry. Each component starts from a real
 CMU page that already does it well; the
-[About](https://webkit.andrew.cmu.edu/about.html) page has more.
+[About](https://webkilt.andrew.cmu.edu/about.html) page has more.
 
 ## License
 
@@ -82,6 +82,6 @@ The code and documentation are under the BSD 3-Clause License (see
 ## Questions and Requests
 
 Missing a component, or found a problem?
-[Open an issue](https://github.com/cmu-web/cmu-web-kit/issues). To work on
+[Open an issue](https://github.com/cmu-web/cmu-web-kilt/issues). To work on
 the kit itself, see [CONTRIBUTING.md](CONTRIBUTING.md),
 [DEVELOPMENT.md](DEVELOPMENT.md), and [DEPLOYMENT.md](DEPLOYMENT.md).

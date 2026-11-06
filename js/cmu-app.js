@@ -1,4 +1,4 @@
-/* Carnegie Mellon Web Kit: behaviors for the kit's components. Load it after
+/* Carnegie Mellon Web Kilt: behaviors for the kit's components. Load it after
    the template's scripts, at the end of <body>. Each behavior hooks onto a
    data-cmu-* attribute and works on markup added later too. */
 (function () {

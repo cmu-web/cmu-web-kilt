@@ -2,7 +2,7 @@
 
 The kit has no server. A release is a Git tag, and three places serve it:
 jsDelivr for pages that link the kit, GitHub for apps that install it and
-webkit.andrew.cmu.edu for the docs, with a test copy on GitHub Pages. [DEVELOPMENT.md](DEVELOPMENT.md#releasing)
+webkilt.andrew.cmu.edu for the docs, with a test copy on GitHub Pages. [DEVELOPMENT.md](DEVELOPMENT.md#releasing)
 covers making a release; this page covers where it goes and how to check it.
 
 ## jsDelivr
@@ -12,9 +12,9 @@ upload: pushing the tag is the whole deployment. Each file has a fixed
 address:
 
 ```text
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-app.css
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/js/cmu-app.js
+https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-cms.css
+https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-app.css
+https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/js/cmu-app.js
 ```
 
 Cascade sites put the first in their head block; apps and static pages
@@ -27,9 +27,9 @@ A tag can take a few minutes to appear. Check that each file answers before
 announcing the release:
 
 ```bash
-V=0.1.0
+V=0.2.0
 for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
-  curl -fsI "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@$V/$f" | head -1
+  curl -fsI "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$V/$f" | head -1
 done
 ```
 
@@ -46,7 +46,7 @@ If a file was served before its tag was right, for example while the tag
 was being created, purge it once per file:
 
 ```bash
-curl -s "https://purge.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css"
+curl -s "https://purge.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-cms.css"
 ```
 
 ### Minified Files and Integrity Hashes
@@ -59,7 +59,7 @@ Because a version's files never change, a page can add an
 so the browser refuses a file that doesn't match:
 
 ```bash
-curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kit@0.1.0/css/cmu-cms.css" \
+curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.0/css/cmu-cms.css" \
   | openssl dgst -sha384 -binary | openssl base64 -A
 ```
 
@@ -73,12 +73,12 @@ Node apps install a tag straight from GitHub; the package isn't published
 to the npm registry:
 
 ```bash
-npm install github:cmu-web/cmu-web-kit#0.1.0
+npm install github:cmu-web/cmu-web-kilt#0.2.0
 ```
 
 `package.json` limits the install to `css/` and `js/`. Apps on other stacks
 copy a release's files from jsDelivr into their own static folder, as the
-[Install](https://webkit.andrew.cmu.edu/install.html) page
+[Install](https://webkilt.andrew.cmu.edu/install.html) page
 shows.
 
 ## The Docs Site
@@ -88,9 +88,9 @@ beside the docs' own `css/` and `js/`. The pages link `css/cmu-cms.css` and
 the rest, so they always show the kit as it is in the repo, released or not.
 
 The [Pages workflow](.github/workflows/pages.yml) builds that layout from
-`main` and publishes it at https://cmu-web.github.io/cmu-web-kit/ within a
+`main` and publishes it at https://cmu-web.github.io/cmu-web-kilt/ within a
 minute or two of each push (the repository's Pages source is set to GitHub
-Actions). That copy is for testing; webkit.andrew.cmu.edu serves the same
+Actions). That copy is for testing; webkilt.andrew.cmu.edu serves the same
 layout: `docs/` as the root, and the repository's `css/*.css` and `js/*.js`
 in its `css/` and `js/`.
 

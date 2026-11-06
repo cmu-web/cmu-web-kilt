@@ -147,7 +147,7 @@ custom property or `data-cmu-*` hook.
 
    ```bash
    git commit -am "chore: release 0.2.0"
-   git tag -a 0.2.0 -m "Carnegie Mellon Web Kit 0.2.0"
+   git tag -a 0.2.0 -m "Carnegie Mellon Web Kilt 0.2.0"
    git push origin main 0.2.0
    ```
 
