@@ -314,48 +314,13 @@
         </div>
       </div>
 
-            <h2 id="no-access" class="rule-top">
-              No Access
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
+            <h2 id="no-access" class="rule-top">No Access</h2>
             <p>
-              When someone who's signed in opens a page that isn't for them, show a page that says
-              so plainly, instead of an error code or an empty page. Say who the page is for, how to
-              get access if they should have it and where to go instead. Send it with HTTP status
-              403. Someone who isn't signed in yet should get the
-              <a href="#sign-in-box">Sign In box</a> instead, since signing in may be all they need.
-              For other errors, such as 404 and 500, see
-              <a href="messages.html#errors">Error Pages</a>.
+              When someone who's signed in opens a page that isn't for them, show the 403 page in
+              <a href="messages.html#no-access">Error Pages</a>. Someone who isn't signed in yet
+              should get the <a href="#sign-in-box">Sign In box</a> instead, since signing in may be
+              all they need.
             </p>
-            <p class="kit-classes"><code>cmu-lead</code>, <code>cmu-cta-row</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="content">
-          <div>
-            <h1>You Don't Have Access to This Page</h1>
-            <p class="cmu-lead">This page is for department administrators.</p>
-            <p>If you should have access, email <a href="#no-access">the registry team</a> with your Andrew ID and your department, and we'll add you.</p>
-            <div class="cmu-cta-row">
-              <a class="btn" href="#no-access">Browse Syllabi</a>
-              <a class="cta" href="#no-access">Go to My Courses</a>
-            </div>
-          </div>
-        </div>
-      </div>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Don't say more than they need:</strong> Name who the page is for, not what's
-                on it.
-              </li>
-              <li>
-                <strong>Keep the header and menu</strong>, signed in as usual, so they can go
-                anywhere else.
-              </li>
-            </ul>
 
             <h2 id="acting-as" class="rule-top">
               Acting as Another User

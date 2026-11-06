@@ -208,8 +208,10 @@
                 "until 6 p.m. Eastern." The web server sends this one too.
               </li>
               <li>
-                <strong>403, a page that isn't theirs:</strong> See
-                <a href="accounts.html#no-access">No Access</a>.
+                <strong>403, No Access:</strong> The user is signed in, but the page isn't for them.
+                Say who it's for, not what's on it, how to get access if they should have it and
+                where to go instead. Someone who isn't signed in yet should get the
+                <a href="accounts.html#sign-in-box">Sign In box</a> instead.
               </li>
               <li>
                 <strong>Keep codes and details out of the heading.</strong> The number can go in
@@ -251,6 +253,21 @@
         </div>
       </div>
 
+            <!-- prettier-ignore -->
+            <div class="kit-demo" id="no-access">
+        <div class="content">
+          <div>
+            <h1>You Don't Have Access to This Page</h1>
+            <p class="cmu-lead">This page is for department administrators.</p>
+            <p>If you should have access, email <a href="#no-access">the registry team</a> with your Andrew ID and your department, and we'll add you.</p>
+            <div class="cmu-cta-row">
+              <a class="btn" href="#no-access">Browse Syllabi</a>
+              <a class="cta" href="#no-access">Go to My Courses</a>
+            </div>
+            <p class="cmu-muted">Error 403</p>
+          </div>
+        </div>
+      </div>
             <h2 id="progress" class="rule-top">
               Progress Bars
               <span class="kit-where"
