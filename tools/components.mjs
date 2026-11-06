@@ -57,6 +57,11 @@ for (const file of PAGES) {
       name: text(name),
       href: `${file}#${id}`,
       set: [...where[1].matchAll(/>([^<]+)<\/span/g)].map((m) => m[1].trim()).join(", "),
+      // The same labels as the heading's, as pills
+      pills: `<span class="kit-where">${where[1]
+        .replace(/\s+/g, " ")
+        .replace(/\s*>\s*/g, ">")
+        .replace(/\s*<\s*/g, "<")}</span>`,
       page,
       classes,
     });
@@ -72,7 +77,7 @@ ${rows
   .sort((a, b) => a.name.localeCompare(b.name))
   .map(
     (r) =>
-      `          <tr><td><a href="${r.href}">${esc(r.name)}</a></td><td class="cmu-fit">${r.set}</td><td>${esc(r.page)}</td><td>${r.classes ? `<code>${r.classes.split(", ").join("</code>, <code>")}</code>` : ""}</td></tr>`,
+      `          <tr><td><a href="${r.href}">${esc(r.name)}</a></td><td class="cmu-fit">${r.pills}</td><td>${esc(r.page)}</td><td>${r.classes ? `<code>${r.classes.split(", ").join("</code>, <code>")}</code>` : ""}</td></tr>`,
   )
   .join("\n")}
         </tbody>

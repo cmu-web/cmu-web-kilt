@@ -48,6 +48,25 @@
 :is(h1, h2, h3, h4).rule-top:not(:first-child) {
   margin-top: 2rem;
 }
+/* Right after a band with a background color, the change of color already
+   marks the new section, so the next section's line is redundant */
+:is(.content, .grid):is(
+    .grey,
+    .cmu-lightgrey,
+    .darkgrey,
+    .red,
+    .gold,
+    .blue,
+    .teal,
+    .green,
+    .darkgreen
+  )
+  + :is(.content, .grid)
+  > div
+  > :is(h1, h2, h3, h4, .cmu-eyebrow).rule-top:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
 /* An eyebrow can take the line instead of its heading; its small text has
    no line height to spare, so give it room under the line */
 .cmu-eyebrow.rule-top {

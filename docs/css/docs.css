@@ -17,16 +17,9 @@
 #content .kit-code {
   padding: 1rem 1.25rem;
 }
-/* After a band with a background, the change of color marks the next
-   section, so its heading needs no line */
-#content
-  > :is(
-    .kit-demo--banded,
-    .content:is(.grey, .cmu-lightgrey, .darkgrey, .red, .gold, .blue, .teal, .green, .darkgreen)
-  )
-  + .content
-  > div
-  > h2.rule-top:first-child {
+/* A wide example with a background is a band too (the kit drops the line
+   after real bands) */
+#content > .kit-demo--banded + .content > div > h2.rule-top:first-child {
   border-top: 0;
   padding-top: 0;
 }
@@ -210,6 +203,10 @@
 .kit-where-script {
   background: var(--cmu-amber-tint);
   color: var(--cmu-amber);
+}
+/* In the Components table, the labels fill their cell */
+td > .kit-where {
+  margin-left: 0;
 }
 /* The same labels in running text, as a key */
 .kit-key {
