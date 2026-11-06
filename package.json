@@ -1,6 +1,6 @@
 {
   "name": "cmu-web-kilt",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Components for pages on Carnegie Mellon's web template: CMS sites and web apps.",
   "license": "BSD-3-Clause",
   "files": [
