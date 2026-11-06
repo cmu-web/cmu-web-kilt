@@ -12,6 +12,11 @@
 #content > .content > div > h2.rule-top {
   margin-top: 2rem;
 }
+/* The template zeroes the top padding of a section's first heading; one
+   with a line above it keeps the room between the line and the words */
+#content > .content > div > h2.rule-top:first-child {
+  padding-top: 1em;
+}
 /* The template zeroes padding on a section's first and last element; code
    samples keep theirs */
 #content .kit-code {
@@ -28,6 +33,7 @@
   > div
   > h2.rule-top:first-child {
   border-top: 0;
+  padding-top: 0;
 }
 /* A wide example is a real section of the page: no box around it */
 .kit-demo--wide {
