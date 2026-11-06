@@ -249,7 +249,7 @@
               <code>cmu-app.css</code>, it matches the link.
             </p>
 
-            <h3 id="sign-in-which">Button, Box or Header Link?</h3>
+            <h3 id="sign-in-which">Which Sign In to Use</h3>
             <ul class="cmu-checks">
               <li>
                 <strong>The button</strong> is for a page people can use without signing in. The
@@ -264,8 +264,20 @@
                 where signing in adds nothing.
               </li>
               <li>
-                <strong>A link that needs sign-in</strong> keeps its place in the text with " [login
-                required]" after it.
+                <strong>A link to a page that requires signing in</strong> stays visible, with
+                <code>[login required]</code> after it, rather than hidden.
+              </li>
+            </ul>
+            <h3 id="signed-in">Once They're Signed In</h3>
+            <ul class="cmu-checks">
+              <li>
+                <strong>The button and the box go away,</strong> and the header shows the user's
+                name instead of Sign In (see <a href="#account">Account Status</a>).
+              </li>
+              <li id="no-access">
+                <strong>A signed-in user without access</strong> gets the
+                <a href="messages.html#no-access">403 page</a> instead: who the page is for, how to
+                request access and where to go next.
               </li>
             </ul>
             <div class="cmu-callout">
@@ -275,17 +287,6 @@
                 on buttons, links and the menu.
               </p>
             </div>
-          </div>
-        </div>
-        <div class="content wide grey">
-          <div>
-            <h2 id="no-access">No Access</h2>
-            <p>
-              Signed in, but the page isn't for them? Show the 403 page: who the page is for, how to
-              get access and where to go instead. Someone who isn't signed in yet gets the
-              <a href="#sign-in-box">Sign In box</a>, since signing in may be all they need.
-            </p>
-            <p><a class="cta" href="messages.html#no-access">See the 403 Page</a></p>
           </div>
         </div>
         <div class="content wide">
