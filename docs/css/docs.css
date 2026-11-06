@@ -207,6 +207,7 @@
 /* In the Components table, the labels fill their cell */
 td > .kit-where {
   margin-left: 0;
+  flex-wrap: nowrap;
 }
 /* The same labels in running text, as a key */
 .kit-key {
