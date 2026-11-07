@@ -95,8 +95,8 @@ document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
   var sentence = target.querySelector("p");
   var lead = sentence.textContent.replace(/ [A-Z][a-z]+day, .*$/, " ");
   function set(d) {
-    var code = target.closest(".kit-demo").nextElementSibling;
-    code = code && code.classList.contains("kit-code") ? code.querySelector("code") : null;
+    // The example's code, wherever the How to Make It tabs put it
+    var code = target.closest(".kit-demo").kitCode || null;
     var oldIso = target.getAttribute("data-cmu-countdown"),
       oldText = sentence.textContent;
     var iso = isoLocal(d),
@@ -122,7 +122,7 @@ document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
   if (replace)
     replace.addEventListener("change", function () {
       target.classList.toggle("cmu-countdown--replace", replace.checked);
-      var code = target.closest(".kit-demo").nextElementSibling.querySelector("code");
+      var code = target.closest(".kit-demo").kitCode;
       kitCodeReplace(
         code,
         replace.checked ? 'class="cmu-countdown"' : 'class="cmu-countdown cmu-countdown--replace"',
@@ -161,6 +161,7 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
   );
   var pre = document.createElement("pre");
   pre.className = "kit-code";
+  pre.setAttribute("data-kit-demo-code", "");
   var code = document.createElement("code");
   code.textContent = lines
     .map(function (l) {
@@ -171,6 +172,7 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
     .replace(/ data-preview/g, "")
     .replace(/ data-kit-[\w-]+="[^"]*"/g, "");
   pre.appendChild(code);
+  demo.kitCode = code;
   // A wide example is a real page section, edge to edge, shown at its real
   // size: its code goes at the top of the text block after it, or of its notes
   // (a kit-follow block right after it), never inside the section.
@@ -200,6 +202,96 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
 });
 
 // Forms in the examples don't go anywhere
+// How to make it: under each component's example, tabs for the HTML and for
+// each CMS the docs cover, so a CMS reader can stay on their CMS's tab on
+// every page. A CMS's steps are a .kit-cms block right after the example
+// (data-cms="Cascade"); where there's none, the tab says what to do instead,
+// from the section's labels. All rows share one name, so the choice applies to
+// every pattern and carries to other pages. Without the script, the steps
+// show under the example with their own labels.
+var CMSES = ["Cascade"];
+var sections = Array.prototype.slice.call(document.querySelectorAll("h2.rule-top[id]"));
+function sectionOf(el) {
+  var found = null;
+  sections.forEach(function (h) {
+    if (h.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING) found = h;
+  });
+  return found;
+}
+function standIn(cms, section) {
+  var where = section && section.querySelector(".kit-where");
+  if (!where) return null;
+  var has = function (kind) {
+    return !!where.querySelector(".kit-where-" + kind);
+  };
+  var block = document.createElement("div");
+  block.className = "kit-cms kit-cms--none";
+  block.setAttribute("data-cms", cms);
+  var paste =
+    "We haven't written " +
+    cms +
+    " steps for this yet. Until then, in a page's Content section, open the " +
+    "editor's source code (&lt;&gt;) and paste the HTML from the HTML tab.";
+  if (has("app"))
+    block.innerHTML =
+      "<p>This is for apps. It needs the kit's <code>cmu-app.css</code>, which a CMS site " +
+      "doesn't load.</p>";
+  else if (has("script"))
+    block.innerHTML =
+      "<p>" +
+      paste +
+      ' It also needs the kit\'s script, <code>cmu-app.js</code>; see <a href="install.html#cascade">Install</a>.</p>';
+  else block.innerHTML = "<p>" + paste + "</p>";
+  return block;
+}
+document.querySelectorAll("pre.kit-code[data-kit-demo-code]").forEach(function (pre, n) {
+  var given = {};
+  var next = pre.nextElementSibling;
+  while (next && next.classList.contains("kit-cms")) {
+    given[next.dataset.cms] = next;
+    next = next.nextElementSibling;
+  }
+  var section = sectionOf(pre);
+  var blocks = CMSES.map(function (cms) {
+    return given[cms] || standIn(cms, section);
+  }).filter(Boolean);
+  if (!blocks.length) return;
+  var set = document.createElement("div");
+  set.className = "kit-how";
+  var list = document.createElement("div");
+  list.className = "cmu-tabs";
+  list.setAttribute("role", "tablist");
+  list.setAttribute("aria-label", "How to make it");
+  list.setAttribute("data-cmu-tabs", "kit-how");
+  pre.before(set);
+  set.appendChild(list);
+  [{ key: "html", label: "HTML", el: pre }]
+    .concat(
+      blocks.map(function (b) {
+        return { key: b.dataset.cms.toLowerCase(), label: b.dataset.cms, el: b };
+      }),
+    )
+    .forEach(function (item, i) {
+      var id = "kit-how-" + n + "-" + item.key;
+      var tab = document.createElement("button");
+      tab.type = "button";
+      tab.id = id + "-tab";
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-controls", id);
+      tab.setAttribute("aria-selected", i ? "false" : "true");
+      tab.setAttribute("data-cmu-tab", item.key);
+      tab.textContent = item.label;
+      list.appendChild(tab);
+      var panel = document.createElement("div");
+      panel.id = id;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", tab.id);
+      panel.hidden = i > 0;
+      panel.appendChild(item.el);
+      set.appendChild(panel);
+    });
+});
+
 document.querySelectorAll('.kit-demo form:not([method="dialog"])').forEach(function (f) {
   f.addEventListener("submit", function (e) {
     e.preventDefault();

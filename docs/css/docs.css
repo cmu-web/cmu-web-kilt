@@ -245,3 +245,26 @@ td > .kit-where {
   margin: 0.35rem 0;
   color: var(--cmu-ink);
 }
+
+/* How to make it: the code and each CMS's steps as tab panels (docs.js) */
+.kit-how {
+  margin: 0.5rem 0 2.5rem;
+}
+/* The example's box closes above the tabs, where its code used to join it */
+.kit-demo:has(+ .kit-how) {
+  border-bottom: 1px solid var(--cmu-line);
+}
+.kit-how .cmu-tabs {
+  margin-bottom: 1rem;
+}
+.kit-how [role="tabpanel"] > .kit-code,
+.kit-how [role="tabpanel"] > .cmu-copyable {
+  margin: 0;
+}
+/* In a tab, the tab names the CMS */
+.kit-how .kit-cms-label {
+  display: none;
+}
+.kit-cms {
+  margin: 0 0 1.5rem;
+}

@@ -7,14 +7,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Who's who: team and leadership grids, contact cards, a bio page and a list of people in an app."
+      content="Who's who: grids of people, contact cards, stacked and short bios, a bio page, how Cascade writes them and a list of people in an app."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="People - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Who's who: team and leadership grids, contact cards, a bio page and a list of people in an app."
+      content="Who's who: grids of people, contact cards, stacked and short bios, a bio page, how Cascade writes them and a list of people in an app."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/people.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/images/preview.jpg" />
@@ -72,9 +72,16 @@
           <div>
             <h1>People</h1>
             <p class="cmu-lead">
-              Who's who: team and leadership grids, contact cards, a bio page and a list of people
-              in an app.
+              Who's who: grids of people, contact cards, stacked and short bios, a bio page, how
+              Cascade writes them and a list of people in an app.
             </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Privacy</p>
+              <p>
+                On a public page, show only people who've agreed to be listed, with only the contact
+                details they've agreed to share.
+              </p>
+            </div>
 
             <h2 id="team" class="rule-top">
               Team Grid
@@ -87,52 +94,131 @@
               >
             </h2>
             <p>
-              A grid of the people in an office, each with a portrait, their name, their title and a
-              link to their full bio. It's a
-              <code>grid column4 boxes</code> (or <code>column3</code>), with an optional
+              A grid of the people in an office, each in a white card with a portrait, their name,
+              their title in bold and a link to their full bio. Put the cards on a color, such as
+              <code>blue</code>, so the group reads as one section of the page. It's a
+              <code>grid column4 boxes</code> (or <code>column3</code>) with an
               <code>&lt;h1&gt;</code> for the group. Use portraits of the same shape so the names
-              line up; square ones keep the cards short.
+              line up; square ones keep the cards short. With no bio pages, leave out the links and
+              the call to action.
             </p>
-            <p class="kit-classes"><code>grid column4 boxes</code>, <code>cta</code></p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>Word the link the same way on every card, such as &ldquo;Read Full Bio.&rdquo;</p>
+            </div>
+            <p class="kit-classes"><code>grid column4 boxes</code>, a color, <code>cta</code></p>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
-        <div class="grid column4 boxes">
+        <div class="grid column4 blue boxes">
           <h1>Our Team</h1>
           <div>
             <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Andrew Carnegie</a></h2>
-            <p>Director of Teaching Technology</p>
+            <p><strong>Director of Teaching Technology</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
           <div>
             <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Andrew Mellon</a></h2>
-            <p>Teaching Consultant</p>
+            <p><strong>Teaching Consultant</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
           <div>
             <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Margaret Morrison</a></h2>
-            <p>Data Analyst</p>
+            <p><strong>Data Analyst</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
           <div>
             <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Herbert Simon</a></h2>
-            <p>Web Developer</p>
+            <p><strong>Web Developer</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
         </div>
       </div>
         <div class="content wide">
           <div>
-            <p>With no bio pages, leave out the links and the call to action.</p>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>Word the link the same way on every card, such as &ldquo;Read Full Bio.&rdquo;</p>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <ol>
+                <li>
+                  Make a page for each person, all in one folder, with Add Content &rsaquo; Bio
+                  &rsaquo; <strong>Bio</strong>.
+                </li>
+                <li>
+                  In that folder, use Add Content &rsaquo; Bio &rsaquo; <strong>Bio Index</strong>.
+                </li>
+                <li>
+                  In its Bio Index section, choose <strong>Grid</strong>, then
+                  <strong>Card</strong>, and the number of columns.
+                </li>
+                <li>Set <strong>Style</strong> to a color, such as Blue.</li>
+              </ol>
+              <p>
+                Initial Rows to Display holds the rest back behind a Load More button. For menus
+                that narrow the list, see <a href="#cascade-filters">Filters</a>.
+              </p>
+              <figure class="cmu-shot">
+                <img
+                  src="images/cascade-bio-index.png"
+                  alt="Cascade's Bio Index section: Grid or Stacked, Photo or Card, two to four columns, and one to three rows to show first."
+                  width="847"
+                  height="467"
+                />
+              </figure>
             </div>
+            <h2 id="photo-grid" class="rule-top">
+              Photo Grid
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Photos edge to edge with each name and title over the bottom of the photo, on a color.
+              It's the boldest way to show a small group, such as an office's leaders, and needs
+              photos that are good enough to fill the space. It's a
+              <code>grid column3 photos</code> (or <code>column2</code>, <code>column4</code>) with
+              a color; each person is a <code>div.photo</code> holding one link, with the image in a
+              <code>&lt;span&gt;</code> and the name and title in a <code>&lt;div&gt;</code>.
+            </p>
+            <p class="kit-classes"><code>grid column3 photos</code>, a color, <code>photo</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 gold photos">
+          <h1>Office Leadership</h1>
+          <div class="photo">
+            <a href="#bio"><span><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="" width="400" height="400"></span><div><h2>Andrew Carnegie</h2><p>Director</p></div></a>
+          </div>
+          <div class="photo">
+            <a href="#bio"><span><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="" width="400" height="400"></span><div><h2>Andrew Mellon</h2><p>Associate Director</p></div></a>
+          </div>
+          <div class="photo">
+            <a href="#bio"><span><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="" width="400" height="400"></span><div><h2>Margaret Morrison</h2><p>Office Coordinator</p></div></a>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                A Bio Index, as for the <a href="#team">Team Grid</a>, with
+                <strong>Grid</strong> and then <strong>Photo</strong>.
+              </p>
+            </div>
+            <p>
+              The photo is decorative here, since the name is in the link, so its
+              <code>alt</code> is empty.
+            </p>
 
             <h2 id="leadership" class="rule-top">
               Leadership Grid
@@ -241,6 +327,169 @@
       </div>
         <div class="content wide">
           <div>
+            <h2 id="stacked" class="rule-top">
+              Stacked Bios
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              One person per row: a portrait, their name and title, a line about their work, a Read
+              Full Bio link and Contact. Use it when people need more than a card, such as each
+              person's research area, or with the full bios shown in place for a short list. Each
+              row is the bio page's top, with a rule between rows.
+            </p>
+            <p class="kit-classes">
+              <code>floatleft caption thumb</code>, <code>cta</code>, <code>contact</code>,
+              <code>rule-bottom</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <h2>Andrew Mellon</h2>
+            <h3>Teaching Consultant</h3>
+            <p>Course design, assessment and active learning in large lectures.</p>
+            <p><a class="cta" href="#bio">Read Full Bio</a></p>
+            <div class="contact rule-bottom">
+              <span class="collapsed">Contact</span>
+              <div class="address">
+                <address>
+                  <ul>
+                    <li><a class="icon" data-cmu-email="andrewid(through)andrew.cmu.edu">Email Andrew Mellon</a></li>
+                    <li><a class="icon tel" href="tel:+14125550102">412-555-0102</a></li>
+                  </ul>
+                </address><address>
+                  <strong>Office</strong><br>
+                  Hunt Library, Room A12<br>
+                  4909 Frew Street<br>
+                  Pittsburgh, PA 15213
+                </address>
+              </div>
+            </div>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <h2>Margaret Morrison</h2>
+            <h3>Data Analyst</h3>
+            <p>Course evaluations, survey design and teaching-related data requests.</p>
+            <p><a class="cta" href="#bio">Read Full Bio</a></p>
+            <div class="contact rule-bottom">
+              <span class="collapsed">Contact</span>
+              <div class="address">
+                <address>
+                  <ul>
+                    <li><a class="icon" data-cmu-email="andrewid(through)andrew.cmu.edu">Email Margaret Morrison</a></li>
+                    <li><a class="icon tel" href="tel:+14125550103">412-555-0103</a></li>
+                  </ul>
+                </address>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                A Bio Index, as for the <a href="#team">Team Grid</a>, with
+                <strong>Stacked</strong>. To show each full bio in place, set Collapse Region to
+                Yes.
+              </p>
+            </div>
+            <h2 id="short-bios" class="rule-top">
+              Short Bios
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="Built into CMU's template; nothing else to load"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A short bio for each person on one page, for a quick contact page or a group whose
+              bios are a paragraph or two, such as an advisory board. Each person gets a band of
+              their own, alternating gray and white, with a Contact link and their links in a box
+              beside the bio. Photos are optional; leave them out unless everyone has one.
+            </p>
+            <p class="kit-classes">
+              <code>content</code>, <code>grey</code>, <code>contact</code>, <code>sidebar</code>,
+              <code>darkgrey invert</code>, <code>list</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content grey">
+          <div>
+            <h2>Andrew Carnegie</h2>
+            <h3>Chair, Advisory Board</h3>
+            <div class="contact">
+              <span class="collapsed floatright">Contact</span>
+              <div class="address">
+                <address>
+                  <ul>
+                    <li><a class="icon" data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></li>
+                    <li><a class="icon tel" href="tel:+14125550101">412-555-0101</a></li>
+                  </ul>
+                </address><address>
+                  <strong>Office</strong><br>
+                  Hunt Library, Room A10<br>
+                  4909 Frew Street<br>
+                  Pittsburgh, PA 15213
+                </address>
+              </div>
+            </div>
+            <p>Carnegie founded the Carnegie Technical Schools in 1900 and has chaired the board since. He reads every annual report and asks about each one.</p>
+          </div><div class="sidebar">
+            <div class="list darkgrey invert">
+              <ul>
+                <li><a href="#short-bios">Personal Website</a></li>
+                <li><a href="#short-bios">Carnegie Foundation</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <h2>Margaret Morrison</h2>
+            <h3>Member, Advisory Board</h3>
+            <div class="contact">
+              <span class="collapsed floatright">Contact</span>
+              <div class="address">
+                <address>
+                  <ul>
+                    <li><a class="icon" data-cmu-email="andrewid(through)andrew.cmu.edu">Email Margaret Morrison</a></li>
+                  </ul>
+                </address>
+              </div>
+            </div>
+            <p>Morrison led the women's college from its first class and now advises on student life and housing.</p>
+          </div><div class="sidebar">
+            <div class="list darkgrey invert">
+              <ul>
+                <li><a href="#short-bios">Personal Website</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <ol>
+                <li>Add Content &rsaquo; Bio &rsaquo; <strong>Short Bio</strong>.</li>
+                <li>Write the Intro Text, then add a section for each person.</li>
+              </ol>
+            </div>
             <h2 id="bio" class="rule-top">
               Bio Page
               <span class="kit-where"
@@ -252,50 +501,104 @@
               >
             </h2>
             <p>
-              One person's page: their portrait floated beside their name and title, a Contact link
-              that opens to show their email address, then their bio. In Cascade it's the Bio page
-              type, which writes all of this; the markup is for knowing the parts.
+              One person's page: their portrait beside their name and title, a Contact link that
+              opens to show how to reach them, their bio in short sections and a box of related
+              links in the sidebar. In a CMS, the page type writes all of this; the markup is for
+              knowing the parts.
             </p>
             <ul>
               <li>
                 <strong>The portrait</strong> is <code>p.floatleft.caption.thumb</code> around the
-                image. It sits beside the name only when both are directly in the page's
-                <code>.content</code> column, as here; anywhere else, the heading drops below it.
+                image, about a third of the column. It sits beside the name only when both are
+                directly in the page's <code>.content</code> column, as here; anywhere else, the
+                heading drops below it.
               </li>
               <li>
-                <strong>The email address</strong> is an
-                <a href="content.html#email">email link</a>.
+                <strong>The title</strong> names the office or department after the job, such as
+                &ldquo;Director of Teaching Technology, Office of the Provost.&rdquo;
               </li>
               <li>
                 <strong>Contact</strong> is a <code>collapsed</code> heading, like the
-                <a href="content.html#faq">FAQ</a>'s.
+                <a href="content.html#faq">FAQ</a>'s. Inside, an <code>&lt;address&gt;</code> lists
+                the email address as an <a href="content.html#email">email link</a> with the class
+                <code>icon</code>, and the phone and fax numbers with <code>icon tel</code> and
+                <code>icon fax</code>. The template draws an icon beside each. A second
+                <code>&lt;address&gt;</code> beside it gives the office.
+              </li>
+              <li>
+                <strong>The bio</strong> gets an <code>&lt;h2&gt;</code> for each part that has
+                something to say, such as Bio, Education, Research, Projects and Publications. Leave
+                out the empty ones.
+              </li>
+              <li>
+                <strong>Related links,</strong> such as a personal site or lab, go in a gray
+                <code>list</code> box in the <a href="sidebars.html#sidebar">sidebar</a>.
               </li>
             </ul>
             <p class="kit-classes">
-              <code>floatleft caption thumb</code>, <code>contact</code>, <code>address</code>
+              <code>floatleft caption thumb</code>, <code>contact</code>, <code>address</code>,
+              <code>icon</code>, <code>sidebar</code>, <code>list grey</code>
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="content wide">
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
           <div>
-            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="200" height="200"></p>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h1>Andrew Carnegie</h1>
-            <h2 style="font-size:1.15em">Director of Teaching Technology</h2>
+            <h2 style="font-size:1.15em">Director of Teaching Technology, Office of the Provost</h2>
             <div class="contact rule-bottom">
               <span class="collapsed floatright">Contact</span>
               <div class="address">
                 <address>
                   <ul>
-                    <li><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></li>
+                    <li><a class="icon" data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></li>
+                    <li><a class="icon tel" href="tel:+14125550101">412-555-0101</a></li>
+                    <li><a class="icon fax" href="tel:+14125550199">412-555-0199</a></li>
                   </ul>
+                </address><address>
+                  <strong>Office</strong><br>
+                  Hunt Library, Room A10<br>
+                  4909 Frew Street<br>
+                  Pittsburgh, PA 15213
                 </address>
               </div>
             </div>
             <h2>Bio</h2>
-            <p>Carnegie leads Teaching Technology, the office behind the Office Hours Queue and Equipment Checkout.</p>
+            <p>Carnegie leads Teaching Technology, the office behind Equipment Checkout and the course tools faculty use every day. Before coming to the university, he ran the Keystone Bridge Company's drafting room.</p>
+            <h2>Education</h2>
+            <p>Self-taught, with a library card from Colonel James Anderson's library in Allegheny.</p>
+            <h2>Projects</h2>
+            <p>A loaner program for classroom cameras, and a guide to captioning lecture video.</p>
+          </div><div class="sidebar">
+            <div class="list grey">
+              <ul>
+                <li><a href="#bio">Teaching Technology</a></li>
+                <li><a href="#bio">Equipment Checkout</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                Add Content &rsaquo; Bio &rsaquo; <strong>Bio</strong>. The page has a field for
+                each part: the photo, name, title, contact details, each section of the bio and the
+                related links.
+              </p>
+              <figure class="cmu-shot">
+                <img
+                  src="images/cascade-add-bio.png"
+                  alt="Cascade's Add Content panel open to Bio, offering Bio, Bio Index and Short Bio."
+                  width="624"
+                  height="348"
+                />
+              </figure>
+            </div>
             <h2 id="people-list" class="rule-top">
               People List
               <span class="kit-where"
@@ -362,8 +665,36 @@
       </div>
             <p>
               Use a real photo cropped to a square; the kit makes it round. With no photo, leave the
-              image out rather than showing a blank one. On a public page, show only people who've
-              agreed to be listed.
+              image out rather than showing a blank one.
+            </p>
+          </div>
+        </div>
+        <div class="content wide grey" id="kit-cascade">
+          <div>
+            <p class="cmu-eyebrow">In Cascade</p>
+            <h2 id="cascade-filters">Filters on an Index</h2>
+
+            <p>
+              On a Bio Index, Course Index or News Index, menus for narrowing the list, such as by
+              research area, aren't markup you write. They come from a site-wide list of categories,
+              and work the same on a course or news index:
+            </p>
+            <ol>
+              <li>
+                <strong>The categories block</strong> (an XHTML/Data Definition block named
+                <code>categories</code>) holds the site's groups, such as research areas or
+                concentrations, and the values in each.
+              </li>
+              <li><strong>Each bio page</strong> picks its values in its Filters section.</li>
+              <li>
+                <strong>On the index page,</strong> the Filters section turns on each group to show
+                as a menu.
+              </li>
+            </ol>
+            <p>
+              Name the groups for what people look for, such as &ldquo;Research Area,&rdquo; and
+              keep each to a dozen values or so. In an app, use the
+              <a href="#people-list">People List</a>'s search instead.
             </p>
           </div>
         </div>

@@ -189,51 +189,89 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css</code></p
 
             <h2 id="cms" class="rule-top">CMS Sites</h2>
             <p>
-              A site in a CMS loads only <code>cmu-cms.css</code>, from jsDelivr, with one line in
-              the head of every page: after the template's stylesheet and before the site's own, so
-              the site's styles come last. Where that line goes depends on the CMS.
+              A site in a CMS loads <code>cmu-cms.css</code> from jsDelivr, with one line in the
+              head of every page: after the template's stylesheet and before the site's own, so the
+              site's styles come last. Components marked Script also need <code>cmu-app.js</code> at
+              the end of the page. Where those lines go depends on the CMS.
             </p>
-            <pre
-              class="kit-code"
-            ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
+            <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
+            <p>
+              Keep the comment above it, so whoever changes versions later can find the kit's lines
+              among the site's other code.
+            </p>
 
             <h3 id="cascade">In Cascade</h3>
             <p>
-              Cascade adds extra code to every page's head from a text block, which the site's
-              <code>setup</code> block points to.
+              Cascade adds code to every page from text blocks that the site's
+              <code>setup</code> block lists under Additional Code, each at a location: In Head or
+              Before Closing Body. Keep one block for each location, holding everything the site
+              adds there (the kit, the site's own stylesheet, analytics), so the order is plain to
+              see. A comment above each part makes the kit's lines easy to find when you change
+              versions.
             </p>
             <ol class="cmu-steps">
               <li>
-                In the site's content, open the text block that holds its head code (often named
-                <code>style</code>, holding a link to the site's <code>css/style.css</code>). If the
-                site has none, choose <strong>Add Content</strong> &gt; <strong>Text Block</strong>,
-                and check <strong>Advanced editor</strong>.
-              </li>
-              <li>
-                Select <strong>Edit</strong> and add the kit's link on its own line, above the
-                site's own stylesheet, so the site's styles come last:
-                <pre
-                  class="kit-code"
-                ><code>&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;
+                In the site's top folder, choose <strong>Add Content</strong> &gt;
+                <strong>Block</strong> &gt; <strong>Text Block</strong>. Name it
+                <code>head-includes</code> and check <strong>Advanced editor</strong>. If the site
+                already has a block for its head code (often named <code>style</code>), rename it
+                and use that. Put the kit first, so the site's styles come last, and save it:
+                <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;
+&lt;!-- This site --&gt;
 &lt;link href="/css/style.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
-                Then save it.
+                <figure class="cmu-shot">
+                  <img
+                    src="images/install-cascade-head.png"
+                    alt="Cascade's head-includes text block, with Advanced editor checked and the kit's comment and link in it."
+                    width="700"
+                    height="200"
+                  />
+                </figure>
               </li>
               <li>
-                If you made a new text block, open the site's <code>setup</code> block, select
-                <strong>Edit</strong>, and near the end set <strong>Additional Code</strong> to
-                <strong>Yes</strong>. In the <strong>Code</strong> item, set
-                <strong>Location</strong> to <strong>In Head</strong> and choose your text block
-                under <strong>Block</strong>. Save it.
+                For components marked Script, make a second text block,
+                <code>body-end-includes</code>, the same way:
+                <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
+                <figure class="cmu-shot">
+                  <img
+                    src="images/install-cascade-end.png"
+                    alt="Cascade's body-end-includes text block, with the kit's comment and script line in it."
+                    width="700"
+                    height="200"
+                  />
+                </figure>
               </li>
               <li>
-                Preview a page to check, then publish the site's pages, which pick up the block's
-                code when they're published.
+                Open the site's <code>setup</code> block and select <strong>Edit</strong>. Near the
+                end, set <strong>Additional Code</strong> to <strong>Yes</strong>. Add a
+                <strong>Code</strong> item for each block: <code>head-includes</code> at
+                <strong>In Head</strong>, and <code>body-end-includes</code> at
+                <strong>Before Closing Body</strong>. Save it.
+                <figure class="cmu-shot">
+                  <img
+                    src="images/install-cascade-setup.png"
+                    alt="The setup block's Additional Code: Yes, with two Code items, head-includes In Head and body-end-includes Before Closing Body."
+                    width="602"
+                    height="412"
+                  />
+                </figure>
+              </li>
+              <li>
+                Preview a page to check, then publish the site's pages, which pick up the
+                <code>setup</code> block's code when they're published.
               </li>
             </ol>
+            <p>
+              To change versions, edit the version on the kit's lines in both blocks, preview and
+              publish.
+            </p>
 
             <h3 id="other-cms">In Another CMS</h3>
             <p>
-              In Drupal or another CMS on CMU's template, add the same line where the theme puts
+              In Drupal or another CMS on CMU's template, add the same lines where the theme puts
               code in each page's head, such as the theme's page template or a setting for extra
               head code. If you don't manage the theme, ask whoever does. Then preview a page to
               check before you publish.
