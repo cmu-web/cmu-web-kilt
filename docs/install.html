@@ -83,8 +83,8 @@
             <pre
               class="kit-code"
             ><code>&lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-cms.css" rel="stylesheet"&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
 &lt;link href="/your-site.css" rel="stylesheet"&gt;</code></pre>
             <p>
               On a page with components that need a script, the kit's script goes just before
@@ -92,7 +92,7 @@
             </p>
             <pre
               class="kit-code"
-            ><code>&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
+            ><code>&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
             <table class="alternate cmu-full">
               <thead>
                 <tr>
@@ -173,8 +173,8 @@
             </p>
             <pre
               class="kit-code"
-            ><code>https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css</code></pre>
+            ><code>https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-cms.css
+https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-app.css</code></pre>
             <ul class="cmu-checks">
               <li>
                 <strong>Always pin an exact version.</strong> An address with a version range
@@ -195,7 +195,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css</code></p
               the end of the page. Where those lines go depends on the CMS.
             </p>
             <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
             <p>
               Keep the comment above it, so whoever changes versions later can find the kit's lines
               among the site's other code.
@@ -218,7 +218,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css</code></p
                 already has a block for its head code (often named <code>style</code>), rename it
                 and use that. Put the kit first, so the site's styles come last, and save it:
                 <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;
 &lt;!-- This site --&gt;
 &lt;link href="/css/style.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
                 <figure class="cmu-shot">
@@ -234,7 +234,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css</code></p
                 For components marked Script, make a second text block,
                 <code>body-end-includes</code>, the same way:
                 <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/js/cmu-app.js"&gt;&lt;/script&gt;</code></pre>
                 <figure class="cmu-shot">
                   <img
                     src="images/install-cascade-end.png"
@@ -314,7 +314,7 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css</code></p
                 Install the version you want:
                 <pre
                   class="kit-code"
-                ><code>npm install github:cmu-web/cmu-web-kilt#0.2.3</code></pre>
+                ><code>npm install github:cmu-web/cmu-web-kilt#0.2.4</code></pre>
               </li>
               <li>
                 Serve its files. With Express:
@@ -369,7 +369,7 @@ app.use("/vendor/cmu-web-kilt", express.static(kit));</code></pre>
               Copy a release's files into one of your Django apps' <code>static</code> folders and
               commit them, with the version in the folder name so it's obvious which one you have:
             </p>
-            <pre class="kit-code"><code>V=0.2.3
+            <pre class="kit-code"><code>V=0.2.4
 D=yourapp/static/vendor/cmu-web-kilt-$V
 mkdir -p $D
 for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
@@ -378,11 +378,11 @@ done</code></pre>
             <p>Then link them from your base template:</p>
             <pre class="kit-code"><code>{% load static %}
 &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
-&lt;link href="{% static 'vendor/cmu-web-kilt-0.2.3/cmu-cms.css' %}" rel="stylesheet"&gt;
-&lt;link href="{% static 'vendor/cmu-web-kilt-0.2.3/cmu-app.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'vendor/cmu-web-kilt-0.2.4/cmu-cms.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'vendor/cmu-web-kilt-0.2.4/cmu-app.css' %}" rel="stylesheet"&gt;
 &lt;link href="{% static 'css/your-app.css' %}" rel="stylesheet"&gt;
 &lt;!-- After the template's scripts, before &lt;/body&gt;: --&gt;
-&lt;script src="{% static 'vendor/cmu-web-kilt-0.2.3/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="{% static 'vendor/cmu-web-kilt-0.2.4/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
             <p>
               <code>collectstatic</code> picks them up with the rest of your static files. Don't
               edit the copied files; change your own stylesheet, or ask for a change to the kit.
@@ -403,8 +403,8 @@ done</code></pre>
             <pre
               class="kit-code"
             ><code>&lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" rel="stylesheet"&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css" rel="stylesheet"&gt;</code></pre>
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-cms.css" rel="stylesheet"&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-app.css" rel="stylesheet"&gt;</code></pre>
 
             <h2 id="upgrade" class="rule-top">Moving to a New Version</h2>
             <ol class="cmu-steps">
