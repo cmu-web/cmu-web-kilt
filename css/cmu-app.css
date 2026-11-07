@@ -282,6 +282,32 @@ nav li.cmu-account-menu .cmu-avatar {
   color: var(--cmu-red);
   border-bottom-color: var(--cmu-red);
 }
+/* Tab panels: button tabs (role="tab") that switch content in place, in the
+   link tabs' look; the template's button styles come off */
+#content .cmu-tabs [role="tab"] {
+  margin: 0 0 -1px;
+  padding: 0.2em 0 0;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--cmu-ink);
+  font: inherit;
+  font-weight: 600;
+  line-height: 2.2;
+  letter-spacing: normal;
+  text-transform: none;
+  cursor: pointer;
+}
+#content .cmu-tabs [role="tab"]:hover {
+  background: none;
+  color: var(--cmu-red);
+}
+#content .cmu-tabs [role="tab"][aria-selected="true"] {
+  color: var(--cmu-red);
+  border-bottom-color: var(--cmu-red);
+}
 /* Folded tabs (a cmu-more inside the tabs), like a folded list: a "2 More"
    cta at the end of the first row (the details box itself drops out of the
    layout); opened, the rest wrap onto the next line and it says Show Fewer */

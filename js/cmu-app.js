@@ -339,8 +339,99 @@
     announce(li.cmuName + ", " + at + " of " + list.children.length);
   });
 
+  // Tab panels: tabs that switch content in place, in the same row and look as
+  // the link tabs. <div class="cmu-tabs" role="tablist" aria-label="...">
+  // holds <button type="button" role="tab" aria-controls="panel-id"> tabs, and
+  // each panel is a <div role="tabpanel" id="panel-id">. Mark the open tab
+  // aria-selected="true" (else the first opens) and the other panels hidden.
+  // Click or arrow keys switch. With data-cmu-tabs="name" on the row and
+  // data-cmu-tab="value" on each tab, every row with that name switches
+  // together, and the choice is remembered in this browser across pages.
+  // Without the script, every panel shows. See Tabs in the docs (layout.html).
+  function tabsOf(list) {
+    return Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+  }
+  function selectTab(tab) {
+    tabsOf(tab.closest('[role="tablist"]')).forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute("aria-controls"));
+      if (panel) panel.hidden = !on;
+    });
+  }
+  function pickTabs(name, value) {
+    document
+      .querySelectorAll('.cmu-tabs[role="tablist"][data-cmu-tabs="' + name + '"]')
+      .forEach(function (list) {
+        var tabs = tabsOf(list);
+        var tab =
+          tabs.filter(function (t) {
+            return t.getAttribute("data-cmu-tab") === value;
+          })[0] || tabs[0];
+        if (tab) selectTab(tab);
+      });
+  }
+  function storedTab(name) {
+    try {
+      return localStorage.getItem("cmu-tabs:" + name);
+    } catch {
+      return null;
+    }
+  }
+  function startTabs(root) {
+    if (!root.querySelectorAll) return;
+    root.querySelectorAll('.cmu-tabs[role="tablist"]').forEach(function (list) {
+      if (list.cmuTabs) return;
+      list.cmuTabs = true;
+      var tabs = tabsOf(list);
+      var name = list.getAttribute("data-cmu-tabs");
+      var saved = name && storedTab(name);
+      var tab =
+        (saved &&
+          tabs.filter(function (t) {
+            return t.getAttribute("data-cmu-tab") === saved;
+          })[0]) ||
+        tabs.filter(function (t) {
+          return t.getAttribute("aria-selected") === "true";
+        })[0] ||
+        tabs[0];
+      if (tab) selectTab(tab);
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var tab = e.target.closest && e.target.closest('.cmu-tabs[role="tablist"] [role="tab"]');
+    if (!tab) return;
+    var list = tab.closest('[role="tablist"]');
+    var name = list.getAttribute("data-cmu-tabs");
+    var value = tab.getAttribute("data-cmu-tab");
+    if (!name || !value) return selectTab(tab);
+    // Every row with this name switches; keep the clicked one still on screen
+    var before = tab.getBoundingClientRect().top;
+    pickTabs(name, value);
+    try {
+      localStorage.setItem("cmu-tabs:" + name, value);
+    } catch {
+      // Private window or blocked storage: the choice lasts for this page
+    }
+    window.scrollBy(0, tab.getBoundingClientRect().top - before);
+  });
+  document.addEventListener("keydown", function (e) {
+    var list = e.target.closest && e.target.closest('.cmu-tabs[role="tablist"]');
+    if (!list || e.target.getAttribute("role") !== "tab") return;
+    var tabs = tabsOf(list);
+    var i = tabs.indexOf(e.target);
+    var to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+    if (to === undefined) return;
+    e.preventDefault();
+    var tab = tabs[(to + tabs.length) % tabs.length];
+    tab.focus();
+    tab.click();
+  });
+
   startCountdowns(document);
-  // Countdowns, sorting lists and email links added later start, and a countdown whose
+  startTabs(document);
+  // Countdowns, sorting lists, email links and tabs added later start, and a countdown whose
   // date changes restarts
   new MutationObserver(function (changes) {
     changes.forEach(function (c) {
@@ -350,6 +441,7 @@
           startCountdowns(n);
           startSorts(n);
           startEmails(n);
+          startTabs(n);
         });
     });
   }).observe(document.documentElement, {

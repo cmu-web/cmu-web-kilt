@@ -558,6 +558,33 @@
           </details>
         </div>
       </div>
+            <h3 id="tab-panels">Tab Panels</h3>
+            <p>
+              Tabs can also switch what shows in place, such as the same steps for different
+              platforms. Then each tab is a <code>button</code> with <code>role="tab"</code> in a
+              row with <code>role="tablist"</code>, and each panel a <code>div</code> with
+              <code>role="tabpanel"</code>, hidden until its tab is picked. The kit's script
+              switches them, with the arrow keys too. Give the row a <code>data-cmu-tabs</code> name
+              and each tab a <code>data-cmu-tab</code> value, and every row with that name on the
+              page switches together, and the choice is remembered across pages. Without the script,
+              every panel shows.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-tabs</code>, <code>data-cmu-tabs</code>, <code>data-cmu-tab</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-tabs" role="tablist" aria-label="Get the app" data-cmu-tabs="kit-demo-os">
+          <button type="button" role="tab" id="kit-os-mac-tab" aria-controls="kit-os-mac" aria-selected="true" data-cmu-tab="mac">Mac</button>
+          <button type="button" role="tab" id="kit-os-win-tab" aria-controls="kit-os-win" aria-selected="false" data-cmu-tab="windows">Windows</button>
+        </div>
+        <div role="tabpanel" id="kit-os-mac" aria-labelledby="kit-os-mac-tab">
+          <p>Open Self Service and choose Install under Campus Printing.</p>
+        </div>
+        <div role="tabpanel" id="kit-os-win" aria-labelledby="kit-os-win-tab" hidden>
+          <p>Open Software Center and choose Install under Campus Printing.</p>
+        </div>
+      </div>
 
             <h2 id="breadcrumbs" class="rule-top">
               Breadcrumbs
