@@ -814,3 +814,20 @@ document.querySelectorAll("[data-kit-load-more]").forEach(function (button) {
     if (shown === rows.length) button.closest("p").hidden = true;
   });
 });
+
+// The ID Tap example: answer a tap or a search with a made-up person, and
+// clear the field for the next card
+document.querySelectorAll("[data-kit-tap]").forEach(function (form) {
+  var result = form.querySelector("[data-kit-tap-result]");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var card = form.querySelector("[data-cmu-tap]");
+    var find = form.querySelector('input[type="search"]');
+    var who =
+      find && find.value.trim() ? find.value.trim() : card.value ? "Andrew Carnegie (ac00)" : "";
+    result.hidden = !who;
+    result.textContent = who ? "Checked in: " + who + "." : "";
+    card.value = "";
+    if (find) find.value = "";
+  });
+});

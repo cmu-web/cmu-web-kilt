@@ -375,6 +375,36 @@
     }
   });
 
+  // ID tap: <div class="cmu-tap-target"> holds a label and an <input
+  // data-cmu-tap>, where a card reader types an ID card's number and presses
+  // Enter. Selecting the target focuses the field, and so does sending its
+  // form, ready for the next card. With data-cmu-tap="keep", on a page that's
+  // only for tapping, the field also takes focus when the page loads and
+  // whenever nothing else has it, so the reader is always listening. See ID
+  // Tap in the docs (forms.html).
+  function focusTap(field) {
+    if (field) field.focus({ preventScroll: true });
+  }
+  function keepTap() {
+    var field = document.querySelector('[data-cmu-tap="keep"]');
+    var active = document.activeElement;
+    if (field && (!active || active === document.body)) focusTap(field);
+  }
+  document.addEventListener("click", function (e) {
+    var target = e.target.closest && e.target.closest(".cmu-tap-target");
+    if (target) focusTap(target.querySelector("[data-cmu-tap]"));
+  });
+  document.addEventListener("submit", function (e) {
+    var field = e.target.querySelector && e.target.querySelector("[data-cmu-tap]");
+    if (field)
+      setTimeout(function () {
+        focusTap(field);
+      }, 0);
+  });
+  setInterval(keepTap, 2000);
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", keepTap);
+  else keepTap();
+
   // Tab panels: tabs that switch content in place, in the same row and look as
   // the link tabs. <div class="cmu-tabs" role="tablist" aria-label="...">
   // holds <button type="button" role="tab" aria-controls="panel-id"> tabs, and

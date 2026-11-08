@@ -7,14 +7,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Forms and the pieces that go in them: fields in a row, options under a choice, choice rows, a question card, matching, sorting and a card sort."
+      content="Forms and the pieces that go in them: fields in a row, options under a choice, choice rows, a question card, matching, sorting, a card sort and an ID tap."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Forms - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Forms and the pieces that go in them: fields in a row, options under a choice, choice rows, a question card, matching, sorting and a card sort."
+      content="Forms and the pieces that go in them: fields in a row, options under a choice, choice rows, a question card, matching, sorting, a card sort and an ID tap."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/forms.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/images/preview.jpg" />
@@ -73,7 +73,7 @@
             <h1>Forms</h1>
             <p class="cmu-lead">
               Forms and the pieces that go in them: fields in a row, options under a choice, choice
-              rows, a question card, matching, sorting and a card sort.
+              rows, a question card, matching, sorting, a card sort and an ID tap.
             </p>
 
             <h2 id="setup" class="rule-top">
@@ -445,6 +445,75 @@
           </div>
         </div>
       </div>
+        <div class="content wide">
+          <div>
+            <h2 id="tap" class="rule-top">
+              ID Tap
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              For checking people in or looking them up with their CMU ID card, such as at a desk, a
+              workshop or an exam room. A card reader types like a keyboard: it enters the card's
+              number into whatever has focus and presses Enter. So the target holds a real text
+              field, and the number arrives as an ordinary form post.
+            </p>
+            <ul>
+              <li>
+                <strong>Ready or not:</strong> the target says Ready while its field has focus, and
+                to select it when it doesn't, so a tap never goes nowhere. Selecting anywhere on the
+                target focuses the field, and so does sending the form.
+              </li>
+              <li>
+                <strong>A tap-only page:</strong> add <code>data-cmu-tap="keep"</code> on a kiosk or
+                check-in page, and the field takes focus when the page loads and whenever nothing
+                else has it.
+              </li>
+              <li>
+                <strong>No card:</strong> put a search for an Andrew ID, name or email under it,
+                folded behind "No ID Card?" (a <a href="lists.html#more">folded list</a>), for
+                people who forgot theirs or for staff entering someone by hand.
+              </li>
+              <li>
+                <strong>Say who it found:</strong> answer each tap with a
+                <a href="messages.html#flash">flash message</a> that names the person, so the person
+                at the desk can catch a wrong card.
+              </li>
+              <li>
+                <strong>Keep the number private:</strong> it shows as dots, and the app should clear
+                the field after each tap and never log card numbers.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>cmu-tap-target</code>, <code>data-cmu-tap</code>, <code>cmu-tap-ready</code>,
+              <code>cmu-tap-paused</code>, <code>cmu-tap-other</code>, <code>cmu-tap-search</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <form class="cmu-tap" data-kit-tap>
+          <div class="cmu-flash cmu-flash--success" role="status" data-kit-tap-result hidden></div>
+          <div class="cmu-tap-target">
+            <label for="kit-tap">Tap Your CMU ID</label>
+            <p class="cmu-tap-ready">Ready</p>
+            <p class="cmu-tap-paused">Select here, then tap.</p>
+            <input type="text" id="kit-tap" name="card" autocomplete="off" inputmode="none" data-cmu-tap>
+          </div>
+          <details class="cmu-more cmu-tap-other">
+            <summary><span class="cmu-more-link cta"><span class="cmu-more-closed">No ID Card?</span><span class="cmu-more-open">Hide the Search</span></span></summary>
+            <div class="cmu-tap-search">
+              <label for="kit-tap-find">Andrew ID, Name or Email</label>
+              <input type="search" id="kit-tap-find" name="q">
+              <button class="btn small" type="submit" name="find" value="1">Find</button>
+            </div>
+          </details>
+        </form>
+      </div>
+            <p>Try it: type a few numbers in the target and press Enter, or search for a name.</p>
+          </div>
+        </div>
       </main>
 
       <footer class="grid column3 invert">
