@@ -339,6 +339,42 @@
     announce(li.cmuName + ", " + at + " of " + list.children.length);
   });
 
+  // Row menu: <div class="cmu-row-menu"> holds a <button class="btn small
+  // ghost" data-cmu-menu aria-controls="list-id" aria-expanded="false"
+  // aria-label="More actions for ..."> and the list, <div
+  // class="cmu-row-menu-list" id="list-id" hidden>, of the row's other
+  // actions. The button opens the list under it, one at a time; a click
+  // elsewhere or Escape closes it. See Tables With Actions in the docs
+  // (lists.html).
+  function closeMenus(except) {
+    document.querySelectorAll('[data-cmu-menu][aria-expanded="true"]').forEach(function (b) {
+      if (b === except) return;
+      b.setAttribute("aria-expanded", "false");
+      var list = document.getElementById(b.getAttribute("aria-controls"));
+      if (list) list.hidden = true;
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var toggle = e.target.closest && e.target.closest("[data-cmu-menu]");
+    if (toggle) {
+      var open = toggle.getAttribute("aria-expanded") !== "true";
+      closeMenus(toggle);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      var list = document.getElementById(toggle.getAttribute("aria-controls"));
+      if (list) list.hidden = !open;
+      return;
+    }
+    if (!(e.target.closest && e.target.closest(".cmu-row-menu-list"))) closeMenus();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var open = document.querySelector('[data-cmu-menu][aria-expanded="true"]');
+    if (open) {
+      closeMenus();
+      open.focus();
+    }
+  });
+
   // Tab panels: tabs that switch content in place, in the same row and look as
   // the link tabs. <div class="cmu-tabs" role="tablist" aria-label="...">
   // holds <button type="button" role="tab" aria-controls="panel-id"> tabs, and

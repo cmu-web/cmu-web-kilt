@@ -81,7 +81,7 @@
             <h2 id="search" class="rule-top">
               Search
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -130,7 +130,7 @@
             <h2 id="filters" class="rule-top">
               Filters
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -194,7 +194,7 @@
             <h2 id="tables" class="rule-top">
               Tables
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -226,43 +226,57 @@
             <h2 id="table-actions" class="rule-top">
               Tables With Actions
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
-                ></span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
               The bulk bar sits on top of a <code>table.alternate</code>: the selection count, then
               actions for the selected rows. Its height is fixed, so buttons appearing don't push
-              the table down. Row buttons repeat the bulk bar's actions in each row, with the same
-              words, at one fixed width and the height of a two-line button, so rows stay even.
-              Pairs stack below 1200px.
+              the table down. Each row gets one button, the next thing to do, and a ⋯ menu with the
+              rest; a row with nothing else to do gets no menu.
             </p>
             <p class="kit-classes">
               <code>cmu-bulk-bar</code>, <code>cmu-selection-count</code>,
               <code>cmu-has-selection</code>, <code>cmu-select-cell</code>, <code>cmu-sort</code>,
               <code>cmu-sort-arrow</code>, <code>cmu-fit</code>, <code>cmu-row-buttons</code>,
+              <code>cmu-row-menu</code>, <code>cmu-row-menu-list</code>, <code>data-cmu-menu</code>,
               <code>num</code>
             </p>
             <ul>
               <li>
-                <strong>Selection:</strong> The app's script keeps the count current ("No sections
+                <strong>One button per row:</strong> solid for something missing (Upload Syllabus),
+                outlined when it's there (Replace Syllabus), at one fixed width and the height of a
+                two-line button so rows stay even.
+              </li>
+              <li>
+                <strong>The ⋯ menu</strong> (<code>cmu-row-menu</code>) holds the row's other
+                actions, in the bulk bar's words: a button for each, or a link for one that goes
+                somewhere. Name the ⋯ button for screen readers ("More actions for 15-112 A") and
+                give it a matching <code>title</code>. <code>cmu-app.js</code> opens it, one at a
+                time; a click elsewhere or Escape closes it.
+              </li>
+              <li>
+                <strong>Something to open, such as a file,</strong> gets a plain link in a column of
+                its own before the actions, with its type after it: "View [PDF]." Keep the row's
+                title plain text. Hide the column's header with <code>sr-only</code> and name what
+                the link opens ("Syllabus"); the actions column's hidden header is "Actions."
+              </li>
+              <li>
+                <strong>Selection:</strong> the app's script keeps the count current ("No sections
                 selected" when there are none), adds <code>cmu-has-selection</code> to it when
                 anything is selected and shows each bulk button only when it applies to a selected
                 row, with how many: "Upload Syllabus (2)." Try it above.
               </li>
               <li>
-                <strong>Checkbox cells:</strong> The label fills the cell, so the whole cell is the
+                <strong>Checkbox cells:</strong> the label fills the cell, so the whole cell is the
                 click target.
               </li>
               <li>
                 <strong>Sorting:</strong> put <code>data-sort-key</code> on the header and a
                 <code>button.cmu-sort</code> inside it; set <code>aria-sort</code> on the sorted
-                column.
-              </li>
-              <li>
-                <strong>Filtering:</strong> Move hidden rows to the end of the table body, so the
-                template's stripes stay even.
+                column. For filtering, see <a href="#filters">Filters</a>.
               </li>
               <li>
                 <strong><code>cmu-fit</code></strong> shrinks a column to its content.
@@ -288,6 +302,7 @@
               <th>Title</th>
               <th class="num cmu-fit">Seats</th>
               <th class="cmu-fit">Status</th>
+              <th class="cmu-fit"><span class="sr-only">Syllabus</span></th>
               <th class="cmu-fit"><span class="sr-only">Actions</span></th>
             </tr>
           </thead>
@@ -298,7 +313,18 @@
               <td>Fundamentals of Programming</td>
               <td class="num">120</td>
               <td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td>
-              <td class="cmu-fit"><div class="cmu-row-buttons"><button class="btn small" type="button">Upload Syllabus</button><button class="btn small ghost" type="button">Do&nbsp;Not&nbsp;Expect a&nbsp;Syllabus</button></div></td>
+              <td class="cmu-fit"></td>
+              <td class="cmu-fit">
+                <div class="cmu-row-buttons">
+                  <button class="btn small" type="button">Upload Syllabus</button>
+                  <div class="cmu-row-menu">
+                    <button class="btn small ghost" type="button" data-cmu-menu aria-controls="kit-menu-112" aria-expanded="false" aria-label="More actions for 15-112 A" title="More actions"></button>
+                    <div class="cmu-row-menu-list" id="kit-menu-112" hidden>
+                      <button type="button">Do Not Expect a&nbsp;Syllabus</button>
+                    </div>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr data-kit-status="available">
               <td class="cmu-select-cell"><label><input type="checkbox" aria-label="Select 15-122 A"></label></td>
@@ -306,7 +332,18 @@
               <td>Principles of Imperative Computation</td>
               <td class="num">95</td>
               <td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td>
-              <td class="cmu-fit"><div class="cmu-row-buttons"><button class="btn small ghost" type="button">Replace Syllabus</button><button class="btn small ghost" type="button">Remove Syllabus</button></div></td>
+              <td class="cmu-fit"><a href="#table-actions">View</a> [PDF]</td>
+              <td class="cmu-fit">
+                <div class="cmu-row-buttons">
+                  <button class="btn small ghost" type="button">Replace Syllabus</button>
+                  <div class="cmu-row-menu">
+                    <button class="btn small ghost" type="button" data-cmu-menu aria-controls="kit-menu-122" aria-expanded="false" aria-label="More actions for 15-122 A" title="More actions"></button>
+                    <div class="cmu-row-menu-list" id="kit-menu-122" hidden>
+                      <button type="button">Remove Syllabus</button>
+                    </div>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -315,7 +352,7 @@
             <h2 id="files" class="rule-top">
               File Table
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -341,14 +378,14 @@
             <h2 id="load-more" class="rule-top">
               Load More
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
             </h2>
             <p>
               A button under a long list that adds the next batch to it, after a count of what's
-              showing. Use it for browsing and search results, where people scan down. For a list
+              showing. It suits browsing and search results, where people scan down. For a list
               people need to come back to a place in, use <a href="#pagination">Pagination</a>
               instead.
             </p>
@@ -361,7 +398,7 @@
               <p class="cmu-label">Style</p>
               <p>
                 Name what the button loads, with the same noun as the count: &ldquo;Load More
-                Sections,&rdquo; not just &ldquo;Load More.&rdquo;
+                Sections.&rdquo;
               </p>
             </div>
             <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-load-more</code></p>
@@ -391,15 +428,15 @@
             <h2 id="pagination" class="rule-top">
               Pagination
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
             </h2>
             <p>
               One batch of results at a time, each with its own address, under a count of what's
-              showing. Use it when people need to come back to a place in the list, or the list is
-              too long to keep adding to with <a href="#load-more">Load More</a>.
+              showing. It's for a list people come back to a place in, or one that's too long to
+              keep adding to with <a href="#load-more">Load More</a>.
             </p>
             <p>
               A pager is one list: first (&laquo;), previous (&lsaquo;), the page numbers, next
@@ -476,7 +513,7 @@
             <h2 id="more" class="rule-top">
               Folded Lists
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
