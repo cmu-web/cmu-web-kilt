@@ -197,8 +197,7 @@
             <h2 id="links" class="rule-top">Buttons and Links</h2>
             <p>
               The template gives buttons, calls to action and ordinary links different visual
-              weight. Match that weight with words that say what happens next, starting with a verb
-              and naming the task.
+              weight. Match that weight with words that say what happens next: start with a verb and name the task.
             </p>
             <div class="cmu-split">
               <div>
@@ -213,8 +212,7 @@
             <p>
               A link goes somewhere; a button does something. Use a link (<code>&lt;a&gt;</code>)
               even when it looks like a button, and a <code>&lt;button&gt;</code> for an action
-              even when it looks like a link: screen readers announce them differently, and the
-              keyboard works them differently. These examples lead to real kit pages:
+              even when it looks like a link: screen readers and keyboards treat them differently. These examples lead to real kit pages:
             </p>
             <div class="cmu-split">
               <div>
@@ -271,7 +269,7 @@
                 site's home is <code>./</code> from its own pages and <code>../</code> from a page
                 one folder down, and another site's is its folder's address, such as
                 <code>https://www.cmu.edu/syllabusregistry/</code>. The address stays short and
-                stays right if the site moves. Use <code>./</code> rather than <code>/</code>, which
+                stays right if the site moves. Use <code>./</code>, not <code>/</code>, which
                 skips past a site that isn't at the server's root.
               </li>
               <li>
@@ -283,12 +281,11 @@
               <li>
                 <strong>Label special destinations.</strong> After a link that requires sign-in,
                 add <code>[login required]</code> as plain text outside the link. After a file
-                link, add its type, such as <code>[PDF]</code>. These labels tell people what to
-                expect before they select it.
+                link, add its type, such as <code>[PDF]</code>. These labels tell people what to expect before they select the link.
               </li>
               <li>
                 <strong>Omit <code>[login required]</code></strong> when the link text already makes
-                it clear, as in "Sign In to See Your Courses." Use only one label: a syllabus link gets <code>[login required]</code> when signed out and <code>[PDF]</code> when signed in.
+                it clear, as in "Sign In to See Your Courses." Use only one label: a PDF that also requires sign-in gets <code>[login required]</code> for people who aren't signed in, and <code>[PDF]</code> once they are.
               </li>
             </ul>
 
@@ -322,7 +319,7 @@
               <div>
                 <p class="cmu-label">Hard to Follow</p>
                 <p>
-                  "Users should navigate to the appropriate course and utilize the queue
+                  "Users should navigate to the appropriate course and use the queue
                   functionality to submit a request for assistance."
                 </p>
               </div>
@@ -344,16 +341,14 @@
             <p>
               Write a path through menus with the breadcrumb arrow (&rsaquo;, <code>&amp;rsaquo;</code>),
               not the greater-than sign: &ldquo;Add Content &rsaquo; Block &rsaquo; Text Block,&rdquo;
-              with each name as it appears on screen. It's the same mark the template puts between
-              breadcrumbs, so a path reads like one everywhere on a page.
+              with each name as it appears on screen. It's the same mark the template puts between breadcrumbs.
             </p>
 
             <h2 id="messages" class="rule-top">Messages</h2>
             <p>
               "An error occurred" leaves the reader stuck. An error message names the problem and
-              offers a way forward; a success message confirms what changed. Say it in words, not
-              just color: each of these sample <a href="messages.html#flash">flash messages</a>
-              starts with what happened, so it reads the same without the red or green.
+              offers a way forward; a success message confirms what changed. Say it in words, not color alone. Each of these sample <a href="messages.html#flash">flash messages</a>
+              starts with what happened and reads the same without the red or green.
             </p>
             <p class="cmu-flash cmu-flash--error">
               <strong>Your syllabus wasn't uploaded.</strong> Choose a PDF file and try again.
@@ -374,8 +369,7 @@
             </p>
             <h3 id="color-classes">Color Classes</h3>
             <p>
-              A color class goes on a sidebar box or on a whole grid; boxes inside a grid stay
-              white. Add <code>invert</code> for white text on every color except
+              A color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add <code>invert</code> for white text on every color except
               <code>grey</code> and <code>gold</code>, which take dark text. Under each class is the brand color it is, from
               <a href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, or
               "template" where cmu.edu uses its own shade, a little darker so white text on it stays

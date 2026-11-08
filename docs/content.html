@@ -189,15 +189,15 @@
             <h2 id="link-button" class="rule-top">
               Link Button
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
             </h2>
             <p>
-              A button that looks like a link, for a small action that happens in place (such as a
-              form post) sitting among plain links, where a full button would be too heavy. It still
-              behaves as a button. Signing out isn't one of these: it goes in the
+              A button that looks like a link, for a small action in place (such as a form post)
+              among plain links, where a full button would be too heavy. It still behaves like a
+              button. Signing out isn't one of these: it goes in the
               <a href="accounts.html#account">menu</a>.
             </p>
             <p class="kit-classes"><code>cmu-link-button</code></p>
@@ -209,7 +209,7 @@
             <h2 id="button-note" class="rule-top">
               Button With a Note
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -217,7 +217,7 @@
             <p>
               A short note beside a button, centered on it top to bottom, saying what the button
               does or what to expect. On a narrow screen the note wraps under the button. Keep it to
-              a sentence; anything longer belongs above the button. Right under a photo
+              a sentence; anything longer goes above the button. Right under a photo
               (<code>figure.image</code>), it sits close to the photo it acts on, as with a Show
               Another Photo button; the note is optional.
             </p>
@@ -233,7 +233,7 @@
             <h2 id="steps" class="rule-top">
               Numbered Steps
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>Instructions to follow in order, with the step numbers in red circles.</p>
@@ -250,7 +250,7 @@
             <h2 id="checks" class="rule-top">
               Bullet and Check Lists
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -281,7 +281,7 @@
             <h2 id="callout" class="rule-top">
               Callout and Note
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -289,8 +289,8 @@
               short text when there's space, and above a longer one. A note is a plainer tinted box
               for a message among other content, such as in an app. Give a callout a color for what
               kind of aside it is: blue for a note, green for a tip, gold for a warning, red for a
-              caution; the plain gray one suits anything else. Keep color for asides that need it,
-              so it still stands out. For which color to use, see
+              caution; the plain gray one is for anything else. Save color for the asides that call
+              for it. For which color to use, see
               <a href="conventions.html#colors">Colors</a>.
             </p>
             <ul class="cmu-checks">
@@ -348,7 +348,7 @@
             <h2 id="text" class="rule-top">
               Small Text
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -372,13 +372,13 @@
             <h2 id="pills" class="rule-top">
               Pills
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
-              A short status label. Gray unless given a tone: green for done or available, amber for
-              waiting or missing. Amber, never red: a missing item isn't an error. Pills stay on one
-              line, except in app tables below 1200px. Choose a color from the
+              A short status label. Gray by default; green for done or available, amber for waiting
+              or missing. Use amber, not red: a missing item isn't an error. Pills stay on one line,
+              except in app tables below 1200px. Choose a color from the
               <a href="conventions.html#colors">color guide</a>.
             </p>
             <p class="kit-classes">
@@ -447,14 +447,14 @@
               </li>
               <li>
                 <strong>Never put the credit in the alt text.</strong> Alt text describes the
-                picture; a screen reader would read the credit as part of it.
+                picture; a screen reader would read a credit there as part of it.
               </li>
             </ul>
 
             <h2 id="screenshots" class="rule-top">
               Screenshots
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -496,15 +496,15 @@
             <h2 id="zoom" class="rule-top">
               Enlarge on Click
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
-                ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
               A screenshot or a photo that people can select to see up close. Link the image to its
               full-size version and add <code>data-cmu-zoom</code>: selecting it opens the image
-              over the page, with the page dimmed behind it. Escape, the close button or a click
-              anywhere closes it, and focus goes back to the image. Without the script, the link
+              over the page, with the page dimmed behind it. Escape, the close button or a click or
+              tap anywhere closes it, and focus goes back to the image. Without the script, the link
               opens the image itself. An image much taller than the window, such as a whole page,
               opens at full width and scrolls. The enlarged image uses the image's alt text, so
               write that as usual. It works on a screenshot in any frame, a photo or a plain image.
@@ -579,7 +579,7 @@
             <h2 id="embed" class="rule-top">
               Embedded Page
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -624,14 +624,14 @@
             <h2 id="snippet" class="rule-top">
               Code Block
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
               Code or an address for people to read or copy, on a light gray box. Long lines wrap,
-              so the whole of each stays in view even on a phone; copying still gives each line as
-              written. Put the text inside <code>&lt;code&gt;</code>, and write
-              <code>&amp;lt;</code> for each <code>&lt;</code> in HTML.
+              so each one stays in view even on a phone; copying still gives each line as written.
+              Put the text inside <code>&lt;code&gt;</code>, and write <code>&amp;lt;</code> for
+              each <code>&lt;</code> in HTML.
             </p>
             <p class="kit-classes"><code>pre.cmu-snippet</code></p>
             <!-- prettier-ignore -->
@@ -643,8 +643,8 @@
             <h2 id="copy" class="rule-top">
               Copy Button
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
-                ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
@@ -675,10 +675,7 @@
             </ul>
             <div class="cmu-callout">
               <p class="cmu-label">Style</p>
-              <p>
-                Say what a named copy button copies, such as &ldquo;Copy Link,&rdquo; not just
-                &ldquo;Copy.&rdquo;
-              </p>
+              <p>Say what a named copy button copies, such as &ldquo;Copy Link.&rdquo;</p>
             </div>
             <p class="kit-classes">
               <code>data-cmu-copy</code>, <code>cmu-copyable</code>, <code>cmu-copy</code>,
@@ -702,7 +699,7 @@
             <h2 id="email" class="rule-top">
               Email Links
               <span class="kit-where"
-                ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
@@ -732,8 +729,8 @@
             <h2 id="countdown" class="rule-top">
               Countdown
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
-                ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
@@ -742,11 +739,11 @@
               <code>data-cmu-countdown</code>, and write the same moment as a sentence inside. The
               script hides the sentence and shows the cards; screen readers and pages without the
               script get the sentence. It stops at zero, and the cards don't flip for people who ask
-              their device for less motion. A page can have as many as it needs; each runs on its
+              their device for less motion. A page can have as many as it likes; each runs on its
               own. To show something once it reaches zero, such as a link to the schedule, put it
               inside in a <code>&lt;div class="cmu-countdown-done" hidden&gt;</code>; the script
-              shows it under the cards then. Add <code>cmu-countdown--replace</code> to the
-              countdown to have it take the cards' place instead. Try a past date. It depends on
+              shows it under the cards. Add <code>cmu-countdown--replace</code> to the countdown to
+              have it take the cards' place instead. Try a past date. It depends on
               <code>cmu-app.js</code>.
             </p>
             <p class="kit-classes">
@@ -790,7 +787,7 @@
               </li>
               <li>
                 <strong>No icons in buttons.</strong> The only icon-only buttons are the kit's copy,
-                close, sorting arrows and the question card's arrows.
+                close, sorting arrows, the question card's arrows and a table row's ⋯ menu.
               </li>
               <li><strong>Never use an icon alone</strong> to tell things apart.</li>
             </ul>
@@ -837,9 +834,8 @@
             </h2>
             <p>
               Questions that open to show their answers. A heading with <code>collapsed</code> hides
-              everything after it, up to the next collapsed heading, until it's clicked; it depends
-              on the template's script. In Cascade, add an Expand/Collapse Section for each
-              question.
+              everything after it, up to the next collapsed heading, until it's selected; it depends
+              on the template's script.
             </p>
             <div class="cmu-callout">
               <p class="cmu-label">Style</p>
@@ -862,6 +858,13 @@
           <p>Course staff can move you back to the front of the line once.</p>
         </div>
       </div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                In the page's content, add an <strong>Expand/Collapse Section</strong> for each
+                question: the question goes in its heading and the answer in its content.
+              </p>
+            </div>
             <p>
               A long FAQ divides into categories. Each category is its own
               <code>.content</code> block with an <code>id</code>, headed by an

@@ -97,8 +97,8 @@
               A page can be a run of full-width sections, one after another: a
               <code>.content</code> block, a grid, a section bar, another grid. On a real page they
               go straight inside <code>#content</code>, not inside one another; the examples below
-              sit in boxes only so the page can show them. In Cascade, each is a content section of
-              its own (WYSIWYG, Grid or Wide).
+              sit in boxes only to show them here. In Cascade, each is a content section of its own
+              (Content, Grid, Slideshow or Wide).
             </p>
             <pre class="kit-code"><code>&lt;main id="content"&gt;
   &lt;div class="breadcrumbs"&gt; &hellip; &lt;/div&gt;
@@ -128,15 +128,10 @@
               >
             </h2>
             <p>
-              An optional thin line over a section's heading, to mark where one topic ends and the
-              next begins on a long page. Add the template's <code>rule-top</code> to the heading.
-              The line sits just above the heading, with room between them. At the top of a section,
-              the section's own padding gives the space above the line; further down, the kit adds
-              it, so the line doesn't crowd a table or callout before it. Right after a band with a
-              background color, the kit leaves the line off, since the change of color already marks
-              the new section. An eyebrow can take the line instead of its heading. On a color band
-              (<code>invert</code>) the line turns white. Its partner, <code>rule-bottom</code>,
-              puts the line under a heading instead, as in the
+              Add the template's <code>rule-top</code> to a heading or eyebrow to mark a new section
+              with a thin line above it. Spacing is automatic. The line is hidden right after a band
+              with a background color and turns white on a band with <code>invert</code>. Use
+              <code>rule-bottom</code> for a line below a heading, as in the
               <a href="sidebars.html#quick-links">sidebar</a>.
             </p>
             <p class="kit-classes"><code>rule-top</code>, <code>rule-bottom</code></p>
@@ -159,15 +154,15 @@
             <h2 id="grid" class="rule-top">
               Cards on Gray
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
               A grid is two, three or four columns that stack on phones. With
               <code>grey boxes</code>, each column is a white card on a gray band. An
-              <code>&lt;h1&gt;</code> first in the grid is the band's heading, across the top. Good
-              for short cards that each lead somewhere. For a line across the band's full width,
-              such as an introduction under the heading or a link to see more after the cards, use
+              <code>&lt;h1&gt;</code> first in the grid is the band's heading, across the top. Keep
+              the cards short, each leading somewhere. For a line across the band's full width, such
+              as an introduction under the heading or a link to see more after the cards, use
               <code>&lt;p class="cmu-grid-full"&gt;</code> (the kit's only addition here). For which
               color to use, see <a href="conventions.html#colors">Colors</a>.
             </p>
@@ -227,7 +222,7 @@
             <h2 id="paths" class="rule-top">
               Path Cards
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -265,7 +260,7 @@
             <h2 id="flow" class="rule-top">
               How It Works
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -387,8 +382,8 @@
               can swipe instead.
             </p>
             <p>
-              Use it sparingly: people rarely look past the first slide, so put the most important
-              one first, and never hide something people need in a later slide.
+              Use these sparingly. People rarely look past the first slide, so put the most
+              important one first, and don't put anything people need in a later slide.
             </p>
             <p class="kit-classes"><code>js-flickityCustom</code>, <code>grid column2</code></p>
 
@@ -562,7 +557,7 @@
               <li>
                 <strong>Put the icon, name and any text in a <code>&lt;div&gt;</code></strong
                 >, then the rule and the date after it. The kit sets the rule and date at the bottom
-                of each card, so the dates line up across a row.
+                of each card, and the dates line up across a row.
               </li>
               <li>
                 <strong>The dates</strong> go under a rule, bold and centered with
@@ -644,7 +639,8 @@
               are all the same shape (such as 3:2, at 900 &times; 600), or the rows come out ragged
               and the titles don't line up. At four across, keep titles to two or three words, or
               they wrap; a sentence under the title fits at two or three across. On phones the
-              photos stack.
+              photos stack. For people, put each name and title over the photo; the name's in the
+              link, so the photo gets empty <code>alt</code>.
             </p>
             <p>
               No photos yet? Fill the grid with CMU photos from
@@ -699,13 +695,15 @@
               <p>
                 A Grid section, as for <a href="#grid">Cards on Gray</a>, with its Type set to
                 <strong>Photo</strong>. Each photo has an Image (700 wide, all the same size), Alt
-                Text, a Headline over the photo and a Link.
+                Text, a Headline over the photo and a Link. For people, a Bio Index can build it
+                from their bio pages: choose Grid, then Photo (see
+                <a href="people.html#team">Team Grid</a>).
               </p>
             </div>
             <h2 id="testimonial" class="rule-top">
               Testimonial
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -750,7 +748,7 @@
             <h2 id="split" class="rule-top">
               Text With a Screenshot
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -782,7 +780,7 @@
             <h2 id="annotated" class="rule-top">
               Annotated Image
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -807,7 +805,7 @@
               </li>
               <li>
                 <strong>Give longer text more room.</strong> Below 50rem (800px), the component
-                stacks the introduction, callouts, and image. Add <code>cmu-annotated--wide</code>
+                stacks the introduction, callouts and image. Add <code>cmu-annotated--wide</code>
                 for longer introductions or callouts; it keeps them stacked until the component has
                 70rem (1120px) of space.
               </li>
@@ -851,7 +849,7 @@
             <h2 id="qa" class="rule-top">
               FAQ Teaser
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
             </h2>
             <p>
@@ -933,8 +931,17 @@
       </div>
         <div class="content wide">
           <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                In the page's content, add a section with the green <strong>+</strong> on any
+                section, then set its <strong>Type</strong> to Wide, its <strong>Style</strong> to
+                Red and its <strong>Background Image</strong> to Globe. Put the heading in its
+                content.
+              </p>
+            </div>
             <p>
-              For a statement rather than a heading, such as a mission, use a lighter band with the
+              For a statement instead of a heading, such as a mission, use a lighter band with the
               text centered: <code>grey plaid</code>, which the template fades so dark text stays
               readable. On phones it's plain white, since the template drops the plaid there (see
               <a href="#backgrounds">Background Patterns</a>), so don't count on it to set the
@@ -946,7 +953,7 @@
         <div class="kit-demo kit-demo--wide">
         <div class="content wide grey plaid">
           <div>
-            <p class="aligncenter"><em>Equipment Checkout is run by Teaching Technology. <strong>Our mission is to put the tools for great class projects in every student's hands.</strong></em></p>
+            <p class="aligncenter"><em>Equipment Checkout is run by Teaching Technology. <strong>Borrow cameras, lenses and tripods for your CMU course, free for up to a week.</strong></em></p>
           </div>
         </div>
       </div>
@@ -976,9 +983,9 @@
               </li>
               <li>
                 <strong>Gold</strong> for a time-sensitive update, with a bold lead-in. Gold takes
-                dark text, so it takes no <code>invert</code>. When the whole notice is one short
-                statement, make it a centered <code>&lt;h3&gt;</code> instead; center it with the
-                template's <code>aligncenter</code>, not an inline style.
+                dark text and no <code>invert</code>. When the whole notice is one short statement,
+                make it a centered <code>&lt;h3&gt;</code> instead; center it with the template's
+                <code>aligncenter</code>, not an inline style.
               </li>
               <li>
                 <strong>Green</strong> (<code>green invert</code>) for something newly available,
@@ -1044,6 +1051,15 @@
       </div>
         <div class="content wide">
           <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                In the page's content, add a section with the green <strong>+</strong> on any
+                section, then set its <strong>Type</strong> to Wide and its
+                <strong>Style</strong> to Dark Grey, Gold, Green or Blue. Move it up to sit first on
+                the page, with the arrows on its section.
+              </p>
+            </div>
             <h2 id="link-bank" class="rule-top">
               Link Bank
               <span class="kit-where"
@@ -1111,10 +1127,11 @@
             <p>
               Two background patterns that go with a color: <code>globe</code>, a faint map, and
               <code>plaid</code>, the university tartan. Both come from the template's own image
-              files, so they follow the brand rules; never draw your own tartan. Use one for a
-              section bar or a feature section, not behind long text. The template shows them only
-              from 768px up; on phones the color is plain, and <code>grey plaid</code> has no gray
-              at all, so don't count on the pattern to set a section apart.
+              files and follow the brand rules; never draw your own tartan. Use one for a section
+              bar or a feature section, not behind long text. The template shows them only from
+              768px up; on phones the color is plain, and <code>grey plaid</code> has no gray at
+              all, so don't count on the pattern to set a section apart. In Cascade, it's a
+              section's <strong>Background Image</strong>: Globe or Plaid.
             </p>
             <p class="kit-classes"><code>globe</code>, <code>plaid</code>, with a color</p>
             <div class="kit-swatches kit-swatches--tall">

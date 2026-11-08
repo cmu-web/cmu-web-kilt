@@ -96,7 +96,7 @@
             <p>
               A grid of the people in an office, each in a white card with a portrait, their name,
               their title in bold and a link to their full bio. Put the cards on a color, such as
-              <code>blue</code>, so the group reads as one section of the page. It's a
+              <code>blue</code>, to set the group apart as one section of the page. It's a
               <code>grid column4 boxes</code> (or <code>column3</code>) with an
               <code>&lt;h1&gt;</code> for the group. Use portraits of the same shape so the names
               line up; square ones keep the cards short. With no bio pages, leave out the links and
@@ -153,7 +153,8 @@
                 </li>
                 <li>
                   In its Bio Index section, choose <strong>Grid</strong>, then
-                  <strong>Card</strong>, and the number of columns.
+                  <strong>Card</strong>, and the number of columns. (<strong>Photo</strong> puts the
+                  names over the photos instead; see <a href="sections.html#photos">Photo Grid</a>.)
                 </li>
                 <li>Set <strong>Style</strong> to a color, such as Blue.</li>
               </ol>
@@ -170,55 +171,6 @@
                 />
               </figure>
             </div>
-            <h2 id="photo-grid" class="rule-top">
-              Photo Grid
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="Built into CMU's template; nothing else to load"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              Photos edge to edge with each name and title over the bottom of the photo, on a color.
-              It's the boldest way to show a small group, such as an office's leaders, and depends
-              on photos that are good enough to fill the space. It's a
-              <code>grid column3 photos</code> (or <code>column2</code>, <code>column4</code>) with
-              a color; each person is a <code>div.photo</code> holding one link, with the image in a
-              <code>&lt;span&gt;</code> and the name and title in a <code>&lt;div&gt;</code>.
-            </p>
-            <p class="kit-classes"><code>grid column3 photos</code>, a color, <code>photo</code></p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="grid column3 gold photos">
-          <h1>Office Leadership</h1>
-          <div class="photo">
-            <a href="#bio"><span><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="" width="400" height="400"></span><div><h2>Andrew Carnegie</h2><p>Director</p></div></a>
-          </div>
-          <div class="photo">
-            <a href="#bio"><span><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="" width="400" height="400"></span><div><h2>Andrew Mellon</h2><p>Associate Director</p></div></a>
-          </div>
-          <div class="photo">
-            <a href="#bio"><span><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty" alt="" width="400" height="400"></span><div><h2>Margaret Morrison</h2><p>Office Coordinator</p></div></a>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <div class="kit-cms" data-cms="Cascade">
-              <p class="cmu-label kit-cms-label">In Cascade</p>
-              <p>
-                A Bio Index, as for the <a href="#team">Team Grid</a>, with
-                <strong>Grid</strong> and then <strong>Photo</strong>.
-              </p>
-            </div>
-            <p>
-              The photo is decorative here, since the name is in the link, so its
-              <code>alt</code> is empty.
-            </p>
 
             <h2 id="leadership" class="rule-top">
               Leadership Grid
@@ -232,9 +184,9 @@
             </h2>
             <p>
               Square photos with each person's name and title centered under them, on a gray band.
-              Use it to introduce a few leaders on an overview page, without links to bios. It's a
+              It introduces a few leaders on an overview page, without links to bios. It's a
               <code>grid column3 grey boxes</code>; center the text with the template's
-              <code>aligncenter</code> rather than inline styles.
+              <code>aligncenter</code> instead of inline styles.
             </p>
             <p class="kit-classes">
               <code>grid column3 grey boxes</code>, <code>aligncenter</code>
@@ -339,9 +291,9 @@
             </h2>
             <p>
               One person per row: a portrait, their name and title, a line about their work, a Read
-              Full Bio link and Contact. Use it when people need more than a card, such as each
-              person's research area, or with the full bios shown in place for a short list. Each
-              row is the bio page's top, with a rule between rows.
+              Full Bio link and Contact. It's for when a card isn't enough, such as each person's
+              research area, or for a short list with the full bios shown in place. Each row is the
+              bio page's top, with a rule between rows.
             </p>
             <p class="kit-classes">
               <code>floatleft caption thumb</code>, <code>cta</code>, <code>contact</code>,
@@ -503,8 +455,8 @@
             <p>
               One person's page: their portrait beside their name and title, a Contact link that
               opens to show how to reach them, their bio in short sections and a box of related
-              links in the sidebar. In a CMS, the page type writes all of this; the markup is for
-              knowing the parts.
+              links in the sidebar. In a CMS, the page type writes all of this; the markup is here
+              to show the parts.
             </p>
             <ul>
               <li>
@@ -602,7 +554,7 @@
             <h2 id="people-list" class="rule-top">
               People List
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -665,7 +617,7 @@
       </div>
             <p>
               Use a real photo cropped to a square; the kit makes it round. With no photo, leave the
-              image out rather than showing a blank one.
+              image out instead of showing a blank one.
             </p>
           </div>
         </div>
@@ -676,8 +628,7 @@
 
             <p>
               On a Bio Index, Course Index or News Index, menus for narrowing the list, such as by
-              research area, aren't markup you write. They come from a site-wide list of categories,
-              and work the same on a course or news index:
+              research area, aren't markup you write. They come from a site-wide list of categories:
             </p>
             <ol>
               <li>

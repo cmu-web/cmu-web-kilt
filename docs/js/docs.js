@@ -234,13 +234,13 @@ function standIn(cms, section) {
     "editor's source code (&lt;&gt;) and paste the HTML from the HTML tab.";
   if (has("app"))
     block.innerHTML =
-      "<p>This is for apps: it uses the kit's <code>cmu-app.css</code>, which a CMS site " +
+      "<p>This is for apps: it requires the kit's <code>cmu-app.css</code>, which a CMS site " +
       "doesn't load.</p>";
   else if (has("script"))
     block.innerHTML =
       "<p>" +
       paste +
-      ' It also uses the kit\'s script, <code>cmu-app.js</code>; see <a href="install.html#cascade">Install</a>.</p>';
+      ' It also requires the kit\'s script, <code>cmu-app.js</code>; see <a href="install.html#cascade">Install</a>.</p>';
   else block.innerHTML = "<p>" + paste + "</p>";
   return block;
 }

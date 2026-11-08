@@ -194,8 +194,7 @@
               </li>
               <li>
                 <strong>Use full addresses:</strong> Give both the page and image a public
-                <code>https://</code> address, rather than a path such as
-                <code>/images/preview.jpg</code>.
+                <code>https://</code> address, not a path such as <code>/images/preview.jpg</code>.
               </li>
               <li>
                 <strong>Use the preview image:</strong> The site's
@@ -244,8 +243,9 @@
 
             <h2 id="cms" class="rule-top">In a CMS</h2>
             <p>
-              CMU's Cascade template supplies each page's title, description, address and type. Fill
-              in the page's Description field, then add a preview image for the site.
+              CMU's Cascade template writes each page's title, description, address and type for
+              you, from the page's settings; fill in the page's Description field. Don't add those
+              tags yourself: a second copy conflicts.
             </p>
             <h3 id="cms-image">Add a Picture</h3>
             <ol class="cmu-steps">
@@ -254,25 +254,17 @@
                 Upload it to the site's <code>images</code> folder as <code>preview.jpg</code>.
               </li>
               <li>
-                Open the head text block referenced by the site's <code>setup</code> block, the same
-                place you <a href="install.html#cascade">link the kit</a>. Add these tags, replacing
-                the image address and alt text with your own:
-                <pre
-                  class="kit-code"
-                ><code>&lt;meta property="og:image" content="https://www.cmu.edu/equipment/images/preview.jpg"&gt;
-&lt;meta property="og:image:width" content="1200"&gt;
-&lt;meta property="og:image:height" content="630"&gt;
-&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
-&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+                Open the site's <code>setup</code> block, select <strong>Edit</strong> and choose
+                the image under <strong>Social Media Image</strong>. That's the default for every
+                page; a page with a better picture of its own can set its own Social Media Image.
+                Cascade suggests 900 &times; 600, but 1200 &times; 630 is what the apps that build
+                previews expect, so they don't crop it.
               </li>
-              <li>Publish the site's pages, then <a href="#check">check a preview</a>.</li>
+              <li>
+                Publish the site's pages, then <a href="#check">check a preview</a>, and look for
+                <code>og:image</code> in a page's source.
+              </li>
             </ol>
-            <p>
-              The shared head block gives every page the same image. Keep the title, description and
-              page address in the page settings so each page has its own. Avoid adding a second copy
-              of those tags.
-            </p>
-
             <p>
               In another CMS, check its link-preview or social-sharing settings first. Add only the
               tags it doesn't already provide.
@@ -280,7 +272,7 @@
 
             <h2 id="app" class="rule-top">In an App</h2>
             <p>
-              An app writes every tag itself, so its previews are only as good as its layout. Put
+              An app writes every tag itself, and its previews are only as good as its layout. Put
               the tags in the one layout every page uses, filled in from each page, so no page goes
               out without them.
             </p>

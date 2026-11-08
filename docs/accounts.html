@@ -79,7 +79,7 @@
             <h2 id="account" class="rule-top">
               Account Status
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -141,7 +141,7 @@
             <h2 id="photo" class="rule-top">
               Profile Picture
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -151,8 +151,8 @@
               it, put it before their name, round: small in the roof, and larger on the right of the
               menu's account block. Add
               <code>cmu-avatar</code> to the image, with empty <code>alt</code> text, since their
-              name is right beside it. With no photo, leave the image out rather than showing a
-              blank one.
+              name is right beside it. With no photo, leave the image out instead of showing a blank
+              one.
               <a href="layout.html#try-header">Try it on this site's header.</a>
             </p>
             <p class="kit-classes"><code>cmu-avatar</code></p>
@@ -265,7 +265,7 @@
               </li>
               <li>
                 <strong>A link to a page that requires signing in</strong> stays visible, with
-                <code>[login required]</code> after it, rather than hidden.
+                <code>[login required]</code> after it, not hidden.
               </li>
             </ul>
             <h3 id="signed-in">Once They're Signed In</h3>
@@ -294,7 +294,7 @@
             <h2 id="preferences" class="rule-top">
               Preferences
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -305,8 +305,7 @@
               ordinary <a href="forms.html#setup">form</a>: group related choices under a legend,
               save them with one button and confirm with a
               <a href="messages.html#flash">flash message</a> ("Preferences saved."). Don't put
-              account settings such as passwords here: Andrew accounts are managed by Computing
-              Services.
+              account settings such as passwords here; Computing Services manages Andrew accounts.
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -332,7 +331,7 @@
             <h2 id="acting-as" class="rule-top">
               Acting as Another User
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -342,8 +341,8 @@
               them, the whole window should look different, so nobody forgets whose account they're
               in. The kit puts a thick teal frame around the window and a teal bar along the bottom
               of the window that stays in view as you scroll, saying who you're acting as, with a
-              way to stop. Teal appears nowhere else in the kit, so it can't be mistaken for a flash
-              or an announcement.
+              way to stop. No other kit component uses teal, so it can't be mistaken for a flash or
+              an announcement.
             </p>
             <ul class="cmu-checks">
               <li>

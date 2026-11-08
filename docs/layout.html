@@ -220,7 +220,7 @@
                 </li>
                 <li>
                   <strong>Search:</strong> left of the menu button. See
-                  <a href="#search">Search</a>.
+                  <a href="#search">Site Search</a>.
                 </li>
                 <li>
                   <strong>Account:</strong> Sign In or the user's name in the roof; in the menu only
@@ -296,7 +296,7 @@
 &lt;/div&gt;</code></pre>
 
             <h2 id="search" class="rule-top">
-              Search
+              Site Search
               <span class="kit-where"
                 ><span
                   class="kit-where-template"
@@ -306,7 +306,7 @@
               >
             </h2>
             <p>
-              The template's search box goes in the roof, after the menu button. It searches
+              The template's search box goes in the roof, before the menu button. It searches
               cmu.edu, with a "Search this site only" box that appears when someone clicks in it;
               set that box's <code>value</code> to your site's ID (in Cascade, its Cascade site ID).
               The template also puts a copy at the top of the menu, and on phones shows it as a row
@@ -349,8 +349,7 @@
                   >Put the <a href="accounts.html#account">account link</a> after the search
                   form</strong
                 >, whether it's Sign In or the signed-in person's name. The kit lines them up as
-                search, the account link, then the menu button, so the name sits beside the menu it
-                opens.
+                search, the account link, then the menu button.
               </li>
             </ul>
 
@@ -468,9 +467,9 @@
               </tbody>
             </table>
             <p>
-              This site's own menu is an example: Components is a section, with its three pages
-              under it. Keep to about six top-level items so the tabs fit on one row. To show the
-              signed-in person beside the menu button, see
+              This site's own menu is an example: Components is a section, with its pages under it.
+              Keep to about six top-level items so the tabs fit on one row. To show the signed-in
+              person beside the menu button, see
               <a href="accounts.html#account">Account Status</a>.
             </p>
             <div class="cmu-callout">
@@ -526,7 +525,7 @@
             <h2 id="tabs" class="rule-top">
               Tabs
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -604,9 +603,8 @@
                 the end.
               </li>
               <li>
-                <strong>Match the navigation labels.</strong> Use "Install" rather than "Install the
-                Kit," and "Gallery" rather than "Sites and Apps Built With the Kit," so the trail
-                matches the tabs and menu.
+                <strong>Match the navigation labels.</strong> Use "Install," not "Install the Kit,"
+                and "Gallery," not "Sites and Apps Built With the Kit."
               </li>
               <li><strong>Omit breadcrumbs on the home page.</strong></li>
             </ul>
@@ -715,14 +713,14 @@
                   recurring questions guide what you add.
                 </p>
                 <ol class="cmu-annotated-notes">
-                  <li class="cmu-callout" style="--cmu-at: 0.31">
+                  <li class="cmu-callout" style="--cmu-at: 0.3">
                     <p class="cmu-label">1. Hero</p>
                     <p>
                       A tagline, a sentence about the service, a button into it and a screenshot.
                     </p>
                     <p><a class="cta" href="tops.html#hero">See Hero</a></p>
                   </li>
-                  <li class="cmu-callout" style="--cmu-at: 0.5">
+                  <li class="cmu-callout" style="--cmu-at: 0.49">
                     <p class="cmu-label">2. Path Cards</p>
                     <p>
                       One for each kind of person who uses it (students, instructors,
@@ -739,7 +737,7 @@
                     </p>
                     <p><a class="cta" href="sections.html#flow">See How It Works</a></p>
                   </li>
-                  <li class="cmu-callout" style="--cmu-at: 0.9">
+                  <li class="cmu-callout" style="--cmu-at: 0.89">
                     <p class="cmu-label">4. FAQ Teaser</p>
                     <p>A few common questions, with a link to the full FAQ.</p>
                     <p><a class="cta" href="sections.html#qa">See FAQ Teaser</a></p>
@@ -752,7 +750,7 @@
                     src="images/layout-service-home.jpg"
                     alt="A service description's home page, top to bottom: a hero with a sign-in button and a screenshot, three path cards, three numbered steps over a callout, and four common questions."
                     width="900"
-                    height="1418"
+                    height="1368"
                     loading="lazy"
                 /></a>
                 <figcaption>Select the screenshot to enlarge it.</figcaption>
@@ -762,15 +760,15 @@
             <h2 id="panels" class="rule-top">
               Panels for Framed Pages
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
             </h2>
             <p>
               For pages inside another tool (<code>body.cmu-framed</code>): plain and left-aligned,
-              since the host already frames them, with the actions at the bottom: the main one
-              first, on the left, like every other row of buttons.
+              since the host already frames them. The actions go at the bottom, the main one first,
+              on the left, like every other row of buttons.
             </p>
             <p class="kit-classes">
               <code>cmu-panel</code>, <code>cmu-panel-header</code>, <code>cmu-panel-body</code>,
@@ -963,7 +961,7 @@
         </div>
         <div class="content wide gold boxes">
           <div>
-            <h1 id="quirks">Template Quirks to Know</h1>
+            <h1 id="quirks">Template Quirks</h1>
             <ul>
               <li>
                 Tables are <code>display: block</code> so they scroll on phones, which stops them

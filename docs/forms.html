@@ -79,26 +79,38 @@
             <h2 id="setup" class="rule-top">
               Page Setup and Forms
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
             </h2>
             <p>
               Put <code>cmu-app</code> on <code>&lt;body&gt;</code> on pages with the CMU header and
-              footer, or <code>cmu-framed</code> on pages shown inside another tool (such as a
-              Canvas LTI frame) without them. <code>cmu-app</code> also styles forms: a label in
-              small gray capitals over each text box or menu, which fills its column; a legend in
-              the same style over each group of checkboxes or radio buttons, listed without bullets,
-              with each label beside its box; and room under each. On any page with the kit,
-              checkboxes, radio buttons, sliders and progress bars are CMU red. A
-              <code>p.cmu-hint</code> right after a field (or after a fieldset's list) sits just
-              under it, with the room below moved under the hint; point the field's
-              <code>aria-describedby</code> at it. Add <code>inline</code> to a text box or menu to
-              keep its natural width. Group checkboxes in a <code>fieldset</code> so the legend
-              names them for screen readers. A legend that asks a question, as in Choice Rows,
-              Matching or Sorting, stays bold and in sentence case.
+              footer, or <code>cmu-framed</code> on pages that sit inside another tool (like a
+              Canvas LTI frame) without them. Then forms mostly take care of themselves:
             </p>
+            <ul>
+              <li>
+                <strong>Labels</strong> go in small gray capitals over each text box or menu, and
+                the box fills its column. Add <code>inline</code> to keep a box or menu at its
+                natural width.
+              </li>
+              <li>
+                <strong>Checkboxes and radio buttons</strong> get a legend in the same style, no
+                bullets, each label beside its box. Group them in a <code>fieldset</code> so the
+                legend names them for screen readers. A legend that asks a question (Choice Rows,
+                Matching, Sorting) stays bold and in sentence case.
+              </li>
+              <li>
+                <strong>Hints:</strong> a <code>p.cmu-hint</code> right after a field (or after a
+                fieldset's list) sits just under it; point the field's
+                <code>aria-describedby</code> at it.
+              </li>
+              <li>
+                <strong>CMU red</strong> for checkboxes, radio buttons, sliders and progress bars,
+                on any page with the kit.
+              </li>
+            </ul>
             <p class="kit-classes"><code>body.cmu-app</code>, <code>body.cmu-framed</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -127,7 +139,7 @@
             <h2 id="field-row" class="rule-top">
               Fields in a Row
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -174,7 +186,7 @@
             <h2 id="sub-options" class="rule-top">
               Options Under a Choice
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -217,7 +229,7 @@
             <h2 id="choices" class="rule-top">
               Choice Rows
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -251,7 +263,7 @@
             <h2 id="question" class="rule-top">
               Question Card
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -324,7 +336,7 @@
             <h2 id="match" class="rule-top">
               Matching
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -355,15 +367,16 @@
             <h2 id="sort" class="rule-top">
               Sorting
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body">App</span
-                ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
               Items to put in order, such as the steps of a task: a numbered list with up and down
               arrow buttons on each item, which <code>cmu-app.js</code> adds. Each button names its
               item for screen readers, focus stays on the item as it moves and its new place is read
-              out. Put a hidden <code>&lt;input&gt;</code> in each item; it moves with the item, so
+              out. Put a hidden <code>&lt;input&gt;</code> in each item; it moves with the item, and
               the form sends the new order. Without the script, the list keeps its first order.
             </p>
             <p class="kit-classes"><code>cmu-sort</code>, <code>data-cmu-sort</code></p>
@@ -385,7 +398,7 @@
             <h2 id="card-sort" class="rule-top">
               Card Sort
               <span class="kit-where"
-                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
