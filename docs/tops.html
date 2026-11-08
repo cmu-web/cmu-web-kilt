@@ -79,7 +79,7 @@
             <h2 id="intro" class="rule-top">
               Eyebrow, Lead and Call-to-Action Row
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
               >
             </h2>
             <ul>
@@ -120,8 +120,8 @@
             <h2 id="hero" class="rule-top">
               Split Hero
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span
-                ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
+                ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
               >
             </h2>
             <p>
@@ -130,7 +130,10 @@
               main action and a "Get Started" call to action that jumps to the first section below,
               headed Get Started. The tagline is the page's <code>&lt;h1&gt;</code>, and so is each
               section's heading after it (see
-              <a href="sections.html#sections">Stacking Sections</a>). The art can be:
+              <a href="sections.html#sections">Stacking Sections</a>). Under the buttons, an
+              optional <a href="#intro">note</a> (<code>cmu-cta-note</code>) can answer the one
+              question the button raises, such as what to sign in with. Keep it to a short line, and
+              leave it out when the page answers it further down. The art can be:
             </p>
             <ul>
               <li><strong>One screenshot</strong>, drawn in a browser frame.</li>
@@ -150,7 +153,7 @@
             </ul>
             <p class="kit-classes">
               <code>cmu-hero</code>, <code>cmu-hero-art</code>, <code>cmu-hero-art--stack</code>,
-              <code>cmu-hero-art--plain</code>
+              <code>cmu-hero-art--plain</code>, <code>cmu-cta-note</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -161,6 +164,7 @@
             <div class="cmu-cta-row">
               <a class="btn" href="#hero">Browse Syllabi</a>
               <a class="cta" href="#hero">Get Started</a>
+              <p class="cmu-cta-note">Anyone can search; sign in to view a syllabus.</p>
             </div>
           </div>
           <div class="cmu-hero-art">
@@ -196,9 +200,9 @@
               <code>div.hero</code> with the photo as its background: a 900 &times; 600 version in
               <code>style</code> for phones, and a 1400 &times; 700 version in
               <code>data-img</code>, which the template's script swaps in on wider screens. Give it
-              <code>role="img"</code> and an <code>aria-label</code> describing the photo. In
-              Cascade, it's the page's Hero. On a page with a hero, the template drops the line
-              under the header's tabs, since the photo sits right below them.
+              <code>role="img"</code> and an <code>aria-label</code> describing the photo. On a page
+              with a hero, the template drops the line under the header's tabs, since the photo sits
+              right below them.
             </p>
             <p>
               Over the photo, either a line of text in a dark band (<code>div.text</code>, with an
@@ -231,6 +235,34 @@
       </div>
         <div class="content wide">
           <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <ol>
+                <li>In the page's content, set <strong>Include Hero Section</strong> to Yes.</li>
+                <li>
+                  Set <strong>Type</strong> to Rotator, with one panel of
+                  <strong>Custom Content or Photo</strong>. Add the Hi-res Image (1400 &times; 700),
+                  the Mobile Image (900 &times; 600) and the Alt Text.
+                </li>
+                <li>
+                  <strong>Text Overlay</strong> puts words over the photo: Centered Text (a heading
+                  of up to 40 characters), Text Box (left or right, a third to two-thirds wide, with
+                  an optional link), Caption or None.
+                </li>
+              </ol>
+              <p>
+                More panels make it rotate, and Silent Background Video plays a video instead of a
+                photo.
+              </p>
+              <figure class="cmu-shot">
+                <img
+                  src="images/cascade-hero.png"
+                  alt="The hero's fields in Cascade: Hero Fills Entire Screen, Overlay Header, Type (Rotator or Silent Background Video), then a panel's images and alt text."
+                  width="850"
+                  height="752"
+                />
+              </figure>
+            </div>
             <p>
               Several heroes in a <code>section.js-flickityCustom</code> make a slideshow, with the
               same <a href="sections.html#carousel">carousel</a> script. For a service description,
