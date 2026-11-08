@@ -526,7 +526,7 @@
             <h2 id="tabs" class="rule-top">
               Tabs
               <span class="kit-where"
-                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -762,7 +762,7 @@
             <h2 id="panels" class="rule-top">
               Panels for Framed Pages
               <span class="kit-where"
-                ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
@@ -809,10 +809,10 @@
             ><code>&lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- for components that need it --&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/js/cmu-app.js"&gt;&lt;/script&gt;  &lt;!-- for components that depend on it --&gt;</code></pre>
             <p>
-              On a page with components that need a script, the kit's <code>cmu-app.js</code> comes
-              last, after the template's.
+              On a page with components that depend on a script, the kit's
+              <code>cmu-app.js</code> comes last, after the template's.
             </p>
             <p>
               Besides the navigation, the template's script removes <code>style=""</code> from
@@ -828,8 +828,8 @@
               stays a plain list in the footer.
             </p>
             <p>
-              Its head also needs the tags that give a shared link its title, sentence and picture;
-              see <a href="previews.html">Link Previews</a>.
+              Its head also requires the tags that give a shared link its title, sentence and
+              picture; see <a href="previews.html">Link Previews</a>.
             </p>
             <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;

@@ -87,7 +87,7 @@
 &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-app.css" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
 &lt;link href="/your-site.css" rel="stylesheet"&gt;</code></pre>
             <p>
-              On a page with components that need a script, the kit's script goes just before
+              On a page with components that depend on a script, the kit's script goes just before
               <code>&lt;/body&gt;</code>, after the template's scripts:
             </p>
             <pre
@@ -121,9 +121,9 @@
                 </tr>
                 <tr>
                   <td class="cmu-fit"><code>cmu-app.js</code></td>
-                  <td>Pages with components that need it, after the template's scripts</td>
+                  <td>Pages with components that depend on it, after the template's scripts</td>
                   <td>
-                    Behavior for the components that need it: copy buttons, countdowns and
+                    Behavior for the components that depend on it: copy buttons, countdowns and
                     screenshots that enlarge
                   </td>
                 </tr>
@@ -191,8 +191,9 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-app.css</code></p
             <p>
               A site in a CMS loads <code>cmu-cms.css</code> from jsDelivr, with one line in the
               head of every page: after the template's stylesheet and before the site's own, so the
-              site's styles come last. Components marked Script also need <code>cmu-app.js</code> at
-              the end of the page. Where those lines go depends on the CMS.
+              site's styles come last. Components marked Script also require
+              <code>cmu-app.js</code> at the end of the page. Where those lines go depends on the
+              CMS.
             </p>
             <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
 &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/&gt;</code></pre>
@@ -212,8 +213,8 @@ https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.4/css/cmu-app.css</code></p
             </p>
             <ol class="cmu-steps">
               <li>
-                In the site's top folder, choose <strong>Add Content</strong> &gt;
-                <strong>Block</strong> &gt; <strong>Text Block</strong>. Name it
+                In the site's top folder, choose <strong>Add Content</strong> &rsaquo;
+                <strong>Block</strong> &rsaquo; <strong>Text Block</strong>. Name it
                 <code>head-includes</code> and check <strong>Advanced editor</strong>. If the site
                 already has a block for its head code (often named <code>style</code>), rename it
                 and use that. Put the kit first, so the site's styles come last, and save it:
@@ -334,8 +335,8 @@ app.use("/vendor/cmu-web-kilt", express.static(kit));</code></pre>
               </li>
             </ol>
             <p>
-              Builds need to reach GitHub to install the package. If yours can't, copy the files in
-              instead, as in <a href="#django">Django</a>.
+              Installing the package requires access to GitHub. If your build can't reach it, copy
+              the files in instead, as in <a href="#django">Django</a>.
             </p>
 
             <h3 id="rails">In Rails</h3>

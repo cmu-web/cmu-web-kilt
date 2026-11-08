@@ -73,23 +73,24 @@
               Page layouts, content blocks and app controls, with live examples and markup you can
               use in your own project.
             </p>
-            <p>Each one is labeled with what it needs:</p>
+            <p>The label beside each component's name says what to load for it:</p>
             <ul class="cmu-checks">
               <li>
-                <span class="kit-where-template kit-key">Template</span> is built into CMU's
-                template, with nothing else to load.
+                <span class="kit-where-template kit-key">Template</span> components are built into
+                CMU's template, with nothing else to load.
               </li>
               <li>
-                <span class="kit-where-cms kit-key">CMS</span> needs <code>cmu-cms.css</code>. It
-                works on any page built on the template, in Cascade, another CMS or an app.
+                <span class="kit-where-cms kit-key">CMS</span> components require
+                <code>cmu-cms.css</code>. They work on any page built on the template, in Cascade,
+                another CMS or an app.
               </li>
               <li>
-                <span class="kit-where-app kit-key">App</span> needs <code>cmu-app.css</code> too,
-                and <code>cmu-app</code> on <code>&lt;body&gt;</code>.
+                <span class="kit-where-app kit-key">App</span> components also require
+                <code>cmu-app.css</code>, with <code>cmu-app</code> on <code>&lt;body&gt;</code>.
               </li>
               <li>
-                <span class="kit-where-script kit-key">Script</span> also needs
-                <code>cmu-app.js</code>.
+                <span class="kit-where-script kit-key">Script</span> components depend on
+                <code>cmu-app.js</code> as well.
               </li>
             </ul>
             <p><a class="cta" href="install.html">Install the Kit</a></p>
@@ -169,7 +170,7 @@
           <div>
             <h2 id="all" class="rule-top">All Components</h2>
             <div class="cmu-search-bar">
-              <p>Search by name, what it needs, page or class.</p>
+              <p>Search by name, what it uses, page or class.</p>
               <label for="kit-find-component" class="sr-only">Find a Component</label>
               <input
                 type="text"
@@ -191,7 +192,7 @@
                   </th>
                   <th scope="col" data-sort-key="set">
                     <button class="cmu-sort" type="button">
-                      Needs<span class="cmu-sort-arrow"></span>
+                      Uses<span class="cmu-sort-arrow"></span>
                     </button>
                   </th>
                   <th scope="col" data-sort-key="page">
@@ -207,7 +208,7 @@
                   <td><a href="accounts.html#account">Account Status</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -222,7 +223,7 @@
                   <td><a href="accounts.html#acting-as">Acting as Another User</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -234,7 +235,7 @@
                   <td><a href="sections.html#annotated">Annotated Image</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
@@ -327,7 +328,7 @@
                   <td><a href="content.html#checks">Bullet and Check Lists</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -354,7 +355,7 @@
                   <td><a href="content.html#button-note">Button With a Note</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -383,7 +384,7 @@
                   <td><a href="content.html#callout">Callout and Note</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -398,7 +399,7 @@
                   <td><a href="forms.html#card-sort">Card Sort</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -410,7 +411,7 @@
                   <td><a href="sections.html#grid">Cards on Gray</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
@@ -437,7 +438,7 @@
                   <td><a href="forms.html#choices">Choice Rows</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -463,7 +464,7 @@
                   <td><a href="content.html#snippet">Code Block</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -504,8 +505,8 @@
                   <td><a href="content.html#copy">Copy Button</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span
-                      ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
+                      ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -518,8 +519,8 @@
                   <td><a href="content.html#countdown">Countdown</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span
-                      ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
+                      ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -532,7 +533,7 @@
                   <td><a href="news.html#dates">Date Blocks and Event Cards</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>News and Events</td>
@@ -545,7 +546,7 @@
                   <td><a href="messages.html#dialog">Dialog and File Drop Zone</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -560,7 +561,7 @@
                   <td><a href="content.html#email">Email Links</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                      ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -570,7 +571,7 @@
                   <td><a href="content.html#embed">Embedded Page</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -580,8 +581,8 @@
                   <td><a href="content.html#zoom">Enlarge on Click</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span
-                      ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
+                      ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -591,7 +592,7 @@
                   <td><a href="messages.html#errors">Error Pages</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Messages and Progress</td>
@@ -629,7 +630,7 @@
                   <td><a href="tops.html#intro">Eyebrow, Lead and Call-to-Action Row</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Tops</td>
@@ -656,7 +657,7 @@
                   <td><a href="sections.html#qa">FAQ Teaser</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
@@ -680,7 +681,7 @@
                   <td><a href="forms.html#field-row">Fields in a Row</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -695,7 +696,7 @@
                   <td><a href="lists.html#files">File Table</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Lists and Tables</td>
@@ -705,7 +706,7 @@
                   <td><a href="lists.html#filters">Filters</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -720,7 +721,7 @@
                   <td><a href="messages.html#flash">Flash Messages</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -735,7 +736,7 @@
                   <td><a href="lists.html#more">Folded Lists</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -767,7 +768,7 @@
                   <td><a href="sections.html#flow">How It Works</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
@@ -833,7 +834,7 @@
                   <td><a href="content.html#link-button">Link Button</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -845,7 +846,7 @@
                   <td><a href="lists.html#load-more">Load More</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -857,7 +858,7 @@
                   <td><a href="forms.html#match">Matching</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -904,7 +905,7 @@
                   <td><a href="content.html#steps">Numbered Steps</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -942,7 +943,7 @@
                   <td><a href="forms.html#sub-options">Options Under a Choice</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -954,7 +955,7 @@
                   <td><a href="forms.html#setup">Page Setup and Forms</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -966,7 +967,7 @@
                   <td><a href="lists.html#pagination">Pagination</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -978,7 +979,7 @@
                   <td><a href="layout.html#panels">Panels for Framed Pages</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -993,7 +994,7 @@
                   <td><a href="sections.html#paths">Path Cards</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
@@ -1005,7 +1006,7 @@
                   <td><a href="people.html#people-list">People List</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1068,7 +1069,7 @@
                   <td><a href="content.html#pills">Pills</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -1081,7 +1082,7 @@
                   <td><a href="accounts.html#preferences">Preferences</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1093,7 +1094,7 @@
                   <td><a href="accounts.html#photo">Profile Picture</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1105,7 +1106,7 @@
                   <td><a href="messages.html#progress">Progress Bars</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1121,7 +1122,7 @@
                   <td><a href="messages.html#outline">Progress Through Steps</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1136,7 +1137,7 @@
                   <td><a href="forms.html#question">Question Card</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1168,7 +1169,7 @@
                   <td><a href="content.html#screenshots">Screenshots</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
@@ -1178,7 +1179,7 @@
                   <td><a href="lists.html#search">Search</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1297,7 +1298,7 @@
                   <td><a href="content.html#text">Small Text</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1312,9 +1313,9 @@
                   <td><a href="forms.html#sort">Sorting</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
-                      ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                      ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
                     >
                   </td>
                   <td>Forms</td>
@@ -1324,14 +1325,15 @@
                   <td><a href="tops.html#hero">Split Hero</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span
-                      ><span class="kit-where-script" title="Needs cmu-app.js">Script</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span
+                      ><span class="kit-where-script" title="Uses cmu-app.js">Script</span></span
                     >
                   </td>
                   <td>Page Tops</td>
                   <td>
                     <code>cmu-hero</code>, <code>cmu-hero-art</code>,
-                    <code>cmu-hero-art--stack</code>, <code>cmu-hero-art--plain</code>
+                    <code>cmu-hero-art--stack</code>, <code>cmu-hero-art--plain</code>,
+                    <code>cmu-cta-note</code>
                   </td>
                 </tr>
                 <tr>
@@ -1355,7 +1357,7 @@
                   <td><a href="lists.html#tables">Tables</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Lists and Tables</td>
@@ -1365,7 +1367,7 @@
                   <td><a href="lists.html#table-actions">Tables With Actions</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1382,7 +1384,7 @@
                   <td><a href="layout.html#tabs">Tabs</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-app" title="Needs cmu-app.css and cmu-app on body"
+                      ><span class="kit-where-app" title="Uses cmu-app.css and cmu-app on body"
                         >App</span
                       ></span
                     >
@@ -1411,7 +1413,7 @@
                   <td><a href="sections.html#testimonial">Testimonial</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
@@ -1421,7 +1423,7 @@
                   <td><a href="sections.html#split">Text With a Screenshot</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
-                      ><span class="kit-where-cms" title="Needs cmu-cms.css">CMS</span></span
+                      ><span class="kit-where-cms" title="Uses cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Page Sections</td>
