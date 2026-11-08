@@ -551,14 +551,37 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
   window.addEventListener("load", apply);
 })();
 
-// The Components table: sort by a column (click again to reverse) and
-// filter as you type. Hidden rows go to the end, so the stripes stay even.
+// The Components table: sort by a column (click again to reverse), filter as
+// you type and by the Requires checkboxes (a row shows if it has any checked
+// label). The search and the checked labels go in the URL (?q=, ?requires=).
+// Hidden rows go to the end, so the stripes stay even.
 document.querySelectorAll("table[data-kit-sortable]").forEach(function (table) {
   var body = table.tBodies[0],
     rows = Array.prototype.slice.call(body.rows);
   var input = document.querySelector('[data-kit-filter-table="' + table.id + '"]');
   var count = input && document.getElementById(input.dataset.kitCount);
   var noun = input ? input.dataset.kitNoun : "row";
+  var checks = Array.prototype.slice.call(
+    document.querySelectorAll('[data-kit-filter-checks="' + table.id + '"] input'),
+  );
+  var params = new URLSearchParams(location.search);
+  if (input && params.get("q")) input.value = params.get("q");
+  var wanted = (params.get("requires") || "").split(",");
+  checks.forEach(function (c) {
+    c.checked = wanted.indexOf(c.value) >= 0;
+  });
+  function kinds(r) {
+    return Array.prototype.map.call(r.querySelectorAll('[class^="kit-where-"]'), function (el) {
+      return el.className.replace("kit-where-", "");
+    });
+  }
+  function saveFilters(q, on) {
+    var p = new URLSearchParams(location.search);
+    q ? p.set("q", q) : p.delete("q");
+    on.length ? p.set("requires", on.join(",")) : p.delete("requires");
+    var qs = p.toString();
+    history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+  }
   var key = 0,
     dir = 1;
   function cell(r, i) {
@@ -566,15 +589,29 @@ document.querySelectorAll("table[data-kit-sortable]").forEach(function (table) {
   }
   function render() {
     var q = input ? input.value.trim().toLowerCase() : "",
+      on = checks
+        .filter(function (c) {
+          return c.checked;
+        })
+        .map(function (c) {
+          return c.value;
+        }),
       shown = [],
       hidden = [];
+    saveFilters(input ? input.value.trim() : "", on);
     rows
       .slice()
       .sort(function (a, b) {
         return dir * (cell(a, key) < cell(b, key) ? -1 : cell(a, key) > cell(b, key) ? 1 : 0);
       })
       .forEach(function (r) {
-        (!q || r.textContent.toLowerCase().indexOf(q) >= 0 ? shown : hidden).push(r);
+        var text = !q || r.textContent.toLowerCase().indexOf(q) >= 0;
+        var label =
+          !on.length ||
+          kinds(r).some(function (k) {
+            return on.indexOf(k) >= 0;
+          });
+        (text && label ? shown : hidden).push(r);
       });
     shown.forEach(function (r) {
       r.hidden = false;
@@ -607,6 +644,9 @@ document.querySelectorAll("table[data-kit-sortable]").forEach(function (table) {
     });
   });
   if (input) input.addEventListener("input", render);
+  checks.forEach(function (c) {
+    c.addEventListener("change", render);
+  });
   render();
 });
 

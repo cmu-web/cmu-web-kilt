@@ -1297,6 +1297,15 @@ body.cmu-app .cmu-search-bar input[type="text"] {
   flex-direction: column;
   gap: 0.25em;
 }
+/* A group with a text box takes the row's spare width, so the box isn't only
+   as wide as its label */
+.cmu-filter-group:has(> input:is([type="text"], [type="search"])) {
+  flex: 1 1 16em;
+}
+.cmu-filter-group > input:is([type="text"], [type="search"]) {
+  width: 100%;
+  box-sizing: border-box;
+}
 body.cmu-app .cmu-filter-group > .cmu-label {
   margin: 0;
 } /* beats the form label rule above */

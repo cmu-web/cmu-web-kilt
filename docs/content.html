@@ -248,7 +248,7 @@
       </div>
 
             <h2 id="checks" class="rule-top">
-              Bullet and Check Lists
+              Bullet, Check and Plain Lists
               <span class="kit-where"
                 ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
@@ -258,9 +258,13 @@
               template's own list: a plain <code>&lt;ul&gt;</code> with no class, which gets gray
               open circles. Use check marks for a list of dos and don'ts, or of things you get, such
               as what a kit includes; when every list is checked, a page reads like a to-do list.
-              Either way, start each item with a short bold phrase when it helps people scan.
+              Either way, start each item with a short bold phrase when it helps people scan. When
+              each item starts with its own label, such as a pill, use <code>cmu-plain</code> for no
+              bullets.
             </p>
-            <p class="kit-classes"><code>ul</code>, <code>ul.cmu-checks</code></p>
+            <p class="kit-classes">
+              <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-plain</code>
+            </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <ul>
@@ -275,6 +279,14 @@
           <li><strong>A camera body</strong> with a zoom lens</li>
           <li><strong>Two batteries</strong> and a charger</li>
           <li><strong>A tripod</strong> and a carrying case</li>
+        </ul>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <ul class="cmu-plain">
+          <li><span class="cmu-pill cmu-pill--green">Available</span> Ready to borrow today.</li>
+          <li><span class="cmu-pill cmu-pill--amber">Reserved</span> Someone has it until Friday.</li>
+          <li><span class="cmu-pill">Retired</span> No longer lent out.</li>
         </ul>
       </div>
 

@@ -74,7 +74,7 @@
               you can use in your own project.
             </p>
             <p>The label beside each component's name says what to load for it:</p>
-            <ul class="cmu-checks">
+            <ul class="cmu-plain">
               <li>
                 <span class="kit-where-template kit-key">Template</span> These components are built
                 into CMU's template, with nothing else to load.
@@ -169,17 +169,27 @@
         <div class="content wide">
           <div>
             <h2 id="all" class="rule-top">All Components</h2>
-            <div class="cmu-search-bar">
-              <p>Search by name, what it requires, page or class.</p>
-              <label for="kit-find-component" class="sr-only">Find a Component</label>
-              <input
-                type="text"
-                id="kit-find-component"
-                placeholder="Find a component&hellip;"
-                data-kit-filter-table="kit-components"
-                data-kit-count="kit-components-count"
-                data-kit-noun="component"
-              />
+            <div class="cmu-filters">
+              <div class="cmu-filter-group">
+                <label class="cmu-label" for="kit-find-component">Find a Component</label>
+                <input
+                  type="text"
+                  id="kit-find-component"
+                  placeholder="Name, page or class&hellip;"
+                  data-kit-filter-table="kit-components"
+                  data-kit-count="kit-components-count"
+                  data-kit-noun="component"
+                />
+              </div>
+              <div class="cmu-filter-group">
+                <div class="cmu-label">Requires</div>
+                <div class="cmu-filter-checks" data-kit-filter-checks="kit-components">
+                  <label><input type="checkbox" value="template" /> Template</label>
+                  <label><input type="checkbox" value="cms" /> CMS</label>
+                  <label><input type="checkbox" value="app" /> App</label>
+                  <label><input type="checkbox" value="script" /> Script</label>
+                </div>
+              </div>
             </div>
             <!-- components:start (written by tools/components.mjs) -->
             <table class="alternate cmu-full" id="kit-components" data-kit-sortable>
@@ -325,14 +335,14 @@
                   <td><code>breadcrumbs</code></td>
                 </tr>
                 <tr>
-                  <td><a href="content.html#checks">Bullet and Check Lists</a></td>
+                  <td><a href="content.html#checks">Bullet, Check and Plain Lists</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
                       ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
                     >
                   </td>
                   <td>Content</td>
-                  <td><code>ul</code>, <code>ul.cmu-checks</code></td>
+                  <td><code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-plain</code></td>
                 </tr>
                 <tr>
                   <td><a href="sidebars.html#button-box">Button Box</a></td>

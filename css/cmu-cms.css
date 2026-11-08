@@ -1050,6 +1050,15 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 }
 
 /* Lists: check marks, numbered steps */
+/* Plain list: no bullets, for a list whose items each start with their own
+   label, such as a pill or a bold term */
+ul.cmu-plain {
+  list-style: none;
+  padding-left: 0;
+}
+ul.cmu-plain > li {
+  margin-left: 0;
+}
 /* Replace the template's list indent, including its extra indent from the
    tenth ordered item onward. Nested ordinary lists keep their own indent. */
 :is(#content, body) :is(.cmu-flow, .cmu-steps, .cmu-checks) > li {
