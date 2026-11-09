@@ -18,7 +18,7 @@
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, beside screenshots of three sites built with it."
+      content="The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, next to screenshots of three sites built with it."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <!-- End of link previews -->
@@ -68,62 +68,41 @@
         </div>
         <div class="content wide">
           <div>
-            <h1>About the Carnegie Mellon Web Kilt</h1>
+            <h1>A Starting Point for App Developers</h1>
             <p class="cmu-lead">
-              The Carnegie Mellon Web Kilt adds components to CMU's web template for sites in a CMS
-              and web apps that need to look and feel like part of the university.
-            </p>
-
-            <h2 id="origin" class="rule-top">A Starting Point for App Developers</h2>
-            <p>
-              CMU's web template already includes useful widgets for building pages. The kit
-              documents what's there, with live examples and markup to copy, so app developers can
-              find those pieces and use them.
-            </p>
-            <p>
-              It also adds a few civilizing conveniences for app development: status labels, copy
-              buttons, file drop zones and other controls that everyday tasks call for.
+              The CMU Web Kilt documents what CMU's web template already does, with markup to copy,
+              and adds components it doesn't have, such as status labels, copy buttons and file drop
+              zones.
             </p>
 
             <h2 id="how" class="rule-top">How It Works</h2>
             <p>
-              CMU's template supplies the page structure, navigation, typography, buttons and links.
-              The kit uses those styles and adds components such as callouts, status labels, tabs
-              and file drop zones.
+              The template supplies the page structure, navigation, type, buttons and links, and the
+              kit builds on those styles. It's plain CSS and JavaScript files, with no build step or
+              required JavaScript framework.
             </p>
-            <ul class="cmu-checks">
+            <ul>
               <li>
-                <strong>In a CMS,</strong> add the content stylesheet to your site's head code, then
-                paste components into a page's HTML. In Cascade, that's a content section's Source
+                <strong>In a CMS,</strong> the template's stylesheets and scripts come built in on
+                CMU's official CMS, Cascade. Add the kit's stylesheet to your site's head code, then
+                paste components into a page's HTML; in Cascade, that's a content section's Source
                 code view.
               </li>
               <li>
                 <strong>In an app,</strong> load the kit after CMU's template and use the components
-                in your existing pages. Your app handles its own data and actions.
+                in your own pages. Your app handles its own data and actions.
               </li>
               <li>
                 <strong>In a hosted service</strong> that lets you add your own styles, such as a
                 form, survey or help-desk tool, the kit's stylesheets can bring its pages closer to
                 CMU's look. How close depends on how much of the page the service lets you change.
               </li>
-              <li>
-                <strong>Use a specific release,</strong> so your pages change only when you choose
-                to update.
-              </li>
             </ul>
             <p>
-              The kit is two stylesheets and a small browser script, with no build step or required
-              JavaScript framework. The <a href="install.html">installation guide</a> shows which
-              files to load for your project.
+              Each site or app links one specific release, so its pages don't change until it moves
+              to a newer one.
             </p>
-            <p>
-              The
-              <a class="external" href="https://github.com/cmu-web/cmu-web-kilt"
-                >GitHub repository</a
-              >
-              has the code and documentation. To report a problem or suggest a component, open an
-              issue or send a pull request.
-            </p>
+            <p><a class="cta" href="install.html">Install the Kit</a></p>
           </div>
         </div>
         <div class="grid column3 teal boxes">
@@ -178,11 +157,22 @@
         </div>
         <div class="content wide">
           <div>
-            <h1 id="partner">Building Something for All of CMU?</h1>
+            <h1 id="help">Get Help With a Project</h1>
             <p>
-              We can help you choose layouts, navigation and forms for apps used across CMU. For
-              vendor apps, tell us which parts of the page you can change so we can help you apply
-              CMU's styles within those limits.
+              We're especially interested in apps that people across the university use: a shared
+              service, a campus resource or a tool many offices rely on. We can help you choose
+              layouts, navigation and forms, and use the kit's components in your app.
+            </p>
+            <p>
+              We'd also like to help hosted services and vendor apps feel more like part of CMU,
+              even when styling options are limited. Tell us which parts of the page you can change,
+              and we can help or give you some guidance on applying CMU's styles within those
+              limits.
+            </p>
+            <p>
+              For a department, program or event website, talk to University Communications and
+              Marketing through their
+              <a class="external" href="https://brand.cmu.edu/contact-us">Contact Us</a> page.
             </p>
             <p><a class="cta" href="partner.html">Tell Us About Your Project</a></p>
           </div>
@@ -225,6 +215,19 @@
             <p>Placeholder photos of Carnegie Mellon at any size, for mockups and prototypes.</p>
             <p>
               <a class="external" href="https://placemellon.andrew.cmu.edu/">Visit PlaceMellon</a>
+            </p>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h2 id="contributing">Contributing to the Carnegie Mellon Web Kilt</h2>
+            <p>
+              The
+              <a class="external" href="https://github.com/cmu-web/cmu-web-kilt"
+                >GitHub repository</a
+              >
+              has the code and documentation. To report a problem or suggest a component, open an
+              issue or send a pull request.
             </p>
           </div>
         </div>

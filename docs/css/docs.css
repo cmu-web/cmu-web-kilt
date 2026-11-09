@@ -89,6 +89,10 @@
 .cmu-steps .kit-code {
   margin: 0.5rem 0 0;
 }
+/* A screenshot right after a step's code: a gap, since they're rarely the same width */
+.cmu-steps .kit-code + .cmu-shot {
+  margin-top: 1rem;
+}
 /* A chart of colors or patterns: framed like an example, with its code below */
 .kit-swatches {
   display: grid;
@@ -203,6 +207,10 @@
 .kit-where-script {
   background: var(--cmu-amber-tint);
   color: var(--cmu-amber);
+}
+.kit-where-icons {
+  background: var(--cmu-red-tint);
+  color: var(--cmu-link);
 }
 /* In the Components table, the labels fill their cell */
 td > .kit-where {

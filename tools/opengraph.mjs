@@ -13,7 +13,7 @@ const IMAGE = {
   src: "images/preview.jpg",
   width: 1200,
   height: 630,
-  alt: "The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, beside screenshots of three sites built with it.",
+  alt: "The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, next to screenshots of three sites built with it.",
 };
 const START = "<!-- Link previews: written by tools/opengraph.mjs -->";
 const END = "<!-- End of link previews -->";

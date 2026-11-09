@@ -7,14 +7,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="How to write and structure pages built on CMU's template and the kit: wording, headings, links, images and accessibility."
+      content="How to write and structure pages built on CMU's template and the kit: classes, wording, headings, links, images and accessibility."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Conventions - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="How to write and structure pages built on CMU's template and the kit: wording, headings, links, images and accessibility."
+      content="How to write and structure pages built on CMU's template and the kit: classes, wording, headings, links, images and accessibility."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/conventions.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/images/preview.jpg" />
@@ -22,7 +22,7 @@
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, beside screenshots of three sites built with it."
+      content="The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, next to screenshots of three sites built with it."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <!-- End of link previews -->
@@ -72,9 +72,28 @@
           <div>
             <h1>Conventions</h1>
             <p class="cmu-lead">
-              How to write and structure pages built on CMU's template and the kit: wording,
-              headings, links, images and accessibility.
+              How to write and structure pages built on CMU's template and the kit: classes,
+              wording, headings, links, images and accessibility.
             </p>
+
+            <h2 id="classes" class="rule-top">Classes</h2>
+            <ul class="cmu-checks">
+              <li>
+                <strong>The template comes first.</strong> See what it already has on the
+                <a href="components.html">Components</a> page (the ones labeled Template), and use
+                its classes as they are: <code>btn</code>, <code>btn small</code>,
+                <code>ghost</code>, <code>cta</code>, <code>table.alternate</code>,
+                <code>sidebar</code>, <code>sr-only</code>. The kit never copies the template's rules
+                or values, and adds a class only for what the template doesn't already do.
+              </li>
+              <li>
+                <strong>Everything in the kit starts with <code>cmu-</code></strong
+                >: classes, custom properties (<code>--cmu-red</code>) and JavaScript hooks
+                (<code>data-cmu-copy</code>). Variations use a double hyphen
+                (<code>cmu-pill--green</code>). Give your own classes your own prefix, never
+                <code>cmu-</code>.
+              </li>
+            </ul>
 
             <h2 id="ap" class="rule-top">AP Style</h2>
             <p>
@@ -564,6 +583,7 @@
             <div class="list left-rule">
               <h1>On This Page</h1>
               <ul>
+                <li><a href="#classes">Classes</a></li>
                 <li><a href="#ap">AP Style</a></li>
                 <li><a href="#names">CMU Names and Terms</a></li>
                 <li><a href="#headings">Headings</a></li>
