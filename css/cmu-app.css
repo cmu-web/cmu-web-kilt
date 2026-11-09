@@ -1,8 +1,9 @@
 /* cmu-app.css: web-app components for the CMU web template. Load after the
    template CSS and cmu-cms.css, then the app's own stylesheet.
 
-   Body classes: cmu-app on pages with the full CMU chrome, cmu-framed on
-   pages shown inside another tool (such as a learning platform) without it. */
+   Body classes: cmu-app on pages with the CMU header and footer, cmu-framed
+   on pages shown inside another tool (such as a learning platform) without
+   them. Both get every app style; cmu-framed also pads the page. */
 
 /* Pages framed by another tool: no CMU chrome */
 body.cmu-framed {
@@ -10,18 +11,18 @@ body.cmu-framed {
 }
 
 /* Forms; see Page Setup and Forms in the docs (forms.html) */
-body.cmu-app fieldset > ul {
+body:is(.cmu-app, .cmu-framed) fieldset > ul {
   list-style-type: none;
   margin: 0;
 }
-body.cmu-app fieldset > ul > li {
+body:is(.cmu-app, .cmu-framed) fieldset > ul > li {
   margin-left: 0;
 }
 /* A label right before a text box or menu, and a fieldset's legend: on their
    own line, in small gray capitals like cmu-label. Checkbox and radio button
    labels stay as they are, and so does a legend that asks a question (choice
    rows, a question card, matching, sorting, a card sort). */
-body.cmu-app
+body:is(.cmu-app, .cmu-framed)
   label:has(
     + select,
     + textarea,
@@ -32,7 +33,7 @@ body.cmu-app
     + input[type="date"],
     + input[type="datetime-local"]
   ),
-body.cmu-app
+body:is(.cmu-app, .cmu-framed)
   fieldset:not(.cmu-choices, .cmu-match, .cmu-question *, .cmu-card-sort *, :has(> .cmu-sort))
   > legend {
   display: block;
@@ -46,7 +47,7 @@ body.cmu-app
 }
 /* A legend that asks a question: bold, in sentence case (a question card
    styles its own) */
-body.cmu-app
+body:is(.cmu-app, .cmu-framed)
   fieldset:is(.cmu-choices, .cmu-match, :has(> .cmu-sort)):not(.cmu-question *)
   > legend {
   display: block;
@@ -56,66 +57,66 @@ body.cmu-app
 }
 /* A group: a fieldset whose legend names fields in a row (Size: Width and
    Height). The fields' own labels are quieter, in ordinary case. */
-body.cmu-app fieldset .cmu-field-row label {
+body:is(.cmu-app, .cmu-framed) fieldset .cmu-field-row label {
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: normal;
   text-transform: none;
 }
-body.cmu-app fieldset {
+body:is(.cmu-app, .cmu-framed) fieldset {
   margin: 0 0 2em 0;
   min-width: 0;
 } /* browsers default to min-content, which overflows narrow columns */
-body.cmu-app input[type="checkbox"],
-body.cmu-app input[type="radio"] {
+body:is(.cmu-app, .cmu-framed) input[type="checkbox"],
+body:is(.cmu-app, .cmu-framed) input[type="radio"] {
   max-width: 100%;
   margin-right: 0.5em;
 }
-body.cmu-app select,
-body.cmu-app input[type="text"] {
+body:is(.cmu-app, .cmu-framed) select,
+body:is(.cmu-app, .cmu-framed) input[type="text"] {
   width: 100%;
   margin-bottom: 2em;
 }
-body.cmu-app select.inline,
-body.cmu-app input[type="text"].inline {
+body:is(.cmu-app, .cmu-framed) select.inline,
+body:is(.cmu-app, .cmu-framed) input[type="text"].inline {
   width: auto;
   margin-bottom: 0;
 }
 /* Fields in one row, each with its label above (Width × Height, From and
    To); they wrap onto more lines when the row is too narrow */
-body.cmu-app .cmu-field-row {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 0.75em 1em;
   margin: 0 0 2em;
 }
-body.cmu-app .cmu-field-row > div {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row > div {
   flex: 1 1 7em;
   min-width: 0;
 }
 /* Short fields (numbers, codes) keep to 7em instead of sharing the row */
-body.cmu-app .cmu-field-row--short > div {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row--short > div {
   flex-grow: 0;
 }
 /* max-width: the template caps inputs at calc(100% - 6px - .5em), which
    leaves a gap in a border-box cell and pushes the separator off center */
-body.cmu-app .cmu-field-row :is(input, select) {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row :is(input, select) {
   width: 100%;
   max-width: 100%;
   margin: 0;
   box-sizing: border-box;
 }
 /* A separator (×, to) padded like a text box, so it lines up with the boxes */
-body.cmu-app .cmu-field-row > span {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row > span {
   padding: 0.35em 0;
   border: 1px solid transparent;
   line-height: normal;
 }
-body.cmu-app .cmu-field-row:has(+ p.cmu-hint) {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row:has(+ p.cmu-hint) {
   margin-bottom: 0;
 }
-body.cmu-app .cmu-field-row + p.cmu-hint {
+body:is(.cmu-app, .cmu-framed) .cmu-field-row + p.cmu-hint {
   padding: 0;
   margin: 0.35rem 0 2rem;
 }
@@ -345,38 +346,38 @@ nav li.cmu-account-menu .cmu-avatar {
 }
 /* A hint right under its field: the template's space below the field moves
    below the hint, and the template's padding on every <p> goes */
-body.cmu-app :is(input, select, textarea):has(+ p.cmu-hint) {
+body:is(.cmu-app, .cmu-framed) :is(input, select, textarea):has(+ p.cmu-hint) {
   margin-bottom: 0;
 }
-body.cmu-app :is(input, select, textarea, fieldset > ul) + p.cmu-hint {
+body:is(.cmu-app, .cmu-framed) :is(input, select, textarea, fieldset > ul) + p.cmu-hint {
   padding: 0;
   margin: 0.35rem 0 2rem;
 }
-body.cmu-app fieldset > ul + p.cmu-hint:last-child,
-body.cmu-app fieldset > p.cmu-hint:last-child {
+body:is(.cmu-app, .cmu-framed) fieldset > ul + p.cmu-hint:last-child,
+body:is(.cmu-app, .cmu-framed) fieldset > p.cmu-hint:last-child {
   margin-bottom: 0;
 }
 /* Options that belong to one choice: inside its list item, lined up with
    its label, shown only while its radio button or checkbox is picked */
-body.cmu-app .cmu-sub-options {
+body:is(.cmu-app, .cmu-framed) .cmu-sub-options {
   margin: 0.6em 0 0.9em 1.65em;
 }
-body.cmu-app
+body:is(.cmu-app, .cmu-framed)
   li:has(> input:is([type="radio"], [type="checkbox"]):not(:checked))
   > .cmu-sub-options {
   display: none;
 }
-body.cmu-app .cmu-sub-options :is(select, input[type="text"]) {
+body:is(.cmu-app, .cmu-framed) .cmu-sub-options :is(select, input[type="text"]) {
   margin-bottom: 0.75em;
 }
-body.cmu-app .cmu-sub-options > ul {
+body:is(.cmu-app, .cmu-framed) .cmu-sub-options > ul {
   list-style-type: none;
   margin: 0;
 }
-body.cmu-app .cmu-sub-options > ul > li {
+body:is(.cmu-app, .cmu-framed) .cmu-sub-options > ul > li {
   margin-left: 0;
 }
-body.cmu-app .cmu-sub-options > ul + p.cmu-hint {
+body:is(.cmu-app, .cmu-framed) .cmu-sub-options > ul + p.cmu-hint {
   padding: 0;
   margin: 0.35rem 0 0;
 }
@@ -392,7 +393,7 @@ body.cmu-app .cmu-sub-options > ul + p.cmu-hint {
   margin: 0 0 0.6em;
   padding: 0;
 }
-body.cmu-app .cmu-choices label {
+body:is(.cmu-app, .cmu-framed) .cmu-choices label {
   display: flex;
   align-items: center;
   gap: 0.75em;
@@ -403,7 +404,7 @@ body.cmu-app .cmu-choices label {
   font-weight: 400;
   cursor: pointer;
 }
-body.cmu-app .cmu-choices input {
+body:is(.cmu-app, .cmu-framed) .cmu-choices input {
   flex: none;
   width: 1.25em;
   height: 1.25em;
@@ -431,7 +432,7 @@ body.cmu-app .cmu-choices input {
   background: #fff;
   color: var(--cmu-ink);
 }
-body.cmu-app .cmu-question legend {
+body:is(.cmu-app, .cmu-framed) .cmu-question legend {
   width: 100%;
   margin-bottom: 1.25em;
   padding-bottom: 1em;
@@ -439,7 +440,7 @@ body.cmu-app .cmu-question legend {
   font-size: 1.1em;
   font-weight: 400;
 }
-body.cmu-app .cmu-question fieldset {
+body:is(.cmu-app, .cmu-framed) .cmu-question fieldset {
   margin-bottom: 0.75rem;
 }
 .cmu-question > :last-child {
@@ -497,8 +498,8 @@ body.cmu-app .cmu-question fieldset {
   --cmu-piece: var(--cmu-red);
   column-gap: 0;
 }
-body.cmu-app .cmu-match li > label,
-body.cmu-app .cmu-match li > select {
+body:is(.cmu-app, .cmu-framed) .cmu-match li > label,
+body:is(.cmu-app, .cmu-framed) .cmu-match li > select {
   box-sizing: border-box;
   width: 100%;
   max-width: none;
@@ -507,7 +508,7 @@ body.cmu-app .cmu-match li > select {
   border: 1px solid var(--cmu-line);
   background-color: #fff;
 }
-body.cmu-app .cmu-match li > label {
+body:is(.cmu-app, .cmu-framed) .cmu-match li > label {
   position: relative;
   display: flex;
   align-items: center;
@@ -515,7 +516,7 @@ body.cmu-app .cmu-match li > label {
   border-left: 1.25em solid var(--cmu-piece);
   font-weight: 400;
 }
-body.cmu-app .cmu-match li > select {
+body:is(.cmu-app, .cmu-framed) .cmu-match li > select {
   padding: 0.75em 1em 0.75em 1.75em;
   border-right: 1.25em solid var(--cmu-piece);
 }
@@ -564,11 +565,11 @@ body.cmu-app .cmu-match li > select {
   .cmu-match li::after {
     display: none;
   }
-  body.cmu-app .cmu-match li > label {
+  body:is(.cmu-app, .cmu-framed) .cmu-match li > label {
     min-height: 0;
     border-bottom: 0;
   }
-  body.cmu-app .cmu-match li > select {
+  body:is(.cmu-app, .cmu-framed) .cmu-match li > select {
     min-height: 0;
   }
 }
@@ -590,7 +591,7 @@ body.cmu-app .cmu-match li > select {
   gap: 1.5em;
 }
 /* Cards in a row are the same height, with the tiles at the bottom */
-body.cmu-app .cmu-card-sort > fieldset {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort > fieldset {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -601,25 +602,25 @@ body.cmu-app .cmu-card-sort > fieldset {
   text-align: center;
 }
 /* The card's words: the fieldset's legend, inside the card */
-body.cmu-app .cmu-card-sort > fieldset > legend {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort > fieldset > legend {
   float: left;
   width: 100%;
   margin: 0 0 1.75em;
   font-size: 1.15em;
   line-height: 1.45;
 }
-body.cmu-app .cmu-card-sort > fieldset > ul {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort > fieldset > ul {
   clear: both;
   display: grid;
   gap: 0.75em;
   margin: auto 0 0;
   padding: 0;
 }
-body.cmu-app .cmu-card-sort > fieldset > ul > li {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort > fieldset > ul > li {
   margin: 0;
   padding: 0;
 }
-body.cmu-app .cmu-card-sort label {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort label {
   position: relative;
   display: block;
   margin: 0;
@@ -630,18 +631,18 @@ body.cmu-app .cmu-card-sort label {
   cursor: pointer;
 }
 /* The radio button stays in the tile for keyboards, out of sight */
-body.cmu-app .cmu-card-sort input {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort input {
   position: absolute;
   opacity: 0;
 }
-body.cmu-app .cmu-card-sort label:hover {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort label:hover {
   background: var(--cmu-gray-tint);
 }
-body.cmu-app .cmu-card-sort label:has(:checked) {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort label:has(:checked) {
   background: var(--cmu-red);
   color: #fff;
 }
-body.cmu-app .cmu-card-sort label:has(:focus-visible) {
+body:is(.cmu-app, .cmu-framed) .cmu-card-sort label:has(:focus-visible) {
   outline: 2px solid var(--cmu-ink);
   outline-offset: 2px;
 }
@@ -1231,7 +1232,7 @@ table .cmu-select-cell {
   cursor: pointer;
 }
 /* The template gives checkboxes a right margin, which pushes this one off center */
-/* beats body.cmu-app's margin-right on checkboxes */
+/* beats the app's margin-right on checkboxes */
 table .cmu-select-cell label input[type="checkbox"] {
   margin: 0;
 }
@@ -1250,7 +1251,7 @@ table .cmu-select-cell label input[type="checkbox"] {
   margin: 0 0 0.5em;
 }
 .cmu-search-bar input[type="text"],
-body.cmu-app .cmu-search-bar input[type="text"] {
+body:is(.cmu-app, .cmu-framed) .cmu-search-bar input[type="text"] {
   width: 100%;
   margin-bottom: 0;
 }
@@ -1306,7 +1307,7 @@ body.cmu-app .cmu-search-bar input[type="text"] {
   width: 100%;
   box-sizing: border-box;
 }
-body.cmu-app .cmu-filter-group > .cmu-label {
+body:is(.cmu-app, .cmu-framed) .cmu-filter-group > .cmu-label {
   margin: 0;
 } /* beats the form label rule above */
 .cmu-filter-checks {
@@ -1321,7 +1322,7 @@ body.cmu-app .cmu-filter-group > .cmu-label {
   align-items: center;
   gap: 0.25em;
 }
-body.cmu-app .cmu-filter-group input[type="text"] {
+body:is(.cmu-app, .cmu-framed) .cmu-filter-group input[type="text"] {
   min-width: 15em;
   margin: 0;
 }
@@ -1498,7 +1499,7 @@ body.cmu-app .cmu-filter-group input[type="text"] {
 .cmu-tap-target:focus-within::before {
   background: var(--cmu-red);
 }
-body.cmu-app .cmu-tap-target > label {
+body:is(.cmu-app, .cmu-framed) .cmu-tap-target > label {
   margin: 0;
   color: var(--cmu-ink);
   font-size: 1.5rem;
@@ -1506,7 +1507,7 @@ body.cmu-app .cmu-tap-target > label {
   letter-spacing: normal;
   text-transform: none;
 }
-body.cmu-app .cmu-tap-target > input,
+body:is(.cmu-app, .cmu-framed) .cmu-tap-target > input,
 .cmu-tap-target > input {
   width: 16em;
   max-width: 100%;
@@ -1544,11 +1545,11 @@ body.cmu-app .cmu-tap-target > input,
   gap: 0.25em 0.75em;
   margin-top: 0.5em;
 }
-body.cmu-app .cmu-tap-search > label {
+body:is(.cmu-app, .cmu-framed) .cmu-tap-search > label {
   grid-column: 1 / -1;
   margin: 0;
 }
-body.cmu-app .cmu-tap-search > input {
+body:is(.cmu-app, .cmu-framed) .cmu-tap-search > input {
   width: 100%;
   box-sizing: border-box;
   margin: 0;

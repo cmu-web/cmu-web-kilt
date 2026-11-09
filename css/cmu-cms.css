@@ -681,6 +681,11 @@ a[data-cmu-zoom] {
 #content table.alternate td {
   vertical-align: middle;
 }
+/* In a gray or gold section, a striped table keeps its white rows: the
+   template leaves them clear, so they'd take on the section's color */
+#content :is(.grey, .cmu-lightgrey, .gold) table.alternate {
+  background-color: #fff;
+}
 
 /* A light gray section, the gray of the kit's code snippets: lighter than
    the template's grey, for a testimonial or a quiet band. Text stays dark. */
@@ -1051,13 +1056,9 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 
 /* Lists: check marks, numbered steps */
 /* Plain list: no bullets, for a list whose items each start with their own
-   label, such as a pill or a bold term */
+   label, such as a pill or a bold term. Items keep the template's indent. */
 ul.cmu-plain {
   list-style: none;
-  padding-left: 0;
-}
-ul.cmu-plain > li {
-  margin-left: 0;
 }
 /* Replace the template's list indent, including its extra indent from the
    tenth ordered item onward. Nested ordinary lists keep their own indent. */
