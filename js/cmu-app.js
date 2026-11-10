@@ -112,7 +112,7 @@
   // image much taller than the window opens at full width and scrolls.
   // Without the script (or a browser without <dialog>), the link opens the image.
   // See Enlarge on Click in the docs (content.html).
-  var zoom;
+  var zoom, zoomOpener, zoomByPointer;
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[data-cmu-zoom]");
     if (!a || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -124,11 +124,24 @@
       zoom.innerHTML =
         '<button type="button" class="cmu-zoom-close" aria-label="Close">&times;</button>' +
         '<div class="cmu-zoom-frame"><img alt=""></div>';
-      zoom.addEventListener("click", function () {
+      zoom.addEventListener("click", function (ev) {
+        // A click or tap, not Enter on the close button
+        zoomByPointer = ev.detail > 0;
         zoom.close();
+      });
+      // Focus goes back to the link. Closed with the mouse, it goes back
+      // without a focus ring (Firefox would draw one); with the keyboard, the
+      // ring stays to show where focus is
+      zoom.addEventListener("close", function () {
+        if (zoomByPointer && zoomOpener && zoomOpener.isConnected) {
+          zoomOpener.blur();
+          zoomOpener.focus({ preventScroll: true, focusVisible: false });
+        }
+        zoomByPointer = false;
       });
       document.body.appendChild(zoom);
     }
+    zoomOpener = a;
     var small = a.querySelector("img"),
       big = zoom.querySelector("img"),
       frame = zoom.querySelector(".cmu-zoom-frame");
@@ -375,20 +388,49 @@
     }
   });
 
-  // ID tap: <div class="cmu-tap-target"> holds a label and an <input
-  // data-cmu-tap>, where a card reader types an ID card's number and presses
-  // Enter. Selecting the target focuses the field, and so does sending its
-  // form, ready for the next card. With data-cmu-tap="keep", on a page that's
-  // only for tapping, the field also takes focus when the page loads and
-  // whenever nothing else has it, so the reader is always listening. See ID
-  // Tap in the docs (forms.html).
+  // ID tap: <div class="cmu-tap-target"> holds a label and a hidden <input
+  // data-cmu-tap>, where an NFC card reader types an ID card's number and a
+  // carriage return (Enter). When it's the only tap on the page, the field
+  // takes focus when the page loads, so the reader is listening without a click;
+  // selecting the target focuses it again, and so does sending its form,
+  // ready for the next card. With data-cmu-tap="keep",
+  // on a page that's only for tapping, it also takes focus whenever nothing
+  // else has it. With data-cmu-tap="click", it waits to be selected, for a
+  // page where something else should have focus first. See ID Tap in the docs
+  // (forms.html).
   function focusTap(field) {
     if (field) field.focus({ preventScroll: true });
   }
+  // Nothing has focus, or only the template's menu does, which it takes by
+  // itself when it opens on a wide screen
+  function idle() {
+    var active = document.activeElement;
+    return !active || active === document.body || active.id === "nav";
+  }
   function keepTap() {
     var field = document.querySelector('[data-cmu-tap="keep"]');
-    var active = document.activeElement;
-    if (field && (!active || active === document.body)) focusTap(field);
+    if (field && idle()) focusTap(field);
+  }
+  // The only tap on the page starts ready; with several, each waits to be
+  // selected, since a reader can only type into one
+  function startTap() {
+    // A tap in a dialog doesn't count unless the dialog is open as one: it
+    // focuses when the dialog opens, through its autofocus
+    var fields = Array.prototype.filter.call(
+      document.querySelectorAll("[data-cmu-tap]"),
+      function (f) {
+        var d = f.closest("dialog");
+        if (!d) return true;
+        try {
+          return d.matches(":modal");
+        } catch {
+          // A browser without :modal: wait for the autofocus
+          return false;
+        }
+      },
+    );
+    if (fields.length === 1 && fields[0].getAttribute("data-cmu-tap") !== "click" && idle())
+      focusTap(fields[0]);
   }
   document.addEventListener("click", function (e) {
     var target = e.target.closest && e.target.closest(".cmu-tap-target");
@@ -402,8 +444,57 @@
       }, 0);
   });
   setInterval(keepTap, 2000);
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", keepTap);
-  else keepTap();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", startTap);
+  else startTap();
+
+  // File drop zone / picker: <label class="cmu-drop"> wrapping an <input
+  // type="file">, its words and an empty <span class="cmu-drop-file">.
+  // Choosing works without the script; with it, a file dragged onto the zone
+  // is chosen too, the zone gets cmu-drop-over while one is over it and
+  // cmu-drop-has-file once one is chosen, and cmu-drop-file names it. See File
+  // Drop Zone / Picker in the docs (forms.html).
+  function dropZone(e) {
+    return e.target.closest && e.target.closest("label.cmu-drop");
+  }
+  function showFiles(zone) {
+    var input = zone.querySelector('input[type="file"]');
+    var shown = zone.querySelector(".cmu-drop-file");
+    var names = Array.prototype.map.call(input.files || [], function (f) {
+      return f.name;
+    });
+    zone.classList.toggle("cmu-drop-has-file", names.length > 0);
+    if (shown) {
+      shown.textContent = names.join(", ");
+      shown.title = names.join(", ");
+      shown.hidden = false; // an empty line keeps its place, so nothing moves
+    }
+  }
+  ["dragenter", "dragover"].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var zone = dropZone(e);
+      if (!zone) return;
+      e.preventDefault();
+      zone.classList.add("cmu-drop-over");
+    });
+  });
+  document.addEventListener("dragleave", function (e) {
+    var zone = dropZone(e);
+    if (zone && !zone.contains(e.relatedTarget)) zone.classList.remove("cmu-drop-over");
+  });
+  document.addEventListener("drop", function (e) {
+    var zone = dropZone(e);
+    if (!zone) return;
+    e.preventDefault();
+    zone.classList.remove("cmu-drop-over");
+    var input = zone.querySelector('input[type="file"]');
+    if (!input || !e.dataTransfer || !e.dataTransfer.files.length) return;
+    input.files = e.dataTransfer.files;
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  document.addEventListener("change", function (e) {
+    var zone = dropZone(e);
+    if (zone && e.target.type === "file") showFiles(zone);
+  });
 
   // Tab panels: tabs that switch content in place, in the same row and look as
   // the link tabs. <div class="cmu-tabs" role="tablist" aria-label="...">
@@ -495,8 +586,64 @@
     tab.click();
   });
 
+  // Scroll gallery: <div class="cmu-scroll-gallery" data-cmu-scroll-gallery>
+  // holds steps, <div class="cmu-scroll-gallery-step">, each with its text and
+  // one <figure>. On a wide screen, the text scrolls on the left while a sticky
+  // stage on the right shows the figure of the step in the middle of the
+  // window, changing as the next step arrives: fading up, or with
+  // cmu-scroll-gallery--slide, sliding in from the side in the direction of
+  // scrolling. The stage holds copies, hidden from screen readers; the steps
+  // keep their own figures, which show in place on a narrow screen or without
+  // the script. See Scroll Gallery in the docs (sections.html).
+  function startScrollGalleries(root) {
+    if (!root.querySelectorAll || !window.IntersectionObserver) return;
+    root.querySelectorAll("[data-cmu-scroll-gallery]").forEach(function (gallery) {
+      if (gallery.querySelector(".cmu-scroll-gallery-stage")) return;
+      var steps = Array.prototype.slice.call(gallery.querySelectorAll(".cmu-scroll-gallery-step"));
+      if (!steps.length) return;
+      var stage = document.createElement("div");
+      stage.className = "cmu-scroll-gallery-stage";
+      stage.setAttribute("aria-hidden", "true");
+      stage.style.gridRow = "1 / span " + steps.length;
+      var shown = steps.map(function (step) {
+        var figure = step.querySelector("figure");
+        var copy = figure ? figure.cloneNode(true) : document.createElement("figure");
+        copy.querySelectorAll("a, button, [tabindex]").forEach(function (el) {
+          el.setAttribute("tabindex", "-1");
+        });
+        stage.appendChild(copy);
+        return copy;
+      });
+      gallery.appendChild(stage);
+      gallery.classList.add("cmu-scroll-gallery--on");
+      // Figures before the current one wait on one side and those after it
+      // on the other, so each moves the way the page is scrolling
+      function show(i) {
+        shown.forEach(function (fig, n) {
+          fig.classList.toggle("cmu-scroll-gallery-past", n < i);
+          fig.classList.toggle("cmu-scroll-gallery-current", n === i);
+          fig.classList.toggle("cmu-scroll-gallery-next", n > i);
+        });
+      }
+      show(0);
+      // A step is current once it crosses the middle of the window
+      var watch = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) show(steps.indexOf(entry.target));
+          });
+        },
+        { rootMargin: "-50% 0px -50% 0px" },
+      );
+      steps.forEach(function (step) {
+        watch.observe(step);
+      });
+    });
+  }
+
   startCountdowns(document);
   startTabs(document);
+  startScrollGalleries(document);
   // Countdowns, sorting lists, email links and tabs added later start, and a countdown whose
   // date changes restarts
   new MutationObserver(function (changes) {
@@ -508,6 +655,7 @@
           startSorts(n);
           startEmails(n);
           startTabs(n);
+          startScrollGalleries(n);
         });
     });
   }).observe(document.documentElement, {

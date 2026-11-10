@@ -615,11 +615,54 @@ ol.cmu-flow > li > strong {
   font-style: italic;
 }
 
-/* Enlarge on click (needs cmu-app.js): a link to the full-size image with
+/* Enlarge on click (uses cmu-app.js): a link to the full-size image with
    data-cmu-zoom opens it over the page, dimmed behind, in a <dialog>; see
    Enlarge on Click in the docs (content.html) */
 a[data-cmu-zoom] {
   cursor: zoom-in;
+}
+/* The link hugs its image, without the template's link underline and
+   padding, so a focus ring (as when the enlarged image closes and focus
+   comes back) goes around the picture, not a strip across it */
+:is(#content, body) a[data-cmu-zoom],
+:is(#content, body) a[data-cmu-zoom]:hover {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+}
+:is(#content, body) a[data-cmu-zoom] img {
+  display: block;
+}
+/* The template marks a focused or pressed link with a red background and
+   an important 3px outline. On a zoom link: no box while it's pressed (the
+   click opens the image), and the ring covers a screenshot's 1px border
+   instead of leaving it as a light gap inside the ring */
+:is(#content, body) a[data-cmu-zoom]:active:not(:focus-visible) {
+  outline: none !important;
+  background: none !important;
+}
+:is(#content, body) .cmu-shot > a[data-cmu-zoom]:focus-visible {
+  outline-offset: -1px;
+}
+/* In a browser-window screenshot, the ring goes around the whole window: the
+   link's overlay reaches up over the bar, the figure's ::before (1.6rem plus
+   its 1px top border) */
+:is(#content, body) .cmu-shot--browser > a[data-cmu-zoom] {
+  position: relative;
+  overflow: visible !important;
+}
+:is(#content, body) .cmu-shot--browser > a[data-cmu-zoom]:focus-visible {
+  outline: none !important;
+}
+:is(#content, body) .cmu-shot--browser > a[data-cmu-zoom]:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1.6rem - 1px) 0 0;
+  outline: 3px solid var(--cmu-red);
+  outline-offset: -1px;
+  pointer-events: none;
 }
 .cmu-zoom {
   max-width: min(92vw, 1400px);
@@ -661,6 +704,89 @@ a[data-cmu-zoom] {
   color: #fff;
   font-size: 2.25rem;
   line-height: 1;
+}
+
+/* Scroll gallery (uses cmu-app.js): steps of text, each with a figure. On a
+   wide screen the text scrolls on the left and a sticky stage on the right
+   shows the current step's figure, fading up to the next as it arrives, or
+   with --slide, sliding in from the side; on a narrow one, or without the
+   script, each step shows its own figure. See
+   Scroll Gallery in the docs (sections.html) */
+.cmu-scroll-gallery-step + .cmu-scroll-gallery-step {
+  margin-top: 2.5rem;
+}
+.cmu-scroll-gallery-step > figure {
+  margin-top: 1.25rem;
+}
+.cmu-scroll-gallery-stage {
+  display: none;
+}
+@media (min-width: 768px) {
+  .cmu-scroll-gallery--on {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 3rem;
+  }
+  .cmu-scroll-gallery--on > .cmu-scroll-gallery-step {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70vh;
+    margin: 0;
+  }
+  .cmu-scroll-gallery--on > .cmu-scroll-gallery-step > figure {
+    display: none;
+  }
+  .cmu-scroll-gallery--on > .cmu-scroll-gallery-stage {
+    grid-column: 2;
+    position: sticky;
+    top: 15vh;
+    align-self: start;
+    display: grid;
+  }
+  .cmu-scroll-gallery-stage > figure {
+    grid-area: 1 / 1;
+    margin: 0;
+    transition:
+      opacity 0.45s ease,
+      transform 0.45s ease;
+  }
+  .cmu-scroll-gallery-stage > .cmu-scroll-gallery-past {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+  .cmu-scroll-gallery-stage > .cmu-scroll-gallery-next {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  /* --slide: in from the side. The stage clips the pictures waiting either
+     side, with room for the screenshot's shadow */
+  .cmu-scroll-gallery--slide > .cmu-scroll-gallery-stage {
+    overflow: hidden;
+    padding: 0.5rem 1.25rem 1.75rem;
+    margin: -0.5rem -1.25rem -1.75rem;
+  }
+  .cmu-scroll-gallery--slide .cmu-scroll-gallery-stage > figure {
+    transition: transform 0.6s ease;
+  }
+  .cmu-scroll-gallery--slide .cmu-scroll-gallery-stage > .cmu-scroll-gallery-past {
+    opacity: 1;
+    transform: translateX(calc(-100% - 3rem));
+  }
+  .cmu-scroll-gallery--slide .cmu-scroll-gallery-stage > .cmu-scroll-gallery-next {
+    opacity: 1;
+    transform: translateX(calc(100% + 3rem));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmu-scroll-gallery-stage > figure,
+  .cmu-scroll-gallery--slide .cmu-scroll-gallery-stage > figure {
+    transition: none;
+  }
+  .cmu-scroll-gallery--slide .cmu-scroll-gallery-stage > :not(.cmu-scroll-gallery-current) {
+    opacity: 0;
+  }
 }
 
 /* A line across a grid band's full width, above or below its cards, such as
@@ -806,6 +932,12 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 .cmu-snippet code {
   font-family: Menlo, Consolas, monospace;
 }
+/* On a dark band (invert), the template turns text white; the snippet keeps
+   its light box, so its code (and anything marked up inside it) stays dark */
+.invert .cmu-snippet,
+.invert .cmu-snippet * {
+  color: var(--cmu-ink);
+}
 /* Wrapping is the default now; the old name still works */
 .cmu-snippet--wrap {
   white-space: pre-wrap;
@@ -835,7 +967,7 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 /* A code block with a copy icon in its top right corner, where people look
    for it. The wrapper holds the button still while the code scrolls
    sideways under it.
-   Needs cmu-app.js. Icons: Bootstrap Icons copy and check-lg, MIT license,
+   Uses cmu-app.js. Icons: Bootstrap Icons copy and check-lg, MIT license,
    Copyright (c) 2019-2024 The Bootstrap Authors. */
 .cmu-copyable {
   position: relative;
@@ -883,7 +1015,7 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 .cmu-copy[data-cmu-copy-state="copied"]::before {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z'/%3E%3C/svg%3E");
 }
-/* Countdown (needs cmu-app.js): days, hours, minutes and seconds on flip
+/* Countdown (uses cmu-app.js): days, hours, minutes and seconds on flip
    cards; see Countdown in the docs (content.html). The sentence inside is
    the fallback and what screen readers get; the script hides it visually. */
 .cmu-countdown-on > :not(.cmu-countdown-clock, .cmu-countdown-done) {
@@ -1052,6 +1184,29 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 /* Space above the rule when nothing stretches the card (stacked on phones) */
 .grid.boxes > div:has(> hr) > :first-child {
   margin-bottom: 1rem;
+}
+
+/* Cards with the words at the bottom (cmu-cards-bottom): each card's
+   heading, words and link sit at its bottom, so they line up across a row
+   whose pictures differ in height; the picture is centered in the space
+   above. Without a picture, the words still sit at the bottom */
+.grid.boxes.cmu-cards-bottom > div {
+  display: flex;
+  flex-direction: column;
+}
+.grid.boxes.cmu-cards-bottom > div > :is(img, figure):first-child {
+  float: none;
+  align-self: center;
+  max-width: 100%;
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.grid.boxes.cmu-cards-bottom > div > :is(img, figure):first-child + * {
+  margin-top: 1.5rem;
+}
+.grid.boxes.cmu-cards-bottom > div:not(:has(> :is(img, figure):first-child)) > :first-child {
+  margin-top: auto;
 }
 
 /* Lists: check marks, numbered steps */

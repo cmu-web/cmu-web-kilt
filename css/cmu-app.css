@@ -31,7 +31,8 @@ body:is(.cmu-app, .cmu-framed)
     + input[type="search"],
     + input[type="number"],
     + input[type="date"],
-    + input[type="datetime-local"]
+    + input[type="datetime-local"],
+    + .cmu-field-button
   ),
 body:is(.cmu-app, .cmu-framed)
   fieldset:not(.cmu-choices, .cmu-match, .cmu-question *, .cmu-card-sort *, :has(> .cmu-sort))
@@ -98,6 +99,28 @@ body:is(.cmu-app, .cmu-framed) .cmu-field-row > div {
 /* Short fields (numbers, codes) keep to 7em instead of sharing the row */
 body:is(.cmu-app, .cmu-framed) .cmu-field-row--short > div {
   flex-grow: 0;
+}
+/* Field with a button: one text box and the button that acts on it, on one
+   line. The box takes the spare width (the template's 14px right cap
+   lifted, so the gap is only the gap). The button drops its top and bottom
+   padding, and flex stretches it to the box's height. */
+body:is(.cmu-app, .cmu-framed) .cmu-field-button {
+  display: flex;
+  gap: 0.5em;
+  margin: 0 0 2em;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-field-button > input {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+}
+#content .cmu-field-button > .btn {
+  flex: none;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 /* max-width: the template caps inputs at calc(100% - 6px - .5em), which
    leaves a gap in a border-box cell and pushes the separator off center */
@@ -647,7 +670,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-card-sort label:has(:focus-visible) {
   outline-offset: 2px;
 }
 
-/* Sorting (needs cmu-app.js): an ordered list people put in order with up and
+/* Sorting (uses cmu-app.js): an ordered list people put in order with up and
    down arrow buttons the script adds to each item, numbered in red. See Sorting in
    the docs (forms.html) */
 ol.cmu-sort {
@@ -867,14 +890,35 @@ button.btn.wide {
 .cmu-dialog-buttons .btn {
   margin: 0;
 }
+/* File drop zone / picker: a label wrapping a file input, so it works by
+   click and keyboard as well as by dragging (cmu-app.js handles the drag).
+   Icon: Bootstrap Icons
+   file-earmark-arrow-up, MIT license, Copyright (c) 2019-2024 The Bootstrap
+   Authors. */
 .cmu-drop {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 12rem;
   margin: 1em 0 0.5em;
-  padding: 1.75em 1em;
+  padding: 2.5em 1.5em;
+  box-sizing: border-box;
   border: 2px dashed var(--cmu-line);
+  border-radius: 6px;
+  background: #fff;
   text-align: center;
   cursor: pointer;
+}
+.cmu-drop::before {
+  content: "";
+  width: 48px;
+  height: 48px;
+  background: var(--cmu-muted);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z'/%3E%3Cpath d='M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
 }
 /* The real file input stays focusable for keyboards but out of sight */
 .cmu-drop input[type="file"] {
@@ -886,23 +930,93 @@ button.btn.wide {
   white-space: nowrap;
   opacity: 0;
 }
+.cmu-drop > span:not(.cmu-drop-file) {
+  color: var(--cmu-ink);
+  font-size: 1.25rem;
+  font-weight: 300;
+}
 .cmu-drop-pick {
   color: var(--cmu-red);
   text-decoration: underline;
 }
 .cmu-drop-over,
 .cmu-drop:focus-within {
-  border-color: var(--cmu-ink);
-  background: #f6f7f8;
+  border-color: var(--cmu-red);
+  border-style: solid;
+}
+.cmu-drop-over::before,
+.cmu-drop:focus-within::before {
+  background: var(--cmu-red);
 }
 .cmu-drop-has-file {
   border-style: solid;
 }
+.cmu-drop-has-file::before {
+  background: var(--cmu-green);
+}
 .cmu-drop-file {
   display: block;
-  margin-top: 0.5em;
+  color: var(--cmu-green);
   font-weight: 700;
   word-break: break-all;
+}
+/* The file's line keeps its place while empty, so choosing a file doesn't
+   move the zone; a long name stays on one line, cut short with an ellipsis
+   (the script puts the whole name in its title), instead of widening it */
+.cmu-drop > .cmu-drop-file {
+  display: block;
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
+}
+.cmu-drop > .cmu-drop-file:empty::before {
+  content: "\200b"; /* a zero-width space, so the empty line is a line tall */
+}
+/* Wide enough: the icon on the left, then the words and the file's name,
+   left-aligned, with a line between */
+@media (min-width: 480px) {
+  .cmu-drop {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr auto auto 1fr;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 0 1.75rem;
+    text-align: left;
+  }
+  .cmu-drop::before {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+  .cmu-drop > span:not(.cmu-drop-file) {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: stretch;
+    padding: 0.25rem 0 0.15rem 1.75rem;
+    border-left: 1px solid var(--cmu-line);
+  }
+  .cmu-drop > .cmu-drop-file {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: stretch;
+    padding: 0 0 0.35rem 1.75rem;
+    border-left: 1px solid var(--cmu-line);
+  }
+}
+/* The drop zone and the ID tap stay about a form's width, so their few
+   words don't float in a page-wide box */
+.cmu-drop,
+.cmu-tap-target {
+  max-width: 36rem;
+}
+/* In a dialog, the drop zone and the ID tap are a little shorter */
+.cmu-dialog :is(.cmu-drop, .cmu-tap-target) {
+  min-height: 9rem;
 }
 
 /* Progress: a headline number and bars */
@@ -1465,31 +1579,40 @@ body:is(.cmu-app, .cmu-framed) .cmu-filter-group input[type="text"] {
   background: var(--cmu-tint);
 }
 
-/* ID tap: a large target where a card reader, which types like a keyboard,
-   enters an ID card's number and presses Enter. The field inside keeps focus
-   (cmu-app.js); the target says Ready while it has it, and to select it when
-   it doesn't, so a tap never goes nowhere. The number shows as dots on a
-   shared screen. A folded search under it is the way in without a card.
+/* ID tap: a large target where an NFC card reader, which types like a
+   keyboard, enters an ID card's number and a carriage return. The field inside
+   is hidden but keeps focus (cmu-app.js); the target says Ready while it has
+   it, and to select it when it doesn't, so a tap never goes nowhere; after a
+   tap, cmu-tap-result says who it found. All three share one spot, sized for
+   the longest, so the target never shifts as they change. A folded search
+   under it is the way in without a card.
    Icon: Bootstrap Icons person-vcard, MIT license, Copyright (c) 2019-2024
    The Bootstrap Authors. */
 .cmu-tap-target {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  display: grid;
+  grid-template-areas: "picture" "label" "message";
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: center;
   gap: 0.4em;
-  padding: 1.75em 1em 1.5em;
+  min-height: 12rem;
+  padding: 2.5em 1.5em;
+  box-sizing: border-box;
   border: 2px dashed var(--cmu-line);
   border-radius: 6px;
   background: #fff;
   text-align: center;
   cursor: text;
 }
+/* Listening: solid and green, like Ready */
 .cmu-tap-target:focus-within {
-  border-color: var(--cmu-red);
+  border-color: var(--cmu-green);
   border-style: solid;
 }
 .cmu-tap-target::before {
   content: "";
+  grid-area: picture;
   width: 48px;
   height: 48px;
   background: var(--cmu-muted);
@@ -1497,9 +1620,23 @@ body:is(.cmu-app, .cmu-framed) .cmu-filter-group input[type="text"] {
     center / contain no-repeat;
 }
 .cmu-tap-target:focus-within::before {
-  background: var(--cmu-red);
+  background: var(--cmu-green);
+}
+/* With a picture of the card (cmu-tap-card), it takes the icon's place */
+.cmu-tap-target:has(.cmu-tap-card)::before {
+  display: none;
+}
+.cmu-tap-card {
+  grid-area: picture;
+  display: block;
+  width: 13rem;
+  max-width: 60%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(23, 44, 75, 0.15);
 }
 body:is(.cmu-app, .cmu-framed) .cmu-tap-target > label {
+  grid-area: label;
   margin: 0;
   color: var(--cmu-ink);
   font-size: 1.5rem;
@@ -1507,37 +1644,127 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-target > label {
   letter-spacing: normal;
   text-transform: none;
 }
+/* The field is there for the reader to type into, and for screen readers,
+   but never shown: the target and its Ready say whether it's listening */
 body:is(.cmu-app, .cmu-framed) .cmu-tap-target > input,
 .cmu-tap-target > input {
-  width: 16em;
-  max-width: 100%;
-  margin: 0.25em 0 0;
-  text-align: center;
-  letter-spacing: 0.2em;
-  -webkit-text-security: disc;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
+/* The tap waves before the label: Bootstrap Icons wifi, turned on its side
+   (MIT license, Copyright (c) 2019-2024 The Bootstrap Authors) */
+.cmu-tap-target > label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.35em;
+  vertical-align: -0.1em;
+  background: var(--cmu-muted);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg transform='rotate(90 8 8)'%3E%3Cpath d='M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049'/%3E%3Cpath d='M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z'/%3E%3C/g%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+.cmu-tap-target:focus-within > label::before {
+  background: var(--cmu-green);
+}
+/* Wide enough: the card or icon on the left, then the label and Ready,
+   left-aligned, with a line between */
+@media (min-width: 480px) {
+  .cmu-tap-target {
+    grid-template-areas: "picture ." "picture label" "picture message" "picture .";
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr auto auto 1fr;
+    justify-content: center;
+    justify-items: stretch;
+    align-items: center;
+    gap: 0 1.75rem;
+    text-align: left;
+  }
+  .cmu-tap-target > .cmu-tap-card {
+    max-width: none;
+  }
+  body:is(.cmu-app, .cmu-framed) .cmu-tap-target > label,
+  .cmu-tap-target > label {
+    align-self: stretch;
+    padding: 0.25rem 0 0.15rem 1.75rem;
+    border-left: 1px solid var(--cmu-line);
+  }
+  .cmu-tap-target > :is(.cmu-tap-ready, .cmu-tap-paused, .cmu-tap-result) {
+    align-self: stretch;
+    padding: 0 0 0.35rem 1.75rem;
+    border-left: 1px solid var(--cmu-line);
+  }
+}
+/* In a dialog, the target is most of it */
+.cmu-dialog .cmu-tap-target {
+  margin: 1rem 0;
+}
+.cmu-dialog .cmu-tap-card {
+  width: 9rem;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-dialog .cmu-tap-target > label {
+  font-size: 1.25rem;
+  white-space: nowrap;
+}
+/* Ready, the select-here line and the result stack in one spot. Hidden ones
+   keep their space (visibility, not display), so the spot is always as big
+   as the select-here line; the result adds no width of its own and wraps. */
 .cmu-tap-ready,
-.cmu-tap-paused {
+.cmu-tap-paused,
+.cmu-tap-result {
+  grid-area: message;
   margin: 0;
   font-size: 0.9rem;
 }
-.cmu-tap-ready {
-  display: none;
+.cmu-tap-ready,
+.cmu-tap-result {
+  visibility: hidden;
   color: var(--cmu-green);
   font-weight: 700;
+}
+.cmu-tap-result {
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 .cmu-tap-paused {
   color: var(--cmu-muted);
 }
-.cmu-tap-target:focus-within .cmu-tap-ready {
-  display: block;
-}
+/* Listening: Ready, or who the last tap found */
 .cmu-tap-target:focus-within .cmu-tap-paused {
-  display: none;
+  visibility: hidden;
+}
+.cmu-tap-target:focus-within .cmu-tap-result:not(:empty) {
+  visibility: visible;
+}
+.cmu-tap-target:focus-within:not(:has(.cmu-tap-result:not(:empty))) .cmu-tap-ready {
+  visibility: visible;
 }
 .cmu-tap-other {
   margin-top: 0.75em;
 }
+/* Opened, Hide the search moves under the search, where the eye ends up */
+.cmu-tap-other[open] {
+  display: flex;
+  flex-direction: column;
+}
+.cmu-tap-other[open] > summary {
+  order: 1;
+  align-self: flex-start;
+  margin-top: 0.75em;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-tap-other .cmu-field-button {
+  margin: 0;
+}
+/* The 0.2.7 search row (cmu-tap-search) still works; new pages use
+   cmu-field-button */
 .cmu-tap-search {
   display: grid;
   grid-template-columns: 1fr auto;
