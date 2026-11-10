@@ -1119,7 +1119,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/accounts.html#photo",
       "labels": ["App"],
-      "description": "The signed-in user's photo, also called an avatar or account photo. When the app has it, put it before their name, round: small in the roof, and larger on the right of the menu's account block. Add cmu-avatar to the image, with empty alt text, since their name is right beside it. With no photo, leave the image out instead of showing a blank one. Try it on this site's header.",
+      "description": "The signed-in user's photo, also called an avatar or account photo. When the app has it, put it before their name, round: small in the roof, and larger on the right of the menu's account block. Add cmu-avatar to the image, with empty alt text, since their name is right beside it. With no photo, show PlaceMellon's default profile picture or leave the image out, never a blank one. Try it on this site's header.",
       "notes": [],
       "classes": ["cmu-avatar"],
       "examples": [
