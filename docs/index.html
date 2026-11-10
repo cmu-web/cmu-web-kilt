@@ -167,6 +167,10 @@
                 title="Copy the Prompt"
               ></button>
             </p>
+            <p>
+              The agent uses the kit's MCP server, <code>https://webkilt.andrew.cmu.edu/mcp</code>,
+              to look up install steps, components and conventions, and to check its work.
+            </p>
             <details class="cmu-more kit-agent-prompt">
               <summary>
                 <span class="cmu-more-closed">Want to read it first?</span>
@@ -177,7 +181,7 @@
               </summary>
               <pre
                 class="cmu-snippet"
-              ><code id="kit-agent-prompt">Set up the Carnegie Mellon Web Kilt in this project. Read https://webkilt.andrew.cmu.edu/install.html to pick the right path (CMS site, web app or prototype), and use https://webkilt.andrew.cmu.edu/kit.json for the exact files, loading order and component markup. Load CMU's template first, then the kit, then the project's own styles. Pin the kit to its current version, keep a local copy for a production app, and use the kit's classes instead of writing new CSS for what it already has.</code></pre>
+              ><code id="kit-agent-prompt">Set up the Carnegie Mellon Web Kilt in this project. Add the kit's MCP server, https://webkilt.andrew.cmu.edu/mcp, if you can, and use its tools: get_install for this kind of project, search_components and get_component for the pages you change, get_conventions for wording, and check_html on the result. Without MCP, read https://webkilt.andrew.cmu.edu/install.html and https://webkilt.andrew.cmu.edu/kit.json instead. Load CMU's template first, then the kit, then the project's own styles. Pin the kit to its current version, keep a local copy for a production app, and use the kit's classes instead of writing new CSS for what it already has.</code></pre>
             </details>
           </div>
         </div>
