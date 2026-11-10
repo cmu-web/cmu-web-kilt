@@ -415,6 +415,15 @@ ol.cmu-flow > li > strong {
   padding: 0;
 }
 
+/* FAQ (the template's collapsed headings): the template sets the space over
+   an answer as an !important margin, which its slide animation can't touch,
+   so the space pops in before the answer slides open. As padding, it opens
+   and closes with the answer. */
+#content h2.collapsed + div {
+  margin-top: 0 !important;
+  padding-top: 1em;
+}
+
 /* FAQ teaser: a few questions and answers in columns, before a link to the FAQ */
 .cmu-faq-teaser {
   display: grid;
