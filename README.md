@@ -22,7 +22,7 @@ in the head, above your site's own stylesheet:
 
 <!-- prettier-ignore -->
 ```html
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.0/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.1/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/>
 ```
 
 Then paste components into a content section's Source code view. The
@@ -37,8 +37,8 @@ own stylesheet:
 <!-- prettier-ignore -->
 ```html
 <link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.0/css/cmu-cms.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.0/css/cmu-app.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.1/css/cmu-cms.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.1/css/cmu-app.css" rel="stylesheet">
 <link href="/css/your-app.css" rel="stylesheet">
 ```
 
@@ -46,7 +46,7 @@ The kit's script goes just before `</body>`, after the template's scripts:
 
 <!-- prettier-ignore -->
 ```html
-<script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.0/js/cmu-app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.3.1/js/cmu-app.js"></script>
 ```
 
 For an app in production, keep your own copy of a release instead; the
