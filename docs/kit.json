@@ -713,7 +713,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/lists.html#more",
       "labels": ["App"],
-      "description": "A <details> whose summary reads as a line of text ending in the template's call to action (cta), which turns red on hover. Closed, the link is the count of what's hidden (\"6 More\"); open, it says Show Fewer, and the whole list shows. It works without a script. Tabs fold the same way.",
+      "description": "A <details> whose summary reads as a line of text ending in a bold toggle with a chevron, which points down while closed, flips up when open and turns red on hover. It opens right there, so it doesn't look like a call to action to another page. Closed, the toggle is the count of what's hidden (\"6 More\"); open, it says Show Fewer, and the whole list shows. It works without a script. Tabs fold the same way.",
       "notes": [],
       "classes": ["cmu-more", "cmu-more-link", "cmu-more-closed", "cmu-more-open"],
       "examples": [
@@ -800,7 +800,7 @@
         "Ready on load: when it's the only ID tap on the page, the field takes focus when the page loads, so the reader works without a click. The target says Ready while the field has focus, and to select it when it doesn't, so a tap never goes nowhere. Selecting anywhere on the target focuses the field, and so does sending the form.",
         "A tap-only page: add data-cmu-tap=\"keep\" on a kiosk or check-in page, and the field also takes focus back whenever nothing else has it. On a page where something else should have focus first, use data-cmu-tap=\"click\", and the field waits to be selected.",
         "Show the card: add <img class=\"cmu-tap-card\"> with PlaceMellon's sample CMU ID card, https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg, and it takes the icon's place. Leave its alt empty, since the label says what to do.",
-        "No card: put a search for an Andrew ID, name or email under it (a field with a button), folded behind \"No ID card?\" and a Search for a Person cta (a folded list), for people who forgot theirs or for staff entering someone by hand. Opened, Hide the Search moves under the search.",
+        "No card: put a search for an Andrew ID, name or email under it (a field with a button), folded behind \"No ID card?\" and a Search for a Person toggle (a folded list), for people who forgot theirs or for staff entering someone by hand.",
         "Say who it found: after each tap, put the person's name in cmu-tap-result, so the person at the desk can catch a wrong card. It takes Ready's place, so the target doesn't move.",
         "Keep the number private: the field is never shown, and the app should clear it after each tap and never log card numbers."
       ],

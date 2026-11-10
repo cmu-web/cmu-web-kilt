@@ -1177,9 +1177,12 @@ button.btn.wide {
 }
 
 /* Folded long lists (<details class="cmu-more">): the summary reads as a
-   line of text ending in a template cta, the count of what's hidden ("6
+   line of text ending in a bold toggle, the count of what's hidden ("6
    More") or Show Fewer (cmu-more-closed / cmu-more-open). A plain space in
-   the markup separates the text and the cta. */
+   the markup separates the text and the toggle. The toggle ends in a down
+   chevron that flips up when open, so it reads as opening here, not as a
+   cta to another page; it keeps the cta class from older markup, but its
+   look comes from here. The chevron is drawn heavy, to match the bold. */
 .cmu-more summary {
   cursor: pointer;
   list-style: none;
@@ -1188,8 +1191,50 @@ button.btn.wide {
 .cmu-more summary::-webkit-details-marker {
   display: none;
 }
-.cmu-more summary:hover .cta {
+.cmu-more .cmu-more-link {
+  color: var(--cmu-gray);
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.cmu-more .cmu-more-link::after,
+.ios .cmu-more .cmu-more-link.cta::after {
+  content: "";
+  position: static;
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.35em;
+  font-size: inherit;
+  vertical-align: -0.05em;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 5.5 8 11l5.5-5.5' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  transition: transform 0.15s;
+}
+.cmu-more[open] .cmu-more-link::after {
+  transform: rotate(180deg);
+}
+.cmu-more summary:hover .cmu-more-link {
   color: var(--cmu-red);
+}
+/* The template paints a pressed or focused summary like a focused link (red
+   background, white text). A click gets none of that; the keyboard gets a
+   plain red ring. */
+#content .cmu-more > summary:is(:active, :focus) {
+  background: none !important;
+  color: var(--cmu-muted) !important;
+  outline: none !important;
+}
+#content .cmu-more > summary:focus-visible {
+  outline: 2px solid var(--cmu-red) !important;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmu-more .cmu-more-link::after {
+    transition: none;
+  }
 }
 .cmu-more .cmu-more-open,
 .cmu-more[open] .cmu-more-closed {
@@ -1750,14 +1795,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-dialog .cmu-tap-target > label {
 .cmu-tap-other {
   margin-top: 0.75em;
 }
-/* Opened, Hide the search moves under the search, where the eye ends up */
-.cmu-tap-other[open] {
-  display: flex;
-  flex-direction: column;
-}
-.cmu-tap-other[open] > summary {
-  order: 1;
-  align-self: flex-start;
+body:is(.cmu-app, .cmu-framed) .cmu-tap-other > label {
   margin-top: 0.75em;
 }
 body:is(.cmu-app, .cmu-framed) .cmu-tap-other .cmu-field-button {
