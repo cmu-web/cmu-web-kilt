@@ -825,7 +825,6 @@ document.querySelectorAll("[data-kit-tap]").forEach(function (form) {
     var find = form.querySelector('input[type="search"]');
     var who =
       find && find.value.trim() ? find.value.trim() : card.value ? "Andrew Carnegie (ac00)" : "";
-    result.hidden = !who;
     result.textContent = who ? "Checked in: " + who + "." : "";
     card.value = "";
     if (find) find.value = "";

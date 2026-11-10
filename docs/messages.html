@@ -128,7 +128,7 @@
             </p>
 
             <h2 id="dialog" class="rule-top">
-              Dialog and File Drop Zone
+              Dialog
               <span class="kit-where"
                 ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
@@ -136,52 +136,44 @@
               >
             </h2>
             <p>
-              Use the native <code>&lt;dialog&gt;</code> element with <code>showModal()</code>; the
-              browser handles focus, Escape and the backdrop. Inside a
-              <code>method="dialog"</code> form, Cancel submits with <code>formnovalidate</code>
-              so it closes even when a required field is empty. The drop zone is a label wrapping a
-              file input, so it works by click and keyboard as well as by dragging.
+              A question that needs an answer before anything else, such as confirming something
+              that can't be undone, in a box over the page. Use the native
+              <code>&lt;dialog&gt;</code> element with <code>showModal()</code>; the browser handles
+              focus, Escape and the backdrop. Put the buttons in a
+              <code>method="dialog"</code> form, so either one closes it and the app can read which.
             </p>
-            <p class="kit-classes">
-              <code>cmu-dialog</code>, <code>cmu-dialog-buttons</code>, <code>cmu-drop</code>,
-              <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>
-            </p>
-            <p>
-              The app's script sets these on the drop zone: <code>cmu-drop-over</code> while a file
-              is dragged over it, and <code>cmu-drop-has-file</code> once a file is chosen, with the
-              file's name in <code>cmu-drop-file</code>. Inside the dialog, the
-              <code>hidden</code> attribute works on anything, including buttons.
-            </p>
+            <ul>
+              <li>
+                <strong>Say what will happen</strong> in the heading and on the main button: Remove
+                the Syllabus?, then Remove Syllabus, not Yes.
+              </li>
+              <li>
+                <strong>Cancel is a ghost button</strong> after the main one. In a form that checks
+                its fields, give it <code>formnovalidate</code>, so it closes even with a required
+                field empty.
+              </li>
+              <li>
+                <strong>A form in a dialog</strong> works the same way; see the
+                <a href="forms.html#file-picker">file drop zone</a> and the
+                <a href="forms.html#tap">ID tap</a>. Inside a dialog, the <code>hidden</code>
+                attribute works on anything, including buttons.
+              </li>
+            </ul>
+            <p class="kit-classes"><code>cmu-dialog</code>, <code>cmu-dialog-buttons</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <p data-demo-skip><button type="button" class="btn small" data-open-dialog="kit-dialog">Open the Dialog</button></p>
         <dialog class="cmu-dialog" id="kit-dialog" aria-labelledby="kit-dialog-title" data-preview>
           <form method="dialog">
-            <h2 id="kit-dialog-title">Upload Syllabus</h2>
-            <p>For 15-112 A and 15-112 B.</p>
-            <label class="cmu-drop">
-              <input type="file">
-              <span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span>
-              <span class="cmu-drop-file" hidden></span>
-            </label>
-            <p class="cmu-hint">Any document up to 20&nbsp;MB.</p>
+            <h2 id="kit-dialog-title">Remove the Syllabus?</h2>
+            <p>Students in 15-112 A won't see a syllabus until you upload a new one.</p>
             <div class="cmu-dialog-buttons">
-              <button class="btn" type="submit">Upload File</button>
-              <button class="btn ghost" type="submit" value="cancel" formnovalidate>Cancel</button>
+              <button class="btn" type="submit" value="remove">Remove Syllabus</button>
+              <button class="btn ghost" type="submit" value="cancel">Cancel</button>
             </div>
           </form>
         </dialog>
       </div>
-            <p>
-              The drop zone in its three states: waiting, a file dragged over it and a file chosen.
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <label class="cmu-drop"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span></label>
-        <label class="cmu-drop cmu-drop-over"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span></label>
-        <label class="cmu-drop cmu-drop-has-file"><input type="file"><span>Drag a different file here, or <span class="cmu-drop-pick">choose one</span></span><span class="cmu-drop-file">15112-syllabus.pdf</span></label>
-      </div>
-
             <h2 id="errors" class="rule-top">
               Error Pages
               <span class="kit-where"

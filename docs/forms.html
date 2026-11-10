@@ -130,7 +130,7 @@
                   <li><input type="checkbox" id="kit-c"><label for="kit-c">Silicon Valley</label></li>
                 </ul>
               </fieldset>
-              <p><button type="submit" class="btn">Save</button></p>
+              <p><button type="submit" class="btn">Save</button> <a class="btn ghost" href="#setup">Cancel</a></p>
             </form>
           </div>
         </div>
@@ -180,6 +180,34 @@
               <div><label for="kit-to">To</label><input type="date" id="kit-to"></div>
             </div>
           </fieldset>
+        </form>
+      </div>
+
+            <h2 id="field-button" class="rule-top">
+              Field With a Button
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              One text box and the button that acts on it, side by side: adding someone by Andrew
+              ID, looking up a code or running a search that waits for a button. Put the box and a
+              <code>btn</code> in <code>cmu-field-button</code>, with the label right before it as
+              for any text box. The box takes the spare width and the button matches its height. To
+              filter a list as people type, with no button, use a
+              <a href="lists.html#search">search bar</a> instead.
+            </p>
+            <p class="kit-classes"><code>cmu-field-button</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <form>
+          <label for="kit-add-id">Add by Andrew ID</label>
+          <div class="cmu-field-button">
+            <input type="text" id="kit-add-id" name="andrewid" value="ac00" autocomplete="off">
+            <button class="btn" type="submit">Add</button>
+          </div>
         </form>
       </div>
 
@@ -447,8 +475,90 @@
       </div>
         <div class="content wide">
           <div>
+            <h2 id="file-picker" class="rule-top">
+              File Drop Zone / Picker
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              For uploading a file, such as a syllabus or a roster. It's a label wrapping a file
+              input, so it works by click and keyboard as well as by dragging a file onto it, and
+              the file arrives as an ordinary form post.
+            </p>
+            <ul>
+              <li>
+                <strong>Dragging:</strong> the zone turns solid red while a file is over it, and
+                dropping chooses the file. Without the script, people choose by clicking.
+              </li>
+              <li>
+                <strong>Say what was chosen:</strong> the script puts the file's name in
+                <code>cmu-drop-file</code> and marks the zone <code>cmu-drop-has-file</code>, so
+                people can catch the wrong file before they send it. Keep the empty
+                <code>cmu-drop-file</code> in the markup: its line holds its place, so the zone
+                doesn't move when a file is chosen.
+              </li>
+              <li>
+                <strong>Say what it takes</strong> in a hint under it: the kinds of file and the
+                size limit.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>cmu-drop</code>, <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>,
+              <code>cmu-drop-over</code>, <code>cmu-drop-has-file</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <form method="post" enctype="multipart/form-data">
+          <label class="cmu-drop">
+            <input type="file" name="syllabus">
+            <span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span>
+            <span class="cmu-drop-file"></span>
+          </label>
+          <p class="cmu-hint">Any document up to 20&nbsp;MB.</p>
+          <p><button class="btn" type="submit">Upload File</button></p>
+        </form>
+      </div>
+            <p>
+              Try it: choose a file, or drag one onto the zone. Its three looks: waiting, a file
+              over it and a file chosen.
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <label class="cmu-drop"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span><span class="cmu-drop-file"></span></label>
+        <label class="cmu-drop cmu-drop-over"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span><span class="cmu-drop-file"></span></label>
+        <label class="cmu-drop cmu-drop-has-file"><input type="file"><span>Drag a different file here, or <span class="cmu-drop-pick">choose one</span></span><span class="cmu-drop-file">15112-syllabus.pdf</span></label>
+      </div>
+            <h3 id="file-picker-dialog">In a Dialog</h3>
+            <p>
+              When uploading is one action on a busy page, such as a row in a table, put the zone in
+              a <a href="messages.html#dialog">dialog</a> that a small button opens, with Cancel as
+              a ghost button that closes it.
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p data-demo-skip><button type="button" class="btn small" data-open-dialog="kit-drop-dialog">Open the Dialog</button></p>
+        <dialog class="cmu-dialog" id="kit-drop-dialog" aria-labelledby="kit-drop-dialog-title" data-preview>
+          <form method="dialog">
+            <h2 id="kit-drop-dialog-title">Upload Syllabus</h2>
+            <p>For 15-112 A and 15-112 B.</p>
+            <label class="cmu-drop">
+            <input type="file" name="syllabus">
+            <span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span>
+            <span class="cmu-drop-file"></span>
+          </label>
+            <p class="cmu-hint">Any document up to 20&nbsp;MB.</p>
+            <div class="cmu-dialog-buttons">
+              <button class="btn" type="submit">Upload File</button>
+              <button class="btn ghost" type="submit" value="cancel" formnovalidate>Cancel</button>
+            </div>
+          </form>
+        </dialog>
+      </div>
             <h2 id="tap" class="rule-top">
-              ID Tap
+              ID Tap / NFC
               <span class="kit-where"
                 ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
@@ -457,61 +567,116 @@
             </h2>
             <p>
               For checking people in or looking them up with their CMU ID card, such as at a desk, a
-              workshop or an exam room. A card reader types like a keyboard: it enters the card's
-              number into whatever has focus and presses Enter. So the target holds a real text
-              field, and the number arrives as an ordinary form post.
+              workshop or an exam room. An NFC card reader acts as a keyboard: it types the card's
+              number into whatever has focus, and is assumed to end it with a carriage return
+              (Enter), which submits the form. So the target holds a hidden text field, and the
+              number arrives as an ordinary form post.
             </p>
             <ul>
               <li>
-                <strong>Ready or not:</strong> the target says Ready while its field has focus, and
-                to select it when it doesn't, so a tap never goes nowhere. Selecting anywhere on the
-                target focuses the field, and so does sending the form.
+                <strong>Ready on load:</strong> when it's the only ID tap on the page, the field
+                takes focus when the page loads, so the reader works without a click. The target
+                says Ready while the field has focus, and to select it when it doesn't, so a tap
+                never goes nowhere. Selecting anywhere on the target focuses the field, and so does
+                sending the form.
               </li>
               <li>
                 <strong>A tap-only page:</strong> add <code>data-cmu-tap="keep"</code> on a kiosk or
-                check-in page, and the field takes focus when the page loads and whenever nothing
-                else has it.
+                check-in page, and the field also takes focus back whenever nothing else has it. On
+                a page where something else should have focus first, use
+                <code>data-cmu-tap="click"</code>, and the field waits to be selected.
               </li>
               <li>
-                <strong>No card:</strong> put a search for an Andrew ID, name or email under it,
-                folded behind "No ID Card?" (a <a href="lists.html#more">folded list</a>), for
-                people who forgot theirs or for staff entering someone by hand.
+                <strong>Show the card:</strong> add
+                <code>&lt;img class="cmu-tap-card"&gt;</code> with PlaceMellon's sample CMU ID card,
+                <code>https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg</code>, and it takes
+                the icon's place. Leave its <code>alt</code> empty, since the label says what to do.
               </li>
               <li>
-                <strong>Say who it found:</strong> answer each tap with a
-                <a href="messages.html#flash">flash message</a> that names the person, so the person
-                at the desk can catch a wrong card.
+                <strong>No card:</strong> put a search for an Andrew ID, name or email under it (a
+                <a href="#field-button">field with a button</a>), folded behind "No ID card?" and a
+                Search for a Person cta (a <a href="lists.html#more">folded list</a>), for people
+                who forgot theirs or for staff entering someone by hand. Opened, Hide the Search
+                moves under the search.
               </li>
               <li>
-                <strong>Keep the number private:</strong> it shows as dots, and the app should clear
-                the field after each tap and never log card numbers.
+                <strong>Say who it found:</strong> after each tap, put the person's name in
+                <code>cmu-tap-result</code>, so the person at the desk can catch a wrong card. It
+                takes Ready's place, so the target doesn't move.
+              </li>
+              <li>
+                <strong>Keep the number private:</strong> the field is never shown, and the app
+                should clear it after each tap and never log card numbers.
               </li>
             </ul>
             <p class="kit-classes">
-              <code>cmu-tap-target</code>, <code>data-cmu-tap</code>, <code>cmu-tap-ready</code>,
-              <code>cmu-tap-paused</code>, <code>cmu-tap-other</code>, <code>cmu-tap-search</code>
+              <code>cmu-tap-target</code>, <code>data-cmu-tap</code>, <code>cmu-tap-card</code>,
+              <code>cmu-tap-ready</code>, <code>cmu-tap-paused</code>, <code>cmu-tap-result</code>,
+              <code>cmu-tap-other</code>, <code>cmu-field-button</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <form class="cmu-tap" data-kit-tap>
-          <div class="cmu-flash cmu-flash--success" role="status" data-kit-tap-result hidden></div>
           <div class="cmu-tap-target">
+            <img class="cmu-tap-card" src="https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg" alt="" width="506" height="319">
             <label for="kit-tap">Tap Your CMU ID</label>
             <p class="cmu-tap-ready">Ready</p>
-            <p class="cmu-tap-paused">Select here, then tap.</p>
+            <p class="cmu-tap-paused">Select here, then tap your card on the reader.</p>
+            <p class="cmu-tap-result" role="status" data-kit-tap-result></p>
             <input type="text" id="kit-tap" name="card" autocomplete="off" inputmode="none" data-cmu-tap>
           </div>
           <details class="cmu-more cmu-tap-other">
-            <summary><span class="cmu-more-link cta"><span class="cmu-more-closed">No ID Card?</span><span class="cmu-more-open">Hide the Search</span></span></summary>
-            <div class="cmu-tap-search">
-              <label for="kit-tap-find">Andrew ID, Name or Email</label>
+            <summary><span class="cmu-more-closed">No ID card?</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">Search for a Person</span><span class="cmu-more-open">Hide the Search</span></span></summary>
+            <label for="kit-tap-find">Andrew ID, Name or Email</label>
+            <div class="cmu-field-button">
               <input type="search" id="kit-tap-find" name="q">
-              <button class="btn small" type="submit" name="find" value="1">Find</button>
+              <button class="btn" type="submit" name="find" value="1">Find</button>
             </div>
           </details>
         </form>
       </div>
             <p>Try it: type a few numbers in the target and press Enter, or search for a name.</p>
+            <h3 id="tap-dialog">In a Dialog</h3>
+            <p>
+              When tapping is one action on a busy page, such as an attendance list, put the target
+              in a <a href="messages.html#dialog">dialog</a> that a small button opens, with Done as
+              a ghost button that closes it. Give the field <code>autofocus</code>, and the dialog
+              opens ready. Since the reader's carriage return submits the form the field is in, put
+              Done in a <code>method="dialog"</code> form of its own; otherwise every tap would
+              close the dialog.
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p data-demo-skip><button type="button" class="btn small" data-open-dialog="kit-tap-dialog">Open the Dialog</button></p>
+        <dialog class="cmu-dialog" id="kit-tap-dialog" aria-labelledby="kit-tap-dialog-title" data-preview>
+          <h2 id="kit-tap-dialog-title">Check In</h2>
+          <form class="cmu-tap" method="post" data-kit-tap>
+            <div class="cmu-tap-target">
+              <img class="cmu-tap-card" src="https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg" alt="" width="506" height="319">
+              <label for="kit-tap-dialog-card">Tap Your CMU ID</label>
+              <p class="cmu-tap-ready">Ready</p>
+              <p class="cmu-tap-paused">Select here, then tap your card on the reader.</p>
+              <p class="cmu-tap-result" role="status" data-kit-tap-result></p>
+              <input type="text" id="kit-tap-dialog-card" name="card" autocomplete="off" inputmode="none" data-cmu-tap autofocus>
+            </div>
+            <details class="cmu-more cmu-tap-other">
+              <summary><span class="cmu-more-closed">No ID card?</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">Search for a Person</span><span class="cmu-more-open">Hide the Search</span></span></summary>
+              <label for="kit-tap-dialog-find">Andrew ID, Name or Email</label>
+              <div class="cmu-field-button">
+                <input type="search" id="kit-tap-dialog-find" name="q">
+                <button class="btn" type="submit" name="find" value="1">Find</button>
+              </div>
+            </details>
+          </form>
+          <form method="dialog" class="cmu-dialog-buttons">
+            <button class="btn ghost" type="submit">Done</button>
+          </form>
+        </dialog>
+      </div>
+            <p>
+              Try it: select Open the Dialog, then type a few numbers and press Enter, or search for
+              a name.
+            </p>
           </div>
         </div>
       </main>

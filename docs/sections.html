@@ -166,9 +166,14 @@
               <code>&lt;p class="cmu-grid-full"&gt;</code> (the kit's only addition here). For which
               color to use, see <a href="conventions.html#colors">Colors</a>.
             </p>
+            <p>
+              When the cards' pictures differ in height, add <code>cmu-cards-bottom</code> to the
+              grid: each card's heading, words and link sit at its bottom, lined up across the row,
+              and the picture is centered in the space above.
+            </p>
             <p class="kit-classes">
               <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
-              <code>boxes</code>, <code>cmu-grid-full</code>
+              <code>boxes</code>, <code>cmu-grid-full</code>, <code>cmu-cards-bottom</code>
             </p>
           </div>
         </div>
@@ -190,6 +195,34 @@
             <h2>Teach It</h2>
             <p>Strategies for the classroom, in person and online.</p>
             <p><a class="cta" href="#grid">See Strategies</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>With <code>cmu-cards-bottom</code>, for pictures of different heights:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 grey boxes cmu-cards-bottom">
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/480/270?category=campus" alt="Placeholder photo of the Carnegie Mellon campus." width="480" height="270">
+            <h2>Campus Tours</h2>
+            <p>Walk the campus with a student guide.</p>
+            <p><a class="cta" href="#grid">Book a Tour</a></p>
+          </div>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/360/450?category=life" alt="Placeholder photo of student life at Carnegie Mellon." width="360" height="450">
+            <h2>Student Life</h2>
+            <p>Clubs, events and traditions.</p>
+            <p><a class="cta" href="#grid">Find a Club</a></p>
+          </div>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/160?profile" alt="Scotty in a round profile picture." width="160" height="160">
+            <h2>Meet Scotty</h2>
+            <p>The university's mascot, at every game.</p>
+            <p><a class="cta" href="#grid">See the Schedule</a></p>
           </div>
         </div>
       </div>
@@ -482,6 +515,94 @@
               <p class="cmu-label kit-cms-label">In Cascade</p>
               <p>The same Slideshow, with its <strong>Style</strong> set to Dark Grey.</p>
             </div>
+            <h2 id="scroll-gallery" class="rule-top">
+              Scroll Gallery
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              A gallery that moves as you scroll: a few steps of text, each with a screenshot or
+              photo, for showing a set of projects or walking through what a site does. On a wide
+              screen, the text scrolls on the left while the picture stays in place on the right and
+              changes as each step reaches the middle of the window, fading up by default or, with
+              <code>cmu-scroll-gallery--slide</code>, sliding in from the side.
+            </p>
+            <ul>
+              <li>
+                <strong>Each step holds its own figure,</strong> so on a phone, or without the
+                script, the steps stack with their pictures in place.
+              </li>
+              <li>
+                <strong>Keep it to three to five steps,</strong> each a heading, a sentence or two
+                and at most one link.
+              </li>
+              <li>
+                <strong>Pictures the same shape</strong> keep the stage from jumping as it changes.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>cmu-scroll-gallery</code>, <code>cmu-scroll-gallery--slide</code>,
+              <code>data-cmu-scroll-gallery</code>, <code>cmu-scroll-gallery-step</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide">
+          <div>
+            <div class="cmu-scroll-gallery" data-cmu-scroll-gallery>
+              <div class="cmu-scroll-gallery-step">
+                <h2>A Minecraft Server for Alumni</h2>
+                <p>How to join CMU's Minecraft server, with a slideshow of the campus landmarks you'll find there.</p>
+                <figure class="cmu-shot cmu-shot--browser"><img src="images/gallery-minecraft.jpg" alt="A home page with a slideshow of the CMU letters built in Minecraft." width="1040" height="656"></figure>
+              </div>
+              <div class="cmu-scroll-gallery-step">
+                <h2>Booths for Spring Carnival</h2>
+                <p>Booth and operations management, with a countdown to Move On and a sign-in box.</p>
+                <figure class="cmu-shot cmu-shot--browser"><img src="images/gallery-binder.jpg" alt="A home page with a countdown to Move On next to a red Sign in to Binder box." width="1040" height="656"></figure>
+              </div>
+              <div class="cmu-scroll-gallery-step">
+                <h2>Every Syllabus in One Place</h2>
+                <p>Course sections and their syllabi by semester, with status pills and filters.</p>
+                <figure class="cmu-shot cmu-shot--browser"><img src="images/gallery-syllabus-registry.jpg" alt="A search box over a table of course sections with status pills, and filters on the left." width="1040" height="656"></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>With <code>cmu-scroll-gallery--slide</code>, the pictures slide in from the side:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide">
+          <div>
+            <div class="cmu-scroll-gallery cmu-scroll-gallery--slide" data-cmu-scroll-gallery>
+              <div class="cmu-scroll-gallery-step">
+                <h2>A Minecraft Server for Alumni</h2>
+                <p>How to join CMU's Minecraft server, with a slideshow of the campus landmarks you'll find there.</p>
+                <figure class="cmu-shot cmu-shot--browser"><img src="images/gallery-minecraft.jpg" alt="A home page with a slideshow of the CMU letters built in Minecraft." width="1040" height="656"></figure>
+              </div>
+              <div class="cmu-scroll-gallery-step">
+                <h2>Booths for Spring Carnival</h2>
+                <p>Booth and operations management, with a countdown to Move On and a sign-in box.</p>
+                <figure class="cmu-shot cmu-shot--browser"><img src="images/gallery-binder.jpg" alt="A home page with a countdown to Move On next to a red Sign in to Binder box." width="1040" height="656"></figure>
+              </div>
+              <div class="cmu-scroll-gallery-step">
+                <h2>Every Syllabus in One Place</h2>
+                <p>Course sections and their syllabi by semester, with status pills and filters.</p>
+                <figure class="cmu-shot cmu-shot--browser"><img src="images/gallery-syllabus-registry.jpg" alt="A search box over a table of course sections with status pills, and filters on the left." width="1040" height="656"></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
             <h2 id="circles" class="rule-top">
               Circle Photos
               <span class="kit-where"
@@ -534,6 +655,8 @@
                   class="kit-where-template"
                   title="In the template's main stylesheet and script; nothing from the kit"
                   >Template</span
+                ><span class="kit-where-icons" title="Requires the Bootstrap Icons stylesheet"
+                  >Icons</span
                 ></span
               >
             </h2>

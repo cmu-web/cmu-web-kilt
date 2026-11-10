@@ -448,7 +448,8 @@
                   <td>Page Sections</td>
                   <td>
                     <code>grid</code>, <code>column2</code>, <code>column3</code>,
-                    <code>column4</code>, <code>boxes</code>, <code>cmu-grid-full</code>
+                    <code>column4</code>, <code>boxes</code>, <code>cmu-grid-full</code>,
+                    <code>cmu-cards-bottom</code>
                   </td>
                 </tr>
                 <tr>
@@ -578,7 +579,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a href="messages.html#dialog">Dialog and File Drop Zone</a></td>
+                  <td><a href="messages.html#dialog">Dialog</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
                       ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
@@ -587,10 +588,7 @@
                     >
                   </td>
                   <td>Messages and Progress</td>
-                  <td>
-                    <code>cmu-dialog</code>, <code>cmu-dialog-buttons</code>, <code>cmu-drop</code>,
-                    <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>
-                  </td>
+                  <td><code>cmu-dialog</code>, <code>cmu-dialog-buttons</code></td>
                 </tr>
                 <tr>
                   <td><a href="content.html#email">Email Links</a></td>
@@ -721,6 +719,18 @@
                   <td><code>grid column2 red invert</code>, <code>btn ghost</code></td>
                 </tr>
                 <tr>
+                  <td><a href="forms.html#field-button">Field With a Button</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                        >App</span
+                      ></span
+                    >
+                  </td>
+                  <td>Forms</td>
+                  <td><code>cmu-field-button</code></td>
+                </tr>
+                <tr>
                   <td><a href="forms.html#field-row">Fields in a Row</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -733,6 +743,23 @@
                   <td>
                     <code>cmu-field-row</code>, <code>cmu-field-row--short</code>,
                     <code>cmu-hint</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="forms.html#file-picker">File Drop Zone / Picker</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                        >App</span
+                      ><span class="kit-where-script" title="Requires cmu-app.js"
+                        >Script</span
+                      ></span
+                    >
+                  </td>
+                  <td>Forms</td>
+                  <td>
+                    <code>cmu-drop</code>, <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>,
+                    <code>cmu-drop-over</code>, <code>cmu-drop-has-file</code>
                   </td>
                 </tr>
                 <tr>
@@ -804,7 +831,9 @@
                   <td>Page Tops</td>
                   <td>
                     <code>hero</code>, <code>text</code>, <code>box left</code>,
-                    <code>box right</code>
+                    <code>box right</code>, <code>small</code>, <code>large</code>,
+                    <code>caption</code>, <code>tall</code>, <code>mask</code>,
+                    <code>hero tubular</code>, <code>data-vid</code>
                   </td>
                 </tr>
                 <tr>
@@ -848,7 +877,7 @@
                   <td><code>bi</code>, <code>bi-</code>, <code>floatright</code></td>
                 </tr>
                 <tr>
-                  <td><a href="forms.html#tap">ID Tap</a></td>
+                  <td><a href="forms.html#tap">ID Tap / NFC</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
                       ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
@@ -861,8 +890,9 @@
                   <td>Forms</td>
                   <td>
                     <code>cmu-tap-target</code>, <code>data-cmu-tap</code>,
-                    <code>cmu-tap-ready</code>, <code>cmu-tap-paused</code>,
-                    <code>cmu-tap-other</code>, <code>cmu-tap-search</code>
+                    <code>cmu-tap-card</code>, <code>cmu-tap-ready</code>,
+                    <code>cmu-tap-paused</code>, <code>cmu-tap-result</code>,
+                    <code>cmu-tap-other</code>, <code>cmu-field-button</code>
                   </td>
                 </tr>
                 <tr>
@@ -1225,6 +1255,22 @@
                   <td><code>figure.cmu-shot</code>, <code>cmu-shot--browser</code></td>
                 </tr>
                 <tr>
+                  <td><a href="sections.html#scroll-gallery">Scroll Gallery</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
+                      ><span class="kit-where-script" title="Requires cmu-app.js"
+                        >Script</span
+                      ></span
+                    >
+                  </td>
+                  <td>Page Sections</td>
+                  <td>
+                    <code>cmu-scroll-gallery</code>, <code>cmu-scroll-gallery--slide</code>,
+                    <code>data-cmu-scroll-gallery</code>, <code>cmu-scroll-gallery-step</code>
+                  </td>
+                </tr>
+                <tr>
                   <td><a href="lists.html#search">Search</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -1278,7 +1324,8 @@
                   <td>People</td>
                   <td>
                     <code>content</code>, <code>grey</code>, <code>contact</code>,
-                    <code>sidebar</code>, <code>darkgrey invert</code>, <code>list</code>
+                    <code>sidebar</code>, <code>darkgrey invert</code>, <code>list</code>,
+                    <code>indicia</code>
                   </td>
                 </tr>
                 <tr>
@@ -1496,6 +1543,8 @@
                         class="kit-where-template"
                         title="In the template's main stylesheet and script; nothing from the kit"
                         >Template</span
+                      ><span class="kit-where-icons" title="Requires the Bootstrap Icons stylesheet"
+                        >Icons</span
                       ></span
                     >
                   </td>

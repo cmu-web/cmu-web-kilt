@@ -209,8 +209,16 @@
               <code>&lt;h1&gt;</code> and an optional <code>&lt;h2&gt;</code>), or a white box that
               links somewhere (<code>a.box</code>, with <code>left</code> or <code>right</code>).
             </p>
+            <p>
+              Options: <code>tall</code> fills the window and adds an arrow down to the page, a
+              <code>p.caption</code> puts a line of text in a white band near the bottom, and
+              <code>small</code> or <code>large</code> on the box sets its width.
+              <code>mask</code> lays a fine screen over a soft, low-resolution photo.
+            </p>
             <p class="kit-classes">
-              <code>hero</code>, <code>text</code>, <code>box left</code>, <code>box right</code>
+              <code>hero</code>, <code>text</code>, <code>box left</code>, <code>box right</code>,
+              <code>small</code>, <code>large</code>, <code>caption</code>, <code>tall</code>,
+              <code>mask</code>
             </p>
           </div>
         </div>
@@ -271,6 +279,42 @@
             </p>
           </div>
         </div>
+        <div class="content wide">
+          <div>
+            <h3 id="video-hero">Silent Video</h3>
+            <p>
+              Add <code>tubular</code> and a YouTube video's id in <code>data-vid</code>, and a
+              silent video loops behind the hero, with a pause button the template adds. Keep the
+              photo: it shows while the video loads, on phones and wherever the video can't play.
+              Pick a few seconds of motion that loops cleanly and needs no sound. Load YouTube\'s
+              player and the template\'s video script after the template\'s scripts; a
+              university-provided CMS site adds them itself:
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;script src="https://www.youtube.com/iframe_api"&gt;&lt;/script&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/tubular-reload.min.js"&gt;&lt;/script&gt;</code></pre>
+            <p class="kit-classes"><code>hero tubular</code>, <code>data-vid</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="hero tubular" role="img" aria-label="Video of the Carnegie Mellon campus." data-vid="hAdHQCNtGUk" data-img="https://placemellon.andrew.cmu.edu/1400/700?category=campus" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=campus)">
+          <p class="caption">My heart is in the work. Classes start Jan. 12.</p>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                Set the hero's <strong>Type</strong> to Silent Background Video, with the video's
+                YouTube id and the same two photos. <strong>Hero Fills Entire Screen</strong> is
+                <code>tall</code>.
+              </p>
+            </div>
+          </div>
+        </div>
       </main>
 
       <footer class="grid column3 invert">
@@ -321,6 +365,8 @@
     <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
     <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
     <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/tubular-reload.min.js"></script>
     <script src="js/cmu-app.js"></script>
     <script src="js/docs.js"></script>
   </body>
