@@ -33,6 +33,9 @@ const PAGES = [
 const SKIP = new Set(["sections", "more-template", "service-home", "colors", "color-tokens"]);
 const LABELS = { template: "Template", cms: "CMS", app: "App", script: "Script", icons: "Icons" };
 
+// Named entities the docs use, as plain characters, so kit.json's text reads
+// as text. An entity missing here stops the build instead of reaching a
+// release; add it.
 const entities = {
   amp: "&",
   lt: "<",
@@ -40,14 +43,34 @@ const entities = {
   quot: '"',
   apos: "'",
   nbsp: " ",
-  rsaquo: "›",
-  rarr: "→",
+  thinsp: "\u2009",
+  ldquo: "\u201C",
+  rdquo: "\u201D",
+  lsquo: "\u2018",
+  rsquo: "\u2019",
+  laquo: "\u00AB",
+  raquo: "\u00BB",
+  lsaquo: "\u2039",
+  rsaquo: "\u203A",
+  hellip: "\u2026",
+  mdash: "\u2014",
+  ndash: "\u2013",
+  times: "\u00D7",
+  copy: "\u00A9",
+  rarr: "\u2192",
+  larr: "\u2190",
+  middot: "\u00B7",
 };
+// One pass, so "&amp;lt;" (a literal &lt; in the docs) stays "&lt;"
 const decode = (s) =>
-  s
-    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
-    .replace(/&#x([\da-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&(\w+);/g, (m, name) => entities[name] ?? m);
+  s.replace(/&(#x[\da-f]+|#\d+|\w+);/gi, (m, e) => {
+    if (e[0] === "#")
+      return String.fromCodePoint(
+        e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : +e.slice(1),
+      );
+    if (!(e in entities)) throw new Error(`tools/data.mjs doesn't know the entity ${m}; add it.`);
+    return entities[e];
+  });
 const text = (html) =>
   decode(
     html

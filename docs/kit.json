@@ -103,7 +103,7 @@
       "notes": [
         "Legal Info",
         "www.cmu.edu",
-        "&copy; 2026 Carnegie Mellon University",
+        "© 2026 Carnegie Mellon University",
         "Install",
         "Page Layout",
         "Page Tops",
@@ -121,7 +121,7 @@
       ],
       "classes": ["globe", "plaid"],
       "examples": [
-        "<div class=\"content wide red invert globe\"> &hellip; </div>\n<div class=\"grid column3 darkgrey invert plaid\"> &hellip; </div>"
+        "<div class=\"content wide red invert globe\"> … </div>\n<div class=\"grid column3 darkgrey invert plaid\"> … </div>"
       ]
     },
     {
@@ -146,7 +146,7 @@
       "description": "One person's page: their portrait beside their name and title, a Contact link that opens to show how to reach them, their bio in short sections and a box of related links in the sidebar. In a CMS, the page type writes all of this; the markup is here to show the parts.",
       "notes": [
         "The portrait is p.floatleft.caption.thumb around the image, about a third of the column. It sits beside the name only when both are directly in the page's .content column, as here; anywhere else, the heading drops below it.",
-        "The title names the office or department after the job, such as &ldquo;Director of Teaching Technology, Office of the Provost.&rdquo;",
+        "The title names the office or department after the job, such as “Director of Teaching Technology, Office of the Provost.”",
         "Contact is a collapsed heading, like the FAQ's. Inside, an <address> lists the email address as an email link with the class icon, and the phone and fax numbers with icon tel and icon fax. The template draws an icon beside each. A second <address> beside it gives the office.",
         "The bio gets an <h2> for each part that has something to say, such as Bio, Education, Research, Projects and Publications. Leave out the empty ones.",
         "Related links, such as a personal site or lab, go in a gray list box in the sidebar."
@@ -377,7 +377,7 @@
       ],
       "classes": ["content", "wide", "sidebar"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <h1>Equipment Checkout</h1>\n    <p class=\"cmu-lead\">Cameras, lights, microphones and tripods for any CMU course, free for up to a&nbsp;week.</p>\n    <p>Reserve a kit online, then pick it up at the checkout desk&hellip;</p>\n    <p>Return kits to the desk by closing time on their due date&hellip;</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <a class=\"btn wide\" href=\"#\">Reserve a Camera Kit</a>\n    </div>\n    <div class=\"list blue invert\">\n      <h1>Quick Links</h1>\n      <ul>\n        <li><a href=\"#\">Browse Equipment</a></li>\n        <li><a href=\"#\">My Reservations</a></li>\n        <li><a href=\"#\">Loan Policies</a></li>\n      </ul>\n    </div>\n    <div class=\"gold\">\n      <h2>Holiday Hours</h2>\n      <p>The desk closes Dec. 19 and reopens Jan. 12.</p>\n    </div>\n    <div class=\"left-rule\">\n      <h2>Questions?</h2>\n      <p>The checkout desk answers email within one business&nbsp;day.</p>\n      <p><a class=\"cta\" href=\"#\">Email the Checkout Desk</a></p>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <h1>Equipment Checkout</h1>\n    <p class=\"cmu-lead\">Cameras, lights, microphones and tripods for any CMU course, free for up to a&nbsp;week.</p>\n    <p>Reserve a kit online, then pick it up at the checkout desk…</p>\n    <p>Return kits to the desk by closing time on their due date…</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <a class=\"btn wide\" href=\"#\">Reserve a Camera Kit</a>\n    </div>\n    <div class=\"list blue invert\">\n      <h1>Quick Links</h1>\n      <ul>\n        <li><a href=\"#\">Browse Equipment</a></li>\n        <li><a href=\"#\">My Reservations</a></li>\n        <li><a href=\"#\">Loan Policies</a></li>\n      </ul>\n    </div>\n    <div class=\"gold\">\n      <h2>Holiday Hours</h2>\n      <p>The desk closes Dec. 19 and reopens Jan. 12.</p>\n    </div>\n    <div class=\"left-rule\">\n      <h2>Questions?</h2>\n      <p>The checkout desk answers email within one business&nbsp;day.</p>\n      <p><a class=\"cta\" href=\"#\">Email the Checkout Desk</a></p>\n    </div>\n  </div>\n</div>"
       ]
     },
     {
@@ -386,7 +386,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/content.html#copy",
       "labels": ["CMS", "Script"],
-      "description": "Copies a code block for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. It requires cmu-app.js. There are two kinds:\n\nSay what a named copy button copies, such as &ldquo;Copy Link.&rdquo;",
+      "description": "Copies a code block for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. It requires cmu-app.js. There are two kinds:\n\nSay what a named copy button copies, such as “Copy Link.”",
       "notes": [
         "Code gets an icon in its corner, where anyone who copies code expects it. Put the block and the button in a cmu-copyable box, and name the button with aria-label and title (\"Copy Code,\" \"Copy HTML\") for screen readers and the tooltip.",
         "Anything else gets a named button beside the block, for people who don't copy code every day: a link to share, an address to paste or a code to type somewhere else.",
@@ -545,7 +545,7 @@
       "labels": ["Template"],
       "description": "CMU's events calendar, events.cmu.edu, gives any page a live list of upcoming events. Its widgets bring their own styles: a list with a month-and-day block beside each event, or tiles with a photo and the date over its corner. The widget is set up on events.cmu.edu, which gives it a number; the page takes only two lines:",
       "notes": [
-        "Put it in a grid box or a sidebar box with a heading, and end with a call to action that links to the full calendar, such as &ldquo;View the Full Student Affairs Calendar.&rdquo;",
+        "Put it in a grid box or a sidebar box with a heading, and end with a call to action that links to the full calendar, such as “View the Full Student Affairs Calendar.”",
         "Ask your calendar's events.cmu.edu administrator for a widget; they choose which events it shows and how many.",
         "For dates you list yourself, such as deadlines, use the template's event list, or the kit's date blocks, which match the widget's look."
       ],
@@ -578,7 +578,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/content.html#faq",
       "labels": ["Template"],
-      "description": "Questions that open to show their answers. A heading with collapsed hides everything after it, up to the next collapsed heading, until it's selected; it depends on the template's script.\n\nIt's FAQ, never \"FAQs\": the Q already means questions. Title the page Frequently Asked Questions, and use FAQ in links and running text (&ldquo;see the FAQ&rdquo;). Phrase each heading as the question someone would ask, ending in a question mark.",
+      "description": "Questions that open to show their answers. A heading with collapsed hides everything after it, up to the next collapsed heading, until it's selected; it depends on the template's script.\n\nIt's FAQ, never \"FAQs\": the Q already means questions. Title the page Frequently Asked Questions, and use FAQ in links and running text (“see the FAQ”). Phrase each heading as the question someone would ask, ending in a question mark.",
       "notes": [],
       "classes": ["collapsed"],
       "examples": [
@@ -631,7 +631,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/forms.html#field-row",
       "labels": ["App"],
-      "description": "Short fields that belong together on one line, each with its label above: a width and a height, a date range, a first and last name. Wrap each label and its field in a div inside cmu-field-row; a separator such as &times; or \"to\" goes between them in a span with aria-hidden=\"true\", since the labels already say what each field is. A hint under the row works as under a single field. When the row is too narrow, the fields wrap onto the next line. For short values, such as numbers or codes, add cmu-field-row--short so the boxes keep a short width instead of sharing the whole row. To name the pair, such as Size for a width and a height, put the row in a fieldset with a <legend>: the legend takes the small capitals, and the fields&rsquo; own labels turn quieter, in ordinary case.",
+      "description": "Short fields that belong together on one line, each with its label above: a width and a height, a date range, a first and last name. Wrap each label and its field in a div inside cmu-field-row; a separator such as × or \"to\" goes between them in a span with aria-hidden=\"true\", since the labels already say what each field is. A hint under the row works as under a single field. When the row is too narrow, the fields wrap onto the next line. For short values, such as numbers or codes, add cmu-field-row--short so the boxes keep a short width instead of sharing the whole row. To name the pair, such as Size for a width and a height, put the row in a fieldset with a <legend>: the legend takes the small capitals, and the fields’ own labels turn quieter, in ordinary case.",
       "notes": [],
       "classes": ["cmu-field-row", "cmu-field-row--short", "cmu-hint"],
       "examples": [
@@ -726,7 +726,7 @@
       "page": "Page Tops",
       "url": "https://webkilt.andrew.cmu.edu/tops.html#photo-hero",
       "labels": ["Template"],
-      "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 &times; 600 version in style for phones, and a 1400 &times; 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark band (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white band near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.",
+      "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 × 600 version in style for phones, and a 1400 × 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark band (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white band near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.",
       "notes": [],
       "classes": [
         "hero",
@@ -760,11 +760,11 @@
     },
     {
       "id": "i-want",
-      "name": "I Want To&hellip;",
+      "name": "I Want To…",
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/sections.html#i-want",
       "labels": ["Template"],
-      "description": "The same grid without a color: white boxes with a thin border on the page's own background, headed by what people come to do. Here each box's title is the link, in the template's red, instead of a call to action (cta) under the text. Use linked titles when the title says it all, and a call to action when the action needs its own words. Phrase the titles as the end of the heading's sentence: \"I want to&hellip; Borrow a Camera.\"",
+      "description": "The same grid without a color: white boxes with a thin border on the page's own background, headed by what people come to do. Here each box's title is the link, in the template's red, instead of a call to action (cta) under the text. Use linked titles when the title says it all, and a call to action when the action needs its own words. Phrase the titles as the end of the heading's sentence: \"I want to… Borrow a Camera.\"",
       "notes": [],
       "classes": ["grid column3 boxes", "<h2>"],
       "examples": [
@@ -864,7 +864,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/lists.html#load-more",
       "labels": ["App"],
-      "description": "A button under a long list that adds the next batch to it, after a count of what's showing. It suits browsing and search results, where people scan down. For a list people need to come back to a place in, use Pagination instead.\n\nThe app loads the results and updates the count; it doesn't depend on the template's script. Load More is a ghost button half the page wide, and the full width on phones. Hide its paragraph (hidden) once everything is showing.\n\nName what the button loads, with the same noun as the count: &ldquo;Load More Sections.&rdquo;",
+      "description": "A button under a long list that adds the next batch to it, after a count of what's showing. It suits browsing and search results, where people scan down. For a list people need to come back to a place in, use Pagination instead.\n\nThe app loads the results and updates the count; it doesn't depend on the template's script. Load More is a ghost button half the page wide, and the full width on phones. Hide its paragraph (hidden) once everything is showing.\n\nName what the button loads, with the same noun as the count: “Load More Sections.”",
       "notes": [],
       "classes": ["cmu-results-count", "cmu-load-more"],
       "examples": [
@@ -906,7 +906,7 @@
       "page": "News and Events",
       "url": "https://webkilt.andrew.cmu.edu/news.html#news",
       "labels": ["Template"],
-      "description": "A grid of linked stories, each with a picture, a date, a title and a sentence. After the first batch, the rest wait behind a Load More button. A CMS's news index usually writes all of this; the markup is here for apps and to show the parts.\n\nName what the button loads: &ldquo;Load More Stories,&rdquo; not just &ldquo;Load More.&rdquo;",
+      "description": "A grid of linked stories, each with a picture, a date, a title and a sentence. After the first batch, the rest wait behind a Load More button. A CMS's news index usually writes all of this; the markup is here for apps and to show the parts.\n\nName what the button loads: “Load More Stories,” not just “Load More.”",
       "notes": [
         "The picture is the background of a div.img, cropped to fill the space, so any shape works.",
         "Load More is the template's: put a .section-id around the grid and mark the items to hold back hide, with the picture in data-img so it loads only when shown. Each click shows 12 more. Try it below: three more are hidden. In an app, use the kit's Load More.",
@@ -958,7 +958,7 @@
       "page": "Link Previews",
       "url": "https://webkilt.andrew.cmu.edu/previews.html#tags",
       "labels": ["Template"],
-      "description": "Open Graph tags describe the page for apps that generate previews. Add them to the page's <head>. This example is for an equipment reservation page:\n\nMost pages are website: a home page, a service or help page, a form or an app's pages. Checkers such as LinkedIn's report &ldquo;No author found&rdquo; and &ldquo;No publication date found&rdquo; for them, which is fine: those fields are for articles.\n\nA page that's dated and written by someone is an article: a news story, a blog post, an announcement or a recap of an event. Give it the type, its date and its author, so previews can show when it was published:",
+      "description": "Open Graph tags describe the page for apps that generate previews. Add them to the page's <head>. This example is for an equipment reservation page:\n\nMost pages are website: a home page, a service or help page, a form or an app's pages. Checkers such as LinkedIn's report “No author found” and “No publication date found” for them, which is fine: those fields are for articles.\n\nA page that's dated and written by someone is an article: a news story, a blog post, an announcement or a recap of an event. Give it the type, its date and its author, so previews can show when it was published:",
       "notes": [
         "Keep the title specific: Use the page's name followed by the site's name, as in its <title>.",
         "Keep the description short: Use the same sentence as the page's <meta name=\"description\">. Put the useful information first; apps may shorten it.",
@@ -1012,7 +1012,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/lists.html#pagination",
       "labels": ["App"],
-      "description": "One batch of results at a time, each with its own address, under a count of what's showing. It's for a list people come back to a place in, or one that's too long to keep adding to with Load More.\n\nA pager is one list: first (&laquo;), previous (&lsaquo;), the page numbers, next (›) and last (&raquo;). Mark the current page with aria-current=\"page\", and give each arrow an aria-label (\"First page\" and so on) for screen readers. An arrow that goes nowhere, such as previous on the first page, keeps its place but loses its href and gets aria-disabled=\"true\", which grays it out. Keep the numbers to seven slots, so the pager stays the same width as people move through: the first page, the last and the pages around the current one, with an ellipsis for each gap (1 2 3 4 5 &hellip; 16 near the start, 1 &hellip; 7 8 9 &hellip; 16 in the middle, 1 &hellip; 12 13 14 15 16 near the end). With seven pages or fewer, show them all. Use the same batch size as Load More, such as 20. On phones, &laquo; and &raquo; give way to the numbers.",
+      "description": "One batch of results at a time, each with its own address, under a count of what's showing. It's for a list people come back to a place in, or one that's too long to keep adding to with Load More.\n\nA pager is one list: first («), previous (‹), the page numbers, next (›) and last (»). Mark the current page with aria-current=\"page\", and give each arrow an aria-label (\"First page\" and so on) for screen readers. An arrow that goes nowhere, such as previous on the first page, keeps its place but loses its href and gets aria-disabled=\"true\", which grays it out. Keep the numbers to seven slots, so the pager stays the same width as people move through: the first page, the last and the pages around the current one, with an ellipsis for each gap (1 2 3 4 5 … 16 near the start, 1 … 7 8 9 … 16 in the middle, 1 … 12 13 14 15 16 near the end). With seven pages or fewer, show them all. Use the same batch size as Load More, such as 20. On phones, « and » give way to the numbers.",
       "notes": [],
       "classes": ["cmu-results-count", "cmu-pager"],
       "examples": [
@@ -1080,7 +1080,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/sections.html#photos",
       "labels": ["Template"],
-      "description": "Linked photos with a title over each, three or four across. The whole photo is the link. Use column2, column3 or column4; an <h1> first in the grid is its heading, across the full width. Only an <h1> spans the grid: a paragraph inside it becomes one of the cells, so put any sentence about the photos in their titles instead. Use photos that are all the same shape (such as 3:2, at 900 &times; 600), or the rows come out ragged and the titles don't line up. At four across, keep titles to two or three words, or they wrap; a sentence under the title fits at two or three across. On phones the photos stack. For people, put each name and title over the photo; the name's in the link, so the photo gets empty alt.\n\nNo photos yet? Fill the grid with CMU photos from PlaceMellon while you build, and swap in the real ones when they're ready.",
+      "description": "Linked photos with a title over each, three or four across. The whole photo is the link. Use column2, column3 or column4; an <h1> first in the grid is its heading, across the full width. Only an <h1> spans the grid: a paragraph inside it becomes one of the cells, so put any sentence about the photos in their titles instead. Use photos that are all the same shape (such as 3:2, at 900 × 600), or the rows come out ragged and the titles don't line up. At four across, keep titles to two or three words, or they wrap; a sentence under the title fits at two or three across. On phones the photos stack. For people, put each name and title over the photo; the name's in the link, so the photo gets empty alt.\n\nNo photos yet? Fill the grid with CMU photos from PlaceMellon while you build, and swap in the real ones when they're ready.",
       "notes": [],
       "classes": ["grid", "column2", "column3", "column4", "photos", "photo"],
       "examples": [
@@ -1123,7 +1123,7 @@
       "notes": [],
       "classes": ["cmu-avatar"],
       "examples": [
-        "<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\" &hellip;><img class=\"cmu-avatar\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\"><img class=\"cmu-avatar\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
+        "<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\" …><img class=\"cmu-avatar\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\"><img class=\"cmu-avatar\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
       ]
     },
     {
@@ -1170,7 +1170,7 @@
       "labels": ["App"],
       "description": "One question at a time, such as in a training, a quiz or a poll: a white card on a colored band, with the question over a rule and its choice rows. The card is cmu-question on the form; the band is the template's content wide with a color, here red. Checking the answer, and what happens next, is up to the app.",
       "notes": [
-        "Under the choices, cmu-question-buttons puts a forward arrow (&thinsp;▶&thinsp;) on the right and, when people can go back, a back arrow (&thinsp;◀&thinsp;) on the left (cmu-question-back).",
+        "Under the choices, cmu-question-buttons puts a forward arrow ( ▶ ) on the right and, when people can go back, a back arrow ( ◀ ) on the left (cmu-question-back).",
         "On the last question, the forward arrow gives way to Submit, centered, so someone clicking forward doesn't submit by accident.",
         "Give each arrow an aria-label and a matching title, \"Previous question\" and \"Next question,\" as with the arrows in Sorting."
       ],
@@ -1474,7 +1474,7 @@
       "page": "People",
       "url": "https://webkilt.andrew.cmu.edu/people.html#team",
       "labels": ["Template"],
-      "description": "A grid of the people in an office, each in a white card with a portrait, their name, their title in bold and a link to their full bio. Put the cards on a color, such as blue, to set the group apart as one section of the page. It's a grid column4 boxes (or column3) with an <h1> for the group. Use portraits of the same shape so the names line up; square ones keep the cards short. With no bio pages, leave out the links and the call to action.\n\nWord the link the same way on every card, such as &ldquo;Read Full Bio.&rdquo;",
+      "description": "A grid of the people in an office, each in a white card with a portrait, their name, their title in bold and a link to their full bio. Put the cards on a color, such as blue, to set the group apart as one section of the page. It's a grid column4 boxes (or column3) with an <h1> for the group. Use portraits of the same shape so the names line up; square ones keep the cards short. With no bio pages, leave out the links and the call to action.\n\nWord the link the same way on every card, such as “Read Full Bio.”",
       "notes": [],
       "classes": ["grid column4 boxes", "cta"],
       "examples": [
@@ -1517,7 +1517,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/sections.html#timeline",
       "labels": ["Template", "Icons"],
-      "description": "The steps of a process in date order, a card for each with a small icon, the step's name and its dates, on a dark band. It's a grid column4 darkgreen boxes (or column3) with an <h1>.\n\nWrite date ranges with a hyphen and no spaces, such as &ldquo;Jan. 11-15&rdquo;; see Conventions for dates.",
+      "description": "The steps of a process in date order, a card for each with a small icon, the step's name and its dates, on a dark band. It's a grid column4 darkgreen boxes (or column3) with an <h1>.\n\nWrite date ranges with a hyphen and no spaces, such as “Jan. 11-15”; see Conventions for dates.",
       "notes": [
         "Each step's name is an <h2>, right after its icon. Names may wrap to two lines. A name can link to its section further down the page; it then shows in the template's link red.",
         "Choose an icon for each step. Use floatright to place it beside the heading. See Icons for setup and usage.",
@@ -1593,7 +1593,7 @@
     {
       "id": "headings",
       "heading": "Headings",
-      "text": "- Capitalize the principal words, as AP does for the titles of works: headings, buttons, navigation and labels. That includes every word of four or more letters, such as \"With\" and \"From,\" and the first and last word: \"Upload Your Syllabus.\" Use sentence case for prose: \"Upload your syllabus before classes start.\"\n- A question used as a heading is a heading, as in an FAQ: &ldquo;Who Can See the Syllabi?&rdquo; Its answer is prose, in sentence case.\n- Write a tagline or slogan in sentence case, like a sentence: this site's is &ldquo;Tailored to the CMU web template,&rdquo; under its name. Headings and headlines stay in Title Case, as on the university's own pages.\n- Leave periods off headings and hero titles. Use normal punctuation in full sentences.\n- Put the important words first. People read the first two or three words of a heading, link or list item and move on: \"Syllabus Due Dates for Spring,\" not \"Information About When Spring Syllabi Are Due.\"\n- Choose heading levels by what they contain, never by how big they look, and don't skip a level. Screen reader users move through a page by its headings, so the headings alone should outline the page.\n- Read the page as a task. Can someone scan the headings, find the main action and tell what happens after they select it?"
+      "text": "- Capitalize the principal words, as AP does for the titles of works: headings, buttons, navigation and labels. That includes every word of four or more letters, such as \"With\" and \"From,\" and the first and last word: \"Upload Your Syllabus.\" Use sentence case for prose: \"Upload your syllabus before classes start.\"\n- A question used as a heading is a heading, as in an FAQ: “Who Can See the Syllabi?” Its answer is prose, in sentence case.\n- Write a tagline or slogan in sentence case, like a sentence: this site's is “Tailored to the CMU web template,” under its name. Headings and headlines stay in Title Case, as on the university's own pages.\n- Leave periods off headings and hero titles. Use normal punctuation in full sentences.\n- Put the important words first. People read the first two or three words of a heading, link or list item and move on: \"Syllabus Due Dates for Spring,\" not \"Information About When Spring Syllabi Are Due.\"\n- Choose heading levels by what they contain, never by how big they look, and don't skip a level. Screen reader users move through a page by its headings, so the headings alone should outline the page.\n- Read the page as a task. Can someone scan the headings, find the main action and tell what happens after they select it?"
     },
     {
       "id": "links",
@@ -1608,7 +1608,7 @@
     {
       "id": "instructions",
       "heading": "Instructions",
-      "text": "Write to the person doing the task, in the active voice: \"Upload your syllabus,\" not \"Syllabi may be uploaded by instructors.\" Name each control exactly as it appears on screen, and put steps in the order people follow them, one main action in each.\nHard to Follow\n\"Users should navigate to the appropriate course and use the queue functionality to submit a request for assistance.\"\nEasy to Follow\n- Sign in and select My Courses.\n- Choose the course you need help with.\n- Select Join the Queue and describe your question.\nDon't point by color, shape or position alone: \"Select Join the Queue,\" not \"Click the red button on the right.\" People using a screen reader, a phone or a zoomed-in screen may not see it where you do. Say \"select,\" not \"click,\" since not everyone uses a mouse.\nWrite a path through menus with the breadcrumb arrow (›, &rsaquo;), not the greater-than sign: &ldquo;Add Content › Block › Text Block,&rdquo; with each name as it appears on screen. It's the same mark the template puts between breadcrumbs."
+      "text": "Write to the person doing the task, in the active voice: \"Upload your syllabus,\" not \"Syllabi may be uploaded by instructors.\" Name each control exactly as it appears on screen, and put steps in the order people follow them, one main action in each.\nHard to Follow\n\"Users should navigate to the appropriate course and use the queue functionality to submit a request for assistance.\"\nEasy to Follow\n- Sign in and select My Courses.\n- Choose the course you need help with.\n- Select Join the Queue and describe your question.\nDon't point by color, shape or position alone: \"Select Join the Queue,\" not \"Click the red button on the right.\" People using a screen reader, a phone or a zoomed-in screen may not see it where you do. Say \"select,\" not \"click,\" since not everyone uses a mouse.\nWrite a path through menus with the breadcrumb arrow (›, &rsaquo;), not the greater-than sign: “Add Content › Block › Text Block,” with each name as it appears on screen. It's the same mark the template puts between breadcrumbs."
     },
     {
       "id": "messages",
@@ -1618,7 +1618,7 @@
     {
       "id": "colors",
       "heading": "Colors",
-      "text": "Keep a site to one or two colors, and use each for the same job everywhere, such as red for every sign-in box. Color goes on whole bands and boxes, not on text, and the template sets its text color to match. Two tools do it: the template's color classes for bands and boxes, and the kit's color variables for your own stylesheet. A band can also take a background pattern, the globe or the plaid.\nA color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add invert for white text on every color except grey and gold, which take dark text. Under each class is the brand color it is, from brand.cmu.edu, or \"template\" where cmu.edu uses its own shade, a little darker so white text on it stays readable. See also the kit's color variables.\nred, darkgrey, grey, blue, teal, green, darkgreen, gold, and the kit's cmu-lightgrey\n<div class=\"sidebar\"> <div class=\"teal invert\"> &hellip; </div> </div> <div class=\"grid column3 blue invert boxes\"> &hellip; </div> Color Variables Use these custom properties in your own stylesheet instead of copying the values, so every site moves together if they change. Each comes from one of three places:\n- Brand: CMU's official colors, from brand.cmu.edu, such as Carnegie Red and the Tartan palette's threads.\n- Template: the colors cmu.edu's template draws on the web. Some are brand colors exactly; others are a shade darker so text on them stays readable, such as its green, close to Green Thread. The template's own color classes are on the color classes.\n- Kit: pale tints for backgrounds and dark shades for small text on them, such as the green of a \"Syllabus Available\" pill. They aren't brand colors: no brand color is pale enough for a background behind text, or dark enough for small text on a tint, in every hue. Use them only for those jobs, and a brand or template color for anything large, such as a band or a bar."
+      "text": "Keep a site to one or two colors, and use each for the same job everywhere, such as red for every sign-in box. Color goes on whole bands and boxes, not on text, and the template sets its text color to match. Two tools do it: the template's color classes for bands and boxes, and the kit's color variables for your own stylesheet. A band can also take a background pattern, the globe or the plaid.\nA color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add invert for white text on every color except grey and gold, which take dark text. Under each class is the brand color it is, from brand.cmu.edu, or \"template\" where cmu.edu uses its own shade, a little darker so white text on it stays readable. See also the kit's color variables.\nred, darkgrey, grey, blue, teal, green, darkgreen, gold, and the kit's cmu-lightgrey\n<div class=\"sidebar\"> <div class=\"teal invert\"> … </div> </div> <div class=\"grid column3 blue invert boxes\"> … </div> Color Variables Use these custom properties in your own stylesheet instead of copying the values, so every site moves together if they change. Each comes from one of three places:\n- Brand: CMU's official colors, from brand.cmu.edu, such as Carnegie Red and the Tartan palette's threads.\n- Template: the colors cmu.edu's template draws on the web. Some are brand colors exactly; others are a shade darker so text on them stays readable, such as its green, close to Green Thread. The template's own color classes are on the color classes.\n- Kit: pale tints for backgrounds and dark shades for small text on them, such as the green of a \"Syllabus Available\" pill. They aren't brand colors: no brand color is pale enough for a background behind text, or dark enough for small text on a tint, in every hue. Use them only for those jobs, and a brand or template color for anything large, such as a band or a bar."
     },
     {
       "id": "images",
