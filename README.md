@@ -56,7 +56,8 @@ shows how for Node and other stacks.
 ## Versions
 
 Every link names an exact version, so your pages never change until you
-choose to move to a newer one. See the
+choose to move to a newer one. CDN links also carry an `integrity` hash of
+that release's file, so browsers refuse a changed file; copy each line whole. See the
 [releases](https://github.com/cmu-web/cmu-web-kilt/releases) for what each
 version changed.
 

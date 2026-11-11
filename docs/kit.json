@@ -7,6 +7,7 @@
     "cmu-app.css": "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.2/css/cmu-app.css",
     "cmu-app.js": "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.2/js/cmu-app.js"
   },
+  "integrity": {},
   "labels": {
     "Template": "Part of CMU's template stylesheet and scripts; nothing from the kit.",
     "CMS": "Requires cmu-cms.css.",

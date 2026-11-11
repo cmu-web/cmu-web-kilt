@@ -11,9 +11,9 @@ import * as prettier from "prettier";
 
 const docs = new URL("../docs/", import.meta.url);
 const read = (f) => readFileSync(new URL(f, docs), "utf8");
-const version = JSON.parse(
+const { version, integrity = {} } = JSON.parse(
   readFileSync(new URL("../package.json", import.meta.url), "utf8"),
-).version;
+);
 
 // The topic pages, as tools/components.mjs lists them
 const PAGES = [
@@ -185,6 +185,9 @@ const data = {
     "cmu-app.css": `https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@${version}/css/cmu-app.css`,
     "cmu-app.js": `https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@${version}/js/cmu-app.js`,
   },
+  // Each file's integrity hash at this release (tools/versions.mjs), for the
+  // integrity attribute on a CDN link
+  integrity,
   labels: {
     Template: "Part of CMU's template stylesheet and scripts; nothing from the kit.",
     CMS: "Requires cmu-cms.css.",

@@ -339,6 +339,11 @@ app.use("/vendor/cmu-web-kilt-0.4.2/js", express.static(path.join(kit, "js")));<
                 (<code>@0</code>) or none at all changes under you when a new release comes out.
               </li>
               <li>
+                <strong>Copy each CDN line whole.</strong> Its <code>integrity</code> value matches
+                that release's file exactly, so the browser refuses a file that's been changed. When
+                you move to a new version, replace the whole line, not just the number.
+              </li>
+              <li>
                 <strong>Versions follow semver.</strong> A patch (0.2.1) fixes things, a minor
                 version (0.3.0) adds things, and a major version (1.0.0) can rename or remove
                 classes.
@@ -353,8 +358,9 @@ app.use("/vendor/cmu-web-kilt-0.4.2/js", express.static(path.join(kit, "js")));<
                 major version, they list every renamed or removed class.
               </li>
               <li>
-                Change the version: in your CMS's head code (in Cascade, the
-                <code>head-includes</code> and <code>body-end-includes</code> blocks), in
+                Change the version: replace the kit's lines in your CMS's head code (in Cascade, the
+                <code>head-includes</code> and <code>body-end-includes</code> blocks) with the new
+                release's, copied whole from this page; or change it in
                 <code>package.json</code> (then <code>npm install</code>), or in your copied
                 folder's name and your layout's links.
               </li>

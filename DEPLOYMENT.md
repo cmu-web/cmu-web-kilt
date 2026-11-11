@@ -23,17 +23,19 @@ version, and `npm run release` updates them.
 
 ### Check a Release
 
-A tag can take a few minutes to appear. Check that each file answers before
-announcing the release:
+A tag can take a few minutes to appear. Before announcing the release, check
+that jsDelivr serves each file, byte for byte as released:
 
 ```bash
-V=0.2.3
+V=0.4.3
 for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
-  curl -fsI "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$V/$f" | head -1
+  echo "$f sha384-$(curl -fs "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$V/$f" | openssl dgst -sha384 -binary | base64)"
 done
 ```
 
-Each line should read `HTTP/2 200`.
+Each hash should match that file's in `package.json`'s `integrity`, which
+`npm run release` wrote and every CDN line in the docs carries. A file that
+doesn't match would be refused by every page that loads it.
 
 ### Never Move a Tag
 
