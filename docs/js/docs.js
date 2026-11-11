@@ -262,30 +262,33 @@ function standIn(cms, section) {
   var block = document.createElement("div");
   block.className = "kit-cms kit-cms--none";
   block.setAttribute("data-cms", cms);
-  var label = '<p class="cmu-label kit-cms-label">In ' + (other ? "another CMS" : cms) + "</p>";
-  var other = cms === "Another CMS";
-  var paste = other
-    ? "Paste the HTML from the HTML tab into the page's HTML source."
-    : "We haven't written " +
-      cms +
-      " steps for this yet. Until then, in a page's Content section, open the " +
-      "editor's source code (&lt;&gt;) and paste the HTML from the HTML tab.";
-  if (has("app"))
-    block.innerHTML =
-      label +
-      '<p class="kit-unavailable">This component isn\'t available in ' +
-      (other ? "another CMS" : cms) +
-      ".</p>";
-  else if (has("script"))
-    block.innerHTML =
-      label +
-      "<p>" +
-      paste +
-      " It also requires the kit's script, <code>cmu-app.js</code>; see " +
+  var other = cms === "Another CMS",
+    name = other ? "another CMS" : cms;
+  var label = '<p class="cmu-label kit-cms-label">In ' + name + "</p>";
+  var script = has("script")
+    ? " It also requires the kit's script, <code>cmu-app.js</code>; see " +
       '<a href="install.html#' +
       (other ? "other-cms" : "cascade") +
-      '">Install</a>.</p>';
-  else block.innerHTML = label + "<p>" + paste + "</p>";
+      '">Install</a>.'
+    : "";
+  // Like the HTML tab's code, a box says what this CMS has for the component;
+  // any instructions follow as ordinary text
+  if (has("app"))
+    block.innerHTML =
+      label + '<p class="kit-unavailable">This component isn\'t available in ' + name + ".</p>";
+  else if (other)
+    block.innerHTML =
+      label + "<p>Paste the HTML from the HTML tab into the page's HTML source." + script + "</p>";
+  else
+    block.innerHTML =
+      label +
+      '<p class="kit-unavailable">This component doesn\'t have ' +
+      cms +
+      " steps yet.</p>" +
+      "<p>Until then, in a page's Content section, open the editor's source code " +
+      "(&lt;&gt;) and paste the HTML from the HTML tab." +
+      script +
+      "</p>";
   return block;
 }
 // Frameworks: a demo can also have a Framework tab, from .kit-framework

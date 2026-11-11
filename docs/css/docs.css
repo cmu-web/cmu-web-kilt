@@ -334,3 +334,6 @@ td > .kit-where {
 .kit-options--on .kit-option-label {
   display: none;
 }
+.kit-unavailable + p {
+  margin-top: 1rem;
+}
