@@ -53,6 +53,20 @@
       "frameworks": {}
     },
     {
+      "id": "agent-prompt",
+      "name": "AI Agent Prompt",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/content.html#agent-prompt",
+      "labels": ["App", "Script"],
+      "description": "A prompt for people to paste into an AI coding agent, such as the steps to set up a tool in their project. The kit puts a robot before the heading. A sentence says what the prompt does and ends with a lone copy button, and the prompt itself sits folded under it in a folded list, so people can read it before they paste it. Put the prompt in a code element with an id for the button to copy; it copies the whole prompt whether the fold is open or not.",
+      "notes": [],
+      "classes": ["cmu-agent", "cmu-copy", "cmu-more"],
+      "examples": [
+        "<div class=\"cmu-agent\">\n  <h2>Set Up With an AI Agent</h2>\n  <p>Copy the prompt into an AI coding agent in your editor or terminal, and it sets up the course site for your project. <button type=\"button\" class=\"cmu-copy\" data-cmu-copy=\"#kit-agent-demo\" aria-label=\"Copy the Prompt\" title=\"Copy the Prompt\"></button></p>\n  <details class=\"cmu-more\">\n    <summary><span class=\"cmu-more-closed\">Want to read it first?</span> <span class=\"cmu-more-link\"><span class=\"cmu-more-closed\">See the Prompt</span><span class=\"cmu-more-open\">Hide the Prompt</span></span></summary>\n    <pre class=\"cmu-snippet\"><code id=\"kit-agent-demo\">Set up the course site in this project. Read https://example.cmu.edu/setup.html for the steps, add the site's files in the order it gives and keep the project's own styles last.</code></pre>\n  </details>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "annotated",
       "name": "Annotated Image",
       "page": "Page Sections",

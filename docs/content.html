@@ -710,6 +710,38 @@
         </div>
       </div>
 
+            <h2 id="agent-prompt" class="rule-top">
+              AI Agent Prompt
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              A prompt for people to paste into an AI coding agent, such as the steps to set up a
+              tool in their project. The kit puts a robot before the heading. A sentence says what
+              the prompt does and ends with a lone <a href="#copy">copy button</a>, and the prompt
+              itself sits folded under it in a <a href="lists.html#more">folded list</a>, so people
+              can read it before they paste it. Put the prompt in a <code>code</code> element with
+              an <code>id</code> for the button to copy; it copies the whole prompt whether the fold
+              is open or not.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-agent</code>, <code>cmu-copy</code>, <code>cmu-more</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-agent">
+          <h2>Set Up With an AI Agent</h2>
+          <p>Copy the prompt into an AI coding agent in your editor or terminal, and it sets up the course site for your project. <button type="button" class="cmu-copy" data-cmu-copy="#kit-agent-demo" aria-label="Copy the Prompt" title="Copy the Prompt"></button></p>
+          <details class="cmu-more">
+            <summary><span class="cmu-more-closed">Want to read it first?</span> <span class="cmu-more-link"><span class="cmu-more-closed">See the Prompt</span><span class="cmu-more-open">Hide the Prompt</span></span></summary>
+            <pre class="cmu-snippet"><code id="kit-agent-demo">Set up the course site in this project. Read https://example.cmu.edu/setup.html for the steps, add the site's files in the order it gives and keep the project's own styles last.</code></pre>
+          </details>
+        </div>
+      </div>
+
             <h2 id="email" class="rule-top">
               Email Links
               <span class="kit-where"

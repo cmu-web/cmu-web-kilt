@@ -273,27 +273,6 @@ td > .kit-where {
   margin: 0 0 1.5rem;
 }
 
-/* Set Up With an AI Agent (home page): a gray robot before the heading and a
-   lone copy button after the sentence; the prompt folds under it (cmu-more).
-   Robot: Bootstrap Icons robot (MIT license, Copyright (c) 2019-2024 The
-   Bootstrap Authors) */
-.kit-agent-icon {
-  width: 1em;
-  height: 1em;
-  margin-right: 0.4em;
-  vertical-align: -0.1em;
-  fill: #6d6e71; /* the copy button's gray */
-}
-.kit-agent .cmu-copy {
-  position: static;
-  display: inline-grid;
-  margin-left: 0.4em;
-  vertical-align: middle;
-}
-.kit-agent-prompt .cmu-snippet {
-  margin-top: 0.75rem;
-}
-
 /* CMS and Framework tabs: a menu to pick yours (its label is for screen
    readers; the tab already says CMS or Framework), then that one's steps.
    The menu names it, so the blocks' own "In Cascade" and "In React" labels
