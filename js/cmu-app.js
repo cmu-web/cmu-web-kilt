@@ -9,14 +9,22 @@
   // and tells screen readers. Without the clipboard (an http page, an old
   // browser) it selects the text and asks for the keyboard instead. The icon
   // version (button.cmu-copy, named by aria-label and title) shows a check
-  // and puts the message in its label and tooltip instead.
+  // and puts the message in its label and tooltip instead. A text button's
+  // words change in place, in the text it already has, so a framework that
+  // renders the label keeps its hold on it.
   var status;
   function announce(text) {
-    if (!status) {
-      status = document.createElement("p");
-      status.className = "sr-only";
-      status.setAttribute("aria-live", "polite");
-      document.body.appendChild(status);
+    // When the page's body was replaced (as Turbo does), use the one in the
+    // new body, which a cached page brings back, or add one
+    if (!status || !status.isConnected) {
+      status = document.querySelector("[data-cmu-announce]");
+      if (!status) {
+        status = document.createElement("p");
+        status.className = "sr-only";
+        status.setAttribute("aria-live", "polite");
+        status.setAttribute("data-cmu-announce", "");
+        document.body.appendChild(status);
+      }
     }
     status.textContent = "";
     setTimeout(function () {
@@ -31,6 +39,12 @@
     sel.removeAllRanges();
     sel.addRange(range);
   }
+  // The button's own words: its first text that isn't just space
+  function buttonText(button) {
+    var walk = document.createTreeWalker(button, NodeFilter.SHOW_TEXT);
+    while (walk.nextNode()) if (walk.currentNode.nodeValue.trim()) return walk.currentNode;
+    return button.appendChild(document.createTextNode(""));
+  }
   function flash(button, label, state) {
     var icon = button.classList.contains("cmu-copy");
     if (!button.hasAttribute("data-cmu-copy-label"))
@@ -44,7 +58,10 @@
       button.setAttribute("aria-label", label);
       button.title = label;
     } else {
-      button.textContent = label;
+      var words = buttonText(button);
+      if (!button.cmuCopyWords) button.cmuCopyWords = { node: words, original: words.nodeValue };
+      words.nodeValue = label;
+      button.cmuCopyWords.shown = label;
     }
     clearTimeout(button.cmuCopyTimer);
     button.cmuCopyTimer = setTimeout(function () {
@@ -53,7 +70,10 @@
         button.setAttribute("aria-label", original);
         button.title = original;
       } else {
-        button.textContent = original;
+        var w = button.cmuCopyWords;
+        // Put the words back, unless the page changed them meanwhile
+        if (w.node.nodeValue === w.shown) w.node.nodeValue = w.original;
+        button.cmuCopyWords = null;
       }
     }, 2000);
   }
@@ -298,12 +318,40 @@
   // hidden input in each item moves with it, so a form sends the new order.
   // Without the script the list keeps its first order. See Sorting in the
   // docs (forms.html).
+  //
+  // A page restored from a cache (Turbo) already has the kit's buttons, and
+  // gets no second set.
+  //
+  // In a framework (React, Svelte, Vue), which owns the list: render the
+  // buttons yourself (<button data-cmu-move="-1"> and "1" in each item), and
+  // the script adds none and leaves their disabled state to you. Each move
+  // first fires a cancelable cmu-sort-move event on the list, with detail
+  // { item, from, to } (0-based). Call preventDefault(), reorder your own
+  // data and let the framework re-render; the script then doesn't move
+  // anything, but still announces the new place and keeps focus on the
+  // button.
+  function sortItems(list) {
+    return Array.prototype.filter.call(list.children, function (el) {
+      return el.tagName === "LI";
+    });
+  }
+  // The item's words, without its buttons'
+  function sortName(li) {
+    var out = "",
+      walk = document.createTreeWalker(li, NodeFilter.SHOW_TEXT);
+    while (walk.nextNode())
+      if (!walk.currentNode.parentElement.closest("[data-cmu-move]"))
+        out += walk.currentNode.nodeValue;
+    return out.trim().replace(/\s+/g, " ");
+  }
   function sortable(list) {
     if (list.cmuSort) return;
     list.cmuSort = true;
-    list.querySelectorAll(":scope > li").forEach(function (li) {
-      li.cmuName = li.textContent.trim().replace(/\s+/g, " ");
-      var moves = document.createElement("span");
+    sortItems(list).forEach(function (li) {
+      // The page brought its own buttons
+      if (li.querySelector("[data-cmu-move]")) return;
+      var name = sortName(li),
+        moves = document.createElement("span");
       moves.className = "cmu-sort-moves";
       // Arrows, like the sortable table headers; the label names the item
       [
@@ -314,21 +362,27 @@
         b.type = "button";
         b.className = "btn ghost small";
         b.setAttribute("data-cmu-move", m[0]);
-        b.setAttribute("aria-label", "Move " + li.cmuName + " " + m[1]);
+        b.setAttribute("aria-label", "Move " + name + " " + m[1]);
         b.title = "Move " + m[1];
         b.textContent = m[2];
+        // An attribute, not a property, so a cached copy of the page (Turbo)
+        // still marks these as the kit's
+        b.setAttribute("data-cmu-kit", "");
         moves.appendChild(b);
       });
       li.appendChild(moves);
     });
     sortEnds(list);
   }
-  // The first item can't go up, and the last can't go down
+  // The first item can't go up, and the last can't go down (only the
+  // buttons the script added; the page sets its own)
   function sortEnds(list) {
-    var items = list.querySelectorAll(":scope > li");
+    var items = sortItems(list);
     items.forEach(function (li, i) {
-      li.querySelector('[data-cmu-move="-1"]').disabled = i === 0;
-      li.querySelector('[data-cmu-move="1"]').disabled = i === items.length - 1;
+      li.querySelectorAll("[data-cmu-move]").forEach(function (b) {
+        if (!b.hasAttribute("data-cmu-kit")) return;
+        b.disabled = b.getAttribute("data-cmu-move") === "-1" ? i === 0 : i === items.length - 1;
+      });
     });
   }
   function startSorts(scope) {
@@ -338,18 +392,50 @@
   startSorts(document);
   document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest("[data-cmu-sort] [data-cmu-move]");
-    if (!b) return;
+    if (!b || b.disabled) return;
     var li = b.closest("li"),
       list = li.parentElement,
+      items = sortItems(list),
       dir = Number(b.getAttribute("data-cmu-move")),
-      other = dir < 0 ? li.previousElementSibling : li.nextElementSibling;
-    if (!other) return;
-    list.insertBefore(dir < 0 ? li : other, dir < 0 ? other : li);
-    sortEnds(list);
-    // At the top or bottom now, focus the other button
-    (b.disabled ? li.querySelector('[data-cmu-move="' + -dir + '"]') : b).focus();
-    var at = Array.prototype.indexOf.call(list.children, li) + 1;
-    announce(li.cmuName + ", " + at + " of " + list.children.length);
+      from = items.indexOf(li),
+      to = from + dir;
+    if (to < 0 || to >= items.length) return;
+    var name = sortName(li),
+      move = new CustomEvent("cmu-sort-move", {
+        bubbles: true,
+        cancelable: true,
+        detail: { item: li, from: from, to: to },
+      });
+    if (list.dispatchEvent(move)) {
+      var other = items[to];
+      list.insertBefore(dir < 0 ? li : other, dir < 0 ? other : li);
+      sortEnds(list);
+      // At the top or bottom now, focus the other button
+      (b.disabled ? li.querySelector('[data-cmu-move="' + -dir + '"]') : b).focus();
+    } else {
+      // The page moves it. Once it has re-rendered, keep focus on the moved
+      // item's button (the other one if this one is now disabled), even if
+      // the page rebuilt the list. Frameworks re-render on their own
+      // schedule, so check a few times; focus only comes back if it was lost
+      // (on the page itself, or on a now-disabled button), never taken from
+      // where someone moved it.
+      var keep = function () {
+        var item = b.isConnected ? li : sortItems(list)[to];
+        if (!item) return;
+        var now = document.activeElement,
+          lost = !now || now === document.body || now === b || (now.disabled && list.contains(now));
+        if (!lost && now !== b) return;
+        var same = b.isConnected ? b : item.querySelector('[data-cmu-move="' + dir + '"]'),
+          stay =
+            same && !same.disabled ? same : item.querySelector('[data-cmu-move="' + -dir + '"]');
+        if (stay && now !== stay) stay.focus();
+      };
+      requestAnimationFrame(keep);
+      [50, 150, 300].forEach(function (ms) {
+        setTimeout(keep, ms);
+      });
+    }
+    announce(name + ", " + (to + 1) + " of " + items.length);
   });
 
   // Row menu: <div class="cmu-row-menu"> holds a <button class="btn small
@@ -446,6 +532,8 @@
   setInterval(keepTap, 2000);
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", startTap);
   else startTap();
+  // Turbo's page visits replace the body without a new page load
+  document.addEventListener("turbo:load", startTap);
 
   // File drop zone / picker: <label class="cmu-drop"> wrapping an <input
   // type="file">, its words and an empty <span class="cmu-drop-file">.
@@ -529,12 +617,20 @@
         if (tab) selectTab(tab);
       });
   }
+  // The chosen tab is kept in a cookie, not localStorage: the template's own
+  // script clears all of localStorage on every page (for its list filters).
+  // For this site only, for a year.
   function storedTab(name) {
-    try {
-      return localStorage.getItem("cmu-tabs:" + name);
-    } catch {
-      return null;
-    }
+    var m = document.cookie.match(new RegExp("(?:^|; )cmu-tabs-" + name + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function storeTab(name, value) {
+    document.cookie =
+      "cmu-tabs-" +
+      name +
+      "=" +
+      encodeURIComponent(value) +
+      "; path=/; max-age=31536000; SameSite=Lax";
   }
   function startTabs(root) {
     if (!root.querySelectorAll) return;
@@ -566,11 +662,7 @@
     // Every row with this name switches; keep the clicked one still on screen
     var before = tab.getBoundingClientRect().top;
     pickTabs(name, value);
-    try {
-      localStorage.setItem("cmu-tabs:" + name, value);
-    } catch {
-      // Private window or blocked storage: the choice lasts for this page
-    }
+    storeTab(name, value);
     window.scrollBy(0, tab.getBoundingClientRect().top - before);
   });
   document.addEventListener("keydown", function (e) {
@@ -598,7 +690,13 @@
   function startScrollGalleries(root) {
     if (!root.querySelectorAll || !window.IntersectionObserver) return;
     root.querySelectorAll("[data-cmu-scroll-gallery]").forEach(function (gallery) {
-      if (gallery.querySelector(".cmu-scroll-gallery-stage")) return;
+      if (gallery.cmuGallery) return;
+      gallery.cmuGallery = true;
+      // A page restored from a cache (Turbo) has the old stage, which nothing
+      // watches; start over
+      gallery.querySelectorAll(":scope > .cmu-scroll-gallery-stage").forEach(function (old) {
+        old.remove();
+      });
       var steps = Array.prototype.slice.call(gallery.querySelectorAll(".cmu-scroll-gallery-step"));
       if (!steps.length) return;
       var stage = document.createElement("div");
