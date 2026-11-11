@@ -22,7 +22,7 @@ in the head, above your site's own stylesheet:
 
 <!-- prettier-ignore -->
 ```html
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.2/css/cmu-cms.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.3/css/cmu-cms.css" integrity="sha384-jLB4PsCj8eJZzLvX09Rp//BaeUnjZFFNVOS3iVyZhktnIw9EkiZPVseQWE+Yjz/q" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/>
 ```
 
 Then paste components into a content section's Source code view. The
@@ -37,8 +37,8 @@ own stylesheet:
 <!-- prettier-ignore -->
 ```html
 <link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.2/css/cmu-cms.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.2/css/cmu-app.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.3/css/cmu-cms.css" integrity="sha384-jLB4PsCj8eJZzLvX09Rp//BaeUnjZFFNVOS3iVyZhktnIw9EkiZPVseQWE+Yjz/q" crossorigin="anonymous" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.3/css/cmu-app.css" integrity="sha384-47JHEYH0eYcLdN5TBfxjXH8Pep2phRVwi/F1EqzR+oM66o/7KGNVEubYiKV9QSGh" crossorigin="anonymous" rel="stylesheet">
 <link href="/css/your-app.css" rel="stylesheet">
 ```
 
@@ -46,7 +46,7 @@ The kit's script goes just before `</body>`, after the template's scripts:
 
 <!-- prettier-ignore -->
 ```html
-<script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.2/js/cmu-app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.4.3/js/cmu-app.js" integrity="sha384-DsL4ro0d0gklqESKgqmT+bI39p6ivnm2+HYX8moLE58EAfW+n2EooyD3/Of3xHH5" crossorigin="anonymous"></script>
 ```
 
 For an app in production, keep your own copy of a release instead; the
