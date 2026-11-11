@@ -1,55 +1,54 @@
 # Contributing
 
-See [DEVELOPMENT.md](DEVELOPMENT.md) for setup, checks and releasing, and
-[DEPLOYMENT.md](DEPLOYMENT.md) for how releases reach jsDelivr.
+You can help by reporting a problem, improving an example, proposing a
+component or sharing a site built with the kit. Start with the
+[issue forms](https://github.com/cmu-web/cmu-web-kilt/issues/new/choose);
+you don't need a code change to contribute.
 
-## Issues
+## Bring a Use Case
 
-For a problem, include the page or app, the browser, what happened and
-what you expected; a screenshot helps. For a new component, describe where
-you'd use it and link a CMU page that does something like it. Check
-existing issues first.
+For a bug, include the affected page or a small markup example, your
+browser, what happened and what you expected. For a visual problem, include
+a screenshot and the viewport size.
 
-## Pull Requests
+For a new component, describe the task it helps someone complete. Link a
+CMU page that handles the task well if you know one. Discuss changes to
+existing markup or behavior before implementing them: other sites may
+already depend on it.
 
-Branch from `main` and open pull requests against `main`. Keep each one to
-a single concern, and explain the problem and the result. Run the
-[checks](DEVELOPMENT.md#checks) and enable the
-[pre-commit hooks](DEVELOPMENT.md#pre-commit-hooks) before submitting.
-Update the docs whenever a component changes.
+For the [gallery](https://webkilt.andrew.cmu.edu/gallery.html), submit a
+public site or app whose owner is happy to have it listed. We take the
+screenshot from a public page; it must not expose private information.
 
-## Rules for Components
+## Decide What Belongs in the Kit
 
-- **The template comes first.** Link CMU's template CSS and use its
-  classes as they are: `btn`, `btn small`, `ghost`, `cta`,
-  `table.alternate`, `.sidebar`, `.sr-only`. Never copy its rules or
-  values. Add a component only for what the template doesn't already do, and prefer
-  the template's own spacing to an override.
-- **Prefix `cmu-`** for every class, custom property (`--cmu-red`) and
-  JavaScript hook (`data-cmu-copy`). Modifiers use `--` (`cmu-pill--green`).
-- **`cmu-cms.css`** is for anything a Cascade page could use;
-  **`cmu-app.css`** and **`cmu-app.js`** are for what only apps need.
-- **Every component gets a docs section** with a live example, checked at
-  desktop and phone widths.
-- **Base it on CMU's pages.** Name a CMU page that does something like it
-  when you can, and use made-up content in examples, never real people's
-  data.
+The kit extends CMU's web template. Before proposing new CSS, check the
+[component reference](https://webkilt.andrew.cmu.edu/components.html) and
+[page layouts](https://webkilt.andrew.cmu.edu/layout.html) for an existing
+solution. A useful addition should work beyond the page that prompted it
+and fit alongside the template without changing unrelated pages.
 
-## Commit Messages
+Keep component markup, documentation and behavior together in the same
+change. Existing class names, custom properties and `data-cmu-*` hooks are
+interfaces used by other sites; explain any incompatible change and how
+consumers would migrate.
 
-Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+The [conventions](https://webkilt.andrew.cmu.edu/conventions.html) are the
+reference for naming, writing and page structure. Use them for the docs
+and examples too, including AP style and made-up example content.
 
-## Style
+## Send a Change for Review
 
-Prettier formats CSS, JavaScript, Markdown, JSON, YAML and the docs' HTML
-(except the live examples) and ESLint checks the JavaScript; see
-[linting and formatting](DEVELOPMENT.md#linting-and-formatting).
+Use [Development](DEVELOPMENT.md) to set up a checkout and work through the
+edit, preview and check cycle. Branch from `main` and open the pull request
+against `main`, with one problem or addition per pull request.
 
-For the docs and for text in examples, follow the
-[conventions](https://cmu-web.github.io/cmu-web-kilt/docs/conventions.html):
-Title Case for headings, buttons and labels, and buttons and calls to action
-that start with a verb. For university names and terminology, follow the
-[CMU Brand Standards writing guide](https://brand.cmu.edu/applying-brand/writing).
-For grammar, punctuation, numbers and dates, follow
-[The Associated Press Stylebook](https://www.apstylebook.com/), CMU's preferred
-standard.
+Explain what prompted the change, what a user will experience and how you
+checked it. Include before-and-after screenshots for visual changes and
+call out changes consumers need to make. Run the full checks before
+submitting; passing checks supplement browser review of layout and behavior.
+
+Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+for commit subjects. Release preparation and publishing are maintainer
+tasks, covered in [Development](DEVELOPMENT.md#prepare-a-release) and
+[Deployment](DEPLOYMENT.md).

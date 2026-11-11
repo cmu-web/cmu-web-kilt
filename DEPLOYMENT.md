@@ -1,112 +1,86 @@
 # Deployment
 
-The kit has no server. A release is a Git tag, and three places serve it:
-jsDelivr for pages that link the kit, GitHub for apps that install it and
-webkilt.andrew.cmu.edu for the docs, with a test copy on GitHub Pages. [DEVELOPMENT.md](DEVELOPMENT.md#releasing)
-covers making a release; this page covers where it goes and how to check it.
+Maintainers publish two things from this repository: versioned kit files
+and the documentation site. Publishing the docs can expose changes before
+a release, so check which path a change takes.
 
-## jsDelivr
+| Change                    | Publication Trigger           | What Changes for Users                                             |
+| ------------------------- | ----------------------------- | ------------------------------------------------------------------ |
+| Documentation or examples | Push to `main`                | The GitHub Pages site updates, using the current repository assets |
+| Kit release               | Push an annotated version tag | The tagged files become available through jsDelivr and GitHub      |
 
-jsDelivr serves any tag of a public GitHub repository, with no account or
-upload: pushing the tag is the whole deployment. Each file has a fixed
-address:
+Application installation belongs in the
+[installation guide](https://webkilt.andrew.cmu.edu/install.html).
+This guide covers the maintainer's publishing work.
 
-```text
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-app.css
-https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/js/cmu-app.js
+## Publish a Release
+
+First complete [release preparation](DEVELOPMENT.md#prepare-a-release).
+Confirm that the release commit is on `main`, the working tree is clean
+and the checks have passed. From that commit:
+
+```bash
+kit_version=$(node -p 'require("./package.json").version')
+git tag -a "$kit_version" -m "Carnegie Mellon Web Kilt $kit_version"
+git push origin main "$kit_version"
 ```
 
-Cascade sites put the first in their head block; apps and static pages
-link all three. The docs and README show these addresses for the current
-version, and `npm run release` updates them.
+Tags have no `v` prefix. The push publishes the files through GitHub and
+makes them available to jsDelivr; it also triggers the documentation build
+for `main`. It does not update applications that already use the kit.
 
 ### Check a Release
 
-A tag can take a few minutes to appear. Before announcing the release, check
-that jsDelivr serves each file, byte for byte as released:
+Verify the CDN contents from the checkout of the published tag. This Bash
+example downloads each browser file and compares it with the tagged copy:
 
 ```bash
-V=0.4.3
-for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
-  echo "$f sha384-$(curl -fs "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$V/$f" | openssl dgst -sha384 -binary | base64)"
-done
+(
+  set -eu
+  kit_version=$(node -p 'require("./package.json").version')
+  kit_check_dir=$(mktemp -d)
+  trap 'rm -rf "$kit_check_dir"' EXIT
+  for file in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
+    curl --fail --show-error --location \
+      "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$kit_version/$file" \
+      --output "$kit_check_dir/asset"
+    cmp "$file" "$kit_check_dir/asset"
+    printf 'Verified %s\n' "$file"
+  done
+)
 ```
 
-Each hash should match that file's in `package.json`'s `integrity`, which
-`npm run release` wrote and every CDN line in the docs carries. A file that
-doesn't match would be refused by every page that loads it.
+Allow time for a new tag to become available. All three comparisons must
+pass before announcing the release. Use the readable file URLs shown here;
+minified variants have different bytes and integrity hashes.
 
-### Never Move a Tag
+Publish GitHub release notes from the tag once verification passes. Include
+migration steps for breaking changes. Deployments can then update their
+pinned version, dependency or vendored files and check the affected pages.
 
-jsDelivr caches a version's files for a long time, and pages link them
-expecting them never to change. Don't delete, move or re-push a released
-tag. If a release has a mistake, fix it on `main` and release a patch
-version.
+### Correct a Bad Release
 
-If a file was served before its tag was right, for example while the tag
-was being created, purge it once per file:
+Keep the published tag intact. jsDelivr caches versioned files, and
+consumers rely on those contents staying stable. Make the correction in a
+new patch release and explain which version it replaces in the release notes.
+An application rolling back restores its previous version and that
+version's files or integrity hashes.
 
-```bash
-curl -s "https://purge.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css"
-```
+## Publish the Documentation
 
-### Minified Files and Integrity Hashes
+The [Pages workflow](.github/workflows/pages.yml) runs on pushes to `main`
+and can be run manually. It copies `docs/` to the site root, then adds the
+kit's CSS and JavaScript to the site's `css/` and `js/` folders. This is the
+layout served locally by `npm run docs`.
 
-jsDelivr minifies on request: ask for `cmu-cms.min.css` or `cmu-app.min.js`
-in the same folder. The repository keeps only the readable files.
+After a push, check the Pages workflow and open the changed pages at
+https://cmu-web.github.io/cmu-web-kilt/. Check a live example as well as the
+page text when assets changed. The public documentation address is
+https://webkilt.andrew.cmu.edu/; hosting at that address is managed outside
+the Pages workflow in this repository. It serves the docs from a pinned
+release tag, so docs-only changes reach it with the next release.
 
-Because a version's files never change, a page can add an
-[integrity hash](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
-so the browser refuses a file that doesn't match:
-
-```bash
-curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.2.3/css/cmu-cms.css" \
-  | openssl dgst -sha384 -binary | openssl base64 -A
-```
-
-Use it as `integrity="sha384-…" crossorigin="anonymous"` on the `<link>` or
-`<script>`. Compute it from the exact address the page uses; the minified
-file has a different hash.
-
-## GitHub
-
-Node apps install a tag straight from GitHub; the package isn't published
-to the npm registry:
-
-```bash
-npm install github:cmu-web/cmu-web-kilt#0.2.3
-```
-
-`package.json` limits the install to `css/` and `js/`. Apps on other stacks
-copy a release's files from jsDelivr into their own static folder, as the
-[Install](https://webkilt.andrew.cmu.edu/install.html) page
-shows.
-
-## The Docs Site
-
-The docs are served at the site's root, with the kit's own `css/` and `js/`
-beside the docs' own `css/` and `js/`. The pages link `css/cmu-cms.css` and
-the rest, so they always show the kit as it is in the repo, released or not.
-
-The [Pages workflow](.github/workflows/pages.yml) builds that layout from
-`main` and publishes it at https://cmu-web.github.io/cmu-web-kilt/ within a
-minute or two of each push (the repository's Pages source is set to GitHub
-Actions). That copy is for testing; webkilt.andrew.cmu.edu serves the same
-layout: `docs/` as the root, and the repository's `css/*.css` and `js/*.js`
-in its `css/` and `js/`.
-
-Pages is for the docs and for trying unreleased changes. Production pages
-link a released version on jsDelivr instead: anything on Pages changes the
-moment `main` does.
-
-## Moving the Kit's Own Sites to a New Version
-
-After a release, update the places that pin it:
-
-- **Cascade sites** using the kit: the version in the head block's `<link>`.
-- **Apps that install it:** the tag in `package.json`, then `npm install`.
-- **Apps that copy it:** the files in their vendor folder.
-
-Check each site after the change, on staging first for Cascade. For a major
-version, check the release notes for renamed or removed classes first.
+The Pages workflow publishes independently of the check workflow. Check a
+change before pushing it to `main`; a later validation failure does not
+undo publication. To correct a published docs change, push a follow-up fix
+or revert. Keep release tags in place.
