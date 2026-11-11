@@ -405,9 +405,14 @@
               arrow buttons on each item, which <code>cmu-app.js</code> adds. Each button names its
               item for screen readers, focus stays on the item as it moves and its new place is read
               out. Put a hidden <code>&lt;input&gt;</code> in each item; it moves with the item, and
-              the form sends the new order. Without the script, the list keeps its first order.
+              the form sends the new order. Without the script, the list keeps its first order. In
+              React, Svelte or Vue, which own the list, see the Framework tab: render the buttons
+              yourself and handle the <code>cmu-sort-move</code> event.
             </p>
-            <p class="kit-classes"><code>cmu-sort</code>, <code>data-cmu-sort</code></p>
+            <p class="kit-classes">
+              <code>cmu-sort</code>, <code>data-cmu-sort</code>, <code>cmu-sort-moves</code>,
+              <code>data-cmu-move</code>
+            </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <form>
@@ -422,6 +427,131 @@
           </fieldset>
         </form>
       </div>
+            <div class="kit-framework" data-framework="React">
+              <p class="cmu-label kit-framework-label">In React</p>
+              <p>
+                The list is React's, so render the buttons yourself and handle
+                <code>cmu-sort-move</code>: cancel it and reorder your state. The kit adds no
+                buttons and moves nothing; it still says where the item went and keeps focus on it.
+              </p>
+              <pre class="kit-code"><code>import { useEffect, useRef, useState } from "react";
+
+export function Steps() {
+  const [steps, setSteps] = useState(["Delete the email", "Don't click its links", "Report it"]);
+  const list = useRef(null);
+  useEffect(() =&gt; {
+    const move = (e) =&gt; {
+      e.preventDefault();
+      const { from, to } = e.detail;
+      setSteps((s) =&gt; {
+        const next = [...s];
+        next.splice(to, 0, next.splice(from, 1)[0]);
+        return next;
+      });
+    };
+    list.current.addEventListener("cmu-sort-move", move);
+    return () =&gt; list.current?.removeEventListener("cmu-sort-move", move);
+  }, []);
+  return (
+    &lt;ol className="cmu-sort" data-cmu-sort ref={list}&gt;
+      {steps.map((step, i) =&gt; (
+        &lt;li key={step}&gt;
+          {step}
+          &lt;input type="hidden" name="order" value={step} /&gt;
+          &lt;span className="cmu-sort-moves"&gt;
+            &lt;button type="button" className="btn ghost small" data-cmu-move="-1"
+              aria-label={`Move ${step} up`} disabled={i === 0}&gt;▲&lt;/button&gt;
+            &lt;button type="button" className="btn ghost small" data-cmu-move="1"
+              aria-label={`Move ${step} down`} disabled={i === steps.length - 1}&gt;▼&lt;/button&gt;
+          &lt;/span&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ol&gt;
+  );
+}</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Svelte">
+              <p class="cmu-label kit-framework-label">In Svelte</p>
+              <p>
+                The list is Svelte's, so render the buttons yourself and handle
+                <code>cmu-sort-move</code>: cancel it and reorder your state. The kit adds no
+                buttons and moves nothing; it still says where the item went and keeps focus on it.
+              </p>
+              <pre class="kit-code"><code>&lt;script&gt;
+  let steps = $state(["Delete the email", "Don't click its links", "Report it"]);
+  let list;
+
+  $effect(() =&gt; {
+    const move = (e) =&gt; {
+      e.preventDefault();
+      const { from, to } = e.detail;
+      steps.splice(to, 0, steps.splice(from, 1)[0]);
+    };
+    list.addEventListener("cmu-sort-move", move);
+    return () =&gt; list.removeEventListener("cmu-sort-move", move);
+  });
+&lt;/script&gt;
+
+&lt;ol class="cmu-sort" data-cmu-sort bind:this={list}&gt;
+  {#each steps as step, i (step)}
+    &lt;li&gt;
+      {step}
+      &lt;input type="hidden" name="order" value={step} /&gt;
+      &lt;span class="cmu-sort-moves"&gt;
+        &lt;button type="button" class="btn ghost small" data-cmu-move="-1"
+          aria-label="Move {step} up" disabled={i === 0}&gt;▲&lt;/button&gt;
+        &lt;button type="button" class="btn ghost small" data-cmu-move="1"
+          aria-label="Move {step} down" disabled={i === steps.length - 1}&gt;▼&lt;/button&gt;
+      &lt;/span&gt;
+    &lt;/li&gt;
+  {/each}
+&lt;/ol&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Vue">
+              <p class="cmu-label kit-framework-label">In Vue</p>
+              <p>
+                The list is Vue's, so render the buttons yourself and handle
+                <code>cmu-sort-move</code>: cancel it and reorder your state. The kit adds no
+                buttons and moves nothing; it still says where the item went and keeps focus on it.
+              </p>
+              <pre class="kit-code"><code>&lt;script setup&gt;
+import { ref } from "vue";
+const steps = ref(["Delete the email", "Don't click its links", "Report it"]);
+function move(e) {
+  e.preventDefault();
+  const { from, to } = e.detail;
+  steps.value.splice(to, 0, steps.value.splice(from, 1)[0]);
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;ol class="cmu-sort" data-cmu-sort @cmu-sort-move="move"&gt;
+    &lt;li v-for="(step, i) in steps" :key="step"&gt;
+      {{ step }}
+      &lt;input type="hidden" name="order" :value="step"&gt;
+      &lt;span class="cmu-sort-moves"&gt;
+        &lt;button type="button" class="btn ghost small" data-cmu-move="-1"
+          :aria-label="`Move ${step} up`" :disabled="i === 0"&gt;▲&lt;/button&gt;
+        &lt;button type="button" class="btn ghost small" data-cmu-move="1"
+          :aria-label="`Move ${step} down`" :disabled="i === steps.length - 1"&gt;▼&lt;/button&gt;
+      &lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/template&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>
+                Rails renders the list, and the kit adds the buttons and moves the items; the hidden
+                fields send the new order as <code>order[]</code>. With Turbo, a page restored from
+                its cache already has the buttons, and the kit doesn't add them twice.
+              </p>
+              <pre class="kit-code"><code>&lt;ol class="cmu-sort" data-cmu-sort&gt;
+  &lt;% @steps.each do |step| %&gt;
+    &lt;li&gt;&lt;%= step.title %&gt;&lt;%= hidden_field_tag "order[]", step.id %&gt;&lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
 
             <h2 id="card-sort" class="rule-top">
               Card Sort
@@ -521,6 +651,16 @@
           <p><button class="btn" type="submit">Upload File</button></p>
         </form>
       </div>
+            <div class="kit-framework" data-framework="React Svelte Vue">
+              <p>
+                Use this markup in a {framework} component, with <code>cmu-drop-file</code> empty:
+                <code>cmu-app.js</code> writes the chosen file's name there and adds
+                <code>cmu-drop-over</code> while a file is over the zone. Keep the zone's
+                <code>class</code> fixed rather than set from state, or a re-render takes those
+                away. Read the file from the input's <code>change</code> event, as with any file
+                input.
+              </p>
+            </div>
             <p>
               Try it: choose a file, or drag one onto the zone. Its three looks: waiting, a file
               over it and a file chosen.
@@ -531,6 +671,16 @@
         <label class="cmu-drop cmu-drop-over"><input type="file"><span>Drag the file here, or <span class="cmu-drop-pick">choose a file</span></span><span class="cmu-drop-file"></span></label>
         <label class="cmu-drop cmu-drop-has-file"><input type="file"><span>Drag a different file here, or <span class="cmu-drop-pick">choose one</span></span><span class="cmu-drop-file">15112-syllabus.pdf</span></label>
       </div>
+            <div class="kit-framework" data-framework="React Svelte Vue">
+              <p>
+                Use this markup in a {framework} component, with <code>cmu-drop-file</code> empty:
+                <code>cmu-app.js</code> writes the chosen file's name there and adds
+                <code>cmu-drop-over</code> while a file is over the zone. Keep the zone's
+                <code>class</code> fixed rather than set from state, or a re-render takes those
+                away. Read the file from the input's <code>change</code> event, as with any file
+                input.
+              </p>
+            </div>
             <h3 id="file-picker-dialog">In a Dialog</h3>
             <p>
               When uploading is one action on a busy page, such as a row in a table, put the zone in
@@ -557,6 +707,16 @@
           </form>
         </dialog>
       </div>
+            <div class="kit-framework" data-framework="React Svelte Vue">
+              <p>
+                Use this markup in a {framework} component, with <code>cmu-drop-file</code> empty:
+                <code>cmu-app.js</code> writes the chosen file's name there and adds
+                <code>cmu-drop-over</code> while a file is over the zone. Keep the zone's
+                <code>class</code> fixed rather than set from state, or a re-render takes those
+                away. Read the file from the input's <code>change</code> event, as with any file
+                input.
+              </p>
+            </div>
             <h2 id="tap" class="rule-top">
               ID Tap / NFC
               <span class="kit-where"

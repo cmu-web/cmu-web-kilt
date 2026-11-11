@@ -269,10 +269,6 @@ td > .kit-where {
 .kit-how [role="tabpanel"] > .cmu-copyable {
   margin: 0;
 }
-/* In a tab, the tab names the CMS */
-.kit-how .kit-cms-label {
-  display: none;
-}
 .kit-cms {
   margin: 0 0 1.5rem;
 }
@@ -296,4 +292,45 @@ td > .kit-where {
 }
 .kit-agent-prompt .cmu-snippet {
   margin-top: 0.75rem;
+}
+
+/* CMS and Framework tabs: a menu to pick yours (its label is for screen
+   readers; the tab already says CMS or Framework), then that one's steps.
+   The menu names it, so the blocks' own "In Cascade" and "In React" labels
+   hide in the tabs. */
+.kit-pick {
+  margin: 0.5rem 0 1.25rem;
+}
+#content .kit-pick select {
+  width: 20rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  color: var(--cmu-ink);
+  font-size: 1.1rem;
+}
+.kit-how :is(.kit-framework-label, .kit-cms-label),
+.kit-framework-panel .kit-framework-label {
+  display: none;
+}
+.kit-framework .kit-code {
+  margin-top: 1rem;
+}
+
+/* A CMS tab for a component a CMS can't use: in the code's place, a box the
+   size of a short code block, so the tab reads as answered, not empty */
+#content p.kit-unavailable {
+  margin: 0;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid var(--cmu-line);
+  background: var(--cmu-tint);
+  color: var(--cmu-ink);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Install's choices (.kit-options): with the menu, each option's own "In
+   Cascade" or "In React" heading is the menu's to say */
+.kit-options--on .kit-option-label {
+  display: none;
 }

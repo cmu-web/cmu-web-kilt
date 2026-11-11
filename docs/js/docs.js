@@ -177,6 +177,12 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
   // size: its code goes at the top of the text block after it, or of its notes
   // (a kit-follow block right after it), never inside the section.
   if (demo.classList.contains("kit-demo--wide")) {
+    // Its CMS and framework blocks go along with the code
+    var extras = [];
+    while (demo.nextElementSibling && demo.nextElementSibling.matches(".kit-cms, .kit-framework")) {
+      extras.push(demo.nextElementSibling);
+      demo.nextElementSibling.remove();
+    }
     var follow = demo.nextElementSibling;
     if (follow && !follow.classList.contains("kit-follow")) follow = null;
     var section = demo.querySelector(".content, .grid");
@@ -196,6 +202,7 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
       demo.after(next);
     }
     next.firstElementChild.prepend(pre);
+    pre.after.apply(pre, extras);
   } else {
     demo.after(pre);
   }
@@ -203,13 +210,41 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
 
 // Forms in the examples don't go anywhere
 // How to make it: under each component's example, tabs for the HTML and for
-// each CMS the docs cover, so a CMS reader can stay on their CMS's tab on
-// every page. A CMS's steps are a .kit-cms block right after the example
+// a CMS (each CMS the docs cover, under its own "In Cascade" label), so a CMS
+// reader can stay on that tab on every page. A CMS's steps are a .kit-cms block right after the example
 // (data-cms="Cascade"); where there's none, the tab says what to do instead,
 // from the section's labels. All rows share one name, so the choice applies to
 // every pattern and carries to other pages. Without the script, the steps
 // show under the example with their own labels.
-var CMSES = ["Cascade"];
+// The reader's choices (CMS, framework, stack) live in cookies, not
+// localStorage: the template's script clears all of localStorage for its list
+// filters, which would forget them. A year, for this site only.
+function savedChoice(key) {
+  var m = document.cookie.match(new RegExp("(?:^|; )" + key + "=([^;]*)"));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function saveChoice(key, value) {
+  document.cookie =
+    key + "=" + encodeURIComponent(value) + "; path=/; max-age=31536000; SameSite=Lax";
+}
+var CMSES = ["Cascade", "Another CMS"];
+// What the CMS menus say
+var CMS_NAMES = { Cascade: "Cascade", "Another CMS": "Another CMS (Drupal and Others)" };
+function cmsChoice() {
+  var saved = savedChoice("kit-cms");
+  return CMSES.indexOf(saved) >= 0 ? saved : CMSES[0];
+}
+function showCms(name) {
+  document.querySelectorAll(".kit-cms-panel").forEach(function (panel) {
+    panel.querySelector("select").value = name;
+    panel.querySelectorAll(":scope > .kit-cms").forEach(function (b) {
+      b.hidden = b.dataset.cms !== name;
+    });
+  });
+  document.querySelectorAll('.kit-options[data-kit-options="cms"]').forEach(function (set) {
+    set.kitShow && set.kitShow(name);
+  });
+}
 var sections = Array.prototype.slice.call(document.querySelectorAll("h2.rule-top[id]"));
 function sectionOf(el) {
   var found = null;
@@ -227,35 +262,372 @@ function standIn(cms, section) {
   var block = document.createElement("div");
   block.className = "kit-cms kit-cms--none";
   block.setAttribute("data-cms", cms);
-  var paste =
-    "We haven't written " +
-    cms +
-    " steps for this yet. Until then, in a page's Content section, open the " +
-    "editor's source code (&lt;&gt;) and paste the HTML from the HTML tab.";
+  var label = '<p class="cmu-label kit-cms-label">In ' + (other ? "another CMS" : cms) + "</p>";
+  var other = cms === "Another CMS";
+  var paste = other
+    ? "Paste the HTML from the HTML tab into the page's HTML source."
+    : "We haven't written " +
+      cms +
+      " steps for this yet. Until then, in a page's Content section, open the " +
+      "editor's source code (&lt;&gt;) and paste the HTML from the HTML tab.";
   if (has("app"))
     block.innerHTML =
-      "<p>This is for apps: it requires the kit's <code>cmu-app.css</code>, which a CMS site " +
-      "doesn't load.</p>";
+      label +
+      '<p class="kit-unavailable">This component isn\'t available in ' +
+      (other ? "another CMS" : cms) +
+      ".</p>";
   else if (has("script"))
     block.innerHTML =
+      label +
       "<p>" +
       paste +
-      ' It also requires the kit\'s script, <code>cmu-app.js</code>; see <a href="install.html#cascade">Install</a>.</p>';
-  else block.innerHTML = "<p>" + paste + "</p>";
+      " It also requires the kit's script, <code>cmu-app.js</code>; see " +
+      '<a href="install.html#' +
+      (other ? "other-cms" : "cascade") +
+      '">Install</a>.</p>';
+  else block.innerHTML = label + "<p>" + paste + "</p>";
   return block;
 }
+// Frameworks: a demo can also have a Framework tab, from .kit-framework
+// blocks right after it (data-framework="React", and so on). The tabs keep
+// general names (HTML, CMS, Framework), so everyone can see which one is
+// theirs; the Framework panel starts with a menu of frameworks, and the
+// choice carries to every Framework tab, here and on other pages. React until
+// they pick another.
+var FRAMEWORKS = ["React", "Svelte", "Vue", "Rails", "Django"];
+// What the menu says: each framework with the versions its examples are for.
+// The saved choice is only the name, so these can change without resetting it.
+var FRAMEWORK_NAMES = {
+  React: "React 18 and 19",
+  Svelte: "Svelte 5",
+  Vue: "Vue 3",
+  Rails: "Rails 7.2 and Later",
+  Django: "Django 5.2 and Later",
+};
+function frameworkChoice() {
+  var saved = savedChoice("kit-framework");
+  return FRAMEWORKS.indexOf(saved) >= 0 ? saved : FRAMEWORKS[0];
+}
+function showFramework(name) {
+  document.querySelectorAll('.kit-options[data-kit-options="framework"]').forEach(function (set) {
+    set.kitShow && set.kitShow(name);
+  });
+  document.querySelectorAll(".kit-framework-panel").forEach(function (panel) {
+    panel.querySelector("select").value = name;
+    panel.querySelectorAll(".kit-framework").forEach(function (b) {
+      b.hidden = b.dataset.framework !== name;
+    });
+  });
+}
+// React's version of a demo's HTML, as JSX: attribute names React spells its
+// own way, self-closed empty elements, default values for form fields (a
+// plain value or checked would make them read-only in React), style objects
+// and comments
+var JSX_NAMES = {
+  class: "className",
+  for: "htmlFor",
+  tabindex: "tabIndex",
+  readonly: "readOnly",
+  maxlength: "maxLength",
+  minlength: "minLength",
+  colspan: "colSpan",
+  rowspan: "rowSpan",
+  autocomplete: "autoComplete",
+  autofocus: "autoFocus",
+  inputmode: "inputMode",
+  enctype: "encType",
+  novalidate: "noValidate",
+  formnovalidate: "formNoValidate",
+  crossorigin: "crossOrigin",
+  srcset: "srcSet",
+  datetime: "dateTime",
+  contenteditable: "contentEditable",
+  spellcheck: "spellCheck",
+  allowfullscreen: "allowFullScreen",
+  frameborder: "frameBorder",
+  referrerpolicy: "referrerPolicy",
+  playsinline: "playsInline",
+  "accept-charset": "acceptCharset",
+  "http-equiv": "httpEquiv",
+  "stroke-width": "strokeWidth",
+  "stroke-linecap": "strokeLinecap",
+  "stroke-linejoin": "strokeLinejoin",
+  "fill-rule": "fillRule",
+  "clip-rule": "clipRule",
+  "xlink:href": "xlinkHref",
+};
+var VOID = /^(area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/i;
+// Attributes that are on or off; any other written without a value is an
+// empty string (alt, for a decorative image)
+var SWITCHES =
+  /^(allowfullscreen|async|autofocus|autoplay|checked|controls|default|defer|disabled|formnovalidate|hidden|inert|loop|multiple|muted|nomodule|novalidate|open|playsinline|readonly|required|reversed|selected)$/i;
+function jsxStyle(css) {
+  var parts = css
+    .split(";")
+    .map(function (d) {
+      var i = d.indexOf(":");
+      if (i < 0) return "";
+      var name = d.slice(0, i).trim(),
+        value = d.slice(i + 1).trim();
+      if (!name) return "";
+      if (name.indexOf("--") !== 0)
+        name = name.replace(/-([a-z])/g, function (_, c) {
+          return c.toUpperCase();
+        });
+      return JSON.stringify(name).replace(/^"([A-Za-z]\w*)"$/, "$1") + ": " + JSON.stringify(value);
+    })
+    .filter(Boolean);
+  return "{{ " + parts.join(", ") + " }}";
+}
+function toJsx(html) {
+  // A selected option becomes its select's defaultValue
+  html = html.replace(/<select\b([^>]*)>([\s\S]*?)<\/select>/gi, function (whole, attrs, inner) {
+    var picked = null;
+    inner = inner.replace(
+      /<option\b([^>]*?)\s+selected(?:="[^"]*")?([^>]*)>([^<]*)/gi,
+      function (_, before, after, label) {
+        var value = /\bvalue="([^"]*)"/.exec(before + after);
+        picked = value ? value[1] : label.trim();
+        return "<option" + before + after + ">" + label;
+      },
+    );
+    if (picked === null) return whole;
+    return "<select" + attrs + ' defaultValue="' + picked + '">' + inner + "</select>";
+  });
+  return html
+    .replace(/<!--([\s\S]*?)-->/g, function (_, c) {
+      return "{/*" + c.replace(/\*\//g, "* /") + "*/}";
+    })
+    .replace(
+      /<([a-zA-Z][\w-]*)((?:\s+[^\s=>/]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+))?)*)\s*(\/?)>/g,
+      function (_, tag, attrs, slash) {
+        var form = /^(input|textarea|select)$/i.test(tag);
+        var out = attrs.replace(
+          /(\s+)([^\s=>/]+)(?:\s*=\s*("[^"]*"|'[^']*'|[^\s>]+))?/g,
+          function (m, sp, name, value) {
+            var lower = name.toLowerCase(),
+              jsx = JSX_NAMES[lower] || name;
+            if (form && lower === "value") jsx = "defaultValue";
+            if (lower === "checked") jsx = "defaultChecked";
+            if (lower === "style" && value)
+              return sp + "style=" + jsxStyle(value.replace(/^["']|["']$/g, ""));
+            if (value === undefined && !SWITCHES.test(lower) && !/^(data|aria)-/.test(lower))
+              return sp + jsx + '=""';
+            return sp + jsx + (value === undefined ? "" : "=" + value);
+          },
+        );
+        return "<" + tag + out + (slash || VOID.test(tag) ? " />" : ">");
+      },
+    );
+}
+
+// What the Framework tab says for a component nobody wrote framework steps
+// for, from its labels
+function frameworkText(name, section) {
+  var where = section && section.querySelector(".kit-where");
+  var has = function (kind) {
+    return !!(where && where.querySelector(".kit-where-" + kind));
+  };
+  var rails = name === "Rails";
+  var text =
+    name === "Rails"
+      ? "Nothing more to do in Rails: use this markup in a view."
+      : name === "Django"
+        ? "Nothing more to do in Django: use this markup in a template."
+        : "Nothing more to do in " + name + ": use this markup in a component.";
+  if (has("app"))
+    text += " The page's <code>&lt;body&gt;</code> has the <code>cmu-app</code> class.";
+  if (has("script"))
+    text += rails
+      ? " <code>cmu-app.js</code> starts it, Turbo visits included."
+      : " <code>cmu-app.js</code> starts it whenever it appears.";
+  if (has("icons")) text += " Bootstrap Icons' stylesheet is on the page.";
+  return text;
+}
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+var frameworkPanels = 0;
+// The CMS tab: a menu of the CMSes the docs cover, over the chosen one's
+// steps; the choice carries to every CMS tab, here and on other pages
+function cmsPanel(blocks) {
+  var panel = document.createElement("div"),
+    id = "kit-cms-" + ++frameworkPanels,
+    choice = cmsChoice();
+  panel.className = "kit-cms-panel";
+  panel.innerHTML =
+    '<p class="kit-pick"><label class="sr-only" for="' +
+    id +
+    '">CMS</label> <select id="' +
+    id +
+    '">' +
+    CMSES.map(function (c) {
+      return '<option value="' + c + '">' + CMS_NAMES[c] + "</option>";
+    }).join("") +
+    "</select></p>";
+  blocks.forEach(function (b) {
+    b.hidden = b.dataset.cms !== choice;
+    panel.appendChild(b);
+  });
+  var menu = panel.querySelector("select");
+  menu.value = choice;
+  menu.addEventListener("change", function () {
+    saveChoice("kit-cms", menu.value);
+    showCms(menu.value);
+  });
+  return panel;
+}
+function frameworkPanel(pre) {
+  var found = [],
+    next = pre.nextElementSibling;
+  while (next && next.matches(".kit-cms, .kit-framework")) {
+    if (next.classList.contains("kit-framework")) found.push(next);
+    next = next.nextElementSibling;
+  }
+  var section = sectionOf(pre),
+    html = pre.textContent;
+  // Each framework's block: written for it (with its own code), or made here
+  // from the HTML, with any note written for it (a block with no code)
+  found = FRAMEWORKS.map(function (name) {
+    var mine = found.filter(function (b) {
+      return b.dataset.framework.split(/\s+/).indexOf(name) >= 0;
+    });
+    var whole = mine.filter(function (b) {
+      return b.querySelector("pre");
+    })[0];
+    if (whole) {
+      whole.dataset.framework = name;
+      return whole;
+    }
+    var block = document.createElement("div");
+    block.className = "kit-framework kit-framework--made";
+    block.dataset.framework = name;
+    // A note can name the reader's framework as {framework}
+    var notes = mine.map(function (b) {
+      return b.innerHTML.replace(/\{framework\}/g, name);
+    });
+    block.innerHTML =
+      (notes.length ? notes.join("") : "<p>" + frameworkText(name, section) + "</p>") +
+      '<pre class="kit-code"><code>' +
+      escapeHtml(name === "React" ? toJsx(html) : html) +
+      "</code></pre>";
+    mine.forEach(function (b) {
+      b.remove();
+    });
+    return block;
+  });
+  var panel = document.createElement("div"),
+    id = "kit-framework-" + ++frameworkPanels,
+    choice = frameworkChoice();
+  panel.className = "kit-framework-panel";
+  panel.innerHTML =
+    '<p class="kit-pick"><label class="sr-only" for="' +
+    id +
+    '">Framework</label> <select id="' +
+    id +
+    '">' +
+    FRAMEWORKS.map(function (f) {
+      return '<option value="' + f + '">' + FRAMEWORK_NAMES[f] + "</option>";
+    }).join("") +
+    "</select></p>";
+  found.forEach(function (b) {
+    b.hidden = b.dataset.framework !== choice;
+    panel.appendChild(b);
+  });
+  panel.querySelector("select").value = choice;
+  panel.querySelector("select").addEventListener("change", function (e) {
+    saveChoice("kit-framework", e.target.value);
+    saveChoice("kit-stack", e.target.value);
+    showFramework(e.target.value);
+  });
+  return panel;
+}
+
+// Choices outside the tabs, as on Install: a .kit-options set of .kit-option
+// blocks (data-option, and data-label for the menu) gets a menu over the
+// chosen one. A set of CMSes shares its choice with the CMS tabs, and a set
+// of stacks with the Framework tabs (for the stacks they cover). A link to an
+// option's id, such as install.html#django, opens it.
+document.querySelectorAll(".kit-options").forEach(function (set) {
+  var kind = set.dataset.kitOptions,
+    options = Array.prototype.slice.call(set.querySelectorAll(":scope > .kit-option")),
+    values = options.map(function (o) {
+      return o.dataset.option;
+    }),
+    id = "kit-options-" + ++frameworkPanels,
+    key = kind === "cms" ? "kit-cms" : "kit-stack";
+  set.insertAdjacentHTML(
+    "afterbegin",
+    '<p class="kit-pick"><label class="sr-only" for="' +
+      id +
+      '">' +
+      (kind === "cms" ? "CMS" : "Framework or stack") +
+      '</label> <select id="' +
+      id +
+      '">' +
+      options
+        .map(function (o) {
+          return (
+            '<option value="' +
+            o.dataset.option +
+            '">' +
+            (o.dataset.label || o.dataset.option) +
+            "</option>"
+          );
+        })
+        .join("") +
+      "</select></p>",
+  );
+  set.classList.add("kit-options--on");
+  var menu = set.querySelector("select");
+  set.kitShow = function (value) {
+    if (values.indexOf(value) < 0) return;
+    menu.value = value;
+    options.forEach(function (o) {
+      o.hidden = o.dataset.option !== value;
+    });
+  };
+  var first = [savedChoice(key), kind === "cms" ? null : savedChoice("kit-framework")].filter(
+    function (v) {
+      return values.indexOf(v) >= 0;
+    },
+  )[0];
+  set.kitShow(first || values[0]);
+  menu.addEventListener("change", function () {
+    saveChoice(key, menu.value);
+    if (kind === "cms") showCms(menu.value);
+    else if (FRAMEWORKS.indexOf(menu.value) >= 0) {
+      saveChoice("kit-framework", menu.value);
+      showFramework(menu.value);
+    }
+  });
+  // A link to one of its options opens that one
+  function fromHash() {
+    var hit = options.filter(function (o) {
+      return "#" + o.id === location.hash;
+    })[0];
+    if (!hit) return;
+    set.kitShow(hit.dataset.option);
+    hit.scrollIntoView();
+  }
+  fromHash();
+  window.addEventListener("hashchange", fromHash);
+});
+
 document.querySelectorAll("pre.kit-code[data-kit-demo-code]").forEach(function (pre, n) {
   var given = {};
   var next = pre.nextElementSibling;
-  while (next && next.classList.contains("kit-cms")) {
-    given[next.dataset.cms] = next;
+  while (next && next.matches(".kit-cms, .kit-framework")) {
+    if (next.classList.contains("kit-cms")) given[next.dataset.cms] = next;
     next = next.nextElementSibling;
   }
   var section = sectionOf(pre);
   var blocks = CMSES.map(function (cms) {
     return given[cms] || standIn(cms, section);
   }).filter(Boolean);
-  if (!blocks.length) return;
+  var framework = frameworkPanel(pre);
+  if (!blocks.length && !framework) return;
   var set = document.createElement("div");
   set.className = "kit-how";
   var list = document.createElement("div");
@@ -266,11 +638,8 @@ document.querySelectorAll("pre.kit-code[data-kit-demo-code]").forEach(function (
   pre.before(set);
   set.appendChild(list);
   [{ key: "html", label: "HTML", el: pre }]
-    .concat(
-      blocks.map(function (b) {
-        return { key: b.dataset.cms.toLowerCase(), label: b.dataset.cms, el: b };
-      }),
-    )
+    .concat(blocks.length ? [{ key: "cms", label: "CMS", el: cmsPanel(blocks) }] : [])
+    .concat(framework ? [{ key: "framework", label: "Framework", el: framework }] : [])
     .forEach(function (item, i) {
       var id = "kit-how-" + n + "-" + item.key;
       var tab = document.createElement("button");

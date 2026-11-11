@@ -105,6 +105,40 @@ function example(demo) {
   return lines.map((l) => l.slice(indent)).join("\n");
 }
 
+// The frameworks the docs' Framework tabs cover, with the versions their
+// examples are for (as the tabs' menus say)
+const FRAMEWORKS = {
+  React: "React 18 and 19",
+  Svelte: "Svelte 5",
+  Vue: "Vue 3",
+  Rails: "Rails 7.2 and Later",
+  Django: "Django 5.2 and Later",
+};
+
+// What a section says for each framework, from its .kit-framework blocks
+// (written for one or more frameworks; {framework} names the reader's).
+// Frameworks a section has no block for use its HTML as is (React as JSX).
+function frameworkNotes(body) {
+  const out = {};
+  for (const m of body.matchAll(/<div class="kit-framework" data-framework="([^"]+)">/g)) {
+    const block = balanced(body, m.index);
+    const code = block.match(/<pre[^>]*>\s*<code>([\s\S]*?)<\/code>\s*<\/pre>/);
+    const words = [
+      ...block
+        .replace(/<pre[\s\S]*?<\/pre>/g, "")
+        .matchAll(/<p(?![^>]*kit-framework-label)[^>]*>([\s\S]*?)<\/p>/g),
+    ]
+      .map((p) => text(p[1]))
+      .join("\n");
+    for (const name of m[1].split(/\s+/)) {
+      if (out[name]) continue;
+      out[name] = { text: words.replace(/\{framework\}/g, name) };
+      if (code) out[name].code = decode(code[1].replace(/<[^>]+>/g, ""));
+    }
+  }
+  return out;
+}
+
 const components = [];
 for (const file of PAGES) {
   const html = read(file);
@@ -142,22 +176,37 @@ for (const file of PAGES) {
       notes: [...prose.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => text(m[1])),
       classes,
       examples,
+      frameworks: frameworkNotes(body),
     });
   }
 }
 
-// Install: each section's snippets, in order
+// Install: each setup's code, in page order. A choice's options (a
+// .kit-options set of .kit-option blocks, such as Cascade or React) are
+// setups of their own, named by their ids; other code goes under its
+// section's heading id.
 function snippets(html) {
-  const out = {};
-  const parts = html.split(/<h[23] id="(?=[\w-]+")/).slice(1);
-  for (const part of parts) {
-    const id = part.match(/^([\w-]+)"/)[1];
-    const code = [...part.matchAll(/<pre[^>]*>\s*<code>([\s\S]*?)<\/code>\s*<\/pre>/g)].map((m) =>
+  const found = [];
+  const codeIn = (part) =>
+    [...part.matchAll(/<pre[^>]*>\s*<code>([\s\S]*?)<\/code>\s*<\/pre>/g)].map((m) =>
       decode(m[1].replace(/<[^>]+>/g, "")),
     );
-    if (code.length) out[id] = code;
+  for (const m of html.matchAll(/<div\s+class="kit-option"\s+id="([\w-]+)"/g)) {
+    const code = codeIn(balanced(html, m.index));
+    if (code.length) found.push([m.index, m[1], code]);
   }
-  return out;
+  // The rest, without the choices, by heading
+  let rest = html;
+  for (let i; (i = rest.search(/<div\s+class="kit-options"/)) >= 0;) {
+    const set = balanced(rest, i);
+    rest = rest.slice(0, i) + " ".repeat(set.length) + rest.slice(i + set.length);
+  }
+  for (const m of rest.matchAll(/<h[23] id="([\w-]+)"/g)) {
+    const next = rest.slice(m.index + 1).search(/<h[23] id="/);
+    const code = codeIn(rest.slice(m.index, next < 0 ? undefined : m.index + 1 + next));
+    if (code.length) found.push([m.index, m[1], code]);
+  }
+  return Object.fromEntries(found.sort((a, b) => a[0] - b[0]).map(([, id, code]) => [id, code]));
 }
 
 // Conventions: each section's heading and text
@@ -196,6 +245,7 @@ const data = {
     Icons: "Requires the optional Bootstrap Icons stylesheet.",
   },
   components: components.sort((a, b) => a.name.localeCompare(b.name)),
+  frameworks: FRAMEWORKS,
   install: snippets(read("install.html")),
   conventions: sections(read("conventions.html")),
 };
