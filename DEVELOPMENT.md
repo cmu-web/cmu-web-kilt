@@ -141,6 +141,19 @@ The hooks installed during setup run a subset of validation when you
 commit; run the full check before submitting. To run the hooks manually,
 use `npx prek run --all-files`.
 
+## Maintain the CMU Web Preview
+
+The CMU Web projects each publish `/images/cmu-web-preview.webp` for the
+other projects' cards and gallery entries. In this repository, that file
+is `docs/images/cmu-web-preview.webp`. Keep it a clean landscape screenshot
+at 1040 by 656 pixels, without the decorative browser frame; the cards add
+that frame themselves.
+
+Replace the image at the same path when the site changes. Consumers link
+the owning project's public URL, so they don't copy the image or release an
+update. Use general alt text on those cards.
+This asset is independent of the Open Graph image, `images/preview.jpg`.
+
 ## Prepare a Release
 
 Start on an up-to-date `main` with passing CI and a clean working tree.
