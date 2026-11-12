@@ -429,7 +429,7 @@
       "description": "Copies a code block for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. It requires cmu-app.js. There are two kinds:\n\nSay what a named copy button copies, such as “Copy Link.”",
       "notes": [
         "Code gets an icon in its corner, where anyone who copies code expects it. Put the block and the button in a cmu-copyable box, and name the button with aria-label and title (\"Copy Code,\" \"Copy HTML\") for screen readers and the tooltip.",
-        "Anything else gets a named button beside the block, for people who don't copy code every day: a link to share, an address to paste or a code to type somewhere else.",
+        "Anything else gets a named button beside the block, for people who don't copy code every day: a link to share, an address to paste or a code to type somewhere else. Put the block and the button in a cmu-copy-row; it lines them up as a field with a button does.",
         "It says it worked. The icon turns into a green check, the named button reads \"Copied\" for two seconds and screen readers hear \"Copied.\"",
         "If automatic copying isn't available, the button selects the text and tells the user to press Ctrl+C or Command+C to copy it."
       ],
@@ -682,7 +682,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/forms.html#field-button",
       "labels": ["App"],
-      "description": "One text box and the button that acts on it, side by side: adding someone by Andrew ID, looking up a code or running a search that waits for a button. Put the box and a btn in cmu-field-button, with the label right before it as for any text box. The box takes the spare width and the button matches its height. To filter a list as people type, with no button, use a search bar instead.",
+      "description": "One text box and the button that acts on it, side by side: adding someone by Andrew ID, looking up a code or running a search that waits for a button. Put the box and a btn in cmu-field-button, with the label right before it as for any text box. The box takes the spare width and the button matches its height. To filter a list as people type, with no button, use a search bar instead; to show text for people to copy, with a Copy button beside it, use a copy row.",
       "notes": [],
       "classes": ["cmu-field-button"],
       "examples": [
