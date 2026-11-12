@@ -96,6 +96,15 @@ body:is(.cmu-app, .cmu-framed) .cmu-field-row > div {
   flex: 1 1 7em;
   min-width: 0;
 }
+/* A hint for one field goes under that field, in its div; the row then lines
+   up along the top, so the taller field doesn't push the others down */
+body:is(.cmu-app, .cmu-framed) .cmu-field-row:has(> div > .cmu-hint) {
+  align-items: flex-start;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-field-row > div > .cmu-hint {
+  padding: 0;
+  margin: 0.35rem 0 0;
+}
 /* Short fields (numbers, codes) keep to 7em instead of sharing the row */
 body:is(.cmu-app, .cmu-framed) .cmu-field-row--short > div {
   flex-grow: 0;
