@@ -7,11 +7,6 @@
   display: flow-root; /* keep floated photos inside the box */
   background: #fff;
 }
-/* Room above a section heading's rule-top line, so the line doesn't crowd a
-   table or code block above it */
-#content > .content > div > h2.rule-top {
-  margin-top: 2rem;
-}
 /* The template zeroes padding on a section's first and last element; code
    samples keep theirs */
 #content .kit-code {
@@ -315,4 +310,15 @@ td > .kit-where {
 }
 .kit-unavailable + p {
   margin-top: 1rem;
+}
+/* Page Layout's Try It: while its form is on screen, the header it changes
+   stays pinned at the top of the window (docs.js); not on short screens,
+   where the header would cover the form */
+@media (min-height: 640px) {
+  body.kit-pin-header #container > header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+  }
 }

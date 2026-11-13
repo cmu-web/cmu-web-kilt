@@ -7,14 +7,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Forms and the pieces that go in them: fields in a row, options under a choice, choice rows, a question card, matching, sorting, a card sort and an ID tap."
+      content="Forms and the pieces that go in them, from text boxes and choices to matching, sorting and an ID tap."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Forms - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Forms and the pieces that go in them: fields in a row, options under a choice, choice rows, a question card, matching, sorting, a card sort and an ID tap."
+      content="Forms and the pieces that go in them, from text boxes and choices to matching, sorting and an ID tap."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/forms.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/images/preview.jpg" />
@@ -72,10 +72,47 @@
           <div>
             <h1>Forms</h1>
             <p class="cmu-lead">
-              Forms and the pieces that go in them: fields in a row, options under a choice, choice
-              rows, a question card, matching, sorting, a card sort and an ID tap.
+              Forms and the pieces that go in them, from text boxes and choices to matching, sorting
+              and an ID tap.
             </p>
-
+          </div>
+        </div>
+        <!-- On This Page: the sections, in a link bank under the intro -->
+        <div class="grid column3 nav cmu-on-this-page">
+          <p class="cmu-label">On This Page</p>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#setup">Page Setup and Forms</a></li>
+                <li><a href="#field-row">Fields in a Row</a></li>
+                <li><a href="#field-button">Field With a Button</a></li>
+                <li><a href="#suggest">Search Suggestions</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#sub-options">Options Under a Choice</a></li>
+                <li><a href="#choices">Choice Rows</a></li>
+                <li><a href="#question">Question Card</a></li>
+                <li><a href="#match">Matching</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#sort">Sorting</a></li>
+                <li><a href="#card-sort">Card Sort</a></li>
+                <li><a href="#file-picker">File Drop Zone / Picker</a></li>
+                <li><a href="#tap">ID Tap / NFC</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
             <h2 id="setup" class="rule-top">
               Page Setup and Forms
               <span class="kit-where"
@@ -215,6 +252,58 @@
             <input type="text" id="kit-add-id" name="andrewid" value="ac00" autocomplete="off">
             <button class="btn" type="submit">Add</button>
           </div>
+        </form>
+      </div>
+
+            <h2 id="suggest" class="rule-top">
+              Search Suggestions
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              A text box that suggests what to enter as people type: a place, a person, a course.
+              The page fills the list from its own data or a search service; the kit shows the list
+              under the box, bolds the typed text in each suggestion and handles the keyboard and
+              screen readers. Unlike a <code>datalist</code>, which each browser draws its own way,
+              the list looks the same everywhere.
+            </p>
+            <ul>
+              <li>
+                <strong>The markup:</strong> the box and an empty list in <code>cmu-suggest</code>.
+                Give the box <code>role="combobox"</code>, <code>aria-autocomplete="list"</code>,
+                <code>aria-expanded="false"</code> and <code>aria-controls</code> with the list's
+                id, and the list <code>role="listbox"</code> and <code>hidden</code>.
+              </li>
+              <li>
+                <strong>The page's part:</strong> on each <code>input</code> event, replace the
+                list's contents with an <code>&lt;li&gt;</code> for each suggestion, or empty it.
+                The list shows while the box has focus and has suggestions. Put a value to enter
+                that differs from what's shown in <code>data-value</code>.
+              </li>
+              <li>
+                <strong>Picking:</strong> Up and Down move through the list, Enter or a click picks
+                and Escape closes it. Picking puts the suggestion in the box and fires
+                <code>input</code>, <code>change</code> and <code>cmu-suggest-pick</code>, whose
+                <code>detail</code> is the chosen <code>&lt;li&gt;</code>.
+              </li>
+              <li>
+                <strong>With a button:</strong> put <code>cmu-suggest</code> inside a
+                <a href="#field-button">field with a button</a> in place of the box.
+              </li>
+            </ul>
+            <p class="kit-classes"><code>cmu-suggest</code>, <code>cmu-suggest-list</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <form>
+          <label for="kit-suggest">Campus Building</label>
+          <div class="cmu-suggest">
+            <input type="search" id="kit-suggest" name="building" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="kit-suggest-list" autocomplete="off" data-kit-suggest>
+            <ul class="cmu-suggest-list" id="kit-suggest-list" role="listbox" aria-label="Suggestions" hidden></ul>
+          </div>
+          <p class="cmu-hint">Try &ldquo;hall&rdquo; or &ldquo;center.&rdquo;</p>
         </form>
       </div>
 
@@ -760,10 +849,15 @@ function move(e) {
                 the icon's place. Leave its <code>alt</code> empty, since the label says what to do.
               </li>
               <li>
+                <strong>Its layout follows its room:</strong> where the form is at least 46rem wide,
+                the card or icon sits beside the words; anywhere narrower, such as on a phone, in a
+                sidebar or in a dialog, they stack, with the card large on top.
+              </li>
+              <li>
                 <strong>No card:</strong> put a search for an Andrew ID, name or email under it (a
                 <a href="#field-button">field with a button</a>), folded behind "No ID card?" and a
-                Search for a Person toggle (a <a href="lists.html#more">folded list</a>), for people
-                who forgot theirs or for staff entering someone by hand.
+                Find a Person toggle (a <a href="lists.html#more">folded list</a>), for people who
+                forgot theirs or for staff entering someone by hand.
               </li>
               <li>
                 <strong>Say who it found:</strong> after each tap, put the person's name in
@@ -792,7 +886,7 @@ function move(e) {
             <input type="text" id="kit-tap" name="card" autocomplete="off" inputmode="none" data-cmu-tap>
           </div>
           <details class="cmu-more cmu-tap-other">
-            <summary><span class="cmu-more-closed">No ID card?</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">Search for a Person</span><span class="cmu-more-open">Hide the Search</span></span></summary>
+            <summary><span class="cmu-more-closed">No ID card?</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">Find a Person</span><span class="cmu-more-open">Hide</span></span></summary>
             <label for="kit-tap-find">Andrew ID, Name or Email</label>
             <div class="cmu-field-button">
               <input type="search" id="kit-tap-find" name="q">
@@ -807,9 +901,11 @@ function move(e) {
               When tapping is one action on a busy page, such as an attendance list, put the target
               in a <a href="messages.html#dialog">dialog</a> that a small button opens, with Done as
               a ghost button that closes it. Give the field <code>autofocus</code>, and the dialog
-              opens ready. Since the reader's carriage return submits the form the field is in, put
-              Done in a <code>method="dialog"</code> form of its own; otherwise every tap would
-              close the dialog.
+              opens ready. (The demo here leaves it off, since this page shows the dialog already
+              open, and the browser would jump down to it.) Since the reader's carriage return
+              submits the form the field is in, put Done in a <code>method="dialog"</code> form of
+              its own; otherwise every tap would close the dialog. A dialog is narrow, so the target
+              stacks there.
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -823,10 +919,10 @@ function move(e) {
               <p class="cmu-tap-ready">Ready</p>
               <p class="cmu-tap-paused">Select here, then tap your card on the reader.</p>
               <p class="cmu-tap-result" role="status" data-kit-tap-result></p>
-              <input type="text" id="kit-tap-dialog-card" name="card" autocomplete="off" inputmode="none" data-cmu-tap autofocus>
+              <input type="text" id="kit-tap-dialog-card" name="card" autocomplete="off" inputmode="none" data-cmu-tap>
             </div>
             <details class="cmu-more cmu-tap-other">
-              <summary><span class="cmu-more-closed">No ID card?</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">Search for a Person</span><span class="cmu-more-open">Hide the Search</span></span></summary>
+              <summary><span class="cmu-more-closed">No ID card?</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">Find a Person</span><span class="cmu-more-open">Hide</span></span></summary>
               <label for="kit-tap-dialog-find">Andrew ID, Name or Email</label>
               <div class="cmu-field-button">
                 <input type="search" id="kit-tap-dialog-find" name="q">

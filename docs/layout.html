@@ -7,14 +7,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="The CMU template's own header, navigation, breadcrumbs and footer, as on this page. A CMS builds them for you; an app writes them itself, using this markup."
+      content="The CMU template's own header, navigation, breadcrumbs and footer, as on this page. A content management system (CMS) such as Cascade builds them from your site's settings, so you only need their names; an app writes them itself, using this markup."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Page Layout - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="The CMU template's own header, navigation, breadcrumbs and footer, as on this page. A CMS builds them for you; an app writes them itself, using this markup."
+      content="The CMU template's own header, navigation, breadcrumbs and footer, as on this page. A content management system (CMS) such as Cascade builds them from your site's settings, so you only need their names; an app writes them itself, using this markup."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/layout.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/images/preview.jpg" />
@@ -71,17 +71,42 @@
             <h1>Page Layout</h1>
             <p class="cmu-lead">
               The CMU template's own header, navigation, breadcrumbs and footer, as on this page. A
-              CMS builds them for you; an app writes them itself, using this markup.
+              content management system (CMS) such as Cascade builds them from your site's settings,
+              so you only need their names; an app writes them itself, using this markup.
             </p>
-
-            <div class="cmu-callout">
-              <p class="cmu-label">Using a CMS?</p>
-              <p>
-                Content Management Systems (CMSs), like Cascade, generate the page structure from
-                your site's folders and settings; you write the content that goes inside it. Use
-                this page to learn the names of the parts and, if you're building an app, what page
-                markup to generate.
-              </p>
+          </div>
+        </div>
+        <!-- On This Page: the sections, in a link bank under the intro -->
+        <div class="grid column3 nav cmu-on-this-page">
+          <p class="cmu-label">On This Page</p>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#try-header">The Header</a></li>
+                <li><a href="#site-name">Site Name</a></li>
+                <li><a href="#search">Site Search</a></li>
+                <li><a href="#navigation">Navigation</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
+                <li><a href="#tabs">Tabs</a></li>
+                <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+                <li><a href="#content-area">Content and Sidebar</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#service-home">Home Page for a Service Description</a></li>
+                <li><a href="#panels">Panels for Framed Pages</a></li>
+                <li><a href="#scripts">Scripts</a></li>
+                <li><a href="#skeleton">The Whole Page</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -506,8 +531,11 @@
             <p>
               <strong>Sections of one long page</strong> go in an
               <a href="sidebars.html#on-this-page">On This Page</a> box at the top of the sidebar,
-              as on <a href="conventions.html">Conventions</a>. Leave it off pages short enough to
-              see at a glance.
+              as on <a href="conventions.html">Conventions</a>, or, when the content uses the full
+              width, in an
+              <a href="sections.html#on-this-page-bank">On This Page link bank</a> under the intro,
+              as on <a href="forms.html">Forms</a>. Leave them off pages short enough to see at a
+              glance.
             </p>
             <figure class="cmu-shot">
               <img

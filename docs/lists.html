@@ -77,7 +77,40 @@
               Finding things in a long list: search, filters, tables with and without actions, files
               to download, Load More and pages, and folded lists.
             </p>
-
+          </div>
+        </div>
+        <!-- On This Page: the sections, in a link bank under the intro -->
+        <div class="grid column3 nav cmu-on-this-page">
+          <p class="cmu-label">On This Page</p>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#filters">Filters</a></li>
+                <li><a href="#tables">Tables</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#table-actions">Tables With Actions</a></li>
+                <li><a href="#files">File Table</a></li>
+                <li><a href="#load-more">Load More</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#pagination">Pagination</a></li>
+                <li><a href="#more">Folded Lists</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
             <h2 id="search" class="rule-top">
               Search
               <span class="kit-where"
@@ -525,7 +558,8 @@
               toggle with a chevron, which points down while closed, flips up when open and turns
               red on hover. It opens right there, so it doesn't look like a call to action to
               another page. Closed, the toggle is the count of what's hidden ("6 More"); open, it
-              says Show Fewer, and the whole list shows. It works without a script.
+              says Show Fewer, and the whole list shows. It works without a script, and it slides
+              open and closed where the browser supports that (not for people who turn motion down).
               <a href="layout.html#tabs">Tabs</a> fold the same way.
             </p>
             <p class="kit-classes">

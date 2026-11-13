@@ -671,10 +671,12 @@ document.querySelectorAll('.kit-demo form:not([method="dialog"])').forEach(funct
 });
 
 // A dialog marked data-preview shows in place as a picture of itself, and
-// its Open button shows the real modal (the <dialog> element does the rest)
+// its Open button shows the real modal (the <dialog> element does the rest).
+// The open attribute, not show(), so the picture doesn't take focus: show()
+// focuses the dialog's first field, and the page would jump down to it.
 function preview(d) {
   d.classList.add("kit-inline");
-  d.show();
+  d.setAttribute("open", "");
 }
 document.querySelectorAll("dialog[data-preview]").forEach(function (d) {
   preview(d);
@@ -1202,3 +1204,50 @@ document.querySelectorAll("[data-kit-tap]").forEach(function (form) {
     if (find) find.value = "";
   });
 });
+
+// Search Suggestions demo: campus buildings that contain the typed text
+document.querySelectorAll("[data-kit-suggest]").forEach(function (input) {
+  var buildings = [
+    "Baker Hall",
+    "Cohon University Center",
+    "College of Fine Arts",
+    "Doherty Hall",
+    "Gates and Hillman Centers",
+    "Hamerschlag Hall",
+    "Hunt Library",
+    "Margaret Morrison Carnegie Hall",
+    "Mellon Institute",
+    "Porter Hall",
+    "Posner Center",
+    "Posner Hall",
+    "Purnell Center for the Arts",
+    "Scaife Hall",
+    "Tepper Building",
+    "Wean Hall",
+  ];
+  var list = document.getElementById(input.getAttribute("aria-controls"));
+  input.addEventListener("input", function () {
+    var typed = input.value.trim().toLowerCase();
+    list.replaceChildren.apply(
+      list,
+      buildings
+        .filter(function (name) {
+          return typed && name.toLowerCase().includes(typed) && name.toLowerCase() !== typed;
+        })
+        .map(function (name) {
+          var option = document.createElement("li");
+          option.textContent = name;
+          return option;
+        }),
+    );
+  });
+});
+
+// Page Layout's Try It: while its form is on screen, the header it changes
+// stays pinned to the top of the window (docs.css), the way a scroll gallery
+// holds its picture while its steps go by
+var kitTryForm = document.querySelector("form.kit-try");
+if (kitTryForm && window.IntersectionObserver)
+  new IntersectionObserver(function (entries) {
+    document.body.classList.toggle("kit-pin-header", entries[0].isIntersecting);
+  }).observe(kitTryForm);

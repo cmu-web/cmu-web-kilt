@@ -739,15 +739,120 @@
     });
   }
 
+  // Search suggestions: <div class="cmu-suggest"> holding the field,
+  // <input role="combobox" aria-controls="(list id)" aria-expanded="false"
+  // aria-autocomplete="list">, and <ul class="cmu-suggest-list" id="(list id)"
+  // role="listbox" hidden>. The page fills the list with <li> options as
+  // people type, from its own data or a search service; this shows the list
+  // under the field while it has focus and options, bolds the typed text in
+  // each option and handles the keyboard: Up and Down move, Enter picks,
+  // Escape closes. Picking puts the option's data-value (or its text) in the
+  // field and fires input, change and cmu-suggest-pick (detail: the option).
+  // See Search Suggestions in the docs (forms.html).
+  function suggestParts(el) {
+    var box = el && el.closest && el.closest(".cmu-suggest");
+    if (!box) return null;
+    var input = box.querySelector("input"),
+      list = box.querySelector(".cmu-suggest-list");
+    return input && list ? { input: input, list: list } : null;
+  }
+  function suggestOptions(list) {
+    return Array.prototype.slice.call(list.querySelectorAll(":scope > li"));
+  }
+  function suggestActive(parts, i) {
+    var options = suggestOptions(parts.list);
+    options.forEach(function (option, n) {
+      option.setAttribute("aria-selected", n === i ? "true" : "false");
+    });
+    if (options[i]) {
+      parts.input.setAttribute("aria-activedescendant", options[i].id);
+      options[i].scrollIntoView({ block: "nearest" });
+    } else parts.input.removeAttribute("aria-activedescendant");
+  }
+  function suggestOpen(parts, open) {
+    open = open && suggestOptions(parts.list).length > 0 && document.activeElement === parts.input;
+    parts.list.hidden = !open;
+    parts.input.setAttribute("aria-expanded", open ? "true" : "false");
+    if (!open) suggestActive(parts, -1);
+  }
+  function suggestPick(parts, option) {
+    parts.input.value = option.getAttribute("data-value") || option.textContent;
+    suggestOpen(parts, false);
+    ["input", "change"].forEach(function (type) {
+      parts.input.dispatchEvent(new Event(type, { bubbles: true }));
+    });
+    parts.input.dispatchEvent(
+      new CustomEvent("cmu-suggest-pick", { bubbles: true, detail: option }),
+    );
+  }
+  // New options: give each an id and role, bold the typed text in plain
+  // ones, and show them
+  function suggestRefresh(list) {
+    var parts = suggestParts(list);
+    if (!parts) return;
+    var typed = parts.input.value.trim().toLowerCase();
+    suggestOptions(list).forEach(function (option, n) {
+      option.setAttribute("role", "option");
+      if (!option.id) option.id = list.id + "-" + n;
+      var text = option.textContent,
+        at = typed ? text.toLowerCase().indexOf(typed) : -1;
+      if (option.children.length || at < 0) return;
+      var strong = document.createElement("strong");
+      strong.textContent = text.slice(at, at + typed.length);
+      option.replaceChildren(text.slice(0, at), strong, text.slice(at + typed.length));
+    });
+    suggestOpen(parts, true);
+  }
+  document.addEventListener("keydown", function (e) {
+    var parts =
+      e.target.matches && e.target.matches(".cmu-suggest input") && suggestParts(e.target);
+    if (!parts) return;
+    var options = suggestOptions(parts.list),
+      i = options.findIndex(function (option) {
+        return option.getAttribute("aria-selected") === "true";
+      });
+    if ((e.key === "ArrowDown" || e.key === "ArrowUp") && options.length) {
+      e.preventDefault();
+      suggestOpen(parts, true);
+      suggestActive(
+        parts,
+        e.key === "ArrowDown" ? (i + 1) % options.length : i <= 0 ? options.length - 1 : i - 1,
+      );
+    } else if (e.key === "Enter" && !parts.list.hidden && i >= 0) {
+      e.preventDefault();
+      suggestPick(parts, options[i]);
+    } else if (e.key === "Escape" && !parts.list.hidden) {
+      e.preventDefault();
+      suggestOpen(parts, false);
+    }
+  });
+  // mousedown, not click, so the field keeps focus
+  document.addEventListener("mousedown", function (e) {
+    var option = e.target.closest && e.target.closest(".cmu-suggest-list > li");
+    if (!option) return;
+    e.preventDefault();
+    suggestPick(suggestParts(option), option);
+  });
+  ["focusin", "focusout"].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var parts =
+        e.target.matches && e.target.matches(".cmu-suggest input") && suggestParts(e.target);
+      if (parts) suggestOpen(parts, type === "focusin");
+    });
+  });
+
   startCountdowns(document);
   startTabs(document);
   startScrollGalleries(document);
-  // Countdowns, sorting lists, email links and tabs added later start, and a countdown whose
-  // date changes restarts
+  // Countdowns, sorting lists, email links and tabs added later start, a
+  // countdown whose date changes restarts, and suggestion lists show new options
   new MutationObserver(function (changes) {
     changes.forEach(function (c) {
       if (c.type === "attributes") countdown(c.target);
-      else
+      else {
+        // A suggestion list's options changed
+        if (c.target.classList && c.target.classList.contains("cmu-suggest-list"))
+          suggestRefresh(c.target);
         c.addedNodes.forEach(function (n) {
           startCountdowns(n);
           startSorts(n);
@@ -755,6 +860,7 @@
           startTabs(n);
           startScrollGalleries(n);
         });
+      }
     });
   }).observe(document.documentElement, {
     childList: true,

@@ -32,7 +32,8 @@ body:is(.cmu-app, .cmu-framed)
     + input[type="number"],
     + input[type="date"],
     + input[type="datetime-local"],
-    + .cmu-field-button
+    + .cmu-field-button,
+    + .cmu-suggest
   ),
 body:is(.cmu-app, .cmu-framed)
   fieldset:not(.cmu-choices, .cmu-match, .cmu-question *, .cmu-card-sort *, :has(> .cmu-sort))
@@ -77,6 +78,27 @@ body:is(.cmu-app, .cmu-framed) select,
 body:is(.cmu-app, .cmu-framed) input[type="text"] {
   width: 100%;
   margin-bottom: 2em;
+}
+/* Text boxes fit their column: the template caps them just under 100% but
+   adds its padding on top, so a full-width box sticks out past menus */
+body:is(.cmu-app, .cmu-framed)
+  :is(
+    textarea,
+    input:not(
+      [type="checkbox"],
+      [type="radio"],
+      [type="range"],
+      [type="color"],
+      [type="file"],
+      [type="submit"],
+      [type="button"],
+      [type="reset"],
+      [type="image"],
+      [type="hidden"]
+    )
+  ) {
+  box-sizing: border-box;
+  max-width: 100%;
 }
 body:is(.cmu-app, .cmu-framed) select.inline,
 body:is(.cmu-app, .cmu-framed) input[type="text"].inline {
@@ -145,10 +167,59 @@ body:is(.cmu-app, .cmu-framed) .cmu-field-row > span {
   border: 1px solid transparent;
   line-height: normal;
 }
-body:is(.cmu-app, .cmu-framed) .cmu-field-row:has(+ p.cmu-hint) {
+/* Search suggestions: a list under a text box, filled by the page as
+   people type (cmu-app.js shows it and handles the keyboard). The box keeps
+   a text box's space below; the list floats over what follows. */
+body:is(.cmu-app, .cmu-framed) .cmu-suggest {
+  position: relative;
+  margin: 0 0 2em;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-suggest > input {
+  width: 100%;
+  margin: 0;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-field-button > .cmu-suggest {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+:is(#content, body) .cmu-suggest-list {
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 18rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--cmu-line);
+  border-top: 0;
+  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
+}
+:is(#content, body) .cmu-suggest-list[hidden] {
+  display: none;
+}
+:is(#content, body) .cmu-suggest-list > li {
+  margin: 0;
+  padding: 0.5em 0.75em;
+  border-left: 3px solid transparent;
+  line-height: 1.4;
+  cursor: pointer;
+}
+:is(#content, body) .cmu-suggest-list > li:is(:hover, [aria-selected="true"]) {
+  background: var(--cmu-tint);
+  border-left-color: var(--cmu-red);
+}
+/* A hint right under a row of fields, a field with a button or a field with
+   suggestions, as under a single field */
+body:is(.cmu-app, .cmu-framed)
+  :is(.cmu-field-row, .cmu-field-button, .cmu-suggest):has(+ p.cmu-hint) {
   margin-bottom: 0;
 }
-body:is(.cmu-app, .cmu-framed) .cmu-field-row + p.cmu-hint {
+body:is(.cmu-app, .cmu-framed) :is(.cmu-field-row, .cmu-field-button, .cmu-suggest) + p.cmu-hint {
   padding: 0;
   margin: 0.35rem 0 2rem;
 }
@@ -899,6 +970,13 @@ button.btn.wide {
 .cmu-dialog-buttons .btn {
   margin: 0;
 }
+/* A map, as from Leaflet, which takes its size from its box: a fixed
+   height, shorter on small screens, and a border like a text box's */
+.cmu-map {
+  height: min(24rem, 55vh);
+  margin: 0 0 0.5em;
+  border: 1px solid var(--cmu-line);
+}
 /* File drop zone / picker: a label wrapping a file input, so it works by
    click and keyboard as well as by dragging (cmu-app.js handles the drag).
    Icon: Bootstrap Icons
@@ -1278,6 +1356,32 @@ button.btn.wide {
 }
 .cmu-more[open] .cmu-more-open {
   display: inline;
+}
+/* Opening and closing slide and fade, where the browser can animate a
+   details' size (::details-content and interpolate-size); elsewhere it opens
+   at once. Not folded tabs, whose contents leave the box. The clip margin
+   keeps focus rings inside showing. */
+.cmu-more:not(.cmu-tabs-more) {
+  interpolate-size: allow-keywords;
+}
+.cmu-more:not(.cmu-tabs-more)::details-content {
+  block-size: 0;
+  opacity: 0;
+  overflow: clip;
+  overflow-clip-margin: 0.25rem;
+  transition:
+    block-size 0.2s ease,
+    opacity 0.2s ease,
+    content-visibility 0.2s allow-discrete;
+}
+.cmu-more:not(.cmu-tabs-more)[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmu-more:not(.cmu-tabs-more)::details-content {
+    transition: none;
+  }
 }
 
 /* Long results: a count under the list, then either Load More or a pager.
@@ -1710,9 +1814,10 @@ body:is(.cmu-app, .cmu-framed) .cmu-filter-group input[type="text"] {
 .cmu-tap-card {
   grid-area: picture;
   display: block;
-  width: 13rem;
-  max-width: 60%;
+  width: 21rem;
+  max-width: 100%;
   height: auto;
+  margin-bottom: 0.6rem;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(23, 44, 75, 0.15);
 }
@@ -1755,10 +1860,16 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-target > input,
 .cmu-tap-target:focus-within > label::before {
   background: var(--cmu-green);
 }
+/* The form is the container the layout measures, so the target stacks
+   wherever it's narrow (a column, a sidebar, a dialog), not only on phones */
+.cmu-tap {
+  container-type: inline-size;
+}
 /* Wide enough: the card or icon on the left, then the label and Ready,
-   left-aligned, with a line between */
-@media (min-width: 480px) {
+   left-aligned, with a line between; the target grows to fit them */
+@container (min-width: 46rem) {
   .cmu-tap-target {
+    max-width: 46rem;
     grid-template-areas: "picture ." "picture label" "picture message" "picture .";
     grid-template-columns: auto auto;
     grid-template-rows: 1fr auto auto 1fr;
@@ -1769,7 +1880,9 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-target > input,
     text-align: left;
   }
   .cmu-tap-target > .cmu-tap-card {
+    width: 18rem;
     max-width: none;
+    margin-bottom: 0;
   }
   body:is(.cmu-app, .cmu-framed) .cmu-tap-target > label,
   .cmu-tap-target > label {
@@ -1783,12 +1896,9 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-target > input,
     border-left: 1px solid var(--cmu-line);
   }
 }
-/* In a dialog, the target is most of it */
+/* In a dialog, the target is most of it; a dialog is narrow, so it stacks */
 .cmu-dialog .cmu-tap-target {
   margin: 1rem 0;
-}
-.cmu-dialog .cmu-tap-card {
-  width: 9rem;
 }
 body:is(.cmu-app, .cmu-framed) .cmu-dialog .cmu-tap-target > label {
   font-size: 1.25rem;

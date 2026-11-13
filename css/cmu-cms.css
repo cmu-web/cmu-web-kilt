@@ -351,6 +351,38 @@ ol.cmu-flow > li > strong {
   margin-bottom: 0.25rem;
 }
 
+/* A link bank with no band color (grid ... nav on white): the template pads a
+   link bank to give its color room, but on white that padding is only empty
+   space, so it goes. Colored link banks keep theirs. */
+.grid.nav:not(.red, .blue, .grey, .darkgrey, .teal, .green, .darkgreen, .gold) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* On This Page as a link bank: the template's link bank (grid ... nav) with
+   cmu-on-this-page and a label first, for long pages whose content uses the
+   full width. The label takes a row of its own, over all the columns, and the
+   link bank drops the template's top and bottom padding, which gives a
+   colored band room; other link banks keep it. */
+.cmu-on-this-page {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.cmu-on-this-page > .cmu-label {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* An image with see-through parts, such as a logo, a cutout or a generated
+   image, over a light checkerboard, the way image editors show transparency.
+   On the image itself or on a figure holding it. */
+img.cmu-transparent,
+.cmu-transparent img {
+  background: #fff conic-gradient(#e6e6e6 25%, transparent 0 50%, #e6e6e6 0 75%, transparent 0) 0
+    0 / 16px 16px;
+}
+
 /* Callout: a labeled aside on a page (cmu-label, then text beside it) */
 .cmu-callout {
   display: flex;

@@ -265,6 +265,20 @@
       "frameworks": {}
     },
     {
+      "id": "cta-row",
+      "name": "Call-to-Action Row",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/content.html#cta-row",
+      "labels": ["CMS"],
+      "description": "Lines up a button, a call to action and an optional note, in a hero or anywhere on a page. A paragraph with just a button and then a call to action gets the same spacing without it. The note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with; keep it to a short line.\n\nAn app page's actions, such as New Semester on a list of semesters, go in a row like this under the heading and its lead, never beside the heading.",
+      "notes": [],
+      "classes": ["cmu-cta-row", "cmu-cta-note"],
+      "examples": [
+        "<div class=\"cmu-cta-row\">\n  <a class=\"btn\" href=\"#cta-row\">Reserve a Camera</a>\n  <a class=\"cta\" href=\"#cta-row\">See What's Available</a>\n  <p class=\"cmu-cta-note\">Loans last three days.</p>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "callout",
       "name": "Callout and Note",
       "page": "Content",
@@ -615,21 +629,19 @@
       "frameworks": {}
     },
     {
-      "id": "intro",
-      "name": "Eyebrow, Lead and Call-to-Action Row",
-      "page": "Page Tops",
-      "url": "https://webkilt.andrew.cmu.edu/tops.html#intro",
+      "id": "eyebrow-lead",
+      "name": "Eyebrow and Lead",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/content.html#eyebrow-lead",
       "labels": ["CMS"],
       "description": "",
       "notes": [
         "Eyebrow: an optional short red line right above a heading. Use it on a page or card meant for one group (\"For Students,\" as on path cards), or to flag something new (\"New for Spring 2027\"). Leave it off a page for everyone, such as an app's home page, and never repeat the site's name in it: that's already the big title at the top of every page.",
-        "Lead: the larger first paragraph under a page title.",
-        "Call-to-action row: lines up a button, a link and an optional note. A paragraph with just a button and then a call to action gets the same spacing without it.",
-        "An app page's actions, such as New Semester on a list of semesters, go in a row under the heading and its lead, never beside the heading."
+        "Lead: the larger first paragraph under a page title."
       ],
-      "classes": ["cmu-eyebrow", "cmu-lead", "cmu-cta-row", "cmu-cta-note"],
+      "classes": ["cmu-eyebrow", "cmu-lead"],
       "examples": [
-        "<p class=\"cmu-eyebrow\">For Students</p>\n<h1>Borrow a Camera</h1>\n<p class=\"cmu-lead\">Reserve one in about a minute, and pick it up at the desk.</p>\n<div class=\"cmu-cta-row\">\n  <a class=\"btn\" href=\"#intro\">Reserve a Camera</a>\n  <a class=\"cta\" href=\"#intro\">See What's Available</a>\n  <p class=\"cmu-cta-note\">Loans last three days.</p>\n</div>"
+        "<p class=\"cmu-eyebrow\">For Students</p>\n<h1>Borrow a Camera</h1>\n<p class=\"cmu-lead\">Reserve one in about a minute, and pick it up at the desk.</p>"
       ],
       "frameworks": {}
     },
@@ -793,7 +805,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/lists.html#more",
       "labels": ["App"],
-      "description": "A <details> whose summary reads as a line of text ending in a bold toggle with a chevron, which points down while closed, flips up when open and turns red on hover. It opens right there, so it doesn't look like a call to action to another page. Closed, the toggle is the count of what's hidden (\"6 More\"); open, it says Show Fewer, and the whole list shows. It works without a script. Tabs fold the same way.",
+      "description": "A <details> whose summary reads as a line of text ending in a bold toggle with a chevron, which points down while closed, flips up when open and turns red on hover. It opens right there, so it doesn't look like a call to action to another page. Closed, the toggle is the count of what's hidden (\"6 More\"); open, it says Show Fewer, and the whole list shows. It works without a script, and it slides open and closed where the browser supports that (not for people who turn motion down). Tabs fold the same way.",
       "notes": [],
       "classes": ["cmu-more", "cmu-more-link", "cmu-more-closed", "cmu-more-open"],
       "examples": [
@@ -884,7 +896,8 @@
         "Ready on load: when it's the only ID tap on the page, the field takes focus when the page loads, so the reader works without a click. The target says Ready while the field has focus, and to select it when it doesn't, so a tap never goes nowhere. Selecting anywhere on the target focuses the field, and so does sending the form.",
         "A tap-only page: add data-cmu-tap=\"keep\" on a kiosk or check-in page, and the field also takes focus back whenever nothing else has it. On a page where something else should have focus first, use data-cmu-tap=\"click\", and the field waits to be selected.",
         "Show the card: add <img class=\"cmu-tap-card\"> with PlaceMellon's sample CMU ID card, https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg, and it takes the icon's place. Leave its alt empty, since the label says what to do.",
-        "No card: put a search for an Andrew ID, name or email under it (a field with a button), folded behind \"No ID card?\" and a Search for a Person toggle (a folded list), for people who forgot theirs or for staff entering someone by hand.",
+        "Its layout follows its room: where the form is at least 46rem wide, the card or icon sits beside the words; anywhere narrower, such as on a phone, in a sidebar or in a dialog, they stack, with the card large on top.",
+        "No card: put a search for an Andrew ID, name or email under it (a field with a button), folded behind \"No ID card?\" and a Find a Person toggle (a folded list), for people who forgot theirs or for staff entering someone by hand.",
         "Say who it found: after each tap, put the person's name in cmu-tap-result, so the person at the desk can catch a wrong card. It takes Ready's place, so the target doesn't move.",
         "Keep the number private: the field is never shown, and the app should clear it after each tap and never log card numbers."
       ],
@@ -899,8 +912,8 @@
         "cmu-field-button"
       ],
       "examples": [
-        "<form class=\"cmu-tap\">\n  <div class=\"cmu-tap-target\">\n    <img class=\"cmu-tap-card\" src=\"https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg\" alt=\"\" width=\"506\" height=\"319\">\n    <label for=\"kit-tap\">Tap Your CMU ID</label>\n    <p class=\"cmu-tap-ready\">Ready</p>\n    <p class=\"cmu-tap-paused\">Select here, then tap your card on the reader.</p>\n    <p class=\"cmu-tap-result\" role=\"status\"></p>\n    <input type=\"text\" id=\"kit-tap\" name=\"card\" autocomplete=\"off\" inputmode=\"none\" data-cmu-tap>\n  </div>\n  <details class=\"cmu-more cmu-tap-other\">\n    <summary><span class=\"cmu-more-closed\">No ID card?</span> <span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">Search for a Person</span><span class=\"cmu-more-open\">Hide the Search</span></span></summary>\n    <label for=\"kit-tap-find\">Andrew ID, Name or Email</label>\n    <div class=\"cmu-field-button\">\n      <input type=\"search\" id=\"kit-tap-find\" name=\"q\">\n      <button class=\"btn\" type=\"submit\" name=\"find\" value=\"1\">Find</button>\n    </div>\n  </details>\n</form>",
-        "</p>\n<dialog class=\"cmu-dialog\" id=\"kit-tap-dialog\" aria-labelledby=\"kit-tap-dialog-title\">\n  <h2 id=\"kit-tap-dialog-title\">Check In</h2>\n  <form class=\"cmu-tap\" method=\"post\">\n    <div class=\"cmu-tap-target\">\n      <img class=\"cmu-tap-card\" src=\"https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg\" alt=\"\" width=\"506\" height=\"319\">\n      <label for=\"kit-tap-dialog-card\">Tap Your CMU ID</label>\n      <p class=\"cmu-tap-ready\">Ready</p>\n      <p class=\"cmu-tap-paused\">Select here, then tap your card on the reader.</p>\n      <p class=\"cmu-tap-result\" role=\"status\"></p>\n      <input type=\"text\" id=\"kit-tap-dialog-card\" name=\"card\" autocomplete=\"off\" inputmode=\"none\" data-cmu-tap autofocus>\n    </div>\n    <details class=\"cmu-more cmu-tap-other\">\n      <summary><span class=\"cmu-more-closed\">No ID card?</span> <span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">Search for a Person</span><span class=\"cmu-more-open\">Hide the Search</span></span></summary>\n      <label for=\"kit-tap-dialog-find\">Andrew ID, Name or Email</label>\n      <div class=\"cmu-field-button\">\n        <input type=\"search\" id=\"kit-tap-dialog-find\" name=\"q\">\n        <button class=\"btn\" type=\"submit\" name=\"find\" value=\"1\">Find</button>\n      </div>\n    </details>\n  </form>\n  <form method=\"dialog\" class=\"cmu-dialog-buttons\">\n    <button class=\"btn ghost\" type=\"submit\">Done</button>\n  </form>\n</dialog>"
+        "<form class=\"cmu-tap\">\n  <div class=\"cmu-tap-target\">\n    <img class=\"cmu-tap-card\" src=\"https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg\" alt=\"\" width=\"506\" height=\"319\">\n    <label for=\"kit-tap\">Tap Your CMU ID</label>\n    <p class=\"cmu-tap-ready\">Ready</p>\n    <p class=\"cmu-tap-paused\">Select here, then tap your card on the reader.</p>\n    <p class=\"cmu-tap-result\" role=\"status\"></p>\n    <input type=\"text\" id=\"kit-tap\" name=\"card\" autocomplete=\"off\" inputmode=\"none\" data-cmu-tap>\n  </div>\n  <details class=\"cmu-more cmu-tap-other\">\n    <summary><span class=\"cmu-more-closed\">No ID card?</span> <span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">Find a Person</span><span class=\"cmu-more-open\">Hide</span></span></summary>\n    <label for=\"kit-tap-find\">Andrew ID, Name or Email</label>\n    <div class=\"cmu-field-button\">\n      <input type=\"search\" id=\"kit-tap-find\" name=\"q\">\n      <button class=\"btn\" type=\"submit\" name=\"find\" value=\"1\">Find</button>\n    </div>\n  </details>\n</form>",
+        "</p>\n<dialog class=\"cmu-dialog\" id=\"kit-tap-dialog\" aria-labelledby=\"kit-tap-dialog-title\">\n  <h2 id=\"kit-tap-dialog-title\">Check In</h2>\n  <form class=\"cmu-tap\" method=\"post\">\n    <div class=\"cmu-tap-target\">\n      <img class=\"cmu-tap-card\" src=\"https://placemellon.andrew.cmu.edu/images/cmu-id-card.svg\" alt=\"\" width=\"506\" height=\"319\">\n      <label for=\"kit-tap-dialog-card\">Tap Your CMU ID</label>\n      <p class=\"cmu-tap-ready\">Ready</p>\n      <p class=\"cmu-tap-paused\">Select here, then tap your card on the reader.</p>\n      <p class=\"cmu-tap-result\" role=\"status\"></p>\n      <input type=\"text\" id=\"kit-tap-dialog-card\" name=\"card\" autocomplete=\"off\" inputmode=\"none\" data-cmu-tap>\n    </div>\n    <details class=\"cmu-more cmu-tap-other\">\n      <summary><span class=\"cmu-more-closed\">No ID card?</span> <span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">Find a Person</span><span class=\"cmu-more-open\">Hide</span></span></summary>\n      <label for=\"kit-tap-dialog-find\">Andrew ID, Name or Email</label>\n      <div class=\"cmu-field-button\">\n        <input type=\"search\" id=\"kit-tap-dialog-find\" name=\"q\">\n        <button class=\"btn\" type=\"submit\" name=\"find\" value=\"1\">Find</button>\n      </div>\n    </details>\n  </form>\n  <form method=\"dialog\" class=\"cmu-dialog-buttons\">\n    <button class=\"btn ghost\" type=\"submit\">Done</button>\n  </form>\n</dialog>"
       ],
       "frameworks": {}
     },
@@ -1038,11 +1051,28 @@
       "page": "Sidebars",
       "url": "https://webkilt.andrew.cmu.edu/sidebars.html#on-this-page",
       "labels": ["Template"],
-      "description": "Links to the sections of a long page go in a sidebar link list. It's the template's list left-rule box, with no heading, as CMU's own sites use it: each link points to a section heading's id, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance.",
+      "description": "Links to the sections of a long page go in a sidebar link list. It's the template's list left-rule box, with no heading, as CMU's own sites use it: each link points to a section heading's id, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance. For a page whose content uses the full width, use an On This Page link bank under the intro instead.",
       "notes": [],
       "classes": ["list left-rule", "#id"],
       "examples": [
         "<div class=\"content\">\n  <div>\n    <h2>Borrowing Equipment</h2>\n    <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list left-rule\">\n      <ul>\n        <li><a href=\"#on-this-page\">What You Can Borrow</a></li>\n        <li><a href=\"#on-this-page\">How Long You Can Keep It</a></li>\n        <li><a href=\"#on-this-page\">Late Returns</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "on-this-page-bank",
+      "name": "On This Page Link Bank",
+      "page": "Page Sections",
+      "url": "https://webkilt.andrew.cmu.edu/sections.html#on-this-page-bank",
+      "labels": ["CMS"],
+      "description": "Links to the sections of a long page, in columns under its intro, for a page whose content uses the full width, such as wide tables or examples. It's a white link bank with cmu-on-this-page and a cmu-label first: the label takes a row of its own over the columns, and the link bank drops the template's top and bottom padding, which only gives a colored band room. The links stay the page's usual red, so they read as links.",
+      "notes": [
+        "Not on a page with a sidebar: there, the On This Page box goes at the top of the sidebar.",
+        "Not on a page short enough to see at a glance."
+      ],
+      "classes": ["grid column3 nav cmu-on-this-page", "cmu-label", "nav-list"],
+      "examples": [
+        "<div class=\"grid column3 nav cmu-on-this-page\">\n  <p class=\"cmu-label\">On This Page</p>\n  <div>\n    <div class=\"nav-list\">\n      <ul>\n        <li><a href=\"#on-this-page-bank\">Borrowing Equipment</a></li>\n        <li><a href=\"#on-this-page-bank\">Reserving a Room</a></li>\n      </ul>\n    </div>\n  </div>\n  <div>\n    <div class=\"nav-list\">\n      <ul>\n        <li><a href=\"#on-this-page-bank\">Printing</a></li>\n        <li><a href=\"#on-this-page-bank\">Software</a></li>\n      </ul>\n    </div>\n  </div>\n  <div>\n    <div class=\"nav-list\">\n      <ul>\n        <li><a href=\"#on-this-page-bank\">Getting Help</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1368,6 +1398,25 @@
       "classes": ["cmu-search-bar", "sr-only"],
       "examples": [
         "<div class=\"cmu-search-bar\">\n  <p>Search by course number or title.</p>\n  <label for=\"kit-search\" class=\"sr-only\">Find a Syllabus</label>\n  <input type=\"text\" id=\"kit-search\" placeholder=\"Find a syllabus&hellip;\">\n</div>\n  <table class=\"alternate cmu-full\">\n    <thead><tr><th scope=\"col\">Course</th><th scope=\"col\">Title</th><th scope=\"col\">Status</th></tr></thead>\n    <tbody id=\"kit-search-rows\">\n      <tr data-status=\"available\"><td class=\"cmu-fit\"><span class=\"cmu-code\">15-112</span></td><td>Fundamentals of Programming</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr data-status=\"unavailable\"><td class=\"cmu-fit\"><span class=\"cmu-code\">15-122</span></td><td>Principles of Imperative Computation</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--amber\">Unavailable</span></td></tr>\n      <tr data-status=\"available\"><td class=\"cmu-fit\"><span class=\"cmu-code\">21-120</span></td><td>Differential and Integral Calculus</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr data-status=\"unavailable\"><td class=\"cmu-fit\"><span class=\"cmu-code\">48-100</span></td><td>Architecture Design Studio</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--amber\">Unavailable</span></td></tr>\n      <tr data-status=\"available\"><td class=\"cmu-fit\"><span class=\"cmu-code\">76-101</span></td><td>Interpretation and Argument</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr data-status=\"available\"><td class=\"cmu-fit\"><span class=\"cmu-code\">85-102</span></td><td>Introduction to Psychology</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n    </tbody>\n  </table>\n  <p class=\"cmu-muted\" id=\"kit-search-count\" aria-live=\"polite\">Showing all 6 sections</p>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "suggest",
+      "name": "Search Suggestions",
+      "page": "Forms",
+      "url": "https://webkilt.andrew.cmu.edu/forms.html#suggest",
+      "labels": ["App", "Script"],
+      "description": "A text box that suggests what to enter as people type: a place, a person, a course. The page fills the list from its own data or a search service; the kit shows the list under the box, bolds the typed text in each suggestion and handles the keyboard and screen readers. Unlike a datalist, which each browser draws its own way, the list looks the same everywhere.",
+      "notes": [
+        "The markup: the box and an empty list in cmu-suggest. Give the box role=\"combobox\", aria-autocomplete=\"list\", aria-expanded=\"false\" and aria-controls with the list's id, and the list role=\"listbox\" and hidden.",
+        "The page's part: on each input event, replace the list's contents with an <li> for each suggestion, or empty it. The list shows while the box has focus and has suggestions. Put a value to enter that differs from what's shown in data-value.",
+        "Picking: Up and Down move through the list, Enter or a click picks and Escape closes it. Picking puts the suggestion in the box and fires input, change and cmu-suggest-pick, whose detail is the chosen <li>.",
+        "With a button: put cmu-suggest inside a field with a button in place of the box."
+      ],
+      "classes": ["cmu-suggest", "cmu-suggest-list"],
+      "examples": [
+        "<form>\n  <label for=\"kit-suggest\">Campus Building</label>\n  <div class=\"cmu-suggest\">\n    <input type=\"search\" id=\"kit-suggest\" name=\"building\" role=\"combobox\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-controls=\"kit-suggest-list\" autocomplete=\"off\">\n    <ul class=\"cmu-suggest-list\" id=\"kit-suggest-list\" role=\"listbox\" aria-label=\"Suggestions\" hidden></ul>\n  </div>\n  <p class=\"cmu-hint\">Try &ldquo;hall&rdquo; or &ldquo;center.&rdquo;</p>\n</form>"
       ],
       "frameworks": {}
     },
@@ -1702,6 +1751,20 @@
       "classes": ["grid column4 darkgreen boxes", "floatright", "aligncenter", "bi"],
       "examples": [
         "<div class=\"grid column4 darkgreen boxes\">\n  <h1>Spring 2027 Timeline</h1>\n  <div>\n    <div>\n      <i class=\"bi bi-flag floatright\" aria-hidden=\"true\"></i><h2>Uploads Open</h2>\n      <p>Upload from the web or <a href=\"#timeline\">from Canvas</a>, in any common file format, and replace it any time before classes end.</p>\n    </div>\n    <hr>\n    <p class=\"aligncenter\"><strong>Nov. 2, 2026</strong></p>\n  </div>\n  <div>\n    <div>\n      <i class=\"bi bi-bell floatright\" aria-hidden=\"true\"></i><h2>Reminders to Instructors</h2>\n    </div>\n    <hr>\n    <p class=\"aligncenter\"><strong>Dec. 7-18, 2026</strong></p>\n  </div>\n  <div>\n    <div>\n      <i class=\"bi bi-card-checklist floatright\" aria-hidden=\"true\"></i><h2>Syllabi Due</h2>\n      <p><a class=\"cta\" href=\"#timeline\">See What's Due</a></p>\n    </div>\n    <hr>\n    <p class=\"aligncenter\"><strong>Jan. 11, 2027</strong></p>\n  </div>\n  <div>\n    <div>\n      <i class=\"bi bi-calendar-event floatright\" aria-hidden=\"true\"></i><h2>Classes End</h2>\n    </div>\n    <hr>\n    <p class=\"aligncenter\"><strong>May 7, 2027</strong></p>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "transparent",
+      "name": "Transparent Images",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/content.html#transparent",
+      "labels": ["CMS"],
+      "description": "An image with see-through parts, such as a logo, a cutout or a generated image, over a light checkerboard, the way image editors show transparency. Use it where people pick or check an image, such as a preview of one they're about to download; on an ordinary page, let the image sit on the page's own background. Add cmu-transparent to the image, or to a <figure> holding it, with or without a screenshot frame.",
+      "notes": [],
+      "classes": ["cmu-transparent"],
+      "examples": [
+        "<figure class=\"cmu-transparent\">\n  <img src=\"images/scotty.png\" alt=\"Scotty as a round profile picture, with see-through corners.\" width=\"160\" height=\"160\">\n</figure>"
       ],
       "frameworks": {}
     },

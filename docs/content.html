@@ -82,7 +82,56 @@
               What goes inside a section: buttons and links, steps and lists, callouts, pills,
               screenshots, videos, code, countdowns and icons.
             </p>
-
+          </div>
+        </div>
+        <!-- On This Page: the sections, in a link bank under the intro -->
+        <div class="grid column3 nav cmu-on-this-page">
+          <p class="cmu-label">On This Page</p>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#buttons">Buttons and Links</a></li>
+                <li><a href="#link-button">Link Button</a></li>
+                <li><a href="#button-note">Button With a Note</a></li>
+                <li><a href="#cta-row">Call-to-Action Row</a></li>
+                <li><a href="#steps">Numbered Steps</a></li>
+                <li><a href="#checks">Bullet, Check and Plain Lists</a></li>
+                <li><a href="#callout">Callout and Note</a></li>
+                <li><a href="#eyebrow-lead">Eyebrow and Lead</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#text">Small Text</a></li>
+                <li><a href="#pills">Pills</a></li>
+                <li><a href="#captions">Photo Captions and Credits</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#transparent">Transparent Images</a></li>
+                <li><a href="#zoom">Enlarge on Click</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#embed">Embedded Page</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#snippet">Code Block</a></li>
+                <li><a href="#copy">Copy Button</a></li>
+                <li><a href="#agent-prompt">AI Agent Prompt</a></li>
+                <li><a href="#email">Email Links</a></li>
+                <li><a href="#countdown">Countdown</a></li>
+                <li><a href="#icons">Icons</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#more-template">And More</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
             <h2 id="buttons" class="rule-top">
               Buttons and Links
               <span class="kit-where"
@@ -232,6 +281,32 @@
         </div>
       </div>
 
+            <h2 id="cta-row" class="rule-top">
+              Call-to-Action Row
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Lines up a button, a call to action and an optional note, in a hero or anywhere on a
+              page. A paragraph with just a button and then a call to action gets the same spacing
+              without it. The note (<code>cmu-cta-note</code>) can answer the one question the
+              button raises, such as what to sign in with; keep it to a short line.
+            </p>
+            <p>
+              An app page's actions, such as New Semester on a list of semesters, go in a row like
+              this under the heading and its lead, never beside the heading.
+            </p>
+            <p class="kit-classes"><code>cmu-cta-row</code>, <code>cmu-cta-note</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-cta-row">
+          <a class="btn" href="#cta-row">Reserve a Camera</a>
+          <a class="cta" href="#cta-row">See What's Available</a>
+          <p class="cmu-cta-note">Loans last three days.</p>
+        </div>
+      </div>
+
             <h2 id="steps" class="rule-top">
               Numbered Steps
               <span class="kit-where"
@@ -357,6 +432,30 @@
         <div class="cmu-note">
           <p>You aren't in any queues right now.</p>
         </div>
+      </div>
+
+            <h2 id="eyebrow-lead" class="rule-top">
+              Eyebrow and Lead
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <ul>
+              <li>
+                <strong>Eyebrow:</strong> an optional short red line right above a heading. Use it
+                on a page or card meant for one group ("For Students," as on path cards), or to flag
+                something new ("New for Spring 2027"). Leave it off a page for everyone, such as an
+                app's home page, and never repeat the site's name in it: that's already the big
+                title at the top of every page.
+              </li>
+              <li><strong>Lead:</strong> the larger first paragraph under a page title.</li>
+            </ul>
+            <p class="kit-classes"><code>cmu-eyebrow</code>, <code>cmu-lead</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p class="cmu-eyebrow">For Students</p>
+        <h1>Borrow a Camera</h1>
+        <p class="cmu-lead">Reserve one in about a minute, and pick it up at the desk.</p>
       </div>
 
             <h2 id="text" class="rule-top">
@@ -504,6 +603,28 @@
         <figure class="cmu-shot cmu-shot--browser">
           <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
           <figcaption>The same frame as a browser window.</figcaption>
+        </figure>
+      </div>
+
+            <h2 id="transparent" class="rule-top">
+              Transparent Images
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              An image with see-through parts, such as a logo, a cutout or a generated image, over a
+              light checkerboard, the way image editors show transparency. Use it where people pick
+              or check an image, such as a preview of one they're about to download; on an ordinary
+              page, let the image sit on the page's own background. Add
+              <code>cmu-transparent</code> to the image, or to a <code>&lt;figure&gt;</code> holding
+              it, with or without a <a href="#screenshots">screenshot</a> frame.
+            </p>
+            <p class="kit-classes"><code>cmu-transparent</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <figure class="cmu-transparent">
+          <img src="images/scotty.png" alt="Scotty as a round profile picture, with see-through corners." width="160" height="160">
         </figure>
       </div>
 
