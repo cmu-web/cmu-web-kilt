@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T56TMJLK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sidebars - Components - Carnegie Mellon Web Kilt - Carnegie Mellon University</title>
@@ -245,14 +254,14 @@
             </h2>
             <p>
               Links to the sections of a long page go in a sidebar link list. It's the template's
-              <code>list left-rule</code> box, with no heading, as CMU's own sites use it: each link
+              <code>list simple</code> box, with no heading, as Marcom's own pages use it: each link
               points to a section heading's <code>id</code>, and the template scrolls to it. Put it
               first in the sidebar, and leave it off pages short enough to see at a glance. For a
               page whose content uses the full width, use an
               <a href="sections.html#on-this-page-bank">On This Page link bank</a> under the intro
               instead.
             </p>
-            <p class="kit-classes"><code>list left-rule</code>, links to <code>#id</code></p>
+            <p class="kit-classes"><code>list simple</code>, links to <code>#id</code></p>
           </div>
         </div>
         <!-- prettier-ignore -->
@@ -262,7 +271,7 @@
             <h2>Borrowing Equipment</h2>
             <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>
           </div><div class="sidebar">
-            <div class="list left-rule">
+            <div class="list simple">
               <ul>
                 <li><a href="#on-this-page">What You Can Borrow</a></li>
                 <li><a href="#on-this-page">How Long You Can Keep It</a></li>

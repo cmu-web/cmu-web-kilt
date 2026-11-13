@@ -1051,11 +1051,11 @@
       "page": "Sidebars",
       "url": "https://webkilt.andrew.cmu.edu/sidebars.html#on-this-page",
       "labels": ["Template"],
-      "description": "Links to the sections of a long page go in a sidebar link list. It's the template's list left-rule box, with no heading, as CMU's own sites use it: each link points to a section heading's id, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance. For a page whose content uses the full width, use an On This Page link bank under the intro instead.",
+      "description": "Links to the sections of a long page go in a sidebar link list. It's the template's list simple box, with no heading, as Marcom's own pages use it: each link points to a section heading's id, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance. For a page whose content uses the full width, use an On This Page link bank under the intro instead.",
       "notes": [],
-      "classes": ["list left-rule", "#id"],
+      "classes": ["list simple", "#id"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <h2>Borrowing Equipment</h2>\n    <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list left-rule\">\n      <ul>\n        <li><a href=\"#on-this-page\">What You Can Borrow</a></li>\n        <li><a href=\"#on-this-page\">How Long You Can Keep It</a></li>\n        <li><a href=\"#on-this-page\">Late Returns</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <h2>Borrowing Equipment</h2>\n    <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list simple\">\n      <ul>\n        <li><a href=\"#on-this-page\">What You Can Borrow</a></li>\n        <li><a href=\"#on-this-page\">How Long You Can Keep It</a></li>\n        <li><a href=\"#on-this-page\">Late Returns</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
