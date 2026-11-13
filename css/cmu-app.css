@@ -513,17 +513,56 @@ body:is(.cmu-app, .cmu-framed) .cmu-choices input {
   height: 1.25em;
   margin: 0;
 }
-.cmu-choices label:hover {
+body:is(.cmu-app, .cmu-framed) .cmu-choices label:hover {
   background: var(--cmu-tint);
 }
-.cmu-choices label:has(:checked) {
+body:is(.cmu-app, .cmu-framed) .cmu-choices label:has(:checked) {
   border-color: var(--cmu-red);
   background: var(--cmu-red-tint);
 }
 /* Inside the row, so a list or box around it doesn't clip the ring */
-.cmu-choices label:has(:focus-visible) {
+body:is(.cmu-app, .cmu-framed) .cmu-choices label:has(:focus-visible) {
   outline: 2px solid var(--cmu-red);
   outline-offset: -3px;
+}
+/* Choice grid: the same choices as tiles, for many short picks shown as
+   pictures (icons, colors). The radio button is hidden but still takes
+   focus and arrow keys; in a dialog the grid scrolls. */
+.cmu-choices--grid ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  gap: 0.5em;
+}
+.cmu-dialog .cmu-choices--grid ul {
+  max-height: min(22rem, 50vh);
+  overflow-y: auto;
+  padding: 2px;
+}
+.cmu-choices--grid li {
+  margin: 0;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-choices--grid label {
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4em;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0.85em 0.4em;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-choices--grid input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.cmu-choices--grid .bi {
+  font-size: 1.75rem;
+  line-height: 1;
 }
 /* A question card: one question and its choice rows on a white card, with a
    rule under the question; put it in a colored band. Its buttons: back on

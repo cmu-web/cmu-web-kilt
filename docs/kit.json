@@ -357,6 +357,20 @@
       "frameworks": {}
     },
     {
+      "id": "choice-grid",
+      "name": "Choice Grid",
+      "page": "Forms",
+      "url": "https://webkilt.andrew.cmu.edu/forms.html#choice-grid",
+      "labels": ["App"],
+      "description": "Many short choices that read best as pictures, such as icons or colors: choice rows laid out as tiles. Add cmu-choices--grid to the fieldset, and put a picture and a few words in each <label> after its <input>. The radio button is hidden but still takes focus, and the arrow keys move between tiles. The picked tile turns red. In a dialog, the grid scrolls, so a search field above it can narrow a long set.",
+      "notes": [],
+      "classes": ["cmu-choices cmu-choices--grid", "bi"],
+      "examples": [
+        "<form>\n  <fieldset class=\"cmu-choices cmu-choices--grid\">\n    <legend class=\"cmu-label\">Icon</legend>\n    <ul>\n      <li><label><input type=\"radio\" name=\"kit-icon\"><i class=\"bi bi-calendar-event\" aria-hidden=\"true\"></i>calendar-event</label></li>\n      <li><label><input type=\"radio\" name=\"kit-icon\" checked><i class=\"bi bi-building\" aria-hidden=\"true\"></i>building</label></li>\n      <li><label><input type=\"radio\" name=\"kit-icon\"><i class=\"bi bi-mortarboard\" aria-hidden=\"true\"></i>mortarboard</label></li>\n      <li><label><input type=\"radio\" name=\"kit-icon\"><i class=\"bi bi-book\" aria-hidden=\"true\"></i>book</label></li>\n      <li><label><input type=\"radio\" name=\"kit-icon\"><i class=\"bi bi-music-note-beamed\" aria-hidden=\"true\"></i>music-note-beamed</label></li>\n      <li><label><input type=\"radio\" name=\"kit-icon\"><i class=\"bi bi-trophy\" aria-hidden=\"true\"></i>trophy</label></li>\n    </ul>\n  </fieldset>\n</form>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "choices",
       "name": "Choice Rows",
       "page": "Forms",
