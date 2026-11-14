@@ -6,7 +6,7 @@ a release, so check which path a change takes.
 
 | Change                    | Publication Trigger           | What Changes for Users                                             |
 | ------------------------- | ----------------------------- | ------------------------------------------------------------------ |
-| Documentation or examples | Push to `main`                | The GitHub Pages site updates, using the current repository assets |
+| Documentation or examples | Push to `0.x`                 | The GitHub Pages site updates, using the current repository assets |
 | Kit release               | Push an annotated version tag | The tagged files become available through jsDelivr and GitHub      |
 | Rails gem                 | Push an annotated version tag | The same version becomes available on RubyGems                     |
 
@@ -17,18 +17,18 @@ This guide covers the maintainer's publishing work.
 ## Publish a Release
 
 First complete [release preparation](DEVELOPMENT.md#prepare-a-release).
-Confirm that the release commit is on `main`, the working tree is clean
+Confirm that the release commit is on `0.x`, the working tree is clean
 and the checks have passed. From that commit:
 
 ```bash
 kit_version=$(node -p 'require("./package.json").version')
 git tag -a "$kit_version" -m "Carnegie Mellon Web Kilt $kit_version"
-git push origin main "$kit_version"
+git push origin 0.x "$kit_version"
 ```
 
 Tags have no `v` prefix. The push publishes the files through GitHub and
 makes them available to jsDelivr; it also triggers the documentation build
-for `main`, and the Rails gem's publication to RubyGems. It does not update
+for `0.x`, and the Rails gem's publication to RubyGems. It does not update
 applications that already use the kit.
 
 ### Set Up RubyGems Publishing
@@ -86,7 +86,7 @@ version's files or integrity hashes.
 
 ## Publish the Documentation
 
-The [Pages workflow](.github/workflows/pages.yml) runs on pushes to `main`
+The [Pages workflow](.github/workflows/pages.yml) runs on pushes to `0.x`
 and can be run manually. It copies `docs/` to the site root, then adds the
 kit's CSS and JavaScript to the site's `css/` and `js/` folders. This is the
 layout served locally by `npm run docs`.
@@ -99,6 +99,6 @@ the Pages workflow in this repository. It serves the docs from a pinned
 release tag, so docs-only changes reach it with the next release.
 
 The Pages workflow publishes independently of the check workflow. Check a
-change before pushing it to `main`; a later validation failure does not
+change before pushing it to `0.x`; a later validation failure does not
 undo publication. To correct a published docs change, push a follow-up fix
 or revert. Keep release tags in place.

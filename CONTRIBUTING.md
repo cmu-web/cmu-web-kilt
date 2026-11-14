@@ -40,8 +40,8 @@ and examples too, including AP style and made-up example content.
 ## Send a Change for Review
 
 Use [Development](DEVELOPMENT.md) to set up a checkout and work through the
-edit, preview and check cycle. Branch from `main` and open the pull request
-against `main`, with one problem or addition per pull request.
+edit, preview and check cycle. Branch from `0.x` (the current template's line) and open the pull request
+against `0.x`, with one problem or addition per pull request.
 
 Explain what prompted the change, what a user will experience and how you
 checked it. Include before-and-after screenshots for visual changes and

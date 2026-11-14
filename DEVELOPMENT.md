@@ -177,7 +177,7 @@ for the test matrix.
 
 ## Prepare a Release
 
-Start on an up-to-date `main` with passing CI and a clean working tree.
+Start on an up-to-date `0.x` with passing CI and a clean working tree.
 Choose a patch for fixes, a minor version for additions or a major version
 for incompatible changes to public classes, custom properties or hooks.
 

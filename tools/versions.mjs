@@ -86,7 +86,7 @@ if (next) {
   console.log(`package.json, ${n} mentions and their integrity hashes now say ${next}. Next:
   git commit -am "chore: release ${next}"
   git tag -a ${next} -m "Carnegie Mellon Web Kilt ${next}"
-  git push origin main ${next}
+  git push origin 0.x ${next}
 Then check jsDelivr (DEPLOYMENT.md#check-a-release) and add release notes on GitHub.`);
 } else {
   const wrong = [];
