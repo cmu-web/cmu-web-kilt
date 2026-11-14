@@ -228,27 +228,6 @@ td > .kit-where {
   white-space: normal;
 }
 
-/* Illustrative sharing card on the Link Previews page. */
-.kit-link-preview {
-  border: 1px solid var(--cmu-line);
-  background: #fff;
-}
-.kit-link-preview img {
-  width: 100%;
-  border: 0;
-  box-shadow: none;
-}
-.kit-link-preview-text {
-  padding: 1rem 1.25rem;
-}
-.kit-link-preview-text > * {
-  display: block;
-}
-.kit-link-preview strong {
-  margin: 0.35rem 0;
-  color: var(--cmu-ink);
-}
-
 /* How to make it: the code and each CMS's steps as tab panels (docs.js) */
 .kit-how {
   margin: 0.5rem 0 2.5rem;

@@ -94,11 +94,12 @@
             </h2>
             <p>
               The top of a home page: copy on the left, art on the right. It becomes one column
-              below 820px. Lead with a tagline that says what the app does, then a button for the
-              main action and a "Get Started" call to action that jumps to the first section below,
-              headed Get Started. The tagline is the page's <code>&lt;h1&gt;</code>, and so is each
-              section's heading after it (see
-              <a href="sections.html#sections">Stacking Sections</a>). Under the buttons, an
+              below 820px. Use it at the top of a
+              <a href="layout.html#service-home">service description's home page</a>. Lead with a
+              tagline that says what the app does, then a button for the main action and a "Get
+              Started" call to action that jumps to the first section below, headed Get Started. The
+              tagline is the page's <code>&lt;h1&gt;</code>, and so is each section's heading after
+              it (see <a href="sections.html#sections">Stacking Sections</a>). Under the buttons, an
               optional <a href="content.html#cta-row">note</a> (<code>cmu-cta-note</code>) can
               answer the one question the button raises, such as what to sign in with. Keep it to a
               short line, and leave it out when the page answers it further down. The art can be:
@@ -113,15 +114,22 @@
                 <a href="content.html#zoom">Enlarge on Click</a>).
               </li>
               <li>
-                <strong>A photo or a tartan</strong> with no frame, with
-                <code>cmu-hero-art--plain</code>. Use the tartan files from
-                <a href="https://brand.cmu.edu/visual-identity/design-elements">brand.cmu.edu</a> as
-                they come: the brand rules don't allow redrawing or recoloring the tartan.
+                <strong>A photo</strong> with no frame, with <code>cmu-hero-art--plain</code>: the
+                place, the people or the thing the page is about.
               </li>
             </ul>
+            <p>
+              The rule along the top and the tint behind the copy are CMU red. To set one site's
+              hero apart from another's, add an accent from the CMU tartan's threads:
+              <code>cmu-hero--blue</code>, <code>cmu-hero--teal</code>,
+              <code>cmu-hero--green</code> or <code>cmu-hero--gold</code>. Use one accent across a
+              site.
+            </p>
             <p class="kit-classes">
-              <code>cmu-hero</code>, <code>cmu-hero-art</code>, <code>cmu-hero-art--stack</code>,
-              <code>cmu-hero-art--plain</code>, <code>cmu-cta-note</code>
+              <code>cmu-hero</code>, <code>cmu-hero--blue</code>, <code>cmu-hero--teal</code>,
+              <code>cmu-hero--green</code>, <code>cmu-hero--gold</code>, <code>cmu-hero-art</code>,
+              <code>cmu-hero-art--stack</code>, <code>cmu-hero-art--plain</code>,
+              <code>cmu-cta-note</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -148,9 +156,9 @@
           <a href="images/hero-pm.jpg" data-cmu-zoom><img src="images/hero-pm.jpg" alt="A home page with a Build Your Placeholder button beside a photo of a Muppet in glasses."></a>
         </div>
       </div>
-            <p>A photo or a tartan file:</p>
+            <p>A photo:</p>
             <pre class="kit-code"><code>&lt;div class="cmu-hero-art cmu-hero-art--plain"&gt;
-  &lt;img src="images/tartan.png" alt=""&gt;
+  &lt;img src="images/checkout-desk.jpg" alt="The equipment checkout desk, with camera kits on the shelves behind it."&gt;
 &lt;/div&gt;</code></pre>
 
             <h2 id="photo-hero" class="rule-top">

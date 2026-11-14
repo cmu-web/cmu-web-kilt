@@ -1618,14 +1618,18 @@
       "page": "Page Tops",
       "url": "https://webkilt.andrew.cmu.edu/tops.html#hero",
       "labels": ["CMS", "Script"],
-      "description": "The top of a home page: copy on the left, art on the right. It becomes one column below 820px. Lead with a tagline that says what the app does, then a button for the main action and a \"Get Started\" call to action that jumps to the first section below, headed Get Started. The tagline is the page's <h1>, and so is each section's heading after it (see Stacking Sections). Under the buttons, an optional note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with. Keep it to a short line, and leave it out when the page answers it further down. The art can be:",
+      "description": "The top of a home page: copy on the left, art on the right. It becomes one column below 820px. Use it at the top of a service description's home page. Lead with a tagline that says what the app does, then a button for the main action and a \"Get Started\" call to action that jumps to the first section below, headed Get Started. The tagline is the page's <h1>, and so is each section's heading after it (see Stacking Sections). Under the buttons, an optional note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with. Keep it to a short line, and leave it out when the page answers it further down. The art can be:\n\nThe rule along the top and the tint behind the copy are CMU red. To set one site's hero apart from another's, add an accent from the CMU tartan's threads: cmu-hero--blue, cmu-hero--teal, cmu-hero--green or cmu-hero--gold. Use one accent across a site.",
       "notes": [
         "One screenshot, drawn in a browser frame.",
         "Two or three screenshots, overlapping, with cmu-hero-art--stack. They're cropped to the same shape from the top, and the last one is in front, so put the main one last. To let people see one up close, link it to its full-size image with data-cmu-zoom (see Enlarge on Click).",
-        "A photo or a tartan with no frame, with cmu-hero-art--plain. Use the tartan files from brand.cmu.edu as they come: the brand rules don't allow redrawing or recoloring the tartan."
+        "A photo with no frame, with cmu-hero-art--plain: the place, the people or the thing the page is about."
       ],
       "classes": [
         "cmu-hero",
+        "cmu-hero--blue",
+        "cmu-hero--teal",
+        "cmu-hero--green",
+        "cmu-hero--gold",
         "cmu-hero-art",
         "cmu-hero-art--stack",
         "cmu-hero-art--plain",
