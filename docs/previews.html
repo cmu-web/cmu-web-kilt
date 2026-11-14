@@ -27,8 +27,8 @@
       property="og:description"
       content="Give shared links a clear title, a short description and a recognizable image."
     />
-    <meta property="og:url" content="https://webkilt.andrew.cmu.edu/previews.html" />
-    <meta property="og:image" content="https://webkilt.andrew.cmu.edu/images/preview.jpg" />
+    <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/previews.html" />
+    <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -88,12 +88,18 @@
           </div>
         </div>
         <!-- On This Page: the sections, in a link bank under the intro -->
-        <div class="grid column3 nav cmu-on-this-page">
+        <div class="grid column4 nav cmu-on-this-page">
           <p class="cmu-label">On This Page</p>
           <div>
             <div class="nav-list">
               <ul>
                 <li><a href="#what">What People See</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
                 <li><a href="#image">The Preview Image</a></li>
               </ul>
             </div>
@@ -102,14 +108,12 @@
             <div class="nav-list">
               <ul>
                 <li><a href="#tags">Open Graph Tags</a></li>
-                <li><a href="#cms">In a CMS</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#app">In an App</a></li>
                 <li><a href="#check">Check a Preview</a></li>
               </ul>
             </div>
@@ -223,6 +227,7 @@
             </p>
             <pre
               class="kit-code"
+              data-kit-demo-code
             ><code>&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
 &lt;meta property="og:title" content="Reserve a Camera Kit - Equipment Checkout"&gt;
 &lt;meta property="og:description" content="Cameras, laptops and lights, free for CMU courses."&gt;
@@ -233,6 +238,165 @@
 &lt;meta property="og:image:height" content="630"&gt;
 &lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
 &lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                CMU's Cascade template writes each page's title, description, address and type for
+                you, from the page's settings; fill in the page's Description field. Don't add those
+                tags yourself: a second copy conflicts. To add the picture:
+              </p>
+              <ol>
+                <li>Make the site's <a href="#image">preview image</a>.</li>
+                <li>
+                  Upload it to the site's <code>images</code> folder as <code>preview.jpg</code>.
+                </li>
+                <li>
+                  Open the site's <code>setup</code> block, select <strong>Edit</strong> and choose
+                  the image under <strong>Social Media Image</strong>. That's the default for every
+                  page; a page with a better picture of its own can set its own Social Media Image.
+                  Cascade suggests 900 &times; 600, but 1200 &times; 630 is what the apps that build
+                  previews expect, so they don't crop it.
+                </li>
+                <li>
+                  Publish the site's pages, then <a href="#check">check a preview</a>, and look for
+                  <code>og:image</code> in a page's source.
+                </li>
+              </ol>
+            </div>
+            <div class="kit-cms" data-cms="Another CMS">
+              <p class="cmu-label kit-cms-label">In Another CMS</p>
+              <p>
+                Check its link-preview or social-sharing settings first; most write some of these
+                tags from each page's title and summary. Add only the tags it doesn't already
+                provide, in the page template's <code>&lt;head&gt;</code>, so every page gets them.
+              </p>
+            </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>
+                Put the tags in the layout, filled in from each view, and set the app's public
+                address once (<code>config.x.public_url</code>). A view names itself with
+                <code>&lt;% content_for :title, "Reserve a Camera Kit" %&gt;</code> and
+                <code>&lt;% content_for :description, "&hellip;" %&gt;</code>. The image goes in
+                <code>public/images/preview.jpg</code>.
+              </p>
+              <pre
+                class="kit-code"
+              ><code>&lt;%# app/views/layouts/application.html.erb, in &lt;head&gt; %&gt;
+&lt;% site = "Equipment Checkout" %&gt;
+&lt;% base = Rails.configuration.x.public_url %&gt;
+&lt;meta property="og:site_name" content="&lt;%= site %&gt;"&gt;
+&lt;meta property="og:title" content="&lt;%= content_for?(:title) ? "#{yield(:title)} - #{site}" : site %&gt;"&gt;
+&lt;meta property="og:description" content="&lt;%= content_for?(:description) ? yield(:description) : "Cameras, laptops and lights, free for CMU courses." %&gt;"&gt;
+&lt;meta property="og:url" content="&lt;%= base + request.path %&gt;"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:image" content="&lt;%= base %&gt;/images/preview.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Django">
+              <p class="cmu-label kit-framework-label">In Django</p>
+              <p>
+                Put the tags in the base template, filled in from each view's context
+                (<code>page_title</code>, <code>page_description</code>), with the app's public
+                address as a setting (<code>PUBLIC_URL</code>) that a context processor passes to
+                every template. The image goes in your static files.
+              </p>
+              <pre
+                class="kit-code"
+              ><code>{# templates/base.html, in &lt;head&gt;; {% load static %} at the top #}
+&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
+&lt;meta property="og:title" content="{% if page_title %}{{ page_title }} - {% endif %}Equipment Checkout"&gt;
+&lt;meta property="og:description" content="{{ page_description|default:'Cameras, laptops and lights, free for CMU courses.' }}"&gt;
+&lt;meta property="og:url" content="{{ PUBLIC_URL }}{{ request.path }}"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:image" content="{{ PUBLIC_URL }}{% static 'images/preview.jpg' %}"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Svelte">
+              <p class="cmu-label kit-framework-label">In SvelteKit</p>
+              <p>
+                SvelteKit renders pages on the server, so tags in
+                <code>&lt;svelte:head&gt;</code> reach the apps that build previews. Put the shared
+                tags in the root layout and let each page add its own title and description in its
+                own <code>&lt;svelte:head&gt;</code>. The image goes in <code>static/images</code>.
+              </p>
+              <pre class="kit-code"><code>&lt;!-- src/routes/+layout.svelte --&gt;
+&lt;script&gt;
+  import { page } from "$app/state";
+  const base = "https://equipment.andrew.cmu.edu";
+  let { children } = $props();
+&lt;/script&gt;
+&lt;svelte:head&gt;
+  &lt;meta property="og:site_name" content="Equipment Checkout" /&gt;
+  &lt;meta property="og:url" content={base + page.url.pathname} /&gt;
+  &lt;meta property="og:type" content="website" /&gt;
+  &lt;meta property="og:image" content="{base}/images/preview.jpg" /&gt;
+  &lt;meta property="og:image:width" content="1200" /&gt;
+  &lt;meta property="og:image:height" content="630" /&gt;
+  &lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit." /&gt;
+  &lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;/svelte:head&gt;
+{@render children()}
+
+&lt;!-- src/routes/reserve/+page.svelte --&gt;
+&lt;svelte:head&gt;
+  &lt;meta property="og:title" content="Reserve a Camera Kit - Equipment Checkout" /&gt;
+  &lt;meta property="og:description" content="Cameras, laptops and lights, free for CMU courses." /&gt;
+&lt;/svelte:head&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="React">
+              <p class="cmu-label kit-framework-label">In React</p>
+              <p>
+                The apps that build previews don't run JavaScript, so tags a React component adds in
+                the browser never reach them. In an app that renders only in the browser, put the
+                site's tags in <code>index.html</code>, the same for every page: the site's name,
+                description, home address and preview image. For tags that differ by page, render
+                the page on the server with a framework built on React, like Next.js, which writes
+                the <code>&lt;head&gt;</code> there.
+              </p>
+              <pre
+                class="kit-code"
+              ><code>&lt;!-- index.html, in &lt;head&gt;: the same for every page --&gt;
+&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
+&lt;meta property="og:title" content="Equipment Checkout"&gt;
+&lt;meta property="og:description" content="Cameras, laptops and lights, free for CMU courses."&gt;
+&lt;meta property="og:url" content="https://equipment.andrew.cmu.edu/"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:image" content="https://equipment.andrew.cmu.edu/images/preview.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Vue">
+              <p class="cmu-label kit-framework-label">In Vue</p>
+              <p>
+                The apps that build previews don't run JavaScript, so tags a Vue component adds in
+                the browser never reach them. In an app that renders only in the browser, put the
+                site's tags in <code>index.html</code>, the same for every page: the site's name,
+                description, home address and preview image. For tags that differ by page, render
+                the page on the server with Nuxt, which writes the <code>&lt;head&gt;</code> there.
+              </p>
+              <pre
+                class="kit-code"
+              ><code>&lt;!-- index.html, in &lt;head&gt;: the same for every page --&gt;
+&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
+&lt;meta property="og:title" content="Equipment Checkout"&gt;
+&lt;meta property="og:description" content="Cameras, laptops and lights, free for CMU courses."&gt;
+&lt;meta property="og:url" content="https://equipment.andrew.cmu.edu/"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:image" content="https://equipment.andrew.cmu.edu/images/preview.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+            </div>
             <ul class="cmu-checks">
               <li>
                 <strong>Keep the title specific:</strong> Use the page's name followed by the site's
@@ -256,6 +420,43 @@
                 <strong>Request a large image:</strong> <code>twitter:card</code> with
                 <code>summary_large_image</code> requests the larger preview on platforms that
                 support Twitter Cards.
+              </li>
+            </ul>
+            <h3 id="in-an-app">In an App</h3>
+            <p>
+              An app writes every tag itself, and its previews are only as good as its layout. Put
+              the tags in the one layout every page uses, filled in from each page, so no page goes
+              out without them.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Give every page a description:</strong> Make it part of what a page must
+                set, as a title is, and use the app's own one-sentence description as the fallback.
+              </li>
+              <li>
+                <strong>Build addresses from one setting:</strong> Keep the app's public address,
+                such as <code>https://equipment.andrew.cmu.edu</code>, in its configuration and join
+                each page's path to it. Don't use the address a request came in on: behind a proxy
+                or on a test copy, it's the wrong one.
+              </li>
+              <li>
+                <strong>Serve the image from the app:</strong> Put
+                <code>images/preview.jpg</code> with its other static files, open to everyone, so it
+                lasts as long as the app and loads without signing in.
+              </li>
+              <li>
+                <strong>Plan for sign-in:</strong> The apps that build previews aren't signed in. A
+                link to a page behind sign-in shows whatever a signed-out visitor gets, usually the
+                sign-in page, so give that page the app's own title, description and image.
+              </li>
+              <li>
+                <strong>Never put a user's data in the tags:</strong> No names, course numbers or
+                anything else from the signed-in page, even where it would be more specific.
+              </li>
+              <li>
+                <strong>Check them automatically:</strong> A test that fetches a few pages and looks
+                for <code>og:title</code>, <code>og:description</code> and <code>og:image</code>
+                catches a layout that lost them. These docs write and check theirs with a script.
               </li>
             </ul>
 
@@ -289,87 +490,6 @@
                 <strong>Put them in the template for stories,</strong> such as a CMS's news or blog
                 page type or an app's post layout, so every story gets them without anyone
                 remembering.
-              </li>
-            </ul>
-
-            <h2 id="cms" class="rule-top">In a CMS</h2>
-            <p>
-              CMU's Cascade template writes each page's title, description, address and type for
-              you, from the page's settings; fill in the page's Description field. Don't add those
-              tags yourself: a second copy conflicts.
-            </p>
-            <h3 id="cms-image">Add a Picture</h3>
-            <ol class="cmu-steps">
-              <li>Make the site's <a href="#image">preview image</a>.</li>
-              <li>
-                Upload it to the site's <code>images</code> folder as <code>preview.jpg</code>.
-              </li>
-              <li>
-                Open the site's <code>setup</code> block, select <strong>Edit</strong> and choose
-                the image under <strong>Social Media Image</strong>. That's the default for every
-                page; a page with a better picture of its own can set its own Social Media Image.
-                Cascade suggests 900 &times; 600, but 1200 &times; 630 is what the apps that build
-                previews expect, so they don't crop it.
-              </li>
-              <li>
-                Publish the site's pages, then <a href="#check">check a preview</a>, and look for
-                <code>og:image</code> in a page's source.
-              </li>
-            </ol>
-            <p>
-              In another CMS, check its link-preview or social-sharing settings first. Add only the
-              tags it doesn't already provide.
-            </p>
-
-            <h2 id="app" class="rule-top">In an App</h2>
-            <p>
-              An app writes every tag itself, and its previews are only as good as its layout. Put
-              the tags in the one layout every page uses, filled in from each page, so no page goes
-              out without them.
-            </p>
-            <pre
-              class="kit-code"
-            ><code>&lt;!-- In the layout's &lt;head&gt;, from each page's own values --&gt;
-&lt;meta name="description" content="{{ page.description }}"&gt;
-&lt;meta property="og:site_name" content="Equipment Checkout"&gt;
-&lt;meta property="og:title" content="{{ page.title }} - Equipment Checkout"&gt;
-&lt;meta property="og:description" content="{{ page.description }}"&gt;
-&lt;meta property="og:url" content="https://equipment.andrew.cmu.edu{{ page.path }}"&gt;
-&lt;meta property="og:type" content="website"&gt;
-&lt;meta property="og:image" content="https://equipment.andrew.cmu.edu/images/preview.jpg"&gt;
-&lt;meta property="og:image:width" content="1200"&gt;
-&lt;meta property="og:image:height" content="630"&gt;
-&lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
-&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Give every page a description:</strong> Make it part of what a page must
-                set, as a title is, and use the app's own one-sentence description as the fallback.
-              </li>
-              <li>
-                <strong>Build addresses from one setting:</strong> Keep the app's public address,
-                such as <code>https://equipment.andrew.cmu.edu</code>, in its configuration and join
-                each page's path to it. Don't use the address a request came in on: behind a proxy
-                or on a test copy, it's the wrong one.
-              </li>
-              <li>
-                <strong>Serve the image from the app:</strong> Put
-                <code>images/preview.jpg</code> with its other static files, open to everyone, so it
-                lasts as long as the app and loads without signing in.
-              </li>
-              <li>
-                <strong>Plan for sign-in:</strong> The apps that build previews aren't signed in. A
-                link to a page behind sign-in shows whatever a signed-out visitor gets, usually the
-                sign-in page, so give that page the app's own title, description and image.
-              </li>
-              <li>
-                <strong>Never put a user's data in the tags:</strong> No names, course numbers or
-                anything else from the signed-in page, even where it would be more specific.
-              </li>
-              <li>
-                <strong>Check them automatically:</strong> A test that fetches a few pages and looks
-                for <code>og:title</code>, <code>og:description</code> and <code>og:image</code>
-                catches a layout that lost them. These docs write and check theirs with a script.
               </li>
             </ul>
 
