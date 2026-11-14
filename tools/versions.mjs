@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 const root = new URL("../", import.meta.url);
 const files = [
   "README.md",
+  "packages/rails/README.md",
   ...readdirSync(new URL("docs/", root))
     .filter((f) => f.endsWith(".html"))
     .map((f) => "docs/" + f),

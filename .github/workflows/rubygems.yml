@@ -1,0 +1,50 @@
+name: RubyGems
+
+# Publishes the Rails gem from each release tag, at the tag's version, after
+# its tests pass. RubyGems.org trusts this workflow (trusted publishing), so
+# there's no API key to store.
+on:
+  push:
+    tags: ["[0-9]*"]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: rubygems
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/rails
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+          working-directory: packages/rails
+      - name: Check the tag matches package.json
+        run: test "$(ruby -rjson -e 'puts JSON.parse(File.read("../../package.json"))["version"]')" = "$GITHUB_REF_NAME"
+      - run: bundle exec rake test build
+      # Trades GitHub's identity token for a RubyGems.org key that lasts 15
+      # minutes. A new gem's first push has to name the account that will own
+      # it (owner: its RubyGems.org ID), which
+      # rubygems/configure-rubygems-credentials can't pass yet.
+      - name: Get a RubyGems.org key
+        env:
+          RUBYGEMS_OWNER: "8871"
+        run: |
+          jwt=$(curl --fail --silent --show-error \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=rubygems.org" | jq -r .value)
+          key=$(jq -n --arg jwt "$jwt" --arg owner "$RUBYGEMS_OWNER" '{jwt: $jwt, owner: $owner}' |
+            curl --fail-with-body --silent --show-error -X POST \
+              -H "Content-Type: application/json" --data @- \
+              https://rubygems.org/api/v1/oidc/trusted_publisher/exchange_token | jq -r .rubygems_api_key)
+          echo "::add-mask::$key"
+          echo "GEM_HOST_API_KEY=$key" >> "$GITHUB_ENV"
+      - run: gem push "pkg/cmu-web-kilt-$GITHUB_REF_NAME.gem"

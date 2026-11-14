@@ -1,0 +1,38 @@
+# frozen_string_literal: true
+
+require 'rake/testtask'
+require 'rubygems/package'
+require 'fileutils'
+require 'json'
+
+KIT = File.expand_path('../..', __dir__)
+COPIES = %w[css/cmu-cms.css css/cmu-app.css js/cmu-app.js LICENSE].freeze
+
+desc "Copy the kit's browser files, license and version into the gem"
+task :assets do
+  COPIES.each do |file|
+    FileUtils.mkdir_p(File.dirname(file))
+    FileUtils.cp(File.join(KIT, file), file)
+  end
+  File.write('VERSION', "#{JSON.parse(File.read(File.join(KIT, 'package.json'))).fetch('version')}\n")
+end
+
+desc 'Remove the copied files, so a checkout uses the kit at the repository root'
+task :clean do
+  FileUtils.rm_rf(%w[css js LICENSE VERSION pkg])
+end
+
+desc 'Build the gem in pkg/'
+task build: :assets do
+  spec = Gem::Specification.load('cmu-web-kilt.gemspec')
+  FileUtils.mkdir_p('pkg')
+  Gem::Package.build(spec, false, true, File.join('pkg', spec.file_name))
+end
+
+Rake::TestTask.new do |task|
+  task.libs << 'test'
+  task.pattern = 'test/**/*_test.rb'
+end
+task test: :assets
+
+task default: :test

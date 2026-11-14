@@ -1,1 +1,9 @@
 node_modules/
+*.gem
+# The Rails gem's build: copies of the kit's files (rake assets) and its output
+packages/rails/Gemfile.lock
+packages/rails/pkg/
+packages/rails/css/
+packages/rails/js/
+packages/rails/LICENSE
+packages/rails/VERSION

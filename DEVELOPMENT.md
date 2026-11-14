@@ -33,6 +33,7 @@ layout. An HTML file opened directly from disk does not reproduce that setup.
 | Documentation and live examples          | HTML pages in `docs/`      |
 | The docs site's styling and behavior     | `docs/css/` and `docs/js/` |
 | The preview server, generators or checks | `tools/`                   |
+| The Rails gem                            | `packages/rails/`          |
 
 ## Make the Change Where It Belongs
 
@@ -154,6 +155,26 @@ the owning project's public URL, so they don't copy the image or release an
 update. Use general alt text on those cards.
 This asset is independent of the Open Graph image, `images/preview.jpg`.
 
+## Work on the Rails Package
+
+The gem lives in `packages/rails/`. For engine or packaging changes,
+install Ruby and Bundler, then run:
+
+```bash
+cd packages/rails
+bundle install
+bundle exec rake test build
+```
+
+Asset edits belong in the kit's `css/` and `js/`; never edit the gem's
+copies. `rake assets` (run by `test` and `build`) copies those files, the
+license and the version from `package.json` into the gem, and the build
+writes to `packages/rails/pkg/`. `rake clean` removes the copies, so a path
+gem uses the repository's files again. See
+[the gem's README](packages/rails/README.md#compatibility-and-integration-coverage)
+for integration coverage and [the CI workflow](.github/workflows/check.yml)
+for the test matrix.
+
 ## Prepare a Release
 
 Start on an up-to-date `main` with passing CI and a clean working tree.
@@ -172,7 +193,21 @@ npm run check
 The release tool updates `package.json`, versioned installation examples
 and integrity hashes from the browser files. Regenerating the component
 data afterward gives tools the same version and installation snippets.
+Run the Rails checks too: every release tag publishes the gem.
 
 Review and commit the complete release preparation. Prepare release notes
 that explain user-visible changes and give migration steps for incompatible
 changes. Continue with [publishing and verification](DEPLOYMENT.md#publish-a-release).
+
+## Preview the Open Graph Exporter
+
+The Link Previews page includes an image exporter backed by the WebKilt
+MCP tool `generate_social_card`. Run the sibling `cmu-web-kilt-mcp` checkout
+with `PORT=3002 npm run dev` and install Chromium there once with
+`npx playwright install chromium`. The docs server forwards `/mcp` to it;
+`WEBKILT_MCP_URL` selects a different upstream. Production uses the existing
+`/mcp` reverse-proxy route, with a 12 MB body limit for screenshot uploads.
+
+Exports follow the preview conventions: a 1200 × 630 JPEG under 300 KB,
+cropped from the top of the page, plus tags for the user's own image path.
+Images are returned directly, never stored or served as production assets.

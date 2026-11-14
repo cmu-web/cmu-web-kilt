@@ -8,6 +8,7 @@ a release, so check which path a change takes.
 | ------------------------- | ----------------------------- | ------------------------------------------------------------------ |
 | Documentation or examples | Push to `main`                | The GitHub Pages site updates, using the current repository assets |
 | Kit release               | Push an annotated version tag | The tagged files become available through jsDelivr and GitHub      |
+| Rails gem                 | Push an annotated version tag | The same version becomes available on RubyGems                     |
 
 Application installation belongs in the
 [installation guide](https://webkilt.andrew.cmu.edu/install.html).
@@ -27,7 +28,24 @@ git push origin main "$kit_version"
 
 Tags have no `v` prefix. The push publishes the files through GitHub and
 makes them available to jsDelivr; it also triggers the documentation build
-for `main`. It does not update applications that already use the kit.
+for `main`, and the Rails gem's publication to RubyGems. It does not update
+applications that already use the kit.
+
+### Set Up RubyGems Publishing
+
+The [RubyGems workflow](.github/workflows/rubygems.yml) publishes the gem with
+trusted publishing, so it needs no API key, but RubyGems.org has to trust it
+first. Do this once, before the first tag that should publish the gem:
+
+1. Sign in to RubyGems.org with an account that has multi-factor
+   authentication on.
+2. Under Trusted Publishers, add a pending trusted publisher for the gem
+   `cmu-web-kilt`: GitHub Actions, owner `cmu-web`, repository
+   `cmu-web-kilt`, workflow `rubygems.yml` and environment `rubygems`.
+
+The first successful run creates the gem on RubyGems.org, owned by that
+account. Until then, the workflow fails on each tag; the kit's own release
+isn't affected.
 
 ### Check a Release
 
