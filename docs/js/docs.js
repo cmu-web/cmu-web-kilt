@@ -813,7 +813,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       sitename.appendChild(
         html(
           // A placeholder from PlaceMellon: Scotty on white, about as tall as the name and h2
-          '<a class="kit-try-logo" href="https://placemellon.andrew.cmu.edu/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty&white" width="110" height="110" alt="Logo placeholder"></a>',
+          '<a class="kit-try-logo" href="https://placemellon.andrew.cmu.edu/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty" width="110" height="110" alt="Logo placeholder"></a>',
         ),
       );
     } else if (!on && wrap) {

@@ -198,16 +198,3 @@ Run the Rails checks too: every release tag publishes the gem.
 Review and commit the complete release preparation. Prepare release notes
 that explain user-visible changes and give migration steps for incompatible
 changes. Continue with [publishing and verification](DEPLOYMENT.md#publish-a-release).
-
-## Preview the Open Graph Exporter
-
-The Link Previews page includes an image exporter backed by the WebKilt
-MCP tool `generate_social_card`. Run the sibling `cmu-web-kilt-mcp` checkout
-with `PORT=3002 npm run dev` and install Chromium there once with
-`npx playwright install chromium`. The docs server forwards `/mcp` to it;
-`WEBKILT_MCP_URL` selects a different upstream. Production uses the existing
-`/mcp` reverse-proxy route, with a 12 MB body limit for screenshot uploads.
-
-Exports follow the preview conventions: a 1200 × 630 JPEG under 300 KB,
-cropped from the top of the page, plus tags for the user's own image path.
-Images are returned directly, never stored or served as production assets.
