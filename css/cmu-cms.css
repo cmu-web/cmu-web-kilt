@@ -656,6 +656,28 @@ img.cmu-transparent,
   font-style: italic;
 }
 
+/* Example: a screenshot or picture of something in use, on a light gray mat
+   with a small-caps label (cmu-label) at its top, so it reads apart from the
+   thing itself; the picture is centered on the mat. See Examples in the docs
+   (content.html). */
+.cmu-example {
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.25rem 1.5rem;
+  background: var(--cmu-tint);
+}
+.cmu-example > .cmu-label {
+  margin: 0 0 1rem;
+}
+.cmu-example > :is(figure, img) {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.cmu-example img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Enlarge on click (uses cmu-app.js): a link to the full-size image with
    data-cmu-zoom opens it over the page, dimmed behind, in a <dialog>; see
    Enlarge on Click in the docs (content.html) */

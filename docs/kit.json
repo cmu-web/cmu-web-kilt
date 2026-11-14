@@ -643,6 +643,20 @@
       "frameworks": {}
     },
     {
+      "id": "example",
+      "name": "Examples",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/content.html#example",
+      "labels": ["CMS"],
+      "description": "A screenshot or picture of something in use, on a light gray mat with a small label at its top, so it reads apart from the thing itself. Use it beside an image people copy or download, to show where it goes. Put a cmu-label and the screenshot in a div.cmu-example; the picture is centered on the mat, however narrow it is.",
+      "notes": [],
+      "classes": ["cmu-example", "cmu-label"],
+      "examples": [
+        "<div class=\"cmu-example\">\n  <p class=\"cmu-label\">Example</p>\n  <figure class=\"cmu-shot\">\n    <img src=\"images/scotty.png\" alt=\"Scotty as a round profile picture.\" width=\"160\" height=\"160\">\n  </figure>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "eyebrow-lead",
       "name": "Eyebrow and Lead",
       "page": "Content",
