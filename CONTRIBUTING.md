@@ -16,15 +16,15 @@ CMU page that handles the task well if you know one. Discuss changes to
 existing markup or behavior before implementing them: other sites may
 already depend on it.
 
-For the [gallery](https://webkilt.andrew.cmu.edu/gallery.html), submit a
+For the [gallery](https://webkilt.andrew.cmu.edu/0/gallery.html), submit a
 public site or app whose owner is happy to have it listed. We take the
 screenshot from a public page; it must not expose private information.
 
 ## Decide What Belongs in the Kit
 
 The kit extends CMU's web template. Before proposing new CSS, check the
-[component reference](https://webkilt.andrew.cmu.edu/components.html) and
-[page layouts](https://webkilt.andrew.cmu.edu/layout.html) for an existing
+[component reference](https://webkilt.andrew.cmu.edu/0/components.html) and
+[page layouts](https://webkilt.andrew.cmu.edu/0/layout.html) for an existing
 solution. A useful addition should work beyond the page that prompted it
 and fit alongside the template without changing unrelated pages.
 
@@ -33,7 +33,7 @@ change. Existing class names, custom properties and `data-cmu-*` hooks are
 interfaces used by other sites; explain any incompatible change and how
 consumers would migrate.
 
-The [conventions](https://webkilt.andrew.cmu.edu/conventions.html) are the
+The [conventions](https://webkilt.andrew.cmu.edu/0/conventions.html) are the
 reference for naming, writing and page structure. Use them for the docs
 and examples too, including AP style and made-up example content.
 

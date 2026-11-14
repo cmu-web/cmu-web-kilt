@@ -170,7 +170,7 @@ for (const file of PAGES) {
       id,
       name: text(heading.replace(/<span class="kit-where"\s*>[\s\S]*<\/span\s*>/, "")),
       page,
-      url: `https://webkilt.andrew.cmu.edu/${file}#${id}`,
+      url: `https://webkilt.andrew.cmu.edu/0/${file}#${id}`,
       labels: [...where[1].matchAll(/kit-where-(\w+)/g)].map((m) => LABELS[m[1]] ?? m[1]),
       description: [...prose.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((m) => text(m[1])).join("\n\n"),
       notes: [...prose.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => text(m[1])),
@@ -228,7 +228,7 @@ function sections(html) {
 const data = {
   name: "Carnegie Mellon Web Kilt",
   version,
-  docs: "https://webkilt.andrew.cmu.edu/",
+  docs: "https://webkilt.andrew.cmu.edu/0/",
   files: {
     "cmu-cms.css": `https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@${version}/css/cmu-cms.css`,
     "cmu-app.css": `https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@${version}/css/cmu-app.css`,

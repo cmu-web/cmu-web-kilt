@@ -46,7 +46,7 @@ Keep CMU's template first, the kit second and application styles last:
 
 Use `cmu-app` on `<body>` for a page with the CMU header and footer, or
 `cmu-framed` for a page embedded in another tool. The
-[app installation guide](https://webkilt.andrew.cmu.edu/install.html#apps)
+[app installation guide](https://webkilt.andrew.cmu.edu/0/install.html#apps)
 explains the surrounding markup and template scripts. The gem supplies
 neither the template nor fonts or optional icon libraries.
 

@@ -1,8 +1,9 @@
 name: Pages
 
-# Publishes the docs at the site's root, with the kit's own files beside the
-# docs' in css/ and js/, as webkilt.andrew.cmu.edu serves them. Locally,
-# npm run docs serves the same layout.
+# Publishes the docs under /0/ (template line 0), with the kit's own files
+# beside the docs' in css/ and js/, and a root page that sends visitors to
+# /0/, as webkilt.andrew.cmu.edu serves them. Locally, npm run docs serves
+# one line's docs at the root.
 
 on:
   push:
@@ -26,12 +27,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Put the docs at the root, with the kit's files beside them
+      - name: Put the docs under /0/, with the kit's files beside them
         run: |
-          mkdir _site
-          cp -r docs/. _site/
-          cp css/*.css _site/css/
-          cp js/*.js _site/js/
+          mkdir -p _site/0
+          cp -r docs/. _site/0/
+          cp css/*.css _site/0/css/
+          cp js/*.js _site/0/js/
+          printf '%s\n' '<!doctype html><meta charset="utf-8"><title>Carnegie Mellon Web Kilt</title><meta http-equiv="refresh" content="0; url=0/"><link rel="canonical" href="https://webkilt.andrew.cmu.edu/0/"><a href="0/">Carnegie Mellon Web Kilt</a>' > _site/index.html
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

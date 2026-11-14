@@ -11,7 +11,7 @@ a release, so check which path a change takes.
 | Rails gem                 | Push an annotated version tag | The same version becomes available on RubyGems                     |
 
 Application installation belongs in the
-[installation guide](https://webkilt.andrew.cmu.edu/install.html).
+[installation guide](https://webkilt.andrew.cmu.edu/0/install.html).
 This guide covers the maintainer's publishing work.
 
 ## Publish a Release
@@ -92,11 +92,13 @@ kit's CSS and JavaScript to the site's `css/` and `js/` folders. This is the
 layout served locally by `npm run docs`.
 
 After a push, check the Pages workflow and open the changed pages at
-https://cmu-web.github.io/cmu-web-kilt/. Check a live example as well as the
+https://cmu-web.github.io/cmu-web-kilt/0/. Check a live example as well as the
 page text when assets changed. The public documentation address is
-https://webkilt.andrew.cmu.edu/; hosting at that address is managed outside
-the Pages workflow in this repository. It serves the docs from a pinned
-release tag, so docs-only changes reach it with the next release.
+https://webkilt.andrew.cmu.edu/0/; hosting at that address is managed outside
+the Pages workflow in this repository. It serves each template line's docs
+under its own number (line 0 at /0/), each from a pinned release tag, so
+docs-only changes reach it with the next release. The site's root redirects
+to the newest line; other paths outside a line are not found.
 
 The Pages workflow publishes independently of the check workflow. Check a
 change before pushing it to `0.x`; a later validation failure does not
