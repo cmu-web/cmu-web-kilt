@@ -94,8 +94,8 @@
               <a class="cmu-path" href="#apps">
                 <strong>In a Web App</strong>
                 <span
-                  >Keep a copy of a release in your app, in React, Svelte, Vue, Rails, Django, Node
-                  or any other stack.</span
+                  >Keep a copy of a release in your app, in React, Svelte, Vue, Astro, Rails,
+                  Django, Node or any other stack.</span
                 >
                 <span class="cta">Set Up an App</span>
               </a>
@@ -284,7 +284,7 @@ done</code></pre>
 
             <p>
               Pick your stack for where the kit's files go. Each component's Framework tab has what
-              that component takes in React, Svelte, Vue, Rails or Django.
+              that component takes in React, Svelte, Vue, Astro, Rails or Django.
             </p>
             <div class="kit-options" id="frameworks" data-kit-options="framework">
               <div class="kit-option" id="react" data-option="React" data-label="React 18 and 19">
@@ -395,6 +395,61 @@ done</code></pre>
   &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+              </div>
+              <div class="kit-option" id="astro" data-option="Astro" data-label="Astro 4 and Later">
+                <h3 class="kit-option-label">In Astro</h3>
+                <p>
+                  Copy the kit's <code>css/</code> and <code>js/</code> into
+                  <code>public/vendor/cmu-web-kilt-0.6.9/</code> and load everything in one layout
+                  that every page uses. Mark the scripts <code>is:inline</code>, so Astro leaves
+                  them as they are instead of bundling them, and build their addresses from
+                  <code>import.meta.env.BASE_URL</code>, so they still work when the site is served
+                  from a folder. The template's scripts expect a full page load, so leave out
+                  Astro's <code>&lt;ClientRouter /&gt;</code>.
+                </p>
+                <pre class="kit-code"><code>---
+// src/layouts/Layout.astro
+const { title } = Astro.props;
+const kit = `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}vendor/cmu-web-kilt-0.6.9`;
+---
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;{title} - Carnegie Mellon University&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href={`${kit}/css/cmu-cms.css`} rel="stylesheet"&gt;
+  &lt;link href={`${kit}/css/cmu-app.css`} rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;!-- The template's header --&gt;
+    &lt;main id="content"&gt;&lt;slot /&gt;&lt;/main&gt;
+    &lt;!-- The template's footer --&gt;
+  &lt;/div&gt;
+  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script is:inline src={`${kit}/js/cmu-app.js`}&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p>
+                  A page uses the layout and puts its sections in it. A component's markup goes in
+                  as it is in the HTML tab; Astro reads it as written, except that a brace in text
+                  starts an expression, so the Framework tab writes those as
+                  <code>{"{"}</code> and <code>{"}"}</code>.
+                </p>
+                <pre class="kit-code"><code>---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+---
+&lt;Layout title="Your Site"&gt;
+  &lt;div class="cmu-hero"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/Layout&gt;</code></pre>
               </div>
               <div
                 class="kit-option"

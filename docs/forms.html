@@ -689,6 +689,21 @@ function move(e) {
   &lt;/ol&gt;
 &lt;/template&gt;</code></pre>
             </div>
+            <div class="kit-framework" data-framework="Astro">
+              <p class="cmu-label kit-framework-label">In Astro</p>
+              <p>
+                Astro renders the list as plain HTML, and the kit adds the buttons and moves the
+                items; the hidden fields send the new order as <code>order</code>, once per item.
+              </p>
+              <pre class="kit-code"><code>---
+const steps = ["Delete the email", "Don't click its links", "Report it"];
+---
+&lt;ol class="cmu-sort" data-cmu-sort&gt;
+  {steps.map((step) =&gt; (
+    &lt;li&gt;{step}&lt;input type="hidden" name="order" value={step}&gt;&lt;/li&gt;
+  ))}
+&lt;/ol&gt;</code></pre>
+            </div>
             <div class="kit-framework" data-framework="Rails">
               <p class="cmu-label kit-framework-label">In Rails</p>
               <p>

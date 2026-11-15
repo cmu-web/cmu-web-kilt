@@ -297,13 +297,14 @@ function standIn(cms, section) {
 // theirs; the Framework panel starts with a menu of frameworks, and the
 // choice carries to every Framework tab, here and on other pages. React until
 // they pick another.
-var FRAMEWORKS = ["React", "Svelte", "Vue", "Rails", "Django"];
+var FRAMEWORKS = ["React", "Svelte", "Vue", "Astro", "Rails", "Django"];
 // What the menu says: each framework with the versions its examples are for.
 // The saved choice is only the name, so these can change without resetting it.
 var FRAMEWORK_NAMES = {
   React: "React 18 and 19",
   Svelte: "Svelte 5",
   Vue: "Vue 3",
+  Astro: "Astro 4 and Later",
   Rails: "Rails 7.2 and Later",
   Django: "Django 5.2 and Later",
 };
@@ -424,6 +425,33 @@ function toJsx(html) {
     );
 }
 
+// Astro's version of a demo's HTML. Astro takes HTML as it is, except that
+// braces in text start an expression (so they're written as {"{"} and
+// {"}"}), and a script or style tag is bundled or scoped unless it's marked
+// to stay as written.
+function toAstro(html) {
+  var out = "",
+    raw = null;
+  html.split(/(<!--[\s\S]*?-->|<[^>]+>)/).forEach(function (part, i) {
+    if (i % 2) {
+      var open = /^<(script|style)\b/i.exec(part);
+      if (open && !/\bis:(inline|global)\b/.test(part)) {
+        raw = open[1].toLowerCase();
+        part = part.replace(/^<(script|style)/i, function (m) {
+          return m + (raw === "script" ? " is:inline" : " is:global");
+        });
+      } else if (raw && new RegExp("^</" + raw, "i").test(part)) raw = null;
+      out += part;
+    } else
+      out += raw
+        ? part
+        : part.replace(/[{}]/g, function (c) {
+            return '{"' + c + '"}';
+          });
+  });
+  return out;
+}
+
 // What the Framework tab says for a component nobody wrote framework steps
 // for, from its labels
 function frameworkText(name, section) {
@@ -437,7 +465,9 @@ function frameworkText(name, section) {
       ? "Nothing more to do in Rails: use this markup in a view."
       : name === "Django"
         ? "Nothing more to do in Django: use this markup in a template."
-        : "Nothing more to do in " + name + ": use this markup in a component.";
+        : name === "Astro"
+          ? "Nothing more to do in Astro: use this markup in a page or component."
+          : "Nothing more to do in " + name + ": use this markup in a component.";
   if (has("app"))
     text += " The page's <code>&lt;body&gt;</code> has the <code>cmu-app</code> class.";
   if (has("script"))
@@ -513,7 +543,7 @@ function frameworkPanel(pre) {
     block.innerHTML =
       (notes.length ? notes.join("") : "<p>" + frameworkText(name, section) + "</p>") +
       '<pre class="kit-code"><code>' +
-      escapeHtml(name === "React" ? toJsx(html) : html) +
+      escapeHtml(name === "React" ? toJsx(html) : name === "Astro" ? toAstro(html) : html) +
       "</code></pre>";
     mine.forEach(function (b) {
       b.remove();

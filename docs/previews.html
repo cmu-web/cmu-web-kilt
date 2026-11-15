@@ -350,6 +350,49 @@
   &lt;meta property="og:description" content="Cameras, laptops and lights, free for CMU courses." /&gt;
 &lt;/svelte:head&gt;</code></pre>
             </div>
+            <div class="kit-framework" data-framework="Astro">
+              <p class="cmu-label kit-framework-label">In Astro</p>
+              <p>
+                Astro builds its pages ahead of time or renders them on the server, so tags in the
+                layout reach the apps that build previews. Set the site's public address as
+                <code>site</code> in <code>astro.config.mjs</code>, put the tags in the layout and
+                let each page pass its own title and description. The image goes in
+                <code>public/images</code>; if the site is served from a folder (<code>base</code>
+                in <code>astro.config.mjs</code>), add the folder to the image's path.
+              </p>
+              <pre class="kit-code"><code>// astro.config.mjs
+import { defineConfig } from "astro/config";
+export default defineConfig({ site: "https://equipment.andrew.cmu.edu" });
+
+---
+// src/layouts/Layout.astro
+const { title, description } = Astro.props;
+const site = "Equipment Checkout";
+const full = title === site ? site : `${title} - ${site}`;
+---
+&lt;head&gt;
+  &lt;title&gt;{full}&lt;/title&gt;
+  &lt;meta name="description" content={description}&gt;
+  &lt;meta property="og:site_name" content={site}&gt;
+  &lt;meta property="og:title" content={full}&gt;
+  &lt;meta property="og:description" content={description}&gt;
+  &lt;meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)}&gt;
+  &lt;meta property="og:type" content="website"&gt;
+  &lt;meta property="og:image" content={new URL("/images/preview.jpg", Astro.site)}&gt;
+  &lt;meta property="og:image:width" content="1200"&gt;
+  &lt;meta property="og:image:height" content="630"&gt;
+  &lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;/head&gt;
+
+---
+// src/pages/reserve.astro
+import Layout from "../layouts/Layout.astro";
+---
+&lt;Layout title="Reserve a Camera Kit" description="Cameras, laptops and lights, free for CMU courses."&gt;
+  ...
+&lt;/Layout&gt;</code></pre>
+            </div>
             <div class="kit-framework" data-framework="React">
               <p class="cmu-label kit-framework-label">In React</p>
               <p>

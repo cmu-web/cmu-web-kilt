@@ -119,13 +119,15 @@ const FRAMEWORKS = {
   React: "React 18 and 19",
   Svelte: "Svelte 5",
   Vue: "Vue 3",
+  Astro: "Astro 4 and Later",
   Rails: "Rails 7.2 and Later",
   Django: "Django 5.2 and Later",
 };
 
 // What a section says for each framework, from its .kit-framework blocks
 // (written for one or more frameworks; {framework} names the reader's).
-// Frameworks a section has no block for use its HTML as is (React as JSX).
+// Frameworks a section has no block for use its HTML as is (React as JSX,
+// Astro with braces in text escaped).
 function frameworkNotes(body) {
   const out = {};
   for (const m of body.matchAll(/<div class="kit-framework" data-framework="([^"]+)">/g)) {
