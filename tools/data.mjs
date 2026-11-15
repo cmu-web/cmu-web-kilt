@@ -91,12 +91,20 @@ function balanced(html, start) {
   return html.slice(start);
 }
 
+// The HTML without its CMS and framework blocks
+function withoutBlocks(html) {
+  for (let i; (i = html.search(/<div class="kit-(cms|framework)"/)) >= 0;)
+    html = html.slice(0, i) + html.slice(i + balanced(html, i).length);
+  return html;
+}
+
 // An example's markup as the docs' HTML tab shows it: the demo's contents,
 // without the docs' own data-kit-* hooks, out-dented
 function example(demo) {
   const inner = demo.replace(/^<div[^>]*>/, "").replace(/<\/div>\s*$/, "");
   const lines = inner
-    .replace(/<[^>]*data-demo-skip[\s\S]*?<\/\w+>\s*/g, "")
+    // The docs' own controls, through their own closing tag
+    .replace(/<(\w+)\b[^>]*\bdata-demo-skip\b[\s\S]*?<\/\1>\s*/g, "")
     .replace(/ data-kit-[\w-]+(="[^"]*")?/g, "")
     .replace(/ data-preview/g, "")
     .replace(/^\s*\n|\s+$/g, "")
@@ -155,9 +163,12 @@ for (const file of PAGES) {
     const examples = [];
     for (const m of body.matchAll(/<div class="kit-demo[" ][^>]*>/g))
       examples.push(example(balanced(body, m.index)));
-    // A section with no live example shows its markup in code blocks instead
+    // A section with no live example shows its markup in code blocks instead,
+    // not counting its CMS and framework blocks' own code
     if (!examples.length)
-      for (const m of prose.matchAll(/<pre[^>]*>\s*<code>([\s\S]*?)<\/code>\s*<\/pre>/g))
+      for (const m of withoutBlocks(prose).matchAll(
+        /<pre[^>]*>\s*<code>([\s\S]*?)<\/code>\s*<\/pre>/g,
+      ))
         examples.push(decode(m[1].replace(/<[^>]+>/g, "")));
     const classes = [
       ...new Set(
