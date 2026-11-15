@@ -34,7 +34,7 @@ applications that already use the kit.
 ### Set Up RubyGems Publishing
 
 The [RubyGems workflow](.github/workflows/rubygems.yml) publishes the gem with
-trusted publishing, so it needs no API key, but RubyGems.org has to trust it
+trusted publishing, so there's no API key, but RubyGems.org has to trust it
 first. Do this once, before the first tag that should publish the gem:
 
 1. Sign in to RubyGems.org with an account that has multi-factor
