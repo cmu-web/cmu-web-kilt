@@ -99,15 +99,16 @@
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#team">Team Grid</a></li>
-                <li><a href="#leadership">Leadership Grid</a></li>
-                <li><a href="#contacts">Contact Cards</a></li>
+                <li><a href="#portrait-grid">Portrait Grid</a></li>
+                <li><a href="#team">Bio Card Grid</a></li>
+                <li><a href="#photo-grid">Bio Photo Grid</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
+                <li><a href="#contacts">Contact Cards</a></li>
                 <li><a href="#stacked">Stacked Bios</a></li>
                 <li><a href="#short-bios">Short Bios</a></li>
               </ul>
@@ -124,8 +125,92 @@
         </div>
         <div class="content wide">
           <div>
+            <h2 id="portrait-grid" class="rule-top">
+              Portrait Grid
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Portraits with each person's name and title under them, for people without bio pages:
+              nothing links. Use portraits of the same shape, so the names line up. The name is
+              right under each portrait, so the portrait gets empty <code>alt</code>. Until
+              someone's portrait is ready, use PlaceMellon's
+              <a class="external" href="https://placemellon.andrew.cmu.edu/assets.html#bio"
+                >bio placeholder</a
+              >; don't show an empty frame.
+            </p>
+            <h3 id="people-grid">On a White Background</h3>
+            <p>
+              Tall portraits, such as 600 &times; 750, three or four across, with the name in bold
+              and the title on the next line. It's a <code>grid column4</code> (or
+              <code>column3</code>) with a <code>div</code> for each person:
+            </p>
+            <p class="kit-classes"><code>grid</code>, <code>column3</code>, <code>column4</code></p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column4">
+          <h1>Our Team</h1>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/600/750?bio" alt="" width="600" height="750">
+            <p><strong>Andrew Carnegie</strong><br>Director of Teaching Technology</p>
+          </div><div>
+            <img src="https://placemellon.andrew.cmu.edu/600/750?bio" alt="" width="600" height="750">
+            <p><strong>Margaret Morrison</strong><br>Teaching Consultant</p>
+          </div><div>
+            <img src="https://placemellon.andrew.cmu.edu/600/750?bio" alt="" width="600" height="750">
+            <p><strong>Andrew Mellon</strong><br>Data Analyst</p>
+          </div><div>
+            <img src="https://placemellon.andrew.cmu.edu/600/750?bio" alt="" width="600" height="750">
+            <p><strong>Herbert Simon</strong><br>Web Developer</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="leadership">Centered on a Gray Background</h3>
+            <p>
+              Square photos with the name and title centered under them, in a gray section, for a
+              few people on an overview page, such as an office's leaders. It's a
+              <code>grid column3 grey boxes</code>; center the text with the template's
+              <code>aligncenter</code> instead of inline styles:
+            </p>
+            <p class="kit-classes">
+              <code>grid column3 grey boxes</code>, <code>aligncenter</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 grey boxes">
+          <h1>Leadership</h1>
+          <div class="aligncenter">
+            <img src="images/scotty.png" alt="" width="320" height="320">
+            <h2>Andrew Carnegie</h2>
+            <h3>Director of Teaching Technology</h3>
+          </div>
+          <div class="aligncenter">
+            <img src="images/scotty.png" alt="" width="320" height="320">
+            <h2>Andrew Mellon</h2>
+            <h3>Associate Director, Office Hours Queue</h3>
+          </div>
+          <div class="aligncenter">
+            <img src="images/scotty.png" alt="" width="320" height="320">
+            <h2>Margaret Morrison</h2>
+            <h3>Manager, Equipment Checkout</h3>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
             <h2 id="team" class="rule-top">
-              Team Grid
+              Bio Card Grid
               <span class="kit-where"
                 ><span
                   class="kit-where-template"
@@ -155,25 +240,25 @@
         <div class="grid column4 blue boxes">
           <h1>Our Team</h1>
           <div>
-            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Andrew Carnegie</a></h2>
             <p><strong>Director of Teaching Technology</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
           <div>
-            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Andrew Mellon</a></h2>
             <p><strong>Teaching Consultant</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
           <div>
-            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Margaret Morrison</a></h2>
             <p><strong>Data Analyst</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
           </div>
           <div>
-            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2><a href="#bio">Herbert Simon</a></h2>
             <p><strong>Web Developer</strong></p>
             <p><a class="cta" href="#bio">Read Full Bio</a></p>
@@ -182,39 +267,8 @@
       </div>
         <div class="content wide">
           <div>
-            <div class="kit-cms" data-cms="Cascade">
-              <p class="cmu-label kit-cms-label">In Cascade</p>
-              <ol>
-                <li>
-                  Make a page for each person, all in one folder, with Add Content &rsaquo; Bio
-                  &rsaquo; <strong>Bio</strong>.
-                </li>
-                <li>
-                  In that folder, use Add Content &rsaquo; Bio &rsaquo; <strong>Bio Index</strong>.
-                </li>
-                <li>
-                  In its Bio Index section, choose <strong>Grid</strong>, then
-                  <strong>Card</strong>, and the number of columns. (<strong>Photo</strong> puts the
-                  names over the photos instead; see <a href="sections.html#photos">Photo Grid</a>.)
-                </li>
-                <li>Set <strong>Style</strong> to a color, such as Blue.</li>
-              </ol>
-              <p>
-                Initial Rows to Display holds the rest back behind a Load More button. For menus
-                that narrow the list, see <a href="#cascade-filters">Filters</a>.
-              </p>
-              <figure class="cmu-shot">
-                <img
-                  src="images/cascade-bio-index.png"
-                  alt="Cascade's Bio Index section: Grid or Stacked, Photo or Card, two to four columns, and one to three rows to show first."
-                  width="847"
-                  height="467"
-                />
-              </figure>
-            </div>
-
-            <h2 id="leadership" class="rule-top">
-              Leadership Grid
+            <h2 id="photo-grid" class="rule-top">
+              Bio Photo Grid
               <span class="kit-where"
                 ><span
                   class="kit-where-template"
@@ -224,37 +278,70 @@
               >
             </h2>
             <p>
-              Square photos with each person's name and title centered under them, on a gray band.
-              It introduces a few leaders on an overview page, without links to bios. It's a
-              <code>grid column3 grey boxes</code>; center the text with the template's
-              <code>aligncenter</code> instead of inline styles.
+              The template's <a href="sections.html#photos">Photo Grid</a> with people in it: each
+              portrait links to the person's bio, with their name and title over it. It's a
+              <code>grid column4 photos</code> (or <code>column3</code>) with an
+              <code>&lt;h1&gt;</code> for the group and a <code>div.photo</code> for each person.
+              The name's in the link, so the portrait gets empty <code>alt</code>. Use portraits of
+              the same shape, such as 600 &times; 750, so the names line up.
             </p>
             <p class="kit-classes">
-              <code>grid column3 grey boxes</code>, <code>aligncenter</code>
+              <code>grid</code>, <code>column3</code>, <code>column4</code>, <code>photos</code>,
+              <code>photo</code>
             </p>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
-        <div class="grid column3 grey boxes">
-          <h1>Leadership</h1>
-          <div class="aligncenter">
-            <img src="images/scotty.png" alt="Scotty, standing in for a photo." width="320" height="320">
-            <h2>Andrew Carnegie</h2>
-            <h3>Director of Teaching Technology</h3>
-          </div>
-          <div class="aligncenter">
-            <img src="images/scotty.png" alt="Scotty, standing in for a photo." width="320" height="320">
-            <h2>Andrew Mellon</h2>
-            <h3>Associate Director, Office Hours Queue</h3>
-          </div>
-          <div class="aligncenter">
-            <img src="images/scotty.png" alt="Scotty, standing in for a photo." width="320" height="320">
-            <h2>Margaret Morrison</h2>
-            <h3>Manager, Equipment Checkout</h3>
+        <div class="grid column4 photos">
+          <h1>Our Team</h1>
+          <div class="photo">
+            <a href="#bio">
+              <div>
+                <h2>Andrew Carnegie</h2>
+                <p>Director of Teaching Technology</p>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust" alt=""></span>
+            </a>
+          </div><div class="photo">
+            <a href="#bio">
+              <div>
+                <h2>Margaret Morrison</h2>
+                <p>Teaching Consultant</p>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust" alt=""></span>
+            </a>
+          </div><div class="photo">
+            <a href="#bio">
+              <div>
+                <h2>Andrew Mellon</h2>
+                <p>Data Analyst</p>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust" alt=""></span>
+            </a>
+          </div><div class="photo">
+            <a href="#bio">
+              <div>
+                <h2>Herbert Simon</h2>
+                <p>Web Developer</p>
+              </div>
+              <span><img src="https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust" alt=""></span>
+            </a>
           </div>
         </div>
       </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                A Bio Index, as for the <a href="#team">Bio Card Grid</a>, with
+                <strong>Grid</strong> and <strong>Photo</strong> in its Bio Index section. Each
+                bio's photo and title fill in its cell.
+              </p>
+            </div>
+          </div>
+        </div>
         <div class="content wide">
           <div>
             <h2 id="contacts" class="rule-top">
@@ -299,19 +386,19 @@
         <div class="grid column3 grey boxes" id="kit-team">
           <h1>Management Team</h1>
           <div>
-            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty-bust" alt="Scotty, standing in for a photo." width="900" height="600">
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty=bust" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Andrew Carnegie | Director</h2>
             <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
             <p>Office: 412-555-0101</p>
           </div>
           <div>
-            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty-bust" alt="Scotty, standing in for a photo." width="900" height="600">
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty=bust" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Andrew Mellon | Associate Director</h2>
             <p><a data-cmu-email="andrewid(through)andrew.cmu.edu">Email Andrew Mellon</a></p>
             <p>Office: 412-555-0102</p>
           </div>
           <div>
-            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty-bust" alt="Scotty, standing in for a photo." width="900" height="600">
+            <img src="https://placemellon.andrew.cmu.edu/900/600.svg?scotty=bust" alt="Scotty, standing in for a photo." width="900" height="600">
             <h2 class="rule-bottom">Margaret Morrison | Office Coordinator</h2>
             <p><a data-cmu-email="andrewid(through)andrew.cmu.edu">Email Margaret Morrison</a></p>
             <p>Office: 412-555-0103</p>
@@ -346,7 +433,7 @@
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2>Andrew Mellon</h2>
             <h3>Teaching Consultant</h3>
             <p>Course design, assessment and active learning in large lectures.</p>
@@ -367,7 +454,7 @@
                 </address>
               </div>
             </div>
-            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h2>Margaret Morrison</h2>
             <h3>Data Analyst</h3>
             <p>Course evaluations, survey design and teaching-related data requests.</p>
@@ -391,7 +478,7 @@
             <div class="kit-cms" data-cms="Cascade">
               <p class="cmu-label kit-cms-label">In Cascade</p>
               <p>
-                A Bio Index, as for the <a href="#team">Team Grid</a>, with
+                A Bio Index, as for the <a href="#team">Bio Card Grid</a>, with
                 <strong>Stacked</strong>. To show each full bio in place, set Collapse Region to
                 Yes.
               </p>
@@ -408,7 +495,7 @@
             </h2>
             <p>
               A short bio for each person on one page, for a quick contact page or a group whose
-              bios are a paragraph or two, such as an advisory board. Each person gets a band of
+              bios are a paragraph or two, such as an advisory board. Each person gets a section of
               their own, alternating gray and white, with a Contact link and their links in a box
               beside the bio. Photos are optional; leave them out unless everyone has one. Class
               years for alumni go after the name, in the template's <code>indicia</code>:
@@ -527,7 +614,7 @@
               </li>
               <li>
                 <strong>Related links,</strong> such as a personal site or lab, go in a gray
-                <code>list</code> box in the <a href="sidebars.html#sidebar">sidebar</a>.
+                <code>list</code> box in the <a href="sidebars.html#link-list">sidebar</a>.
               </li>
             </ul>
             <p class="kit-classes">
@@ -540,7 +627,7 @@
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty-bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
+            <p class="floatleft caption thumb"><img src="https://placemellon.andrew.cmu.edu/400.svg?scotty=bust" alt="Scotty, standing in for a portrait." width="400" height="400"></p>
             <h1>Andrew Carnegie</h1>
             <h2 style="font-size:1.15em">Director of Teaching Technology, Office of the Provost</h2>
             <div class="contact rule-bottom">
@@ -659,36 +746,12 @@
         <p class="cmu-results-count" id="kit-people-count" aria-live="polite">Showing all 5 people</p>
       </div>
             <p>
-              Use a real photo cropped to a square; the kit makes it round. With no photo, leave the
-              image out instead of showing a blank one.
-            </p>
-          </div>
-        </div>
-        <div class="content wide grey" id="kit-cascade">
-          <div>
-            <p class="cmu-eyebrow">In Cascade</p>
-            <h2 id="cascade-filters">Filters on an Index</h2>
-
-            <p>
-              On a Bio Index, Course Index or News Index, menus for narrowing the list, such as by
-              research area, aren't markup you write. They come from a site-wide list of categories:
-            </p>
-            <ol>
-              <li>
-                <strong>The categories block</strong> (an XHTML/Data Definition block named
-                <code>categories</code>) holds the site's groups, such as research areas or
-                concentrations, and the values in each.
-              </li>
-              <li><strong>Each bio page</strong> picks its values in its Filters section.</li>
-              <li>
-                <strong>On the index page,</strong> the Filters section turns on each group to show
-                as a menu.
-              </li>
-            </ol>
-            <p>
-              Name the groups for what people look for, such as &ldquo;Research Area,&rdquo; and
-              keep each to a dozen values or so. In an app, use the
-              <a href="#people-list">People List</a>'s search instead.
+              Crop each photo to a square, and the kit makes it round. For someone without a photo,
+              use PlaceMellon's
+              <a class="external" href="https://placemellon.andrew.cmu.edu/assets.html#bio-list"
+                >people-list placeholder</a
+              >
+              or leave the image out; don't show an empty frame.
             </p>
           </div>
         </div>
@@ -713,7 +776,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -721,7 +789,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li class="active"><a href="people.html" aria-current="page">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -733,7 +800,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

@@ -134,6 +134,9 @@ document.querySelectorAll("[data-kit-countdown]").forEach(function (field) {
 document.querySelectorAll(".kit-demo").forEach(function (demo) {
   var copy = demo.cloneNode(true);
   copy.querySelectorAll("[data-demo-skip]").forEach(function (el) {
+    // Its line goes with it, so the code shows no blank line in its place
+    var before = el.previousSibling;
+    if (before && before.nodeType === 3 && !before.textContent.trim()) before.remove();
     el.remove();
   });
   // What the kit's script added: a countdown's cards, sorting buttons
@@ -296,17 +299,17 @@ function standIn(cms, section) {
 // general names (HTML, CMS, Framework), so everyone can see which one is
 // theirs; the Framework panel starts with a menu of frameworks, and the
 // choice carries to every Framework tab, here and on other pages. React until
-// they pick another.
-var FRAMEWORKS = ["React", "Svelte", "Vue", "Astro", "Rails", "Django"];
+// they pick another, so it's first in the menu; the rest are alphabetical.
+var FRAMEWORKS = ["React", "Astro", "Django", "Rails", "Svelte", "Vue"];
 // What the menu says: each framework with the versions its examples are for.
 // The saved choice is only the name, so these can change without resetting it.
 var FRAMEWORK_NAMES = {
   React: "React 18 and 19",
+  Astro: "Astro 4 and Later",
+  Django: "Django 5.2 and Later",
+  Rails: "Rails 7.2 and Later",
   Svelte: "Svelte 5",
   Vue: "Vue 3",
-  Astro: "Astro 4 and Later",
-  Rails: "Rails 7.2 and Later",
-  Django: "Django 5.2 and Later",
 };
 function frameworkChoice() {
   var saved = savedChoice("kit-framework");
@@ -843,7 +846,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       sitename.appendChild(
         html(
           // A placeholder from PlaceMellon: Scotty on white, about as tall as the name and h2
-          '<a class="kit-try-logo" href="https://placemellon.andrew.cmu.edu/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty-bust" width="110" height="110" alt="Logo placeholder"></a>',
+          '<a class="kit-try-logo" href="https://placemellon.andrew.cmu.edu/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty=bust" width="110" height="110" alt="Logo placeholder"></a>',
         ),
       );
     } else if (!on && wrap) {
@@ -868,7 +871,10 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     }
     if (state.account !== "none") {
       var inn = state.account === "in",
-        pic = state.photo === "on" ? '<img class="cmu-avatar" src="images/scotty.png" alt="">' : "",
+        pic =
+          state.photo === "on"
+            ? '<img class="cmu-profile-picture" src="images/scotty.png" alt="">'
+            : "",
         prefs = state.prefs === "on" ? '<a href="accounts.html#preferences">Preferences</a>' : "";
       var a = html(
         inn
@@ -1281,3 +1287,22 @@ if (kitTryForm && window.IntersectionObserver)
   new IntersectionObserver(function (entries) {
     document.body.classList.toggle("kit-pin-header", entries[0].isIntersecting);
   }).observe(kitTryForm);
+
+// Every code block gets the kit's copy icon in its corner (cmu-copyable,
+// cmu-copy; cmu-app.js does the copying). A block already in a copy box keeps
+// its own button.
+document.querySelectorAll("pre.kit-code").forEach(function (pre, n) {
+  if (pre.parentElement.classList.contains("cmu-copyable")) return;
+  if (!pre.id) pre.id = "kit-code-" + n;
+  var box = document.createElement("div");
+  box.className = "cmu-copyable kit-code-box";
+  pre.before(box);
+  box.appendChild(pre);
+  var button = document.createElement("button");
+  button.type = "button";
+  button.className = "cmu-copy";
+  button.setAttribute("data-cmu-copy", "#" + pre.id);
+  button.setAttribute("aria-label", "Copy Code");
+  button.setAttribute("title", "Copy Code");
+  box.appendChild(button);
+});

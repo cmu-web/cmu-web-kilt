@@ -103,35 +103,37 @@
                 <li><a href="#link-button">Link Button</a></li>
                 <li><a href="#button-note">Button With a Note</a></li>
                 <li><a href="#cta-row">Call-to-Action Row</a></li>
-                <li><a href="#steps">Numbered Steps</a></li>
-                <li><a href="#checks">Bullet, Check and Plain Lists</a></li>
-                <li><a href="#callout">Callout and Note</a></li>
+                <li><a href="#email">Email Links</a></li>
                 <li><a href="#eyebrow-lead">Eyebrow and Lead</a></li>
+                <li><a href="#text">Small Text</a></li>
+                <li><a href="#checks">Bullet, Check and Plain Lists</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#text">Small Text</a></li>
+                <li><a href="#steps">Numbered Steps</a></li>
+                <li><a href="#callout">Callout and Note</a></li>
                 <li><a href="#pills">Pills</a></li>
                 <li><a href="#captions">Photo Captions and Credits</a></li>
                 <li><a href="#screenshots">Screenshots</a></li>
                 <li><a href="#example">Examples</a></li>
+                <li><a href="#link-preview-card">Link Preview Card</a></li>
                 <li><a href="#transparent">Transparent Images</a></li>
                 <li><a href="#zoom">Enlarge on Click</a></li>
                 <li><a href="#videos">Videos</a></li>
-                <li><a href="#embed">Embedded Page</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
+                <li><a href="#embed">Embedded Page</a></li>
                 <li><a href="#snippet">Code Block</a></li>
+                <li><a href="#peek">Long Code Block</a></li>
                 <li><a href="#copy">Copy Button</a></li>
                 <li><a href="#agent-prompt">AI Agent Prompt</a></li>
-                <li><a href="#email">Email Links</a></li>
                 <li><a href="#countdown">Countdown</a></li>
                 <li><a href="#icons">Icons</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -161,6 +163,8 @@
               <code>btn</code>, <code>ghost</code>, <code>small</code>, <code>wide</code>,
               <code>cta</code>, <code>external</code>
             </p>
+            <h3 id="buttons-on-white">On a White Background</h3>
+            <p>Buttons, calls to action and links on the page's white background:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <p>
@@ -173,13 +177,14 @@
         <p><a class="cta" href="#buttons">See the Checkout Desk Hours</a></p>
         <p><a class="external" href="https://www.cmu.edu/">A link to another site</a></p>
       </div>
-            <h3 id="buttons-on-color">On a Colored Band</h3>
+            <h3 id="buttons-on-color">On a Background Color</h3>
             <p>
-              The solid button is see-through black, so it takes on the band's color: dark red on
-              red, darker gray on gray. On a red or dark band (<code>invert</code>), a
+              The solid button is see-through black, so it takes on the section's color: dark red on
+              red, darker gray on gray. In a red or dark section (<code>invert</code>), a
               <code>ghost</code> button turns into a white outline. As anywhere else, the solid one
               is the main action and ghost buttons are the rest.
             </p>
+            <p>Here, on gray and on red:</p>
           </div>
         </div>
         <!-- prettier-ignore -->
@@ -317,131 +322,38 @@
         </div>
       </div>
 
-            <h2 id="steps" class="rule-top">
-              Numbered Steps
+            <h2 id="email" class="rule-top">
+              Email Links
               <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>Instructions to follow in order, with the step numbers in red circles.</p>
-            <p class="kit-classes"><code>ol.cmu-steps</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <ol class="cmu-steps">
-          <li>Sign in and select <strong>My Courses</strong>.</li>
-          <li>Pick the course whose office hours you're going to.</li>
-          <li>Select <strong>Join the Queue</strong> and say what you need help with.</li>
-        </ol>
-      </div>
-
-            <h2 id="checks" class="rule-top">
-              Bullet, Check and Plain Lists
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
               >
             </h2>
             <p>
-              For describing things (the parts of a component, the options there are), use the
-              template's own list: a plain <code>&lt;ul&gt;</code> with no class, which gets gray
-              open circles. Use check marks for a list of dos and don'ts, or of things you get, such
-              as what a kit includes; when every list is checked, a page reads like a to-do list.
-              Either way, start each item with a short bold phrase when it helps people scan. When
-              each item starts with its own label, such as a pill, use <code>cmu-plain</code> for no
-              bullets.
-            </p>
-            <p class="kit-classes">
-              <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-plain</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <ul>
-          <li><strong>Borrowing for a class?</strong> Give the course number, and you can keep it for a week.</li>
-          <li><strong>Late returns</strong> pause your borrowing until the equipment is back.</li>
-        </ul>
-      </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <p>Every camera kit includes:</p>
-        <ul class="cmu-checks">
-          <li><strong>A camera body</strong> with a zoom lens</li>
-          <li><strong>Two batteries</strong> and a charger</li>
-          <li><strong>A tripod</strong> and a carrying case</li>
-        </ul>
-      </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <ul class="cmu-plain">
-          <li><span class="cmu-pill cmu-pill--green">Available</span> Ready to borrow today.</li>
-          <li><span class="cmu-pill cmu-pill--amber">Reserved</span> Someone has it until Friday.</li>
-          <li><span class="cmu-pill">Retired</span> No longer lent out.</li>
-        </ul>
-      </div>
-
-            <h2 id="callout" class="rule-top">
-              Callout and Note
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              A callout is a labeled aside on a page, with roomy spacing: the label sits beside a
-              short text when there's space, and above a longer one. A note is a plainer tinted box
-              for a message among other content, such as in an app. Give a callout a color for what
-              kind of aside it is: blue for a note, green for a tip, gold for a warning, red for a
-              caution; the plain gray one is for anything else. Save color for the asides that call
-              for it. For which color to use, see
-              <a href="conventions.html#colors">Colors</a>.
+              An email link whose address isn't in the page's HTML, so very simple scrapers can't
+              harvest it. Write the address with <code>(through)</code> for the <code>@</code> in
+              <code>data-cmu-email</code>, and give the link words that name the person or office,
+              such as "Email Andrew Carnegie." <code>cmu-app.js</code> fills in the address only
+              when someone points at, focuses or taps the link, so scrapers that just load the page
+              don't get it, and it leaves the words alone. Without the script, it's plain text.
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>A callout</strong> is an aside within a section, for the people reading that
-                part of the page: a note, a tip, a warning. It stays until someone edits the page.
+                <strong>Use it for people,</strong> such as staff or student workers on a team page.
+                A shared office address people should copy, like a help desk's, can just be shown.
               </li>
               <li>
-                <strong>Not the result of something someone just did</strong>, such as saving a
-                form: that's a <a href="messages.html#flash">flash message</a>, shown once.
-              </li>
-              <li>
-                <strong>Not a notice everyone should see first</strong>, such as who a page is for
-                or a deadline: that's an <a href="sections.html#announcements">announcement</a>, a
-                color band at the top of the page.
+                <strong>Alternative to the template's email link,</strong>
+                <code>span.protect</code>, which only displays "Email" with an envelope icon.
               </li>
             </ul>
-            <p class="kit-classes">
-              <code>cmu-callout</code> with <code>cmu-label</code>, <code>cmu-callout--blue</code>,
-              <code>cmu-callout--green</code>, <code>cmu-callout--gold</code>,
-              <code>cmu-callout--red</code>, <code>cmu-note</code>
-            </p>
+            <p class="kit-classes"><code>data-cmu-email</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-callout">
-          <p class="cmu-label">When to Join</p>
-          <p>Up to 15 minutes before office hours start. Course staff see the line as soon as they open.</p>
-        </div>
-        <div class="cmu-callout">
-          <p class="cmu-label">Before You Leave</p>
-          <p>Leave the queue when you're done or can't stay, so the next person moves up. Your place isn't saved, and joining again puts you at the end of the line.</p>
-          <p>Course staff can see everyone who left, so there's no need to email them.</p>
-        </div>
-        <div class="cmu-callout cmu-callout--blue">
-          <p class="cmu-label">Note</p>
-          <p>Queues open 15 minutes before office hours start.</p>
-        </div>
-        <div class="cmu-callout cmu-callout--green">
-          <p class="cmu-label">Tip</p>
-          <p>Add a question when you join, so course staff can group similar ones.</p>
-        </div>
-        <div class="cmu-callout cmu-callout--gold">
-          <p class="cmu-label">Warning</p>
-          <p>Leaving the page doesn't take you out of the line.</p>
-        </div>
-        <div class="cmu-callout cmu-callout--red">
-          <p class="cmu-label">Caution</p>
-          <p>Removing a queue removes everyone waiting in it.</p>
-        </div>
-        <div class="cmu-note">
-          <p>You aren't in any queues right now.</p>
-        </div>
+        <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
       </div>
 
             <h2 id="eyebrow-lead" class="rule-top">
@@ -492,6 +404,144 @@
         <p class="cmu-empty">No sections match these filters.</p>
       </div>
 
+            <h2 id="checks" class="rule-top">
+              Bullet, Check and Plain Lists
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Three kinds of list, for three jobs. Start each item with a short bold phrase when it
+              helps people scan.
+            </p>
+            <p class="kit-classes">
+              <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-plain</code>
+            </p>
+            <h3 id="checks-bullets">Bullet List</h3>
+            <p>
+              For describing things, such as the parts of a component or the options there are. Use
+              the template's own list: a plain <code>&lt;ul&gt;</code> with no class, which gets
+              gray open circles:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <ul>
+          <li><strong>Borrowing for a class?</strong> Give the course number, and you can keep it for a week.</li>
+          <li><strong>Late returns</strong> pause your borrowing until the equipment is back.</li>
+        </ul>
+      </div>
+            <h3 id="checks-checks">Check List</h3>
+            <p>
+              Use <code>cmu-checks</code> for dos and don'ts or to show what's included, such as the
+              contents of a kit. Use it sparingly so the page doesn't read like a to-do list:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p>Every camera kit includes:</p>
+        <ul class="cmu-checks">
+          <li><strong>A camera body</strong> with a zoom lens</li>
+          <li><strong>Two batteries</strong> and a charger</li>
+          <li><strong>A tripod</strong> and a carrying case</li>
+        </ul>
+      </div>
+            <h3 id="checks-plain">Plain List</h3>
+            <p>
+              When each item starts with its own label, such as a pill, add <code>cmu-plain</code>
+              for no bullets:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <ul class="cmu-plain">
+          <li><span class="cmu-pill cmu-pill--green">Available</span> Ready to borrow today.</li>
+          <li><span class="cmu-pill cmu-pill--amber">Reserved</span> Someone has it until Friday.</li>
+          <li><span class="cmu-pill">Retired</span> No longer lent out.</li>
+        </ul>
+      </div>
+
+            <h2 id="steps" class="rule-top">
+              Numbered Steps
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>Instructions to follow in order, with the step numbers in red circles.</p>
+            <p class="kit-classes"><code>ol.cmu-steps</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <ol class="cmu-steps">
+          <li>Sign in and select <strong>My Courses</strong>.</li>
+          <li>Pick the course whose office hours you're going to.</li>
+          <li>Select <strong>Join the Queue</strong> and say what you need help with.</li>
+        </ol>
+      </div>
+
+            <h2 id="callout" class="rule-top">
+              Callout and Note
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A callout is a labeled aside on a page, with roomy spacing: the label sits beside a
+              short text when there's space, and above a longer one. A note is a plainer tinted box
+              for a message among other content, such as in an app. Give a callout a color for what
+              kind of aside it is: blue for a note, green for a tip, gold for a warning, red for a
+              caution; the plain gray one is for anything else. Save color for the asides that call
+              for it. For which color to use, see
+              <a href="conventions.html#colors">Colors</a>.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>A callout</strong> is an aside within a section, for the people reading that
+                part of the page: a note, a tip, a warning. It stays until someone edits the page.
+              </li>
+              <li>
+                <strong>Not the result of something someone just did</strong>, such as saving a
+                form: that's a <a href="messages.html#flash">flash message</a>, shown once.
+              </li>
+              <li>
+                <strong>Not a notice everyone should see first</strong>, such as who a page is for
+                or a deadline: that's an <a href="sections.html#announcements">announcement</a>, a
+                section at the top of the page.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>cmu-callout</code> with <code>cmu-label</code>, <code>cmu-callout--blue</code>,
+              <code>cmu-callout--green</code>, <code>cmu-callout--gold</code>,
+              <code>cmu-callout--red</code>, <code>cmu-note</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-callout">
+          <p class="cmu-label">When to Join</p>
+          <p>Up to 15 minutes before office hours start. Course staff see the line as soon as they open.</p>
+        </div>
+        <div class="cmu-callout">
+          <p class="cmu-label">Before You Leave</p>
+          <p>Leave the queue when you're done or can't stay, so the next person moves up. Your place isn't saved, and joining again puts you at the end of the line.</p>
+          <p>Course staff can see everyone who left, so there's no need to email them.</p>
+        </div>
+        <div class="cmu-callout cmu-callout--blue">
+          <p class="cmu-label">Note</p>
+          <p>Queues open 15 minutes before office hours start.</p>
+        </div>
+        <div class="cmu-callout cmu-callout--green">
+          <p class="cmu-label">Tip</p>
+          <p>Add a question when you join, so course staff can group similar ones.</p>
+        </div>
+        <div class="cmu-callout cmu-callout--gold">
+          <p class="cmu-label">Warning</p>
+          <p>Leaving the page doesn't take you out of the line.</p>
+        </div>
+        <div class="cmu-callout cmu-callout--red">
+          <p class="cmu-label">Caution</p>
+          <p>Removing a queue removes everyone waiting in it.</p>
+        </div>
+        <div class="cmu-note">
+          <p>You aren't in any queues right now.</p>
+        </div>
+      </div>
+
             <h2 id="pills" class="rule-top">
               Pills
               <span class="kit-where"
@@ -533,25 +583,6 @@
               <code>floatright</code> or <code>floatleft</code> on the image to set the figure
               beside the text at half width; on phones it goes full width.
             </p>
-            <p class="kit-classes">
-              <code>figure.image</code>, <code>figcaption</code>, <code>floatright</code>,
-              <code>floatleft</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="image">
-          <img src="https://placemellon.andrew.cmu.edu/900/600?category=campus" alt="Placeholder photo of the Carnegie Mellon campus.">
-          <figcaption>Students test a sensor array outside Hamerschlag Hall. (Photo:&nbsp;<a href="#captions">Alex Rivera</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC&nbsp;BY&nbsp;4.0</a>, cropped)</figcaption>
-        </figure>
-      </div>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="image">
-          <img class="floatright" src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="Placeholder photo of Carnegie Mellon student life.">
-          <figcaption>The checkout desk in Hunt Library. (Courtesy of University Libraries)</figcaption>
-        </figure>
-        <p>The page's own text goes here, beside the photo. The figure floats right at half width from 550px up, and the text wraps around it.</p>
-      </div>
             <p>
               Credits go at the end of the caption, in parentheses, in the caption's own style; CMU
               sites don't use a separate credit line or credit class.
@@ -573,7 +604,29 @@
                 picture; a screen reader would read a credit there as part of it.
               </li>
             </ul>
-
+            <p class="kit-classes">
+              <code>figure.image</code>, <code>figcaption</code>, <code>floatright</code>,
+              <code>floatleft</code>
+            </p>
+            <h3 id="captions-under">Under the Photo</h3>
+            <p>A caption under the photo, with its credit:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <figure class="image">
+          <img src="https://placemellon.andrew.cmu.edu/900/600?category=campus" alt="Placeholder photo of the Carnegie Mellon campus.">
+          <figcaption>Students test a sensor array outside Hamerschlag Hall. (Photo:&nbsp;<a href="#captions">Alex Rivera</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC&nbsp;BY&nbsp;4.0</a>, cropped)</figcaption>
+        </figure>
+      </div>
+            <h3 id="captions-beside">Beside the Text</h3>
+            <p>A photo floated beside the text with <code>floatright</code>:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <figure class="image">
+          <img class="floatright" src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="Placeholder photo of Carnegie Mellon student life.">
+          <figcaption>The checkout desk in Hunt Library. (Courtesy of University Libraries)</figcaption>
+        </figure>
+        <p>The page's own text goes here, beside the photo. The figure floats right at half width from 550px up, and the text wraps around it.</p>
+      </div>
             <h2 id="screenshots" class="rule-top">
               Screenshots
               <span class="kit-where"
@@ -586,8 +639,8 @@
               <code>cmu-shot--browser</code> to draw it in a browser window, with a bar and three
               dots across the top; the window is as wide as the screenshot, never wider than the
               column. A <code>&lt;figcaption&gt;</code> under it is italic, like the template's
-              photo captions. Use a screenshot that shows the page's top, roof and all, and write
-              alt text that says what's on it.
+              photo captions. Ideally, the screenshot shows the page's top, roof and all. Always
+              write alt text that says what's on it.
             </p>
             <ul class="cmu-checks">
               <li>
@@ -635,9 +688,39 @@
         <div class="cmu-example">
           <p class="cmu-label">Example</p>
           <figure class="cmu-shot">
-            <img src="images/scotty.png" alt="Scotty as a round profile picture." width="160" height="160">
+            <img src="images/example-profile-picture.png" alt="Scotty as Andrew Carnegie's picture: small beside the name in the red bar, larger in the open menu." width="300" height="397">
           </figure>
         </div>
+      </div>
+
+            <h2 id="link-preview-card" class="rule-top">
+              Link Preview Card
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A picture of how a shared link looks in Slack, Teams or a social post, for a page that
+              explains or checks <a href="previews.html">link previews</a>. Put a
+              <code>cmu-link-preview</code> in a <a href="#screenshots">screenshot</a> frame: the
+              image, then a <code>cmu-link-preview-text</code> with the site, the title in
+              <code>&lt;strong&gt;</code> and the description:
+            </p>
+            <p class="kit-classes">
+              <code>cmu-link-preview</code>, <code>cmu-link-preview-text</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <figure class="cmu-shot">
+          <div class="cmu-link-preview">
+            <img src="images/preview.jpg" width="1200" height="630" alt="The Web Kilt home page, with the heading Made to Measure for CMU Sites and Apps beside screenshots of three CMU sites.">
+            <div class="cmu-link-preview-text">
+              <span>webkilt.andrew.cmu.edu</span>
+              <strong>Carnegie Mellon Web Kilt</strong>
+              <span>Components for CMU sites and apps, built on the university's web template.</span>
+            </div>
+          </div>
+        </figure>
       </div>
 
             <h2 id="transparent" class="rule-top">
@@ -702,7 +785,7 @@
               >
             </h2>
             <p>
-              A YouTube video in the page, or beside a few sentences about it on a band. Paste
+              A YouTube video in the page, or beside a few sentences about it in a section. Paste
               YouTube's embed code (Share, then Embed) and keep its
               <code>width</code> and <code>height</code>: the template's script fits the video to
               its column and keeps that shape, on phones too.
@@ -726,10 +809,18 @@
               </li>
             </ul>
             <p class="kit-classes"><code>iframe</code>, <code>grid column2 grey</code></p>
+            <h3 id="videos-alone">A Video on Its Own</h3>
+            <p>A video across the column:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/qq7J92y0wws" title="Carnegie Mellon University and the I'm fine. Project" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
       </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h3 id="videos-beside">A Video Beside Its Description</h3>
+            <p>A video and a few sentences about it, in a gray section:</p>
           </div>
         </div>
         <!-- prettier-ignore -->
@@ -809,6 +900,61 @@
         <pre class="cmu-snippet"><code>https://placemellon.andrew.cmu.edu/1400/700?category=campus&amp;gray</code></pre>
       </div>
 
+            <h2 id="peek" class="rule-top">
+              Long Code Block
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A code block too long to show at once: its first lines fade out at the bottom, and a
+              toggle under it shows the whole block and folds it back. Put the block (or its
+              <a href="#copy">copy box</a>) and a <code>cmu-more</code> holding only its summary in
+              a <code>cmu-peek</code>. It shows 10 lines; for another number, set
+              <code>--cmu-peek-lines</code> on it, such as <code>style="--cmu-peek-lines: 6"</code>.
+              A copy icon copies the whole block, folded or not.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>Say what the toggle shows, such as &ldquo;See the Whole Page.&rdquo;</p>
+            </div>
+            <p class="kit-classes">
+              <code>cmu-peek</code>, <code>cmu-more</code>, <code>cmu-more-link</code>,
+              <code>cmu-more-closed</code>, <code>cmu-more-open</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+<div class="cmu-peek">
+  <div class="cmu-copyable">
+    <pre class="cmu-snippet" id="kit-peek-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;link href="/vendor/cmu-web-kilt/css/cmu-cms.css" rel="stylesheet"&gt;
+&lt;link href="/vendor/cmu-web-kilt/css/cmu-app.css" rel="stylesheet"&gt;
+&lt;link href="/css/office-hours.css" rel="stylesheet"&gt;
+
+&lt;main id="content"&gt;
+  &lt;div class="content wide"&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Open Office Hours&lt;/h1&gt;
+      &lt;p class="cmu-lead"&gt;Join the line for 15-112, and we'll call you when it's your turn.&lt;/p&gt;
+      &lt;form method="post" action="/queue/15112/join"&gt;
+        &lt;label for="question"&gt;Your Question&lt;/label&gt;
+        &lt;textarea id="question" name="question" rows="3"&gt;&lt;/textarea&gt;
+        &lt;p class="cmu-hint"&gt;A sentence or two is enough.&lt;/p&gt;
+        &lt;button class="btn" type="submit"&gt;Join the Line&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+    <button class="cmu-copy" type="button" data-cmu-copy="#kit-peek-code" aria-label="Copy HTML" title="Copy HTML"></button>
+  </div>
+  <details class="cmu-more">
+    <summary><span class="cmu-more-link"><span class="cmu-more-closed">See the Whole Page</span><span class="cmu-more-open">Hide the Whole Page</span></span></summary>
+  </details>
+</div>
+      </div>
+
             <h2 id="copy" class="rule-top">
               Copy Button
               <span class="kit-where"
@@ -817,39 +963,30 @@
               >
             </h2>
             <p>
-              Copies a code block for people to paste somewhere else. Give the block an
-              <code>id</code> and point the button's <code>data-cmu-copy</code> at it. It requires
-              <code>cmu-app.js</code>. There are two kinds:
+              Copies a block of text for people to paste somewhere else. Give the block an
+              <code>id</code> and point the button's <code>data-cmu-copy</code> at it. When the user
+              selects a copy button:
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Code gets an icon in its corner,</strong> where anyone who copies code
-                expects it. Put the block and the button in a <code>cmu-copyable</code> box, and
-                name the button with <code>aria-label</code> and <code>title</code> ("Copy Code,"
-                "Copy HTML") for screen readers and the tooltip.
-              </li>
-              <li>
-                <strong>Anything else gets a named button beside the block,</strong> for people who
-                don't copy code every day: a link to share, an address to paste or a code to type
-                somewhere else. Put the block and the button in a <code>cmu-copy-row</code>; it
-                lines them up as a <a href="forms.html#field-button">field with a button</a> does.
-              </li>
-              <li>
-                <strong>It says it worked.</strong> The icon turns into a green check, the named
-                button reads "Copied" for two seconds and screen readers hear "Copied."
+                <strong>It says it worked.</strong> An icon turns into a green check, a named button
+                reads "Copied" for two seconds and screen readers hear "Copied."
               </li>
               <li>
                 <strong>If automatic copying isn't available,</strong> the button selects the text
-                and tells the user to press Ctrl+C or Command+C to copy it.
+                and tells the user to press Ctrl+C or Command+C.
               </li>
             </ul>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>Say what a named copy button copies, such as &ldquo;Copy Link.&rdquo;</p>
-            </div>
             <p class="kit-classes">
               <code>data-cmu-copy</code>, <code>cmu-copyable</code>, <code>cmu-copy</code>,
               <code>cmu-snippet</code>, <code>cmu-copy-row</code>, <code>btn</code>
+            </p>
+            <h3 id="copy-icon">An Icon for Code</h3>
+            <p>
+              Code gets an icon in its corner, where people who copy code expect it. Put the block
+              and the button in a <code>cmu-copyable</code> box, and name the button with
+              <code>aria-label</code> and <code>title</code>, such as "Copy Code" or "Copy HTML,"
+              for screen readers and the tooltip:
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -858,6 +995,18 @@
           <button class="cmu-copy" type="button" data-cmu-copy="#kit-copy-html" aria-label="Copy HTML" title="Copy HTML"></button>
         </div>
       </div>
+            <h3 id="copy-named">A Named Button for Anything Else</h3>
+            <p>
+              Anything else, such as a link to share, an address to paste or a code to type
+              somewhere else, gets a named button beside the block, for people who don't copy code
+              every day. Put the block and the button in a <code>cmu-copy-row</code>, which lines
+              them up like a <a href="forms.html#field-button">field with a button</a>.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>Say what a named copy button copies, such as &ldquo;Copy Link.&rdquo;</p>
+            </div>
+            <p>Here, a link to share:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-copy-row">
@@ -896,40 +1045,6 @@
             <pre class="cmu-snippet"><code id="kit-agent-demo">Set up the course site in this project. Read https://example.cmu.edu/setup.html for the steps, add the site's files in the order it gives and keep the project's own styles last.</code></pre>
           </details>
         </div>
-      </div>
-
-            <h2 id="email" class="rule-top">
-              Email Links
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
-              >
-            </h2>
-            <p>
-              An email link whose address isn't in the page's HTML, so very simple scrapers can't
-              harvest it. Write the address with <code>(through)</code> for the <code>@</code> in
-              <code>data-cmu-email</code>, and give the link words that name the person or office,
-              such as "Email Andrew Carnegie." <code>cmu-app.js</code> fills in the address only
-              when someone points at, focuses or taps the link, so scrapers that just load the page
-              don't get it, and it leaves the words alone. Without the script, it's plain text.
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Use it for people,</strong> such as staff or student workers on a team page.
-                A shared office address people should copy, like a help desk's, can just be shown.
-              </li>
-              <li>
-                <strong>Alternative to the template's email link,</strong>
-                <code>span.protect</code>, which only displays "Email" with an envelope icon.
-              </li>
-            </ul>
-            <p class="kit-classes"><code>data-cmu-email</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
       </div>
 
             <h2 id="countdown" class="rule-top">
@@ -1009,6 +1124,8 @@
             <p class="kit-classes">
               <code>bi</code>, <code>bi-</code><em>name</em>, <code>floatright</code>
             </p>
+            <h3 id="icons-details">In a List of Details</h3>
+            <p>An event's date, place and audience, each with an icon:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <h3>Teaching With Generative AI</h3>
@@ -1018,6 +1135,12 @@
           <i class="bi bi-people" aria-hidden="true"></i> For faculty and graduate students
         </p>
       </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h3 id="icons-cards">On Cards</h3>
+            <p>An icon beside each card's heading:</p>
           </div>
         </div>
         <!-- prettier-ignore -->
@@ -1048,9 +1171,12 @@
               >
             </h2>
             <p>
-              Questions that open to show their answers. A heading with <code>collapsed</code> hides
-              everything after it, up to the next collapsed heading, until it's selected; it depends
-              on the template's script.
+              Questions that open to show their answers. Put <code>collapsed</code> on each
+              question's heading, and everything after it, up to the next question, stays hidden
+              until someone selects it. Give each question an <code>id</code>, and a link such as
+              <code>faq.html#miss-turn</code> opens the page with that answer showing. To show a few
+              questions on another page, such as a home page, use an
+              <a href="sections.html#qa">FAQ teaser</a>.
             </p>
             <div class="cmu-callout">
               <p class="cmu-label">Style</p>
@@ -1062,6 +1188,8 @@
               </p>
             </div>
             <p class="kit-classes"><code>collapsed</code></p>
+            <h3 id="faq-short">One Topic</h3>
+            <p>All the questions together, each opening in place:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <h2 class="collapsed">Can I Join More Than One Queue?</h2>
@@ -1080,16 +1208,16 @@
                 question: the question goes in its heading and the answer in its content.
               </p>
             </div>
+            <h3 id="faq-long">Several Topics</h3>
             <p>
-              A long FAQ divides into categories. Each category is its own
+              For more questions, divide them by topic. Each topic is its own
               <code>.content</code> block with an <code>id</code>, headed by an
               <code>&lt;h1&gt;</code> whose text is in a <code>rule-bottom</code> span, so the rule
-              runs under the words. Give each question an <code>id</code> too: a link to it, such as
-              <code>faq.html#miss-turn</code>, opens that answer when the page loads. With more than
-              a few categories, list them in an
-              <a href="sidebars.html#on-this-page">On This Page</a> box in the first block's
+              runs under the words. With more than a few topics, list them in an
+              <a href="sidebars.html#on-this-page">On This Page</a> box in the first topic's
               sidebar.
             </p>
+            <p>Here, the first of several topics:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="content" id="kit-faq-students">
@@ -1169,7 +1297,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -1177,7 +1310,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li class="active"><a href="content.html" aria-current="page">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -1189,7 +1321,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

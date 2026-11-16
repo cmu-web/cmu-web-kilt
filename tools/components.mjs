@@ -15,7 +15,6 @@ const PAGES = [
   "sections.html",
   "content.html",
   "sidebars.html",
-  "previews.html",
   "people.html",
   "news.html",
   "lists.html",
@@ -25,7 +24,7 @@ const PAGES = [
   "layout.html",
 ];
 // Sections that explain rather than show a component
-const SKIP = new Set(["sections", "more-template", "service-home", "colors", "color-tokens"]);
+const SKIP = new Set(["sections", "more-template", "colors", "color-tokens"]);
 
 const text = (html) =>
   html

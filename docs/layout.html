@@ -95,26 +95,28 @@
                 <li><a href="#site-name">Site Name</a></li>
                 <li><a href="#search">Site Search</a></li>
                 <li><a href="#navigation">Navigation</a></li>
+                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
                 <li><a href="#tabs">Tabs</a></li>
                 <li><a href="#breadcrumbs">Breadcrumbs</a></li>
                 <li><a href="#content-area">Content and Sidebar</a></li>
+                <li><a href="#open-graph">Open Graph Tags</a></li>
+                <li><a href="#scripts">Scripts</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#service-home">Home Page for a Service Description</a></li>
-                <li><a href="#panels">Panels for Framed Pages</a></li>
-                <li><a href="#scripts">Scripts</a></li>
                 <li><a href="#skeleton">The Whole Page</a></li>
+                <li><a href="#framed">Framed Pages</a></li>
+                <li><a href="#panels">Framed Page Panel</a></li>
+                <li><a href="#quirks">Template Quirks</a></li>
               </ul>
             </div>
           </div>
@@ -549,7 +551,7 @@
             <figure class="cmu-shot">
               <img
                 src="images/layout-tabs-sidebar.png"
-                alt="The top of these docs' Conventions page: the content on the left, and on the right a list of its sections, starting with Classes, AP Style and CMU Names and Terms."
+                alt="The top of these docs' Conventions page: the content on the left, and on the right a list of its sections, starting with AP Style, CMU Names and Terms and Headings."
                 width="1290"
                 height="470"
               />
@@ -579,6 +581,8 @@
               Fewer. Keep the current tab out of the folded part, so it always shows.
             </p>
             <p class="kit-classes"><code>cmu-tabs</code>, <code>cmu-tabs-more</code></p>
+            <h3 id="tabs-links">Tabs That Link</h3>
+            <p>Each tab goes to its own page, with the current one marked:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-tabs" role="navigation" aria-label="Semester">
@@ -608,6 +612,7 @@
             <p class="kit-classes">
               <code>cmu-tabs</code>, <code>data-cmu-tabs</code>, <code>data-cmu-tab</code>
             </p>
+            <p>Here, the same steps for Mac and Windows:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-tabs" role="tablist" aria-label="Get the app" data-cmu-tabs="kit-demo-os">
@@ -733,108 +738,26 @@
                 sidebar.
               </li>
               <li>
-                Several <code>.content</code> blocks can follow one another, for a page in bands.
+                Several <code>.content</code> blocks can follow one another, for a page in sections.
               </li>
             </ul>
             <p><a class="cta" href="sidebars.html">See the Sidebar Boxes</a></p>
 
-            <h2 id="service-home" class="rule-top">Home Page for a Service Description</h2>
-            <div class="cmu-annotated cmu-annotated--wide">
-              <div class="cmu-annotated-text">
-                <p>
-                  A service description is a site that explains an app or service and sends people
-                  to it, built in Cascade, another CMS or plain HTML. Nothing about its home page is
-                  required, but if you're not sure where to start, this order works well for most
-                  services. Use the sections your service needs. Skip path cards if everyone follows
-                  the same route, and explain how it works only if people need that context. Let
-                  recurring questions guide what you add.
-                </p>
-                <ol class="cmu-annotated-notes">
-                  <li class="cmu-callout" style="--cmu-at: 0.3">
-                    <p class="cmu-label">1. Hero</p>
-                    <p>
-                      A tagline, a sentence about the service, a button into it and a screenshot.
-                    </p>
-                    <p><a class="cta" href="tops.html#hero">See Hero</a></p>
-                  </li>
-                  <li class="cmu-callout" style="--cmu-at: 0.49">
-                    <p class="cmu-label">2. Path Cards</p>
-                    <p>
-                      One for each kind of person who uses it (students, instructors,
-                      administrators), each leading to a page of its own.
-                    </p>
-                    <p><a class="cta" href="sections.html#paths">See Path Cards</a></p>
-                  </li>
-                  <li class="cmu-callout" style="--cmu-at: 0.7">
-                    <p class="cmu-label">3. How It Works</p>
-                    <p>
-                      Three or four short steps, with a
-                      <a href="content.html#callout">callout</a> under them for the one thing people
-                      most need to know.
-                    </p>
-                    <p><a class="cta" href="sections.html#flow">See How It Works</a></p>
-                  </li>
-                  <li class="cmu-callout" style="--cmu-at: 0.89">
-                    <p class="cmu-label">4. FAQ Teaser</p>
-                    <p>A few common questions, with a link to the full FAQ.</p>
-                    <p><a class="cta" href="sections.html#qa">See FAQ Teaser</a></p>
-                  </li>
-                </ol>
-              </div>
-              <figure class="cmu-shot cmu-shot--browser">
-                <a href="images/layout-service-home-full.jpg" data-cmu-zoom
-                  ><img
-                    src="images/layout-service-home.jpg"
-                    alt="A service description's home page, top to bottom: a hero with a sign-in button and a screenshot, three path cards, three numbered steps over a callout, and four common questions."
-                    width="900"
-                    height="1368"
-                    loading="lazy"
-                /></a>
-                <figcaption>Select the screenshot to enlarge it.</figcaption>
-              </figure>
-            </div>
-
-            <h2 id="panels" class="rule-top">
-              Panels for Framed Pages
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
+            <h2 id="behind" class="rule-top">Behind the Page</h2>
             <p>
-              For pages inside another tool (<code>body.cmu-framed</code>): plain and left-aligned,
-              since the host already frames them. The actions go at the bottom, the main one first,
-              on the left, like every other row of buttons.
+              Two parts no one sees on the page itself: the tags in its head that shape a shared
+              link, and the scripts at the end of its body.
             </p>
-            <p class="kit-classes">
-              <code>cmu-panel</code>, <code>cmu-panel-header</code>, <code>cmu-panel-body</code>,
-              <code>cmu-panel-footer</code>
+            <h3 id="open-graph">Open Graph Tags</h3>
+            <p>
+              In the <code>&lt;head&gt;</code>, after the <code>&lt;title&gt;</code>: the tags that
+              give a shared link its title, sentence and picture in Slack, Teams or a social post.
+              In Cascade, the template writes most of them from the page's settings; an app writes
+              them in the layout every page uses.
             </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-panel">
-          <div class="cmu-panel-header">
-            <h2>Choose a Page</h2>
-            <p class="cmu-muted">Pages in this Canvas course.</p>
-          </div>
-          <div class="cmu-panel-body">
-            <fieldset class="cmu-choices">
-              <legend class="cmu-label">Pages</legend>
-              <ul>
-                <li><label><input type="radio" name="kit-page">Course Syllabus</label></li>
-                <li><label><input type="radio" name="kit-page">Welcome</label></li>
-              </ul>
-            </fieldset>
-          </div>
-          <div class="cmu-panel-footer">
-            <button class="btn" type="button">Confirm Selection</button>
-            <a class="btn ghost" href="#panels">Cancel</a>
-          </div>
-        </div>
-      </div>
+            <p><a class="cta" href="previews.html">See Link Previews / Open Graph</a></p>
 
-            <h2 id="scripts" class="rule-top">Scripts</h2>
+            <h3 id="scripts">Scripts</h3>
             <p>
               Just before <code>&lt;/body&gt;</code>, from the template, in this order. Without them
               the page still works, with the navigation as a list in the footer.
@@ -863,15 +786,28 @@
               stays a plain list in the footer.
             </p>
             <p>
-              Its head also requires the tags that give a shared link its title, sentence and
-              picture; see <a href="previews.html">Link Previews</a>.
+              Its head includes the tags that give a shared link its title, sentence and picture;
+              see <a href="previews.html">Link Previews / Open Graph</a>.
             </p>
-            <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
+            <div class="cmu-peek">
+              <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
   &lt;title&gt;Open Office Hours - Office Hours Queue - Carnegie Mellon University&lt;/title&gt;
+  &lt;meta name="description" content="Join the queue for help at today's office hours."&gt;
+  &lt;!-- Link previews: the title, sentence and picture a shared link shows --&gt;
+  &lt;meta property="og:site_name" content="Office Hours Queue"&gt;
+  &lt;meta property="og:title" content="Open Office Hours - Office Hours Queue"&gt;
+  &lt;meta property="og:description" content="Join the queue for help at today's office hours."&gt;
+  &lt;meta property="og:url" content="https://queue.andrew.cmu.edu/open"&gt;
+  &lt;meta property="og:type" content="website"&gt;
+  &lt;meta property="og:image" content="https://queue.andrew.cmu.edu/images/preview.jpg"&gt;
+  &lt;meta property="og:image:width" content="1200"&gt;
+  &lt;meta property="og:image:height" content="630"&gt;
+  &lt;meta property="og:image:alt" content="Office Hours Queue's home page: Open Office Hours, with the queue's sign-up button."&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
   &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/common/standard-v6/css/print.min.css" media="print" rel="stylesheet"&gt;
@@ -970,6 +906,15 @@
 &lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/js/cmu-app.js" integrity="sha384-10393F76wEQPHaJEEoM9M1QEQsl9mTezDdEM45kArp0j26SWs3gxiGsXKrmwJHio" crossorigin="anonymous"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+              <details class="cmu-more">
+                <summary>
+                  <span class="cmu-more-link"
+                    ><span class="cmu-more-closed">See the Whole Page</span
+                    ><span class="cmu-more-open">Hide the Whole Page</span></span
+                  >
+                </summary>
+              </details>
+            </div>
             <ul>
               <li>
                 <strong>Keep <code>no-js</code> on <code>&lt;body&gt;</code>.</strong> The
@@ -994,6 +939,85 @@
                 <a href="forms.html#setup">App Components</a>).
               </li>
             </ul>
+
+            <h2 id="framed" class="rule-top">Framed Pages</h2>
+            <p>
+              A page shown inside another tool, such as a Canvas LTI frame, sits in the host's own
+              frame, so it leaves out the template frame: no roof, site name, navigation,
+              breadcrumbs or footer. It loads the same stylesheets as
+              <a href="#skeleton">The Whole Page</a>, gives <code>&lt;body&gt;</code> the class
+              <code>cmu-framed</code> instead of <code>cmu-app</code>, which adds padding, and
+              usually holds one panel. The template's scripts mostly run the navigation, so leave
+              them out unless the page uses its <code>.collapsed</code> headings:
+            </p>
+            <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Choose a Page - Office Hours Queue&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-cms.css" integrity="sha384-9jhXiuuhmbvQJYP71Rg8e7/NBlfXA/7MjHSMxZeSbELc/fdpt3PAwyoS4jvEMXqy" crossorigin="anonymous" rel="stylesheet"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-app.css" integrity="sha384-Tj5sbg6foKwNHx77Xj9uSKHv4N7jiYnj97prQWE3B2+6v3K8tsqz/xmsjxeJKvjA" crossorigin="anonymous" rel="stylesheet"&gt;
+  &lt;link href="/css/your-site.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="cmu-framed"&gt;
+  &lt;div class="cmu-panel"&gt;
+    &lt;div class="cmu-panel-header"&gt;
+      &lt;h2&gt;Choose a Page&lt;/h2&gt;
+      &lt;p class="cmu-muted"&gt;Pages in this Canvas course.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="cmu-panel-body"&gt;
+      &lt;!-- The page's form --&gt;
+    &lt;/div&gt;
+    &lt;div class="cmu-panel-footer"&gt;
+      &lt;button class="btn" type="submit"&gt;Confirm Selection&lt;/button&gt;
+      &lt;a class="btn ghost" href="/cancel"&gt;Cancel&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <h2 id="panels" class="rule-top">
+              Framed Page Panel
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              The one box on a <a href="#framed">framed page</a>: a header, the page's content and
+              its actions. It's plain and left-aligned, since the host already frames it. The
+              actions go at the bottom, the main one first, on the left, like every other row of
+              buttons:
+            </p>
+            <p class="kit-classes">
+              <code>cmu-panel</code>, <code>cmu-panel-header</code>, <code>cmu-panel-body</code>,
+              <code>cmu-panel-footer</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-panel">
+          <div class="cmu-panel-header">
+            <h2>Choose a Page</h2>
+            <p class="cmu-muted">Pages in this Canvas course.</p>
+          </div>
+          <div class="cmu-panel-body">
+            <fieldset class="cmu-choices">
+              <legend class="cmu-label">Pages</legend>
+              <ul>
+                <li><label><input type="radio" name="kit-page">Course Syllabus</label></li>
+                <li><label><input type="radio" name="kit-page">Welcome</label></li>
+              </ul>
+            </fieldset>
+          </div>
+          <div class="cmu-panel-footer">
+            <button class="btn" type="button">Confirm Selection</button>
+            <a class="btn ghost" href="#panels">Cancel</a>
+          </div>
+        </div>
+      </div>
           </div>
         </div>
         <div class="content wide gold boxes">
@@ -1062,7 +1086,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li class="active"><a href="layout.html" aria-current="page">Page Layout</a></li>
+              <li class="active">
+                <a href="layout.html" aria-current="page">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="components.html">Components</a>
                 <ul>
@@ -1070,7 +1099,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -1082,7 +1110,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

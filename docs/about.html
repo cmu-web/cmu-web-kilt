@@ -88,29 +88,31 @@
             <p>
               The template supplies the page structure, navigation, type, buttons and links, and the
               kit builds on those styles. It's plain CSS and JavaScript files, with no build step or
-              required JavaScript framework.
+              required JavaScript framework. Each site or app links one exact release, so its pages
+              don't change until it moves to a newer one.
             </p>
             <ul>
               <li>
-                <strong>In a CMS,</strong> the template's stylesheets and scripts come built in on
-                CMU's official CMS, Cascade. Add the kit's stylesheet to your site's head code, then
-                paste components into a page's HTML; in Cascade, that's a content section's Source
-                code view.
+                <strong>In Cascade,</strong> CMU's official CMS, the template is built in. Add the
+                kit's stylesheet to your site's head code, then paste components into a content
+                section's Source code view.
+              </li>
+              <li>
+                <strong>In another CMS</strong> on CMU's template, such as Drupal, add the kit's
+                stylesheet wherever the CMS puts code in every page's head, then paste components
+                into a page's HTML.
               </li>
               <li>
                 <strong>In an app,</strong> load the kit after CMU's template and use the components
-                in your own pages. Your app handles its own data and actions.
+                in your own pages. The kit only styles them. What your app does is up to you.
               </li>
               <li>
                 <strong>In a hosted service</strong> that lets you add your own styles, such as a
-                form, survey or help-desk tool, the kit's stylesheets can bring its pages closer to
-                CMU's look. How close depends on how much of the page the service lets you change.
+                form, survey or help-desk tool, the kit's stylesheets or targeted excerpts can bring
+                its pages closer to CMU's look. How close depends on what the service lets you
+                change.
               </li>
             </ul>
-            <p>
-              Each site or app links one specific release, so its pages don't change until it moves
-              to a newer one.
-            </p>
             <p><a class="cta" href="install.html">Install the Kit</a></p>
           </div>
         </div>
@@ -195,42 +197,13 @@
             </p>
           </div>
         </div>
-        <div class="grid column4 grey boxes">
-          <h1 id="cmu-web">More CMU Web Tools</h1>
+        <div class="grid column3 grey boxes">
+          <h1 id="cmu-web">More From CMU Web</h1>
           <p class="cmu-grid-full">
             The Carnegie Mellon Web Kilt is part of CMU Web, a collection of projects for Carnegie
-            Mellon web development. The collection also includes:
+            Mellon web development.
           </p>
-          <div>
-            <figure class="cmu-shot cmu-shot--browser">
-              <a href="https://fencepost.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
-                ><img
-                  src="https://fencepost.andrew.cmu.edu/images/cmu-web-preview.webp"
-                  alt="FencePost's home page."
-                  width="1040"
-                  height="656"
-              /></a>
-            </figure>
-            <h2><a class="external" href="https://fencepost.andrew.cmu.edu/">FencePost</a></h2>
-            <p>Link previews for Carnegie Mellon websites: the image and the Open Graph tags.</p>
-          </div>
-          <div>
-            <figure class="cmu-shot cmu-shot--browser">
-              <a href="https://jekyllandplaid.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
-                ><img
-                  src="https://jekyllandplaid.andrew.cmu.edu/0/images/cmu-web-preview.webp"
-                  alt="Jekyll &amp; Plaid's home page."
-                  width="1040"
-                  height="656"
-              /></a>
-            </figure>
-            <h2>
-              <a class="external" href="https://jekyllandplaid.andrew.cmu.edu/"
-                >Jekyll &amp; Plaid</a
-              >
-            </h2>
-            <p>A GitHub Pages theme that turns plain Markdown into pages in CMU style.</p>
-          </div>
+          <p class="cmu-label cmu-grid-full">Tools for Any Site or App</p>
           <div>
             <figure class="cmu-shot cmu-shot--browser">
               <a href="https://placemellon.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
@@ -259,6 +232,69 @@
               QR codes with Carnegie Mellon character, from Scotty portraits to campus landmarks.
             </p>
           </div>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="https://fencepost.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="https://fencepost.andrew.cmu.edu/images/cmu-web-preview.webp"
+                  alt="FencePost's home page."
+                  width="1040"
+                  height="656"
+              /></a>
+            </figure>
+            <h2><a class="external" href="https://fencepost.andrew.cmu.edu/">FencePost</a></h2>
+            <p>Link previews for Carnegie Mellon websites: the image and the Open Graph tags.</p>
+          </div>
+          <p class="cmu-label cmu-grid-full">Themes for Other Platforms</p>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="https://jekyllandplaid.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="https://jekyllandplaid.andrew.cmu.edu/0/images/cmu-web-preview.webp"
+                  alt="Jekyll &amp; Plaid's home page."
+                  width="1040"
+                  height="656"
+              /></a>
+            </figure>
+            <h2>
+              <a class="external" href="https://jekyllandplaid.andrew.cmu.edu/"
+                >Jekyll &amp; Plaid</a
+              >
+            </h2>
+            <p>A GitHub Pages theme that turns plain Markdown into pages in CMU style.</p>
+          </div>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="https://forbesandmoreword.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="https://forbesandmoreword.andrew.cmu.edu/images/cmu-web-preview.webp"
+                  alt="Forbes &amp; Moreword's home page."
+                  width="1040"
+                  height="656"
+              /></a>
+            </figure>
+            <h2>
+              <a class="external" href="https://forbesandmoreword.andrew.cmu.edu/"
+                >Forbes &amp; Moreword</a
+              >
+            </h2>
+            <p>
+              A WordPress theme in CMU style, with the kit's components ready to insert as patterns.
+            </p>
+          </div>
+          <div>
+            <figure class="cmu-shot cmu-shot--browser">
+              <a href="https://hamerschlag.andrew.cmu.edu/" tabindex="-1" aria-hidden="true"
+                ><img
+                  src="https://hamerschlag.andrew.cmu.edu/images/cmu-web-preview.webp"
+                  alt="Hamerschlag's home page."
+                  width="1040"
+                  height="656"
+              /></a>
+            </figure>
+            <h2><a class="external" href="https://hamerschlag.andrew.cmu.edu/">Hamerschlag</a></h2>
+            <p>A Forgejo theme in CMU style, for sites that host code and projects.</p>
+          </div>
         </div>
       </main>
 
@@ -281,7 +317,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="components.html">Components</a>
                 <ul>
@@ -289,7 +330,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -301,7 +341,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li class="active"><a href="about.html" aria-current="page">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

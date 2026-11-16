@@ -13,19 +13,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Link Previews - Components - Carnegie Mellon Web Kilt - Carnegie Mellon University
+      Link Previews / Open Graph - Page Layout - Carnegie Mellon Web Kilt - Carnegie Mellon
+      University
     </title>
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Give shared links a clear title, a short description and a recognizable image."
+      content="When someone shares your page in Slack, Teams or a social post, its preview helps people decide whether to open it. Give shared links a clear title, a short description and a recognizable image."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
-    <meta property="og:title" content="Link Previews - Carnegie Mellon Web Kilt" />
+    <meta property="og:title" content="Link Previews / Open Graph - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Give shared links a clear title, a short description and a recognizable image."
+      content="When someone shares your page in Slack, Teams or a social post, its preview helps people decide whether to open it. Give shared links a clear title, a short description and a recognizable image."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/previews.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -75,48 +76,18 @@
 
       <main id="content">
         <div class="breadcrumbs">
-          <a href="./">Carnegie Mellon Web Kilt</a>&nbsp;&rsaquo;&nbsp;<a href="components.html"
-            >Components</a
-          >&nbsp;&rsaquo;&nbsp;Link Previews
+          <a href="./">Carnegie Mellon Web Kilt</a>&nbsp;&rsaquo;&nbsp;<a href="layout.html"
+            >Page Layout</a
+          >&nbsp;&rsaquo;&nbsp;Link Previews / Open Graph
         </div>
         <div class="content wide">
           <div>
-            <h1>Link Previews</h1>
+            <h1>Link Previews / Open Graph</h1>
             <p class="cmu-lead">
-              Give shared links a clear title, a short description and a recognizable image.
+              When someone shares your page in Slack, Teams or a social post, its preview helps
+              people decide whether to open it. Give shared links a clear title, a short description
+              and a recognizable image.
             </p>
-          </div>
-        </div>
-        <!-- On This Page: the sections, in a link bank under the intro -->
-        <div class="grid column4 nav cmu-on-this-page">
-          <p class="cmu-label">On This Page</p>
-          <div>
-            <div class="nav-list">
-              <ul>
-                <li><a href="#what">What People See</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="nav-list">
-              <ul>
-                <li><a href="#image">The Preview Image</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="nav-list">
-              <ul>
-                <li><a href="#tags">Open Graph Tags</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="nav-list">
-              <ul>
-                <li><a href="#check">Check a Preview</a></li>
-              </ul>
-            </div>
           </div>
         </div>
         <div class="content wide">
@@ -125,9 +96,8 @@
             <div class="cmu-split">
               <div>
                 <p>
-                  When someone shares your page in Slack, Teams or a social post, its preview helps
-                  people decide whether to open it. The app builds that preview from information in
-                  the page's HTML.
+                  Slack, Teams and social sites build a link's preview from information in the
+                  page's HTML.
                 </p>
                 <ul>
                   <li><strong>Title:</strong> Name the page and the site it belongs to.</li>
@@ -135,20 +105,25 @@
                     <strong>Description:</strong> Say what people will find in one short sentence.
                   </li>
                   <li>
-                    <strong>Image:</strong> Show the site, usually the top of its home page; see
-                    <a href="#image">The Preview Image</a>.
+                    <strong>Image:</strong> Show the site, usually the top of its home page. See
+                    <a href="#image">how to make one</a>.
+                  </li>
+                  <li>
+                    <strong>Site name, in some apps (not shown):</strong> A small line with the
+                    site's name, as in Slack and Teams.
+                  </li>
+                  <li>
+                    <strong>Image description, in some apps (not shown):</strong> What the image
+                    shows, read aloud by screen readers where the app supports it.
+                  </li>
+                  <li>
+                    <strong>Author and date, for an article, in some apps (not shown):</strong> Who
+                    wrote it and when; see the <a href="#articles">tags for an article</a>.
                   </li>
                 </ul>
-                <p>The app controls the layout, so the same link may look different in each one.</p>
                 <p>
-                  To show a preview on a page of your own, such as in a guide or a tool that checks
-                  links, put a <code>cmu-link-preview</code> in a
-                  <a href="content.html#screenshots">screenshot</a> frame: the image, then a
-                  <code>cmu-link-preview-text</code> with the site, the title in
-                  <code>&lt;strong&gt;</code> and the description.
-                </p>
-                <p class="kit-classes">
-                  <code>cmu-link-preview</code>, <code>cmu-link-preview-text</code>
+                  Each app sets its own layout, so the same link can look different in Slack, Teams
+                  and elsewhere.
                 </p>
               </div>
               <div>
@@ -169,60 +144,19 @@
                       >
                     </div>
                   </div>
-                  <figcaption>An illustrative preview using this guide's image.</figcaption>
+                  <figcaption>
+                    A preview using this guide's image. Add one to your page with a
+                    <a href="content.html#link-preview-card">link preview card</a>.
+                  </figcaption>
                 </figure>
               </div>
             </div>
 
-            <h2 id="image" class="rule-top">The Preview Image</h2>
+            <h2 id="tags" class="rule-top">Open Graph Tags</h2>
             <p>
-              Every site should have one image for its previews. Unless a page has a better picture
-              of its own, use the top of the site's home page:
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>What it shows:</strong> The home page at 1200 pixels wide, cropped to the
-                top 630, roof and site name included, with the menu closed and no one signed in.
-              </li>
-              <li><strong>Size and type:</strong> 1200 &times; 630 pixels, a JPEG under 300 KB.</li>
-              <li>
-                <strong>Name and place:</strong> <code>images/preview.jpg</code> in the site's top
-                folder, so it's at <code>/images/preview.jpg</code> on the site. For a site built
-                from a repository, commit it there, beside the pages.
-              </li>
-              <li>
-                <strong>Alt text:</strong> Name the site and say what the page shows, such as
-                &ldquo;Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a
-                camera kit.&rdquo;
-              </li>
-              <li>
-                <strong>Nothing private:</strong> No one's name, data or messages. Use sample data
-                if the page shows any.
-              </li>
-              <li>
-                <strong>Only what you can share without a credit:</strong> A preview shows no
-                caption, so swap out any photo whose license asks for one.
-              </li>
-            </ul>
-            <p>
-              To make it, use your browser's developer tools: most can set the page to an exact size
-              and take a screenshot of it. Set 1200 &times; 630, capture the page and save it as a
-              JPEG. Retake it when the home page changes.
-            </p>
-
-            <h2 id="tags" class="rule-top">
-              Open Graph Tags
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              <a class="external" href="https://ogp.me/">Open Graph tags</a> describe the page for
-              apps that generate previews. Add them to the page's <code>&lt;head&gt;</code>. This
+              Apps look in the page's <code>&lt;head&gt;</code> for a preview's title, description
+              and image. Add the tags there, as the
+              <a class="external" href="https://ogp.me/">Open Graph protocol</a> defines them. This
               example is for an equipment reservation page:
             </p>
             <pre
@@ -440,7 +374,7 @@ import Layout from "../layouts/Layout.astro";
 &lt;meta property="og:image:alt" content="Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit."&gt;
 &lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
             </div>
-            <ul class="cmu-checks">
+            <ul>
               <li>
                 <strong>Keep the title specific:</strong> Use the page's name followed by the site's
                 name, as in its <code>&lt;title&gt;</code>.
@@ -471,7 +405,7 @@ import Layout from "../layouts/Layout.astro";
               the tags in the one layout every page uses, filled in from each page, so no page goes
               out without them.
             </p>
-            <ul class="cmu-checks">
+            <ul>
               <li>
                 <strong>Give every page a description:</strong> Make it part of what a page must
                 set, as a title is, and use the app's own one-sentence description as the fallback.
@@ -520,7 +454,7 @@ import Layout from "../layouts/Layout.astro";
 &lt;meta property="article:modified_time" content="2027-01-12T14:30:00-05:00"&gt;
 &lt;meta property="article:author" content="Margaret Morrison"&gt;
 &lt;meta name="author" content="Margaret Morrison"&gt;</code></pre>
-            <ul class="cmu-checks">
+            <ul>
               <li>
                 <strong>Give the time and time zone:</strong> Write the date as above, with the
                 offset from UTC, <code>-05:00</code> in winter and <code>-04:00</code> in summer.
@@ -536,8 +470,45 @@ import Layout from "../layouts/Layout.astro";
               </li>
             </ul>
 
-            <h2 id="check" class="rule-top">Check a Preview</h2>
+            <h2 id="image" class="rule-top">Make a Preview Image</h2>
+            <p>
+              Every site should have one image for its previews. Unless a page has a better picture
+              of its own, use the top of the site's home page:
+            </p>
             <ul class="cmu-checks">
+              <li>
+                <strong>What it shows:</strong> The home page at 1200 pixels wide, cropped to the
+                top 630, roof and site name included, with the menu closed. For an app, a page
+                signed in as a made-up user can show more of what it does.
+              </li>
+              <li><strong>Size and type:</strong> 1200 &times; 630 pixels, a JPEG under 300 KB.</li>
+              <li>
+                <strong>Name and place:</strong> <code>images/preview.jpg</code> in the site's top
+                folder, so it's at <code>/images/preview.jpg</code> on the site. For a site built
+                from a repository, commit it there, beside the pages.
+              </li>
+              <li>
+                <strong>Alt text:</strong> Name the site and say what the page shows, such as
+                &ldquo;Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a
+                camera kit.&rdquo;
+              </li>
+              <li>
+                <strong>Nothing private:</strong> No one's name, data or messages. Use sample data
+                if the page shows any.
+              </li>
+              <li>
+                <strong>Only what you can share without a credit:</strong> A preview shows no
+                caption, so swap out any photo whose license asks for one.
+              </li>
+            </ul>
+            <p>
+              To make it, use your browser's developer tools: most can set the page to an exact size
+              and take a screenshot of it. Set 1200 &times; 630, capture the page and save it as a
+              JPEG. Retake it when the home page changes.
+            </p>
+
+            <h2 id="check" class="rule-top">Check a Preview</h2>
+            <ul>
               <li>
                 <strong>Check the published page, signed out:</strong> Paste its address into a
                 message to yourself in Slack or Teams. Check the title, description and image.
@@ -574,17 +545,21 @@ import Layout from "../layouts/Layout.astro";
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
               <li class="active">
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li class="active">
+                    <a href="previews.html" aria-current="page">Link Previews / Open Graph</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
                 <a href="components.html">Components</a>
                 <ul>
                   <li><a href="tops.html">Page Tops</a></li>
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li class="active">
-                    <a href="previews.html" aria-current="page">Link Previews</a>
-                  </li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -596,7 +571,7 @@ import Layout from "../layouts/Layout.astro";
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

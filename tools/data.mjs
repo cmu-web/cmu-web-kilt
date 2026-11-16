@@ -11,6 +11,29 @@ import * as prettier from "prettier";
 
 const docs = new URL("../docs/", import.meta.url);
 const read = (f) => readFileSync(new URL(f, docs), "utf8");
+
+// Install's prototype is The Whole Page from Page Layout, copied between
+// markers so the two can't drift apart
+{
+  const layout = read("layout.html");
+  const at = layout.indexOf('id="skeleton"');
+  const start = layout.indexOf('<pre class="kit-code">', at);
+  const end = layout.indexOf("</code></pre>", start) + "</code></pre>".length;
+  if (at < 0 || start < 0) throw new Error("layout.html: no Whole Page code block");
+  const page = layout.slice(start, end);
+  const install = read("install.html");
+  const marked = /([ \t]*)(<!-- whole-page:start[^>]*-->)[\s\S]*?(\s*<!-- whole-page:end -->)/;
+  if (!marked.test(install)) throw new Error("install.html: no whole-page markers");
+  // The code goes in at the start marker's indent, as Prettier leaves it
+  const synced = install.replace(marked, (_, sp, a, b) => `${sp}${a}\n${sp}${page}${b}`);
+  if (synced !== install) {
+    if (process.argv.includes("--check")) {
+      console.error("docs/install.html's prototype is out of date: run node tools/data.mjs");
+      process.exit(1);
+    }
+    writeFileSync(new URL("install.html", docs), synced);
+  }
+}
 const { version, integrity = {} } = JSON.parse(
   readFileSync(new URL("../package.json", import.meta.url), "utf8"),
 );
@@ -21,7 +44,6 @@ const PAGES = [
   "sections.html",
   "content.html",
   "sidebars.html",
-  "previews.html",
   "people.html",
   "news.html",
   "lists.html",
@@ -30,7 +52,7 @@ const PAGES = [
   "accounts.html",
   "layout.html",
 ];
-const SKIP = new Set(["sections", "more-template", "service-home", "colors", "color-tokens"]);
+const SKIP = new Set(["sections", "more-template", "colors", "color-tokens"]);
 const LABELS = { template: "Template", cms: "CMS", app: "App", script: "Script", icons: "Icons" };
 
 // Named entities the docs use, as plain characters, so kit.json's text reads
@@ -114,14 +136,15 @@ function example(demo) {
 }
 
 // The frameworks the docs' Framework tabs cover, with the versions their
-// examples are for (as the tabs' menus say)
+// examples are for (as the tabs' menus say): React first, since most people
+// pick it, then the rest alphabetically
 const FRAMEWORKS = {
   React: "React 18 and 19",
+  Astro: "Astro 4 and Later",
+  Django: "Django 5.2 and Later",
+  Rails: "Rails 7.2 and Later",
   Svelte: "Svelte 5",
   Vue: "Vue 3",
-  Astro: "Astro 4 and Later",
-  Rails: "Rails 7.2 and Later",
-  Django: "Django 5.2 and Later",
 };
 
 // What a section says for each framework, from its .kit-framework blocks
@@ -172,9 +195,16 @@ for (const file of PAGES) {
         /<pre[^>]*>\s*<code>([\s\S]*?)<\/code>\s*<\/pre>/g,
       ))
         examples.push(decode(m[1].replace(/<[^>]+>/g, "")));
+    // A section can put its description and classes inside its example, beside
+    // the example's sidebar, marked data-demo-skip; read them from there then
+    const described = /<p>/.test(prose)
+      ? prose
+      : (body.match(/<p[^>]*data-demo-skip[^>]*>[\s\S]*?<\/p>/g) ?? [])
+          .map((p) => p.replace(/ data-demo-skip/, ""))
+          .join("\n");
     const classes = [
       ...new Set(
-        [...prose.matchAll(/<p class="kit-classes">(.*?)<\/p>/gs)].flatMap((l) =>
+        [...described.matchAll(/<p class="kit-classes">(.*?)<\/p>/gs)].flatMap((l) =>
           [...l[1].matchAll(/<code>(.*?)<\/code>/g)].map((c) => decode(c[1])),
         ),
       ),
@@ -185,8 +215,10 @@ for (const file of PAGES) {
       page,
       url: `https://webkilt.andrew.cmu.edu/0/${file}#${id}`,
       labels: [...where[1].matchAll(/kit-where-(\w+)/g)].map((m) => LABELS[m[1]] ?? m[1]),
-      description: [...prose.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((m) => text(m[1])).join("\n\n"),
-      notes: [...prose.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => text(m[1])),
+      description: [...described.matchAll(/<p>([\s\S]*?)<\/p>/g)]
+        .map((m) => text(m[1]))
+        .join("\n\n"),
+      notes: [...described.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => text(m[1])),
       classes,
       examples,
       frameworks: frameworkNotes(body),
@@ -261,6 +293,8 @@ const data = {
   frameworks: FRAMEWORKS,
   install: snippets(read("install.html")),
   conventions: sections(read("conventions.html")),
+  // Link Previews / Open Graph (under Page Layout): a standard, not components
+  previews: sections(read("previews.html")),
 };
 
 const out = new URL("kit.json", docs);

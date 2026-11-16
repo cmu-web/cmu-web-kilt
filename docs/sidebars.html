@@ -16,14 +16,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Boxes beside the content: gray and colored boxes, a button box, quick links and On This Page."
+      content="Boxes beside the content. Each div in a .sidebar is a box with no background until you give it one; for which color to use, see Colors."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Sidebars - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Boxes beside the content: gray and colored boxes, a button box, quick links and On This Page."
+      content="Boxes beside the content. Each div in a .sidebar is a box with no background until you give it one; for which color to use, see Colors."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/sidebars.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -81,12 +81,13 @@
           <div>
             <h1>Sidebars</h1>
             <p class="cmu-lead">
-              Boxes beside the content: gray and colored boxes, a button box, quick links and On
-              This Page.
+              Boxes beside the content. Each <code>div</code> in a <code>.sidebar</code> is a box
+              with no background until you give it one; for which color to use, see
+              <a href="conventions.html#colors">Colors</a>.
             </p>
 
-            <h2 id="sidebar" class="rule-top">
-              Sidebar Boxes
+            <h2 id="gray-box" class="rule-top">
+              Gray Box
               <span class="kit-where"
                 ><span
                   class="kit-where-template"
@@ -95,39 +96,171 @@
                 ></span
               >
             </h2>
-            <p>
-              Each <code>div</code> in a <code>.sidebar</code> is a box, with no background of its
-              own. Add a color, such as <code>grey</code> for help and contacts, a link list or a
-              thin rule instead of a box. For which color to use, see
-              <a href="conventions.html#colors">Colors</a>.
-            </p>
-            <p class="kit-classes">
-              <code>sidebar</code>, <code>simple</code>, <code>left-rule</code>, <code>list</code>,
-              a color with <code>invert</code>
-            </p>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <h2>Page Content</h2>
-            <p>The sidebar sits to the right from 768px up and drops below on phones.</p>
+            <p data-demo-skip>A box with a light gray background, for help, such as hours or where to go.</p>
+            <p class="kit-classes" data-demo-skip><code>grey</code></p>
+            <p>Your page's content.</p>
           </div><div class="sidebar">
             <div class="grey">
-              <h2>A Gray Box</h2>
-              <p>For help and contacts.</p>
+              <h2>Need Help?</h2>
+              <p>The checkout desk is open weekdays, 9 a.m.-5 p.m., in Hunt Library.</p>
             </div>
-            <div class="list blue invert">
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="brand-color-box" class="rule-top">
+              Brand Color Box
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <p data-demo-skip>A box in one of the template's colors, for something people should notice. Its text turns white with <code>invert</code>.</p>
+            <p class="kit-classes" data-demo-skip>a color, such as <code>blue</code>, with <code>invert</code></p>
+            <p>Your page's content.</p>
+          </div><div class="sidebar">
+            <div class="blue invert">
+              <h2>New This Semester</h2>
+              <p>Laptops now lend for up to two weeks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="link-list" class="rule-top">
+              Link List
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <p data-demo-skip>A list of related links, each with a rule above it and an arrow. The box's heading is an <code>&lt;h1&gt;</code>.</p>
+            <p class="kit-classes" data-demo-skip><code>list</code></p>
+            <p>Your page's content.</p>
+          </div><div class="sidebar">
+            <div class="list">
               <h1>Relevant Documents</h1>
               <ul>
-                <li><a href="#sidebar">University Policy</a></li>
-                <li><a href="#sidebar">Guidelines</a></li>
+                <li><a href="#link-list">University Policy</a></li>
+                <li><a href="#link-list">Guidelines</a></li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="left-rule" class="rule-top">
+              Left Rule
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <p data-demo-skip>A note with a thin line beside it instead of a box, for something that needs less weight than a box.</p>
+            <p class="kit-classes" data-demo-skip><code>left-rule</code></p>
+            <p>Your page's content.</p>
+          </div><div class="sidebar">
             <div class="left-rule">
-              <h2>A Left Rule</h2>
-              <p>A note with a line beside it instead of a box.</p>
+              <h2>A Note</h2>
+              <p>Returns after 5 p.m. go in the drop box by the desk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="dark-box" class="rule-top">
+              Dark Box
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <p data-demo-skip>A dark gray box for questions, with a way to reach someone. A line under its heading sets it apart.</p>
+            <p class="kit-classes" data-demo-skip><code>darkgrey invert</code>, <code>rule-bottom</code></p>
+            <p>Your page's content.</p>
+          </div><div class="sidebar">
+            <div class="darkgrey invert">
+              <h2 class="rule-bottom">Questions?</h2>
+              <p>The checkout desk answers email within one business&nbsp;day.</p>
+              <p><a class="cta" href="#dark-box">Email the Checkout Desk</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="on-this-page" class="rule-top">
+              On This Page
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <p data-demo-skip>Links to the sections of a long page: the template's <code>list simple</code> box, with no heading. Each link points to a section heading's <code>id</code>, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance. For a page whose content uses the full width, use an <a href="sections.html#on-this-page-bank">On This Page link bank</a> under the intro instead.</p>
+            <p class="kit-classes" data-demo-skip><code>list simple</code>, links to <code>#id</code></p>
+            <p>Your page's content.</p>
+          </div><div class="sidebar">
+            <div class="list simple">
+              <ul>
+                <li><a href="#on-this-page">What You Can Borrow</a></li>
+                <li><a href="#on-this-page">How Long You Can Keep It</a></li>
+                <li><a href="#on-this-page">Late Returns</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -145,32 +278,23 @@
               >
             </h2>
             <p>
-              One wide button at the top of the sidebar, for the one thing to do or take away from
-              the page. Two ways:
+              One wide button near the top of the sidebar, under On This Page if the page has it,
+              for the one thing to do or take away from the page. Say what the button does and, for
+              a file, what kind it is.
             </p>
-            <ul>
-              <li>
-                <strong>In a colored box,</strong> with a <code>ghost</code> button, which offers
-                the guidelines as a PDF.
-              </li>
-              <li>
-                <strong>On its own,</strong> a solid button in a <code>simple</code> box (no
-                background), where each section's sidebar has a Request button for that service.
-              </li>
-            </ul>
-            <p>Say what the button does and, for a file, what kind it is.</p>
             <p class="kit-classes">
-              <code>sidebar</code>, <code>red invert</code>, <code>simple</code>,
-              <code>btn wide</code>, <code>ghost</code>
+              <code>red invert</code>, <code>simple</code>, <code>btn wide</code>,
+              <code>ghost</code>
             </p>
+            <h3 id="button-box-red">In a Red Box</h3>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <h2>Loan Policies</h2>
-            <p>The page's own content goes here, beside the button.</p>
+            <p data-demo-skip>Use a <code>ghost</code> button in a red box, here offering the loan policies as a PDF.</p>
+            <p>Your page's content.</p>
           </div><div class="sidebar">
             <div class="red invert">
               <a class="btn ghost wide" href="#button-box">Download the Loan Policies [PDF]</a>
@@ -179,14 +303,16 @@
         </div>
       </div>
         <div class="content wide">
-          <div></div>
+          <div>
+            <h3 id="button-box-alone">On Its Own</h3>
+          </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <h2>Camera Kits</h2>
-            <p>The page's own content goes here, beside the button.</p>
+            <p data-demo-skip>Use a solid button in a <code>simple</code> box, with no background, such as a Request button in each section's sidebar.</p>
+            <p>Your page's content.</p>
           </div><div class="sidebar">
             <div class="simple">
               <a class="btn wide" href="#button-box">Reserve a Camera Kit</a>
@@ -206,23 +332,15 @@
                 ></span
               >
             </h2>
-            <p>
-              A list box with a left rule at the top of the sidebar, for the few places people come
-              to the page for. Each link gets a rule above it and an arrow. Questions and contacts
-              usually go in a dark box with a ruled heading, under it.
-            </p>
-            <p class="kit-classes">
-              <code>list left-rule</code>, <code>darkgrey invert</code>, <code>rule-bottom</code>,
-              <code>cta</code>
-            </p>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <h2>Equipment Checkout</h2>
-            <p>The page's own content goes here, beside the links.</p>
+            <p data-demo-skip>A link list with a left rule, for the few places people most often go from the page. It goes near the top of the sidebar, under any button.</p>
+            <p class="kit-classes" data-demo-skip><code>list left-rule</code></p>
+            <p>Your page's content.</p>
           </div><div class="sidebar">
             <div class="list left-rule">
               <h1>Quick Links</h1>
@@ -232,44 +350,26 @@
                 <li><a href="#quick-links">Loan Policies</a></li>
               </ul>
             </div>
-            <div class="darkgrey invert">
-              <h2 class="rule-bottom">Questions?</h2>
-              <p>The checkout desk answers email within one business&nbsp;day.</p>
-              <p><a class="cta" href="#quick-links">Email the Checkout Desk</a></p>
-            </div>
           </div>
         </div>
       </div>
         <div class="content wide">
           <div>
-            <h2 id="on-this-page" class="rule-top">
-              On This Page
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              Links to the sections of a long page go in a sidebar link list. It's the template's
-              <code>list simple</code> box, with no heading, as Marcom's own pages use it: each link
-              points to a section heading's <code>id</code>, and the template scrolls to it. Put it
-              first in the sidebar, and leave it off pages short enough to see at a glance. For a
-              page whose content uses the full width, use an
-              <a href="sections.html#on-this-page-bank">On This Page link bank</a> under the intro
-              instead.
-            </p>
-            <p class="kit-classes"><code>list simple</code>, links to <code>#id</code></p>
+            <h2 id="full-sidebar" class="rule-top">A Full Sidebar</h2>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
         <div class="content">
           <div>
-            <h2>Borrowing Equipment</h2>
-            <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>
+            <p data-demo-skip>A sidebar can hold several of these. Stack them in this order, leaving out what the page doesn't need:</p>
+            <ol data-demo-skip>
+              <li><a href="#on-this-page">On This Page</a>, on a long page</li>
+              <li>A <a href="#button-box">button box</a>, for the page's one action</li>
+              <li><a href="#quick-links">Quick links</a></li>
+              <li>Other boxes, with a <a href="#dark-box">dark box</a> for questions last</li>
+            </ol>
+            <p>Your page's content.</p>
           </div><div class="sidebar">
             <div class="list simple">
               <ul>
@@ -278,12 +378,29 @@
                 <li><a href="#on-this-page">Late Returns</a></li>
               </ul>
             </div>
+            <div class="red invert">
+              <a class="btn ghost wide" href="#button-box">Download the Loan Policies [PDF]</a>
+            </div>
+            <div class="list left-rule">
+              <h1>Quick Links</h1>
+              <ul>
+                <li><a href="#quick-links">Browse Equipment</a></li>
+                <li><a href="#quick-links">My Reservations</a></li>
+                <li><a href="#quick-links">Loan Policies</a></li>
+              </ul>
+            </div>
+            <div class="grey">
+              <h2>Need Help?</h2>
+              <p>The checkout desk is open weekdays, 9 a.m.-5 p.m., in Hunt Library.</p>
+            </div>
+            <div class="darkgrey invert">
+              <h2 class="rule-bottom">Questions?</h2>
+              <p>The checkout desk answers email within one business&nbsp;day.</p>
+              <p><a class="cta" href="#dark-box">Email the Checkout Desk</a></p>
+            </div>
           </div>
         </div>
       </div>
-        <div class="content wide">
-          <div></div>
-        </div>
       </main>
 
       <footer class="grid column3 invert">
@@ -305,7 +422,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -313,7 +435,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li class="active"><a href="sidebars.html" aria-current="page">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -325,7 +446,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

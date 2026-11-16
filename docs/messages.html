@@ -97,7 +97,7 @@
             </h2>
             <p>
               The result of what someone just did, shown once: "You're in line: 3 people ahead of
-              you," or what went wrong. A tinted box with a colored rule at the left: green when it
+              you," or what went wrong. A tinted box with a rule down its left side: green when it
               worked, red when it didn't and gold for something to know that's neither, such as a
               deadline or a change that came with it.
             </p>
@@ -117,8 +117,8 @@
               <li>
                 <strong>Not for standing notices</strong> that everyone should see, such as who a
                 page is for: those are <a href="sections.html#announcements">announcements</a>, the
-                template's full-width color bands. An aside within a page's content, such as a tip
-                or a warning, is a <a href="content.html#callout">callout</a>.
+                template's full-width sections. An aside within a page's content, such as a tip or a
+                warning, is a <a href="content.html#callout">callout</a>.
               </li>
             </ul>
             <p class="kit-classes">
@@ -223,6 +223,8 @@
             <p class="kit-classes">
               <code>cmu-lead</code>, <code>cmu-cta-row</code>, <code>cmu-muted</code>
             </p>
+            <h3 id="errors-404">Page Not Found</h3>
+            <p>When the address doesn't match a page:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="content">
@@ -238,6 +240,8 @@
           </div>
         </div>
       </div>
+            <h3 id="errors-500">Something Went Wrong</h3>
+            <p>When the problem is on the server:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="content">
@@ -254,6 +258,8 @@
         </div>
       </div>
 
+            <h3 id="errors-403">No Access</h3>
+            <p>When the user is signed in but isn't allowed to see the page:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo" id="no-access">
         <div class="content">
@@ -388,7 +394,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -396,7 +407,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -410,7 +420,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

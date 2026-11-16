@@ -89,7 +89,7 @@
               <span class="kit-where-app kit-key">App</span>, and some are also labeled
               <span class="kit-where-script kit-key">Script</span> or
               <span class="kit-where-icons kit-key">Icons</span>. The labels indicate what to
-              install:
+              <a href="install.html">install</a>:
             </p>
             <ul class="cmu-plain">
               <li>
@@ -121,7 +121,9 @@
                 isn't part of the kit. Note that it loads after the kit's stylesheets.
               </li>
             </ul>
-            <p><a class="cta" href="install.html">Install the Kit</a></p>
+            <p>
+              Know what you're looking for? <a class="cta" href="#all">Search All Components</a>
+            </p>
           </div>
         </div>
         <div class="content wide grey">
@@ -134,7 +136,9 @@
               </a>
               <a class="cmu-path" href="sections.html">
                 <strong>Page Sections</strong>
-                <span>Full-width bands: cards, features, carousels, timelines, testimonials.</span>
+                <span
+                  >Full-width sections: cards, features, carousels, timelines, testimonials.</span
+                >
                 <span class="cta">See Page Sections</span>
               </a>
               <a class="cmu-path" href="content.html">
@@ -146,24 +150,19 @@
               </a>
               <a class="cmu-path" href="sidebars.html">
                 <strong>Sidebars</strong>
-                <span>Gray and colored boxes, a button box, quick links and On This Page.</span>
-                <span class="cta">See Sidebars</span>
-              </a>
-              <a class="cmu-path" href="previews.html">
-                <strong>Link Previews</strong>
                 <span
-                  >The title, sentence and picture a shared link shows, in a CMS or an app.</span
+                  >Boxes in gray or a brand color, a button box, quick links and On This Page.</span
                 >
-                <span class="cta">See Link Previews</span>
+                <span class="cta">See Sidebars</span>
               </a>
               <a class="cmu-path" href="people.html">
                 <strong>People</strong>
-                <span>Team and leadership grids, contact cards, bios and people lists.</span>
+                <span>Portrait and bio grids, contact cards, bios and people lists.</span>
                 <span class="cta">See People</span>
               </a>
               <a class="cmu-path" href="news.html">
                 <strong>News and Events</strong>
-                <span>The news grid, event lists, events.cmu.edu and event cards.</span>
+                <span>The news grid, articles, event lists, events.cmu.edu and event cards.</span>
                 <span class="cta">See News and Events</span>
               </a>
               <a class="cmu-path" href="lists.html">
@@ -317,6 +316,19 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><a href="news.html#article">Article</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+                    >
+                  </td>
+                  <td>News and Events</td>
+                  <td>
+                    <code>cmu-article</code>, <code>date</code>, <code>cmu-label</code>,
+                    <code>cmu-lead</code>, <code>cmu-byline</code>, <code>figure.image</code>
+                  </td>
+                </tr>
+                <tr>
                   <td><a href="sections.html#backgrounds">Background Patterns</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -347,6 +359,20 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><a href="people.html#team">Bio Card Grid</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>People</td>
+                  <td><code>grid column4 boxes</code>, <code>cta</code></td>
+                </tr>
+                <tr>
                   <td><a href="people.html#bio">Bio Page</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -363,6 +389,37 @@
                     <code>address</code>, <code>icon</code>, <code>sidebar</code>,
                     <code>list grey</code>
                   </td>
+                </tr>
+                <tr>
+                  <td><a href="people.html#photo-grid">Bio Photo Grid</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>People</td>
+                  <td>
+                    <code>grid</code>, <code>column3</code>, <code>column4</code>,
+                    <code>photos</code>, <code>photo</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="sidebars.html#brand-color-box">Brand Color Box</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>Sidebars</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td><a href="layout.html#breadcrumbs">Breadcrumbs</a></td>
@@ -401,8 +458,8 @@
                   </td>
                   <td>Sidebars</td>
                   <td>
-                    <code>sidebar</code>, <code>red invert</code>, <code>simple</code>,
-                    <code>btn wide</code>, <code>ghost</code>
+                    <code>red invert</code>, <code>simple</code>, <code>btn wide</code>,
+                    <code>ghost</code>
                   </td>
                 </tr>
                 <tr>
@@ -609,6 +666,20 @@
                     <code>cmu-countdown</code>, <code>data-cmu-countdown</code>,
                     <code>cmu-countdown-done</code>, <code>cmu-countdown--replace</code>
                   </td>
+                </tr>
+                <tr>
+                  <td><a href="sidebars.html#dark-box">Dark Box</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>Sidebars</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td><a href="news.html#dates">Date Blocks and Event Cards</a></td>
@@ -870,6 +941,21 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><a href="layout.html#panels">Framed Page Panel</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                        >App</span
+                      ></span
+                    >
+                  </td>
+                  <td>Page Layout</td>
+                  <td>
+                    <code>cmu-panel</code>, <code>cmu-panel-header</code>,
+                    <code>cmu-panel-body</code>, <code>cmu-panel-footer</code>
+                  </td>
+                </tr>
+                <tr>
                   <td><a href="tops.html#photo-hero">Full-Width Photo Hero</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -886,6 +972,20 @@
                     <code>box right</code>, <code>small</code>, <code>large</code>,
                     <code>caption</code>, <code>tall</code>, <code>mask</code>
                   </td>
+                </tr>
+                <tr>
+                  <td><a href="sidebars.html#gray-box">Gray Box</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>Sidebars</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td><a href="sections.html#flow">How It Works</a></td>
@@ -947,7 +1047,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a href="people.html#leadership">Leadership Grid</a></td>
+                  <td><a href="sidebars.html#left-rule">Left Rule</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
                       ><span
@@ -957,8 +1057,8 @@
                       ></span
                     >
                   </td>
-                  <td>People</td>
-                  <td><code>grid column3 grey boxes</code>, <code>aligncenter</code></td>
+                  <td>Sidebars</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td><a href="sections.html#link-bank">Link Bank</a></td>
@@ -987,6 +1087,30 @@
                   <td><code>cmu-link-button</code></td>
                 </tr>
                 <tr>
+                  <td><a href="sidebars.html#link-list">Link List</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>Sidebars</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><a href="content.html#link-preview-card">Link Preview Card</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+                    >
+                  </td>
+                  <td>Content</td>
+                  <td><code>cmu-link-preview</code>, <code>cmu-link-preview-text</code></td>
+                </tr>
+                <tr>
                   <td><a href="lists.html#load-more">Load More</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -997,6 +1121,21 @@
                   </td>
                   <td>Lists and Tables</td>
                   <td><code>cmu-results-count</code>, <code>cmu-load-more</code></td>
+                </tr>
+                <tr>
+                  <td><a href="content.html#peek">Long Code Block</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                        >App</span
+                      ></span
+                    >
+                  </td>
+                  <td>Content</td>
+                  <td>
+                    <code>cmu-peek</code>, <code>cmu-more</code>, <code>cmu-more-link</code>,
+                    <code>cmu-more-closed</code>, <code>cmu-more-open</code>
+                  </td>
                 </tr>
                 <tr>
                   <td><a href="forms.html#match">Matching</a></td>
@@ -1067,7 +1206,7 @@
                     >
                   </td>
                   <td>Sidebars</td>
-                  <td><code>list simple</code>, <code>#id</code></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td><a href="sections.html#on-this-page-bank">On This Page Link Bank</a></td>
@@ -1083,25 +1222,13 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a href="previews.html#tags">Open Graph Tags</a></td>
-                  <td class="cmu-fit">
-                    <span class="kit-where"
-                      ><span
-                        class="kit-where-template"
-                        title="In the template's main stylesheet and script; nothing from the kit"
-                        >Template</span
-                      ></span
-                    >
-                  </td>
-                  <td>Link Previews</td>
-                  <td></td>
-                </tr>
-                <tr>
                   <td><a href="forms.html#sub-options">Options Under a Choice</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
                       ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                         >App</span
+                      ><span class="kit-where-script" title="Requires cmu-app.js"
+                        >Script</span
                       ></span
                     >
                   </td>
@@ -1131,21 +1258,6 @@
                   </td>
                   <td>Lists and Tables</td>
                   <td><code>cmu-results-count</code>, <code>cmu-pager</code></td>
-                </tr>
-                <tr>
-                  <td><a href="layout.html#panels">Panels for Framed Pages</a></td>
-                  <td class="cmu-fit">
-                    <span class="kit-where"
-                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                        >App</span
-                      ></span
-                    >
-                  </td>
-                  <td>Page Layout</td>
-                  <td>
-                    <code>cmu-panel</code>, <code>cmu-panel-header</code>,
-                    <code>cmu-panel-body</code>, <code>cmu-panel-footer</code>
-                  </td>
                 </tr>
                 <tr>
                   <td><a href="sections.html#paths">Path Cards</a></td>
@@ -1222,6 +1334,23 @@
                   </td>
                 </tr>
                 <tr>
+                  <td><a href="people.html#portrait-grid">Portrait Grid</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>People</td>
+                  <td>
+                    <code>grid</code>, <code>column3</code>, <code>column4</code>,
+                    <code>grid column3 grey boxes</code>, <code>aligncenter</code>
+                  </td>
+                </tr>
+                <tr>
                   <td><a href="accounts.html#preferences">Preferences</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -1243,7 +1372,7 @@
                     >
                   </td>
                   <td>Accounts</td>
-                  <td><code>cmu-avatar</code></td>
+                  <td><code>cmu-profile-picture</code></td>
                 </tr>
                 <tr>
                   <td><a href="messages.html#progress">Progress Bars</a></td>
@@ -1292,6 +1421,21 @@
                   </td>
                 </tr>
                 <tr>
+                  <td>
+                    <a href="sections.html#question-mark-card">Question Mark / Coming Soon Card</a>
+                  </td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+                    >
+                  </td>
+                  <td>Page Sections</td>
+                  <td>
+                    <code>grid</code>, <code>grey</code>, <code>boxes</code>,
+                    <code>cmu-cards-bottom</code>
+                  </td>
+                </tr>
+                <tr>
                   <td><a href="sidebars.html#quick-links">Quick Links</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -1303,10 +1447,7 @@
                     >
                   </td>
                   <td>Sidebars</td>
-                  <td>
-                    <code>list left-rule</code>, <code>darkgrey invert</code>,
-                    <code>rule-bottom</code>, <code>cta</code>
-                  </td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td><a href="content.html#screenshots">Screenshots</a></td>
@@ -1404,23 +1545,6 @@
                     <code>content</code>, <code>grey</code>, <code>contact</code>,
                     <code>sidebar</code>, <code>darkgrey invert</code>, <code>list</code>,
                     <code>indicia</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="sidebars.html#sidebar">Sidebar Boxes</a></td>
-                  <td class="cmu-fit">
-                    <span class="kit-where"
-                      ><span
-                        class="kit-where-template"
-                        title="In the template's main stylesheet and script; nothing from the kit"
-                        >Template</span
-                      ></span
-                    >
-                  </td>
-                  <td>Sidebars</td>
-                  <td>
-                    <code>sidebar</code>, <code>simple</code>, <code>left-rule</code>,
-                    <code>list</code>, <code>invert</code>
                   </td>
                 </tr>
                 <tr>
@@ -1595,20 +1719,6 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a href="people.html#team">Team Grid</a></td>
-                  <td class="cmu-fit">
-                    <span class="kit-where"
-                      ><span
-                        class="kit-where-template"
-                        title="In the template's main stylesheet and script; nothing from the kit"
-                        >Template</span
-                      ></span
-                    >
-                  </td>
-                  <td>People</td>
-                  <td><code>grid column4 boxes</code>, <code>cta</code></td>
-                </tr>
-                <tr>
                   <td><a href="sections.html#testimonial">Testimonial</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -1701,7 +1811,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html" aria-current="page">Components</a>
                 <ul>
@@ -1709,7 +1824,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -1721,7 +1835,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

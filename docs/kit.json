@@ -88,7 +88,7 @@
         "cmu-callout"
       ],
       "examples": [
-        "<div class=\"cmu-annotated\">\n  <div class=\"cmu-annotated-text\">\n    <ol class=\"cmu-annotated-notes\">\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.1\">\n        <p class=\"cmu-label\">1. Header</p>\n        <p>The red strip, then the site's name and its navigation.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.305\">\n        <p class=\"cmu-label\">2. A Band</p>\n        <p>A full-width section with its own color, here a hero with a heading, a button and a photo.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.6\">\n        <p class=\"cmu-label\">3. Content and Sidebar</p>\n        <p>The page's own text, with boxes beside it for links, contacts or signing in.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.9\">\n        <p class=\"cmu-label\">4. Footer</p>\n        <p>The office's address and links, the same on every page.</p>\n      </li>\n    </ol>\n  </div>\n  <figure class=\"cmu-shot\">\n    <a href=\"images/annotated-page.svg\" data-cmu-zoom><img src=\"images/annotated-page.svg\" alt=\"A drawing of a page on CMU's template, top to bottom: a red strip, the site name and tabs, a gray band with a heading, a button and a photo, the page's text with a sidebar box, and a dark footer.\" width=\"600\" height=\"900\"></a>\n    <figcaption>Select the drawing to enlarge it.</figcaption>\n  </figure>\n</div>"
+        "<div class=\"cmu-annotated\">\n  <div class=\"cmu-annotated-text\">\n    <ol class=\"cmu-annotated-notes\">\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.1\">\n        <p class=\"cmu-label\">1. Header</p>\n        <p>The red strip, then the site's name and its navigation.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.305\">\n        <p class=\"cmu-label\">2. A Section</p>\n        <p>A full-width section with its own color, here a hero with a heading, a button and a photo.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.6\">\n        <p class=\"cmu-label\">3. Content and Sidebar</p>\n        <p>The page's own text, with boxes beside it for links, contacts or signing in.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.9\">\n        <p class=\"cmu-label\">4. Footer</p>\n        <p>The office's address and links, the same on every page.</p>\n      </li>\n    </ol>\n  </div>\n  <figure class=\"cmu-shot\">\n    <a href=\"images/annotated-page.svg\" data-cmu-zoom><img src=\"images/annotated-page.svg\" alt=\"A drawing of a page on CMU's template, top to bottom: a red strip, the site name and tabs, a gray section with a heading, a button and a photo, the page's text with a sidebar box, and a dark footer.\" width=\"600\" height=\"900\"></a>\n    <figcaption>Select the drawing to enlarge it.</figcaption>\n  </figure>\n</div>"
       ],
       "frameworks": {}
     },
@@ -98,13 +98,13 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#announcements",
       "labels": ["Template"],
-      "description": "A full-width band across the top of a page, right under the breadcrumbs, for something everyone who comes to the page should know first: who the page is for, a deadline, a change. Site authors write it and take it down; it says the same thing to everyone. It's a content wide block in a template color. Keep to one at a time, and a sentence or two.",
+      "description": "A full-width section across the top of a page, right under the breadcrumbs, for something everyone who comes to the page should know first: who the page is for, a deadline, a change. Site authors write it and take it down; it says the same thing to everyone. It's a content wide block in a template color. Keep to one at a time, and a sentence or two.\n\nA note in dark gray that says who the page is for and where everyone else should go:",
       "notes": [
         "Dark gray (darkgrey invert) for who a page is for, with the text in bold.",
         "Gold for a time-sensitive update, with a bold lead-in. Gold takes dark text and no invert. When the whole notice is one short statement, make it a centered <h3> instead; center it with the template's aligncenter, not an inline style.",
         "Green (green invert) for something newly available, with a call to action when there's a next step people can take.",
         "Blue (blue invert) for a note set apart lower on the page, with an <h4> for small bold capitals.",
-        "Not red: A red band reads as a campus alert. And not for the result of something someone just did: that's a flash message. For an aside within a section, such as a tip or a warning, use a callout."
+        "Not red: A red section reads as a campus alert. And not for the result of something someone just did: that's a flash message. For an aside within a section, such as a tip or a warning, use a callout."
       ],
       "classes": ["content wide", "darkgrey invert", "gold", "green invert", "blue invert"],
       "examples": [
@@ -117,31 +117,27 @@
       "frameworks": {}
     },
     {
+      "id": "article",
+      "name": "Article",
+      "page": "News and Events",
+      "url": "https://webkilt.andrew.cmu.edu/0/news.html#article",
+      "labels": ["CMS"],
+      "description": "The top of a single story or post, set the way CMU's news pages set it: the date over the headline, then the byline. A category label and a summary are optional. A lead photo goes right after it, as a captioned photo, and the story follows. Cascade's News Article pages write their own top; the markup is here for apps and other CMSes.\n\nDate it in AP style, “Nov. 16, 2026,” with the full date in the <time> element's datetime. Start the byline with “By” and name the writer the way they sign their work.",
+      "notes": [],
+      "classes": ["cmu-article", "date", "cmu-label", "cmu-lead", "cmu-byline", "figure.image"],
+      "examples": [
+        "<div class=\"cmu-article\">\n  <p class=\"cmu-label\">Teaching</p>\n  <p class=\"date\"><time datetime=\"2026-11-16\">Nov. 16, 2026</time></p>\n  <h1>Spring Syllabi Are Due Jan. 11</h1>\n  <p class=\"cmu-lead\">Upload yours from the web or from Canvas any time before classes start.</p>\n  <p class=\"cmu-byline\">By <a href=\"#article\">Margaret Morrison</a></p>\n</div>\n<figure class=\"image\">\n  <img src=\"https://placemellon.andrew.cmu.edu/900/600?photo=MC-210504-Hamburg-Hall-Interior009\" alt=\"The tiled arches inside Hamburg Hall, home of Heinz College.\">\n  <figcaption>The arches inside Hamburg Hall. (Photo: Andrew&nbsp;Carnegie)</figcaption>\n</figure>\n<p>Instructors can upload a syllabus as soon as their course is on the schedule. Students see it in the course list right away, and it stays there for the whole semester.</p>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "backgrounds",
       "name": "Background Patterns",
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#backgrounds",
       "labels": ["Template"],
-      "description": "Two background patterns that go with a color: globe, a faint map, and plaid, the university tartan. Both come from the template's own image files and follow the brand rules; never draw your own tartan. Use one for a section bar or a feature section, not behind long text. The template shows them only from 768px up; on phones the color is plain, and grey plaid has no gray at all, so don't count on the pattern to set a section apart. In Cascade, it's a section's Background Image: Globe or Plaid.\n\nCarnegie Mellon Web KiltCarnegie Mellon University5000 Forbes AvenuePittsburgh, PA 15213",
-      "notes": [
-        "Legal Info",
-        "www.cmu.edu",
-        "© 2026 Carnegie Mellon University",
-        "Install",
-        "Page Layout",
-        "Page Tops",
-        "Content",
-        "Sidebars",
-        "Link Previews",
-        "People",
-        "News and Events",
-        "Lists and Tables",
-        "Forms",
-        "Messages and Progress",
-        "Accounts",
-        "Conventions",
-        "About"
-      ],
+      "description": "Two background patterns that go with a color: globe, a faint map, and plaid, the university tartan. Both come from the template's own image files and follow the brand rules; never draw your own tartan. Use one for a section bar or a feature section, not behind long text. The template shows them only from 768px up; on phones the color is plain, and grey plaid has no gray at all, so don't count on the pattern to set a section apart. In Cascade, it's a section's Background Image: Globe or Plaid.",
+      "notes": [],
       "classes": ["globe", "plaid"],
       "examples": [
         "<div class=\"content wide red invert globe\"> … </div>\n<div class=\"grid column3 darkgrey invert plaid\"> … </div>"
@@ -163,6 +159,20 @@
       "frameworks": {}
     },
     {
+      "id": "team",
+      "name": "Bio Card Grid",
+      "page": "People",
+      "url": "https://webkilt.andrew.cmu.edu/0/people.html#team",
+      "labels": ["Template"],
+      "description": "A grid of the people in an office, each in a white card with a portrait, their name, their title in bold and a link to their full bio. Put the cards on a color, such as blue, to set the group apart as one section of the page. It's a grid column4 boxes (or column3) with an <h1> for the group. Use portraits of the same shape so the names line up; square ones keep the cards short. With no bio pages, leave out the links and the call to action.\n\nWord the link the same way on every card, such as “Read Full Bio.”",
+      "notes": [],
+      "classes": ["grid column4 boxes", "cta"],
+      "examples": [
+        "<div class=\"grid column4 blue boxes\">\n  <h1>Our Team</h1>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Andrew Carnegie</a></h2>\n    <p><strong>Director of Teaching Technology</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Andrew Mellon</a></h2>\n    <p><strong>Teaching Consultant</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Margaret Morrison</a></h2>\n    <p><strong>Data Analyst</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Herbert Simon</a></h2>\n    <p><strong>Web Developer</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "bio",
       "name": "Bio Page",
       "page": "People",
@@ -178,7 +188,35 @@
       ],
       "classes": ["floatleft caption thumb", "contact", "address", "icon", "sidebar", "list grey"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <p class=\"floatleft caption thumb\"><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h1>Andrew Carnegie</h1>\n    <h2 style=\"font-size:1.15em\">Director of Teaching Technology, Office of the Provost</h2>\n    <div class=\"contact rule-bottom\">\n      <span class=\"collapsed floatright\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"ac00(through)andrew.cmu.edu\">Email Andrew Carnegie</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550101\">412-555-0101</a></li>\n            <li><a class=\"icon fax\" href=\"tel:+14125550199\">412-555-0199</a></li>\n          </ul>\n        </address><address>\n          <strong>Office</strong><br>\n          Hunt Library, Room A10<br>\n          4909 Frew Street<br>\n          Pittsburgh, PA 15213\n        </address>\n      </div>\n    </div>\n    <h2>Bio</h2>\n    <p>Carnegie leads Teaching Technology, the office behind Equipment Checkout and the course tools faculty use every day. Before coming to the university, he ran the Keystone Bridge Company's drafting room.</p>\n    <h2>Education</h2>\n    <p>Self-taught, with a library card from Colonel James Anderson's library in Allegheny.</p>\n    <h2>Projects</h2>\n    <p>A loaner program for classroom cameras, and a guide to captioning lecture video.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list grey\">\n      <ul>\n        <li><a href=\"#bio\">Teaching Technology</a></li>\n        <li><a href=\"#bio\">Equipment Checkout</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p class=\"floatleft caption thumb\"><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h1>Andrew Carnegie</h1>\n    <h2 style=\"font-size:1.15em\">Director of Teaching Technology, Office of the Provost</h2>\n    <div class=\"contact rule-bottom\">\n      <span class=\"collapsed floatright\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"ac00(through)andrew.cmu.edu\">Email Andrew Carnegie</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550101\">412-555-0101</a></li>\n            <li><a class=\"icon fax\" href=\"tel:+14125550199\">412-555-0199</a></li>\n          </ul>\n        </address><address>\n          <strong>Office</strong><br>\n          Hunt Library, Room A10<br>\n          4909 Frew Street<br>\n          Pittsburgh, PA 15213\n        </address>\n      </div>\n    </div>\n    <h2>Bio</h2>\n    <p>Carnegie leads Teaching Technology, the office behind Equipment Checkout and the course tools faculty use every day. Before coming to the university, he ran the Keystone Bridge Company's drafting room.</p>\n    <h2>Education</h2>\n    <p>Self-taught, with a library card from Colonel James Anderson's library in Allegheny.</p>\n    <h2>Projects</h2>\n    <p>A loaner program for classroom cameras, and a guide to captioning lecture video.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list grey\">\n      <ul>\n        <li><a href=\"#bio\">Teaching Technology</a></li>\n        <li><a href=\"#bio\">Equipment Checkout</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "photo-grid",
+      "name": "Bio Photo Grid",
+      "page": "People",
+      "url": "https://webkilt.andrew.cmu.edu/0/people.html#photo-grid",
+      "labels": ["Template"],
+      "description": "The template's Photo Grid with people in it: each portrait links to the person's bio, with their name and title over it. It's a grid column4 photos (or column3) with an <h1> for the group and a div.photo for each person. The name's in the link, so the portrait gets empty alt. Use portraits of the same shape, such as 600 × 750, so the names line up.",
+      "notes": [],
+      "classes": ["grid", "column3", "column4", "photos", "photo"],
+      "examples": [
+        "<div class=\"grid column4 photos\">\n  <h1>Our Team</h1>\n  <div class=\"photo\">\n    <a href=\"#bio\">\n      <div>\n        <h2>Andrew Carnegie</h2>\n        <p>Director of Teaching Technology</p>\n      </div>\n      <span><img src=\"https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust\" alt=\"\"></span>\n    </a>\n  </div><div class=\"photo\">\n    <a href=\"#bio\">\n      <div>\n        <h2>Margaret Morrison</h2>\n        <p>Teaching Consultant</p>\n      </div>\n      <span><img src=\"https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust\" alt=\"\"></span>\n    </a>\n  </div><div class=\"photo\">\n    <a href=\"#bio\">\n      <div>\n        <h2>Andrew Mellon</h2>\n        <p>Data Analyst</p>\n      </div>\n      <span><img src=\"https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust\" alt=\"\"></span>\n    </a>\n  </div><div class=\"photo\">\n    <a href=\"#bio\">\n      <div>\n        <h2>Herbert Simon</h2>\n        <p>Web Developer</p>\n      </div>\n      <span><img src=\"https://placemellon.andrew.cmu.edu/600/750.svg?scotty=bust\" alt=\"\"></span>\n    </a>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "brand-color-box",
+      "name": "Brand Color Box",
+      "page": "Sidebars",
+      "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#brand-color-box",
+      "labels": ["Template"],
+      "description": "A box in one of the template's colors, for something people should notice. Its text turns white with invert.",
+      "notes": [],
+      "classes": ["blue", "invert"],
+      "examples": [
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"blue invert\">\n      <h2>New This Semester</h2>\n      <p>Laptops now lend for up to two weeks.</p>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -207,7 +245,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#checks",
       "labels": ["CMS"],
-      "description": "For describing things (the parts of a component, the options there are), use the template's own list: a plain <ul> with no class, which gets gray open circles. Use check marks for a list of dos and don'ts, or of things you get, such as what a kit includes; when every list is checked, a page reads like a to-do list. Either way, start each item with a short bold phrase when it helps people scan. When each item starts with its own label, such as a pill, use cmu-plain for no bullets.",
+      "description": "Three kinds of list, for three jobs. Start each item with a short bold phrase when it helps people scan.\n\nFor describing things, such as the parts of a component or the options there are. Use the template's own list: a plain <ul> with no class, which gets gray open circles:",
       "notes": [],
       "classes": ["ul", "ul.cmu-checks", "ul.cmu-plain"],
       "examples": [
@@ -223,15 +261,12 @@
       "page": "Sidebars",
       "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#button-box",
       "labels": ["Template"],
-      "description": "One wide button at the top of the sidebar, for the one thing to do or take away from the page. Two ways:\n\nSay what the button does and, for a file, what kind it is.",
-      "notes": [
-        "In a colored box, with a ghost button, which offers the guidelines as a PDF.",
-        "On its own, a solid button in a simple box (no background), where each section's sidebar has a Request button for that service."
-      ],
-      "classes": ["sidebar", "red invert", "simple", "btn wide", "ghost"],
+      "description": "One wide button near the top of the sidebar, under On This Page if the page has it, for the one thing to do or take away from the page. Say what the button does and, for a file, what kind it is.",
+      "notes": [],
+      "classes": ["red invert", "simple", "btn wide", "ghost"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <h2>Loan Policies</h2>\n    <p>The page's own content goes here, beside the button.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"red invert\">\n      <a class=\"btn ghost wide\" href=\"#button-box\">Download the Loan Policies [PDF]</a>\n    </div>\n  </div>\n</div>",
-        "<div class=\"content\">\n  <div>\n    <h2>Camera Kits</h2>\n    <p>The page's own content goes here, beside the button.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <a class=\"btn wide\" href=\"#button-box\">Reserve a Camera Kit</a>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"red invert\">\n      <a class=\"btn ghost wide\" href=\"#button-box\">Download the Loan Policies [PDF]</a>\n    </div>\n  </div>\n</div>",
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <a class=\"btn wide\" href=\"#button-box\">Reserve a Camera Kit</a>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -255,7 +290,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#buttons",
       "labels": ["Template"],
-      "description": "A solid button for the main action on a page, ghost buttons for the rest and a call to action (cta) for a link that should stand out from the text. external marks a link to another site.",
+      "description": "A solid button for the main action on a page, ghost buttons for the rest and a call to action (cta) for a link that should stand out from the text. external marks a link to another site.\n\nButtons, calls to action and links on the page's white background:",
       "notes": [],
       "classes": ["btn", "ghost", "small", "wide", "cta", "external"],
       "examples": [
@@ -288,7 +323,7 @@
       "notes": [
         "A callout is an aside within a section, for the people reading that part of the page: a note, a tip, a warning. It stays until someone edits the page.",
         "Not the result of something someone just did, such as saving a form: that's a flash message, shown once.",
-        "Not a notice everyone should see first, such as who a page is for or a deadline: that's an announcement, a color band at the top of the page."
+        "Not a notice everyone should see first, such as who a page is for or a deadline: that's an announcement, a section at the top of the page."
       ],
       "classes": [
         "cmu-callout",
@@ -310,7 +345,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#card-sort",
       "labels": ["App"],
-      "description": "Things to sort into groups, such as uses of AI into public and protected tools: each thing is a white card, with a large tile for each group at its bottom. Cards sit side by side, as many as fit, and one above another on phones. Picking a tile turns it red. Each card is a <fieldset> whose <legend> holds its words, with a radio button in each tile, so keyboards and screen readers work as with any radio buttons. Put the cards on a colored band, as with the question card.",
+      "description": "Things to sort into groups, such as uses of AI into public and protected tools: each thing is a white card, with a large tile for each group at its bottom. Cards sit side by side, as many as fit, and one above another on phones. Picking a tile turns it red. Each card is a <fieldset> whose <legend> holds its words, with a radio button in each tile, so keyboards and screen readers work as with any radio buttons. Put the cards in a section, as with the question card.",
       "notes": [],
       "classes": ["cmu-card-sort"],
       "examples": [
@@ -324,7 +359,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#grid",
       "labels": ["CMS"],
-      "description": "A grid is two, three or four columns that stack on phones. With grey boxes, each column is a white card on a gray band. An <h1> first in the grid is the band's heading, across the top. Keep the cards short, each leading somewhere. For a line across the band's full width, such as an introduction under the heading or a link to see more after the cards, use <p class=\"cmu-grid-full\"> (the kit's only addition here). For which color to use, see Colors.\n\nWhen the cards' pictures differ in height, add cmu-cards-bottom to the grid: each card's heading, words and link sit at its bottom, lined up across the row, and the picture is centered in the space above.",
+      "description": "A grid is two, three or four columns that stack on phones. With grey boxes, each column is a white card in a gray section. An <h1> first in the grid is the section's heading, across the top. Keep the cards short, each leading somewhere. For a line across the section's full width, such as an introduction under the heading or a link to see more after the cards, use <p class=\"cmu-grid-full\"> (the kit's only addition here). For which color to use, see Colors.\n\nWhen the cards' pictures differ in height, add cmu-cards-bottom to the grid: each card's heading, words and link sit at its bottom, lined up across the row, and the picture is centered in the space above.\n\nEach card a heading, a sentence and a link:",
       "notes": [],
       "classes": [
         "grid",
@@ -337,7 +372,7 @@
       ],
       "examples": [
         "<div class=\"grid column3 grey boxes\">\n  <h1>Ways to Get Started</h1>\n  <div>\n    <h2>Write a Syllabus</h2>\n    <p>Communicate expectations, policies and a roadmap for the course.</p>\n    <p><a class=\"cta\" href=\"#grid\">Get Started</a></p>\n  </div>\n  <div>\n    <h2>Design a Course</h2>\n    <p>Set learning objectives and align assessments with them.</p>\n    <p><a class=\"cta\" href=\"#grid\">See Course Design Strategies</a></p>\n  </div>\n  <div>\n    <h2>Teach It</h2>\n    <p>Strategies for the classroom, in person and online.</p>\n    <p><a class=\"cta\" href=\"#grid\">See Strategies</a></p>\n  </div>\n</div>",
-        "<div class=\"grid column3 grey boxes cmu-cards-bottom\">\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/480/270?category=campus\" alt=\"Placeholder photo of the Carnegie Mellon campus.\" width=\"480\" height=\"270\">\n    <h2>Campus Tours</h2>\n    <p>Walk the campus with a student guide.</p>\n    <p><a class=\"cta\" href=\"#grid\">Book a Tour</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/360/450?category=life\" alt=\"Placeholder photo of student life at Carnegie Mellon.\" width=\"360\" height=\"450\">\n    <h2>Student Life</h2>\n    <p>Clubs, events and traditions.</p>\n    <p><a class=\"cta\" href=\"#grid\">Find a Club</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/160?scotty-profile\" alt=\"Scotty in a round profile picture.\" width=\"160\" height=\"160\">\n    <h2>Meet Scotty</h2>\n    <p>The university's mascot, at every game.</p>\n    <p><a class=\"cta\" href=\"#grid\">See the Schedule</a></p>\n  </div>\n</div>"
+        "<div class=\"grid column3 grey boxes cmu-cards-bottom\">\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/480/270?category=campus\" alt=\"Placeholder photo of the Carnegie Mellon campus.\" width=\"480\" height=\"270\">\n    <h2>Campus Tours</h2>\n    <p>Walk the campus with a student guide.</p>\n    <p><a class=\"cta\" href=\"#grid\">Book a Tour</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/360/450?category=life\" alt=\"Placeholder photo of student life at Carnegie Mellon.\" width=\"360\" height=\"450\">\n    <h2>Student Life</h2>\n    <p>Clubs, events and traditions.</p>\n    <p><a class=\"cta\" href=\"#grid\">Find a Club</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/160?scotty=profile\" alt=\"Scotty in a round profile picture.\" width=\"160\" height=\"160\">\n    <h2>Meet Scotty</h2>\n    <p>The university's mascot, at every game.</p>\n    <p><a class=\"cta\" href=\"#grid\">See the Schedule</a></p>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -347,7 +382,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#carousel",
       "labels": ["Template"],
-      "description": "Feature sections that slide, with arrows at the sides and a dot for each slide. Put two or more grid column2 slides in a js-flickityCustom, and load the template's carousel script after its main one (Cascade adds it for you):\n\nIt never moves by itself. Turn off the dots or arrows with data-navDotsVisible=\"false\" or data-navArrowsVisible=\"false\", and stop it going round from the last slide to the first with data-wrapAround=\"false\". On phones the arrows sit over the slides' headings; turn them off there if your headings are long, since people can swipe instead.\n\nUse these sparingly. People rarely look past the first slide, so put the most important one first, and don't put anything people need in a later slide.\n\nStraight on the page, or in a light section without invert, with the template's dark slate dots.",
+      "description": "Feature sections that slide, with arrows at the sides and a dot for each slide. Put two or more grid column2 slides in a js-flickityCustom, and load the template's carousel script after its main one (Cascade adds it for you):\n\nIt never moves by itself. Turn off the dots or arrows with data-navDotsVisible=\"false\" or data-navArrowsVisible=\"false\", and stop it going round from the last slide to the first with data-wrapAround=\"false\". On phones the arrows sit over the slides' headings; turn them off there if your headings are long, since people can swipe instead.\n\nUse these sparingly. People rarely look past the first slide, so put the most important one first, and don't put anything people need in a later slide.\n\nStraight on the page, or in a light section without invert, with the template's dark slate dots:",
       "notes": [],
       "classes": ["js-flickityCustom", "grid column2"],
       "examples": [
@@ -426,7 +461,7 @@
       ],
       "classes": ["grid column3 grey boxes", "rule-bottom", "data-cmu-email"],
       "examples": [
-        "<div class=\"grid column3 grey boxes\" id=\"kit-team\">\n  <h1>Management Team</h1>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600.svg?scotty-bust\" alt=\"Scotty, standing in for a photo.\" width=\"900\" height=\"600\">\n    <h2 class=\"rule-bottom\">Andrew Carnegie | Director</h2>\n    <p><a data-cmu-email=\"ac00(through)andrew.cmu.edu\">Email Andrew Carnegie</a></p>\n    <p>Office: 412-555-0101</p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600.svg?scotty-bust\" alt=\"Scotty, standing in for a photo.\" width=\"900\" height=\"600\">\n    <h2 class=\"rule-bottom\">Andrew Mellon | Associate Director</h2>\n    <p><a data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Andrew Mellon</a></p>\n    <p>Office: 412-555-0102</p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600.svg?scotty-bust\" alt=\"Scotty, standing in for a photo.\" width=\"900\" height=\"600\">\n    <h2 class=\"rule-bottom\">Margaret Morrison | Office Coordinator</h2>\n    <p><a data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Margaret Morrison</a></p>\n    <p>Office: 412-555-0103</p>\n  </div>\n</div>"
+        "<div class=\"grid column3 grey boxes\" id=\"kit-team\">\n  <h1>Management Team</h1>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600.svg?scotty=bust\" alt=\"Scotty, standing in for a photo.\" width=\"900\" height=\"600\">\n    <h2 class=\"rule-bottom\">Andrew Carnegie | Director</h2>\n    <p><a data-cmu-email=\"ac00(through)andrew.cmu.edu\">Email Andrew Carnegie</a></p>\n    <p>Office: 412-555-0101</p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600.svg?scotty=bust\" alt=\"Scotty, standing in for a photo.\" width=\"900\" height=\"600\">\n    <h2 class=\"rule-bottom\">Andrew Mellon | Associate Director</h2>\n    <p><a data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Andrew Mellon</a></p>\n    <p>Office: 412-555-0102</p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600.svg?scotty=bust\" alt=\"Scotty, standing in for a photo.\" width=\"900\" height=\"600\">\n    <h2 class=\"rule-bottom\">Margaret Morrison | Office Coordinator</h2>\n    <p><a data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Margaret Morrison</a></p>\n    <p>Office: 412-555-0103</p>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -440,7 +475,7 @@
       "notes": [
         "Leave no space between the page's </div> and <div class=\"sidebar\">, as above. The two columns fill the width exactly, so even a line break between them pushes the sidebar below the page. It's the same trap as a logo in the header.",
         "Without wide, the page takes about 60% of the width, leaving room for the sidebar. Add wide to give it the full width when there's no sidebar.",
-        "Several .content blocks can follow one another, for a page in bands."
+        "Several .content blocks can follow one another, for a page in sections."
       ],
       "classes": ["content", "wide", "sidebar"],
       "examples": [
@@ -454,12 +489,10 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#copy",
       "labels": ["CMS", "Script"],
-      "description": "Copies a code block for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. It requires cmu-app.js. There are two kinds:\n\nSay what a named copy button copies, such as “Copy Link.”",
+      "description": "Copies a block of text for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. When the user selects a copy button:\n\nCode gets an icon in its corner, where people who copy code expect it. Put the block and the button in a cmu-copyable box, and name the button with aria-label and title, such as \"Copy Code\" or \"Copy HTML,\" for screen readers and the tooltip:",
       "notes": [
-        "Code gets an icon in its corner, where anyone who copies code expects it. Put the block and the button in a cmu-copyable box, and name the button with aria-label and title (\"Copy Code,\" \"Copy HTML\") for screen readers and the tooltip.",
-        "Anything else gets a named button beside the block, for people who don't copy code every day: a link to share, an address to paste or a code to type somewhere else. Put the block and the button in a cmu-copy-row; it lines them up as a field with a button does.",
-        "It says it worked. The icon turns into a green check, the named button reads \"Copied\" for two seconds and screen readers hear \"Copied.\"",
-        "If automatic copying isn't available, the button selects the text and tells the user to press Ctrl+C or Command+C to copy it."
+        "It says it worked. An icon turns into a green check, a named button reads \"Copied\" for two seconds and screen readers hear \"Copied.\"",
+        "If automatic copying isn't available, the button selects the text and tells the user to press Ctrl+C or Command+C."
       ],
       "classes": [
         "data-cmu-copy",
@@ -505,12 +538,26 @@
       }
     },
     {
+      "id": "dark-box",
+      "name": "Dark Box",
+      "page": "Sidebars",
+      "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#dark-box",
+      "labels": ["Template"],
+      "description": "A dark gray box for questions, with a way to reach someone. A line under its heading sets it apart.",
+      "notes": [],
+      "classes": ["darkgrey invert", "rule-bottom"],
+      "examples": [
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"darkgrey invert\">\n      <h2 class=\"rule-bottom\">Questions?</h2>\n      <p>The checkout desk answers email within one business&nbsp;day.</p>\n      <p><a class=\"cta\" href=\"#dark-box\">Email the Checkout Desk</a></p>\n    </div>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "dates",
       "name": "Date Blocks and Event Cards",
       "page": "News and Events",
       "url": "https://webkilt.andrew.cmu.edu/0/news.html#dates",
       "labels": ["CMS"],
-      "description": "From the kit (cmu-cms.css), unlike the rest of this page: the template has no date block that stands on its own or sits over a photo.\n\nA month-and-day block in the style of the events.cmu.edu widgets, for a date that stands on its own or sits over a photo. For a list of dates, use the template's event list; for a calendar of events, embed its events.cmu.edu widget. Use a <time> with a datetime so the full date is in the markup, and add cmu-date--red for a red month.",
+      "description": "A month-and-day block in the style of the events.cmu.edu widgets, for a date that stands on its own or sits over a photo. For a list of dates, use the template's event list; for a calendar of events, embed its events.cmu.edu widget. Use a <time> with a datetime so the full date is in the markup, and add cmu-date--red for a red month.\n\nEach event's date as a block beside its details:",
       "notes": [],
       "classes": ["cmu-date", "cmu-date-month", "cmu-date-day", "cmu-date--red"],
       "examples": [
@@ -594,7 +641,7 @@
       "page": "Messages and Progress",
       "url": "https://webkilt.andrew.cmu.edu/0/messages.html#errors",
       "labels": ["CMS"],
-      "description": "When a page can't be shown, say what happened in plain words and give people a way forward, inside the usual header, navigation and footer. Send the real HTTP status with the page, so browsers, search engines and monitoring see the error too.",
+      "description": "When a page can't be shown, say what happened in plain words and give people a way forward, inside the usual header, navigation and footer. Send the real HTTP status with the page, so browsers, search engines and monitoring see the error too.\n\nWhen the address doesn't match a page:",
       "notes": [
         "404, Not Found: The address is wrong or the page moved. Offer the home page and the site's search, or its main list.",
         "500, Something Went Wrong: The problem is on your end, so say so. Offer to try again, and say who to contact if it keeps happening. Serve it as a plain file the web server can send even when the app is down.",
@@ -630,11 +677,27 @@
       "page": "News and Events",
       "url": "https://webkilt.andrew.cmu.edu/0/news.html#events",
       "labels": ["Template"],
-      "description": "CMU's events calendar, events.cmu.edu, gives any page a live list of upcoming events. Its widgets bring their own styles: a list with a month-and-day block beside each event, or tiles with a photo and the date over its corner. The widget is set up on events.cmu.edu, which gives it a number; the page takes only two lines:",
+      "description": "CMU's events calendar, events.cmu.edu, gives any page a live list of upcoming events. Its widgets bring their own styles: a list with a month-and-day block beside each event, or tiles with a photo and the date over its corner. The widget is set up on events.cmu.edu, which gives it a number; the page takes only two lines:\n\nCarnegie Mellon Web KiltCarnegie Mellon University5000 Forbes AvenuePittsburgh, PA 15213",
       "notes": [
         "Put it in a grid box or a sidebar box with a heading, and end with a call to action that links to the full calendar, such as “View the Full Student Affairs Calendar.”",
         "Ask your calendar's events.cmu.edu administrator for a widget; they choose which events it shows and how many.",
-        "For dates you list yourself, such as deadlines, use the template's event list, or the kit's date blocks, which match the widget's look."
+        "For dates you list yourself, such as deadlines, use the template's event list, or the kit's date blocks, which match the widget's look.",
+        "Legal Info",
+        "www.cmu.edu",
+        "© 2026 Carnegie Mellon University",
+        "Install",
+        "Page Layout Link Previews / Open Graph",
+        "Page Tops",
+        "Page Sections",
+        "Content",
+        "Sidebars",
+        "People",
+        "Lists and Tables",
+        "Forms",
+        "Messages and Progress",
+        "Accounts",
+        "Conventions",
+        "About"
       ],
       "classes": [],
       "examples": [
@@ -652,7 +715,7 @@
       "notes": [],
       "classes": ["cmu-example", "cmu-label"],
       "examples": [
-        "<div class=\"cmu-example\">\n  <p class=\"cmu-label\">Example</p>\n  <figure class=\"cmu-shot\">\n    <img src=\"images/scotty.png\" alt=\"Scotty as a round profile picture.\" width=\"160\" height=\"160\">\n  </figure>\n</div>"
+        "<div class=\"cmu-example\">\n  <p class=\"cmu-label\">Example</p>\n  <figure class=\"cmu-shot\">\n    <img src=\"images/example-profile-picture.png\" alt=\"Scotty as Andrew Carnegie's picture: small beside the name in the red bar, larger in the open menu.\" width=\"300\" height=\"397\">\n  </figure>\n</div>"
       ],
       "frameworks": {}
     },
@@ -663,11 +726,8 @@
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#eyebrow-lead",
       "labels": ["CMS"],
       "description": "",
-      "notes": [
-        "Eyebrow: an optional short red line right above a heading. Use it on a page or card meant for one group (\"For Students,\" as on path cards), or to flag something new (\"New for Spring 2027\"). Leave it off a page for everyone, such as an app's home page, and never repeat the site's name in it: that's already the big title at the top of every page.",
-        "Lead: the larger first paragraph under a page title."
-      ],
-      "classes": ["cmu-eyebrow", "cmu-lead"],
+      "notes": [],
+      "classes": [],
       "examples": [
         "<p class=\"cmu-eyebrow\">For Students</p>\n<h1>Borrow a Camera</h1>\n<p class=\"cmu-lead\">Reserve one in about a minute, and pick it up at the desk.</p>"
       ],
@@ -679,7 +739,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#faq",
       "labels": ["Template"],
-      "description": "Questions that open to show their answers. A heading with collapsed hides everything after it, up to the next collapsed heading, until it's selected; it depends on the template's script.\n\nIt's FAQ, never \"FAQs\": the Q already means questions. Title the page Frequently Asked Questions, and use FAQ in links and running text (“see the FAQ”). Phrase each heading as the question someone would ask, ending in a question mark.",
+      "description": "Questions that open to show their answers. Put collapsed on each question's heading, and everything after it, up to the next question, stays hidden until someone selects it. Give each question an id, and a link such as faq.html#miss-turn opens the page with that answer showing. To show a few questions on another page, such as a home page, use an FAQ teaser.\n\nIt's FAQ, never \"FAQs\": the Q already means questions. Title the page Frequently Asked Questions, and use FAQ in links and running text (“see the FAQ”). Phrase each heading as the question someone would ask, ending in a question mark.\n\nAll the questions together, each opening in place:",
       "notes": [],
       "classes": ["collapsed"],
       "examples": [
@@ -708,7 +768,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#feature",
       "labels": ["Template"],
-      "description": "A red band with a picture on one side and a heading, a few sentences and a button on the other, to make one thing stand out on a page. It's a two-column grid in red invert: the first column holds the image. On red, use the white outline button, btn ghost.",
+      "description": "A red section with a picture on one side and a heading, a few sentences and a button on the other, to make one thing stand out on a page. It's a two-column grid in red invert: the first column holds the image. On red, use the white outline button, btn ghost.",
       "notes": [],
       "classes": ["grid column2 red invert", "btn ghost"],
       "examples": [
@@ -750,7 +810,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#file-picker",
       "labels": ["App", "Script"],
-      "description": "For uploading a file, such as a syllabus or a roster. It's a label wrapping a file input, so it works by click and keyboard as well as by dragging a file onto it, and the file arrives as an ordinary form post.",
+      "description": "For uploading a file, such as a syllabus or a roster. It's a label wrapping a file input, so it works by click and keyboard as well as by dragging a file onto it, and the file arrives as an ordinary form post.\n\nA drop zone in the page itself:",
       "notes": [
         "Dragging: the zone turns solid red while a file is over it, and dropping chooses the file. Without the script, people choose by clicking.",
         "Say what was chosen: the script puts the file's name in cmu-drop-file and marks the zone cmu-drop-has-file, so people can catch the wrong file before they send it. Keep the empty cmu-drop-file in the markup: its line holds its place, so the zone doesn't move when a file is chosen.",
@@ -814,12 +874,12 @@
       "page": "Messages and Progress",
       "url": "https://webkilt.andrew.cmu.edu/0/messages.html#flash",
       "labels": ["App"],
-      "description": "The result of what someone just did, shown once: \"You're in line: 3 people ahead of you,\" or what went wrong. A tinted box with a colored rule at the left: green when it worked, red when it didn't and gold for something to know that's neither, such as a deadline or a change that came with it.",
+      "description": "The result of what someone just did, shown once: \"You're in line: 3 people ahead of you,\" or what went wrong. A tinted box with a rule down its left side: green when it worked, red when it didn't and gold for something to know that's neither, such as a deadline or a change that came with it.",
       "notes": [
         "After a form sends someone to a new page, put it at the top of the page's content, above everything else, and show it only that once.",
         "For an error in one place, such as a dialog or one part of a form, put it right there.",
         "Use role=\"alert\" on a message that appears without a page load, so screen readers announce it.",
-        "Not for standing notices that everyone should see, such as who a page is for: those are announcements, the template's full-width color bands. An aside within a page's content, such as a tip or a warning, is a callout."
+        "Not for standing notices that everyone should see, such as who a page is for: those are announcements, the template's full-width sections. An aside within a page's content, such as a tip or a warning, is a callout."
       ],
       "classes": ["cmu-flash", "cmu-flash--success", "cmu-flash--notice", "cmu-flash--error"],
       "examples": [
@@ -833,11 +893,26 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#more",
       "labels": ["App"],
-      "description": "A <details> whose summary reads as a line of text ending in a bold toggle with a chevron, which points down while closed, flips up when open and turns red on hover. It opens right there, so it doesn't look like a call to action to another page. Closed, the toggle is the count of what's hidden (\"6 More\"); open, it says Show Fewer, and the whole list shows. It works without a script, and it slides open and closed where the browser supports that (not for people who turn motion down). Tabs fold the same way.",
+      "description": "A <details> whose summary reads as a line of text ending in a bold toggle with a chevron, which points down while closed, flips up when open and turns red on hover. It opens right there, so it doesn't look like a call to action to another page. Closed, the toggle names what's hidden; open, it says how to fold it back. It slides open and closed where the browser supports that (not for people who turn motion down). Tabs fold the same way.\n\nThe first few items, then the count of the rest; open, the whole list shows:",
       "notes": [],
       "classes": ["cmu-more", "cmu-more-link", "cmu-more-closed", "cmu-more-open"],
       "examples": [
-        "<details class=\"cmu-more\">\n  <summary><span class=\"cmu-more-closed\">ARC, CS, ECE and</span> <span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">6 More</span><span class=\"cmu-more-open\">Show Fewer</span></span></summary>\n  <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>\n</details>"
+        "<details class=\"cmu-more\">\n  <summary><span class=\"cmu-more-closed\">ARC, CS, ECE and</span> <span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">6 More</span><span class=\"cmu-more-open\">Show Fewer</span></span></summary>\n  <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>\n</details>",
+        "<details class=\"cmu-more\">\n  <summary>Want to read it first? <span class=\"cmu-more-link\"><span class=\"cmu-more-closed\">See the Prompt</span><span class=\"cmu-more-open\">Hide the Prompt</span></span></summary>\n  <pre class=\"cmu-snippet\"><code>Use the Carnegie Mellon Web Kilt for this page. Read https://webkilt.andrew.cmu.edu/ first, start from its Prototypes section and keep its class names as they are.</code></pre>\n</details>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "panels",
+      "name": "Framed Page Panel",
+      "page": "Page Layout",
+      "url": "https://webkilt.andrew.cmu.edu/0/layout.html#panels",
+      "labels": ["App"],
+      "description": "The one box on a framed page: a header, the page's content and its actions. It's plain and left-aligned, since the host already frames it. The actions go at the bottom, the main one first, on the left, like every other row of buttons:",
+      "notes": [],
+      "classes": ["cmu-panel", "cmu-panel-header", "cmu-panel-body", "cmu-panel-footer"],
+      "examples": [
+        "<div class=\"cmu-panel\">\n  <div class=\"cmu-panel-header\">\n    <h2>Choose a Page</h2>\n    <p class=\"cmu-muted\">Pages in this Canvas course.</p>\n  </div>\n  <div class=\"cmu-panel-body\">\n    <fieldset class=\"cmu-choices\">\n      <legend class=\"cmu-label\">Pages</legend>\n      <ul>\n        <li><label><input type=\"radio\" name=\"kit-page\">Course Syllabus</label></li>\n        <li><label><input type=\"radio\" name=\"kit-page\">Welcome</label></li>\n      </ul>\n    </fieldset>\n  </div>\n  <div class=\"cmu-panel-footer\">\n    <button class=\"btn\" type=\"button\">Confirm Selection</button>\n    <a class=\"btn ghost\" href=\"#panels\">Cancel</a>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -847,7 +922,7 @@
       "page": "Page Tops",
       "url": "https://webkilt.andrew.cmu.edu/0/tops.html#photo-hero",
       "labels": ["Template"],
-      "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 × 600 version in style for phones, and a 1400 × 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark band (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white band near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.",
+      "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 × 600 version in style for phones, and a 1400 × 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark box (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white strip near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.\n\nA line of text in a dark box, with an optional second line under it:",
       "notes": [],
       "classes": [
         "hero",
@@ -863,6 +938,20 @@
       "examples": [
         "<div class=\"hero\" role=\"img\" aria-label=\"Placeholder photo of the Carnegie Mellon campus.\" data-img=\"https://placemellon.andrew.cmu.edu/1400/700?category=campus\" style=\"background-image:url(https://placemellon.andrew.cmu.edu/1400/700?category=campus)\">\n  <div class=\"text\">\n    <h1>Get Help Without the Line</h1>\n    <h2>Office hours for every course, in one queue</h2>\n  </div>\n</div>",
         "<div class=\"hero\" role=\"img\" aria-label=\"Placeholder photo of the Carnegie Mellon campus.\" data-img=\"https://placemellon.andrew.cmu.edu/1400/700?category=campus\" style=\"background-image:url(https://placemellon.andrew.cmu.edu/1400/700?category=campus)\">\n  <a class=\"box left\" href=\"#photo-hero\">\n    <h1>Camera Kits Are Back for Spring</h1>\n    <p>Reserve one for your class project.</p>\n    <p class=\"cta\">Reserve a Camera Kit</p>\n  </a>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "gray-box",
+      "name": "Gray Box",
+      "page": "Sidebars",
+      "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#gray-box",
+      "labels": ["Template"],
+      "description": "A box with a light gray background, for help, such as hours or where to go.",
+      "notes": [],
+      "classes": ["grey"],
+      "examples": [
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"grey\">\n      <h2>Need Help?</h2>\n      <p>The checkout desk is open weekdays, 9 a.m.-5 p.m., in Hunt Library.</p>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -900,7 +989,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#icons",
       "labels": ["Template", "Icons"],
-      "description": "Icons help people scan, such as beside an event's details or one on each card in a row of cards. Load the icon stylesheet to use them. Each is an <i> with bi and its name from Bootstrap Icons, such as bi-calendar-event, and takes the size and color of the text around it.",
+      "description": "Icons help people scan, such as beside an event's details or one on each card in a row of cards. Load the icon stylesheet to use them. Each is an <i> with bi and its name from Bootstrap Icons, such as bi-calendar-event, and takes the size and color of the text around it.\n\nAn event's date, place and audience, each with an icon:",
       "notes": [
         "Add aria-hidden=\"true\", since the words beside an icon already say what it means.",
         "No icons in buttons. The only icon-only buttons are the kit's copy, close, sorting arrows, the question card's arrows and a table row's ⋯ menu.",
@@ -919,7 +1008,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#tap",
       "labels": ["App", "Script"],
-      "description": "For checking people in or looking them up with their CMU ID card, such as at a desk, a workshop or an exam room. An NFC card reader acts as a keyboard: it types the card's number into whatever has focus, and is assumed to end it with a carriage return (Enter), which submits the form. So the target holds a hidden text field, and the number arrives as an ordinary form post.",
+      "description": "For checking people in or looking them up with their CMU ID card, such as at a desk, a workshop or an exam room. An NFC card reader acts as a keyboard: it types the card's number into whatever has focus, and is assumed to end it with a carriage return (Enter), which submits the form. So the target holds a hidden text field, and the number arrives as an ordinary form post.\n\nA tap target in the page itself:",
       "notes": [
         "Ready on load: when it's the only ID tap on the page, the field takes focus when the page loads, so the reader works without a click. The target says Ready while the field has focus, and to select it when it doesn't, so a tap never goes nowhere. Selecting anywhere on the target focuses the field, and so does sending the form.",
         "A tap-only page: add data-cmu-tap=\"keep\" on a kiosk or check-in page, and the field also takes focus back whenever nothing else has it. On a page where something else should have focus first, use data-cmu-tap=\"click\", and the field waits to be selected.",
@@ -946,16 +1035,16 @@
       "frameworks": {}
     },
     {
-      "id": "leadership",
-      "name": "Leadership Grid",
-      "page": "People",
-      "url": "https://webkilt.andrew.cmu.edu/0/people.html#leadership",
+      "id": "left-rule",
+      "name": "Left Rule",
+      "page": "Sidebars",
+      "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#left-rule",
       "labels": ["Template"],
-      "description": "Square photos with each person's name and title centered under them, on a gray band. It introduces a few leaders on an overview page, without links to bios. It's a grid column3 grey boxes; center the text with the template's aligncenter instead of inline styles.",
+      "description": "A note with a thin line beside it instead of a box, for something that needs less weight than a box.",
       "notes": [],
-      "classes": ["grid column3 grey boxes", "aligncenter"],
+      "classes": ["left-rule"],
       "examples": [
-        "<div class=\"grid column3 grey boxes\">\n  <h1>Leadership</h1>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"Scotty, standing in for a photo.\" width=\"320\" height=\"320\">\n    <h2>Andrew Carnegie</h2>\n    <h3>Director of Teaching Technology</h3>\n  </div>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"Scotty, standing in for a photo.\" width=\"320\" height=\"320\">\n    <h2>Andrew Mellon</h2>\n    <h3>Associate Director, Office Hours Queue</h3>\n  </div>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"Scotty, standing in for a photo.\" width=\"320\" height=\"320\">\n    <h2>Margaret Morrison</h2>\n    <h3>Manager, Equipment Checkout</h3>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"left-rule\">\n      <h2>A Note</h2>\n      <p>Returns after 5 p.m. go in the drop box by the desk.</p>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -988,6 +1077,34 @@
       "frameworks": {}
     },
     {
+      "id": "link-list",
+      "name": "Link List",
+      "page": "Sidebars",
+      "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#link-list",
+      "labels": ["Template"],
+      "description": "A list of related links, each with a rule above it and an arrow. The box's heading is an <h1>.",
+      "notes": [],
+      "classes": ["list"],
+      "examples": [
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list\">\n      <h1>Relevant Documents</h1>\n      <ul>\n        <li><a href=\"#link-list\">University Policy</a></li>\n        <li><a href=\"#link-list\">Guidelines</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "link-preview-card",
+      "name": "Link Preview Card",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/0/content.html#link-preview-card",
+      "labels": ["CMS"],
+      "description": "A picture of how a shared link looks in Slack, Teams or a social post, for a page that explains or checks link previews. Put a cmu-link-preview in a screenshot frame: the image, then a cmu-link-preview-text with the site, the title in <strong> and the description:",
+      "notes": [],
+      "classes": ["cmu-link-preview", "cmu-link-preview-text"],
+      "examples": [
+        "<figure class=\"cmu-shot\">\n  <div class=\"cmu-link-preview\">\n    <img src=\"images/preview.jpg\" width=\"1200\" height=\"630\" alt=\"The Web Kilt home page, with the heading Made to Measure for CMU Sites and Apps beside screenshots of three CMU sites.\">\n    <div class=\"cmu-link-preview-text\">\n      <span>webkilt.andrew.cmu.edu</span>\n      <strong>Carnegie Mellon Web Kilt</strong>\n      <span>Components for CMU sites and apps, built on the university's web template.</span>\n    </div>\n  </div>\n</figure>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "load-more",
       "name": "Load More",
       "page": "Lists and Tables",
@@ -998,6 +1115,20 @@
       "classes": ["cmu-results-count", "cmu-load-more"],
       "examples": [
         "  <table class=\"alternate cmu-full\">\n    <thead><tr><th scope=\"col\">Course</th><th scope=\"col\">Title</th><th scope=\"col\">Status</th></tr></thead>\n    <tbody id=\"kit-more-rows\">\n      <tr><td class=\"cmu-fit\"><span class=\"cmu-code\">15-112</span></td><td>Fundamentals of Programming</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr><td class=\"cmu-fit\"><span class=\"cmu-code\">15-122</span></td><td>Principles of Imperative Computation</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--amber\">Unavailable</span></td></tr>\n      <tr><td class=\"cmu-fit\"><span class=\"cmu-code\">15-150</span></td><td>Principles of Functional Programming</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr><td class=\"cmu-fit\"><span class=\"cmu-code\">15-210</span></td><td>Parallel and Sequential Data Structures and Algorithms</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">21-120</span></td><td>Differential and Integral Calculus</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">21-122</span></td><td>Integration and Approximation</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--amber\">Unavailable</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">48-100</span></td><td>Architecture Design Studio</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">48-200</span></td><td>Architecture Design Studio: Composition</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--amber\">Unavailable</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">76-101</span></td><td>Interpretation and Argument</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">76-106</span></td><td>Writing About Literature, Art and Culture</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">85-102</span></td><td>Introduction to Psychology</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--green\">Available</span></td></tr>\n      <tr hidden><td class=\"cmu-fit\"><span class=\"cmu-code\">85-211</span></td><td>Cognitive Psychology</td><td class=\"cmu-fit\"><span class=\"cmu-pill cmu-pill--amber\">Unavailable</span></td></tr>\n    </tbody>\n  </table>\n<p class=\"cmu-results-count\" id=\"kit-more-count\" aria-live=\"polite\">Showing 4 of 12 sections</p>\n<p class=\"cmu-load-more\"><button type=\"button\" class=\"btn ghost wide\">Load More Sections</button></p>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "peek",
+      "name": "Long Code Block",
+      "page": "Content",
+      "url": "https://webkilt.andrew.cmu.edu/0/content.html#peek",
+      "labels": ["App"],
+      "description": "A code block too long to show at once: its first lines fade out at the bottom, and a toggle under it shows the whole block and folds it back. Put the block (or its copy box) and a cmu-more holding only its summary in a cmu-peek. It shows 10 lines; for another number, set --cmu-peek-lines on it, such as style=\"--cmu-peek-lines: 6\". A copy icon copies the whole block, folded or not.\n\nSay what the toggle shows, such as “See the Whole Page.”",
+      "notes": [],
+      "classes": ["cmu-peek", "cmu-more", "cmu-more-link", "cmu-more-closed", "cmu-more-open"],
+      "examples": [
+        "<div class=\"cmu-peek\">\n  <div class=\"cmu-copyable\">\n    <pre class=\"cmu-snippet\" id=\"kit-peek-code\"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;\n&lt;link href=\"/vendor/cmu-web-kilt/css/cmu-cms.css\" rel=\"stylesheet\"&gt;\n&lt;link href=\"/vendor/cmu-web-kilt/css/cmu-app.css\" rel=\"stylesheet\"&gt;\n&lt;link href=\"/css/office-hours.css\" rel=\"stylesheet\"&gt;\n\n&lt;main id=\"content\"&gt;\n  &lt;div class=\"content wide\"&gt;\n    &lt;div&gt;\n      &lt;h1&gt;Open Office Hours&lt;/h1&gt;\n      &lt;p class=\"cmu-lead\"&gt;Join the line for 15-112, and we'll call you when it's your turn.&lt;/p&gt;\n      &lt;form method=\"post\" action=\"/queue/15112/join\"&gt;\n        &lt;label for=\"question\"&gt;Your Question&lt;/label&gt;\n        &lt;textarea id=\"question\" name=\"question\" rows=\"3\"&gt;&lt;/textarea&gt;\n        &lt;p class=\"cmu-hint\"&gt;A sentence or two is enough.&lt;/p&gt;\n        &lt;button class=\"btn\" type=\"submit\"&gt;Join the Line&lt;/button&gt;\n      &lt;/form&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/main&gt;</code></pre>\n    <button class=\"cmu-copy\" type=\"button\" data-cmu-copy=\"#kit-peek-code\" aria-label=\"Copy HTML\" title=\"Copy HTML\"></button>\n  </div>\n  <details class=\"cmu-more\">\n    <summary><span class=\"cmu-more-link\"><span class=\"cmu-more-closed\">See the Whole Page</span><span class=\"cmu-more-open\">Hide the Whole Page</span></span></summary>\n  </details>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1079,11 +1210,11 @@
       "page": "Sidebars",
       "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#on-this-page",
       "labels": ["Template"],
-      "description": "Links to the sections of a long page go in a sidebar link list. It's the template's list simple box, with no heading, as Marcom's own pages use it: each link points to a section heading's id, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance. For a page whose content uses the full width, use an On This Page link bank under the intro instead.",
+      "description": "Links to the sections of a long page: the template's list simple box, with no heading. Each link points to a section heading's id, and the template scrolls to it. Put it first in the sidebar, and leave it off pages short enough to see at a glance. For a page whose content uses the full width, use an On This Page link bank under the intro instead.",
       "notes": [],
       "classes": ["list simple", "#id"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <h2>Borrowing Equipment</h2>\n    <p>The page's own content goes here, with an <code>id</code> on each section's heading.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list simple\">\n      <ul>\n        <li><a href=\"#on-this-page\">What You Can Borrow</a></li>\n        <li><a href=\"#on-this-page\">How Long You Can Keep It</a></li>\n        <li><a href=\"#on-this-page\">Late Returns</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list simple\">\n      <ul>\n        <li><a href=\"#on-this-page\">What You Can Borrow</a></li>\n        <li><a href=\"#on-this-page\">How Long You Can Keep It</a></li>\n        <li><a href=\"#on-this-page\">Late Returns</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1093,7 +1224,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#on-this-page-bank",
       "labels": ["CMS"],
-      "description": "Links to the sections of a long page, in columns under its intro, for a page whose content uses the full width, such as wide tables or examples. It's a white link bank with cmu-on-this-page and a cmu-label first: the label takes a row of its own over the columns, and the link bank drops the template's top and bottom padding, which only gives a colored band room. The links stay the page's usual red, so they read as links.",
+      "description": "Links to the sections of a long page, in columns under its intro, for a page whose content uses the full width, such as wide tables or examples. It's a white link bank with cmu-on-this-page and a cmu-label first: the label takes a row of its own over the columns, and the link bank drops the template's top and bottom padding, which only gives a section with a background room. The links stay the page's usual red, so they read as links.",
       "notes": [
         "Not on a page with a sidebar: there, the On This Page box goes at the top of the sidebar.",
         "Not on a page short enough to see at a glance."
@@ -1105,75 +1236,17 @@
       "frameworks": {}
     },
     {
-      "id": "tags",
-      "name": "Open Graph Tags",
-      "page": "Link Previews",
-      "url": "https://webkilt.andrew.cmu.edu/0/previews.html#tags",
-      "labels": ["Template"],
-      "description": "Open Graph tags describe the page for apps that generate previews. Add them to the page's <head>. This example is for an equipment reservation page:\n\nCMU's Cascade template writes each page's title, description, address and type for you, from the page's settings; fill in the page's Description field. Don't add those tags yourself: a second copy conflicts. To add the picture:\n\nCheck its link-preview or social-sharing settings first; most write some of these tags from each page's title and summary. Add only the tags it doesn't already provide, in the page template's <head>, so every page gets them.\n\nPut the tags in the layout, filled in from each view, and set the app's public address once (config.x.public_url). A view names itself with <% content_for :title, \"Reserve a Camera Kit\" %> and <% content_for :description, \"…\" %>. The image goes in public/images/preview.jpg.\n\nPut the tags in the base template, filled in from each view's context (page_title, page_description), with the app's public address as a setting (PUBLIC_URL) that a context processor passes to every template. The image goes in your static files.\n\nSvelteKit renders pages on the server, so tags in <svelte:head> reach the apps that build previews. Put the shared tags in the root layout and let each page add its own title and description in its own <svelte:head>. The image goes in static/images.\n\nAstro builds its pages ahead of time or renders them on the server, so tags in the layout reach the apps that build previews. Set the site's public address as site in astro.config.mjs, put the tags in the layout and let each page pass its own title and description. The image goes in public/images; if the site is served from a folder (base in astro.config.mjs), add the folder to the image's path.\n\nThe apps that build previews don't run JavaScript, so tags a React component adds in the browser never reach them. In an app that renders only in the browser, put the site's tags in index.html, the same for every page: the site's name, description, home address and preview image. For tags that differ by page, render the page on the server with a framework built on React, like Next.js, which writes the <head> there.\n\nThe apps that build previews don't run JavaScript, so tags a Vue component adds in the browser never reach them. In an app that renders only in the browser, put the site's tags in index.html, the same for every page: the site's name, description, home address and preview image. For tags that differ by page, render the page on the server with Nuxt, which writes the <head> there.\n\nAn app writes every tag itself, and its previews are only as good as its layout. Put the tags in the one layout every page uses, filled in from each page, so no page goes out without them.\n\nMost pages are website: a home page, a service or help page, a form or an app's pages. Checkers such as LinkedIn's report “No author found” and “No publication date found” for them, which is fine: those fields are for articles.\n\nA page that's dated and written by someone is an article: a news story, a blog post, an announcement or a recap of an event. Give it the type, its date and its author, so previews can show when it was published:",
-      "notes": [
-        "Make the site's preview image.",
-        "Upload it to the site's images folder as preview.jpg.",
-        "Open the site's setup block, select Edit and choose the image under Social Media Image. That's the default for every page; a page with a better picture of its own can set its own Social Media Image. Cascade suggests 900 × 600, but 1200 × 630 is what the apps that build previews expect, so they don't crop it.",
-        "Publish the site's pages, then check a preview, and look for og:image in a page's source.",
-        "Keep the title specific: Use the page's name followed by the site's name, as in its <title>.",
-        "Keep the description short: Use the same sentence as the page's <meta name=\"description\">. Put the useful information first; apps may shorten it.",
-        "Use full addresses: Give both the page and image a public https:// address, not a path such as /images/preview.jpg.",
-        "Use the preview image: The site's images/preview.jpg, with its size and alt text.",
-        "Request a large image: twitter:card with summary_large_image requests the larger preview on platforms that support Twitter Cards.",
-        "Give every page a description: Make it part of what a page must set, as a title is, and use the app's own one-sentence description as the fallback.",
-        "Build addresses from one setting: Keep the app's public address, such as https://equipment.andrew.cmu.edu, in its configuration and join each page's path to it. Don't use the address a request came in on: behind a proxy or on a test copy, it's the wrong one.",
-        "Serve the image from the app: Put images/preview.jpg with its other static files, open to everyone, so it lasts as long as the app and loads without signing in.",
-        "Plan for sign-in: The apps that build previews aren't signed in. A link to a page behind sign-in shows whatever a signed-out visitor gets, usually the sign-in page, so give that page the app's own title, description and image.",
-        "Never put a user's data in the tags: No names, course numbers or anything else from the signed-in page, even where it would be more specific.",
-        "Check them automatically: A test that fetches a few pages and looks for og:title, og:description and og:image catches a layout that lost them. These docs write and check theirs with a script.",
-        "Give the time and time zone: Write the date as above, with the offset from UTC, -05:00 in winter and -04:00 in summer.",
-        "Add the modified time only after a real change, such as a correction, not every time the page is published.",
-        "Put them in the template for stories, such as a CMS's news or blog page type or an app's post layout, so every story gets them without anyone remembering."
-      ],
-      "classes": [],
-      "examples": [
-        "<meta property=\"og:site_name\" content=\"Equipment Checkout\">\n<meta property=\"og:title\" content=\"Reserve a Camera Kit - Equipment Checkout\">\n<meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\">\n<meta property=\"og:url\" content=\"https://www.cmu.edu/equipment/reserve.html\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://www.cmu.edu/equipment/images/preview.jpg\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">",
-        "<meta property=\"og:type\" content=\"article\">\n<meta property=\"article:published_time\" content=\"2027-01-11T09:00:00-05:00\">\n<meta property=\"article:modified_time\" content=\"2027-01-12T14:30:00-05:00\">\n<meta property=\"article:author\" content=\"Margaret Morrison\">\n<meta name=\"author\" content=\"Margaret Morrison\">"
-      ],
-      "frameworks": {
-        "Rails": {
-          "text": "Put the tags in the layout, filled in from each view, and set the app's public address once (config.x.public_url). A view names itself with <% content_for :title, \"Reserve a Camera Kit\" %> and <% content_for :description, \"…\" %>. The image goes in public/images/preview.jpg.",
-          "code": "<%# app/views/layouts/application.html.erb, in <head> %>\n<% site = \"Equipment Checkout\" %>\n<% base = Rails.configuration.x.public_url %>\n<meta property=\"og:site_name\" content=\"<%= site %>\">\n<meta property=\"og:title\" content=\"<%= content_for?(:title) ? \"#{yield(:title)} - #{site}\" : site %>\">\n<meta property=\"og:description\" content=\"<%= content_for?(:description) ? yield(:description) : \"Cameras, laptops and lights, free for CMU courses.\" %>\">\n<meta property=\"og:url\" content=\"<%= base + request.path %>\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"<%= base %>/images/preview.jpg\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">"
-        },
-        "Django": {
-          "text": "Put the tags in the base template, filled in from each view's context (page_title, page_description), with the app's public address as a setting (PUBLIC_URL) that a context processor passes to every template. The image goes in your static files.",
-          "code": "{# templates/base.html, in <head>; {% load static %} at the top #}\n<meta property=\"og:site_name\" content=\"Equipment Checkout\">\n<meta property=\"og:title\" content=\"{% if page_title %}{{ page_title }} - {% endif %}Equipment Checkout\">\n<meta property=\"og:description\" content=\"{{ page_description|default:'Cameras, laptops and lights, free for CMU courses.' }}\">\n<meta property=\"og:url\" content=\"{{ PUBLIC_URL }}{{ request.path }}\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"{{ PUBLIC_URL }}{% static 'images/preview.jpg' %}\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">"
-        },
-        "Svelte": {
-          "text": "SvelteKit renders pages on the server, so tags in <svelte:head> reach the apps that build previews. Put the shared tags in the root layout and let each page add its own title and description in its own <svelte:head>. The image goes in static/images.",
-          "code": "<!-- src/routes/+layout.svelte -->\n<script>\n  import { page } from \"$app/state\";\n  const base = \"https://equipment.andrew.cmu.edu\";\n  let { children } = $props();\n</script>\n<svelte:head>\n  <meta property=\"og:site_name\" content=\"Equipment Checkout\" />\n  <meta property=\"og:url\" content={base + page.url.pathname} />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta property=\"og:image\" content=\"{base}/images/preview.jpg\" />\n  <meta property=\"og:image:width\" content=\"1200\" />\n  <meta property=\"og:image:height\" content=\"630\" />\n  <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n</svelte:head>\n{@render children()}\n\n<!-- src/routes/reserve/+page.svelte -->\n<svelte:head>\n  <meta property=\"og:title\" content=\"Reserve a Camera Kit - Equipment Checkout\" />\n  <meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\" />\n</svelte:head>"
-        },
-        "Astro": {
-          "text": "Astro builds its pages ahead of time or renders them on the server, so tags in the layout reach the apps that build previews. Set the site's public address as site in astro.config.mjs, put the tags in the layout and let each page pass its own title and description. The image goes in public/images; if the site is served from a folder (base in astro.config.mjs), add the folder to the image's path.",
-          "code": "// astro.config.mjs\nimport { defineConfig } from \"astro/config\";\nexport default defineConfig({ site: \"https://equipment.andrew.cmu.edu\" });\n\n---\n// src/layouts/Layout.astro\nconst { title, description } = Astro.props;\nconst site = \"Equipment Checkout\";\nconst full = title === site ? site : `${title} - ${site}`;\n---\n<head>\n  <title>{full}</title>\n  <meta name=\"description\" content={description}>\n  <meta property=\"og:site_name\" content={site}>\n  <meta property=\"og:title\" content={full}>\n  <meta property=\"og:description\" content={description}>\n  <meta property=\"og:url\" content={new URL(Astro.url.pathname, Astro.site)}>\n  <meta property=\"og:type\" content=\"website\">\n  <meta property=\"og:image\" content={new URL(\"/images/preview.jpg\", Astro.site)}>\n  <meta property=\"og:image:width\" content=\"1200\">\n  <meta property=\"og:image:height\" content=\"630\">\n  <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\">\n  <meta name=\"twitter:card\" content=\"summary_large_image\">\n</head>\n\n---\n// src/pages/reserve.astro\nimport Layout from \"../layouts/Layout.astro\";\n---\n<Layout title=\"Reserve a Camera Kit\" description=\"Cameras, laptops and lights, free for CMU courses.\">\n  ...\n</Layout>"
-        },
-        "React": {
-          "text": "The apps that build previews don't run JavaScript, so tags a React component adds in the browser never reach them. In an app that renders only in the browser, put the site's tags in index.html, the same for every page: the site's name, description, home address and preview image. For tags that differ by page, render the page on the server with a framework built on React, like Next.js, which writes the <head> there.",
-          "code": "<!-- index.html, in <head>: the same for every page -->\n<meta property=\"og:site_name\" content=\"Equipment Checkout\">\n<meta property=\"og:title\" content=\"Equipment Checkout\">\n<meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\">\n<meta property=\"og:url\" content=\"https://equipment.andrew.cmu.edu/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://equipment.andrew.cmu.edu/images/preview.jpg\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">"
-        },
-        "Vue": {
-          "text": "The apps that build previews don't run JavaScript, so tags a Vue component adds in the browser never reach them. In an app that renders only in the browser, put the site's tags in index.html, the same for every page: the site's name, description, home address and preview image. For tags that differ by page, render the page on the server with Nuxt, which writes the <head> there.",
-          "code": "<!-- index.html, in <head>: the same for every page -->\n<meta property=\"og:site_name\" content=\"Equipment Checkout\">\n<meta property=\"og:title\" content=\"Equipment Checkout\">\n<meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\">\n<meta property=\"og:url\" content=\"https://equipment.andrew.cmu.edu/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://equipment.andrew.cmu.edu/images/preview.jpg\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">"
-        }
-      }
-    },
-    {
       "id": "sub-options",
       "name": "Options Under a Choice",
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#sub-options",
-      "labels": ["App"],
-      "description": "Options that only apply to one choice go inside that choice's list item, lined up with its label, in a cmu-sub-options block. The kit shows them only while that choice is picked, with no script: put the radio button or checkbox right inside the list item, before its label. Menus and text boxes inside fill the block, as they fill a column elsewhere. Try it: pick A Logo.",
+      "labels": ["App", "Script"],
+      "description": "Further options that only apply to one choice, shown only while it's picked, so the form asks only what matters. Menus and text boxes inside fill their space, as they fill a column elsewhere.\n\nPut the options inside the choice's list item, lined up with its label, in a cmu-sub-options block, with the radio button or checkbox right inside the list item, before its label. The kit shows them with CSS alone. Pick A Logo:",
       "notes": [],
       "classes": ["cmu-sub-options"],
       "examples": [
-        "<form>\n  <fieldset>\n    <legend>Image</legend>\n    <ul>\n      <li><input type=\"radio\" name=\"kit-kind\" id=\"kit-kind-photo\" checked><label for=\"kit-kind-photo\">A Photo</label>\n        <div class=\"cmu-sub-options\">\n          <label for=\"kit-cat\">Category</label>\n          <select id=\"kit-cat\"><option>Any</option><option>Campus</option><option>Labs</option></select>\n          <ul>\n            <li><input type=\"checkbox\" id=\"kit-random\" aria-describedby=\"kit-random-hint\"><label for=\"kit-random\">Random Photo</label></li>\n          </ul>\n          <p class=\"cmu-hint\" id=\"kit-random-hint\">A different photo each time the page loads.</p>\n        </div>\n      </li>\n      <li><input type=\"radio\" name=\"kit-kind\" id=\"kit-kind-logo\"><label for=\"kit-kind-logo\">A Logo</label>\n        <div class=\"cmu-sub-options\">\n          <label for=\"kit-logo-color\">Color</label>\n          <select id=\"kit-logo-color\"><option>Red</option><option>White</option></select>\n        </div>\n      </li>\n    </ul>\n  </fieldset>\n</form>"
+        "<form>\n  <fieldset>\n    <legend>Image</legend>\n    <ul>\n      <li><input type=\"radio\" name=\"kit-kind\" id=\"kit-kind-photo\" checked><label for=\"kit-kind-photo\">A Photo</label>\n        <div class=\"cmu-sub-options\">\n          <label for=\"kit-cat\">Category</label>\n          <select id=\"kit-cat\"><option>Any</option><option>Campus</option><option>Labs</option></select>\n          <ul>\n            <li><input type=\"checkbox\" id=\"kit-random\" aria-describedby=\"kit-random-hint\"><label for=\"kit-random\">Random Photo</label></li>\n          </ul>\n          <p class=\"cmu-hint\" id=\"kit-random-hint\">A different photo each time the page loads.</p>\n        </div>\n      </li>\n      <li><input type=\"radio\" name=\"kit-kind\" id=\"kit-kind-logo\"><label for=\"kit-kind-logo\">A Logo</label>\n        <div class=\"cmu-sub-options\">\n          <label for=\"kit-logo-color\">Color</label>\n          <select id=\"kit-logo-color\"><option>Red</option><option>White</option></select>\n        </div>\n      </li>\n    </ul>\n  </fieldset>\n</form>",
+        "<form>\n  <label for=\"kit-image-kind\">Image</label>\n  <select id=\"kit-image-kind\" data-cmu-options>\n    <option value=\"photo\">A Photo</option>\n    <option value=\"logo\">A Logo</option>\n    <option value=\"none\">None</option>\n  </select>\n  <hr>\n  <div data-cmu-option=\"photo\">\n    <label for=\"kit-menu-cat\">Category</label>\n    <select id=\"kit-menu-cat\"><option>Any</option><option>Campus</option><option>Labs</option></select>\n    <p><input type=\"checkbox\" id=\"kit-menu-random\"><label for=\"kit-menu-random\">Random Photo</label></p>\n  </div>\n  <div data-cmu-option=\"logo\" hidden>\n    <label for=\"kit-menu-color\">Color</label>\n    <select id=\"kit-menu-color\"><option>Red</option><option>White</option></select>\n  </div>\n</form>"
       ],
       "frameworks": {}
     },
@@ -1202,27 +1275,13 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#pagination",
       "labels": ["App"],
-      "description": "One batch of results at a time, each with its own address, under a count of what's showing. It's for a list people come back to a place in, or one that's too long to keep adding to with Load More.\n\nA pager is one list: first («), previous (‹), the page numbers, next (›) and last (»). Mark the current page with aria-current=\"page\", and give each arrow an aria-label (\"First page\" and so on) for screen readers. An arrow that goes nowhere, such as previous on the first page, keeps its place but loses its href and gets aria-disabled=\"true\", which grays it out. Keep the numbers to seven slots, so the pager stays the same width as people move through: the first page, the last and the pages around the current one, with an ellipsis for each gap (1 2 3 4 5 … 16 near the start, 1 … 7 8 9 … 16 in the middle, 1 … 12 13 14 15 16 near the end). With seven pages or fewer, show them all. Use the same batch size as Load More, such as 20. On phones, « and » give way to the numbers.",
+      "description": "One batch of results at a time, each with its own address, under a count of what's showing. It's for a list people come back to a place in, or one that's too long to keep adding to with Load More.\n\nA pager is one list: first («), previous (‹), the page numbers, next (›) and last (»). Mark the current page with aria-current=\"page\", and give each arrow an aria-label (\"First page\" and so on) for screen readers. An arrow that goes nowhere, such as previous on the first page, keeps its place but loses its href and gets aria-disabled=\"true\", which grays it out. Keep the numbers to seven slots, so the pager stays the same width as people move through: the first page, the last and the pages around the current one, with an ellipsis for each gap (1 2 3 4 5 … 16 near the start, 1 … 7 8 9 … 16 in the middle, 1 … 12 13 14 15 16 near the end). With seven pages or fewer, show them all. Use the same batch size as Load More, such as 20. On phones, « and » give way to the numbers.\n\nOn page 2, with the results count above it:",
       "notes": [],
       "classes": ["cmu-results-count", "cmu-pager"],
       "examples": [
         "<p class=\"cmu-results-count\">Showing 21-40 of 312 sections</p>\n<div class=\"cmu-pager\" role=\"navigation\" aria-label=\"Pages\">\n  <ol>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" href=\"?page=1\" aria-label=\"First page\">&laquo;</a></li>\n    <li><a class=\"cmu-pager-arrow\" href=\"?page=1\" rel=\"prev\" aria-label=\"Previous page\">&lsaquo;</a></li>\n    <li><a href=\"?page=1\">1</a></li>\n    <li><a href=\"?page=2\" aria-current=\"page\">2</a></li>\n    <li><a href=\"?page=3\">3</a></li>\n    <li><a href=\"?page=4\">4</a></li>\n    <li><a href=\"?page=5\">5</a></li>\n    <li><span>&hellip;</span></li>\n    <li><a href=\"?page=16\">16</a></li>\n    <li><a class=\"cmu-pager-arrow\" href=\"?page=3\" rel=\"next\" aria-label=\"Next page\">&rsaquo;</a></li>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" href=\"?page=16\" aria-label=\"Last page\">&raquo;</a></li>\n  </ol>\n</div>",
         "<div class=\"cmu-pager\" role=\"navigation\" aria-label=\"Pages\">\n  <ol>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" href=\"?page=1\" aria-label=\"First page\">&laquo;</a></li>\n    <li><a class=\"cmu-pager-arrow\" href=\"?page=7\" rel=\"prev\" aria-label=\"Previous page\">&lsaquo;</a></li>\n    <li><a href=\"?page=1\">1</a></li>\n    <li><span>&hellip;</span></li>\n    <li><a href=\"?page=7\">7</a></li>\n    <li><a href=\"?page=8\" aria-current=\"page\">8</a></li>\n    <li><a href=\"?page=9\">9</a></li>\n    <li><span>&hellip;</span></li>\n    <li><a href=\"?page=16\">16</a></li>\n    <li><a class=\"cmu-pager-arrow\" href=\"?page=9\" rel=\"next\" aria-label=\"Next page\">&rsaquo;</a></li>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" href=\"?page=16\" aria-label=\"Last page\">&raquo;</a></li>\n  </ol>\n</div>",
         "<div class=\"cmu-pager\" role=\"navigation\" aria-label=\"Pages\">\n  <ol>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" href=\"?page=1\" aria-label=\"First page\">&laquo;</a></li>\n    <li><a class=\"cmu-pager-arrow\" href=\"?page=15\" rel=\"prev\" aria-label=\"Previous page\">&lsaquo;</a></li>\n    <li><a href=\"?page=1\">1</a></li>\n    <li><span>&hellip;</span></li>\n    <li><a href=\"?page=12\">12</a></li>\n    <li><a href=\"?page=13\">13</a></li>\n    <li><a href=\"?page=14\">14</a></li>\n    <li><a href=\"?page=15\">15</a></li>\n    <li><a href=\"?page=16\" aria-current=\"page\">16</a></li>\n    <li><a class=\"cmu-pager-arrow\" aria-disabled=\"true\" aria-label=\"Next page\">&rsaquo;</a></li>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" aria-disabled=\"true\" aria-label=\"Last page\">&raquo;</a></li>\n  </ol>\n</div>"
-      ],
-      "frameworks": {}
-    },
-    {
-      "id": "panels",
-      "name": "Panels for Framed Pages",
-      "page": "Page Layout",
-      "url": "https://webkilt.andrew.cmu.edu/0/layout.html#panels",
-      "labels": ["App"],
-      "description": "For pages inside another tool (body.cmu-framed): plain and left-aligned, since the host already frames them. The actions go at the bottom, the main one first, on the left, like every other row of buttons.",
-      "notes": [],
-      "classes": ["cmu-panel", "cmu-panel-header", "cmu-panel-body", "cmu-panel-footer"],
-      "examples": [
-        "<div class=\"cmu-panel\">\n  <div class=\"cmu-panel-header\">\n    <h2>Choose a Page</h2>\n    <p class=\"cmu-muted\">Pages in this Canvas course.</p>\n  </div>\n  <div class=\"cmu-panel-body\">\n    <fieldset class=\"cmu-choices\">\n      <legend class=\"cmu-label\">Pages</legend>\n      <ul>\n        <li><label><input type=\"radio\" name=\"kit-page\">Course Syllabus</label></li>\n        <li><label><input type=\"radio\" name=\"kit-page\">Welcome</label></li>\n      </ul>\n    </fieldset>\n  </div>\n  <div class=\"cmu-panel-footer\">\n    <button class=\"btn\" type=\"button\">Confirm Selection</button>\n    <a class=\"btn ghost\" href=\"#panels\">Cancel</a>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1260,8 +1319,13 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#captions",
       "labels": ["Template"],
-      "description": "A photo with a caption under it. Use Cascade's image block, or figure.image with a <figcaption>: the template sets the caption in italics and spaces the figure from the text below. Put floatright or floatleft on the image to set the figure beside the text at half width; on phones it goes full width.",
-      "notes": [],
+      "description": "A photo with a caption under it. Use Cascade's image block, or figure.image with a <figcaption>: the template sets the caption in italics and spaces the figure from the text below. Put floatright or floatleft on the image to set the figure beside the text at half width; on phones it goes full width.\n\nCredits go at the end of the caption, in parentheses, in the caption's own style; CMU sites don't use a separate credit line or credit class.\n\nA caption under the photo, with its credit:",
+      "notes": [
+        "Photos by University Communications & Marketing need no credit.",
+        "Someone else's photo or work: \"(Courtesy of Name)\" for a photo given to you, or \"(Photo: Name)\" for a photographer.",
+        "Creative Commons: Name the author, link the source and the license, and say if you changed it: \"(Photo: Author, CC BY 4.0, cropped).\"",
+        "Never put the credit in the alt text. Alt text describes the picture; a screen reader would read a credit there as part of it."
+      ],
       "classes": ["figure.image", "figcaption", "floatright", "floatleft"],
       "examples": [
         "<figure class=\"image\">\n  <img src=\"https://placemellon.andrew.cmu.edu/900/600?category=campus\" alt=\"Placeholder photo of the Carnegie Mellon campus.\">\n  <figcaption>Students test a sensor array outside Hamerschlag Hall. (Photo:&nbsp;<a href=\"#captions\">Alex Rivera</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC&nbsp;BY&nbsp;4.0</a>, cropped)</figcaption>\n</figure>",
@@ -1275,7 +1339,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#photos",
       "labels": ["Template"],
-      "description": "Linked photos with a title over each, three or four across. The whole photo is the link. Use column2, column3 or column4; an <h1> first in the grid is its heading, across the full width. Only an <h1> spans the grid: a paragraph inside it becomes one of the cells, so put any sentence about the photos in their titles instead. Use photos that are all the same shape (such as 3:2, at 900 × 600), or the rows come out ragged and the titles don't line up. At four across, keep titles to two or three words, or they wrap; a sentence under the title fits at two or three across. On phones the photos stack. For people, put each name and title over the photo; the name's in the link, so the photo gets empty alt.\n\nNo photos yet? Fill the grid with CMU photos from PlaceMellon while you build, and swap in the real ones when they're ready.",
+      "description": "Linked photos with a title over each, three or four across. The whole photo is the link. Use column2, column3 or column4; an <h1> first in the grid is its heading, across the full width. Only an <h1> spans the grid: a paragraph inside it becomes one of the cells, so put any sentence about the photos in their titles instead. Use photos that are all the same shape (such as 3:2, at 900 × 600), or the rows come out ragged and the titles don't line up. At four across, keep titles to two or three words, or they wrap; a sentence under the title fits at two or three across. On phones the photos stack. For people, see Bio Photo Grid.\n\nNo photos yet? Fill the grid with CMU photos from PlaceMellon while you build, and swap in the real ones when they're ready.",
       "notes": [],
       "classes": ["grid", "column2", "column3", "column4", "photos", "photo"],
       "examples": [
@@ -1294,6 +1358,21 @@
       "classes": ["cmu-pill", "cmu-pill--green", "cmu-pill--amber"],
       "examples": [
         "<p>\n  <span class=\"cmu-pill cmu-pill--green\">Syllabus Available</span>\n  <span class=\"cmu-pill cmu-pill--amber\">Syllabus Unavailable</span>\n  <span class=\"cmu-pill\">No Syllabus Expected</span>\n</p>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "portrait-grid",
+      "name": "Portrait Grid",
+      "page": "People",
+      "url": "https://webkilt.andrew.cmu.edu/0/people.html#portrait-grid",
+      "labels": ["Template"],
+      "description": "Portraits with each person's name and title under them, for people without bio pages: nothing links. Use portraits of the same shape, so the names line up. The name is right under each portrait, so the portrait gets empty alt. Until someone's portrait is ready, use PlaceMellon's bio placeholder; don't show an empty frame.\n\nTall portraits, such as 600 × 750, three or four across, with the name in bold and the title on the next line. It's a grid column4 (or column3) with a div for each person:",
+      "notes": [],
+      "classes": ["grid", "column3", "column4"],
+      "examples": [
+        "<div class=\"grid column4\">\n  <h1>Our Team</h1>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Andrew Carnegie</strong><br>Director of Teaching Technology</p>\n  </div><div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Margaret Morrison</strong><br>Teaching Consultant</p>\n  </div><div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Andrew Mellon</strong><br>Data Analyst</p>\n  </div><div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Herbert Simon</strong><br>Web Developer</p>\n  </div>\n</div>",
+        "<div class=\"grid column3 grey boxes\">\n  <h1>Leadership</h1>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"\" width=\"320\" height=\"320\">\n    <h2>Andrew Carnegie</h2>\n    <h3>Director of Teaching Technology</h3>\n  </div>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"\" width=\"320\" height=\"320\">\n    <h2>Andrew Mellon</h2>\n    <h3>Associate Director, Office Hours Queue</h3>\n  </div>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"\" width=\"320\" height=\"320\">\n    <h2>Margaret Morrison</h2>\n    <h3>Manager, Equipment Checkout</h3>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1317,11 +1396,11 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#photo",
       "labels": ["App"],
-      "description": "The signed-in user's photo, also called an avatar or account photo. When the app has it, put it before their name, round: small in the roof, and larger on the right of the menu's account block. Add cmu-avatar to the image, with empty alt text, since their name is right beside it. With no photo, show PlaceMellon's default profile picture or leave the image out, never a blank one. Try it on this site's header.",
+      "description": "The signed-in user's photo, also called an avatar or account photo. When the app has it, put it before their name, round: small in the roof, and larger on the right of the menu's account block. Add cmu-profile-picture to the image, with empty alt text, since their name is right beside it. For a user without a photo, use PlaceMellon's default profile picture or leave the image out; don't show an empty frame. Try it on this site's header.",
       "notes": [],
-      "classes": ["cmu-avatar"],
+      "classes": ["cmu-profile-picture"],
       "examples": [
-        "<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\" …><img class=\"cmu-avatar\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\"><img class=\"cmu-avatar\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
+        "<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\" …><img class=\"cmu-profile-picture\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\"><img class=\"cmu-profile-picture\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
       ],
       "frameworks": {}
     },
@@ -1369,7 +1448,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#question",
       "labels": ["App"],
-      "description": "One question at a time, such as in a training, a quiz or a poll: a white card on a colored band, with the question over a rule and its choice rows. The card is cmu-question on the form; the band is the template's content wide with a color, here red. Checking the answer, and what happens next, is up to the app.",
+      "description": "One question at a time, such as in a training, a quiz or a poll: a white card in a section, with the question over a rule and its choice rows. The card is cmu-question on the form; the section is the template's content wide with a color, here red. Checking the answer, and what happens next, is up to the app.",
       "notes": [
         "Under the choices, cmu-question-buttons puts a forward arrow ( ▶ ) on the right and, when people can go back, a back arrow ( ◀ ) on the left (cmu-question-back).",
         "On the last question, the forward arrow gives way to Submit, centered, so someone clicking forward doesn't submit by accident.",
@@ -1382,16 +1461,33 @@
       "frameworks": {}
     },
     {
+      "id": "question-mark-card",
+      "name": "Question Mark / Coming Soon Card",
+      "page": "Page Sections",
+      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#question-mark-card",
+      "labels": ["CMS"],
+      "description": "A card for something not decided yet: an open spot, a speaker to be announced or a call for suggestions. This is a Cards on Gray card, with one of PlaceMellon's Scotty question marks as its picture:",
+      "notes": [
+        "?scotty=recumbent&question: Scotty in a play bow beside the question mark.",
+        "?scotty=rampant&question: Scotty standing up as the question mark's dot."
+      ],
+      "classes": ["grid", "grey", "boxes", "cmu-cards-bottom"],
+      "examples": [
+        "<div class=\"grid column2 grey boxes cmu-cards-bottom\">\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/480/270?category=classrooms\" alt=\"Placeholder photo of a Carnegie Mellon classroom.\" width=\"480\" height=\"270\">\n    <h2>Spring Seminar</h2>\n    <p>Active learning in large classes.</p>\n    <p><a class=\"cta\" href=\"#question-mark-card\">See the Spring Seminar</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/480/270?scotty=recumbent&amp;question\" alt=\"\" width=\"480\" height=\"270\">\n    <h2>Summer Seminar</h2>\n    <p>Speaker to be announced in April.</p>\n    <p><a class=\"cta\" href=\"#question-mark-card\">See Past Speakers</a></p>\n  </div>\n</div>\n<div class=\"grid column3 grey boxes cmu-cards-bottom\">\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/360/480?category=life\" alt=\"Placeholder photo of student life at Carnegie Mellon.\" width=\"360\" height=\"480\">\n    <h2>Fall Workshop</h2>\n    <p>Feedback on drafts, from peers and staff.</p>\n    <p><a class=\"cta\" href=\"#question-mark-card\">See the Fall Workshop</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/360/480?category=labs\" alt=\"Placeholder photo of a Carnegie Mellon lab.\" width=\"360\" height=\"480\">\n    <h2>Winter Workshop</h2>\n    <p>Research methods for first projects.</p>\n    <p><a class=\"cta\" href=\"#question-mark-card\">See the Winter Workshop</a></p>\n  </div>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/360/480?scotty=rampant&amp;question\" alt=\"\" width=\"360\" height=\"480\">\n    <h2>Spring Workshop</h2>\n    <p>The topic is up to you. Tell us what you'd like to learn.</p>\n    <p><a class=\"cta\" href=\"#question-mark-card\">Suggest a Topic</a></p>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "quick-links",
       "name": "Quick Links",
       "page": "Sidebars",
       "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#quick-links",
       "labels": ["Template"],
-      "description": "A list box with a left rule at the top of the sidebar, for the few places people come to the page for. Each link gets a rule above it and an arrow. Questions and contacts usually go in a dark box with a ruled heading, under it.",
+      "description": "A link list with a left rule, for the few places people most often go from the page. It goes near the top of the sidebar, under any button.",
       "notes": [],
-      "classes": ["list left-rule", "darkgrey invert", "rule-bottom", "cta"],
+      "classes": ["list left-rule"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <h2>Equipment Checkout</h2>\n    <p>The page's own content goes here, beside the links.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list left-rule\">\n      <h1>Quick Links</h1>\n      <ul>\n        <li><a href=\"#quick-links\">Browse Equipment</a></li>\n        <li><a href=\"#quick-links\">My Reservations</a></li>\n        <li><a href=\"#quick-links\">Loan Policies</a></li>\n      </ul>\n    </div>\n    <div class=\"darkgrey invert\">\n      <h2 class=\"rule-bottom\">Questions?</h2>\n      <p>The checkout desk answers email within one business&nbsp;day.</p>\n      <p><a class=\"cta\" href=\"#quick-links\">Email the Checkout Desk</a></p>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list left-rule\">\n      <h1>Quick Links</h1>\n      <ul>\n        <li><a href=\"#quick-links\">Browse Equipment</a></li>\n        <li><a href=\"#quick-links\">My Reservations</a></li>\n        <li><a href=\"#quick-links\">Loan Policies</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1401,7 +1497,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#screenshots",
       "labels": ["CMS"],
-      "description": "A screenshot of a page or an app, set off from the page around it with a thin border and a soft shadow, in a figure.cmu-shot. Add cmu-shot--browser to draw it in a browser window, with a bar and three dots across the top; the window is as wide as the screenshot, never wider than the column. A <figcaption> under it is italic, like the template's photo captions. Use a screenshot that shows the page's top, roof and all, and write alt text that says what's on it.",
+      "description": "A screenshot of a page or an app, set off from the page around it with a thin border and a soft shadow, in a figure.cmu-shot. Add cmu-shot--browser to draw it in a browser window, with a bar and three dots across the top; the window is as wide as the screenshot, never wider than the column. A <figcaption> under it is italic, like the template's photo captions. Ideally, the screenshot shows the page's top, roof and all. Always write alt text that says what's on it.",
       "notes": [
         "To let people see it up close, link it to its full-size image; see Enlarge on Click.",
         "To pair it with a short explanation, use Text With a Screenshot.",
@@ -1419,7 +1515,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#scroll-gallery",
       "labels": ["CMS", "Script"],
-      "description": "A gallery that moves as you scroll: a few steps of text, each with a screenshot or photo, for showing a set of projects or walking through what a site does. On a wide screen, the text scrolls on the left while the picture stays in place on the right and changes as each step reaches the middle of the window, fading up by default or, with cmu-scroll-gallery--slide, sliding in from the side.",
+      "description": "A gallery that moves as you scroll: a few steps of text, each with a screenshot or photo, for showing a set of projects or walking through what a site does. On a wide screen, the text scrolls on the left while the picture stays in place on the right and changes as each step reaches the middle of the window, fading up by default or, with cmu-scroll-gallery--slide, sliding in from the side.\n\nBy default, each picture fades up as its step reaches the middle of the window:",
       "notes": [
         "Each step holds its own figure, so on a phone, or without the script, the steps stack with their pictures in place.",
         "Keep it to three to five steps, each a heading, a sentence or two and at most one link.",
@@ -1489,7 +1585,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#bar",
       "labels": ["Template"],
-      "description": "A full-width colored bar with a heading, to start a new part of a long page, often with the globe. It's a .content wide block with a color; give it an id to link to it.",
+      "description": "A full-width bar with a background color and a heading, to start a new part of a long page, often with the globe. It's a .content wide block with a color; give it an id to link to it.\n\nThe section holds just a heading:",
       "notes": [],
       "classes": ["content wide", "red invert globe"],
       "examples": [
@@ -1504,7 +1600,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#rule-top",
       "labels": ["Template"],
-      "description": "Add the template's rule-top to a heading or eyebrow to mark a new section with a thin line above it. Spacing is automatic. The line is hidden right after a band with a background color and turns white on a band with invert. Use rule-bottom for a line below a heading, as in the sidebar.",
+      "description": "Add the template's rule-top to a heading or eyebrow to mark a new section with a thin line above it. Spacing is automatic. The line is hidden right after a section with a background color and turns white in a section with invert. Use rule-bottom for a line below a heading, as in the sidebar.",
       "notes": [],
       "classes": ["rule-top", "rule-bottom"],
       "examples": [
@@ -1518,25 +1614,11 @@
       "page": "People",
       "url": "https://webkilt.andrew.cmu.edu/0/people.html#short-bios",
       "labels": ["Template"],
-      "description": "A short bio for each person on one page, for a quick contact page or a group whose bios are a paragraph or two, such as an advisory board. Each person gets a band of their own, alternating gray and white, with a Contact link and their links in a box beside the bio. Photos are optional; leave them out unless everyone has one. Class years for alumni go after the name, in the template's indicia: <span class=\"indicia\">(E 1990)</span>.",
+      "description": "A short bio for each person on one page, for a quick contact page or a group whose bios are a paragraph or two, such as an advisory board. Each person gets a section of their own, alternating gray and white, with a Contact link and their links in a box beside the bio. Photos are optional; leave them out unless everyone has one. Class years for alumni go after the name, in the template's indicia: <span class=\"indicia\">(E 1990)</span>.",
       "notes": [],
       "classes": ["content", "grey", "contact", "sidebar", "darkgrey invert", "list", "indicia"],
       "examples": [
         "<div class=\"content grey\">\n  <div>\n    <h2>Andrew Carnegie <span class=\"indicia\">(E 1990)</span></h2>\n    <h3>Chair, Advisory Board</h3>\n    <div class=\"contact\">\n      <span class=\"collapsed floatright\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"ac00(through)andrew.cmu.edu\">Email Andrew Carnegie</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550101\">412-555-0101</a></li>\n          </ul>\n        </address><address>\n          <strong>Office</strong><br>\n          Hunt Library, Room A10<br>\n          4909 Frew Street<br>\n          Pittsburgh, PA 15213\n        </address>\n      </div>\n    </div>\n    <p>Carnegie founded the Carnegie Technical Schools in 1900 and has chaired the board since. He reads every annual report and asks about each one.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list darkgrey invert\">\n      <ul>\n        <li><a href=\"#short-bios\">Personal Website</a></li>\n        <li><a href=\"#short-bios\">Carnegie Foundation</a></li>\n      </ul>\n    </div>\n  </div>\n</div>\n<div class=\"content\">\n  <div>\n    <h2>Margaret Morrison <span class=\"indicia\">(A 2005, E 2008)</span></h2>\n    <h3>Member, Advisory Board</h3>\n    <div class=\"contact\">\n      <span class=\"collapsed floatright\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Margaret Morrison</a></li>\n          </ul>\n        </address>\n      </div>\n    </div>\n    <p>Morrison led the women's college from its first class and now advises on student life and housing.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list darkgrey invert\">\n      <ul>\n        <li><a href=\"#short-bios\">Personal Website</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
-      ],
-      "frameworks": {}
-    },
-    {
-      "id": "sidebar",
-      "name": "Sidebar Boxes",
-      "page": "Sidebars",
-      "url": "https://webkilt.andrew.cmu.edu/0/sidebars.html#sidebar",
-      "labels": ["Template"],
-      "description": "Each div in a .sidebar is a box, with no background of its own. Add a color, such as grey for help and contacts, a link list or a thin rule instead of a box. For which color to use, see Colors.",
-      "notes": [],
-      "classes": ["sidebar", "simple", "left-rule", "list", "invert"],
-      "examples": [
-        "<div class=\"content\">\n  <div>\n    <h2>Page Content</h2>\n    <p>The sidebar sits to the right from 768px up and drops below on phones.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"grey\">\n      <h2>A Gray Box</h2>\n      <p>For help and contacts.</p>\n    </div>\n    <div class=\"list blue invert\">\n      <h1>Relevant Documents</h1>\n      <ul>\n        <li><a href=\"#sidebar\">University Policy</a></li>\n        <li><a href=\"#sidebar\">Guidelines</a></li>\n      </ul>\n    </div>\n    <div class=\"left-rule\">\n      <h2>A Left Rule</h2>\n      <p>A note with a line beside it instead of a box.</p>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1546,7 +1628,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in",
       "labels": ["Template"],
-      "description": "Every page has the Sign In link in the header, beside the menu button. A home page can also offer sign-in at the top of its sidebar, in one of two ways, depending on how much the page does for people who aren't signed in.\n\nFor a page that's useful signed out, where signing in adds more, such as a search anyone can use that shows more once the user signs in. One large outline button at the top of the sidebar, beside the page's lead. It's the template's simple sidebar box, with btn ghost wide in an <h1>.",
+      "description": "Every page has the Sign In link in the header, beside the menu button. A home page can also offer sign-in at the top of its sidebar, in one of two ways, depending on how much the page does for people who aren't signed in.\n\nFor a page that's useful signed out, where signing in adds more, such as a search anyone can use that shows more once the user signs in. One large outline button at the top of the sidebar, beside the page's lead. It's the template's simple sidebar box, with btn ghost wide in an <h1>.\n\nHere, in the sidebar of a search page:",
       "notes": [],
       "classes": ["sidebar", "simple", "btn ghost wide"],
       "examples": [
@@ -1657,7 +1739,7 @@
       "page": "Page Tops",
       "url": "https://webkilt.andrew.cmu.edu/0/tops.html#hero",
       "labels": ["CMS", "Script"],
-      "description": "The top of a home page: copy on the left, art on the right. It becomes one column below 820px. Use it at the top of a service description's home page. Lead with a tagline that says what the app does, then a button for the main action and a \"Get Started\" call to action that jumps to the first section below, headed Get Started. The tagline is the page's <h1>, and so is each section's heading after it (see Stacking Sections). Under the buttons, an optional note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with. Keep it to a short line, and leave it out when the page answers it further down. The art can be:\n\nThe rule along the top and the tint behind the copy are CMU red. To set one site's hero apart from another's, add an accent from the CMU tartan's threads: cmu-hero--blue, cmu-hero--teal, cmu-hero--green or cmu-hero--gold. Use one accent across a site.",
+      "description": "The top of a home page: copy on the left, art on the right. It becomes one column below 820px. Use it at the top of a service description's home page. Lead with a tagline that says what the app does, then a button for the main action and a \"Get Started\" call to action that jumps to the first section below, headed Get Started. The tagline is the page's <h1>, and so is each section's heading after it (see Stacking Sections). Under the buttons, an optional note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with. Keep it to a short line, and leave it out when the page answers it further down. The art can be:\n\nThe rule along the top and the tint behind the copy are CMU red. To set one site's hero apart from another's, add an accent from the CMU tartan's threads: cmu-hero--blue, cmu-hero--teal, cmu-hero--green or cmu-hero--gold. Use one accent across a site.\n\nOne screenshot beside the words:",
       "notes": [
         "One screenshot, drawn in a browser frame.",
         "Two or three screenshots, overlapping, with cmu-hero-art--stack. They're cropped to the same shape from the top, and the last one is in front, so put the main one last. To let people see one up close, link it to its full-size image with data-cmu-zoom (see Enlarge on Click).",
@@ -1690,7 +1772,7 @@
       "notes": [],
       "classes": ["floatleft caption thumb", "cta", "contact", "rule-bottom"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <p class=\"floatleft caption thumb\"><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2>Andrew Mellon</h2>\n    <h3>Teaching Consultant</h3>\n    <p>Course design, assessment and active learning in large lectures.</p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n    <div class=\"contact rule-bottom\">\n      <span class=\"collapsed\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Andrew Mellon</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550102\">412-555-0102</a></li>\n          </ul>\n        </address><address>\n          <strong>Office</strong><br>\n          Hunt Library, Room A12<br>\n          4909 Frew Street<br>\n          Pittsburgh, PA 15213\n        </address>\n      </div>\n    </div>\n    <p class=\"floatleft caption thumb\"><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2>Margaret Morrison</h2>\n    <h3>Data Analyst</h3>\n    <p>Course evaluations, survey design and teaching-related data requests.</p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n    <div class=\"contact rule-bottom\">\n      <span class=\"collapsed\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Margaret Morrison</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550103\">412-555-0103</a></li>\n          </ul>\n        </address>\n      </div>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p class=\"floatleft caption thumb\"><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2>Andrew Mellon</h2>\n    <h3>Teaching Consultant</h3>\n    <p>Course design, assessment and active learning in large lectures.</p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n    <div class=\"contact rule-bottom\">\n      <span class=\"collapsed\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Andrew Mellon</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550102\">412-555-0102</a></li>\n          </ul>\n        </address><address>\n          <strong>Office</strong><br>\n          Hunt Library, Room A12<br>\n          4909 Frew Street<br>\n          Pittsburgh, PA 15213\n        </address>\n      </div>\n    </div>\n    <p class=\"floatleft caption thumb\"><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty=bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2>Margaret Morrison</h2>\n    <h3>Data Analyst</h3>\n    <p>Course evaluations, survey design and teaching-related data requests.</p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n    <div class=\"contact rule-bottom\">\n      <span class=\"collapsed\">Contact</span>\n      <div class=\"address\">\n        <address>\n          <ul>\n            <li><a class=\"icon\" data-cmu-email=\"andrewid(through)andrew.cmu.edu\">Email Margaret Morrison</a></li>\n            <li><a class=\"icon tel\" href=\"tel:+14125550103\">412-555-0103</a></li>\n          </ul>\n        </address>\n      </div>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1750,26 +1832,12 @@
       "page": "Page Layout",
       "url": "https://webkilt.andrew.cmu.edu/0/layout.html#tabs",
       "labels": ["App"],
-      "description": "Links between views of the same page, such as semesters. Mark the current one with aria-current=\"page\". Use a div with role=\"navigation\", not a nav: the template takes the borders off every link in a nav, including the underline that marks the current tab. To fold a long row, put the rest in a details.cmu-more.cmu-tabs-more at the end, like a folded list: a \"2 More\" link stays at the end of the first row, and when it opens, the rest wrap onto the next line and the link says Show Fewer. Keep the current tab out of the folded part, so it always shows.",
+      "description": "Links between views of the same page, such as semesters. Mark the current one with aria-current=\"page\". Use a div with role=\"navigation\", not a nav: the template takes the borders off every link in a nav, including the underline that marks the current tab. To fold a long row, put the rest in a details.cmu-more.cmu-tabs-more at the end, like a folded list: a \"2 More\" link stays at the end of the first row, and when it opens, the rest wrap onto the next line and the link says Show Fewer. Keep the current tab out of the folded part, so it always shows.\n\nEach tab goes to its own page, with the current one marked:",
       "notes": [],
       "classes": ["cmu-tabs", "cmu-tabs-more"],
       "examples": [
         "<div class=\"cmu-tabs\" role=\"navigation\" aria-label=\"Semester\">\n  <a href=\"#tabs\" aria-current=\"page\">Spring 2027</a>\n  <a href=\"#tabs\">Fall 2026</a>\n  <a href=\"#tabs\">Summer 2026</a>\n  <details class=\"cmu-more cmu-tabs-more\">\n    <summary><span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">2 More</span><span class=\"cmu-more-open\">Show Fewer</span></span></summary>\n    <div>\n      <a href=\"#tabs\">Spring 2026</a>\n      <a href=\"#tabs\">Fall 2025</a>\n    </div>\n  </details>\n</div>",
         "<div class=\"cmu-tabs\" role=\"tablist\" aria-label=\"Get the app\" data-cmu-tabs=\"kit-demo-os\">\n  <button type=\"button\" role=\"tab\" id=\"kit-os-mac-tab\" aria-controls=\"kit-os-mac\" aria-selected=\"true\" data-cmu-tab=\"mac\">Mac</button>\n  <button type=\"button\" role=\"tab\" id=\"kit-os-win-tab\" aria-controls=\"kit-os-win\" aria-selected=\"false\" data-cmu-tab=\"windows\">Windows</button>\n</div>\n<div role=\"tabpanel\" id=\"kit-os-mac\" aria-labelledby=\"kit-os-mac-tab\">\n  <p>Open Self Service and choose Install under Campus Printing.</p>\n</div>\n<div role=\"tabpanel\" id=\"kit-os-win\" aria-labelledby=\"kit-os-win-tab\" hidden>\n  <p>Open Software Center and choose Install under Campus Printing.</p>\n</div>"
-      ],
-      "frameworks": {}
-    },
-    {
-      "id": "team",
-      "name": "Team Grid",
-      "page": "People",
-      "url": "https://webkilt.andrew.cmu.edu/0/people.html#team",
-      "labels": ["Template"],
-      "description": "A grid of the people in an office, each in a white card with a portrait, their name, their title in bold and a link to their full bio. Put the cards on a color, such as blue, to set the group apart as one section of the page. It's a grid column4 boxes (or column3) with an <h1> for the group. Use portraits of the same shape so the names line up; square ones keep the cards short. With no bio pages, leave out the links and the call to action.\n\nWord the link the same way on every card, such as “Read Full Bio.”",
-      "notes": [],
-      "classes": ["grid column4 boxes", "cta"],
-      "examples": [
-        "<div class=\"grid column4 blue boxes\">\n  <h1>Our Team</h1>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Andrew Carnegie</a></h2>\n    <p><strong>Director of Teaching Technology</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Andrew Mellon</a></h2>\n    <p><strong>Teaching Consultant</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Margaret Morrison</a></h2>\n    <p><strong>Data Analyst</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n  <div>\n    <p><img src=\"https://placemellon.andrew.cmu.edu/400.svg?scotty-bust\" alt=\"Scotty, standing in for a portrait.\" width=\"400\" height=\"400\"></p>\n    <h2><a href=\"#bio\">Herbert Simon</a></h2>\n    <p><strong>Web Developer</strong></p>\n    <p><a class=\"cta\" href=\"#bio\">Read Full Bio</a></p>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1811,7 +1879,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#timeline",
       "labels": ["Template", "Icons"],
-      "description": "The steps of a process in date order, a card for each with a small icon, the step's name and its dates, on a dark band. It's a grid column4 darkgreen boxes (or column3) with an <h1>.\n\nWrite date ranges with a hyphen and no spaces, such as “Jan. 11-15”; see Conventions for dates.",
+      "description": "The steps of a process in date order, a card for each with a small icon, the step's name and its dates, in a dark section. It's a grid column4 darkgreen boxes (or column3) with an <h1>.\n\nWrite date ranges with a hyphen and no spaces, such as “Jan. 11-15”; see Conventions for dates.",
       "notes": [
         "Each step's name is an <h2>, right after its icon. Names may wrap to two lines. A name can link to its section further down the page; it then shows in the template's link red.",
         "Choose an icon for each step. Use floatright to place it beside the heading. See Icons for setup and usage.",
@@ -1845,7 +1913,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#videos",
       "labels": ["Template"],
-      "description": "A YouTube video in the page, or beside a few sentences about it on a band. Paste YouTube's embed code (Share, then Embed) and keep its width and height: the template's script fits the video to its column and keeps that shape, on phones too.",
+      "description": "A YouTube video in the page, or beside a few sentences about it in a section. Paste YouTube's embed code (Share, then Embed) and keep its width and height: the template's script fits the video to its column and keeps that shape, on phones too.\n\nA video across the column:",
       "notes": [
         "Give it a title that names the video, not \"YouTube video player\": screen readers announce it for the frame.",
         "Use youtube-nocookie.com in the address instead of youtube.com, so YouTube doesn't set its tracking cookies until someone plays the video.",
@@ -1862,11 +1930,11 @@
   ],
   "frameworks": {
     "React": "React 18 and 19",
-    "Svelte": "Svelte 5",
-    "Vue": "Vue 3",
     "Astro": "Astro 4 and Later",
+    "Django": "Django 5.2 and Later",
     "Rails": "Rails 7.2 and Later",
-    "Django": "Django 5.2 and Later"
+    "Svelte": "Svelte 5",
+    "Vue": "Vue 3"
   },
   "install": {
     "cascade": [
@@ -1905,15 +1973,10 @@
       "const path = require(\"path\");\nconst kit = path.dirname(require.resolve(\"cmu-web-kilt/package.json\"));\napp.use(\"/vendor/cmu-web-kilt-0.6.9/css\", express.static(path.join(kit, \"css\")));\napp.use(\"/vendor/cmu-web-kilt-0.6.9/js\", express.static(path.join(kit, \"js\")));"
     ],
     "prototype": [
-      "<head>\n  <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic\" rel=\"stylesheet\">\n  <link href=\"https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css\" rel=\"stylesheet\">\n  <link href=\"https://www.cmu.edu/favicon.ico\" rel=\"icon\">\n  <link href=\"https://www.cmu.edu/favicon-152.png\" rel=\"apple-touch-icon-precomposed\">\n  <meta content=\"#9f0000\" name=\"msapplication-TileColor\">\n  <meta content=\"https://www.cmu.edu/favicon-144.png\" name=\"msapplication-TileImage\">\n  <link href=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-cms.css\" integrity=\"sha384-9jhXiuuhmbvQJYP71Rg8e7/NBlfXA/7MjHSMxZeSbELc/fdpt3PAwyoS4jvEMXqy\" crossorigin=\"anonymous\" rel=\"stylesheet\">\n  <link href=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-app.css\" integrity=\"sha384-Tj5sbg6foKwNHx77Xj9uSKHv4N7jiYnj97prQWE3B2+6v3K8tsqz/xmsjxeJKvjA\" crossorigin=\"anonymous\" rel=\"stylesheet\">\n  <!-- Optional: Bootstrap Icons, for components labeled Icons -->\n  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css\" integrity=\"sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk\" crossorigin=\"anonymous\" rel=\"stylesheet\">\n</head>\n<body class=\"cmu-app\">\n\n  <!-- The template's header, your page, the template's footer -->\n\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/list.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js\"></script>\n  <script src=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/js/cmu-app.js\" integrity=\"sha384-10393F76wEQPHaJEEoM9M1QEQsl9mTezDdEM45kArp0j26SWs3gxiGsXKrmwJHio\" crossorigin=\"anonymous\"></script>\n</body>"
+      "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Open Office Hours - Office Hours Queue - Carnegie Mellon University</title>\n  <meta name=\"description\" content=\"Join the queue for help at today's office hours.\">\n  <!-- Link previews: the title, sentence and picture a shared link shows -->\n  <meta property=\"og:site_name\" content=\"Office Hours Queue\">\n  <meta property=\"og:title\" content=\"Open Office Hours - Office Hours Queue\">\n  <meta property=\"og:description\" content=\"Join the queue for help at today's office hours.\">\n  <meta property=\"og:url\" content=\"https://queue.andrew.cmu.edu/open\">\n  <meta property=\"og:type\" content=\"website\">\n  <meta property=\"og:image\" content=\"https://queue.andrew.cmu.edu/images/preview.jpg\">\n  <meta property=\"og:image:width\" content=\"1200\">\n  <meta property=\"og:image:height\" content=\"630\">\n  <meta property=\"og:image:alt\" content=\"Office Hours Queue's home page: Open Office Hours, with the queue's sign-up button.\">\n  <meta name=\"twitter:card\" content=\"summary_large_image\">\n  <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic\" rel=\"stylesheet\">\n  <link href=\"https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css\" media=\"screen\" rel=\"stylesheet\">\n  <link href=\"https://www.cmu.edu/common/standard-v6/css/print.min.css\" media=\"print\" rel=\"stylesheet\">\n  <link href=\"https://www.cmu.edu/favicon.ico\" rel=\"icon\">\n  <link href=\"https://www.cmu.edu/favicon-152.png\" rel=\"apple-touch-icon-precomposed\">\n  <meta content=\"#9f0000\" name=\"msapplication-TileColor\">\n  <meta content=\"https://www.cmu.edu/favicon-144.png\" name=\"msapplication-TileImage\">\n\n  <!-- The kit, after the template -->\n  <link href=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-cms.css\" integrity=\"sha384-9jhXiuuhmbvQJYP71Rg8e7/NBlfXA/7MjHSMxZeSbELc/fdpt3PAwyoS4jvEMXqy\" crossorigin=\"anonymous\" rel=\"stylesheet\">\n  <link href=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-app.css\" integrity=\"sha384-Tj5sbg6foKwNHx77Xj9uSKHv4N7jiYnj97prQWE3B2+6v3K8tsqz/xmsjxeJKvjA\" crossorigin=\"anonymous\" rel=\"stylesheet\">  <!-- apps only -->\n  <!-- Optional: Bootstrap Icons, if the page uses icons -->\n  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css\" integrity=\"sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk\" crossorigin=\"anonymous\" rel=\"stylesheet\">\n  <!-- Your own stylesheet, last -->\n  <link href=\"/css/your-site.css\" rel=\"stylesheet\">\n</head>\n<body class=\"no-js cmu-app\">  <!-- cmu-app in apps only -->\n<div id=\"container\">\n  <header>\n    <div class=\"roof red invert\">\n      <div>\n        <a class=\"wordmark\" href=\"https://www.cmu.edu/\">Carnegie Mellon University</a>\n        <!-- Optional: search cmu.edu; set \"your-site-id\" to your Cascade site ID -->\n        <form action=\"https://search.cmu.edu\" class=\"search search-form\" method=\"get\" name=\"customForm\">\n          <input name=\"form_id\" type=\"hidden\" value=\"basic-form\">\n          <input name=\"site\" type=\"hidden\" value=\"\">\n          <input name=\"ie\" type=\"hidden\" value=\"UTF-8\">\n          <label><span>Search</span> <input aria-label=\"Search\" name=\"q\" placeholder=\"Search\"></label>\n          <button title=\"Submit\" type=\"submit\">Search</button>\n          <label class=\"searchSite\"><span>Search this site only</span> <input checked name=\"site\" type=\"checkbox\" value=\"your-site-id\"></label>\n        </form>\n        <!-- Optional: Sign In, or the signed-in person's name, before the menu button -->\n        <a class=\"cmu-account\" href=\"/login\">Sign In</a>\n        <button aria-label=\"toggle menu\" aria-pressed=\"false\" class=\"menu-btn\" href=\"#nav\"><b>&#8212;</b><b>&#8212;</b><b>&#8212;</b></button>\n      </div>\n    </div>\n    <div id=\"sitename\">\n      <span class=\"sitetitle\"><a href=\"/\">Office Hours Queue</a></span>\n      <h2>Your Office</h2>\n    </div>\n  </header>\n\n  <main id=\"content\">\n    <div class=\"breadcrumbs\">\n      <a href=\"/\">Office Hours Queue</a>&nbsp;&rsaquo;&nbsp;<a href=\"/help\">Help</a>&nbsp;&rsaquo;&nbsp;<a href=\"/help/staff\">For Course Staff</a>&nbsp;&rsaquo;&nbsp;Open Office Hours\n    </div>\n    <!-- Optional: a sidebar; it must touch the page's </div>, or it drops below the page -->\n    <div class=\"content\">\n      <div>\n        <h1>Open Office Hours</h1>\n        <p>The page.</p>\n      </div><div class=\"sidebar\">\n        <div class=\"simple\">\n          <a class=\"btn wide\" href=\"/queues/new\">Open a Queue</a>\n        </div>\n      </div>\n    </div>\n  </main>\n\n  <footer class=\"grid column3 invert\">\n    <div>\n      <p>Office Hours Queue<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</p>\n      <ul><li><a href=\"https://www.cmu.edu/legal/\">Legal Info</a></li><li><a href=\"https://www.cmu.edu/\">www.cmu.edu</a></li></ul>\n      <ul><li>&copy; 2026 Carnegie Mellon University</li></ul>\n    </div>\n    <div></div>\n    <div>\n      <nav id=\"nav\">\n        <ul>\n          <li><a href=\"/queues\">Queues</a></li>\n          <li><a href=\"/my-courses\">My Courses</a></li>\n          <li>\n            <a href=\"/help\">Help</a>\n            <ul>\n              <li><a href=\"/help/students\">For Students</a></li>\n              <li>\n                <a href=\"/help/staff\">For Course Staff</a>\n                <ul>\n                  <li class=\"active\"><a href=\"/help/staff/open\" aria-current=\"page\">Open Office Hours</a></li>\n                  <li><a href=\"/help/staff/canvas\">Link It From Canvas</a></li>\n                </ul>\n              </li>\n            </ul>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  </footer>\n</div>\n\n<!-- The template's scripts, in this order -->\n<script src=\"https://www.cmu.edu/common/standard-v6/js/list.min.js\"></script>\n<script src=\"https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js\"></script>\n<script src=\"https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js\"></script>\n<!-- The kit's script, last, for copy buttons, countdowns and screenshots that enlarge -->\n<script src=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/js/cmu-app.js\" integrity=\"sha384-10393F76wEQPHaJEEoM9M1QEQsl9mTezDdEM45kArp0j26SWs3gxiGsXKrmwJHio\" crossorigin=\"anonymous\"></script>\n</body>\n</html>"
     ]
   },
   "conventions": [
-    {
-      "id": "classes",
-      "heading": "Classes",
-      "text": "- The template comes first. See what it already has on the Components page (the ones labeled Template), and use its classes as they are: btn, btn small, ghost, cta, table.alternate, sidebar, sr-only. The kit never copies the template's rules or values, and adds a class only for what the template doesn't already do.\n- Everything in the kit starts with cmu-: classes, custom properties (--cmu-red) and JavaScript hooks (data-cmu-copy). Variations use a double hyphen (cmu-pill--green). Give your own classes your own prefix, never cmu-."
-    },
     {
       "id": "ap",
       "heading": "AP Style",
@@ -1927,32 +1990,22 @@
     {
       "id": "headings",
       "heading": "Headings",
-      "text": "- Capitalize the principal words, as AP does for the titles of works: headings, buttons, navigation and labels. That includes every word of four or more letters, such as \"With\" and \"From,\" and the first and last word: \"Upload Your Syllabus.\" Use sentence case for prose: \"Upload your syllabus before classes start.\"\n- A question used as a heading is a heading, as in an FAQ: “Who Can See the Syllabi?” Its answer is prose, in sentence case.\n- Write a tagline or slogan in sentence case, like a sentence: this site's is “Tailored to the CMU web template,” under its name. Headings and headlines stay in Title Case, as on the university's own pages.\n- Leave periods off headings and hero titles. Use normal punctuation in full sentences.\n- Put the important words first. People read the first two or three words of a heading, link or list item and move on: \"Syllabus Due Dates for Spring,\" not \"Information About When Spring Syllabi Are Due.\"\n- Choose heading levels by what they contain, never by how big they look, and don't skip a level. Screen reader users move through a page by its headings, so the headings alone should outline the page.\n- Read the page as a task. Can someone scan the headings, find the main action and tell what happens after they select it?"
+      "text": "- Capitalize the principal words, as AP does for the titles of works: headings, buttons, navigation and labels. That includes every word of four or more letters, such as \"With\" and \"From,\" and the first and last word: \"Upload Your Syllabus.\" Use sentence case for prose: \"Upload your syllabus before classes start.\"\n- A question used as a heading is a heading, as in an FAQ: “Who Can See the Syllabi?” Its answer is prose, in sentence case.\n- Write a tagline or slogan in sentence case, like a sentence: this site's is “Tailored to the CMU web template,” under its name. Headings and headlines stay in Title Case, as on the university's own pages.\n- Leave periods off headings and hero titles. Use normal punctuation in full sentences.\n- Put the important words first. People read the first two or three words of a heading, link or list item and move on: \"Syllabus Due Dates for Spring,\" not \"Information About When Spring Syllabi Are Due.\"\n- Choose heading levels by what they contain, never by how big they look, and don't skip a level. Screen reader users move through a page by its headings, so the headings alone should outline the page.\n- Give each example a sentence under its heading, ending in a colon, so the heading doesn't float above it: “Add a line under the heading:” When a section shows more than one example, give each one a heading, the first included.\n- Read the page as a task. Can someone scan the headings, find the main action and tell what happens after they select it?"
     },
     {
       "id": "links",
       "heading": "Buttons and Links",
-      "text": "The template gives buttons, calls to action and ordinary links different visual weight. Match that weight with words that say what happens next: start with a verb and name the task.\nToo Vague\n\"Options,\" \"Syllabus Upload\" or \"Learn More\" makes people guess what comes next.\nReady to Use\n\"See the Options,\" \"Upload Syllabus\" or \"Read the Instructor Guide.\"\nA link goes somewhere; a button does something. Use a link (<a>) even when it looks like a button, and a <button> for an action even when it looks like a link: screen readers and keyboards treat them differently. These examples lead to real kit pages:\nInstall the Kit\nThe main action: a btn link, in Title Case. It can lead to a page on this site, your app, its sign-in or a request form in another system.\nExplore the Content Blocks\nA next step on this site: a call to action (cta), in Title Case. Put one at the end of the section, after the information that supports it.\nBrowse the code on GitHub\nAnother site: an ordinary external link, in sentence case. A link gets cta or external, never both.\n- A button and a call to action side by side go in one paragraph, button first; the kit spaces them as in a hero.\n- Buttons line up on the left, under what they act on, with the main one first. The one exception is the question card: back on the left, forward on the right.\n- A thin rule goes over buttons that finish a whole box: a dialog, a framed panel or a question card. The kit draws it. Buttons loose in a page, such as a form's Submit or a call-to-action row, get no rule.\n- Link a home page by its folder, never index.html: A site's home is ./ from its own pages and ../ from a page one folder down, and another site's is its folder's address, such as https://www.cmu.edu/syllabusregistry/. The address stays short and stays right if the site moves. Use ./, not /, which skips past a site that isn't at the server's root.\n- Never write \"click here.\" A link should make sense on its own, because people scan links and screen readers list them: \"Read the Instructor Guide,\" not \"Click here for the guide.\" Give links on the same page different words, so that list doesn't read \"Read More, Read More, Read More.\"\n- Label special destinations. After a link that requires sign-in, add [login required] as plain text outside the link. After a file link, add its type, such as [PDF]. These labels tell people what to expect before they select the link.\n- Omit [login required] when the link text already makes it clear, as in \"Sign In to See Your Courses.\" Use only one label: a PDF that also requires sign-in gets [login required] for people who aren't signed in, and [PDF] once they are."
-    },
-    {
-      "id": "hero",
-      "heading": "Heroes",
-      "text": "Say what the site or app does, then give it two next steps: a button for the main action and a \"Get Started\" call to action. That second link jumps to the first section below, also headed Get Started. Here's the pattern from the kit's home page:\nThe title names the purpose, the lead says who it's for and the button names the action. The screenshot shows what people can expect. Use the hero component to build your own."
+      "text": "The template gives buttons, calls to action and ordinary links different visual weight. Match that weight with words that say what happens next: start with a verb and name the task.\nToo Vague\n\"Options,\" \"Syllabus Upload\" or \"Learn More\" makes people guess what comes next.\nReady to Use\n\"See the Options,\" \"Upload Syllabus\" or \"Read the Instructor Guide.\"\nA link goes somewhere; a button does something. Use a link (<a>) even when it looks like a button, and a <button> for an action even when it looks like a link: screen readers and keyboards treat them differently. These examples lead to real kit pages:\nInstall the Kit\nThe main action: a btn link, in Title Case. It can lead to a page on this site, your app, its sign-in or a request form in another system.\nExplore the Content Blocks\nA next step on this site: a call to action (cta), in Title Case. Put one at the end of the section, after the information that supports it.\nBrowse the code on GitHub\nAnother site: an ordinary external link, in sentence case. A link gets cta or external, never both. With a possessive, link what's owned, not the owner: Carnegie Mellon's latest news.\n- A link in a sentence is a few words, the ones that say where it goes, never the whole sentence.\n- A button and a call to action side by side go in one paragraph, button first; the kit spaces them as in a hero.\n- Buttons line up on the left, under what they act on, with the main one first. The one exception is the question card: back on the left, forward on the right.\n- A thin rule goes over buttons that finish a whole box: a dialog, a framed panel or a question card. The kit draws it. Buttons loose in a page, such as a form's Submit or a call-to-action row, get no rule.\n- Link a home page by its folder, never index.html: A site's home is ./ from its own pages and ../ from a page one folder down, and another site's is its folder's address, such as https://www.cmu.edu/syllabusregistry/. The address stays short and stays right if the site moves. Use ./, not /, which skips past a site that isn't at the server's root.\n- Never write \"click here.\" A link should make sense on its own, because people scan links and screen readers list them: \"Read the Instructor Guide,\" not \"Click here for the guide.\" Give links on the same page different words, so that list doesn't read \"Read More, Read More, Read More.\"\n- Label special destinations. After a link that requires sign-in, add [login required] as plain text outside the link. After a file link, add its type, such as [PDF]. These labels tell people what to expect before they select the link.\n- Omit [login required] when the link text already makes it clear, as in \"Sign In to See Your Courses.\" Use only one label: a PDF that also requires sign-in gets [login required] for people who aren't signed in, and [PDF] once they are."
     },
     {
       "id": "instructions",
-      "heading": "Instructions",
+      "heading": "Step-by-Step Instructions",
       "text": "Write to the person doing the task, in the active voice: \"Upload your syllabus,\" not \"Syllabi may be uploaded by instructors.\" Name each control exactly as it appears on screen, and put steps in the order people follow them, one main action in each.\nHard to Follow\n\"Users should navigate to the appropriate course and use the queue functionality to submit a request for assistance.\"\nEasy to Follow\n- Sign in and select My Courses.\n- Choose the course you need help with.\n- Select Join the Queue and describe your question.\nDon't point by color, shape or position alone: \"Select Join the Queue,\" not \"Click the red button on the right.\" People using a screen reader, a phone or a zoomed-in screen may not see it where you do. Say \"select,\" not \"click,\" since not everyone uses a mouse.\nWrite a path through menus with the breadcrumb arrow (›, &rsaquo;), not the greater-than sign: “Add Content › Block › Text Block,” with each name as it appears on screen. It's the same mark the template puts between breadcrumbs."
     },
     {
       "id": "messages",
-      "heading": "Messages",
-      "text": "\"An error occurred\" leaves the reader stuck. An error message names the problem and offers a way forward; a success message confirms what changed. Say it in words, not color alone. Each of these sample flash messages starts with what happened and reads the same without the red or green.\nYour syllabus wasn't uploaded. Choose a PDF file and try again.\nYour syllabus was uploaded. Students can now find it in the course list."
-    },
-    {
-      "id": "colors",
-      "heading": "Colors",
-      "text": "Keep a site to one or two colors, and use each for the same job everywhere, such as red for every sign-in box. Color goes on whole bands and boxes, not on text, and the template sets its text color to match. Two tools do it: the template's color classes for bands and boxes, and the kit's color variables for your own stylesheet. A band can also take a background pattern, the globe or the plaid.\nA color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add invert for white text on every color except grey and gold, which take dark text. Under each class is the brand color it is, from brand.cmu.edu, or \"template\" where cmu.edu uses its own shade, a little darker so white text on it stays readable. See also the kit's color variables.\nred, darkgrey, grey, blue, teal, green, darkgreen, gold, and the kit's cmu-lightgrey\n<div class=\"sidebar\"> <div class=\"teal invert\"> … </div> </div> <div class=\"grid column3 blue invert boxes\"> … </div> Color Variables Use these custom properties in your own stylesheet instead of copying the values, so every site moves together if they change. Each comes from one of three places:\n- Brand: CMU's official colors, from brand.cmu.edu, such as Carnegie Red and the Tartan palette's threads.\n- Template: the colors cmu.edu's template draws on the web. Some are brand colors exactly; others are a shade darker so text on them stays readable, such as its green, close to Green Thread. The template's own color classes are on the color classes.\n- Kit: pale tints for backgrounds and dark shades for small text on them, such as the green of a \"Syllabus Available\" pill. They aren't brand colors: no brand color is pale enough for a background behind text, or dark enough for small text on a tint, in every hue. Use them only for those jobs, and a brand or template color for anything large, such as a band or a bar."
+      "heading": "Flash Messages",
+      "text": "A message like \"An error occurred\" leaves people stuck. A good error message names the problem and offers a way forward. A success message confirms what changed. A notice adds what to know next, such as a deadline. Say it in words, not color alone. Each of these sample flash messages starts with what happened and reads the same without the red, green or gold.\nYour syllabus wasn't uploaded. Choose a PDF file and try again.\nYour syllabus was uploaded. Students can now find it in the course list.\nYour syllabus was uploaded. Students will see it after tonight's update, by 6 a.m."
     },
     {
       "id": "images",
@@ -1962,7 +2015,49 @@
     {
       "id": "accessibility",
       "heading": "Accessibility",
-      "text": "Under the university's Digital Accessibility Policy, CMU websites and web apps must meet WCAG 2.1 Level AA. The template and the kit's components give you a start; the words, headings, images and links are yours. The Digital Accessibility Office has guidance, training and help, and the CMU Web team's accessibility best practices cover Cascade sites.\n- Classes\n- AP Style\n- CMU Names and Terms\n- Headings\n- Buttons and Links\n- Heroes\n- Instructions\n- Messages\n- Colors\n- Images\n- Accessibility"
+      "text": "Under the university's Digital Accessibility Policy, CMU websites and web apps must meet WCAG 2.1 Level AA. The template and the kit's components give you a start; the words, headings, images and links are yours. The Digital Accessibility Office has guidance, training and help. Cascade sites also have their own accessibility best practices."
+    },
+    {
+      "id": "colors",
+      "heading": "Colors",
+      "text": "Keep a site to one or two colors, and use each for the same job everywhere, such as red for every sign-in box. Color goes on whole sections and boxes, not on text, and the template sets its text color to match. Two tools do it: the template's color classes for sections and boxes, and the kit's color variables for your own stylesheet. A section can also take a background pattern, the globe or the plaid.\nA color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add invert for white text on every color except grey and gold, which take dark text. Under each class is the brand color it is, from brand.cmu.edu, or \"template\" where cmu.edu uses its own shade, a little darker so white text on it stays readable. See also the kit's color variables.\nred, darkgrey, grey, blue, teal, green, darkgreen, gold, and the kit's cmu-lightgrey\n<div class=\"sidebar\"> <div class=\"teal invert\"> … </div> </div> <div class=\"grid column3 blue invert boxes\"> … </div> Color Variables Use these custom properties in your own stylesheet instead of copying the values, so every site moves together if they change. Each comes from one of three places:\n- Brand: CMU's official colors, from brand.cmu.edu, such as Carnegie Red and the Tartan palette's threads.\n- Template: the colors cmu.edu's template draws on the web. Some are brand colors exactly; others are a shade darker so text on them stays readable, such as its green, close to Green Thread. The template's own color classes are on the color classes.\n- Kit: pale tints for backgrounds and dark shades for small text on them, such as the green of a \"Syllabus Available\" pill. They aren't brand colors: no brand color is pale enough for a background behind text, or dark enough for small text on a tint, in every hue. Use them only for those jobs, and a brand or template color for anything large, such as a section or a bar."
+    },
+    {
+      "id": "classes",
+      "heading": "CSS Classes",
+      "text": "The kit's classes build on the template's, so a page reads as one set of names. These rules decide which class to use and what to call a new one.\n- Use the template's own classes first, as they are: btn, ghost, cta, table.alternate and the rest labeled Template on the Components page. The kit adds a class only for what the template doesn't do.\n- Everything in the kit starts with cmu-: classes, custom properties (--cmu-red) and JavaScript hooks (data-cmu-copy). Variations use a double hyphen (cmu-pill--green). Give your own classes your own prefix, never cmu-.\n- Parts, states and settings build on the component's name. A part adds a word (cmu-account-name), a state says what happened (cmu-countdown-ended) and a setting is a custom property (--cmu-peek-lines)."
+    },
+    {
+      "id": "hero",
+      "heading": "Split Heroes",
+      "text": "A split hero usually opens a service's home page or its service description. Say what the service does, then give it two next steps: a button for the main action, for people ready to go, and a \"Get Started\" call to action for people who want to be walked through it. That second link jumps to the first section below, also headed Get Started. Here's the pattern from the kit's home page:\nThe title names the purpose, the lead says who it's for and the button names the action. The screenshot shows what people can expect.\n- AP Style\n- CMU Names and Terms\n- Headings\n- Buttons and Links\n- Step-by-Step Instructions\n- Flash Messages\n- Images\n- Accessibility\n- Colors\n- CSS Classes\n- Split Heroes\n- Home Page for a Service Description"
+    },
+    {
+      "id": "service-home",
+      "heading": "Home Page for a Service Description",
+      "text": "A service description is a site that explains an app or service and sends people to it, built in Cascade, another CMS or plain HTML. Nothing about its home page is required, but if you're not sure where to start, this order works well for most services. Use the sections your service needs. Skip path cards if everyone follows the same route, and explain how it works only if people need that context. Let recurring questions guide what you add.\n- 1. Hero A tagline, a sentence about the service, a button into it and a screenshot. See Hero\n- 2. Path Cards One for each kind of person who uses it (students, instructors, administrators), each leading to a page of its own. See Path Cards\n- 3. How It Works Three or four short steps, with a callout under them for the one thing people most need to know. See How It Works\n- 4. FAQ Teaser A few common questions, with a link to the full FAQ. See FAQ Teaser"
+    }
+  ],
+  "previews": [
+    {
+      "id": "what",
+      "heading": "What People See",
+      "text": "Slack, Teams and social sites build a link's preview from information in the page's HTML.\n- Title: Name the page and the site it belongs to.\n- Description: Say what people will find in one short sentence.\n- Image: Show the site, usually the top of its home page. See how to make one.\n- Site name, in some apps (not shown): A small line with the site's name, as in Slack and Teams.\n- Image description, in some apps (not shown): What the image shows, read aloud by screen readers where the app supports it.\n- Author and date, for an article, in some apps (not shown): Who wrote it and when; see the tags for an article.\nEach app sets its own layout, so the same link can look different in Slack, Teams and elsewhere."
+    },
+    {
+      "id": "tags",
+      "heading": "Open Graph Tags",
+      "text": "Apps look in the page's <head> for a preview's title, description and image. Add the tags there, as the Open Graph protocol defines them. This example is for an equipment reservation page:\n<meta property=\"og:site_name\" content=\"Equipment Checkout\"> <meta property=\"og:title\" content=\"Reserve a Camera Kit - Equipment Checkout\"> <meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\"> <meta property=\"og:url\" content=\"https://www.cmu.edu/equipment/reserve.html\"> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content=\"https://www.cmu.edu/equipment/images/preview.jpg\"> <meta property=\"og:image:width\" content=\"1200\"> <meta property=\"og:image:height\" content=\"630\"> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\"> <meta name=\"twitter:card\" content=\"summary_large_image\"> In Cascade\nCMU's Cascade template writes each page's title, description, address and type for you, from the page's settings; fill in the page's Description field. Don't add those tags yourself: a second copy conflicts. To add the picture:\n- Make the site's preview image.\n- Upload it to the site's images folder as preview.jpg.\n- Open the site's setup block, select Edit and choose the image under Social Media Image. That's the default for every page; a page with a better picture of its own can set its own Social Media Image. Cascade suggests 900 × 600, but 1200 × 630 is what the apps that build previews expect, so they don't crop it.\n- Publish the site's pages, then check a preview, and look for og:image in a page's source.\nIn Another CMS\nCheck its link-preview or social-sharing settings first; most write some of these tags from each page's title and summary. Add only the tags it doesn't already provide, in the page template's <head>, so every page gets them.\nIn Rails\nPut the tags in the layout, filled in from each view, and set the app's public address once (config.x.public_url). A view names itself with <% content_for :title, \"Reserve a Camera Kit\" %> and <% content_for :description, \"…\" %>. The image goes in public/images/preview.jpg.\n<%# app/views/layouts/application.html.erb, in <head> %> <% site = \"Equipment Checkout\" %> <% base = Rails.configuration.x.public_url %> <meta property=\"og:site_name\" content=\"<%= site %>\"> <meta property=\"og:title\" content=\"<%= content_for?(:title) ? \"#{yield(:title)} - #{site}\" : site %>\"> <meta property=\"og:description\" content=\"<%= content_for?(:description) ? yield(:description) : \"Cameras, laptops and lights, free for CMU courses.\" %>\"> <meta property=\"og:url\" content=\"<%= base + request.path %>\"> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content=\"<%= base %>/images/preview.jpg\"> <meta property=\"og:image:width\" content=\"1200\"> <meta property=\"og:image:height\" content=\"630\"> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\"> <meta name=\"twitter:card\" content=\"summary_large_image\"> In Django\nPut the tags in the base template, filled in from each view's context (page_title, page_description), with the app's public address as a setting (PUBLIC_URL) that a context processor passes to every template. The image goes in your static files.\n{# templates/base.html, in <head>; {% load static %} at the top #} <meta property=\"og:site_name\" content=\"Equipment Checkout\"> <meta property=\"og:title\" content=\"{% if page_title %}{{ page_title }} - {% endif %}Equipment Checkout\"> <meta property=\"og:description\" content=\"{{ page_description|default:'Cameras, laptops and lights, free for CMU courses.' }}\"> <meta property=\"og:url\" content=\"{{ PUBLIC_URL }}{{ request.path }}\"> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content=\"{{ PUBLIC_URL }}{% static 'images/preview.jpg' %}\"> <meta property=\"og:image:width\" content=\"1200\"> <meta property=\"og:image:height\" content=\"630\"> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\"> <meta name=\"twitter:card\" content=\"summary_large_image\"> In SvelteKit\nSvelteKit renders pages on the server, so tags in <svelte:head> reach the apps that build previews. Put the shared tags in the root layout and let each page add its own title and description in its own <svelte:head>. The image goes in static/images.\n<!-- src/routes/+layout.svelte --> <script> import { page } from \"$app/state\"; const base = \"https://equipment.andrew.cmu.edu\"; let { children } = $props(); </script> <svelte:head> <meta property=\"og:site_name\" content=\"Equipment Checkout\" /> <meta property=\"og:url\" content={base + page.url.pathname} /> <meta property=\"og:type\" content=\"website\" /> <meta property=\"og:image\" content=\"{base}/images/preview.jpg\" /> <meta property=\"og:image:width\" content=\"1200\" /> <meta property=\"og:image:height\" content=\"630\" /> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\" /> <meta name=\"twitter:card\" content=\"summary_large_image\" /> </svelte:head> {@render children()} <!-- src/routes/reserve/+page.svelte --> <svelte:head> <meta property=\"og:title\" content=\"Reserve a Camera Kit - Equipment Checkout\" /> <meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\" /> </svelte:head> In Astro\nAstro builds its pages ahead of time or renders them on the server, so tags in the layout reach the apps that build previews. Set the site's public address as site in astro.config.mjs, put the tags in the layout and let each page pass its own title and description. The image goes in public/images; if the site is served from a folder (base in astro.config.mjs), add the folder to the image's path.\n// astro.config.mjs import { defineConfig } from \"astro/config\"; export default defineConfig({ site: \"https://equipment.andrew.cmu.edu\" }); --- // src/layouts/Layout.astro const { title, description } = Astro.props; const site = \"Equipment Checkout\"; const full = title === site ? site : `${title} - ${site}`; --- <head> <title>{full}</title> <meta name=\"description\" content={description}> <meta property=\"og:site_name\" content={site}> <meta property=\"og:title\" content={full}> <meta property=\"og:description\" content={description}> <meta property=\"og:url\" content={new URL(Astro.url.pathname, Astro.site)}> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content={new URL(\"/images/preview.jpg\", Astro.site)}> <meta property=\"og:image:width\" content=\"1200\"> <meta property=\"og:image:height\" content=\"630\"> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\"> <meta name=\"twitter:card\" content=\"summary_large_image\"> </head> --- // src/pages/reserve.astro import Layout from \"../layouts/Layout.astro\"; --- <Layout title=\"Reserve a Camera Kit\" description=\"Cameras, laptops and lights, free for CMU courses.\"> ... </Layout> In React\nThe apps that build previews don't run JavaScript, so tags a React component adds in the browser never reach them. In an app that renders only in the browser, put the site's tags in index.html, the same for every page: the site's name, description, home address and preview image. For tags that differ by page, render the page on the server with a framework built on React, like Next.js, which writes the <head> there.\n<!-- index.html, in <head>: the same for every page --> <meta property=\"og:site_name\" content=\"Equipment Checkout\"> <meta property=\"og:title\" content=\"Equipment Checkout\"> <meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\"> <meta property=\"og:url\" content=\"https://equipment.andrew.cmu.edu/\"> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content=\"https://equipment.andrew.cmu.edu/images/preview.jpg\"> <meta property=\"og:image:width\" content=\"1200\"> <meta property=\"og:image:height\" content=\"630\"> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\"> <meta name=\"twitter:card\" content=\"summary_large_image\"> In Vue\nThe apps that build previews don't run JavaScript, so tags a Vue component adds in the browser never reach them. In an app that renders only in the browser, put the site's tags in index.html, the same for every page: the site's name, description, home address and preview image. For tags that differ by page, render the page on the server with Nuxt, which writes the <head> there.\n<!-- index.html, in <head>: the same for every page --> <meta property=\"og:site_name\" content=\"Equipment Checkout\"> <meta property=\"og:title\" content=\"Equipment Checkout\"> <meta property=\"og:description\" content=\"Cameras, laptops and lights, free for CMU courses.\"> <meta property=\"og:url\" content=\"https://equipment.andrew.cmu.edu/\"> <meta property=\"og:type\" content=\"website\"> <meta property=\"og:image\" content=\"https://equipment.andrew.cmu.edu/images/preview.jpg\"> <meta property=\"og:image:width\" content=\"1200\"> <meta property=\"og:image:height\" content=\"630\"> <meta property=\"og:image:alt\" content=\"Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.\"> <meta name=\"twitter:card\" content=\"summary_large_image\"> Keep the title specific: Use the page's name followed by the site's name, as in its <title>. Keep the description short: Use the same sentence as the page's <meta name=\"description\">. Put the useful information first; apps may shorten it. Use full addresses: Give both the page and image a public https:// address, not a path such as /images/preview.jpg. Use the preview image: The site's images/preview.jpg, with its size and alt text. Request a large image: twitter:card with summary_large_image requests the larger preview on platforms that support Twitter Cards. In an App An app writes every tag itself, and its previews are only as good as its layout. Put the tags in the one layout every page uses, filled in from each page, so no page goes out without them.\n- Give every page a description: Make it part of what a page must set, as a title is, and use the app's own one-sentence description as the fallback.\n- Build addresses from one setting: Keep the app's public address, such as https://equipment.andrew.cmu.edu, in its configuration and join each page's path to it. Don't use the address a request came in on: behind a proxy or on a test copy, it's the wrong one.\n- Serve the image from the app: Put images/preview.jpg with its other static files, open to everyone, so it lasts as long as the app and loads without signing in.\n- Plan for sign-in: The apps that build previews aren't signed in. A link to a page behind sign-in shows whatever a signed-out visitor gets, usually the sign-in page, so give that page the app's own title, description and image.\n- Never put a user's data in the tags: No names, course numbers or anything else from the signed-in page, even where it would be more specific.\n- Check them automatically: A test that fetches a few pages and looks for og:title, og:description and og:image catches a layout that lost them. These docs write and check theirs with a script.\nMost pages are website: a home page, a service or help page, a form or an app's pages. Checkers such as LinkedIn's report “No author found” and “No publication date found” for them, which is fine: those fields are for articles.\nA page that's dated and written by someone is an article: a news story, a blog post, an announcement or a recap of an event. Give it the type, its date and its author, so previews can show when it was published:\n- Give the time and time zone: Write the date as above, with the offset from UTC, -05:00 in winter and -04:00 in summer.\n- Add the modified time only after a real change, such as a correction, not every time the page is published.\n- Put them in the template for stories, such as a CMS's news or blog page type or an app's post layout, so every story gets them without anyone remembering."
+    },
+    {
+      "id": "image",
+      "heading": "Make a Preview Image",
+      "text": "Every site should have one image for its previews. Unless a page has a better picture of its own, use the top of the site's home page:\n- What it shows: The home page at 1200 pixels wide, cropped to the top 630, roof and site name included, with the menu closed. For an app, a page signed in as a made-up user can show more of what it does.\n- Size and type: 1200 × 630 pixels, a JPEG under 300 KB.\n- Name and place: images/preview.jpg in the site's top folder, so it's at /images/preview.jpg on the site. For a site built from a repository, commit it there, beside the pages.\n- Alt text: Name the site and say what the page shows, such as “Equipment Checkout's home page: Reserve a Camera Kit, beside a photo of a camera kit.”\n- Nothing private: No one's name, data or messages. Use sample data if the page shows any.\n- Only what you can share without a credit: A preview shows no caption, so swap out any photo whose license asks for one.\nTo make it, use your browser's developer tools: most can set the page to an exact size and take a screenshot of it. Set 1200 × 630, capture the page and save it as a JPEG. Retake it when the home page changes."
+    },
+    {
+      "id": "check",
+      "heading": "Check a Preview",
+      "text": "- Check the published page, signed out: Paste its address into a message to yourself in Slack or Teams. Check the title, description and image.\n- Allow time for updates: Apps cache previews, so changes may not appear immediately. Use LinkedIn's Post Inspector to check what LinkedIn sees."
     }
   ]
 }

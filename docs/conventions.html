@@ -16,14 +16,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="How to write and structure pages built on CMU's template and the kit: classes, wording, headings, links, images and accessibility."
+      content="How to write and structure pages built on CMU's template and the kit: wording, images, accessibility, colors and classes, then patterns for common pages."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Conventions - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="How to write and structure pages built on CMU's template and the kit: classes, wording, headings, links, images and accessibility."
+      content="How to write and structure pages built on CMU's template and the kit: wording, images, accessibility, colors and classes, then patterns for common pages."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/conventions.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -81,28 +81,8 @@
           <div>
             <h1>Conventions</h1>
             <p class="cmu-lead">
-              How to write and structure pages built on CMU's template and the kit: classes,
-              wording, headings, links, images and accessibility.
+              How to write and structure pages built on CMU's template and the kit: wording, images, accessibility, colors and classes, then patterns for common pages.
             </p>
-
-            <h2 id="classes" class="rule-top">Classes</h2>
-            <ul class="cmu-checks">
-              <li>
-                <strong>The template comes first.</strong> See what it already has on the
-                <a href="components.html">Components</a> page (the ones labeled Template), and use
-                its classes as they are: <code>btn</code>, <code>btn small</code>,
-                <code>ghost</code>, <code>cta</code>, <code>table.alternate</code>,
-                <code>sidebar</code>, <code>sr-only</code>. The kit never copies the template's rules
-                or values, and adds a class only for what the template doesn't already do.
-              </li>
-              <li>
-                <strong>Everything in the kit starts with <code>cmu-</code></strong
-                >: classes, custom properties (<code>--cmu-red</code>) and JavaScript hooks
-                (<code>data-cmu-copy</code>). Variations use a double hyphen
-                (<code>cmu-pill--green</code>). Give your own classes your own prefix, never
-                <code>cmu-</code>.
-              </li>
-            </ul>
 
             <h2 id="ap" class="rule-top">AP Style</h2>
             <p>
@@ -217,6 +197,12 @@
                 headings, so the headings alone should outline the page.
               </li>
               <li>
+                <strong>Give each example a sentence under its heading,</strong> ending in a colon,
+                so the heading doesn't float above it: &ldquo;Add a line under the heading:&rdquo;
+                When a section shows more than one example, give each one a heading, the first
+                included.
+              </li>
+              <li>
                 <strong>Read the page as a task.</strong> Can someone scan the headings, find the
                 main action and tell what happens after they select it?
               </li>
@@ -270,11 +256,17 @@
               <div>
                 <p>
                   <strong>Another site:</strong> an ordinary <code>external</code> link, in sentence
-                  case. A link gets <code>cta</code> or <code>external</code>, never both.
+                  case. A link gets <code>cta</code> or <code>external</code>, never both. With a possessive,
+                  link what's owned, not the owner: Carnegie Mellon's
+                  <a class="external" href="https://www.cmu.edu/news/">latest news</a>.
                 </p>
               </div>
             </div>
             <ul class="cmu-checks">
+              <li>
+                <strong>A link in a sentence is a few words,</strong> the ones that say where it
+                goes, never the whole sentence.
+              </li>
               <li>
                 <strong>A button and a call to action side by side</strong> go in one paragraph,
                 button first; the kit spaces them as in a hero.
@@ -316,27 +308,8 @@
                 it clear, as in "Sign In to See Your Courses." Use only one label: a PDF that also requires sign-in gets <code>[login required]</code> for people who aren't signed in, and <code>[PDF]</code> once they are.
               </li>
             </ul>
-            <h2 id="hero" class="rule-top">Heroes</h2>
-            <p>
-              Say what the site or app does, then give it two next steps: a button for the main
-              action and a "Get Started" call to action. That second link jumps to the first section
-              below, also headed Get Started. Here's the pattern from the kit's home page:
-            </p>
-            <figure class="cmu-shot">
-              <img
-                src="images/conventions-hero.jpg"
-                alt="The kit's home page hero: the title Made to Measure for CMU Sites and Apps, a one-sentence lead, an Install the Kit button and a Get Started link, beside stacked screenshots of three CMU sites."
-                width="1248"
-                height="612"
-              />
-            </figure>
-            <p>
-              The title names the purpose, the lead says who it's for and the button names the
-              action. The screenshot shows what people can expect. Use the
-              <a href="tops.html#hero">hero component</a> to build your own.
-            </p>
 
-            <h2 id="instructions" class="rule-top">Instructions</h2>
+            <h2 id="instructions" class="rule-top">Step-by-Step Instructions</h2>
             <p>
               Write to the person doing the task, in the active voice: "Upload your syllabus," not
               "Syllabi may be uploaded by instructors." Name each control exactly as it appears on
@@ -371,11 +344,12 @@
               with each name as it appears on screen. It's the same mark the template puts between breadcrumbs.
             </p>
 
-            <h2 id="messages" class="rule-top">Messages</h2>
+            <h2 id="messages" class="rule-top">Flash Messages</h2>
             <p>
-              "An error occurred" leaves the reader stuck. An error message names the problem and
-              offers a way forward; a success message confirms what changed. Say it in words, not color alone. Each of these sample <a href="messages.html#flash">flash messages</a>
-              starts with what happened and reads the same without the red or green.
+              A message like "An error occurred" leaves people stuck. A good error message names the problem and
+              offers a way forward. A success message confirms what changed. A notice adds what to
+              know next, such as a deadline. Say it in words, not color alone. Each of these sample <a href="messages.html#flash">flash messages</a>
+              starts with what happened and reads the same without the red, green or gold.
             </p>
             <p class="cmu-flash cmu-flash--error">
               <strong>Your syllabus wasn't uploaded.</strong> Choose a PDF file and try again.
@@ -384,13 +358,58 @@
               <strong>Your syllabus was uploaded.</strong> Students can now find it in the course
               list.
             </p>
+            <p class="cmu-flash cmu-flash--notice">
+              <strong>Your syllabus was uploaded.</strong> Students will see it after tonight's
+              update, by 6 a.m.
+            </p>
+
+            <h2 id="images" class="rule-top">Images</h2>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Alt text describes what the picture shows,</strong> in a sentence or less,
+                without "Image of" or "Photo of": screen readers already say it's an image. For a
+                screenshot, describe what the reader should notice, not every detail.
+              </li>
+              <li>
+                <strong>A decorative image gets empty alt text</strong> (<code>alt=""</code>), so
+                screen readers skip it. A linked image's alt text says where the link goes.
+              </li>
+              <li>
+                <strong>Captions add what alt text doesn't:</strong> who's in the photo, where and
+                when, and the credit. Don't repeat the caption in the alt text. See
+                <a href="content.html#captions">Photo Captions and Credits</a>.
+              </li>
+              <li>
+                <strong>A photo set as a background</strong>, such as the template's
+                <a href="tops.html#photo-hero">hero</a>, gets <code>role="img"</code> and an
+                <code>aria-label</code> describing it, since it has no <code>alt</code>.
+              </li>
+              <li>
+                <strong>Keep words out of images.</strong> Put them in the page, where they can be
+                resized, translated and read aloud.
+              </li>
+              <li>
+                <strong>Videos require checked captions</strong> and a <code>title</code> on the
+                frame. See <a href="content.html#videos">Videos</a>.
+              </li>
+            </ul>
+
+            <h2 id="accessibility" class="rule-top">Accessibility</h2>
+            <p>
+              Under the university's
+              <a class="external" href="https://www.cmu.edu/policies/information-technology/digital-accessibility.html">Digital Accessibility Policy</a>,
+              CMU websites and web apps must meet WCAG 2.1 Level AA. The template and the kit's
+              components give you a start; the words, headings, images and links are yours. The
+              <a class="external" href="https://www.cmu.edu/computing/dao/">Digital Accessibility Office</a>
+              has guidance, training and help. Cascade sites also have their own <a class="external" href="https://www.cmu.edu/web/best-practices/accessibility/index.html">accessibility best practices</a>.
+            </p>
 
             <h2 id="colors" class="rule-top">Colors</h2>
             <p>
               Keep a site to one or two colors, and use each for the same job everywhere, such as
-              red for every sign-in box. Color goes on whole bands and boxes, not on text, and the
+              red for every sign-in box. Color goes on whole sections and boxes, not on text, and the
               template sets its text color to match. Two tools do it: the template's color classes
-              for bands and boxes, and the kit's color variables for your own stylesheet. A band can
+              for sections and boxes, and the kit's color variables for your own stylesheet. A section can
               also take a <a href="sections.html#backgrounds">background pattern</a>, the globe or
               the plaid.
             </p>
@@ -445,7 +464,7 @@
                 them, such as the green of a "Syllabus Available" pill. They aren't brand colors: no
                 brand color is pale enough for a background behind text, or dark enough for small
                 text on a tint, in every hue. Use them only for those jobs, and a brand or template
-                color for anything large, such as a band or a bar.
+                color for anything large, such as a section or a bar.
               </li>
             </ul>
             <table class="alternate cmu-full">
@@ -501,7 +520,7 @@
                   <td><code>--cmu-green-fill</code></td>
                   <td>#00853e</td>
                   <td>
-                    Progress bars: the template's own green (its <code>green</code> bands), close to
+                    Progress bars: the template's own green (its <code>green</code> sections), close to
                     CMU's Green Thread
                   </td>
                   <td>Template</td>
@@ -545,63 +564,129 @@
               </tbody>
             </table>
 
-            <h2 id="images" class="rule-top">Images</h2>
+            <h2 id="classes" class="rule-top">CSS Classes</h2>
+            <p>
+              The kit's classes build on the template's, so a page reads as one set of names. These
+              rules decide which class to use and what to call a new one.
+            </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Alt text describes what the picture shows,</strong> in a sentence or less,
-                without "Image of" or "Photo of": screen readers already say it's an image. For a
-                screenshot, describe what the reader should notice, not every detail.
+                <strong>Use the template's own classes first,</strong> as they are:
+                <code>btn</code>, <code>ghost</code>, <code>cta</code>, <code>table.alternate</code>
+                and the rest labeled Template on the <a href="components.html">Components</a> page.
+                The kit adds a class only for what the template doesn't do.
               </li>
               <li>
-                <strong>A decorative image gets empty alt text</strong> (<code>alt=""</code>), so
-                screen readers skip it. A linked image's alt text says where the link goes.
+                <strong>Everything in the kit starts with <code>cmu-</code></strong
+                >: classes, custom properties (<code>--cmu-red</code>) and JavaScript hooks
+                (<code>data-cmu-copy</code>). Variations use a double hyphen
+                (<code>cmu-pill--green</code>). Give your own classes your own prefix, never
+                <code>cmu-</code>.
               </li>
               <li>
-                <strong>Captions add what alt text doesn't:</strong> who's in the photo, where and
-                when, and the credit. Don't repeat the caption in the alt text. See
-                <a href="content.html#captions">Photo Captions and Credits</a>.
-              </li>
-              <li>
-                <strong>A photo set as a background</strong>, such as the template's
-                <a href="tops.html#photo-hero">hero</a>, gets <code>role="img"</code> and an
-                <code>aria-label</code> describing it, since it has no <code>alt</code>.
-              </li>
-              <li>
-                <strong>Keep words out of images.</strong> Put them in the page, where they can be
-                resized, translated and read aloud.
-              </li>
-              <li>
-                <strong>Videos require checked captions</strong> and a <code>title</code> on the
-                frame. See <a href="content.html#videos">Videos</a>.
+                <strong>Parts, states and settings build on the component's name.</strong> A part
+                adds a word (<code>cmu-account-name</code>), a state says what happened
+                (<code>cmu-countdown-ended</code>) and a setting is a custom property
+                (<code>--cmu-peek-lines</code>).
               </li>
             </ul>
 
-            <h2 id="accessibility" class="rule-top">Accessibility</h2>
+            <h2 id="hero" class="rule-top">Split Heroes</h2>
             <p>
-              Under the university's
-              <a class="external" href="https://www.cmu.edu/policies/information-technology/digital-accessibility.html">Digital Accessibility Policy</a>,
-              CMU websites and web apps must meet WCAG 2.1 Level AA. The template and the kit's
-              components give you a start; the words, headings, images and links are yours. The
-              <a class="external" href="https://www.cmu.edu/computing/dao/">Digital Accessibility Office</a>
-              has guidance, training and help, and the CMU Web team's
-              <a class="external" href="https://www.cmu.edu/web/best-practices/accessibility/index.html">accessibility best practices</a>
-              cover Cascade sites.
+              A <a href="tops.html#hero">split hero</a> usually opens a service's home page or its
+              service description. Say what the service does, then give it two next steps: a button for the main
+              action, for people ready to go, and a "Get Started" call to action for people who want
+              to be walked through it. That second link jumps to the first section below, also
+              headed Get Started. Here's the pattern from the kit's home page:
+            </p>
+            <figure class="cmu-shot">
+              <img
+                src="images/conventions-hero.jpg"
+                alt="The kit's home page hero: the title Made to Measure for CMU Sites and Apps, a one-sentence lead, an Install the Kit button and a Get Started link, beside stacked screenshots of three CMU sites."
+                width="1248"
+                height="612"
+              />
+            </figure>
+            <p>
+              The title names the purpose, the lead says who it's for and the button names the
+              action. The screenshot shows what people can expect.
             </p>
           </div><div class="sidebar">
             <div class="list simple">
               <ul>
-                <li><a href="#classes">Classes</a></li>
                 <li><a href="#ap">AP Style</a></li>
                 <li><a href="#names">CMU Names and Terms</a></li>
                 <li><a href="#headings">Headings</a></li>
                 <li><a href="#links">Buttons and Links</a></li>
-                <li><a href="#hero">Heroes</a></li>
-                <li><a href="#instructions">Instructions</a></li>
-                <li><a href="#messages">Messages</a></li>
-                <li><a href="#colors">Colors</a></li>
+                <li><a href="#instructions">Step-by-Step Instructions</a></li>
+                <li><a href="#messages">Flash Messages</a></li>
                 <li><a href="#images">Images</a></li>
                 <li><a href="#accessibility">Accessibility</a></li>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#classes">CSS Classes</a></li>
+                <li><a href="#hero">Split Heroes</a></li>
+                <li><a href="#service-home">Home Page for a Service Description</a></li>
               </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Full width, so the notes can point at the screenshot -->
+        <div class="content wide">
+          <div>
+            <h2 id="service-home" class="rule-top">Home Page for a Service Description</h2>
+            <div class="cmu-annotated cmu-annotated--wide">
+              <div class="cmu-annotated-text">
+                <p>
+                  A service description is a site that explains an app or service and sends people
+                  to it, built in Cascade, another CMS or plain HTML. Nothing about its home page is
+                  required, but if you're not sure where to start, this order works well for most
+                  services. Use the sections your service needs. Skip path cards if everyone follows
+                  the same route, and explain how it works only if people need that context. Let
+                  recurring questions guide what you add.
+                </p>
+                <ol class="cmu-annotated-notes">
+                  <li class="cmu-callout" style="--cmu-at: 0.3">
+                    <p class="cmu-label">1. Hero</p>
+                    <p>
+                      A tagline, a sentence about the service, a button into it and a screenshot.
+                    </p>
+                    <p><a class="cta" href="tops.html#hero">See Hero</a></p>
+                  </li>
+                  <li class="cmu-callout" style="--cmu-at: 0.49">
+                    <p class="cmu-label">2. Path Cards</p>
+                    <p>
+                      One for each kind of person who uses it (students, instructors,
+                      administrators), each leading to a page of its own.
+                    </p>
+                    <p><a class="cta" href="sections.html#paths">See Path Cards</a></p>
+                  </li>
+                  <li class="cmu-callout" style="--cmu-at: 0.7">
+                    <p class="cmu-label">3. How It Works</p>
+                    <p>
+                      Three or four short steps, with a
+                      <a href="content.html#callout">callout</a> under them for the one thing people
+                      most need to know.
+                    </p>
+                    <p><a class="cta" href="sections.html#flow">See How It Works</a></p>
+                  </li>
+                  <li class="cmu-callout" style="--cmu-at: 0.89">
+                    <p class="cmu-label">4. FAQ Teaser</p>
+                    <p>A few common questions, with a link to the full FAQ.</p>
+                    <p><a class="cta" href="sections.html#qa">See FAQ Teaser</a></p>
+                  </li>
+                </ol>
+              </div>
+              <figure class="cmu-shot cmu-shot--browser">
+                <a href="images/layout-service-home-full.jpg" data-cmu-zoom
+                  ><img
+                    src="images/layout-service-home.jpg"
+                    alt="A service description's home page, top to bottom: a hero with a sign-in button and a screenshot, three path cards, three numbered steps over a callout, and four common questions."
+                    width="900"
+                    height="1368"
+                    loading="lazy"
+                /></a>
+                <figcaption>Select the screenshot to enlarge it.</figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -626,7 +711,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="components.html">Components</a>
                 <ul>
@@ -634,7 +724,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -646,7 +735,7 @@
               <li class="active"><a href="conventions.html" aria-current="page">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

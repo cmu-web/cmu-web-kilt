@@ -85,6 +85,133 @@
               pages they can't open and acting as someone else.
             </p>
 
+            <h2 id="sign-in" class="rule-top">
+              Sign In
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Every page has the <a href="#account">Sign In link</a> in the header, beside the menu
+              button. A home page can also offer sign-in at the top of its sidebar, in one of two
+              ways, depending on how much the page does for people who aren't signed in.
+            </p>
+
+            <h3 id="sign-in-button">A Sign In Button</h3>
+            <p>
+              For a page that's useful signed out, where signing in adds more, such as a search
+              anyone can use that shows more once the user signs in. One large outline button at the
+              top of the sidebar, beside the page's lead. It's the template's
+              <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
+              <code>&lt;h1&gt;</code>.
+            </p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>
+            </p>
+            <p>Here, in the sidebar of a search page:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <h1>Find a Syllabus</h1>
+            <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>
+          </div><div class="sidebar">
+            <div class="simple">
+              <h1><a class="btn ghost wide" href="#sign-in-button">Sign In</a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="sign-in-box">A Sign In Box</h3>
+            <p>
+              For a page that does little until the user signs in. A red box says what signing in
+              lets them do, with one wide outline Sign In button, and a note under it about who can
+              sign in. It's the template's sidebar box with <code>red invert</code>, and
+              <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
+            </p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
+              <code>left-rule</code>
+            </p>
+            <p>Here, beside a page that does little until the user signs in:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content">
+          <div>
+            <h2>Watch the Safety Video</h2>
+            <p>The page's own content goes here, beside the box.</p>
+          </div><div class="sidebar">
+            <div class="red invert">
+              <h1>Sign In to Watch</h1>
+              <p>Sign in with your Andrew ID to watch the safety video and sign the&nbsp;waiver.</p>
+              <h4><a class="btn ghost wide" href="#sign-in-box">Sign In</a></h4>
+            </div>
+            <div class="left-rule">
+              <p>An active @andrew.cmu.edu account is required to sign in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>
+              If signing in posts a form, use a
+              <code>&lt;button class="btn ghost wide"&gt;</code> in place of the link. With
+              <code>cmu-app.css</code>, the two look the same.
+            </p>
+
+            <h3 id="sign-in-which">Which Sign In to Use</h3>
+            <ul class="cmu-checks">
+              <li>
+                <strong>The button</strong> is for a page people can use without signing in. The
+                page's own content comes first, and the button is there for the extras.
+              </li>
+              <li>
+                <strong>The box</strong> is for a page with little to show until the user signs in.
+                Say what signing in lets them do, not just that they must.
+              </li>
+              <li>
+                <strong>The header link alone</strong> is enough past the home page, and on pages
+                where signing in adds nothing.
+              </li>
+              <li>
+                <strong>A link to a page that requires signing in</strong> stays visible, with
+                <code>[login required]</code> after it, not hidden.
+              </li>
+            </ul>
+            <h3 id="signed-in">Once They're Signed In</h3>
+            <ul class="cmu-checks">
+              <li>
+                <strong>The button and the box go away,</strong> and the header shows the user's
+                name instead of Sign In (see <a href="#account">Account Status</a>).
+              </li>
+              <li id="no-access">
+                <strong>A signed-in user without access</strong> gets the
+                <a href="messages.html#no-access">403 page</a> instead: who the page is for, how to
+                request access and where to go next.
+              </li>
+            </ul>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Always &ldquo;Sign In&rdquo; and &ldquo;Sign Out,&rdquo; never &ldquo;Log In,&rdquo;
+                on buttons, links and the menu.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
             <h2 id="account" class="rule-top">
               Account Status
               <span class="kit-where"
@@ -159,150 +286,27 @@
               The signed-in user's photo, also called an avatar or account photo. When the app has
               it, put it before their name, round: small in the roof, and larger on the right of the
               menu's account block. Add
-              <code>cmu-avatar</code> to the image, with empty <code>alt</code> text, since their
-              name is right beside it. With no photo, show
-              <a href="https://placemellon.andrew.cmu.edu/assets.html"
-                >PlaceMellon's default profile picture</a
+              <code>cmu-profile-picture</code> to the image, with empty <code>alt</code> text, since
+              their name is right beside it. For a user without a photo, use PlaceMellon's
+              <a
+                class="external"
+                href="https://placemellon.andrew.cmu.edu/assets.html#scotty-profile"
+                >default profile picture</a
               >
-              or leave the image out, never a blank one.
-              <a href="layout.html#try-header">Try it on this site's header.</a>
+              or leave the image out; don't show an empty frame. Try it on
+              <a href="layout.html#try-header">this site's header</a>.
             </p>
-            <p class="kit-classes"><code>cmu-avatar</code></p>
+            <p class="kit-classes"><code>cmu-profile-picture</code></p>
             <pre
               class="kit-code"
-            ><code>&lt;a class="cmu-account cmu-account-open" href="accounts.html#nav" aria-label="Menu for Andrew Carnegie" &hellip;&gt;&lt;img class="cmu-avatar" src="/photos/ac00.jpg" alt=""&gt;Andrew Carnegie&lt;/a&gt;
+            ><code>&lt;a class="cmu-account cmu-account-open" href="accounts.html#nav" aria-label="Menu for Andrew Carnegie" &hellip;&gt;&lt;img class="cmu-profile-picture" src="/photos/ac00.jpg" alt=""&gt;Andrew Carnegie&lt;/a&gt;
 
 &lt;li class="secondary cmu-account-menu"&gt;
-  &lt;a class="cmu-account-name"&gt;&lt;img class="cmu-avatar" src="/photos/ac00.jpg" alt=""&gt;Andrew Carnegie&lt;/a&gt;
+  &lt;a class="cmu-account-name"&gt;&lt;img class="cmu-profile-picture" src="/photos/ac00.jpg" alt=""&gt;Andrew Carnegie&lt;/a&gt;
   &lt;a href="/preferences"&gt;Preferences&lt;/a&gt;
   &lt;a href="/logout"&gt;Sign Out&lt;/a&gt;
 &lt;/li&gt;</code></pre>
 
-            <h2 id="sign-in" class="rule-top">
-              Sign In
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              Every page has the <a href="#account">Sign In link</a> in the header, beside the menu
-              button. A home page can also offer sign-in at the top of its sidebar, in one of two
-              ways, depending on how much the page does for people who aren't signed in.
-            </p>
-
-            <h3 id="sign-in-button">A Sign In Button</h3>
-            <p>
-              For a page that's useful signed out, where signing in adds more, such as a search
-              anyone can use that shows more once the user signs in. One large outline button at the
-              top of the sidebar, beside the page's lead. It's the template's
-              <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
-              <code>&lt;h1&gt;</code>.
-            </p>
-            <p class="kit-classes">
-              <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>
-            </p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="content">
-          <div>
-            <h1>Find a Syllabus</h1>
-            <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>
-          </div><div class="sidebar">
-            <div class="simple">
-              <h1><a class="btn ghost wide" href="#sign-in-button">Sign In</a></h1>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <h3 id="sign-in-box">A Sign In Box</h3>
-            <p>
-              For a page that does little until the user signs in. A red box says what signing in
-              lets them do, with one wide outline Sign In button, and a note under it about who can
-              sign in. It's the template's sidebar box with <code>red invert</code>, and
-              <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
-            </p>
-            <p class="kit-classes">
-              <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
-              <code>left-rule</code>
-            </p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="content">
-          <div>
-            <h2>Watch the Safety Video</h2>
-            <p>The page's own content goes here, beside the box.</p>
-          </div><div class="sidebar">
-            <div class="red invert">
-              <h1>Sign In to Watch</h1>
-              <p>Sign in with your Andrew ID to watch the safety video and sign the&nbsp;waiver.</p>
-              <h4><a class="btn ghost wide" href="#sign-in-box">Sign In</a></h4>
-            </div>
-            <div class="left-rule">
-              <p>An active @andrew.cmu.edu account is required to sign in.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <p>
-              If signing in has to be a form's button, such as one that posts, use
-              <code>&lt;button class="btn ghost wide"&gt;</code> in the same place. With
-              <code>cmu-app.css</code>, it matches the link.
-            </p>
-
-            <h3 id="sign-in-which">Which Sign In to Use</h3>
-            <ul class="cmu-checks">
-              <li>
-                <strong>The button</strong> is for a page people can use without signing in. The
-                page's own content comes first, and the button is there for the extras.
-              </li>
-              <li>
-                <strong>The box</strong> is for a page with little to show until the user signs in.
-                Say what signing in lets them do, not just that they must.
-              </li>
-              <li>
-                <strong>The header link alone</strong> is enough past the home page, and on pages
-                where signing in adds nothing.
-              </li>
-              <li>
-                <strong>A link to a page that requires signing in</strong> stays visible, with
-                <code>[login required]</code> after it, not hidden.
-              </li>
-            </ul>
-            <h3 id="signed-in">Once They're Signed In</h3>
-            <ul class="cmu-checks">
-              <li>
-                <strong>The button and the box go away,</strong> and the header shows the user's
-                name instead of Sign In (see <a href="#account">Account Status</a>).
-              </li>
-              <li id="no-access">
-                <strong>A signed-in user without access</strong> gets the
-                <a href="messages.html#no-access">403 page</a> instead: who the page is for, how to
-                request access and where to go next.
-              </li>
-            </ul>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>
-                Always &ldquo;Sign In&rdquo; and &ldquo;Sign Out,&rdquo; never &ldquo;Log In,&rdquo;
-                on buttons, links and the menu.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="content wide">
-          <div>
             <h2 id="preferences" class="rule-top">
               Preferences
               <span class="kit-where"
@@ -408,7 +412,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -416,7 +425,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -428,7 +436,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

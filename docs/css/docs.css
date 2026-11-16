@@ -12,8 +12,17 @@
 #content .kit-code {
   padding: 1rem 1.25rem;
 }
-/* A wide example with a background is a band too (the kit drops the line
-   after real bands) */
+/* A code block in its copy box: the box takes the block's space below, and
+   the code keeps room on the right for the icon */
+.kit-code-box {
+  margin: 0 0 2.5rem;
+}
+#content .kit-code-box > .kit-code {
+  margin: 0;
+  padding-right: 3.25rem;
+}
+/* A wide example with a background is a section with a background too (the
+   kit drops the line after real ones) */
 #content > .kit-demo--banded + .content > div > h2.rule-top:first-child {
   border-top: 0;
   padding-top: 0;
@@ -81,11 +90,13 @@
 .kit-classes code {
   color: var(--cmu-ink);
 }
-.cmu-steps .kit-code {
+.cmu-steps .kit-code,
+.cmu-steps .kit-code-box {
   margin: 0.5rem 0 0;
 }
 /* A screenshot right after a step's code: a gap, since they're rarely the same width */
-.cmu-steps .kit-code + .cmu-shot {
+.cmu-steps .kit-code + .cmu-shot,
+.cmu-steps .kit-code-box + .cmu-shot {
   margin-top: 1rem;
 }
 /* A chart of colors or patterns: framed like an example, with its code below */

@@ -18,14 +18,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="News stories and events: the news grid, event lists, events from events.cmu.edu, and date blocks and event cards."
+      content="News stories and events: the news grid, articles, event lists, events from events.cmu.edu, and date blocks and event cards."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="News and Events - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="News stories and events: the news grid, event lists, events from events.cmu.edu, and date blocks and event cards."
+      content="News stories and events: the news grid, articles, event lists, events from events.cmu.edu, and date blocks and event cards."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/news.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -83,8 +83,8 @@
           <div>
             <h1>News and Events</h1>
             <p class="cmu-lead">
-              News stories and events: the news grid, event lists, events from events.cmu.edu, and
-              date blocks and event cards.
+              News stories and events: the news grid, articles, event lists, events from
+              events.cmu.edu, and date blocks and event cards.
             </p>
 
             <h2 id="news" class="rule-top">
@@ -214,6 +214,106 @@
                 </li>
               </ol>
             </div>
+
+            <h2 id="article" class="rule-top">
+              Article
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              The top of a single story or post, set the way CMU's news pages set it: the date over
+              the headline, then the byline. A category label and a summary are optional. A lead
+              photo goes right after it, as a <a href="content.html#captions">captioned photo</a>,
+              and the story follows. Cascade's News Article pages write their own top; the markup is
+              here for apps and other CMSes.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Date it in AP style, &ldquo;Nov. 16, 2026,&rdquo; with the full date in the
+                <code>&lt;time&gt;</code> element's <code>datetime</code>. Start the byline with
+                &ldquo;By&rdquo; and name the writer the way they sign their work.
+              </p>
+            </div>
+            <p class="kit-classes">
+              <code>cmu-article</code>, <code>date</code>, <code>cmu-label</code>,
+              <code>cmu-lead</code>, <code>cmu-byline</code>, <code>figure.image</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-article">
+          <p class="cmu-label">Teaching</p>
+          <p class="date"><time datetime="2026-11-16">Nov. 16, 2026</time></p>
+          <h1>Spring Syllabi Are Due Jan. 11</h1>
+          <p class="cmu-lead">Upload yours from the web or from Canvas any time before classes start.</p>
+          <p class="cmu-byline">By <a href="#article">Margaret Morrison</a></p>
+        </div>
+        <figure class="image">
+          <img src="https://placemellon.andrew.cmu.edu/900/600?photo=MC-210504-Hamburg-Hall-Interior009" alt="The tiled arches inside Hamburg Hall, home of Heinz College.">
+          <figcaption>The arches inside Hamburg Hall. (Photo: Andrew&nbsp;Carnegie)</figcaption>
+        </figure>
+        <p>Instructors can upload a syllabus as soon as their course is on the schedule. Students see it in the course list right away, and it stays there for the whole semester.</p>
+      </div>
+
+            <h2 id="dates" class="rule-top">
+              Date Blocks and Event Cards
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A month-and-day block in the style of the events.cmu.edu widgets, for a date that
+              stands on its own or sits over a photo. For a list of dates, use the template's
+              <a href="#event-list">event list</a>; for a calendar of events,
+              <a href="#events">embed its events.cmu.edu widget</a>. Use a
+              <code>&lt;time&gt;</code> with a <code>datetime</code> so the full date is in the
+              markup, and add <code>cmu-date--red</code> for a red month.
+            </p>
+            <p class="kit-classes">
+              <code>cmu-date</code>, <code>cmu-date-month</code>, <code>cmu-date-day</code>,
+              <code>cmu-date--red</code>
+            </p>
+            <h3 id="date-blocks">Date Blocks</h3>
+            <p>Each event's date as a block beside its details:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p>
+          <time class="cmu-date" datetime="2027-01-11"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">11</span></time>
+          <time class="cmu-date cmu-date--red" datetime="2027-01-20"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">20</span></time>
+        </p>
+      </div>
+            <h3 id="event-cards">Event Cards</h3>
+            <p>
+              Event cards put the date over the corner of a photo, with a red rule under it. Use
+              photos of the same shape; the kit crops them to 3:2.
+            </p>
+            <p class="kit-classes"><code>cmu-event-cards</code>, <code>cmu-date--red</code></p>
+            <p>Here, three events as cards:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <ul class="cmu-event-cards">
+          <li>
+            <img src="https://placemellon.andrew.cmu.edu/900/600?category=classrooms" alt="">
+            <time class="cmu-date cmu-date--red" datetime="2027-01-11"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">11</span></time>
+            <h3><a href="#dates">Spring Syllabi Due</a></h3>
+            <p>11:59 p.m.</p>
+          </li>
+          <li>
+            <img src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="">
+            <time class="cmu-date cmu-date--red" datetime="2027-01-20"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">20</span></time>
+            <h3><a href="#dates">Training for Course Staff</a></h3>
+            <p>2-3 p.m., Zoom</p>
+          </li>
+          <li>
+            <img src="https://placemellon.andrew.cmu.edu/900/600?category=labs" alt="">
+            <time class="cmu-date cmu-date--red" datetime="2027-02-03"><span class="cmu-date-month">Feb</span> <span class="cmu-date-day">3</span></time>
+            <h3><a href="#dates">Camera Kit Workshop</a></h3>
+            <p>Noon-1 p.m., Hunt Library</p>
+          </li>
+        </ul>
+      </div>
+
             <h2 id="event-list" class="rule-top">
               Event List
               <span class="kit-where"
@@ -265,6 +365,7 @@
                 <strong>Event RSS Feed</strong> instead.
               </p>
             </div>
+
             <h2 id="events" class="rule-top">
               Events From events.cmu.edu
               <span class="kit-where"
@@ -301,64 +402,6 @@
                 which match the widget's look.
               </li>
             </ul>
-
-            <h2 id="dates" class="rule-top">
-              Date Blocks and Event Cards
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              <strong>From the kit</strong> (<code>cmu-cms.css</code>), unlike the rest of this
-              page: the template has no date block that stands on its own or sits over a photo.
-            </p>
-            <p>
-              A month-and-day block in the style of the events.cmu.edu widgets, for a date that
-              stands on its own or sits over a photo. For a list of dates, use the template's
-              <a href="#event-list">event list</a>; for a calendar of events,
-              <a href="#events">embed its events.cmu.edu widget</a>. Use a
-              <code>&lt;time&gt;</code> with a <code>datetime</code> so the full date is in the
-              markup, and add <code>cmu-date--red</code> for a red month.
-            </p>
-            <p class="kit-classes">
-              <code>cmu-date</code>, <code>cmu-date-month</code>, <code>cmu-date-day</code>,
-              <code>cmu-date--red</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <p>
-          <time class="cmu-date" datetime="2027-01-11"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">11</span></time>
-          <time class="cmu-date cmu-date--red" datetime="2027-01-20"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">20</span></time>
-        </p>
-      </div>
-            <p>
-              Event cards put the date over the corner of a photo, with a red rule under it. Use
-              photos of the same shape; the kit crops them to 3:2.
-            </p>
-            <p class="kit-classes"><code>cmu-event-cards</code>, <code>cmu-date--red</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <ul class="cmu-event-cards">
-          <li>
-            <img src="https://placemellon.andrew.cmu.edu/900/600?category=classrooms" alt="">
-            <time class="cmu-date cmu-date--red" datetime="2027-01-11"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">11</span></time>
-            <h3><a href="#dates">Spring Syllabi Due</a></h3>
-            <p>11:59 p.m.</p>
-          </li>
-          <li>
-            <img src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="">
-            <time class="cmu-date cmu-date--red" datetime="2027-01-20"><span class="cmu-date-month">Jan</span> <span class="cmu-date-day">20</span></time>
-            <h3><a href="#dates">Training for Course Staff</a></h3>
-            <p>2-3 p.m., Zoom</p>
-          </li>
-          <li>
-            <img src="https://placemellon.andrew.cmu.edu/900/600?category=labs" alt="">
-            <time class="cmu-date cmu-date--red" datetime="2027-02-03"><span class="cmu-date-month">Feb</span> <span class="cmu-date-day">3</span></time>
-            <h3><a href="#dates">Camera Kit Workshop</a></h3>
-            <p>Noon-1 p.m., Hunt Library</p>
-          </li>
-        </ul>
-      </div>
           </div>
         </div>
       </main>
@@ -382,7 +425,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -390,7 +438,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li class="active">
                     <a href="news.html" aria-current="page">News and Events</a>
@@ -404,7 +451,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

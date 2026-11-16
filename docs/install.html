@@ -94,8 +94,8 @@
               <a class="cmu-path" href="#apps">
                 <strong>In a Web App</strong>
                 <span
-                  >Keep a copy of a release in your app, in React, Svelte, Vue, Astro, Rails,
-                  Django, Node or any other stack.</span
+                  >Keep a copy of a release in your app, in React, Astro, Django, Rails, Svelte,
+                  Vue, Node or any other stack.</span
                 >
                 <span class="cta">Set Up an App</span>
               </a>
@@ -105,6 +105,10 @@
                 <span class="cta">Start a Prototype</span>
               </a>
             </div>
+            <p>
+              Using an AI coding agent?
+              <a class="cta" href="./#agent">Set Up With an AI Agent</a>
+            </p>
 
             <h2 id="cms" class="rule-top">CMS Sites</h2>
             <p>
@@ -222,8 +226,9 @@
               A web app builds its own pages on CMU's template: it loads the template's font,
               stylesheets and scripts, both of the kit's stylesheets and the kit's script, and wraps
               each page in the template's header and footer. Start from
-              <a href="layout.html#skeleton">The Whole Page</a>, which has all of it. Keep your own
-              copy of a release in the app, so it doesn't depend on jsDelivr being up.
+              <a href="layout.html#skeleton">The Whole Page</a>, which has all of it, and read the
+              <a href="layout.html#quirks">template quirks</a> under it before you build. Keep your
+              own copy of a release in the app, so it doesn't depend on jsDelivr being up.
             </p>
             <p>Load the files in this order:</p>
             <pre class="kit-code"><code>&lt;head&gt;
@@ -256,7 +261,8 @@
               Use <code>&lt;link&gt;</code> tags, not <code>@import</code>, which loads files one at
               a time. Give <code>&lt;body&gt;</code> the class <code>cmu-app</code>. A page shown
               inside another tool, such as a Canvas LTI frame, has no CMU header or footer; give it
-              <code>cmu-framed</code> instead, which also pads the page.
+              <code>cmu-framed</code> instead, which also pads the page; see
+              <a href="layout.html#framed">Framed Pages</a>.
             </p>
 
             <p>
@@ -284,7 +290,7 @@ done</code></pre>
 
             <p>
               Pick your stack for where the kit's files go. Each component's Framework tab has what
-              that component takes in React, Svelte, Vue, Astro, Rails or Django.
+              that component takes in React, Astro, Django, Rails, Svelte or Vue.
             </p>
             <div class="kit-options" id="frameworks" data-kit-options="framework">
               <div class="kit-option" id="react" data-option="React" data-label="React 18 and 19">
@@ -540,30 +546,138 @@ app.use("/vendor/cmu-web-kilt-0.6.9/js", express.static(path.join(kit, "js")));<
             <h2 id="prototype" class="rule-top">Prototypes</h2>
             <p>
               For a mockup or a one-off page, link everything from the CDN. It's the quickest way to
-              start, but the page depends on jsDelivr. Copy the header and footer from
-              <a href="layout.html#skeleton">The Whole Page</a>.
+              start, but the page depends on jsDelivr. Copy the page below, the same one as
+              <a href="layout.html#skeleton">The Whole Page</a>. Every optional part is in place and
+              marked; leave out what you don't use.
             </p>
-            <pre class="kit-code"><code>&lt;head&gt;
+            <div class="cmu-peek">
+              <!-- whole-page:start (copied from layout.html#skeleton by npm run data) -->
+              <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Open Office Hours - Office Hours Queue - Carnegie Mellon University&lt;/title&gt;
+  &lt;meta name="description" content="Join the queue for help at today's office hours."&gt;
+  &lt;!-- Link previews: the title, sentence and picture a shared link shows --&gt;
+  &lt;meta property="og:site_name" content="Office Hours Queue"&gt;
+  &lt;meta property="og:title" content="Open Office Hours - Office Hours Queue"&gt;
+  &lt;meta property="og:description" content="Join the queue for help at today's office hours."&gt;
+  &lt;meta property="og:url" content="https://queue.andrew.cmu.edu/open"&gt;
+  &lt;meta property="og:type" content="website"&gt;
+  &lt;meta property="og:image" content="https://queue.andrew.cmu.edu/images/preview.jpg"&gt;
+  &lt;meta property="og:image:width" content="1200"&gt;
+  &lt;meta property="og:image:height" content="630"&gt;
+  &lt;meta property="og:image:alt" content="Office Hours Queue's home page: Open Office Hours, with the queue's sign-up button."&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
   &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/print.min.css" media="print" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/favicon.ico" rel="icon"&gt;
   &lt;link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed"&gt;
   &lt;meta content="#9f0000" name="msapplication-TileColor"&gt;
   &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
+
+  &lt;!-- The kit, after the template --&gt;
   &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-cms.css" integrity="sha384-9jhXiuuhmbvQJYP71Rg8e7/NBlfXA/7MjHSMxZeSbELc/fdpt3PAwyoS4jvEMXqy" crossorigin="anonymous" rel="stylesheet"&gt;
-  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-app.css" integrity="sha384-Tj5sbg6foKwNHx77Xj9uSKHv4N7jiYnj97prQWE3B2+6v3K8tsqz/xmsjxeJKvjA" crossorigin="anonymous" rel="stylesheet"&gt;
-  &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/css/cmu-app.css" integrity="sha384-Tj5sbg6foKwNHx77Xj9uSKHv4N7jiYnj97prQWE3B2+6v3K8tsqz/xmsjxeJKvjA" crossorigin="anonymous" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
+  &lt;!-- Optional: Bootstrap Icons, if the page uses icons --&gt;
   &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
+  &lt;!-- Your own stylesheet, last --&gt;
+  &lt;link href="/css/your-site.css" rel="stylesheet"&gt;
 &lt;/head&gt;
-&lt;body class="cmu-app"&gt;
+&lt;body class="no-js cmu-app"&gt;  &lt;!-- cmu-app in apps only --&gt;
+&lt;div id="container"&gt;
+  &lt;header&gt;
+    &lt;div class="roof red invert"&gt;
+      &lt;div&gt;
+        &lt;a class="wordmark" href="https://www.cmu.edu/"&gt;Carnegie Mellon University&lt;/a&gt;
+        &lt;!-- Optional: search cmu.edu; set "your-site-id" to your Cascade site ID --&gt;
+        &lt;form action="https://search.cmu.edu" class="search search-form" method="get" name="customForm"&gt;
+          &lt;input name="form_id" type="hidden" value="basic-form"&gt;
+          &lt;input name="site" type="hidden" value=""&gt;
+          &lt;input name="ie" type="hidden" value="UTF-8"&gt;
+          &lt;label&gt;&lt;span&gt;Search&lt;/span&gt; &lt;input aria-label="Search" name="q" placeholder="Search"&gt;&lt;/label&gt;
+          &lt;button title="Submit" type="submit"&gt;Search&lt;/button&gt;
+          &lt;label class="searchSite"&gt;&lt;span&gt;Search this site only&lt;/span&gt; &lt;input checked name="site" type="checkbox" value="your-site-id"&gt;&lt;/label&gt;
+        &lt;/form&gt;
+        &lt;!-- Optional: Sign In, or the signed-in person's name, before the menu button --&gt;
+        &lt;a class="cmu-account" href="/login"&gt;Sign In&lt;/a&gt;
+        &lt;button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav"&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;b&gt;&amp;#8212;&lt;/b&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="sitename"&gt;
+      &lt;span class="sitetitle"&gt;&lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&lt;/span&gt;
+      &lt;h2&gt;Your Office&lt;/h2&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
 
-  &lt;!-- The template's header, your page, the template's footer --&gt;
+  &lt;main id="content"&gt;
+    &lt;div class="breadcrumbs"&gt;
+      &lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;&lt;a href="/help"&gt;Help&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;&lt;a href="/help/staff"&gt;For Course Staff&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;Open Office Hours
+    &lt;/div&gt;
+    &lt;!-- Optional: a sidebar; it must touch the page's &lt;/div&gt;, or it drops below the page --&gt;
+    &lt;div class="content"&gt;
+      &lt;div&gt;
+        &lt;h1&gt;Open Office Hours&lt;/h1&gt;
+        &lt;p&gt;The page.&lt;/p&gt;
+      &lt;/div&gt;&lt;div class="sidebar"&gt;
+        &lt;div class="simple"&gt;
+          &lt;a class="btn wide" href="/queues/new"&gt;Open a Queue&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
 
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/js/cmu-app.js" integrity="sha384-10393F76wEQPHaJEEoM9M1QEQsl9mTezDdEM45kArp0j26SWs3gxiGsXKrmwJHio" crossorigin="anonymous"&gt;&lt;/script&gt;
-&lt;/body&gt;</code></pre>
+  &lt;footer class="grid column3 invert"&gt;
+    &lt;div&gt;
+      &lt;p&gt;Office Hours Queue&lt;br&gt;Carnegie Mellon University&lt;br&gt;5000 Forbes Avenue&lt;br&gt;Pittsburgh, PA 15213&lt;/p&gt;
+      &lt;ul&gt;&lt;li&gt;&lt;a href="https://www.cmu.edu/legal/"&gt;Legal Info&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="https://www.cmu.edu/"&gt;www.cmu.edu&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      &lt;ul&gt;&lt;li&gt;&amp;copy; 2026 Carnegie Mellon University&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;&lt;/div&gt;
+    &lt;div&gt;
+      &lt;nav id="nav"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="/queues"&gt;Queues&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="/my-courses"&gt;My Courses&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href="/help"&gt;Help&lt;/a&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href="/help/students"&gt;For Students&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href="/help/staff"&gt;For Course Staff&lt;/a&gt;
+                &lt;ul&gt;
+                  &lt;li class="active"&gt;&lt;a href="/help/staff/open" aria-current="page"&gt;Open Office Hours&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href="/help/staff/canvas"&gt;Link It From Canvas&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;!-- The template's scripts, in this order --&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+&lt;!-- The kit's script, last, for copy buttons, countdowns and screenshots that enlarge --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.6.9/js/cmu-app.js" integrity="sha384-10393F76wEQPHaJEEoM9M1QEQsl9mTezDdEM45kArp0j26SWs3gxiGsXKrmwJHio" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              <!-- whole-page:end -->
+              <details class="cmu-more">
+                <summary>
+                  <span class="cmu-more-link"
+                    ><span class="cmu-more-closed">See the Whole Page</span
+                    ><span class="cmu-more-open">Hide the Whole Page</span></span
+                  >
+                </summary>
+              </details>
+            </div>
 
             <h2 id="versions" class="rule-top">Versions</h2>
             <p>
@@ -685,7 +799,12 @@ app.use("/vendor/cmu-web-kilt-0.6.9/js", express.static(path.join(kit, "js")));<
           <nav id="nav">
             <ul>
               <li class="active"><a href="install.html" aria-current="page">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="components.html">Components</a>
                 <ul>
@@ -693,7 +812,6 @@ app.use("/vendor/cmu-web-kilt-0.6.9/js", express.static(path.join(kit, "js")));<
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li><a href="lists.html">Lists and Tables</a></li>
@@ -705,7 +823,7 @@ app.use("/vendor/cmu-web-kilt-0.6.9/js", express.static(path.join(kit, "js")));<
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>

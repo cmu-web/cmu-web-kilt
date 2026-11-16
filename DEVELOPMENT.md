@@ -51,6 +51,13 @@ A live example's markup becomes its copyable code sample. Edit that markup
 once, inside `div.kit-demo`, with `<!-- prettier-ignore -->` immediately
 before the wrapper. The docs script generates the displayed code.
 
+`data-demo-skip` on an element leaves it out of the copied code, such as a
+control that only works in the docs. A sidebar component can put its
+description and its `p.kit-classes` in the demo's content column, beside the
+sidebar, each marked `data-demo-skip` and followed by a plain placeholder
+("Your page's content."); `tools/data.mjs` reads them from there when nothing
+comes before the demo.
+
 For a new component, copy a neighboring reference section's structure:
 
 - An `h2` with `id` followed by `class="rule-top"`, a component name and

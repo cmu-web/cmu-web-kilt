@@ -23,7 +23,7 @@
     <line x1="442" y1="100" x2="442" y2="124"/>
     <line x1="16" y1="128" x2="584" y2="128"/>
   </g>
-  <!-- A band: heading, sentence, button, call to action and a photo -->
+  <!-- A section: heading, sentence, button, call to action and a photo -->
   <rect x="16" y="160" width="568" height="230" fill="#eceef0"/>
   <rect x="16" y="160" width="568" height="5" fill="#c41230"/>
   <g fill="#5b6670">

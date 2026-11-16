@@ -497,6 +497,8 @@
               give way to the numbers.
             </p>
             <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-pager</code></p>
+            <h3 id="pagination-start">Near the Start</h3>
+            <p>On page 2, with the results count above it:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <p class="cmu-results-count">Showing 21-40 of 312 sections</p>
@@ -516,6 +518,8 @@
           </ol>
         </div>
       </div>
+            <h3 id="pagination-middle">In the Middle</h3>
+            <p>On page 8, with the pages around it and the first and last:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-pager" role="navigation" aria-label="Pages">
@@ -535,6 +539,8 @@
         </div>
       </div>
 
+            <h3 id="pagination-end">At the End</h3>
+            <p>On page 16, the last, where the next and last arrows go nowhere:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-pager" role="navigation" aria-label="Pages">
@@ -566,20 +572,34 @@
               A <code>&lt;details&gt;</code> whose summary reads as a line of text ending in a bold
               toggle with a chevron, which points down while closed, flips up when open and turns
               red on hover. It opens right there, so it doesn't look like a call to action to
-              another page. Closed, the toggle is the count of what's hidden ("6 More"); open, it
-              says Show Fewer, and the whole list shows. It works without a script, and it slides
-              open and closed where the browser supports that (not for people who turn motion down).
-              <a href="layout.html#tabs">Tabs</a> fold the same way.
+              another page. Closed, the toggle names what's hidden; open, it says how to fold it
+              back. It slides open and closed where the browser supports that (not for people who
+              turn motion down). <a href="layout.html#tabs">Tabs</a> fold the same way.
             </p>
             <p class="kit-classes">
               <code>cmu-more</code>, <code>cmu-more-link</code>, <code>cmu-more-closed</code>,
               <code>cmu-more-open</code>
             </p>
+            <h3 id="more-list">A List</h3>
+            <p>The first few items, then the count of the rest; open, the whole list shows:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <details class="cmu-more">
           <summary><span class="cmu-more-closed">ARC, CS, ECE and</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">6 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
           <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>
+        </details>
+      </div>
+            <h3 id="more-block">A Block</h3>
+            <p>
+              A question that leads to something people may want to read, such as a long prompt or
+              the full terms, then a toggle that names it. Nothing on the line moves: only the
+              toggle's words change, and the block slides open under it:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <details class="cmu-more">
+          <summary>Want to read it first? <span class="cmu-more-link"><span class="cmu-more-closed">See the Prompt</span><span class="cmu-more-open">Hide the Prompt</span></span></summary>
+          <pre class="cmu-snippet"><code>Use the Carnegie Mellon Web Kilt for this page. Read https://webkilt.andrew.cmu.edu/ first, start from its Prototypes section and keep its class names as they are.</code></pre>
         </details>
       </div>
           </div>
@@ -605,7 +625,12 @@
           <nav id="nav">
             <ul>
               <li><a href="install.html">Install</a></li>
-              <li><a href="layout.html">Page Layout</a></li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
@@ -613,7 +638,6 @@
                   <li><a href="sections.html">Page Sections</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
-                  <li><a href="previews.html">Link Previews</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
                   <li class="active">
@@ -627,7 +651,7 @@
               <li><a href="conventions.html">Conventions</a></li>
               <li><a href="about.html">About</a></li>
               <li class="secondary"><a href="gallery.html">Gallery</a></li>
-              <li class="secondary"><a href="partner.html">Partner With Us</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
             </ul>
           </nav>
         </div>
