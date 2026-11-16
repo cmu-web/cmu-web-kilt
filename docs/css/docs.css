@@ -35,26 +35,6 @@
   background: none;
 }
 /* Examples side by side, wrapping on phones */
-.kit-demo--row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-.kit-demo--row > * {
-  flex: 1 1 15rem;
-  min-width: 0;
-  margin: 0;
-}
-.kit-demo--row img {
-  width: 100%;
-  height: auto;
-}
-/* Beside a screenshot in a browser window, a figure without one drops by
-   the window's bar (1.6rem), so the images' tops line up */
-.kit-demo--row:has(> .cmu-shot--browser) > figure:not(.cmu-shot--browser) {
-  margin-top: 1.6rem;
-}
 .kit-demo > :last-child:not(dialog) {
   margin-bottom: 0;
 }

@@ -239,16 +239,21 @@ p:has(> .btn + .cta) > .btn {
   grid-area: 1 / 1;
   width: 66%;
 }
-:is(#content, body) .cmu-hero-art--stack > a:not(.btn):not(.cta):not(.box):not(.scrolldown) {
+:is(#content, body)
+  :is(.cmu-hero-art--stack, .cmu-hero-art--phone)
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown) {
   display: block;
   padding: 0;
   border: 0;
 }
-.cmu-hero-art--stack > a img {
+.cmu-hero-art--stack > a img,
+.cmu-hero-art--phone > a:first-child img {
   width: 100%;
 }
 /* Each window draws its own bar, with the dots, in its top padding */
-.cmu-hero-art--stack img {
+.cmu-hero-art--stack img,
+.cmu-hero-art--phone > img:first-child,
+.cmu-hero-art--phone > a:first-child img {
   box-sizing: content-box;
   aspect-ratio: 4 / 3;
   object-fit: cover;
@@ -271,6 +276,29 @@ p:has(> .btn + .cta) > .btn {
 .cmu-hero-art--stack > :nth-child(3),
 .cmu-hero-art--stack > :nth-child(2):last-child {
   margin: 34% 0 0 34%;
+}
+/* One screenshot in a browser window with one phone (figure.cmu-shot
+   cmu-shot--phone) in front of it at the lower right: the same page on a
+   computer and a phone. Only the first two show. */
+.cmu-hero-art--phone {
+  display: grid;
+}
+.cmu-hero-art--phone::before {
+  display: none;
+}
+.cmu-hero-art--phone > * {
+  grid-area: 1 / 1;
+}
+.cmu-hero-art--phone > :first-child {
+  width: 84%;
+}
+.cmu-hero-art--phone > :nth-child(n + 3) {
+  display: none;
+}
+.cmu-hero-art--phone > .cmu-shot--phone {
+  justify-self: end;
+  width: 34%;
+  margin: 18% 0 0;
 }
 /* A photo or a tartan pattern file, with no browser frame */
 .cmu-hero-art--plain::before {
@@ -670,6 +698,93 @@ img.cmu-transparent,
 }
 .cmu-shot--browser img {
   border-top: 0;
+}
+/* A phone: a screenshot 430 by 790 pixels (or twice that), status bar
+   included, in a dark frame with a thin, even bezel, rounded corners and a
+   camera cutout at the top. The screen is a bit shorter than a real phone's,
+   so it reads as a phone beside a browser window; a taller screenshot shows
+   only its top. The frame is the image's own border, so a caption stays
+   below it and a link (such as Enlarge on Click) wraps it as usual. Never
+   wider than 18rem, even in a flexible row that would stretch it. The
+   bezel, corners and cutout are sized in container units (100cqw is the
+   frame's width), so a smaller phone, such as in a Split Hero, keeps its
+   proportions; at 18rem, 1rem is 5.556cqw. */
+.cmu-shot--phone {
+  container-type: inline-size;
+  position: relative;
+  width: 18rem;
+  max-width: min(18rem, 100%);
+}
+/* content-box, so the screen inside the bezel is 430 by 790 and the image
+   fills it exactly, without zooming in to cover; two classes, so a page's
+   own img { width: 100% } doesn't push the bezel past the frame */
+.cmu-shot.cmu-shot--phone img {
+  box-sizing: content-box;
+  width: 93.333cqw;
+  max-width: 93.333cqw;
+  height: auto;
+  aspect-ratio: 430 / 790;
+  object-fit: cover;
+  object-position: top;
+  border: 3.333cqw solid #202226; /* 0.6rem at full size */
+  border-radius: 12.5cqw;
+  box-shadow:
+    0 0 0 1px #383c43,
+    0 18px 40px rgba(23, 44, 75, 0.16);
+}
+/* The camera cutout, centered over the status bar */
+.cmu-shot--phone::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 5.556cqw;
+  left: 50%;
+  width: 30.556cqw;
+  height: 6.667cqw;
+  margin-left: -15.278cqw;
+  border-radius: 3.333cqw;
+  background: #202226;
+}
+/* Screenshots side by side: two or three figures (cmu-shot in any frame,
+   or the template's figure.image), each with its own caption, tops aligned,
+   one per line when there isn't room. A phone keeps its width; the others
+   share the rest. Device frames line up by their outer edges; beside a
+   browser window, a figure without a frame drops by the window's bar
+   (1.6rem), so the images line up. */
+.cmu-shots {
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 0 0 1.5rem;
+}
+.cmu-shots > figure {
+  flex: 1 1 15rem;
+  min-width: 0;
+  margin: 0;
+}
+.cmu-shots > .cmu-shot--phone {
+  flex: 0 0 auto;
+}
+.cmu-shots > figure:not(.cmu-shot--phone) img {
+  width: 100%;
+  height: auto;
+}
+.cmu-shots:has(> .cmu-shot--browser) > figure:not(.cmu-shot--browser):not(.cmu-shot--phone) {
+  margin-top: 1.6rem;
+}
+/* Beside a phone, a browser window is the phone's height (31.99rem, as
+   drawn: an 18rem frame, its 430 by 790 screen and bezel), less the
+   window's bar (1.6rem and its 1px border), its screenshot cropped from
+   the top, so their captions line up. Only while they fit side by
+   side: below 48rem the window keeps its own shape. */
+@container (min-width: 48rem) {
+  .cmu-shots:has(> .cmu-shot--phone) > .cmu-shot--browser img {
+    height: calc(31.99rem - 1.6rem - 1px);
+    object-fit: cover;
+    object-position: left top;
+  }
 }
 /* A linked screenshot: the link wraps the image exactly, with no underline.
    The template pads and underlines every link in #content with
