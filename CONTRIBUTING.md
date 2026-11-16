@@ -16,9 +16,10 @@ CMU page that handles the task well if you know one. Discuss changes to
 existing markup or behavior before implementing them: other sites may
 already depend on it.
 
-For the [gallery](https://webkilt.andrew.cmu.edu/0/gallery.html), submit a
-public site or app whose owner is happy to have it listed. We take the
-screenshot from a public page; it must not expose private information.
+For the [gallery](https://webkilt.andrew.cmu.edu/0/gallery.html), use the
+[Gallery form](https://docs.google.com/forms/d/e/1FAIpQLSdSdq2bVAyNyiUcqXex-Kr686RGS4_4pn0liGEi0cI9y48wHg/viewform) for a public site or app whose owner is happy to
+have it listed. We take the screenshot from a public page; it must not expose
+private information.
 
 ## Decide What Belongs in the Kit
 
