@@ -157,6 +157,14 @@ is `docs/images/cmu-web-preview.webp`. Keep it a clean landscape screenshot
 at 1040 by 656 pixels, without the decorative browser frame; the cards add
 that frame themselves.
 
+To make it, capture the published home page with FencePost's gallery
+command, from a FencePost checkout. It takes the public page at 1040 by 656,
+signed out, with the menu closed:
+
+```bash
+npm run gallery -- https://webkilt.andrew.cmu.edu/0/ /path/to/cmu-web-kilt/docs/images/cmu-web-preview.webp
+```
+
 Replace the image at the same path when the site changes. Consumers link
 the owning project's public URL, so they don't copy the image or release an
 update. Use general alt text on those cards.
