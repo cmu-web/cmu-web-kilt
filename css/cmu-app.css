@@ -303,7 +303,7 @@ nav#nav li.cmu-account-menu > .cmu-account-name {
   font-size: 1.2em;
   font-weight: 700;
 }
-nav#nav li.cmu-account-menu:has(.cmu-avatar) > a {
+nav#nav li.cmu-account-menu:has(.cmu-profile-picture) > a {
   max-width: calc(100% - 56px - 3rem); /* clear of the photo */
 }
 /* Preferences and Sign Out a step larger than the menu's links. The
@@ -341,19 +341,19 @@ nav#nav li.cmu-account-menu > .cmu-account-name + a {
   cursor: default;
   color: inherit;
 }
-/* The signed-in user's photo (cmu-avatar): small and round before their
+/* The signed-in user's photo (cmu-profile-picture): small and round before their
    name in the roof, larger on the right of the menu's account block */
-.cmu-avatar {
+.cmu-profile-picture {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
   flex: 0 0 auto;
 }
-.roof .cmu-account .cmu-avatar {
+.roof .cmu-account .cmu-profile-picture {
   margin-right: 0.5em;
 }
-nav li.cmu-account-menu .cmu-avatar {
+nav li.cmu-account-menu .cmu-profile-picture {
   position: absolute;
   top: 50%;
   right: 1.5rem;
@@ -565,7 +565,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-choices--grid input {
   line-height: 1;
 }
 /* A question card: one question and its choice rows on a white card, with a
-   rule under the question; put it in a colored band. Its buttons: back on
+   rule under the question; put it in a section with a background. Its buttons: back on
    the left, forward (Next, or Submit on the last question) on the right */
 .cmu-question {
   max-width: 46rem;
@@ -626,7 +626,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-question fieldset {
   padding: 0;
 }
 .cmu-match li {
-  --cmu-piece: #e4909c; /* the pieces' colored ends, red once matched */
+  --cmu-piece: #e4909c; /* the pieces' tinted ends, red once matched */
   list-style: none;
   position: relative;
   display: grid;
@@ -919,7 +919,7 @@ body.cmu-acting-as .scrolltop {
 }
 
 /* Flash messages: the result of what someone just did, shown once. Standing
-   announcements are the template's own color bands instead. */
+   announcements are the template's own color sections instead. */
 .cmu-flash {
   margin: 1em 0;
   border-left: 4px solid;
@@ -1227,7 +1227,7 @@ button.btn.wide {
   border-top: 0;
 }
 
-/* A meter across its whole box, and white on a colored box (invert) */
+/* A meter across its whole box, and white on a dark box (invert) */
 .cmu-meter--full {
   display: block;
   width: 100%;
@@ -1244,7 +1244,7 @@ button.btn.wide {
   margin: 0;
   padding: 0;
 }
-/* A label on a colored box takes the box's white */
+/* A label on a dark box takes the box's white */
 .invert .cmu-label {
   color: inherit;
 }
@@ -1364,7 +1364,7 @@ button.btn.wide {
   background: currentColor;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 5.5 8 11l5.5-5.5' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
     center / contain no-repeat;
-  transition: transform 0.15s;
+  transition: transform 0.25s ease-out;
 }
 .cmu-more[open] .cmu-more-link::after {
   transform: rotate(180deg);
@@ -1396,6 +1396,23 @@ button.btn.wide {
 .cmu-more[open] .cmu-more-open {
   display: inline;
 }
+/* The words that swap (the count and Show Fewer, and any text before the
+   toggle) fade in, so the line doesn't jump from one to the other */
+.cmu-more .cmu-more-closed,
+.cmu-more .cmu-more-open {
+  transition: opacity 0.25s ease-out;
+}
+@starting-style {
+  .cmu-more:not([open]) .cmu-more-closed,
+  .cmu-more[open] .cmu-more-open {
+    opacity: 0;
+  }
+}
+/* Folding a list back, its short line waits until the full list has slid
+   away, so the names never show twice */
+.cmu-more:not(.cmu-tabs-more):not([open]) .cmu-more-closed {
+  transition-delay: 0.2s;
+}
 /* Opening and closing slide and fade, where the browser can animate a
    details' size (::details-content and interpolate-size); elsewhere it opens
    at once. Not folded tabs, whose contents leave the box. The clip margin
@@ -1409,18 +1426,44 @@ button.btn.wide {
   overflow: clip;
   overflow-clip-margin: 0.25rem;
   transition:
-    block-size 0.2s ease,
-    opacity 0.2s ease,
-    content-visibility 0.2s allow-discrete;
+    block-size 0.25s ease-out,
+    opacity 0.25s ease-out,
+    content-visibility 0.25s allow-discrete;
 }
 .cmu-more:not(.cmu-tabs-more)[open]::details-content {
   block-size: auto;
   opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  .cmu-more:not(.cmu-tabs-more)::details-content {
+  .cmu-more:not(.cmu-tabs-more)::details-content,
+  .cmu-more .cmu-more-closed,
+  .cmu-more .cmu-more-open {
     transition: none;
   }
+}
+
+/* A long code block shown in part (cmu-peek): its first lines, the last two
+   fading out at the bottom with no bottom line, then a cmu-more toggle under it that shows
+   the whole block and folds it back. The toggle's details holds only its
+   summary. Works without a script; the copy icon (cmu-copyable) still copies
+   all of it. */
+/* --cmu-peek-lines sets how many lines show (10 unless set), in the block's
+   own line height (lh), plus its top padding; only the last two fade */
+.cmu-peek pre {
+  max-height: calc(var(--cmu-peek-lines, 10) * 1lh + 1rem);
+  overflow: hidden;
+  mask-image: linear-gradient(#000 calc(100% - 2lh), transparent);
+}
+.cmu-peek:has(> .cmu-more[open]) pre {
+  max-height: none;
+  overflow-x: auto;
+  mask-image: none;
+}
+.cmu-peek > :is(pre, .cmu-copyable) {
+  margin-bottom: 0.25rem;
+}
+.cmu-peek {
+  margin: 0 0 1.5em;
 }
 
 /* Long results: a count under the list, then either Load More or a pager.
@@ -1665,7 +1708,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-filter-group input[type="text"] {
   margin: 0;
 }
 
-/* Bulk bar: a tinted band on top of a table, the selection count then the
+/* Bulk bar: a tinted bar on top of a table, the selection count then the
    actions. Its height is fixed so buttons appearing don't nudge the table. */
 .cmu-bulk-bar {
   display: flex;

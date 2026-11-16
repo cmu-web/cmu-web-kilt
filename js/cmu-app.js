@@ -474,6 +474,67 @@
     }
   });
 
+  // Options after a menu: a <select data-cmu-options>, then, after it in the
+  // same parent, a block for each value with further controls, <div
+  // data-cmu-option="value">. Only the block for the picked value shows; a
+  // value with none shows nothing, and a rule (<hr>) right after the menu goes
+  // too. Without the script, every block shows. See Options Under a Choice in
+  // the docs (forms.html).
+  function showOptions(select) {
+    var any = false;
+    for (var el = select.nextElementSibling; el; el = el.nextElementSibling)
+      if (el.hasAttribute("data-cmu-option")) {
+        el.hidden = el.getAttribute("data-cmu-option") !== select.value;
+        any = any || !el.hidden;
+      }
+    var rule = select.nextElementSibling;
+    if (rule && rule.tagName === "HR") rule.hidden = !any;
+  }
+  document.querySelectorAll("select[data-cmu-options]").forEach(showOptions);
+  document.addEventListener("change", function (e) {
+    if (e.target.matches && e.target.matches("select[data-cmu-options]")) showOptions(e.target);
+  });
+
+  // Long code block (cmu-peek): folding it back rolls the code up into its
+  // toggle, which stays where it is on screen, so the reader isn't left far
+  // down the page by the lines that went away. Without the script, or with
+  // reduced motion, it folds at once.
+  document.addEventListener("click", function (e) {
+    var summary = e.target.closest && e.target.closest(".cmu-peek > .cmu-more > summary");
+    if (!summary || !summary.parentNode.open) return;
+    var more = summary.parentNode,
+      pre = more.parentNode.querySelector("pre");
+    if (!pre) return;
+    e.preventDefault();
+    var top = summary.getBoundingClientRect().top,
+      from = pre.offsetHeight;
+    more.open = false;
+    var to = pre.offsetHeight;
+    var hold = function () {
+      window.scrollBy({ top: summary.getBoundingClientRect().top - top, behavior: "instant" });
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || from <= to) {
+      hold();
+      return;
+    }
+    var start = null,
+      time = Math.min(450, 200 + (from - to) / 10);
+    pre.style.maxHeight = from + "px";
+    hold();
+    requestAnimationFrame(function step(now) {
+      if (start === null) start = now;
+      var t = Math.min(1, (now - start) / time),
+        ease = 1 - Math.pow(1 - t, 3);
+      pre.style.maxHeight = from + (to - from) * ease + "px";
+      hold();
+      if (t < 1) requestAnimationFrame(step);
+      else {
+        pre.style.maxHeight = "";
+        hold();
+      }
+    });
+  });
+
   // ID tap: <div class="cmu-tap-target"> holds a label and a hidden <input
   // data-cmu-tap>, where an NFC card reader types an ID card's number and a
   // carriage return (Enter). When it's the only tap on the page, the field
