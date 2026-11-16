@@ -1,6 +1,6 @@
 {
   "name": "cmu-web-kilt",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Components for pages on Carnegie Mellon's web template: CMS sites and web apps.",
   "license": "BSD-3-Clause",
   "files": [
@@ -33,7 +33,7 @@
     "prettier": "^3.9.10"
   },
   "integrity": {
-    "css/cmu-cms.css": "sha384-XU388OR/Xh0NWU7ex/i0/AqrJQED9h1fs1B22/Vilc1e0kTecbFKpoM+LQDmMNJK",
+    "css/cmu-cms.css": "sha384-vtYlL5037VRB6eSPU10/yEnSltq1lnnVqAAfZsUpsj9Rzo7wXAVfxGEZ/mUySMKp",
     "css/cmu-app.css": "sha384-2jLWqCd2cc1X5lySEjSIsY3mZhiKqacJc1fvAwSLjtSg3E13TJVOnpe9pAb8DMHP",
     "js/cmu-app.js": "sha384-kPYaRNjRAHnEY27lj3wKX2UTLNzxejzJWxXQ9pxOoRSmE2u7/p+KpJDix8iJedFe"
   }
