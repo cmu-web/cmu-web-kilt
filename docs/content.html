@@ -660,23 +660,30 @@
             </ul>
             <p class="kit-classes">
               <code>figure.cmu-shot</code>, <code>cmu-shot--browser</code>,
-              <code>cmu-shot--phone</code>, <code>cmu-shots</code>
+              <code>cmu-shot--phone</code>, <code>cmu-shots</code>, <code>data-cmu-address</code>
             </p>
             <h3 id="screenshots-browser">A Border or a Browser Window</h3>
             <p>
               Add <code>cmu-shot--browser</code> for a browser window, with a bar and three dots
-              across the top; the window is as wide as the screenshot, never wider than the column:
+              across the top; the window is as wide as the screenshot, never wider than the column.
+              To show the page's address in the bar, add <code>data-cmu-address</code> with it, such
+              as <code>www.cmu.edu/example/</code>; leave off the <code>https://</code>. It's
+              decorative, so the alt text still says what's on the screenshot:
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
       <div class="cmu-shots">
         <figure class="cmu-shot">
           <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
-          <figcaption>A screenshot with a border.</figcaption>
+          <figcaption>With a border.</figcaption>
         </figure>
         <figure class="cmu-shot cmu-shot--browser">
           <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
-          <figcaption>The same screenshot in a browser window.</figcaption>
+          <figcaption>In a browser window.</figcaption>
+        </figure>
+        <figure class="cmu-shot cmu-shot--browser" data-cmu-address="www.cmu.edu/example/">
+          <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
+          <figcaption>In a browser window, with an address.</figcaption>
         </figure>
       </div>
       </div>

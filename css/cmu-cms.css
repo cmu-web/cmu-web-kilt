@@ -226,6 +226,39 @@ p:has(> .btn + .cta) > .btn {
   border: 1px solid var(--cmu-line);
   border-bottom: 0;
 }
+/* An address in the browser bar, from data-cmu-address on the window
+   (figure.cmu-shot--browser, or a cmu-hero-art with one window or with a
+   phone): a white field after the three dots, the address centered in it and cut
+   off with an ellipsis when it's long. Decorative; the alt text says what's on the screenshot. */
+.cmu-shot--browser[data-cmu-address] {
+  position: relative;
+}
+:is(.cmu-shot--browser, .cmu-hero-art:not(.cmu-hero-art--stack))[data-cmu-address]::after {
+  content: attr(data-cmu-address);
+  position: absolute;
+  top: calc(0.3rem + 1px);
+  left: 4.2rem; /* the third dot ends at 3.23rem */
+  right: 1.2rem;
+  height: 1rem;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background: #fff;
+  color: #5f6b75;
+  font:
+    0.65rem/1rem "Open Sans",
+    Arial,
+    sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+/* With a phone, the window is the first 84% of the art (two classes, to
+   outrank the rule above) */
+.cmu-hero-art.cmu-hero-art--phone[data-cmu-address]::after {
+  right: calc(16% + 1.2rem);
+}
 /* Two or three screenshots, overlapping down and to the right, cropped to
    one shape from the top; the last is in front */
 .cmu-hero-art--stack {

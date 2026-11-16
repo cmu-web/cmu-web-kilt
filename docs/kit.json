@@ -1497,16 +1497,22 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#screenshots",
       "labels": ["CMS"],
-      "description": "A screenshot of a page or an app, set off from the page around it with a thin border and a soft shadow, in a figure.cmu-shot. It can be drawn in a browser window or a phone. A <figcaption> under it is italic, like the template's photo captions. Ideally, the screenshot shows the page's top, roof and all. Always write alt text that says what's on it.\n\nAdd cmu-shot--browser for a browser window, with a bar and three dots across the top; the window is as wide as the screenshot, never wider than the column:",
+      "description": "A screenshot of a page or an app, set off from the page around it with a thin border and a soft shadow, in a figure.cmu-shot. It can be drawn in a browser window or a phone. A <figcaption> under it is italic, like the template's photo captions. Ideally, the screenshot shows the page's top, roof and all. Always write alt text that says what's on it.\n\nAdd cmu-shot--browser for a browser window, with a bar and three dots across the top; the window is as wide as the screenshot, never wider than the column. To show the page's address in the bar, add data-cmu-address with it, such as www.cmu.edu/example/; leave off the https://. It's decorative, so the alt text still says what's on the screenshot:",
       "notes": [
         "To let people see it up close, link it to its full-size image; see Enlarge on Click.",
         "To pair it with a short explanation, use Text With a Screenshot.",
         "To show two or three side by side, put them in a cmu-shots; see Side by Side.",
         "To feature it at the top of a page, use one screenshot or a stack of two or three in a Split Hero."
       ],
-      "classes": ["figure.cmu-shot", "cmu-shot--browser", "cmu-shot--phone", "cmu-shots"],
+      "classes": [
+        "figure.cmu-shot",
+        "cmu-shot--browser",
+        "cmu-shot--phone",
+        "cmu-shots",
+        "data-cmu-address"
+      ],
       "examples": [
-        "<div class=\"cmu-shots\">\n  <figure class=\"cmu-shot\">\n    <img src=\"images/gallery-syllabus-registry.jpg\" alt=\"A home page with a search box over a table of course sections, with filters on the left.\" width=\"480\">\n    <figcaption>A screenshot with a border.</figcaption>\n  </figure>\n  <figure class=\"cmu-shot cmu-shot--browser\">\n    <img src=\"images/gallery-syllabus-registry.jpg\" alt=\"A home page with a search box over a table of course sections, with filters on the left.\" width=\"480\">\n    <figcaption>The same screenshot in a browser window.</figcaption>\n  </figure>\n</div>",
+        "<div class=\"cmu-shots\">\n  <figure class=\"cmu-shot\">\n    <img src=\"images/gallery-syllabus-registry.jpg\" alt=\"A home page with a search box over a table of course sections, with filters on the left.\" width=\"480\">\n    <figcaption>With a border.</figcaption>\n  </figure>\n  <figure class=\"cmu-shot cmu-shot--browser\">\n    <img src=\"images/gallery-syllabus-registry.jpg\" alt=\"A home page with a search box over a table of course sections, with filters on the left.\" width=\"480\">\n    <figcaption>In a browser window.</figcaption>\n  </figure>\n  <figure class=\"cmu-shot cmu-shot--browser\" data-cmu-address=\"www.cmu.edu/example/\">\n    <img src=\"images/gallery-syllabus-registry.jpg\" alt=\"A home page with a search box over a table of course sections, with filters on the left.\" width=\"480\">\n    <figcaption>In a browser window, with an address.</figcaption>\n  </figure>\n</div>",
         "<figure class=\"cmu-shot cmu-shot--phone\">\n  <img src=\"images/example-phone.jpg\" alt=\"The Web Kilt's home page on a phone: the site name, then Made to Measure for CMU Sites and Apps with its buttons.\" width=\"860\" height=\"1580\">\n  <figcaption>A page on a phone.</figcaption>\n</figure>",
         "<div class=\"cmu-shots\">\n  <figure class=\"cmu-shot cmu-shot--browser\">\n    <img src=\"images/example-browser.jpg\" alt=\"The Web Kilt's home page on a wide screen: Made to Measure for CMU Sites and Apps, beside screenshots of three CMU sites.\" width=\"1200\" height=\"675\">\n    <figcaption>On a computer.</figcaption>\n  </figure>\n  <figure class=\"cmu-shot cmu-shot--phone\">\n    <img src=\"images/example-phone.jpg\" alt=\"The Web Kilt's home page on a phone: the site name, then Made to Measure for CMU Sites and Apps with its buttons.\" width=\"860\" height=\"1580\">\n    <figcaption>On a phone.</figcaption>\n  </figure>\n</div>"
       ],
@@ -1746,7 +1752,7 @@
       "notes": [
         "One screenshot, drawn in a browser frame.",
         "Two or three screenshots, overlapping, with cmu-hero-art--stack. They're cropped to the same shape from the top, and the last one is in front, so put the main one last. To let people see one up close, link it to its full-size image with data-cmu-zoom (see Enlarge on Click).",
-        "A screenshot and a phone, with cmu-hero-art--phone: the page in a browser window, with the same page on a phone in front of it. Use one of each; anything after the phone doesn't show. The phone is a phone screenshot (figure.cmu-shot cmu-shot--phone).",
+        "A screenshot and a phone, with cmu-hero-art--phone: the page in a browser window, with the same page on a phone in front of it. Use one of each; anything after the phone doesn't show. The phone is a phone screenshot (figure.cmu-shot cmu-shot--phone). With one screenshot or a phone, data-cmu-address on the art shows the page's address in the browser bar (see Screenshots).",
         "A photo with no frame, with cmu-hero-art--plain: the place, the people or the thing the page is about."
       ],
       "classes": [
@@ -1764,7 +1770,7 @@
       "examples": [
         "<div class=\"cmu-hero\">\n  <div>\n    <h1>CMU Syllabi, in One Place</h1>\n    <p class=\"cmu-lead\">Find a course's syllabus before you register.</p>\n    <div class=\"cmu-cta-row\">\n      <a class=\"btn\" href=\"#hero\">Browse Syllabi</a>\n      <a class=\"cta\" href=\"#hero\">Get Started</a>\n      <p class=\"cmu-cta-note\">Anyone can search; sign in to view a syllabus.</p>\n    </div>\n  </div>\n  <div class=\"cmu-hero-art\">\n    <img src=\"images/gallery-syllabus-registry.jpg\" alt=\"A home page with a search box over a table of course sections with status pills, and a Sign In button.\">\n  </div>\n</div>",
         "<div class=\"cmu-hero-art cmu-hero-art--stack\">\n  <a href=\"images/hero-mc.jpg\" data-cmu-zoom><img src=\"images/hero-mc.jpg\" alt=\"A home page with a slideshow of the CMU letters built in Minecraft.\"></a>\n  <a href=\"images/hero-pm.jpg\" data-cmu-zoom><img src=\"images/hero-pm.jpg\" alt=\"A home page with a Build Your Placeholder button beside a photo of a Muppet in glasses.\"></a>\n</div>",
-        "<div class=\"cmu-hero\">\n  <div>\n    <h1>Made to Measure for CMU Sites and Apps</h1>\n    <p class=\"cmu-lead\">Components that fit CMU's web template, on any screen.</p>\n    <div class=\"cmu-cta-row\">\n      <a class=\"btn\" href=\"#hero\">Install the Kit</a>\n      <a class=\"cta\" href=\"#hero\">Get Started</a>\n    </div>\n  </div>\n  <div class=\"cmu-hero-art cmu-hero-art--phone\">\n    <img src=\"images/preview.jpg\" alt=\"A home page on a wide screen: Made to Measure for CMU Sites and Apps, beside screenshots of three sites.\">\n    <figure class=\"cmu-shot cmu-shot--phone\">\n      <img src=\"images/example-phone.jpg\" alt=\"The same home page on a phone.\" width=\"860\" height=\"1580\">\n    </figure>\n  </div>\n</div>"
+        "<div class=\"cmu-hero\">\n  <div>\n    <h1>Made to Measure for CMU Sites and Apps</h1>\n    <p class=\"cmu-lead\">Components that fit CMU's web template, on any screen.</p>\n    <div class=\"cmu-cta-row\">\n      <a class=\"btn\" href=\"#hero\">Install the Kit</a>\n      <a class=\"cta\" href=\"#hero\">Get Started</a>\n    </div>\n  </div>\n  <div class=\"cmu-hero-art cmu-hero-art--phone\" data-cmu-address=\"webkilt.andrew.cmu.edu\">\n    <img src=\"images/preview.jpg\" alt=\"A home page on a wide screen: Made to Measure for CMU Sites and Apps, beside screenshots of three sites.\">\n    <figure class=\"cmu-shot cmu-shot--phone\">\n      <img src=\"images/example-phone.jpg\" alt=\"The same home page on a phone.\" width=\"860\" height=\"1580\">\n    </figure>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
