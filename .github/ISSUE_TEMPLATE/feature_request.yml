@@ -2,6 +2,18 @@ name: Feature Request
 description: Something the project should do that it doesn't yet.
 labels: [enhancement]
 body:
+  - type: dropdown
+    id: version
+    attributes:
+      label: Which Version?
+      description: The number in the version you load, such as 0.8.2, or in the docs' address (/0/ or /1/).
+      options:
+        - 0.x (the current template)
+        - 1.x (the Drupal template)
+        - Both
+        - Not Sure
+    validations:
+      required: true
   - type: textarea
     id: use
     attributes:
