@@ -18,10 +18,10 @@ body:is(.cmu-app, .cmu-framed) fieldset > ul {
 body:is(.cmu-app, .cmu-framed) fieldset > ul > li {
   margin-left: 0;
 }
-/* A label right before a text box or menu, and a fieldset's legend: on their
-   own line, in small gray capitals like cmu-label. Checkbox and radio button
-   labels stay as they are, and so does a legend that asks a question (choice
-   rows, a question card, matching, sorting, a card sort). */
+/* A label right before a text box, menu or file input, and a fieldset's
+   legend: on their own line, in small gray capitals like cmu-label. Checkbox
+   and radio button labels stay as they are, and so does a legend that asks a
+   question (choice rows, a question card, matching, sorting, a card sort). */
 body:is(.cmu-app, .cmu-framed)
   label:has(
     + select,
@@ -30,8 +30,15 @@ body:is(.cmu-app, .cmu-framed)
     + input[type="email"],
     + input[type="search"],
     + input[type="number"],
+    + input[type="url"],
+    + input[type="tel"],
+    + input[type="password"],
     + input[type="date"],
     + input[type="datetime-local"],
+    + input[type="time"],
+    + input[type="month"],
+    + input[type="week"],
+    + input[type="file"],
     + .cmu-field-button,
     + .cmu-suggest
   ),
