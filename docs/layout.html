@@ -1025,6 +1025,13 @@
             <h1 id="quirks">Template Quirks</h1>
             <ul>
               <li>
+                The template's script clears the browser's local storage on every page load, when it
+                sets up its list filters, whether or not the page has any. On www.cmu.edu that wipes
+                what every site there saved, since they share one address. Keep what a page
+                remembers in a cookie or in session storage instead; the kit's tabs keep the chosen
+                tab in a cookie for this reason.
+              </li>
+              <li>
                 Tables are <code>display: block</code> so they scroll on phones, which stops them
                 stretching. Add <code>cmu-full</code> to stretch one to full width from 768px up.
               </li>
