@@ -439,7 +439,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#closable",
       "labels": ["CMS", "Script"],
-      "description": "An announcement people can close: a heading, a sentence or two, an optional button and an × at the right, on a color. On phones the × moves to the top corner and the button runs the full width.\n\nA full-width section in dark gray, with a ghost button:",
+      "description": "An announcement people can close: a heading, a sentence or two, an optional button and an × at the right, on a color. Use it as a full-width section, like an announcement, or as a block inside the page's content. On phones the × moves to the top corner and the button runs the full width.\n\nA full-width section in dark gray, with a ghost button:",
       "notes": [
         "Name the close button with aria-label, such as \"Close Self-Guided Tours.\" It's an icon only, so its label is all a screen reader says.",
         "Add data-cmu-closable with a name to keep it closed in that browser. Use a new name when the content changes, so people who closed the old one see the new one. Without it, it's closed only until the page reloads.",
