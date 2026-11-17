@@ -1134,7 +1134,7 @@ a[data-cmu-zoom] {
   min-width: 0;
 }
 .cmu-closable-text > :is(h1, h2, h3, h4) {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.75rem;
   padding: 0;
   border: 0;
   font-size: 1.4rem;
@@ -1143,6 +1143,11 @@ a[data-cmu-zoom] {
 }
 .cmu-closable-text > p {
   margin: 0;
+}
+/* Whatever ends the text (a hint, a copy row) leaves no extra room below, so
+   the section's own padding keeps it centered */
+.cmu-closable .cmu-closable-text > :last-child {
+  margin-bottom: 0;
 }
 .cmu-closable-text > p + p {
   margin-top: 0.5rem;
