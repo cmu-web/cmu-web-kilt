@@ -577,7 +577,8 @@
 
   // Options after a menu: a <select data-cmu-options>, then, after it in the
   // same parent, a block for each value with further controls, <div
-  // data-cmu-option="value">. Only the block for the picked value shows; a
+  // data-cmu-option="value">, or several values, "link upload", for a block
+  // more than one choice shares. Only the picked value's blocks show; a
   // value with none shows nothing, and a rule (<hr>) right after the menu goes
   // too. Without the script, every block shows. See Options Under a Choice in
   // the docs (forms.html).
@@ -585,7 +586,7 @@
     var any = false;
     for (var el = select.nextElementSibling; el; el = el.nextElementSibling)
       if (el.hasAttribute("data-cmu-option")) {
-        el.hidden = el.getAttribute("data-cmu-option") !== select.value;
+        el.hidden = el.getAttribute("data-cmu-option").split(/\s+/).indexOf(select.value) < 0;
         any = any || !el.hidden;
       }
     var rule = select.nextElementSibling;

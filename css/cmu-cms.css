@@ -1362,6 +1362,14 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
 .cmu-copy-row > .btn {
   margin: 0;
 }
+/* A hint under the row, close to it, as under a field */
+.cmu-copy-row:has(+ .cmu-hint) {
+  margin-bottom: 0;
+}
+.cmu-copy-row + .cmu-hint {
+  margin: 0.35rem 0 1em;
+  padding: 0;
+}
 /* In a copy box, room on the right so the text never runs under the icon */
 .cmu-copyable > .cmu-snippet {
   padding-right: 3rem;

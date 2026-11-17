@@ -476,9 +476,11 @@
             <p>
               For a menu, give the <code>&lt;select&gt;</code> <code>data-cmu-options</code>, then
               after it a rule and a block for each value that has further options, with
-              <code>data-cmu-option</code> set to the value. <code>cmu-app.js</code> shows only the
-              picked value's block; mark the others <code>hidden</code> in the markup, so the page
-              loads right. Pick A Logo:
+              <code>data-cmu-option</code> set to the value, or to several values separated by
+              spaces for a block more than one choice shares (<code
+                >data-cmu-option="link upload"</code
+              >). <code>cmu-app.js</code> shows only the picked value's blocks; mark the others
+              <code>hidden</code> in the markup, so the page loads right. Pick A Logo:
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">

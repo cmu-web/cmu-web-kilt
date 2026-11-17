@@ -480,6 +480,12 @@ nav li.cmu-account-menu .cmu-profile-picture {
 .cmu-hint {
   font-size: 0.85em;
 }
+/* On a dark section (invert), small text is the section's own light color,
+   a little dimmed, instead of a gray it can't be read against */
+.invert :is(.cmu-muted, .cmu-hint) {
+  color: inherit;
+  opacity: 0.85;
+}
 /* A hint right under its field: the template's space below the field moves
    below the hint, and the template's padding on every <p> goes */
 body:is(.cmu-app, .cmu-framed) :is(input, select, textarea):has(+ p.cmu-hint) {
