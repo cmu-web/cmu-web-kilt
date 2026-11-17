@@ -95,6 +95,23 @@
       announce("Copied.");
     }, fallback);
   });
+  // Download buttons (a link styled as a btn, with download, or any link with
+  // data-cmu-download, such as a CMS's own button block): say "Downloaded"
+  // for two seconds, the way Copy says "Copied", and tell screen readers
+  // which file
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest && e.target.closest("a.btn[download], a[data-cmu-download]");
+    if (!link || !link.getAttribute("href")) return;
+    flash(link, "Downloaded", "copied");
+    announce(
+      "Downloaded " +
+        (link.getAttribute("download") ||
+          link.getAttribute("data-cmu-download") ||
+          decodeURIComponent((link.pathname || "").split("/").pop()) ||
+          "the file") +
+        ".",
+    );
+  });
 
   // In-page links: the template's script turns href="#id" into
   // javascript:void(0) (keeping the target in data-jump) and scrolls with its

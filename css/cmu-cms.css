@@ -55,18 +55,22 @@ nav#nav:focus {
 :is(h1, h2, h3, h4).rule-top:not(:first-child) {
   margin-top: 2rem;
 }
-/* Right after a section with a background color, the change of color already
-   marks the new section, so the next section's line is redundant */
-:is(.content, .grid):is(
-    .grey,
-    .cmu-lightgrey,
-    .darkgrey,
-    .red,
-    .gold,
-    .blue,
-    .teal,
-    .green,
-    .darkgreen
+/* Right after a section with a background color, or one that ends with a
+   split hero (cmu-hero, a tinted block of its own), the change of color
+   already marks the new section, so the next section's line is redundant */
+:is(
+    :is(.content, .grid):is(
+      .grey,
+      .cmu-lightgrey,
+      .darkgrey,
+      .red,
+      .gold,
+      .blue,
+      .teal,
+      .green,
+      .darkgreen
+    ),
+    .content:has(> div > .cmu-hero:last-child)
   )
   + :is(.content, .grid)
   > div
@@ -1115,11 +1119,13 @@ a[data-cmu-zoom] {
   gap: 1rem 2.5rem;
   padding-right: 3.5rem;
 }
-div.cmu-closable:not(.content) {
+/* :is(#content, body): the template zeroes a grid item's side padding, which
+   would put the close button flush against the edge */
+:is(#content, body) div.cmu-closable:not(.content) {
   box-sizing: border-box;
   padding: 1.5rem 2rem;
 }
-div.cmu-closable:not(.content) > div {
+:is(#content, body) div.cmu-closable:not(.content) > div {
   padding-top: 0;
   padding-bottom: 0;
 }

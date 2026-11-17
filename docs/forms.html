@@ -282,7 +282,10 @@
       </div>
             <p>
               To download something the page made, put the file type in a menu with Download beside
-              it, the size in the hint and the file's name in the caption under it:
+              it, the file's name and size in the hint. Once clicked, Download says Downloaded for a
+              moment, the way Copy says Copied. That's automatic for a link with
+              <code>btn</code> and <code>download</code>; add <code>data-cmu-download</code> to any
+              other download link, such as a CMS's own button:
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -296,7 +299,7 @@
             </select>
             <button class="btn" type="button">Download</button>
           </div>
-          <p class="cmu-hint" id="kit-file-type-hint">860 &times; 1580 pixels, 182 KB</p>
+          <p class="cmu-hint" id="kit-file-type-hint">screenshot.webp, 860 &times; 1580 pixels, 182 KB</p>
         </form>
       </div>
 

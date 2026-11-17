@@ -814,7 +814,7 @@
       "classes": ["cmu-field-button"],
       "examples": [
         "<form>\n  <label for=\"kit-add-id\">Add by Andrew ID</label>\n  <div class=\"cmu-field-button\">\n    <input type=\"text\" id=\"kit-add-id\" name=\"andrewid\" value=\"ac00\" autocomplete=\"off\">\n    <button class=\"btn\" type=\"submit\">Add</button>\n  </div>\n</form>",
-        "<form>\n  <label for=\"kit-file-type\">File Type</label>\n  <div class=\"cmu-field-button\">\n    <select id=\"kit-file-type\" aria-describedby=\"kit-file-type-hint\">\n      <option>WebP</option>\n      <option>PNG</option>\n      <option>JPEG</option>\n    </select>\n    <button class=\"btn\" type=\"button\">Download</button>\n  </div>\n  <p class=\"cmu-hint\" id=\"kit-file-type-hint\">860 &times; 1580 pixels, 182 KB</p>\n</form>"
+        "<form>\n  <label for=\"kit-file-type\">File Type</label>\n  <div class=\"cmu-field-button\">\n    <select id=\"kit-file-type\" aria-describedby=\"kit-file-type-hint\">\n      <option>WebP</option>\n      <option>PNG</option>\n      <option>JPEG</option>\n    </select>\n    <button class=\"btn\" type=\"button\">Download</button>\n  </div>\n  <p class=\"cmu-hint\" id=\"kit-file-type-hint\">screenshot.webp, 860 &times; 1580 pixels, 182 KB</p>\n</form>"
       ],
       "frameworks": {}
     },
