@@ -2028,6 +2028,9 @@
       "<!-- Carnegie Mellon Web Kilt -->\n<link href=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.7/css/cmu-cms.css\" integrity=\"sha384-ia/R/szRnn/Iqi4EGdORpAx+7tfSpanscjuafPVH1bI52OIORwXZapGRsu0R0OgP\" crossorigin=\"anonymous\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\"/>\n<!-- Optional: Bootstrap Icons, for components labeled Icons -->\n<link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css\" integrity=\"sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk\" crossorigin=\"anonymous\" rel=\"stylesheet\" type=\"text/css\"/>",
       "<!-- Carnegie Mellon Web Kilt -->\n<script src=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.7/js/cmu-app.js\" integrity=\"sha384-bBJIAcy1sS1Z6dI48BgP+El60QeReOvr3hUQHlZgPkkPE2RfLWk2QDLCmxjxn/mm\" crossorigin=\"anonymous\"></script>"
     ],
+    "wordpress": [
+      "wp theme install https://github.com/cmu-web/cmu-web-forbes-and-moreword/releases/latest/download/forbes-and-moreword.zip --activate"
+    ],
     "other-cms": [
       "<!-- Carnegie Mellon Web Kilt -->\n<link href=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.7/css/cmu-cms.css\" integrity=\"sha384-ia/R/szRnn/Iqi4EGdORpAx+7tfSpanscjuafPVH1bI52OIORwXZapGRsu0R0OgP\" crossorigin=\"anonymous\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\"/>\n<!-- Optional: Bootstrap Icons, for components labeled Icons -->\n<link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css\" integrity=\"sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk\" crossorigin=\"anonymous\" rel=\"stylesheet\" type=\"text/css\"/>",
       "<!-- Carnegie Mellon Web Kilt -->\n<script src=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.7/js/cmu-app.js\" integrity=\"sha384-bBJIAcy1sS1Z6dI48BgP+El60QeReOvr3hUQHlZgPkkPE2RfLWk2QDLCmxjxn/mm\" crossorigin=\"anonymous\"></script>"

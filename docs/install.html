@@ -436,6 +436,54 @@ done</code></pre>
                 </div>
                 <div
                   class="kit-option"
+                  id="wordpress"
+                  data-option="WordPress"
+                  data-label="WordPress (Forbes &amp; Moreword)"
+                >
+                  <h4 class="kit-option-label">In WordPress</h4>
+                  <p>
+                    For WordPress, use Forbes &amp; Moreword, a block theme with CMU's template and
+                    this kit already in it, pinned to a release with its hashes, so there are no
+                    lines to add.
+                  </p>
+                  <ol class="cmu-steps">
+                    <li>
+                      In WordPress, select <strong>Appearance</strong> &rsaquo;
+                      <strong>Themes</strong> &rsaquo; <strong>Add New Theme</strong> &rsaquo;
+                      <strong>Upload Theme</strong>, choose
+                      <a
+                        href="https://github.com/cmu-web/cmu-web-forbes-and-moreword/releases/latest/download/forbes-and-moreword.zip"
+                        >forbes-and-moreword.zip</a
+                      >
+                      and activate it. Or, with WP-CLI:
+                      <pre
+                        class="kit-code"
+                      ><code>wp theme install https://github.com/cmu-web/cmu-web-forbes-and-moreword/releases/latest/download/forbes-and-moreword.zip --activate</code></pre>
+                    </li>
+                    <li>
+                      In <strong>Settings</strong> &rsaquo; <strong>General</strong>, set the
+                      <strong>Site Title</strong> to the site's name and the
+                      <strong>Tagline</strong> to the office or program that runs it.
+                    </li>
+                    <li>
+                      In <strong>Appearance</strong> &rsaquo; <strong>Editor</strong> &rsaquo;
+                      <strong>Navigation</strong>, build the menu: its labels are the site's tabs.
+                    </li>
+                    <li>
+                      In <strong>Appearance</strong> &rsaquo; <strong>Customize</strong> &rsaquo;
+                      <strong>Link Previews</strong>, choose the site's
+                      <strong>Preview Image</strong>, 1200 &times; 630 pixels.
+                    </li>
+                    <li>
+                      From then on, build pages from the theme's patterns, under
+                      <strong>Patterns</strong> &rsaquo; <strong>Carnegie Mellon Web Kilt</strong>.
+                      For anything else, each component's CMS tab has its WordPress steps.
+                      <a class="cta" href="components.html">Find a Component</a>
+                    </li>
+                  </ol>
+                </div>
+                <div
+                  class="kit-option"
                   id="other-cms"
                   data-option="Another CMS"
                   data-label="Another CMS (Drupal and Others)"
@@ -825,6 +873,10 @@ app.use("/vendor/cmu-web-kilt-0.8.7/js", express.static(path.join(kit, "js")));<
                 </li>
                 <li>Check your pages on staging before you publish.</li>
               </ol>
+              <p>
+                In WordPress with Forbes &amp; Moreword, update the theme instead: each of its
+                releases pins a release of this kit.
+              </p>
             </div>
             <div
               role="tabpanel"

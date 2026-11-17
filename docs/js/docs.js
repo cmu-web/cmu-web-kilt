@@ -230,9 +230,13 @@ function saveChoice(key, value) {
   document.cookie =
     key + "=" + encodeURIComponent(value) + "; path=/; max-age=31536000; SameSite=Lax";
 }
-var CMSES = ["Cascade", "Another CMS"];
+var CMSES = ["Cascade", "WordPress", "Another CMS"];
 // What the CMS menus say
-var CMS_NAMES = { Cascade: "Cascade", "Another CMS": "Another CMS (Drupal and Others)" };
+var CMS_NAMES = {
+  Cascade: "Cascade",
+  WordPress: "WordPress (Forbes & Moreword)",
+  "Another CMS": "Another CMS (Drupal and Others)",
+};
 function cmsChoice() {
   var saved = savedChoice("kit-cms");
   return CMSES.indexOf(saved) >= 0 ? saved : CMSES[0];
@@ -266,6 +270,7 @@ function standIn(cms, section) {
   block.className = "kit-cms kit-cms--none";
   block.setAttribute("data-cms", cms);
   var other = cms === "Another CMS",
+    wordpress = cms === "WordPress",
     name = other ? "another CMS" : cms;
   var label = '<p class="cmu-label kit-cms-label">In ' + name + "</p>";
   var script = has("script")
@@ -276,6 +281,41 @@ function standIn(cms, section) {
     : "";
   // Like the HTML tab's code, a box says what this CMS has for the component;
   // any instructions follow as ordinary text
+  if (wordpress) {
+    // Forbes & Moreword loads the template and all of the kit (cmu-app on the
+    // body, cmu-app.js), so a Custom HTML block works for nearly everything.
+    // What it can't do: a sidebar (its pages have none), the account area
+    // in the header, and Bootstrap Icons (it doesn't load them).
+    var page = location.pathname.split("/").pop();
+    var none =
+      page === "sidebars.html"
+        ? "Forbes &amp; Moreword's pages don't have a sidebar."
+        : page === "accounts.html"
+          ? "Forbes &amp; Moreword's header doesn't have an account area."
+          : has("icons")
+            ? "This component uses Bootstrap Icons, which Forbes &amp; Moreword doesn't load."
+            : "";
+    var paste =
+      "<p>Add a <strong>Custom HTML</strong> block and paste the HTML from the HTML tab. " +
+      "Forbes &amp; Moreword loads the template and the kit, so it shows as it does here; " +
+      "a full-width section goes on a page with the <strong>Full-Width Sections</strong> template." +
+      (page === "forms.html"
+        ? " WordPress doesn't do anything with a form pasted this way; to collect answers, " +
+          "use a forms plugin, whose fields get the kit's form styles."
+        : "") +
+      "</p>";
+    block.innerHTML = none
+      ? label +
+        '<p class="kit-unavailable">' +
+        none +
+        "</p>" +
+        (has("icons")
+          ? "<p>To use it, add Bootstrap Icons' stylesheet to the site, then paste the HTML " +
+            "into a <strong>Custom HTML</strong> block.</p>"
+          : "")
+      : label + paste;
+    return block;
+  }
   if (has("app"))
     block.innerHTML =
       label + '<p class="kit-unavailable">This component isn\'t available in ' + name + ".</p>";
