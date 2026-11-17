@@ -495,7 +495,7 @@ function cmsPanel(blocks) {
   panel.innerHTML =
     '<div class="kit-pick"><label class="sr-only" for="' +
     id +
-    '">CMS</label> <select id="' +
+    '">CMS</label> <select class="inline" id="' +
     id +
     '">' +
     CMSES.map(function (c) {
@@ -560,7 +560,7 @@ function frameworkPanel(pre) {
   panel.innerHTML =
     '<div class="kit-pick"><label class="sr-only" for="' +
     id +
-    '">Framework</label> <select id="' +
+    '">Framework</label> <select class="inline" id="' +
     id +
     '">' +
     FRAMEWORKS.map(function (f) {
@@ -600,7 +600,7 @@ document.querySelectorAll(".kit-options").forEach(function (set) {
       id +
       '">' +
       (kind === "cms" ? "CMS" : kind === "html" ? "Prototype or app" : "Framework or stack") +
-      '</label> <select id="' +
+      '</label> <select class="inline" id="' +
       id +
       '">' +
       options

@@ -245,19 +245,6 @@ td > .kit-where {
 .kit-pick {
   margin: 0.5rem 0 1.25rem;
 }
-/* A hint under the menu sits close to it, as hints do under app fields */
-#content .kit-pick .cmu-hint {
-  margin: 0.35rem 0 0;
-  padding: 0;
-}
-#content .kit-pick select {
-  width: 20rem;
-  max-width: 100%;
-  margin: 0;
-  padding: 0.5rem 0.75rem;
-  color: var(--cmu-ink);
-  font-size: 1.1rem;
-}
 .kit-how :is(.kit-framework-label, .kit-cms-label),
 .kit-framework-panel .kit-framework-label {
   display: none;
