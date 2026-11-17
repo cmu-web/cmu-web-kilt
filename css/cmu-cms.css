@@ -1576,6 +1576,76 @@ table.cmu-compare {
   width: 50%;
 }
 
+/* Site bar (cmu-site-bar): a slim gold strip at the top of the header, on
+   every page, for a state that lasts until it's turned off, such as
+   development mode or a preview. One short line, a button to end the state
+   and, when there's more than one thing to turn off, a cta to the place to
+   choose. The text is one <p>; the button and cta are a second, which sits
+   at the right and wraps under the text on a phone. Put it first in
+   <header>: the template gives every header > div
+   the roof's side gutters at every width, so its text lines up with the
+   wordmark. Clearly slimmer than the roof, so the two don't look like a
+   pair. */
+.cmu-site-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem 1.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  background: var(--cmu-gold);
+  color: var(--cmu-ink);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+/* Side room of its own, for anywhere outside the header (as in a demo); at
+   zero specificity, so the template's header > div gutters win inside it */
+:where(.cmu-site-bar) {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.cmu-site-bar p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.cmu-site-bar strong {
+  font-weight: 700;
+}
+/* Its buttons: solid dark on gold, or ghost (.ghost) for a lesser action */
+#container .cmu-site-bar :is(.btn, button) {
+  display: inline-block;
+  margin: 0.1rem 0;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  vertical-align: baseline;
+  color: #fff;
+  border: 1px solid var(--cmu-ink);
+  border-radius: 0;
+  background: var(--cmu-ink);
+}
+#container .cmu-site-bar :is(.btn, button):is(:hover, :focus-visible),
+#container .cmu-site-bar :is(.btn, button).ghost {
+  color: var(--cmu-ink);
+  background: transparent;
+}
+#container .cmu-site-bar :is(.btn, button).ghost:is(:hover, :focus-visible) {
+  color: #fff;
+  background: var(--cmu-ink);
+}
+/* A cta beside the button, to the place to choose what to turn off: the
+   template's dark cta, sized to the bar */
+#container .cmu-site-bar .cta {
+  margin: 0.1rem 0 0.1rem 1.25rem;
+  font-size: 0.8rem;
+  vertical-align: baseline;
+}
+
 /* Pills: gray unless given a tone */
 .cmu-pill {
   display: inline-block;

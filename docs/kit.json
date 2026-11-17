@@ -1679,6 +1679,28 @@
       "frameworks": {}
     },
     {
+      "id": "site-bar",
+      "name": "Site Bar",
+      "page": "Messages and Progress",
+      "url": "https://webkilt.andrew.cmu.edu/0/messages.html#site-bar",
+      "labels": ["CMS"],
+      "description": "A slim gold strip at the top of the header, on every page, for a state that lasts until it's turned off: development mode, a preview of unpublished changes or extra content switched on. Where a flash message reports what just happened, the site bar says what's still true.",
+      "notes": [
+        "Put it first in the <header>, in the layout every page uses, so it's on every page or none. There it gets the template's side margins and lines up with the wordmark.",
+        "One short line: what's on, then why it matters if that isn't obvious. Name the state in bold. Its button and cta go in a second paragraph, which sits at the right.",
+        "A button to end the state, named for what it does, such as Stop Previewing. It's solid; make it ghost (ghost) when ending the state is the lesser choice. When there's more than one thing to turn off, the button turns them all off, and a cta goes to the place to choose. Development mode has nothing to turn off, so it gets neither.",
+        "Not for acting as another user. That has its own frame and bar, meant to be hard to miss; see Acting as Another User.",
+        "Not for news or emergencies. A standing notice for everyone is an announcement, and a campus emergency is CMU's alert bar."
+      ],
+      "classes": ["cmu-site-bar", "ghost"],
+      "examples": [
+        "<div class=\"cmu-site-bar\"><p><strong>Development Mode:</strong> sign-in is off, and the data is made up.</p></div>",
+        "<div class=\"cmu-site-bar\"><p><strong>Preview:</strong> you're seeing changes that aren't published yet.</p><p><button type=\"button\" class=\"ghost\">Stop Previewing</button></p></div>",
+        "<div class=\"cmu-site-bar\"><p><strong>Showing archived courses</strong> from three past semesters.</p><p><button type=\"button\">Hide All</button><a class=\"cta\" href=\"#site-bar\">Choose Which to Show</a></p></div>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "site-name",
       "name": "Site Name",
       "page": "Page Layout",

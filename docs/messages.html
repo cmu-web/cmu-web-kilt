@@ -136,6 +136,75 @@
               campus emergencies. Don't use it for an app's messages.
             </p>
 
+            <h2 id="site-bar" class="rule-top">
+              Site Bar
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A slim gold strip at the top of the header, on every page, for a state that lasts
+              until it's turned off: development mode, a preview of unpublished changes or extra
+              content switched on. Where a flash message reports what just happened, the site bar
+              says what's still true.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Put it first in the <code>&lt;header&gt;</code></strong
+                >, in the layout every page uses, so it's on every page or none. There it gets the
+                template's side margins and lines up with the wordmark.
+              </li>
+              <li>
+                <strong>One short line</strong>: what's on, then why it matters if that isn't
+                obvious. Name the state in bold. Its button and cta go in a second paragraph, which
+                sits at the right.
+              </li>
+              <li>
+                <strong>A button to end the state</strong>, named for what it does, such as Stop
+                Previewing. It's solid; make it ghost (<code>ghost</code>) when ending the state is
+                the lesser choice. When there's more than one thing to turn off, the button turns
+                them all off, and a cta goes to the place to choose. Development mode has nothing to
+                turn off, so it gets neither.
+              </li>
+              <li>
+                <strong>Not for acting as another user.</strong> That has its own frame and bar,
+                meant to be hard to miss; see
+                <a href="accounts.html#acting-as">Acting as Another User</a>.
+              </li>
+              <li>
+                <strong>Not for news or emergencies.</strong> A standing notice for everyone is an
+                <a href="sections.html#announcements">announcement</a>, and a campus emergency is
+                CMU's alert bar.
+              </li>
+            </ul>
+            <p class="kit-classes"><code>cmu-site-bar</code>, <code>ghost</code> on its button</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-site-bar"><p><strong>Development Mode:</strong> sign-in is off, and the data is made up.</p></div>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-site-bar"><p><strong>Preview:</strong> you're seeing changes that aren't published yet.</p><p><button type="button" class="ghost">Stop Previewing</button></p></div>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-site-bar"><p><strong>Showing archived courses</strong> from three past semesters.</p><p><button type="button">Hide All</button><a class="cta" href="#site-bar">Choose Which to Show</a></p></div>
+      </div>
+            <p>In the layout, the bar goes first in the header, above the roof:</p>
+            <pre class="kit-code"><code>&lt;header&gt;
+  &lt;div class="cmu-site-bar"&gt;
+    &lt;p&gt;&lt;strong&gt;Development Mode:&lt;/strong&gt; sign-in is off, and the data is made up.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="roof red invert"&gt; &hellip; &lt;/div&gt;
+  &lt;div id="sitename"&gt; &hellip; &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+            <p>
+              <button type="button" class="btn ghost" data-kit-sitebar>
+                Show the Bar on This Page
+              </button>
+              <a class="cta" href="layout.html#try-header">Try It With the Rest of the Header</a>
+            </p>
+
             <h2 id="loading" class="rule-top">
               Loading
               <span class="kit-where"
