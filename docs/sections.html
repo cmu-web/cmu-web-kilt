@@ -1532,8 +1532,9 @@
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Name the close button</strong> with <code>aria-label</code>, such as "Close
-                Self-Guided Tours." It's an icon only, so its label is all a screen reader says.
+                <strong>Name the close button</strong> with <code>aria-label</code> and
+                <code>title</code>, such as "Close Self-Guided Tours." It's an icon only, so the
+                label is all a screen reader says, and the title shows as a tooltip.
               </li>
               <li>
                 <strong>Add <code>data-cmu-closable</code> with a name</strong> to keep it closed in
@@ -1571,7 +1572,7 @@
               <p>Walk the campus art collection at your own pace, with a map and audio for each piece.</p>
             </div>
             <p class="cmu-closable-actions"><a class="btn ghost" href="#closable">Take a Tour</a></p>
-            <button type="button" class="cmu-close" aria-label="Close Self-Guided Tours"></button>
+            <button type="button" class="cmu-close" aria-label="Close Self-Guided Tours" title="Close Self-Guided Tours"></button>
           </div>
         </div>
       </div>
@@ -1589,7 +1590,7 @@
               <h3>New This Semester</h3>
               <p>Equipment loans now last two weeks instead of one.</p>
             </div>
-            <button type="button" class="cmu-close" aria-label="Close New This Semester"></button>
+            <button type="button" class="cmu-close" aria-label="Close New This Semester" title="Close New This Semester"></button>
           </div>
         </div>
       </div>

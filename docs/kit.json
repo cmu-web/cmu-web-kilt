@@ -441,7 +441,7 @@
       "labels": ["CMS", "Script"],
       "description": "An announcement people can close: a heading, a sentence or two, an optional button and an × at the right, on a color. Use it as a full-width section, like an announcement, or as a block inside the page's content. On phones the × moves to the top corner and the button runs the full width.\n\nA full-width section in dark gray, with a ghost button:",
       "notes": [
-        "Name the close button with aria-label, such as \"Close Self-Guided Tours.\" It's an icon only, so its label is all a screen reader says.",
+        "Name the close button with aria-label and title, such as \"Close Self-Guided Tours.\" It's an icon only, so the label is all a screen reader says, and the title shows as a tooltip.",
         "Add data-cmu-closable with a name to keep it closed in that browser. Use a new name when the content changes, so people who closed the old one see the new one. Without it, it's closed only until the page reloads.",
         "The heading takes the level that fits where it is; it looks the same at any level.",
         "A ghost button (btn ghost) reads well on a dark color.",
@@ -455,8 +455,8 @@
         "data-cmu-closable"
       ],
       "examples": [
-        "<div class=\"content wide darkgrey invert cmu-closable\">\n  <div>\n    <div class=\"cmu-closable-text\">\n      <h2>Self-Guided Tours</h2>\n      <p>Walk the campus art collection at your own pace, with a map and audio for each piece.</p>\n    </div>\n    <p class=\"cmu-closable-actions\"><a class=\"btn ghost\" href=\"#closable\">Take a Tour</a></p>\n    <button type=\"button\" class=\"cmu-close\" aria-label=\"Close Self-Guided Tours\"></button>\n  </div>\n</div>",
-        "<div class=\"darkgrey invert cmu-closable\">\n  <div>\n    <div class=\"cmu-closable-text\">\n      <h3>New This Semester</h3>\n      <p>Equipment loans now last two weeks instead of one.</p>\n    </div>\n    <button type=\"button\" class=\"cmu-close\" aria-label=\"Close New This Semester\"></button>\n  </div>\n</div>"
+        "<div class=\"content wide darkgrey invert cmu-closable\">\n  <div>\n    <div class=\"cmu-closable-text\">\n      <h2>Self-Guided Tours</h2>\n      <p>Walk the campus art collection at your own pace, with a map and audio for each piece.</p>\n    </div>\n    <p class=\"cmu-closable-actions\"><a class=\"btn ghost\" href=\"#closable\">Take a Tour</a></p>\n    <button type=\"button\" class=\"cmu-close\" aria-label=\"Close Self-Guided Tours\" title=\"Close Self-Guided Tours\"></button>\n  </div>\n</div>",
+        "<div class=\"darkgrey invert cmu-closable\">\n  <div>\n    <div class=\"cmu-closable-text\">\n      <h3>New This Semester</h3>\n      <p>Equipment loans now last two weeks instead of one.</p>\n    </div>\n    <button type=\"button\" class=\"cmu-close\" aria-label=\"Close New This Semester\" title=\"Close New This Semester\"></button>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },

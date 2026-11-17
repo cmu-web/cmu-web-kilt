@@ -248,11 +248,11 @@
   }
 
   // Closable section: <div class="... cmu-closable"> with a
-  // <button class="cmu-close" aria-label="Close ..."> inside. The button hides
-  // the section and sends a cmu-close event from it (call preventDefault() on
-  // the event to keep it). With data-cmu-closable="name" it stays closed in
-  // this browser: a cookie, cmu-closed-name, for a year (not localStorage,
-  // which the template's script clears). Focus moves to what comes next. See
+  // <button class="cmu-close" aria-label="Close ..." title="Close ..."> inside.
+  // The button hides the section and sends a cmu-close event from it (call
+  // preventDefault() on the event to keep it). With data-cmu-closable="name"
+  // it stays closed in this browser: a cookie, cmu-closed-name, for a year
+  // (not localStorage, which the template's script clears). Focus moves to what comes next. See
   // Closable Section in the docs (sections.html).
   function closedCookie(name) {
     return "cmu-closed-" + name.replace(/[^A-Za-z0-9_-]/g, "");
