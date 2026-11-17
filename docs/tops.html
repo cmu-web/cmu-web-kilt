@@ -321,12 +321,20 @@
               class="kit-code"
             ><code>&lt;script src="https://www.youtube.com/iframe_api"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/tubular-reload.min.js"&gt;&lt;/script&gt;</code></pre>
-            <p class="kit-classes"><code>hero tubular</code>, <code>data-vid</code></p>
+            <p>
+              Many CMU videos are wide-screen, wider than 16:9, and YouTube pads them with black
+              bars above and below. Add <code>cmu-video-wide</code> to the hero to give it a
+              wide-screen shape (2.5 to 1), so the bars fall outside it. Check the video at a wide
+              and a narrow window; a video close to 16:9 doesn't need it.
+            </p>
+            <p class="kit-classes">
+              <code>hero tubular</code>, <code>data-vid</code>, <code>cmu-video-wide</code>
+            </p>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
-        <div class="hero tubular" role="img" aria-label="Video of the Carnegie Mellon campus." data-vid="hAdHQCNtGUk" data-img="https://placemellon.andrew.cmu.edu/1400/700?category=campus" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=campus)">
+        <div class="hero tubular cmu-video-wide" role="img" aria-label="Video of the Carnegie Mellon campus." data-vid="hAdHQCNtGUk" data-img="https://placemellon.andrew.cmu.edu/1400/700?category=campus" style="background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=campus)">
           <p class="caption">My heart is in the work. Classes start Jan. 12.</p>
         </div>
       </div>

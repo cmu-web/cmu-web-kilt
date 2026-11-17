@@ -1652,11 +1652,11 @@
       "page": "Page Tops",
       "url": "https://webkilt.andrew.cmu.edu/0/tops.html#video-hero",
       "labels": ["Template"],
-      "description": "A photo hero with a silent video looping behind it: add tubular and a YouTube video's id in data-vid, and the template plays the video and adds a pause button. Keep the photo: it shows while the video loads, on phones and wherever the video can't play. Pick a few seconds of motion that loops cleanly and works without sound. Load YouTube's player and the template's video script after the template's scripts; a university-provided CMS site adds them itself:",
+      "description": "A photo hero with a silent video looping behind it: add tubular and a YouTube video's id in data-vid, and the template plays the video and adds a pause button. Keep the photo: it shows while the video loads, on phones and wherever the video can't play. Pick a few seconds of motion that loops cleanly and works without sound. Load YouTube's player and the template's video script after the template's scripts; a university-provided CMS site adds them itself:\n\nMany CMU videos are wide-screen, wider than 16:9, and YouTube pads them with black bars above and below. Add cmu-video-wide to the hero to give it a wide-screen shape (2.5 to 1), so the bars fall outside it. Check the video at a wide and a narrow window; a video close to 16:9 doesn't need it.",
       "notes": [],
-      "classes": ["hero tubular", "data-vid"],
+      "classes": ["hero tubular", "data-vid", "cmu-video-wide"],
       "examples": [
-        "<div class=\"hero tubular\" role=\"img\" aria-label=\"Video of the Carnegie Mellon campus.\" data-vid=\"hAdHQCNtGUk\" data-img=\"https://placemellon.andrew.cmu.edu/1400/700?category=campus\" style=\"background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=campus)\">\n  <p class=\"caption\">My heart is in the work. Classes start Jan. 12.</p>\n</div>"
+        "<div class=\"hero tubular cmu-video-wide\" role=\"img\" aria-label=\"Video of the Carnegie Mellon campus.\" data-vid=\"hAdHQCNtGUk\" data-img=\"https://placemellon.andrew.cmu.edu/1400/700?category=campus\" style=\"background-image:url(https://placemellon.andrew.cmu.edu/900/600?category=campus)\">\n  <p class=\"caption\">My heart is in the work. Classes start Jan. 12.</p>\n</div>"
       ],
       "frameworks": {}
     },

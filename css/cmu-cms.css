@@ -259,6 +259,15 @@ p:has(> .btn + .cta) > .btn {
 .cmu-hero-art.cmu-hero-art--phone[data-cmu-address]::after {
   right: calc(16% + 1.2rem);
 }
+/* A wide-screen video in the template's Silent Video Hero (hero tubular):
+   YouTube pads a video wider than 16:9 with black bars, and the template
+   sizes the hero to 16:9 from its --vid-height-ratio. This sets the ratio
+   to 2.5 to 1, so the hero takes the video's shape and the bars fall
+   outside it. A video between 16:9 and 2.5 to 1 is cropped a little at the
+   sides instead. */
+.tubular.cmu-video-wide {
+  --vid-height-ratio: calc(1 / 2.5);
+}
 /* Two or three screenshots, overlapping down and to the right, cropped to
    one shape from the top; the last is in front */
 .cmu-hero-art--stack {
@@ -748,15 +757,19 @@ img.cmu-transparent,
   width: 18rem;
   max-width: min(18rem, 100%);
 }
-/* content-box, so the screen inside the bezel is 430 by 790 and the image
-   fills it exactly, without zooming in to cover; two classes, so a page's
-   own img { width: 100% } doesn't push the bezel past the frame */
+/* The whole phone, bezel included, is the frame's width; its shape
+   (430 by 766 for the outside) makes the screen inside the bezel exactly
+   430 by 790, so the image fills it without zooming in to cover. The width
+   is a percentage, not a container unit: Firefox can resolve container units
+   against the wrong size on its first layout, which drew the phone huge for
+   a moment. Two classes, so a page's own img { width: 100% } doesn't push
+   the bezel past the frame. */
 .cmu-shot.cmu-shot--phone img {
-  box-sizing: content-box;
-  width: 93.333cqw;
-  max-width: 93.333cqw;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
   height: auto;
-  aspect-ratio: 430 / 790;
+  aspect-ratio: 430 / 766;
   object-fit: cover;
   object-position: top;
   border: 3.333cqw solid #202226; /* 0.6rem at full size */
@@ -807,14 +820,14 @@ img.cmu-transparent,
 .cmu-shots:has(> .cmu-shot--browser) > figure:not(.cmu-shot--browser):not(.cmu-shot--phone) {
   margin-top: 1.6rem;
 }
-/* Beside a phone, a browser window is the phone's height (31.99rem, as
+/* Beside a phone, a browser window is the phone's height (32.06rem, as
    drawn: an 18rem frame, its 430 by 790 screen and bezel), less the
    window's bar (1.6rem and its 1px border), its screenshot cropped from
    the top, so their captions line up. Only while they fit side by
    side: below 48rem the window keeps its own shape. */
 @container (min-width: 48rem) {
   .cmu-shots:has(> .cmu-shot--phone) > .cmu-shot--browser img {
-    height: calc(31.99rem - 1.6rem - 1px);
+    height: calc(32.06rem - 1.6rem - 1px);
     object-fit: cover;
     object-position: left top;
   }
