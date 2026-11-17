@@ -22,8 +22,8 @@ alongside the template and keep your application's own data and behavior.
 
 ## Start With What You're Building
 
-- **A CMS site:** [Add the kit to Cascade or another CMS](https://webkilt.andrew.cmu.edu/0/install.html#cms).
-- **A web app:** [Use the kit with your stack](https://webkilt.andrew.cmu.edu/0/install.html#apps).
+- **A CMS site:** [Add the kit to Cascade or another CMS](https://webkilt.andrew.cmu.edu/0/install.html#kit-install-cms).
+- **A web app:** [Use the kit with your stack](https://webkilt.andrew.cmu.edu/0/install.html#kit-install-framework).
 - **A prototype:** [Try it in a page](https://webkilt.andrew.cmu.edu/0/install.html#prototype).
 - **With an AI coding agent:** [Connect the MCP server](https://github.com/cmu-web/cmu-web-kilt-mcp).
 

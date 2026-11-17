@@ -112,6 +112,12 @@
                 figures: "three columns," "a 768px screen."
               </li>
               <li>
+                <strong>Sizes in pixels:</strong> width &times; height with a multiplication sign
+                and spaces, "1200 &times; 630," in labels, hints and specs alike. It's a
+                measurement, not prose, so AP's "by" doesn't apply. A file name or code keeps the
+                plain x, as in <code>1200x630</code>.
+              </li>
+              <li>
                 <strong>Keep "a" with its noun.</strong> If a lone "a" would end a line, join it to
                 the next word with <code>&amp;nbsp;</code>, as in <code>a&amp;nbsp;camera</code>.
                 Don't use nonbreaking spaces to force whole sentences onto one line.
@@ -211,7 +217,7 @@
             <h2 id="links" class="rule-top">Buttons and Links</h2>
             <p>
               The template gives buttons, calls to action and ordinary links different visual
-              weight. Match that weight with words that say what happens next: start with a verb and name the task.
+              weight. Match that weight with words that say what happens next: start with a verb and name the task. A button right beside its field can be the verb alone, such as Add or Check, since the field&rsquo;s label names the task (see <a href="forms.html#field-button">Field With a Button</a>).
             </p>
             <div class="cmu-split">
               <div>
@@ -417,7 +423,7 @@
             <p>
               A color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add <code>invert</code> for white text on every color except
               <code>grey</code> and <code>gold</code>, which take dark text. Under each class is the brand color it is, from
-              <a href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, or
+              <a class="external" href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, or
               "template" where cmu.edu uses its own shade, a little darker so white text on it stays
               readable. See also the kit's <a href="#color-tokens">color variables</a>.
             </p>
@@ -450,7 +456,7 @@
             <ul>
               <li>
                 <strong>Brand:</strong> CMU's official colors, from
-                <a href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, such as
+                <a class="external" href="https://brand.cmu.edu/visual-identity/colors">brand.cmu.edu</a>, such as
                 Carnegie Red and the Tartan palette's threads.
               </li>
               <li>
@@ -574,7 +580,7 @@
                 <strong>Use the template's own classes first,</strong> as they are:
                 <code>btn</code>, <code>ghost</code>, <code>cta</code>, <code>table.alternate</code>
                 and the rest labeled Template on the <a href="components.html">Components</a> page.
-                The kit adds a class only for what the template doesn't do.
+                The kit adds a class only for what the template doesn't do. A few have quirks worth knowing before you build; see <a href="quirks.html">Template Quirks</a>.
               </li>
               <li>
                 <strong>Everything in the kit starts with <code>cmu-</code></strong
@@ -710,7 +716,12 @@
         <div>
           <nav id="nav">
             <ul>
-              <li><a href="install.html">Install</a></li>
+              <li>
+                <a href="install.html">Install</a>
+                <ul>
+                  <li><a href="quirks.html">Template Quirks</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="layout.html">Page Layout</a>
                 <ul>

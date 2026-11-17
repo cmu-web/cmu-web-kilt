@@ -16,14 +16,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Add the kit to a site in a CMS or to a web app. Either way you pin one exact version, and nothing changes until you move to a newer one."
+      content="Add the kit to plain HTML pages, a site in a CMS or an app built with a framework. Each way pins one exact version, and nothing changes until you move to a newer one."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Install the Kit - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Add the kit to a site in a CMS or to a web app. Either way you pin one exact version, and nothing changes until you move to a newer one."
+      content="Add the kit to plain HTML pages, a site in a CMS or an app built with a framework. Each way pins one exact version, and nothing changes until you move to a newer one."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/install.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -79,480 +79,75 @@
           <div>
             <h1>Install the Kit</h1>
             <p class="cmu-lead">
-              Add the kit to a site in a CMS or to a web app. Either way you pin one exact version,
-              and nothing changes until you move to a newer one.
+              Add the kit to plain HTML pages, a site in a CMS or an app built with a framework.
+              Each way pins one exact version, and nothing changes until you move to a newer one.
             </p>
-            <div class="cmu-paths">
-              <a class="cmu-path" href="#cms">
-                <strong>On a CMS Site</strong>
-                <span
-                  >In Cascade, Drupal or another CMS on CMU's template: add the kit's lines to every
-                  page, then paste components into any page.</span
-                >
-                <span class="cta">Set Up a CMS Site</span>
-              </a>
-              <a class="cmu-path" href="#apps">
-                <strong>In a Web App</strong>
-                <span
-                  >Keep a copy of a release in your app, in React, Astro, Django, Rails, Svelte,
-                  Vue, Node or any other stack.</span
-                >
-                <span class="cta">Set Up an App</span>
-              </a>
-              <a class="cmu-path" href="#prototype">
-                <strong>In a Prototype</strong>
-                <span>Link everything from the CDN for a mockup or a one-off page.</span>
-                <span class="cta">Start a Prototype</span>
-              </a>
-            </div>
             <p>
               Using an AI coding agent?
               <a class="cta" href="./#agent">Set Up With an AI Agent</a>
             </p>
-
-            <h2 id="cms" class="rule-top">CMS Sites</h2>
-            <p>
-              A university-provided CMS site already has CMU's template, so you only have to add the
-              kit's files: <code>cmu-cms.css</code> in the head of every page, after the template's
-              stylesheet and before the site's own, if it has one, so the site's styles take
-              priority. Components labeled Script also use <code>cmu-app.js</code>, loaded just
-              before <code>&lt;/body&gt;</code>. Keep the comment above each line, so whoever
-              changes versions later can find the kit's lines among the site's other code.
-            </p>
-
-            <div class="kit-options" data-kit-options="cms">
-              <div class="kit-option" id="cascade" data-option="Cascade">
-                <h3 class="kit-option-label">In Cascade</h3>
-                <p>
-                  Cascade adds code to every page from text blocks that the site's
-                  <code>setup</code> block lists under Additional Code, each at a location: In Head
-                  or Before Closing Body. Keep one block for each location, holding everything the
-                  site adds there: the kit, the site's own stylesheet, analytics.
-                </p>
-                <ol class="cmu-steps">
-                  <li>
-                    In the site's top folder, choose <strong>Add Content</strong> &rsaquo;
-                    <strong>Block</strong> &rsaquo; <strong>Text Block</strong>. Name it
-                    <code>head-includes</code>, check <strong>Advanced editor</strong>, paste the
-                    kit's lines and save it:
-                    <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/css/cmu-cms.css" integrity="sha384-dCP5XMJULZEvqmdjLCHvUNinDSy59RfSemYqqhG/++GtwvqwfT97ee035dy0O5xf" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
-&lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
-&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet" type="text/css"/&gt;</code></pre>
-                    <figure class="cmu-shot">
-                      <img
-                        src="images/install-cascade-head.png"
-                        alt="Cascade's head-includes text block, with Advanced editor checked and the kit's comment and link in it."
-                        width="700"
-                        height="200"
-                      />
-                    </figure>
-                  </li>
-                  <li>
-                    For components labeled Script, make a second text block,
-                    <code>body-end-includes</code>, the same way:
-                    <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/js/cmu-app.js" integrity="sha384-kPYaRNjRAHnEY27lj3wKX2UTLNzxejzJWxXQ9pxOoRSmE2u7/p+KpJDix8iJedFe" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
-                    <figure class="cmu-shot">
-                      <img
-                        src="images/install-cascade-end.png"
-                        alt="Cascade's body-end-includes text block, with the kit's comment and script line in it."
-                        width="700"
-                        height="200"
-                      />
-                    </figure>
-                  </li>
-                  <li>
-                    Open the site's <code>setup</code> block and select <strong>Edit</strong>. Near
-                    the end, set <strong>Additional Code</strong> to <strong>Yes</strong>. Add a
-                    <strong>Code</strong> item for each block: <code>head-includes</code> at
-                    <strong>In Head</strong>, and <code>body-end-includes</code> at
-                    <strong>Before Closing Body</strong>. Save it.
-                    <figure class="cmu-shot">
-                      <img
-                        src="images/install-cascade-setup.png"
-                        alt="The setup block's Additional Code: Yes, with two Code items, head-includes In Head and body-end-includes Before Closing Body."
-                        width="602"
-                        height="412"
-                      />
-                    </figure>
-                  </li>
-                  <li>
-                    Preview a page to check, then publish the site's pages, which pick up the
-                    <code>setup</code> block's code when they're published.
-                  </li>
-                  <li>
-                    From then on, paste components into any page's content section, in its Source
-                    code view.
-                    <a class="cta" href="components.html">Find a Component</a>
-                  </li>
-                </ol>
-              </div>
-              <div
-                class="kit-option"
-                id="other-cms"
-                data-option="Another CMS"
-                data-label="Another CMS (Drupal and Others)"
+            <h2 id="setup" class="rule-top">Set Up the Kit</h2>
+            <p>Pick the tab that matches how your site is built:</p>
+            <div
+              class="cmu-tabs"
+              role="tablist"
+              id="kit-install"
+              aria-label="How to Install"
+              data-cmu-tabs="kit-how"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="kit-install-html-tab"
+                aria-controls="kit-install-html"
+                aria-selected="true"
+                data-cmu-tab="html"
               >
-                <h3 class="kit-option-label">In Another CMS</h3>
-                <p>
-                  In Drupal or another CMS on CMU's template, add the kit's lines where the theme
-                  adds code to every page, usually the theme's page template or a setting for extra
-                  code. If you don't manage the theme, ask whoever does.
-                </p>
-                <p>In the head, after the template's stylesheet:</p>
-                <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/css/cmu-cms.css" integrity="sha384-dCP5XMJULZEvqmdjLCHvUNinDSy59RfSemYqqhG/++GtwvqwfT97ee035dy0O5xf" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
-&lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
-&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet" type="text/css"/&gt;</code></pre>
-                <p>
-                  In order to use components labeled Script, you'll also need to include this just
-                  before
-                  <code>&lt;/body&gt;</code>:
-                </p>
-                <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/js/cmu-app.js" integrity="sha384-kPYaRNjRAHnEY27lj3wKX2UTLNzxejzJWxXQ9pxOoRSmE2u7/p+KpJDix8iJedFe" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
-                <p>
-                  Paste components into a page's HTML source. Keep a separate, site-specific
-                  stylesheet for anything particular to the site. We don't recommend overriding
-                  <code>cmu-</code> classes there; if a component doesn't fit, ask for a change to
-                  the kit. Try a new version on staging before you publish.
-                </p>
-              </div>
+                HTML
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="kit-install-cms-tab"
+                aria-controls="kit-install-cms"
+                aria-selected="false"
+                data-cmu-tab="cms"
+              >
+                CMS
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="kit-install-framework-tab"
+                aria-controls="kit-install-framework"
+                aria-selected="false"
+                data-cmu-tab="framework"
+              >
+                Framework
+              </button>
             </div>
-
-            <h2 id="apps" class="rule-top">Web Apps</h2>
-            <p>
-              A web app builds its own pages on CMU's template: it loads the template's font,
-              stylesheets and scripts, both of the kit's stylesheets and the kit's script, and wraps
-              each page in the template's header and footer. Start from
-              <a href="layout.html#skeleton">The Whole Page</a>, which has all of it, and read the
-              <a href="layout.html#quirks">template quirks</a> under it before you build. Keep your
-              own copy of a release in the app, so it doesn't depend on jsDelivr being up.
-            </p>
-            <p>Load the files in this order:</p>
-            <pre class="kit-code"><code>&lt;head&gt;
-  &lt;!-- CMU's template --&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/print.min.css" media="print" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/favicon.ico" rel="icon"&gt;
-  &lt;link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed"&gt;
-  &lt;meta content="#9f0000" name="msapplication-TileColor"&gt;
-  &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
-  &lt;!-- Carnegie Mellon Web Kilt --&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
-  &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
-  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
-  &lt;!-- Your app --&gt;
-  &lt;link href="/css/your-app.css" rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-
-  &lt;!-- The template's header, your page, the template's footer --&gt;
-
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
-&lt;/body&gt;</code></pre>
-            <p>
-              Use <code>&lt;link&gt;</code> tags, not <code>@import</code>, which loads files one at
-              a time. Give <code>&lt;body&gt;</code> the class <code>cmu-app</code>. A page shown
-              inside another tool, such as a Canvas LTI frame, has no CMU header or footer; give it
-              <code>cmu-framed</code> instead, which also pads the page; see
-              <a href="layout.html#framed">Framed Pages</a>.
-            </p>
-
-            <p>
-              To keep your own copy, copy a release's files into your app's static folder, with the
-              version in the folder name so it's obvious which one you have, and commit them:
-            </p>
-            <pre class="kit-code"><code>V=0.8.2
-D=static/vendor/cmu-web-kilt-$V
-mkdir -p $D/css $D/js
-for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
-  curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$V/$f" -o "$D/$f"
-done</code></pre>
-            <ul class="cmu-checks">
-              <li><strong>Don't edit the copied files.</strong> A newer release replaces them.</li>
-              <li>
-                <strong>Keep your own styles separate,</strong> in an application-specific
-                stylesheet. We don't recommend overriding <code>cmu-</code> classes there; if a
-                component doesn't fit, ask for a change to the kit.
-              </li>
-              <li>
-                <strong>Choose a release</strong> and move to newer ones as
-                <a href="#versions">Versions</a> describes.
-              </li>
-            </ul>
-
-            <p>
-              Pick your stack for where the kit's files go. Each component's Framework tab has what
-              that component takes in React, Astro, Django, Rails, Svelte or Vue.
-            </p>
-            <div class="kit-options" id="frameworks" data-kit-options="framework">
-              <div class="kit-option" id="react" data-option="React" data-label="React 18 and 19">
-                <h3 class="kit-option-label">In React</h3>
-                <p>
-                  Copy the kit's <code>css/</code> and <code>js/</code> into
-                  <code>public/vendor/cmu-web-kilt-0.8.2/</code> and load everything in
-                  <code>index.html</code>, not from components: the template's scripts and
-                  <code>cmu-app.js</code> run once for the page, and the kit starts components as
-                  React renders them. Render the app into the template's
-                  <code>&lt;main id="content"&gt;</code>
-                  (<code>createRoot(document.getElementById("content"))</code>), so its sections sit
-                  where the template expects them, and keep the template's header and footer in
-                  <code>index.html</code>, outside the app.
+            <div role="tabpanel" id="kit-install-html" aria-labelledby="kit-install-html-tab">
+              <p>
+                Pages you write yourself, or a server's templates, with no framework. Choose a
+                prototype to try the kit, or a production app for a site people will use.
+              </p>
+              <div class="kit-options" data-kit-options="html">
+                <p class="cmu-hint">
+                  A prototype links everything from jsDelivr. A real app keeps its own copy of a
+                  release, so it doesn&rsquo;t depend on jsDelivr being up.
                 </p>
-                <pre class="kit-code"><code>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Your App - Carnegie Mellon University&lt;/title&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-  &lt;div id="container"&gt;
-    &lt;!-- The template's header --&gt;
-    &lt;main id="content"&gt;&lt;/main&gt;
-    &lt;!-- The template's footer --&gt;
-  &lt;/div&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
-  &lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-              </div>
-              <div class="kit-option" id="svelte" data-option="Svelte" data-label="Svelte 5">
-                <h3 class="kit-option-label">In Svelte</h3>
-                <p>
-                  In SvelteKit, copy the kit's <code>css/</code> and <code>js/</code> into
-                  <code>static/vendor/cmu-web-kilt-0.8.2/</code> and load everything in
-                  <code>src/app.html</code>. The app renders into the template's
-                  <code>&lt;main id="content"&gt;</code>, and the kit starts components as Svelte
-                  renders them; keep the template's header and footer in <code>app.html</code>,
-                  outside the app.
-                </p>
-                <pre class="kit-code"><code>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
-  %sveltekit.head%
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-  &lt;div id="container"&gt;
-    &lt;!-- The template's header --&gt;
-    &lt;main id="content"&gt;%sveltekit.body%&lt;/main&gt;
-    &lt;!-- The template's footer --&gt;
-  &lt;/div&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-              </div>
-              <div class="kit-option" id="vue" data-option="Vue" data-label="Vue 3">
-                <h3 class="kit-option-label">In Vue</h3>
-                <p>
-                  Copy the kit's <code>css/</code> and <code>js/</code> into
-                  <code>public/vendor/cmu-web-kilt-0.8.2/</code> and load everything in
-                  <code>index.html</code>, not from components: the template's scripts and
-                  <code>cmu-app.js</code> run once for the page, and the kit starts components as
-                  Vue renders them. Mount the app on the template's
-                  <code>&lt;main id="content"&gt;</code>
-                  (<code>createApp(App).mount("#content")</code>), and keep the template's header
-                  and footer in <code>index.html</code>, outside the app.
-                </p>
-                <pre class="kit-code"><code>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Your App - Carnegie Mellon University&lt;/title&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-  &lt;div id="container"&gt;
-    &lt;!-- The template's header --&gt;
-    &lt;main id="content"&gt;&lt;/main&gt;
-    &lt;!-- The template's footer --&gt;
-  &lt;/div&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
-  &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-              </div>
-              <div class="kit-option" id="astro" data-option="Astro" data-label="Astro 4 and Later">
-                <h3 class="kit-option-label">In Astro</h3>
-                <p>
-                  Copy the kit's <code>css/</code> and <code>js/</code> into
-                  <code>public/vendor/cmu-web-kilt-0.8.2/</code> and load everything in one layout
-                  that every page uses. Mark the scripts <code>is:inline</code>, so Astro leaves
-                  them as they are instead of bundling them, and build their addresses from
-                  <code>import.meta.env.BASE_URL</code>, so they still work when the site is served
-                  from a folder. The template's scripts expect a full page load, so leave out
-                  Astro's <code>&lt;ClientRouter /&gt;</code>.
-                </p>
-                <pre class="kit-code"><code>---
-// src/layouts/Layout.astro
-const { title } = Astro.props;
-const kit = `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}vendor/cmu-web-kilt-0.6.9`;
----
-&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;{title} - Carnegie Mellon University&lt;/title&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href={`${kit}/css/cmu-cms.css`} rel="stylesheet"&gt;
-  &lt;link href={`${kit}/css/cmu-app.css`} rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-  &lt;div id="container"&gt;
-    &lt;!-- The template's header --&gt;
-    &lt;main id="content"&gt;&lt;slot /&gt;&lt;/main&gt;
-    &lt;!-- The template's footer --&gt;
-  &lt;/div&gt;
-  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script is:inline src={`${kit}/js/cmu-app.js`}&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                <p>
-                  A page uses the layout and puts its sections in it. A component's markup goes in
-                  as it is in the HTML tab; Astro reads it as written, except that a brace in text
-                  starts an expression, so the Framework tab writes those as
-                  <code>{"{"}</code> and <code>{"}"}</code>.
-                </p>
-                <pre class="kit-code"><code>---
-// src/pages/index.astro
-import Layout from "../layouts/Layout.astro";
----
-&lt;Layout title="Your Site"&gt;
-  &lt;div class="cmu-hero"&gt;
-    ...
-  &lt;/div&gt;
-&lt;/Layout&gt;</code></pre>
-              </div>
-              <div
-                class="kit-option"
-                id="rails"
-                data-option="Rails"
-                data-label="Rails 7.2 and Later"
-              >
-                <h3 class="kit-option-label">In Rails</h3>
-                <p>
-                  Copy the kit's <code>css/</code> and <code>js/</code> into
-                  <code>public/vendor/cmu-web-kilt-0.8.2/</code> and link them from your layout.
-                  Load <code>cmu-app.js</code> in the <code>&lt;head&gt;</code> with
-                  <code>defer</code>, so Turbo keeps it from page to page; it starts the components
-                  on each new page, and on pages Turbo restores from its cache. The template's own
-                  scripts stay at the end of <code>&lt;body&gt;</code>, where Turbo runs them for
-                  each page.
-                </p>
-                <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;title&gt;&lt;%= content_for(:title) || "Your App" %&gt; - Carnegie Mellon University&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;%= csrf_meta_tags %&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js" defer&gt;&lt;/script&gt;
-  &lt;%= stylesheet_link_tag "application" %&gt;
-  &lt;%= javascript_importmap_tags %&gt;
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-  &lt;div id="container"&gt;
-    &lt;!-- The template's header --&gt;
-    &lt;main id="content"&gt;&lt;%= yield %&gt;&lt;/main&gt;
-    &lt;!-- The template's footer --&gt;
-  &lt;/div&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-              </div>
-              <div
-                class="kit-option"
-                id="django"
-                data-option="Django"
-                data-label="Django 5.2 and Later"
-              >
-                <h3 class="kit-option-label">In Django</h3>
-                <p>
-                  Copy the files into one of your Django apps' <code>static</code> folders, as
-                  above. <code>collectstatic</code> picks them up, and your base template links
-                  them:
-                </p>
-                <pre class="kit-code"><code>{% load static %}
-&lt;link href="{% static 'vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css' %}" rel="stylesheet"&gt;
-&lt;link href="{% static 'vendor/cmu-web-kilt-0.8.2/css/cmu-app.css' %}" rel="stylesheet"&gt;
-&lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
-&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
-&lt;script src="{% static 'vendor/cmu-web-kilt-0.8.2/js/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
-              </div>
-              <div class="kit-option" id="node" data-option="Node" data-label="Node 22 and Later">
-                <h3 class="kit-option-label">In Node</h3>
-                <p>
-                  Copy the files in, as above, or install the tagged release from GitHub so the
-                  version sits in <code>package.json</code>. Installing from GitHub only works where
-                  npm is allowed to fetch from it; many build machines aren't.
-                </p>
-                <pre
-                  class="kit-code"
-                ><code>npm install github:cmu-web/cmu-web-kilt#0.8.2</code></pre>
-                <p>Then serve its files. With Express:</p>
-                <pre class="kit-code"><code>const path = require("path");
-const kit = path.dirname(require.resolve("cmu-web-kilt/package.json"));
-app.use("/vendor/cmu-web-kilt-0.8.2/css", express.static(path.join(kit, "css")));
-app.use("/vendor/cmu-web-kilt-0.8.2/js", express.static(path.join(kit, "js")));</code></pre>
-              </div>
-              <div class="kit-option" id="other" data-option="Other" data-label="Another Stack">
-                <h3 class="kit-option-label">In Another Stack</h3>
-                <p>
-                  In PHP, Java or anything else, copy the files in as above and link them from your
-                  layout with your framework's own paths.
-                </p>
-              </div>
-            </div>
-
-            <h2 id="prototype" class="rule-top">Prototypes</h2>
-            <p>
-              For a mockup or a one-off page, link everything from the CDN. It's the quickest way to
-              start, but the page depends on jsDelivr. Copy the page below, the same one as
-              <a href="layout.html#skeleton">The Whole Page</a>. Every optional part is in place and
-              marked; leave out what you don't use.
-            </p>
-            <div class="cmu-peek">
-              <!-- whole-page:start (copied from layout.html#skeleton by npm run data) -->
-              <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
+                <div class="kit-option" id="prototype" data-option="Prototype">
+                  <h4 class="kit-option-label">A Prototype</h4>
+                  <p>
+                    For a mockup or a one-off page, link everything from the CDN. It's the quickest
+                    way to start, but the page depends on jsDelivr. Copy the page below, the same
+                    one as
+                    <a href="layout.html#skeleton">The Whole Page</a>. Every optional part is in
+                    place and marked; leave out what you don't use.
+                  </p>
+                  <div class="cmu-peek">
+                    <!-- whole-page:start (copied from layout.html#skeleton by npm run data) -->
+                    <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
@@ -668,22 +263,479 @@ app.use("/vendor/cmu-web-kilt-0.8.2/js", express.static(path.join(kit, "js")));<
 &lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/js/cmu-app.js" integrity="sha384-kPYaRNjRAHnEY27lj3wKX2UTLNzxejzJWxXQ9pxOoRSmE2u7/p+KpJDix8iJedFe" crossorigin="anonymous"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-              <!-- whole-page:end -->
-              <details class="cmu-more">
-                <summary>
-                  <span class="cmu-more-link"
-                    ><span class="cmu-more-closed">See the Whole Page</span
-                    ><span class="cmu-more-open">Hide the Whole Page</span></span
-                  >
-                </summary>
-              </details>
+                    <!-- whole-page:end -->
+                    <details class="cmu-more">
+                      <summary>
+                        <span class="cmu-more-link"
+                          ><span class="cmu-more-closed">See the Whole Page</span
+                          ><span class="cmu-more-open">Hide the Whole Page</span></span
+                        >
+                      </summary>
+                    </details>
+                  </div>
+                </div>
+                <div
+                  class="kit-option"
+                  id="apps"
+                  data-option="Production App"
+                  data-label="Production App"
+                >
+                  <h4 class="kit-option-label">A Production App</h4>
+                  <p>
+                    A web app builds its own pages on CMU's template: it loads the template's font,
+                    stylesheets and scripts, both of the kit's stylesheets and the kit's script, and
+                    wraps each page in the template's header and footer. Start from
+                    <a href="layout.html#skeleton">The Whole Page</a>, which has all of it, and read
+                    the <a href="quirks.html">template quirks</a> under it before you build. Keep
+                    your own copy of a release in the app.
+                  </p>
+                  <p>Load the files in this order:</p>
+                  <pre class="kit-code"><code>&lt;head&gt;
+  &lt;!-- CMU's template --&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/print.min.css" media="print" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/favicon.ico" rel="icon"&gt;
+  &lt;link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed"&gt;
+  &lt;meta content="#9f0000" name="msapplication-TileColor"&gt;
+  &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
+  &lt;!-- Carnegie Mellon Web Kilt --&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
+  &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
+  &lt;!-- Your app --&gt;
+  &lt;link href="/css/your-app.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+
+  &lt;!-- The template's header, your page, the template's footer --&gt;
+
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                  <p>
+                    Use <code>&lt;link&gt;</code> tags, not <code>@import</code>, which loads files
+                    one at a time. Give <code>&lt;body&gt;</code> the class <code>cmu-app</code>. A
+                    page shown inside another tool, such as a Canvas LTI frame, has no CMU header or
+                    footer; give it <code>cmu-framed</code> instead, which also pads the page; see
+                    <a href="layout.html#framed">Framed Pages</a>.
+                  </p>
+
+                  <p>
+                    To keep your own copy, copy a release's files into your app's static folder,
+                    with the version in the folder name so it's obvious which one you have, and
+                    commit them:
+                  </p>
+                  <pre class="kit-code"><code>V=0.8.2
+D=static/vendor/cmu-web-kilt-$V
+mkdir -p $D/css $D/js
+for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
+  curl -fsSL "https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@$V/$f" -o "$D/$f"
+done</code></pre>
+                  <ul class="cmu-checks">
+                    <li>
+                      <strong>Don't edit the copied files.</strong> A newer release replaces them.
+                    </li>
+                    <li>
+                      <strong>Keep your own styles separate,</strong> in an application-specific
+                      stylesheet. We don't recommend overriding <code>cmu-</code> classes there; if
+                      a component doesn't fit, ask for a change to the kit.
+                    </li>
+                    <li>
+                      <strong>Choose a release</strong> and move to newer ones as
+                      <a href="#versions">Versions</a> describes.
+                    </li>
+                  </ul>
+                  <p>
+                    In PHP, Java or anything else, copy the files in as above and link them from
+                    your layout with your framework's own paths.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" id="kit-install-cms" aria-labelledby="kit-install-cms-tab" hidden>
+              <p>
+                A university-provided CMS site already has CMU's template, so you only have to add
+                the kit's files: <code>cmu-cms.css</code> in the head of every page, after the
+                template's stylesheet and before the site's own, if it has one, so the site's styles
+                take priority. Components labeled Script also use <code>cmu-app.js</code>, loaded
+                just before <code>&lt;/body&gt;</code>. Keep the comment above each line, so whoever
+                changes versions later can find the kit's lines among the site's other code.
+              </p>
+
+              <div class="kit-options" data-kit-options="cms">
+                <div class="kit-option" id="cascade" data-option="Cascade">
+                  <h4 class="kit-option-label">In Cascade</h4>
+                  <p>
+                    Cascade adds code to every page from text blocks that the site's
+                    <code>setup</code> block lists under Additional Code, each at a location: In
+                    Head or Before Closing Body. Keep one block for each location, holding
+                    everything the site adds there: the kit, the site's own stylesheet, analytics.
+                  </p>
+                  <ol class="cmu-steps">
+                    <li>
+                      In the site's top folder, choose <strong>Add Content</strong> &rsaquo;
+                      <strong>Block</strong> &rsaquo; <strong>Text Block</strong>. Name it
+                      <code>head-includes</code>, check <strong>Advanced editor</strong>, paste the
+                      kit's lines and save it:
+                      <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/css/cmu-cms.css" integrity="sha384-dCP5XMJULZEvqmdjLCHvUNinDSy59RfSemYqqhG/++GtwvqwfT97ee035dy0O5xf" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
+&lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet" type="text/css"/&gt;</code></pre>
+                      <figure class="cmu-shot">
+                        <img
+                          src="images/install-cascade-head.png"
+                          alt="Cascade's head-includes text block, with Advanced editor checked and the kit's comment and link in it."
+                          width="700"
+                          height="200"
+                        />
+                      </figure>
+                    </li>
+                    <li>
+                      For components labeled Script, make a second text block,
+                      <code>body-end-includes</code>, the same way:
+                      <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/js/cmu-app.js" integrity="sha384-kPYaRNjRAHnEY27lj3wKX2UTLNzxejzJWxXQ9pxOoRSmE2u7/p+KpJDix8iJedFe" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+                      <figure class="cmu-shot">
+                        <img
+                          src="images/install-cascade-end.png"
+                          alt="Cascade's body-end-includes text block, with the kit's comment and script line in it."
+                          width="700"
+                          height="200"
+                        />
+                      </figure>
+                    </li>
+                    <li>
+                      Open the site's <code>setup</code> block and select <strong>Edit</strong>.
+                      Near the end, set <strong>Additional Code</strong> to <strong>Yes</strong>.
+                      Add a <strong>Code</strong> item for each block: <code>head-includes</code> at
+                      <strong>In Head</strong>, and <code>body-end-includes</code> at
+                      <strong>Before Closing Body</strong>. Save it.
+                      <figure class="cmu-shot">
+                        <img
+                          src="images/install-cascade-setup.png"
+                          alt="The setup block's Additional Code: Yes, with two Code items, head-includes In Head and body-end-includes Before Closing Body."
+                          width="602"
+                          height="412"
+                        />
+                      </figure>
+                    </li>
+                    <li>
+                      Preview a page to check, then publish the site's pages, which pick up the
+                      <code>setup</code> block's code when they're published.
+                    </li>
+                    <li>
+                      From then on, paste components into any page's content section, in its Source
+                      code view.
+                      <a class="cta" href="components.html">Find a Component</a>
+                    </li>
+                  </ol>
+                </div>
+                <div
+                  class="kit-option"
+                  id="other-cms"
+                  data-option="Another CMS"
+                  data-label="Another CMS (Drupal and Others)"
+                >
+                  <h4 class="kit-option-label">In Another CMS</h4>
+                  <p>
+                    In Drupal or another CMS on CMU's template, add the kit's lines where the theme
+                    adds code to every page, usually the theme's page template or a setting for
+                    extra code. If you don't manage the theme, ask whoever does.
+                  </p>
+                  <p>In the head, after the template's stylesheet:</p>
+                  <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/css/cmu-cms.css" integrity="sha384-dCP5XMJULZEvqmdjLCHvUNinDSy59RfSemYqqhG/++GtwvqwfT97ee035dy0O5xf" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
+&lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet" type="text/css"/&gt;</code></pre>
+                  <p>
+                    In order to use components labeled Script, you'll also need to include this just
+                    before
+                    <code>&lt;/body&gt;</code>:
+                  </p>
+                  <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.2/js/cmu-app.js" integrity="sha384-kPYaRNjRAHnEY27lj3wKX2UTLNzxejzJWxXQ9pxOoRSmE2u7/p+KpJDix8iJedFe" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+                  <p>
+                    Paste components into a page's HTML source. Keep a separate, site-specific
+                    stylesheet for anything particular to the site. We don't recommend overriding
+                    <code>cmu-</code> classes there; if a component doesn't fit, ask for a change to
+                    the kit. Try a new version on staging before you publish.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              role="tabpanel"
+              id="kit-install-framework"
+              aria-labelledby="kit-install-framework-tab"
+              hidden
+            >
+              <p>
+                A framework app sets up like a <a href="#apps">production app</a>: the same files,
+                loaded in the same order, from your own copy of a release. Pick your framework for
+                where the files go. Each component&rsquo;s Framework tab has what that component
+                takes in it.
+              </p>
+              <div class="kit-options" data-kit-options="framework">
+                <div class="kit-option" id="react" data-option="React" data-label="React 18 and 19">
+                  <h4 class="kit-option-label">In React</h4>
+                  <p>
+                    Copy the kit's <code>css/</code> and <code>js/</code> into
+                    <code>public/vendor/cmu-web-kilt-0.8.2/</code> and load everything in
+                    <code>index.html</code>, not from components: the template's scripts and
+                    <code>cmu-app.js</code> run once for the page, and the kit starts components as
+                    React renders them. Render the app into the template's
+                    <code>&lt;main id="content"&gt;</code>
+                    (<code>createRoot(document.getElementById("content"))</code>), so its sections
+                    sit where the template expects them, and keep the template's header and footer
+                    in
+                    <code>index.html</code>, outside the app.
+                  </p>
+                  <pre class="kit-code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Your App - Carnegie Mellon University&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;!-- The template's header --&gt;
+    &lt;main id="content"&gt;&lt;/main&gt;
+    &lt;!-- The template's footer --&gt;
+  &lt;/div&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
+  &lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <div class="kit-option" id="svelte" data-option="Svelte" data-label="Svelte 5">
+                  <h4 class="kit-option-label">In Svelte</h4>
+                  <p>
+                    In SvelteKit, copy the kit's <code>css/</code> and <code>js/</code> into
+                    <code>static/vendor/cmu-web-kilt-0.8.2/</code> and load everything in
+                    <code>src/app.html</code>. The app renders into the template's
+                    <code>&lt;main id="content"&gt;</code>, and the kit starts components as Svelte
+                    renders them; keep the template's header and footer in <code>app.html</code>,
+                    outside the app.
+                  </p>
+                  <pre class="kit-code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
+  %sveltekit.head%
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;!-- The template's header --&gt;
+    &lt;main id="content"&gt;%sveltekit.body%&lt;/main&gt;
+    &lt;!-- The template's footer --&gt;
+  &lt;/div&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script src="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <div class="kit-option" id="vue" data-option="Vue" data-label="Vue 3">
+                  <h4 class="kit-option-label">In Vue</h4>
+                  <p>
+                    Copy the kit's <code>css/</code> and <code>js/</code> into
+                    <code>public/vendor/cmu-web-kilt-0.8.2/</code> and load everything in
+                    <code>index.html</code>, not from components: the template's scripts and
+                    <code>cmu-app.js</code> run once for the page, and the kit starts components as
+                    Vue renders them. Mount the app on the template's
+                    <code>&lt;main id="content"&gt;</code>
+                    (<code>createApp(App).mount("#content")</code>), and keep the template's header
+                    and footer in <code>index.html</code>, outside the app.
+                  </p>
+                  <pre class="kit-code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Your App - Carnegie Mellon University&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;!-- The template's header --&gt;
+    &lt;main id="content"&gt;&lt;/main&gt;
+    &lt;!-- The template's footer --&gt;
+  &lt;/div&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js"&gt;&lt;/script&gt;
+  &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <div
+                  class="kit-option"
+                  id="astro"
+                  data-option="Astro"
+                  data-label="Astro 4 and Later"
+                >
+                  <h4 class="kit-option-label">In Astro</h4>
+                  <p>
+                    Copy the kit's <code>css/</code> and <code>js/</code> into
+                    <code>public/vendor/cmu-web-kilt-0.8.2/</code> and load everything in one layout
+                    that every page uses. Mark the scripts <code>is:inline</code>, so Astro leaves
+                    them as they are instead of bundling them, and build their addresses from
+                    <code>import.meta.env.BASE_URL</code>, so they still work when the site is
+                    served from a folder. The template's scripts expect a full page load, so leave
+                    out Astro's <code>&lt;ClientRouter /&gt;</code>.
+                  </p>
+                  <pre class="kit-code"><code>---
+// src/layouts/Layout.astro
+const { title } = Astro.props;
+const kit = `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}vendor/cmu-web-kilt-0.6.9`;
+---
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;{title} - Carnegie Mellon University&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href={`${kit}/css/cmu-cms.css`} rel="stylesheet"&gt;
+  &lt;link href={`${kit}/css/cmu-app.css`} rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;!-- The template's header --&gt;
+    &lt;main id="content"&gt;&lt;slot /&gt;&lt;/main&gt;
+    &lt;!-- The template's footer --&gt;
+  &lt;/div&gt;
+  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script is:inline src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script is:inline src={`${kit}/js/cmu-app.js`}&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                  <p>
+                    A page uses the layout and puts its sections in it. A component's markup goes in
+                    as it is in the HTML tab; Astro reads it as written, except that a brace in text
+                    starts an expression, so the Framework tab writes those as
+                    <code>{"{"}</code> and <code>{"}"}</code>.
+                  </p>
+                  <pre class="kit-code"><code>---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+---
+&lt;Layout title="Your Site"&gt;
+  &lt;div class="cmu-hero"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/Layout&gt;</code></pre>
+                </div>
+                <div
+                  class="kit-option"
+                  id="rails"
+                  data-option="Rails"
+                  data-label="Rails 7.2 and Later"
+                >
+                  <h4 class="kit-option-label">In Rails</h4>
+                  <p>
+                    Copy the kit's <code>css/</code> and <code>js/</code> into
+                    <code>public/vendor/cmu-web-kilt-0.8.2/</code> and link them from your layout.
+                    Load <code>cmu-app.js</code> in the <code>&lt;head&gt;</code> with
+                    <code>defer</code>, so Turbo keeps it from page to page; it starts the
+                    components on each new page, and on pages Turbo restores from its cache. The
+                    template's own scripts stay at the end of <code>&lt;body&gt;</code>, where Turbo
+                    runs them for each page.
+                  </p>
+                  <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;title&gt;&lt;%= content_for(:title) || "Your App" %&gt; - Carnegie Mellon University&lt;/title&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;%= csrf_meta_tags %&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
+  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.2/css/cmu-app.css" rel="stylesheet"&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.2/js/cmu-app.js" defer&gt;&lt;/script&gt;
+  &lt;%= stylesheet_link_tag "application" %&gt;
+  &lt;%= javascript_importmap_tags %&gt;
+&lt;/head&gt;
+&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;!-- The template's header --&gt;
+    &lt;main id="content"&gt;&lt;%= yield %&gt;&lt;/main&gt;
+    &lt;!-- The template's footer --&gt;
+  &lt;/div&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <div
+                  class="kit-option"
+                  id="django"
+                  data-option="Django"
+                  data-label="Django 5.2 and Later"
+                >
+                  <h4 class="kit-option-label">In Django</h4>
+                  <p>
+                    Copy the files into one of your Django apps' <code>static</code> folders, as
+                    above. <code>collectstatic</code> picks them up, and your base template links
+                    them:
+                  </p>
+                  <pre class="kit-code"><code>{% load static %}
+&lt;link href="{% static 'vendor/cmu-web-kilt-0.8.2/css/cmu-cms.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'vendor/cmu-web-kilt-0.8.2/css/cmu-app.css' %}" rel="stylesheet"&gt;
+&lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
+&lt;script src="{% static 'vendor/cmu-web-kilt-0.8.2/js/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
+                </div>
+                <div class="kit-option" id="node" data-option="Node" data-label="Node 22 and Later">
+                  <h4 class="kit-option-label">In Node</h4>
+                  <p>
+                    Copy the files in, as above, or install the tagged release from GitHub so the
+                    version sits in <code>package.json</code>. Installing from GitHub only works
+                    where npm is allowed to fetch from it; many build machines aren't.
+                  </p>
+                  <pre
+                    class="kit-code"
+                  ><code>npm install github:cmu-web/cmu-web-kilt#0.8.2</code></pre>
+                  <p>Then serve its files. With Express:</p>
+                  <pre class="kit-code"><code>const path = require("path");
+const kit = path.dirname(require.resolve("cmu-web-kilt/package.json"));
+app.use("/vendor/cmu-web-kilt-0.8.2/css", express.static(path.join(kit, "css")));
+app.use("/vendor/cmu-web-kilt-0.8.2/js", express.static(path.join(kit, "js")));</code></pre>
+                </div>
+              </div>
             </div>
 
             <h2 id="versions" class="rule-top">Versions</h2>
             <p>
               Each release is a git tag, such as <code>0.2.7</code>, listed on the
-              <a href="https://github.com/cmu-web/cmu-web-kilt/releases">releases page</a>, and
-              jsDelivr serves every tag's files at a fixed address.
+              <a class="external" href="https://github.com/cmu-web/cmu-web-kilt/releases"
+                >releases page</a
+              >, and jsDelivr serves every tag's files at a fixed address.
             </p>
             <ul class="cmu-checks">
               <li>
@@ -703,21 +755,98 @@ app.use("/vendor/cmu-web-kilt-0.8.2/js", express.static(path.join(kit, "js")));<
             </ul>
 
             <h3 id="upgrade">Moving to a New Version</h3>
-            <ol class="cmu-steps">
-              <li>
-                Read the release notes on the
-                <a href="https://github.com/cmu-web/cmu-web-kilt/releases">releases page</a>. For a
-                major version, they list every renamed or removed class.
-              </li>
-              <li>
-                Change the version: replace the kit's lines in your CMS's head code (in Cascade, the
-                <code>head-includes</code> and <code>body-end-includes</code> blocks) with the new
-                release's, copied whole from this page; or change it in
-                <code>package.json</code> (then <code>npm install</code>), or in your copied
-                folder's name and your layout's links.
-              </li>
-              <li>Check your pages, on staging for a CMS site, before you publish or deploy.</li>
-            </ol>
+            <div
+              class="cmu-tabs"
+              role="tablist"
+              id="kit-upgrade"
+              aria-label="How to Move to a New Version"
+              data-cmu-tabs="kit-how"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="kit-upgrade-html-tab"
+                aria-controls="kit-upgrade-html"
+                aria-selected="true"
+                data-cmu-tab="html"
+              >
+                HTML
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="kit-upgrade-cms-tab"
+                aria-controls="kit-upgrade-cms"
+                aria-selected="false"
+                data-cmu-tab="cms"
+              >
+                CMS
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="kit-upgrade-framework-tab"
+                aria-controls="kit-upgrade-framework"
+                aria-selected="false"
+                data-cmu-tab="framework"
+              >
+                Framework
+              </button>
+            </div>
+            <div role="tabpanel" id="kit-upgrade-html" aria-labelledby="kit-upgrade-html-tab">
+              <ol class="cmu-steps">
+                <li>
+                  Read the release notes on the
+                  <a class="external" href="https://github.com/cmu-web/cmu-web-kilt/releases"
+                    >releases page</a
+                  >. For a major version, they list every renamed or removed class.
+                </li>
+                <li>
+                  Replace the kit&rsquo;s lines with the new release&rsquo;s, copied whole from this
+                  page. If you keep your own copy, copy the new release&rsquo;s
+                  <code>css/</code> and <code>js/</code> into a folder named for it and change your
+                  layout&rsquo;s links.
+                </li>
+                <li>Check your pages before you deploy.</li>
+              </ol>
+            </div>
+            <div role="tabpanel" id="kit-upgrade-cms" aria-labelledby="kit-upgrade-cms-tab" hidden>
+              <ol class="cmu-steps">
+                <li>
+                  Read the release notes on the
+                  <a class="external" href="https://github.com/cmu-web/cmu-web-kilt/releases"
+                    >releases page</a
+                  >. For a major version, they list every renamed or removed class.
+                </li>
+                <li>
+                  Replace the kit&rsquo;s lines in your CMS&rsquo;s head code with the new
+                  release&rsquo;s, copied whole from this page. In Cascade, they&rsquo;re in the
+                  <code>head-includes</code> and <code>body-end-includes</code> blocks.
+                </li>
+                <li>Check your pages on staging before you publish.</li>
+              </ol>
+            </div>
+            <div
+              role="tabpanel"
+              id="kit-upgrade-framework"
+              aria-labelledby="kit-upgrade-framework-tab"
+              hidden
+            >
+              <ol class="cmu-steps">
+                <li>
+                  Read the release notes on the
+                  <a class="external" href="https://github.com/cmu-web/cmu-web-kilt/releases"
+                    >releases page</a
+                  >. For a major version, they list every renamed or removed class.
+                </li>
+                <li>
+                  Change the version in <code>package.json</code> and run <code>npm install</code>,
+                  or copy the new release into your vendor folder and change the folder&rsquo;s name
+                  in your links.
+                </li>
+                <li>Check your pages before you deploy.</li>
+              </ol>
+            </div>
           </div>
         </div>
         <div class="content wide cmu-lightgrey">
@@ -798,7 +927,12 @@ app.use("/vendor/cmu-web-kilt-0.8.2/js", express.static(path.join(kit, "js")));<
         <div>
           <nav id="nav">
             <ul>
-              <li class="active"><a href="install.html" aria-current="page">Install</a></li>
+              <li class="active">
+                <a href="install.html" aria-current="page">Install</a>
+                <ul>
+                  <li><a href="quirks.html">Template Quirks</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="layout.html">Page Layout</a>
                 <ul>

@@ -18,14 +18,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Telling people what happened, asking for a file in a dialog and showing how far along something is."
+      content="Telling people what happened, showing that something is loading, asking for a file in a dialog and showing how far along something is."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Messages and Progress - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Telling people what happened, asking for a file in a dialog and showing how far along something is."
+      content="Telling people what happened, showing that something is loading, asking for a file in a dialog and showing how far along something is."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/messages.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -83,8 +83,8 @@
           <div>
             <h1>Messages and Progress</h1>
             <p class="cmu-lead">
-              Telling people what happened, asking for a file in a dialog and showing how far along
-              something is.
+              Telling people what happened, showing that something is loading, asking for a file in
+              a dialog and showing how far along something is.
             </p>
 
             <h2 id="flash" class="rule-top">
@@ -135,6 +135,44 @@
               CMU's red alert bar at the very top of the page (<code>#campusAlert</code>) is for
               campus emergencies. Don't use it for an app's messages.
             </p>
+
+            <h2 id="loading" class="rule-top">
+              Loading
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              The template's spinner: two red circles that pulse in turn. Use it while something
+              takes more than a moment, such as a search or a file being made, in the spot where the
+              result will appear. Take it out when the result arrives. For the result itself, use a
+              flash message, not the spinner's spot.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Say what's happening for screen readers.</strong> The spinner has no words,
+                so put them in a status line only screen readers hear, such as
+                <code>&lt;p class="sr-only" role="status"&gt;Checking the link.&lt;/p&gt;</code>.
+              </li>
+              <li>
+                <strong>It brings its own space:</strong> 100px above and below, centered, so it
+                fills about the room a short result would.
+              </li>
+              <li>
+                <strong>Not for a whole page.</strong> A page that loads normally needs no spinner.
+              </li>
+            </ul>
+            <p class="kit-classes">
+              <code>spinner</code>, <code>double-bounce1</code>, <code>double-bounce2</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
+      </div>
 
             <h2 id="dialog" class="rule-top">
               Dialog
@@ -393,7 +431,12 @@
         <div>
           <nav id="nav">
             <ul>
-              <li><a href="install.html">Install</a></li>
+              <li>
+                <a href="install.html">Install</a>
+                <ul>
+                  <li><a href="quirks.html">Template Quirks</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="layout.html">Page Layout</a>
                 <ul>

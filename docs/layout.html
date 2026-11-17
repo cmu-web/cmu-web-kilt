@@ -95,28 +95,26 @@
                 <li><a href="#site-name">Site Name</a></li>
                 <li><a href="#search">Site Search</a></li>
                 <li><a href="#navigation">Navigation</a></li>
-                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
+                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
                 <li><a href="#tabs">Tabs</a></li>
                 <li><a href="#breadcrumbs">Breadcrumbs</a></li>
                 <li><a href="#content-area">Content and Sidebar</a></li>
-                <li><a href="#open-graph">Open Graph Tags</a></li>
-                <li><a href="#scripts">Scripts</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
+                <li><a href="#behind">Behind the Page</a></li>
                 <li><a href="#skeleton">The Whole Page</a></li>
                 <li><a href="#framed">Framed Pages</a></li>
                 <li><a href="#panels">Framed Page Panel</a></li>
-                <li><a href="#quirks">Template Quirks</a></li>
               </ul>
             </div>
           </div>
@@ -606,24 +604,32 @@
               <code>role="tabpanel"</code>, hidden until its tab is picked. The kit's script
               switches them, with the arrow keys too. Give the row a <code>data-cmu-tabs</code> name
               and each tab a <code>data-cmu-tab</code> value, and every row with that name on the
-              page switches together, and the choice is remembered across pages. Without the script,
-              every panel shows.
+              page switches together, and the choice is remembered across pages. A link to a
+              panel&rsquo;s <code>id</code>, or to anything inside a panel, opens that panel and
+              remembers the choice, as a click would, so one link can send people straight to the
+              right tab. Then the address moves to the tab row&rsquo;s own <code>id</code>, if it
+              has one, so a reload keeps whatever tab people pick next. Without the script, every
+              panel shows.
             </p>
             <p class="kit-classes">
               <code>cmu-tabs</code>, <code>data-cmu-tabs</code>, <code>data-cmu-tab</code>
             </p>
-            <p>Here, the same steps for Mac and Windows:</p>
+            <p>Here, the same steps for Mac, Windows and Linux:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-tabs" role="tablist" aria-label="Get the app" data-cmu-tabs="kit-demo-os">
+        <div class="cmu-tabs" role="tablist" id="kit-os" aria-label="Get the app" data-cmu-tabs="kit-demo-os">
           <button type="button" role="tab" id="kit-os-mac-tab" aria-controls="kit-os-mac" aria-selected="true" data-cmu-tab="mac">Mac</button>
-          <button type="button" role="tab" id="kit-os-win-tab" aria-controls="kit-os-win" aria-selected="false" data-cmu-tab="windows">Windows</button>
+          <button type="button" role="tab" id="kit-os-windows-tab" aria-controls="kit-os-windows" aria-selected="false" data-cmu-tab="windows">Windows</button>
+          <button type="button" role="tab" id="kit-os-linux-tab" aria-controls="kit-os-linux" aria-selected="false" data-cmu-tab="linux">Linux</button>
         </div>
         <div role="tabpanel" id="kit-os-mac" aria-labelledby="kit-os-mac-tab">
           <p>Open Self Service and choose Install under Campus Printing.</p>
         </div>
-        <div role="tabpanel" id="kit-os-win" aria-labelledby="kit-os-win-tab" hidden>
+        <div role="tabpanel" id="kit-os-windows" aria-labelledby="kit-os-windows-tab" hidden>
           <p>Open Software Center and choose Install under Campus Printing.</p>
+        </div>
+        <div role="tabpanel" id="kit-os-linux" aria-labelledby="kit-os-linux-tab" hidden>
+          <p>Download the Campus Printing package for your distribution and install it with your package manager.</p>
         </div>
       </div>
 
@@ -1020,58 +1026,6 @@
       </div>
           </div>
         </div>
-        <div class="content wide gold boxes">
-          <div>
-            <h1 id="quirks">Template Quirks</h1>
-            <ul>
-              <li>
-                The template's script clears the browser's local storage on every page load, when it
-                sets up its list filters, whether or not the page has any. On www.cmu.edu that wipes
-                what every site there saved, since they share one address. Keep what a page
-                remembers in a cookie or in session storage instead; the kit's tabs keep the chosen
-                tab in a cookie for this reason.
-              </li>
-              <li>
-                Tables are <code>display: block</code> so they scroll on phones, which stops them
-                stretching. Add <code>cmu-full</code> to stretch one to full width from 768px up.
-              </li>
-              <li>
-                The template's script removes <code>style=""</code> from spans. Use a div when you
-                need an inline style, such as a bar's width.
-              </li>
-              <li>
-                <code>.content</code> lays out its direct children as columns, so put one wrapper
-                <code>&lt;div&gt;</code> inside it.
-              </li>
-              <li>
-                A logo in the header must follow the site name's <code>&lt;div&gt;</code> with no
-                space between them, or it drops below the name.
-              </li>
-              <li>
-                A sidebar must follow the page's <code>&lt;div&gt;</code> in
-                <code>.content</code> the same way,
-                <code>&lt;/div&gt;&lt;div class="sidebar"&gt;</code>, or it drops below the page.
-              </li>
-              <li>
-                A formatter such as Prettier, run on your HTML or templates, can put a line break
-                between those two pairs, and the logo or sidebar drops. Put
-                <code>&lt;!-- prettier-ignore --&gt;</code> right before the site name's
-                <code>&lt;div&gt;</code> and before the <code>.content</code> block, so it leaves
-                them as written.
-              </li>
-              <li>
-                <code>.btn</code> and other classes that set <code>display</code> override a bare
-                <code>hidden</code> attribute. The kit makes <code>hidden</code> always hide.
-              </li>
-              <li>
-                The template's script turns every in-page link (<code>href="#id"</code>) into
-                <code>javascript:void(0)</code> and scrolls with its own animation, so the address
-                never shows the section and Back doesn't return. With <code>cmu-app.js</code>, the
-                links stay real: the address shows the section, and Back works.
-              </li>
-            </ul>
-          </div>
-        </div>
       </main>
 
       <footer class="grid column3 invert">
@@ -1092,7 +1046,12 @@
         <div>
           <nav id="nav">
             <ul>
-              <li><a href="install.html">Install</a></li>
+              <li>
+                <a href="install.html">Install</a>
+                <ul>
+                  <li><a href="quirks.html">Template Quirks</a></li>
+                </ul>
+              </li>
               <li class="active">
                 <a href="layout.html" aria-current="page">Page Layout</a>
                 <ul>

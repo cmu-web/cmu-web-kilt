@@ -493,7 +493,7 @@ function cmsPanel(blocks) {
     choice = cmsChoice();
   panel.className = "kit-cms-panel";
   panel.innerHTML =
-    '<p class="kit-pick"><label class="sr-only" for="' +
+    '<div class="kit-pick"><label class="sr-only" for="' +
     id +
     '">CMS</label> <select id="' +
     id +
@@ -501,7 +501,7 @@ function cmsPanel(blocks) {
     CMSES.map(function (c) {
       return '<option value="' + c + '">' + CMS_NAMES[c] + "</option>";
     }).join("") +
-    "</select></p>";
+    "</select></div>";
   blocks.forEach(function (b) {
     b.hidden = b.dataset.cms !== choice;
     panel.appendChild(b);
@@ -558,7 +558,7 @@ function frameworkPanel(pre) {
     choice = frameworkChoice();
   panel.className = "kit-framework-panel";
   panel.innerHTML =
-    '<p class="kit-pick"><label class="sr-only" for="' +
+    '<div class="kit-pick"><label class="sr-only" for="' +
     id +
     '">Framework</label> <select id="' +
     id +
@@ -566,7 +566,7 @@ function frameworkPanel(pre) {
     FRAMEWORKS.map(function (f) {
       return '<option value="' + f + '">' + FRAMEWORK_NAMES[f] + "</option>";
     }).join("") +
-    "</select></p>";
+    "</select></div>";
   found.forEach(function (b) {
     b.hidden = b.dataset.framework !== choice;
     panel.appendChild(b);
@@ -583,7 +583,8 @@ function frameworkPanel(pre) {
 // Choices outside the tabs, as on Install: a .kit-options set of .kit-option
 // blocks (data-option, and data-label for the menu) gets a menu over the
 // chosen one. A set of CMSes shares its choice with the CMS tabs, and a set
-// of stacks with the Framework tabs (for the stacks they cover). A link to an
+// of stacks with the Framework tabs (for the stacks they cover); a set of
+// HTML setups (prototype or production app) keeps its own. A link to an
 // option's id, such as install.html#django, opens it.
 document.querySelectorAll(".kit-options").forEach(function (set) {
   var kind = set.dataset.kitOptions,
@@ -592,13 +593,13 @@ document.querySelectorAll(".kit-options").forEach(function (set) {
       return o.dataset.option;
     }),
     id = "kit-options-" + ++frameworkPanels,
-    key = kind === "cms" ? "kit-cms" : "kit-stack";
+    key = kind === "cms" ? "kit-cms" : kind === "html" ? "kit-html" : "kit-stack";
   set.insertAdjacentHTML(
     "afterbegin",
-    '<p class="kit-pick"><label class="sr-only" for="' +
+    '<div class="kit-pick"><label class="sr-only" for="' +
       id +
       '">' +
-      (kind === "cms" ? "CMS" : "Framework or stack") +
+      (kind === "cms" ? "CMS" : kind === "html" ? "Prototype or app" : "Framework or stack") +
       '</label> <select id="' +
       id +
       '">' +
@@ -613,10 +614,17 @@ document.querySelectorAll(".kit-options").forEach(function (set) {
           );
         })
         .join("") +
-      "</select></p>",
+      "</select></div>",
   );
   set.classList.add("kit-options--on");
   var menu = set.querySelector("select");
+  // A hint written first in the set moves right under the menu it explains
+  var hint = set.querySelector(":scope > p.cmu-hint");
+  if (hint) {
+    hint.id = hint.id || id + "-hint";
+    menu.setAttribute("aria-describedby", hint.id);
+    menu.parentNode.appendChild(hint);
+  }
   set.kitShow = function (value) {
     if (values.indexOf(value) < 0) return;
     menu.value = value;
@@ -624,7 +632,7 @@ document.querySelectorAll(".kit-options").forEach(function (set) {
       o.hidden = o.dataset.option !== value;
     });
   };
-  var first = [savedChoice(key), kind === "cms" ? null : savedChoice("kit-framework")].filter(
+  var first = [savedChoice(key), kind === "framework" ? savedChoice("kit-framework") : null].filter(
     function (v) {
       return values.indexOf(v) >= 0;
     },
@@ -632,20 +640,24 @@ document.querySelectorAll(".kit-options").forEach(function (set) {
   set.kitShow(first || values[0]);
   menu.addEventListener("change", function () {
     saveChoice(key, menu.value);
+    set.kitShow(menu.value);
     if (kind === "cms") showCms(menu.value);
-    else if (FRAMEWORKS.indexOf(menu.value) >= 0) {
+    else if (kind === "framework" && FRAMEWORKS.indexOf(menu.value) >= 0) {
       saveChoice("kit-framework", menu.value);
       showFramework(menu.value);
     }
   });
-  // A link to one of its options opens that one
+  // A link to one of its options, or to anything inside one, opens that one
   function fromHash() {
-    var hit = options.filter(function (o) {
-      return "#" + o.id === location.hash;
-    })[0];
+    var target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+    var hit =
+      target &&
+      options.filter(function (o) {
+        return o.contains(target);
+      })[0];
     if (!hit) return;
     set.kitShow(hit.dataset.option);
-    hit.scrollIntoView();
+    target.scrollIntoView();
   }
   fromHash();
   window.addEventListener("hashchange", fromHash);
@@ -671,6 +683,7 @@ document.querySelectorAll("pre.kit-code[data-kit-demo-code]").forEach(function (
   list.setAttribute("role", "tablist");
   list.setAttribute("aria-label", "How to make it");
   list.setAttribute("data-cmu-tabs", "kit-how");
+  list.id = "kit-how-" + n; // the address moves here after a link into one of its tabs
   pre.before(set);
   set.appendChild(list);
   [{ key: "html", label: "HTML", el: pre }]
