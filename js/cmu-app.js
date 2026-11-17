@@ -189,6 +189,85 @@
     zoom.showModal();
   });
 
+  // Code blocks (pre.cmu-snippet): one block per line, so a long line wraps
+  // with its continuation hanging four characters in from its own indent
+  // instead of back at the left edge. The newlines between lines stay, so
+  // copying gives the code as written. A block whose text a page sets later
+  // is split again; one with markup inside (links, highlighting) is left as
+  // it is. See Code Block in the docs (content.html).
+  function hangLines(code) {
+    if (code.querySelector(".cmu-line")) return;
+    for (var n = code.firstChild; n; n = n.nextSibling) if (n.nodeType !== 3) return;
+    var text = code.textContent;
+    if (text.indexOf("\n") < 0 && text.length < 60) return;
+    code.textContent = "";
+    text.split("\n").forEach(function (l, i) {
+      if (i) code.appendChild(document.createTextNode("\n"));
+      var line = document.createElement("div"),
+        hang = l.match(/^ */)[0].length + 4 + "ch";
+      line.className = "cmu-line";
+      // The line keeps its leading spaces (they're copied with it), so its
+      // first row is pulled back by the whole padding
+      line.style.paddingLeft = hang;
+      line.style.textIndent = "-" + hang;
+      line.textContent = l;
+      code.appendChild(line);
+    });
+  }
+  function hangAll() {
+    document.querySelectorAll("pre.cmu-snippet > code").forEach(hangLines);
+  }
+  hangAll();
+  if (window.MutationObserver) {
+    var hangQueued = false;
+    new MutationObserver(function () {
+      if (hangQueued) return;
+      hangQueued = true;
+      requestAnimationFrame(function () {
+        hangQueued = false;
+        hangAll();
+      });
+    }).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+  }
+
+  // Closable section: <div class="... cmu-closable"> with a
+  // <button class="cmu-close" aria-label="Close ..."> inside. The button hides
+  // the section and sends a cmu-close event from it (call preventDefault() on
+  // the event to keep it). With data-cmu-closable="name" it stays closed in
+  // this browser: a cookie, cmu-closed-name, for a year (not localStorage,
+  // which the template's script clears). Focus moves to what comes next. See
+  // Closable Section in the docs (sections.html).
+  function closedCookie(name) {
+    return "cmu-closed-" + name.replace(/[^A-Za-z0-9_-]/g, "");
+  }
+  document.querySelectorAll(".cmu-closable[data-cmu-closable]").forEach(function (box) {
+    if (document.cookie.split("; ").indexOf(closedCookie(box.dataset.cmuClosable) + "=1") >= 0)
+      box.hidden = true;
+  });
+  document.addEventListener("click", function (e) {
+    var button = e.target.closest(".cmu-closable .cmu-close");
+    if (!button) return;
+    var box = button.closest(".cmu-closable");
+    var go = box.dispatchEvent(new CustomEvent("cmu-close", { bubbles: true, cancelable: true }));
+    if (!go) return;
+    box.hidden = true;
+    if (box.dataset.cmuClosable)
+      document.cookie =
+        closedCookie(box.dataset.cmuClosable) +
+        "=1; path=/; max-age=31536000; SameSite=Lax" +
+        (location.protocol === "https:" ? "; Secure" : "");
+    // What comes next: a sibling, or the next thing after an ancestor
+    var next = null;
+    for (var at = box; at && !next; at = at.parentElement) {
+      next = at.nextElementSibling;
+      while (next && next.hidden) next = next.nextElementSibling;
+    }
+    if (next) {
+      if (!next.hasAttribute("tabindex")) next.setAttribute("tabindex", "-1");
+      next.focus({ preventScroll: true });
+    }
+  });
+
   // Countdown: <div class="cmu-countdown" data-cmu-countdown="2027-04-08T12:00:00-04:00">
   // with a sentence inside that gives the same moment. Shows days, hours,
   // minutes and seconds on flip cards and stops at zero; screen readers get

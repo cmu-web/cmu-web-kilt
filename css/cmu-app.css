@@ -138,16 +138,28 @@ body:is(.cmu-app, .cmu-framed) .cmu-field-row > div > .cmu-hint {
 body:is(.cmu-app, .cmu-framed) .cmu-field-row--short > div {
   flex-grow: 0;
 }
-/* Field with a button: one text box and the button that acts on it, on one
-   line. The box takes the spare width (the template's 14px right cap
-   lifted, so the gap is only the gap). The button drops its top and bottom
-   padding, and flex stretches it to the box's height. */
+/* A form beside its result (cmu-split): the result column's small label
+   (cmu-label) takes the same room as a form label and the 4px a field keeps
+   above it, so the result's top lines up with the first field's top */
+body:is(.cmu-app, .cmu-framed) .cmu-split > * > p.cmu-label:first-child {
+  line-height: 2.0625;
+  margin-bottom: calc(0.35em + 4px);
+}
+/* Field with a button: one text box or menu and the button that acts on
+   it, on one line. The field takes the spare width (the template's 14px
+   right cap lifted, so the gap is only the gap). The button drops its top
+   and bottom padding, and flex stretches both to the taller one's height. A
+   hint right after it sits close under it, as under any field. */
 body:is(.cmu-app, .cmu-framed) .cmu-field-button {
   display: flex;
   gap: 0.5em;
   margin: 0 0 2em;
+  /* The 4px a lone input keeps above it, so the box sits as far under its
+     label as any other field. Padding, not margin: the label's margin would
+     swallow a margin here. */
+  padding-top: 4px;
 }
-body:is(.cmu-app, .cmu-framed) .cmu-field-button > input {
+body:is(.cmu-app, .cmu-framed) .cmu-field-button > :is(input, select) {
   flex: 1;
   width: auto;
   min-width: 0;
@@ -159,6 +171,20 @@ body:is(.cmu-app, .cmu-framed) .cmu-field-button > input {
   margin: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+/* A link styled as the button (such as a download) centers its text the way
+   a <button> does */
+#content .cmu-field-button > a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-field-button > select {
+  height: auto;
+  align-self: stretch;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-field-button:has(+ .cmu-hint) {
+  margin-bottom: 0.35em;
 }
 /* max-width: the template caps inputs at calc(100% - 6px - .5em), which
    leaves a gap in a border-box cell and pushes the separator off center */

@@ -252,11 +252,12 @@
               >
             </h2>
             <p>
-              One text box and the button that acts on it, side by side: adding someone by Andrew
-              ID, looking up a code or running a search that waits for a button. Put the box and a
-              <code>btn</code> in <code>cmu-field-button</code>, with the label right before it as
-              for any text box. The box takes the spare width and the button matches its height. To
-              filter a list as people type, with no button, use a
+              One text box or menu and the button that acts on it, side by side: adding someone by
+              Andrew ID, looking up a code, running a search that waits for a button or downloading
+              a file in the type chosen. Put the field and a <code>btn</code> in
+              <code>cmu-field-button</code>, with the label right before it as for any field. The
+              field takes the spare width and the button matches its height. A hint goes right after
+              it. To filter a list as people type, with no button, use a
               <a href="lists.html#search">search bar</a> instead; to show text for people to copy,
               with a Copy button beside it, use a <a href="content.html#copy">copy row</a>.
             </p>
@@ -277,6 +278,25 @@
             <input type="text" id="kit-add-id" name="andrewid" value="ac00" autocomplete="off">
             <button class="btn" type="submit">Add</button>
           </div>
+        </form>
+      </div>
+            <p>
+              To download something the page made, put the file type in a menu with Download beside
+              it, the size in the hint and the file's name in the caption under it:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <form>
+          <label for="kit-file-type">File Type</label>
+          <div class="cmu-field-button">
+            <select id="kit-file-type" aria-describedby="kit-file-type-hint">
+              <option>WebP</option>
+              <option>PNG</option>
+              <option>JPEG</option>
+            </select>
+            <button class="btn" type="button">Download</button>
+          </div>
+          <p class="cmu-hint" id="kit-file-type-hint">860 &times; 1580 pixels, 182 KB</p>
         </form>
       </div>
 
