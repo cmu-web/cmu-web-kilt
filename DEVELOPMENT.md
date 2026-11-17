@@ -154,11 +154,11 @@ use `npx prek run --all-files`.
 The CMU Web projects each publish `/images/cmu-web-preview.webp` for the
 other projects' cards and gallery entries. In this repository, that file
 is `docs/images/cmu-web-preview.webp`. Keep it a clean landscape screenshot
-at 1040 by 656 pixels, without the decorative browser frame; the cards add
+at 1040 × 656 pixels, without the decorative browser frame; the cards add
 that frame themselves.
 
 To make it, capture the published home page with FencePost's gallery
-command, from a FencePost checkout. It takes the public page at 1040 by 656,
+command, from a FencePost checkout. It takes the public page at 1040 × 656,
 signed out, with the menu closed:
 
 ```bash

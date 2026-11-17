@@ -741,7 +741,7 @@ img.cmu-transparent,
 .cmu-shot--browser img {
   border-top: 0;
 }
-/* A phone: a screenshot 430 by 790 pixels (or twice that), status bar
+/* A phone: a screenshot 430 × 790 pixels (or twice that), status bar
    included, in a dark frame with a thin, even bezel, rounded corners and a
    camera cutout at the top. The screen is a bit shorter than a real phone's,
    so it reads as a phone beside a browser window; a taller screenshot shows
@@ -758,8 +758,8 @@ img.cmu-transparent,
   max-width: min(18rem, 100%);
 }
 /* The whole phone, bezel included, is the frame's width; its shape
-   (430 by 766 for the outside) makes the screen inside the bezel exactly
-   430 by 790, so the image fills it without zooming in to cover. The width
+   (430 × 766 for the outside) makes the screen inside the bezel exactly
+   430 × 790, so the image fills it without zooming in to cover. The width
    is a percentage, not a container unit: Firefox can resolve container units
    against the wrong size on its first layout, which drew the phone huge for
    a moment. Two classes, so a page's own img { width: 100% } doesn't push
@@ -821,7 +821,7 @@ img.cmu-transparent,
   margin-top: 1.6rem;
 }
 /* Beside a phone, a browser window is the phone's height (32.06rem, as
-   drawn: an 18rem frame, its 430 by 790 screen and bezel), less the
+   drawn: an 18rem frame, its 430 × 790 screen and bezel), less the
    window's bar (1.6rem and its 1px border), its screenshot cropped from
    the top, so their captions line up. Only while they fit side by
    side: below 48rem the window keeps its own shape. */
