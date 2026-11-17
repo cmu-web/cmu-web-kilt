@@ -121,7 +121,12 @@
       var target = a.getAttribute("data-jump");
       if (target.length < 2) return;
       e.preventDefault(); // the template does the scrolling
-      if (location.hash !== target) history.pushState(null, "", target);
+      if (location.hash !== target) {
+        history.pushState(null, "", target);
+        // pushState doesn't announce a new hash; tell the page, so a link
+        // into a tab panel opens it before the template scrolls there
+        window.dispatchEvent(new HashChangeEvent("hashchange"));
+      }
     },
     true,
   );
@@ -652,7 +657,8 @@
   // aria-selected="true" (else the first opens) and the other panels hidden.
   // Click or arrow keys switch. With data-cmu-tabs="name" on the row and
   // data-cmu-tab="value" on each tab, every row with that name switches
-  // together, and the choice is remembered in this browser across pages.
+  // together, and the choice is remembered in this browser across pages. A
+  // link to a panel, or to anything in one (page.html#id), opens that panel.
   // Without the script, every panel shows. See Tabs in the docs (layout.html).
   function tabsOf(list) {
     return Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
@@ -713,12 +719,52 @@
       if (tab) selectTab(tab);
     });
   }
+  // A link to a panel or to something inside one opens it (and any panels it
+  // sits in), and a named row's choice is saved, as if it were clicked. Then
+  // the address moves to the top of the outermost row, so it never points
+  // into a panel: a reload, Back or a later click can't fight the saved
+  // choice. Deferred to the load event, so a page's own scripts can act on
+  // the original address first (such as picking an option inside a panel).
+  function tabsFromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var target = id && document.getElementById(id);
+    // Tab rows a page's script builds (such as code tabs) may not exist yet;
+    // look again once the page has loaded
+    if (!target && id && document.readyState !== "complete") {
+      window.addEventListener("load", tabsFromHash, { once: true });
+      return;
+    }
+    if (!target) return;
+    var row = null;
+    for (var el = target; el; el = el.parentElement) {
+      if (el.getAttribute && el.getAttribute("role") === "tabpanel") {
+        var tab = document.querySelector('[role="tab"][aria-controls="' + el.id + '"]');
+        var list = tab && tab.closest('[role="tablist"]');
+        if (!list) continue;
+        var name = list.getAttribute("data-cmu-tabs");
+        var value = tab.getAttribute("data-cmu-tab");
+        if (name && value) {
+          pickTabs(name, value);
+          storeTab(name, value);
+        } else selectTab(tab);
+        row = list;
+      }
+    }
+    if (!row) return;
+    var settle = function () {
+      if (row.id) history.replaceState(null, "", "#" + row.id);
+      row.scrollIntoView();
+    };
+    if (document.readyState === "complete") setTimeout(settle);
+    else window.addEventListener("load", settle, { once: true });
+  }
   document.addEventListener("click", function (e) {
     var tab = e.target.closest && e.target.closest('.cmu-tabs[role="tablist"] [role="tab"]');
     if (!tab) return;
     var list = tab.closest('[role="tablist"]');
     var name = list.getAttribute("data-cmu-tabs");
     var value = tab.getAttribute("data-cmu-tab");
+
     if (!name || !value) return selectTab(tab);
     // Every row with this name switches; keep the clicked one still on screen
     var before = tab.getBoundingClientRect().top;
@@ -904,6 +950,8 @@
 
   startCountdowns(document);
   startTabs(document);
+  tabsFromHash();
+  window.addEventListener("hashchange", tabsFromHash);
   startScrollGalleries(document);
   // Countdowns, sorting lists, email links and tabs added later start, a
   // countdown whose date changes restarts, and suggestion lists show new options
