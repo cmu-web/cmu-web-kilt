@@ -2243,12 +2243,18 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-search > input {
     padding-right: 3rem;
   }
 }
+/* The photo's address is a registered <url>, so it's resolved where the
+   page sets it, against the page's address, and not against this stylesheet's
+   (on jsDelivr, a site-root address would otherwise point at jsDelivr) */
+@property --cmu-sign-in-photo {
+  syntax: "<url> | none";
+  inherits: true;
+  initial-value: none;
+}
 /* With a photo (cmu-sign-in-page--photo, and the photo in
    --cmu-sign-in-photo on the same element): the photo fills the page behind
    the card, as a strip across the top of the page, darkened at the top where
-   the white heading sits. Give
-   the photo a full or site-root address (such as /images/photo.jpg): a
-   relative one would resolve against this stylesheet, not the page */
+   the white heading sits */
 @media (min-width: 1025px) {
   .cmu-sign-in-page--photo {
     position: relative;
