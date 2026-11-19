@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-
 module CmuWebKilt
   GEM_ROOT = File.expand_path('../..', __dir__)
   # A built gem carries copies of the kit's files and a VERSION file (rake
@@ -16,6 +14,8 @@ module CmuWebKilt
   VERSION = if SOURCE_ROOT == GEM_ROOT
               File.read(File.join(GEM_ROOT, 'VERSION')).strip
             else
-              JSON.parse(File.read(File.join(SOURCE_ROOT, 'package.json'))).fetch('version')
+              # Read without the json gem: a gemspec loads this before Bundler
+              # picks the app's json version, so requiring it here clashes
+              File.read(File.join(SOURCE_ROOT, 'package.json'))[/"version":\s*"([^"]+)"/, 1]
             end.freeze
 end
