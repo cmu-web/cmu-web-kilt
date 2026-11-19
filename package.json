@@ -8,7 +8,7 @@
     "js"
   ],
   "scripts": {
-    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:initials",
+    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:preview && npm run test:initials",
     "check:template": "node tools/check-template.mjs",
     "check:versions": "node tools/versions.mjs",
     "check:components": "node tools/components.mjs --check",
@@ -22,8 +22,10 @@
     "data": "node tools/data.mjs",
     "docs": "node tools/serve.mjs",
     "opengraph": "node tools/opengraph.mjs",
+    "preview": "node tools/preview.mjs",
     "release": "node tools/versions.mjs",
-    "test:initials": "node --test tools/initials.test.mjs"
+    "test:initials": "node --test tools/initials.test.mjs",
+    "test:preview": "node --test tools/preview.test.mjs"
   },
   "private": true,
   "devDependencies": {

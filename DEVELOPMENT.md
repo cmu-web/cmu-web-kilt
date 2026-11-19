@@ -149,6 +149,29 @@ The hooks installed during setup run a subset of validation when you
 commit; run the full check before submitting. To run the hooks manually,
 use `npx prek run --all-files`.
 
+## Try a Change in Another Project
+
+To see an unreleased change in a project that loads the kit from jsDelivr,
+put the preview proxy in front of the project. Start the project as usual,
+then, from this checkout:
+
+```bash
+npm run preview -- --proxy http://localhost:3000
+```
+
+It serves the project at http://127.0.0.1:4100/ (`--port` for another)
+with the page's kit links pointed at this checkout, on whatever branch is
+checked out. Reload to see each change. The project itself is untouched:
+its own address still shows the released kit.
+
+For a folder of static pages, start a server for it first, such as
+`python3 -m http.server 4200` in that folder, and proxy that.
+
+A project keeps the command in a `preview:kilt` npm script or its README,
+with the right port. It doesn't cover a project that keeps its own copy of
+the kit (a Rails app on the gem, or a vendored release); point those at
+this checkout their own way, such as the Gemfile's `path:` option.
+
 ## Maintain the CMU Web Preview
 
 The CMU Web projects each publish `/images/cmu-web-preview.webp` for the
