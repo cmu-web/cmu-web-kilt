@@ -135,6 +135,7 @@
               <code>cmu-hero--green</code> or <code>cmu-hero--gold</code>. Use one accent across a
               site.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-hero</code>, <code>cmu-hero--blue</code>, <code>cmu-hero--teal</code>,
               <code>cmu-hero--green</code>, <code>cmu-hero--gold</code>, <code>cmu-hero-art</code>,
@@ -169,7 +170,7 @@
           <a href="images/hero-pm.jpg" data-cmu-zoom><img src="images/hero-pm.jpg" alt="A home page with a Build Your Placeholder button beside a photo of a Muppet in glasses."></a>
         </div>
       </div>
-            <h3 id="hero-phone">A Screenshot and a Phone</h3>
+            <h3 id="hero-phone">Screenshot and a Phone</h3>
             <p>The same page on a computer and a phone:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -225,6 +226,7 @@
               <code>small</code> or <code>large</code> on the box sets its width.
               <code>mask</code> lays a fine screen over a soft, low-resolution photo.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>hero</code>, <code>text</code>, <code>box left</code>, <code>box right</code>,
               <code>small</code>, <code>large</code>, <code>caption</code>, <code>tall</code>,
@@ -252,7 +254,7 @@
         </div>
         <div class="content wide">
           <div>
-            <h3 id="photo-hero-box">A Linked Box</h3>
+            <h3 id="photo-hero-box">Linked Box</h3>
             <p>A white box that links somewhere, on the left or the right:</p>
           </div>
         </div>
@@ -296,11 +298,30 @@
                 />
               </figure>
             </div>
+            <h3 id="photo-hero-slideshow">Slideshow</h3>
             <p>
               Several heroes in a <code>section.js-flickityCustom</code> make a slideshow, with the
-              same <a href="sections.html#carousel">carousel</a> script. For a service description,
-              the kit's <a href="#hero">split hero</a> with screenshots usually says more than a
-              photo.
+              template's <a href="sections.html#carousel">carousel</a> script loaded after its main
+              one. It never moves by itself. It only works as the first thing in the page's content,
+              where a hero goes anyway. Label the section as a carousel and each hero as a slide.
+              People rarely look past the first slide, so put the most important one first:
+            </p>
+            <!-- prettier-ignore -->
+            <pre class="kit-code"><code>&lt;section class="js-flickityCustom" aria-roledescription="carousel" aria-label="Highlights"&gt;
+  &lt;div class="hero" role="group" aria-roledescription="slide" aria-label="1 of 3"
+    data-img="images/kits-1400.jpg" style="background-image:url(images/kits-900.jpg)"&gt;
+    &lt;a class="box left" href="kits/"&gt;
+      &lt;h1&gt;Camera Kits Are Back for Spring&lt;/h1&gt;
+      &lt;p&gt;Reserve one for your class project.&lt;/p&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="hero" role="group" aria-roledescription="slide" aria-label="2 of 3" &hellip;&gt;
+    &hellip;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+            <p>
+              For a service description, the kit's <a href="#hero">split hero</a> with screenshots
+              usually says more than a photo.
             </p>
           </div>
         </div>
@@ -334,6 +355,7 @@
               wide-screen shape (2.5 to 1), so the bars fall outside it. Check the video at a wide
               and a narrow window; a video close to 16:9 doesn't need it.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>hero tubular</code>, <code>data-vid</code>, <code>cmu-video-wide</code>
             </p>

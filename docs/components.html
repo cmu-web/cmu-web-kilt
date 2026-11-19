@@ -295,7 +295,9 @@
                   <td>
                     <code>cmu-annotated</code>, <code>cmu-annotated-text</code>,
                     <code>cmu-annotated-notes</code>, <code>cmu-annotated--wide</code>,
-                    <code>--cmu-at</code>, <code>cmu-callout</code>
+                    <code>--cmu-at</code>, <code>cmu-annotated--pins</code>,
+                    <code>cmu-annotated-pin</code>, <code>--cmu-x</code>, <code>--cmu-y</code>,
+                    <code>cmu-callout</code>
                   </td>
                 </tr>
                 <tr>
@@ -443,7 +445,10 @@
                     >
                   </td>
                   <td>Content</td>
-                  <td><code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-plain</code></td>
+                  <td>
+                    <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-fixes</code>,
+                    <code>ul.cmu-notes</code>, <code>ul.cmu-plain</code>
+                  </td>
                 </tr>
                 <tr>
                   <td><a href="sidebars.html#button-box">Button Box</a></td>
@@ -709,6 +714,24 @@
                   <td>
                     <code>cmu-date</code>, <code>cmu-date-month</code>, <code>cmu-date-day</code>,
                     <code>cmu-date--red</code>, <code>cmu-event-cards</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="accounts.html#developer-sign-in">Developer Sign-In</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                        >App</span
+                      ><span class="kit-where-script" title="Requires cmu-app.js"
+                        >Script</span
+                      ></span
+                    >
+                  </td>
+                  <td>Accounts</td>
+                  <td>
+                    <code>cmu-sign-in-page--dev</code>, <code>cmu-dev-people</code>,
+                    <code>cmu-dev-card</code>, <code>cmu-dev-card--out</code>,
+                    <code>cmu-dev-you</code>, <code>aria-current</code>
                   </td>
                 </tr>
                 <tr>
@@ -1269,6 +1292,16 @@
                   <td><code>cmu-sub-options</code></td>
                 </tr>
                 <tr>
+                  <td><a href="forms.html#or">Or Divider</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+                    >
+                  </td>
+                  <td>Forms</td>
+                  <td><code>cmu-or</code></td>
+                </tr>
+                <tr>
                   <td><a href="forms.html#setup">Page Setup and Forms</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
@@ -1405,7 +1438,11 @@
                     >
                   </td>
                   <td>Accounts</td>
-                  <td><code>cmu-profile-picture</code></td>
+                  <td>
+                    <code>cmu-profile-picture</code>, <code>cmu-profile-initials</code>,
+                    <code>data-cmu-name</code>, <code>data-cmu-initials</code>,
+                    <code>--cmu-size</code>
+                  </td>
                 </tr>
                 <tr>
                   <td><a href="messages.html#progress">Progress Bars</a></td>
@@ -1585,7 +1622,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a href="accounts.html#sign-in">Sign In</a></td>
+                  <td><a href="accounts.html#sign-in-box">Sign-In Box</a></td>
                   <td class="cmu-fit">
                     <span class="kit-where"
                       ><span
@@ -1597,8 +1634,39 @@
                   </td>
                   <td>Accounts</td>
                   <td>
-                    <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>,
-                    <code>red invert</code>, <code>left-rule</code>
+                    <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
+                    <code>left-rule</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="accounts.html#sign-in-button">Sign-In Button</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span
+                        class="kit-where-template"
+                        title="In the template's main stylesheet and script; nothing from the kit"
+                        >Template</span
+                      ></span
+                    >
+                  </td>
+                  <td>Accounts</td>
+                  <td><code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code></td>
+                </tr>
+                <tr>
+                  <td><a href="accounts.html#sign-in-page">Sign-In Page</a></td>
+                  <td class="cmu-fit">
+                    <span class="kit-where"
+                      ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                        >App</span
+                      ></span
+                    >
+                  </td>
+                  <td>Accounts</td>
+                  <td>
+                    <code>cmu-sign-in-page</code>, <code>cmu-sign-in-card</code>,
+                    <code>cmu-sign-in-break</code>, <code>cmu-or</code>,
+                    <code>cmu-sign-in-footer</code>, <code>cmu-sign-in-page--photo</code>,
+                    <code>--cmu-sign-in-photo</code>, <code>btn ghost wide</code>
                   </td>
                 </tr>
                 <tr>
@@ -1731,7 +1799,16 @@
                     >
                   </td>
                   <td>Lists and Tables</td>
-                  <td><code>table.cmu-full</code>, <code>table.cmu-compare</code></td>
+                  <td>
+                    <code>table.cmu-full</code>, <code>table.cmu-compare</code>,
+                    <code>data-cmu-table</code>, <code>data-sort-key</code>, <code>cmu-sort</code>,
+                    <code>cmu-sort-arrow</code>, <code>data-sort-value</code>,
+                    <code>data-cmu-filter</code>, <code>data-cmu-filter-column</code>,
+                    <code>cmu-filter-row</code>, <code>data-cmu-column</code>,
+                    <code>data-keywords</code>, <code>data-cmu-count</code>,
+                    <code>data-cmu-noun</code>, <code>cmu-sticky</code>,
+                    <code>data-cmu-table-server</code>
+                  </td>
                 </tr>
                 <tr>
                   <td><a href="lists.html#table-actions">Tables With Actions</a></td>

@@ -151,7 +151,8 @@
   // Enlarge on click: <a href="big.jpg" data-cmu-zoom><img alt="..."></a> opens
   // the image over the page, with the page dimmed behind it; Escape, the close
   // button or a click anywhere closes it, and focus goes back to the link. An
-  // image much taller than the window opens at full width and scrolls.
+  // image much taller than the window opens at full width and scrolls. A
+  // link with words instead of a picture names the image with aria-label.
   // Without the script (or a browser without <dialog>), the link opens the image.
   // See Enlarge on Click in the docs (content.html).
   var zoom, zoomOpener, zoomByPointer;
@@ -201,7 +202,7 @@
     }
     big.onload = fit;
     big.src = a.href;
-    big.alt = small ? small.alt : "";
+    big.alt = small ? small.alt : a.getAttribute("aria-label") || "";
     if (big.complete) fit();
     zoom.showModal();
   });
@@ -394,6 +395,45 @@
     if (scope.matches && scope.matches("a[data-cmu-email]")) emailReady(scope);
   }
   startEmails(document);
+  // Initials in place of a profile picture: data-cmu-name holds the
+  // person's name, and the first letters of its first and last words fill
+  // the circle ("Andrew Carnegie" is AC, "Henry Clay Frick" is HF, "Scotty"
+  // is S). "Carnegie, Andrew" is read first name first, and a suffix such as
+  // Jr. or III doesn't count as the last word.
+  function initialsOf(name) {
+    var suffix = /^(jr|sr|ii|iii|iv|v)\.?$/i;
+    var parts = String(name || "")
+      .split(",")
+      .map(function (p) {
+        return p.trim();
+      })
+      .filter(Boolean);
+    // A suffix after a comma goes ("Henry Posner, III"), then "Last, First" flips
+    while (parts.length > 1 && suffix.test(parts[parts.length - 1])) parts.pop();
+    name = parts.length === 2 ? parts[1] + " " + parts[0] : parts.join(" ");
+    var words = String(name || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    while (words.length > 1 && /^(jr|sr|ii|iii|iv|v)\.?$/i.test(words[words.length - 1]))
+      words.pop();
+    if (!words.length) return "";
+    var first = Array.from(words[0])[0];
+    var last = words.length > 1 ? Array.from(words[words.length - 1])[0] : "";
+    return (first + last).toUpperCase();
+  }
+  // data-cmu-initials, letters worked out elsewhere, wins over data-cmu-name
+  function initials(el) {
+    var given = (el.getAttribute("data-cmu-initials") || "").trim();
+    var letters = given || initialsOf(el.getAttribute("data-cmu-name"));
+    if (letters) el.textContent = letters;
+  }
+  var INITIALS = "[data-cmu-name], [data-cmu-initials]";
+  function startInitials(scope) {
+    if (scope.querySelectorAll) scope.querySelectorAll(INITIALS).forEach(initials);
+    if (scope.matches && scope.matches(INITIALS)) initials(scope);
+  }
+  startInitials(document);
   ["mouseover", "focusin", "pointerdown", "touchstart"].forEach(function (type) {
     document.addEventListener(
       type,
@@ -943,6 +983,288 @@
     });
   }
 
+  // Tables: <table class="alternate" data-cmu-table> with options, each
+  // optional. See Tables in the docs (lists.html).
+  //   Sorting: a header <th data-sort-key="name"> holding <button type="button"
+  //     class="cmu-sort">Name<span class="cmu-sort-arrow"></span></button>.
+  //     A cell's data-sort-value sorts in place of its text; numbers (with $
+  //     and commas) sort as numbers. Click again to reverse.
+  //   Filtering: an <input data-cmu-filter="table id"> anywhere matches each
+  //     row's text and data-keywords; an <input data-cmu-filter-column="name">
+  //     in the table's head matches the cell under <th data-sort-key="name">
+  //     (or data-cmu-column="name"). Hidden rows go to the end of the body so
+  //     the stripes stay even.
+  //   Count: an element with data-cmu-count="table id" (aria-live) says how
+  //     many rows show, naming them with data-cmu-noun="person|people".
+  //   Address: the search, column filters and sort go in the page's address
+  //     (?q=, ?filter[name]=, ?sort=name or ?sort=-name), and come back from
+  //     it on load. A value on data-cmu-table namespaces them
+  //     (?charges[q]=...) when a page has more than one table.
+  //   Server: data-cmu-table-server leaves filtering and sorting to the
+  //     server. The fields sit in a GET form, and typing submits it after a
+  //     pause; the server reads the same parameters and pages the rows.
+  function tableParam(table, name) {
+    var ns = table.getAttribute("data-cmu-table");
+    if (!ns) return name;
+    var i = name.indexOf("[");
+    return i < 0 ? ns + "[" + name + "]" : ns + "[" + name.slice(0, i) + "]" + name.slice(i);
+  }
+  function tableColumn(table, key) {
+    var head = table.tHead && table.tHead.rows[0];
+    if (!head) return -1;
+    for (var i = 0; i < head.cells.length; i++) {
+      var th = head.cells[i];
+      if (th.getAttribute("data-sort-key") === key || th.getAttribute("data-cmu-column") === key)
+        return i;
+    }
+    return -1;
+  }
+  function tableValue(cell) {
+    if (!cell) return "";
+    var v = cell.getAttribute("data-sort-value");
+    return (v === null ? cell.textContent : v).trim();
+  }
+  var tableCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+  function tableCompare(a, b) {
+    var na = Number(a.replace(/[$,%\s]/g, "")),
+      nb = Number(b.replace(/[$,%\s]/g, ""));
+    if (a !== "" && b !== "" && !isNaN(na) && !isNaN(nb)) return na - nb;
+    return tableCollator.compare(a, b);
+  }
+  function tableCountText(table, shown, all) {
+    var noun = (table.getAttribute("data-cmu-noun") || "row").split("|"),
+      one = noun[0],
+      many = noun[1] || one + "s";
+    if (!shown) return "Sorry, no results to display.";
+    if (shown === all) return all === 1 ? "Showing 1 " + one : "Showing all " + all + " " + many;
+    return "Showing " + shown + " of " + all + " " + (all === 1 ? one : many);
+  }
+  function tableFields(table) {
+    var global = table.id
+      ? Array.prototype.slice.call(
+          document.querySelectorAll('[data-cmu-filter="' + table.id + '"]'),
+        )
+      : [];
+    return {
+      global: global,
+      columns: Array.prototype.slice.call(table.querySelectorAll("[data-cmu-filter-column]")),
+      count: table.id ? document.querySelector('[data-cmu-count="' + table.id + '"]') : null,
+    };
+  }
+  function tableSave(table, state) {
+    var p = new URLSearchParams(location.search);
+    Array.from(p.keys()).forEach(function (k) {
+      if (k === tableParam(table, "q") || k === tableParam(table, "sort")) p.delete(k);
+      if (k.indexOf(tableParam(table, "filter") + "[") === 0) p.delete(k);
+    });
+    if (state.q) p.set(tableParam(table, "q"), state.q);
+    Object.keys(state.filters).forEach(function (k) {
+      if (state.filters[k]) p.set(tableParam(table, "filter[" + k + "]"), state.filters[k]);
+    });
+    if (state.sort) p.set(tableParam(table, "sort"), (state.dir < 0 ? "-" : "") + state.sort);
+    var qs = p.toString();
+    history.replaceState(
+      history.state,
+      "",
+      location.pathname + (qs ? "?" + qs : "") + location.hash,
+    );
+  }
+  function tableArrows(table, key, dir) {
+    table.querySelectorAll("th[data-sort-key]").forEach(function (th) {
+      var on = th.getAttribute("data-sort-key") === key,
+        arrow = th.querySelector(".cmu-sort-arrow");
+      if (on) th.setAttribute("aria-sort", dir < 0 ? "descending" : "ascending");
+      else th.removeAttribute("aria-sort");
+      if (arrow) arrow.textContent = on ? (dir < 0 ? " ▼" : " ▲") : "";
+    });
+  }
+  function table(t) {
+    if (t.cmuTable) return;
+    t.cmuTable = true;
+    var f = tableFields(t),
+      server = t.hasAttribute("data-cmu-table-server"),
+      p = new URLSearchParams(location.search),
+      body = t.tBodies[0],
+      state = { q: "", filters: {}, sort: "", dir: 1 };
+    // Start from the address
+    state.q = p.get(tableParam(t, "q")) || "";
+    f.global.forEach(function (input) {
+      if (state.q && !input.value) input.value = state.q;
+    });
+    f.columns.forEach(function (input) {
+      var k = input.getAttribute("data-cmu-filter-column"),
+        v = p.get(tableParam(t, "filter[" + k + "]"));
+      if (v && !input.value) input.value = v;
+    });
+    var sort = p.get(tableParam(t, "sort")) || "";
+    if (sort) {
+      state.dir = sort.charAt(0) === "-" ? -1 : 1;
+      state.sort = sort.replace(/^-/, "");
+      tableArrows(t, state.sort, state.dir);
+    }
+    if (server) {
+      // The server filters: typing submits the fields' form after a pause
+      var timer;
+      f.global.concat(f.columns).forEach(function (input) {
+        input.addEventListener("input", function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (!input.form) return;
+            if (input.form.requestSubmit) input.form.requestSubmit();
+            else input.form.submit();
+          }, 400);
+        });
+      });
+      return;
+    }
+    if (!body) return;
+    // The spaces between rows in the HTML: moving rows past them is many
+    // times slower in Chrome, and they show nothing
+    Array.prototype.slice.call(body.childNodes).forEach(function (n) {
+      if (n.nodeType === 3 && !n.nodeValue.trim()) body.removeChild(n);
+    });
+    // Each row's words, lowercased once, for the search and each column
+    var rows = Array.prototype.map.call(body.rows, function (r, i) {
+      return { el: r, at: i, text: null, cells: {}, sort: {} };
+    });
+    var columns = {};
+    function columnOf(k) {
+      if (!(k in columns)) columns[k] = tableColumn(t, k);
+      return columns[k];
+    }
+    function words(el) {
+      return (el.textContent + " " + (el.getAttribute("data-keywords") || "")).toLowerCase();
+    }
+    function rowText(r) {
+      if (r.text === null) r.text = words(r.el);
+      return r.text;
+    }
+    function cellText(r, i) {
+      if (!(i in r.cells)) r.cells[i] = r.el.cells[i] ? words(r.el.cells[i]) : "";
+      return r.cells[i];
+    }
+    function sortValue(r, i) {
+      if (!(i in r.sort)) r.sort[i] = tableValue(r.el.cells[i]);
+      return r.sort[i];
+    }
+    var order = rows.map(function (r) {
+      return r.el;
+    });
+    function render(save) {
+      state.q = f.global.length ? f.global[0].value.trim() : state.q;
+      var active = [];
+      f.columns.forEach(function (input) {
+        var k = input.getAttribute("data-cmu-filter-column"),
+          v = input.value.trim();
+        state.filters[k] = v;
+        if (v && columnOf(k) >= 0) active.push([columnOf(k), v.toLowerCase()]);
+      });
+      var q = state.q.toLowerCase(),
+        column = state.sort ? columnOf(state.sort) : -1,
+        list = rows.slice();
+      if (column >= 0)
+        list.sort(function (a, b) {
+          return (
+            state.dir * tableCompare(sortValue(a, column), sortValue(b, column)) || a.at - b.at
+          );
+        });
+      var shown = [],
+        hidden = [];
+      list.forEach(function (r) {
+        var ok = !q || rowText(r).indexOf(q) >= 0;
+        for (var i = 0; ok && i < active.length; i++)
+          ok = cellText(r, active[i][0]).indexOf(active[i][1]) >= 0;
+        (ok ? shown : hidden).push(r.el);
+      });
+      shown.forEach(function (el) {
+        if (el.hidden) el.hidden = false;
+      });
+      hidden.forEach(function (el) {
+        if (!el.hidden) el.hidden = true;
+      });
+      // Move rows only when their order changed: shown rows first, so the
+      // stripes stay even
+      var next = shown.concat(hidden),
+        moved = next.some(function (el, i) {
+          return el !== order[i];
+        });
+      if (moved) {
+        var frag = document.createDocumentFragment();
+        next.forEach(function (el) {
+          frag.appendChild(el);
+        });
+        body.appendChild(frag);
+        order = next;
+      }
+      if (f.count) f.count.textContent = tableCountText(t, shown.length, rows.length);
+      if (save) tableSave(t, state);
+    }
+    // A long table waits for a pause in typing
+    var wait;
+    f.global.concat(f.columns).forEach(function (input) {
+      input.addEventListener("input", function () {
+        clearTimeout(wait);
+        if (rows.length < 500) render(true);
+        else
+          wait = setTimeout(function () {
+            render(true);
+          }, 150);
+      });
+    });
+    t.querySelectorAll("th[data-sort-key] .cmu-sort").forEach(function (b) {
+      b.addEventListener("click", function (e) {
+        e.preventDefault();
+        var k = b.closest("th").getAttribute("data-sort-key");
+        state.dir = state.sort === k ? -state.dir : 1;
+        state.sort = k;
+        tableArrows(t, k, state.dir);
+        render(true);
+      });
+    });
+    // Only when the address or the fields (a page restored from a cache)
+    // asked for something; the page's own rows and count stand otherwise
+    var asked =
+      state.sort ||
+      f.global.concat(f.columns).some(function (input) {
+        return input.value.trim();
+      });
+    if (asked) render(false);
+  }
+
+  // A search box over a list, not a table: <input data-cmu-filter="list id">
+  // hides the list's items that don't match their text or data-keywords, and
+  // the list's data-cmu-noun names them in its count
+  function listFilter(input) {
+    var list = document.getElementById(input.getAttribute("data-cmu-filter"));
+    if (input.cmuFilter || !list || list.tagName === "TABLE") return;
+    input.cmuFilter = true;
+    var count = document.querySelector('[data-cmu-count="' + list.id + '"]');
+    function run() {
+      var q = input.value.trim().toLowerCase(),
+        items = Array.prototype.slice.call(list.children),
+        shown = 0;
+      items.forEach(function (li) {
+        var ok =
+          !q ||
+          (li.textContent + " " + (li.getAttribute("data-keywords") || ""))
+            .toLowerCase()
+            .indexOf(q) >= 0;
+        li.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = tableCountText(list, shown, items.length);
+    }
+    input.addEventListener("input", run);
+    if (input.value) run();
+  }
+  function startTables(root) {
+    if (root.querySelectorAll) {
+      root.querySelectorAll("table[data-cmu-table]").forEach(table);
+      root.querySelectorAll("input[data-cmu-filter]").forEach(listFilter);
+    }
+    if (root.matches && root.matches("table[data-cmu-table]")) table(root);
+  }
+
   // Search suggestions: <div class="cmu-suggest"> holding the field,
   // <input role="combobox" aria-controls="(list id)" aria-expanded="false"
   // aria-autocomplete="list">, and <ul class="cmu-suggest-list" id="(list id)"
@@ -1047,10 +1369,33 @@
 
   startCountdowns(document);
   startTabs(document);
+  // Annotated Image pins: a pin links to its callout. When the callout is
+  // already in view, outline it in place instead of jumping the page there
+  document.addEventListener(
+    "click",
+    function (e) {
+      var pin = e.target.closest && e.target.closest("a.cmu-annotated-pin");
+      if (!pin) return;
+      var note = document.getElementById(pin.hash.slice(1));
+      if (!note) return;
+      var box = note.getBoundingClientRect();
+      if (box.top < 0 || box.bottom > window.innerHeight) return;
+      // Capture, so the template's own scrolling for # links never sees it
+      e.preventDefault();
+      e.stopPropagation();
+      var list = note.parentElement;
+      list.querySelectorAll(".cmu-annotated-current").forEach(function (li) {
+        li.classList.remove("cmu-annotated-current");
+      });
+      note.classList.add("cmu-annotated-current");
+    },
+    true,
+  );
   tabsFromHash();
   window.addEventListener("hashchange", tabsFromHash);
   startScrollGalleries(document);
-  // Countdowns, sorting lists, email links and tabs added later start, a
+  startTables(document);
+  // Countdowns, sorting lists, email links, tabs and tables added later start, a
   // countdown whose date changes restarts, and suggestion lists show new options
   new MutationObserver(function (changes) {
     changes.forEach(function (c) {
@@ -1063,8 +1408,10 @@
           startCountdowns(n);
           startSorts(n);
           startEmails(n);
+          startInitials(n);
           startTabs(n);
           startScrollGalleries(n);
+          startTables(n);
         });
       }
     });

@@ -165,6 +165,7 @@
                 on any page with the kit.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>body.cmu-app</code>, <code>body.cmu-framed</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -213,6 +214,7 @@
               takes the small capitals, and the fields&rsquo; own labels turn quieter, in ordinary
               case.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-field-row</code>, <code>cmu-field-row--short</code>, <code>cmu-hint</code>
             </p>
@@ -269,6 +271,7 @@
                 mean more than one thing.
               </p>
             </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-field-button</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -342,6 +345,7 @@
                 <a href="#field-button">field with a button</a> in place of the box.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-suggest</code>, <code>cmu-suggest-list</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -372,6 +376,7 @@
               legend is bold; when the legend only names the choices, such as Pages under a heading
               that already asks, add <code>cmu-label</code> for the small capitals of other labels.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-choices</code>, <code>cmu-label</code> on a legend that names
             </p>
@@ -406,6 +411,7 @@
               <a href="messages.html#dialog">dialog</a>, the grid scrolls, so a search field above
               it can narrow a long set.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-choices cmu-choices--grid</code>, a <code>bi</code> icon sized for a tile
             </p>
@@ -445,6 +451,7 @@
               <code>cmu-sub-options</code> block, with the radio button or checkbox right inside the
               list item, before its label. The kit shows them with CSS alone. Pick A Logo:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-sub-options</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -535,6 +542,7 @@
                 <a href="#sort">Sorting</a>.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-question</code>, <code>cmu-question-buttons</code>,
               <code>cmu-question-back</code>, <code>cmu-choices</code>
@@ -593,6 +601,7 @@
               <code>value</code>, and has a <code>&lt;label&gt;</code> naming its item. Under 600px
               the menu goes under its item, without the puzzle shapes.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-match</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -625,6 +634,7 @@
               React, Svelte or Vue, which own the list, see the Framework tab: render the buttons
               yourself and handle the <code>cmu-sort-move</code> event.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-sort</code>, <code>data-cmu-sort</code>, <code>cmu-sort-moves</code>,
               <code>data-cmu-move</code>
@@ -801,6 +811,7 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
               with any radio buttons. Put the cards in a section, as with the
               <a href="#question">question card</a>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-card-sort</code></p>
           </div>
         </div>
@@ -866,6 +877,7 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
                 size limit.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-drop</code>, <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>,
               <code>cmu-drop-over</code>, <code>cmu-drop-has-file</code>
@@ -952,6 +964,38 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
               </p>
             </div>
 
+            <h2 id="or" class="rule-top">
+              Or Divider
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A line across with &ldquo;or&rdquo; in it, between two ways to do the same thing:
+              upload a file or type it in, pick a team or start one. What comes after it is the
+              second way, usually a <code>cta</code>. The
+              <a href="accounts.html#sign-in-page">Sign-In Page</a> uses one under its buttons.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Write &ldquo;or&rdquo; in lowercase; the divider sets it in capitals. Use it only
+                between two ways to the same result, not to split a page into parts.
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-or</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <form>
+          <label for="kit-or-sheet">Roll Time Sheet</label>
+          <input type="file" id="kit-or-sheet" name="sheet" accept=".csv">
+          <p class="cmu-hint">The CSV file from the timing booth.</p>
+          <p class="cmu-or">or</p>
+          <p><a class="cta" href="#or">Enter Roll Times by Hand</a></p>
+        </form>
+      </div>
+
             <h2 id="tap" class="rule-top">
               ID Tap / NFC
               <span class="kit-where"
@@ -1008,6 +1052,7 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
                 should clear it after each tap and never log card numbers.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-tap-target</code>, <code>data-cmu-tap</code>, <code>cmu-tap-card</code>,
               <code>cmu-tap-ready</code>, <code>cmu-tap-paused</code>, <code>cmu-tap-result</code>,

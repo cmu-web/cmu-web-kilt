@@ -135,6 +135,7 @@
               <code>&lt;label&gt;</code> is for screen readers only (<code>sr-only</code>). The
               placeholder says what you'll find, ending in an ellipsis.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-search-bar</code>, <code>sr-only</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -183,6 +184,7 @@
               and wrap on a narrow screen. For a single search box, use a
               <a href="#search">search</a> instead.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-filters</code>, <code>cmu-filter-group</code>,
               <code>cmu-filter-checks</code>
@@ -255,6 +257,7 @@
               column, so screen readers can say which column a cell is in. A column of buttons gets
               a header too, hidden with <code>sr-only</code>, such as "Actions."
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>table.cmu-full</code>, <code>table.cmu-compare</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -266,6 +269,154 @@
           </tbody>
         </table>
       </div>
+
+            <p>
+              Options, for a table in an app (they need <code>cmu-app.css</code>,
+              <code>cmu-app</code> on the body and <code>cmu-app.js</code>): add
+              <code>data-cmu-table</code> to the table, then any of sorting, filtering, a count, the
+              view in the page's address, a sticky header and server paging. Each works on its own,
+              and without the script the table shows every row in its first order.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>data-cmu-table</code>, <code>data-sort-key</code>, <code>cmu-sort</code>,
+              <code>cmu-sort-arrow</code>, <code>data-sort-value</code>,
+              <code>data-cmu-filter</code>, <code>data-cmu-filter-column</code>,
+              <code>cmu-filter-row</code>, <code>data-cmu-column</code>, <code>data-keywords</code>,
+              <code>data-cmu-count</code>, <code>data-cmu-noun</code>, <code>cmu-sticky</code>,
+              <code>data-cmu-table-server</code>
+            </p>
+
+            <h3 id="table-sorting">Sorting</h3>
+            <p>
+              Give a column's heading <code>data-sort-key</code> and put its words in a
+              <code>button.cmu-sort</code> with an empty <code>span.cmu-sort-arrow</code>. Clicking
+              sorts by that column, and clicking again reverses it; the heading turns red, shows
+              &#9650; or &#9660; and gets <code>aria-sort</code>. Numbers sort as numbers, even with
+              a dollar sign or commas. For a cell whose words don't sort well, such as a date, put
+              the value to sort by in <code>data-sort-value</code>. Click a heading:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <table class="alternate cmu-full" id="kit-sort-table" data-cmu-table="kit-sort" data-cmu-noun="checkout">
+          <thead><tr>
+            <th scope="col" data-sort-key="person"><button type="button" class="cmu-sort">Person<span class="cmu-sort-arrow"></span></button></th>
+            <th scope="col" data-sort-key="item"><button type="button" class="cmu-sort">Item<span class="cmu-sort-arrow"></span></button></th>
+            <th scope="col" data-sort-key="due"><button type="button" class="cmu-sort">Due<span class="cmu-sort-arrow"></span></button></th>
+            <th scope="col" class="num" data-sort-key="fee"><button type="button" class="cmu-sort">Fee<span class="cmu-sort-arrow"></span></button></th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td data-sort-value="2027-04-08">April 8</td><td class="num">$15.00</td></tr>
+            <tr><td>Margaret Morrison</td><td>Scissor Lift</td><td data-sort-value="2027-04-06">April 6</td><td class="num">$120.00</td></tr>
+            <tr><td>Andrew Mellon</td><td>Extension Cord</td><td data-sort-value="2027-04-10">April 10</td><td class="num">$5.00</td></tr>
+            <tr><td>Margaret Morrison</td><td>Hard Hat</td><td data-sort-value="2027-04-09">April 9</td><td class="num">$0.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+            <h3 id="table-filtering">Filtering</h3>
+            <p>
+              A search box for the whole table is an <code>&lt;input&gt;</code> with
+              <code>data-cmu-filter</code> set to the table's id, placed as a
+              <a href="#search">search</a>. For a box per column, add a
+              <code>tr.cmu-filter-row</code> to the table's head with an
+              <code>&lt;input data-cmu-filter-column&gt;</code> under each column that needs one,
+              named like the column's <code>data-sort-key</code> (or <code>data-cmu-column</code> on
+              a heading that doesn't sort), and a label for screen readers. Rows match as people
+              type, words in a row's <code>data-keywords</code> match too, and hidden rows move to
+              the end so the stripes stay even. Type in any of the boxes:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-search-bar">
+          <p>Search by person, item or organization.</p>
+          <label for="kit-checkout-search" class="sr-only">Find a Checkout</label>
+          <input type="text" id="kit-checkout-search" placeholder="Find a checkout&hellip;" data-cmu-filter="kit-filter-table">
+        </div>
+        <table class="alternate cmu-full" id="kit-filter-table" data-cmu-table="kit-filter" data-cmu-noun="checkout">
+          <thead>
+            <tr>
+              <th scope="col" data-sort-key="person"><button type="button" class="cmu-sort">Person<span class="cmu-sort-arrow"></span></button></th>
+              <th scope="col" data-sort-key="item"><button type="button" class="cmu-sort">Item<span class="cmu-sort-arrow"></span></button></th>
+              <th scope="col" data-cmu-column="organization">Organization</th>
+            </tr>
+            <tr class="cmu-filter-row">
+              <td><label for="kit-f-person" class="sr-only">Filter by Person</label><input type="text" id="kit-f-person" data-cmu-filter-column="person" placeholder="Person"></td>
+              <td><label for="kit-f-item" class="sr-only">Filter by Item</label><input type="text" id="kit-f-item" data-cmu-filter-column="item" placeholder="Item"></td>
+              <td><label for="kit-f-org" class="sr-only">Filter by Organization</label><input type="text" id="kit-f-org" data-cmu-filter-column="organization" placeholder="Organization"></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td>Booth Crew</td></tr>
+            <tr data-keywords="aerial work platform"><td>Margaret Morrison</td><td>Scissor Lift</td><td>Lighting Crew</td></tr>
+            <tr><td>Andrew Mellon</td><td>Extension Cord</td><td>Buggy Team</td></tr>
+            <tr><td>Margaret Morrison</td><td>Hard Hat</td><td>Booth Crew</td></tr>
+            <tr><td>Andrew Carnegie</td><td>Ladder</td><td>Lighting Crew</td></tr>
+          </tbody>
+        </table>
+        <p class="cmu-results-count" data-cmu-count="kit-filter-table" aria-live="polite">Showing all 5 checkouts</p>
+      </div>
+            <h3 id="table-count">The Count</h3>
+            <p>
+              An element with <code>data-cmu-count</code> set to the table's id, under the table
+              with <code>aria-live="polite"</code>, says how many rows show after each change, as in
+              the example above. Name the rows with <code>data-cmu-noun</code> on the table, as one
+              word or as <code>"person|people"</code> where the plural isn't just an s. Write the
+              first count into the page too, for people without the script.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Use the same words as other counts: &ldquo;Showing all 5 checkouts,&rdquo;
+                &ldquo;Showing 2 of 5 checkouts,&rdquo; &ldquo;Showing 1 checkout&rdquo; and, with
+                nothing found, the template's &ldquo;Sorry, no results to display.&rdquo;
+              </p>
+            </div>
+
+            <h3 id="table-address">The View in the Address</h3>
+            <p>
+              The search, the column filters and the sort go in the page's address as people change
+              them, and come back from it when the page loads, so a filtered, sorted table can be
+              bookmarked and shared: <code>?q=drill</code>,
+              <code>?filter[organization]=booth</code>, <code>?sort=due</code> and
+              <code>?sort=-due</code> for the reverse. On a page with more than one table, give each
+              a name in <code>data-cmu-table</code>, and its settings go under that name
+              (<code>?checkouts[q]=drill</code>). Frameworks such as Rails read these as nested
+              parameters.
+            </p>
+
+            <h3 id="table-sticky">Sticky Header</h3>
+            <p>
+              Add <code>cmu-sticky</code> to a long table, and its head, with any filter row, stays
+              at the top of the window as people scroll down the rows. It works from 768px up, with
+              <code>cmu-full</code>; below that the table scrolls sideways instead.
+            </p>
+
+            <h3 id="table-server">Long Tables</h3>
+            <p>
+              Sorting and filtering in the browser suit a table of up to a few thousand rows sent
+              with the page. For a longer one, let the server do it with the same markup and the
+              same address parameters:
+            </p>
+            <ul>
+              <li>
+                <strong>Add <code>data-cmu-table-server</code></strong> to the table. The script
+                then leaves the rows alone, and typing in a filter submits its form after a pause.
+              </li>
+              <li>
+                <strong>Put the filter boxes in a <code>&lt;form method="get"&gt;</code></strong>
+                named <code>q</code> and <code>filter[organization]</code>, with a Search button for
+                people without the script.
+              </li>
+              <li>
+                <strong>Make each sorting heading a link</strong> (<code>a.cmu-sort</code>) to the
+                same page with <code>?sort=</code> set, and mark the current one with
+                <code>aria-sort</code> and its arrow.
+              </li>
+              <li>
+                <strong>Page the rows on the server,</strong> with a count over them and a
+                <a href="#pagination">pager</a> or <a href="#load-more">Load More</a> under them.
+              </li>
+            </ul>
 
             <h2 id="table-actions" class="rule-top">
               Tables With Actions
@@ -281,6 +432,7 @@
               the table down. Each row gets one button, the next thing to do, and a ⋯ menu with the
               rest; a row with nothing else to do gets no menu.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-bulk-bar</code>, <code>cmu-selection-count</code>,
               <code>cmu-has-selection</code>, <code>cmu-select-cell</code>, <code>cmu-sort</code>,
@@ -406,6 +558,7 @@
               make them stand out, since screen readers then announce every row as a heading. A long
               page of them can go under collapsed headings, as below.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>table.alternate</code>, <code>cmu-full</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -445,6 +598,7 @@
                 Sections.&rdquo;
               </p>
             </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-load-more</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -496,6 +650,7 @@
               all. Use the same batch size as Load More, such as 20. On phones, &laquo; and &raquo;
               give way to the numbers.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-pager</code></p>
             <h3 id="pagination-start">Near the Start</h3>
             <p>On page 2, with the results count above it:</p>
@@ -582,11 +737,12 @@
               back. It slides open and closed where the browser supports that (not for people who
               turn motion down). <a href="layout.html#tabs">Tabs</a> fold the same way.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-more</code>, <code>cmu-more-link</code>, <code>cmu-more-closed</code>,
               <code>cmu-more-open</code>
             </p>
-            <h3 id="more-list">A List</h3>
+            <h3 id="more-list">Folded List</h3>
             <p>The first few items, then the count of the rest; open, the whole list shows:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -595,7 +751,7 @@
           <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>
         </details>
       </div>
-            <h3 id="more-block">A Block</h3>
+            <h3 id="more-block">Folded Block</h3>
             <p>
               A question that leads to something people may want to read, such as a long prompt or
               the full terms, then a toggle that names it. Nothing on the line moves: only the

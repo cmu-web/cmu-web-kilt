@@ -159,6 +159,7 @@
               action (<code>cta</code>) for a link that should stand out from the text.
               <code>external</code> marks a link to another site.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>btn</code>, <code>ghost</code>, <code>small</code>, <code>wide</code>,
               <code>cta</code>, <code>external</code>
@@ -274,6 +275,7 @@
               button. Signing out isn't one of these: it goes in the
               <a href="accounts.html#account">menu</a>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-link-button</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -295,6 +297,7 @@
               (<code>figure.image</code>), it sits close to the photo it acts on, as with a Show
               Another Photo button; the note is optional.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-button-note</code>, <code>cmu-hint</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -320,6 +323,7 @@
               An app page's actions, such as New Semester on a list of semesters, go in a row like
               this under the heading and its lead, never beside the heading.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-cta-row</code>, <code>cmu-cta-note</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -368,6 +372,7 @@
                 <code>span.protect</code>, which only displays "Email" with an envelope icon.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>data-cmu-email</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -390,6 +395,7 @@
               </li>
               <li><strong>Lead:</strong> the larger first paragraph under a page title.</li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-eyebrow</code>, <code>cmu-lead</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -418,6 +424,7 @@
               Gray secondary text, a smaller hint under a field, a centered empty-list message and
               codes kept on one line.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-muted</code>, <code>cmu-hint</code>, <code>cmu-empty</code>,
               <code>cmu-code</code>, <code>cmu-label</code>
@@ -437,11 +444,13 @@
               >
             </h2>
             <p>
-              Three kinds of list, for three jobs. Start each item with a short bold phrase when it
-              helps people scan.
+              A kind of list for each job. Start each item with a short bold phrase when it helps
+              people scan.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
-              <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-plain</code>
+              <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-fixes</code>,
+              <code>ul.cmu-notes</code>, <code>ul.cmu-plain</code>
             </p>
             <h3 id="checks-bullets">Bullet List</h3>
             <p>
@@ -470,6 +479,36 @@
           <li><strong>A tripod</strong> and a carrying case</li>
         </ul>
       </div>
+            <h3 id="checks-results">Fix and Note Lists</h3>
+            <p>
+              For the results of a check, such as a form's problems or a page's settings. Use
+              <code>cmu-fixes</code> for what to fix, <code>cmu-notes</code> for what's worth
+              knowing and <code>cmu-checks</code> for what passed, in that order, each under its own
+              heading:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <h4>To Fix</h4>
+        <ul class="cmu-fixes">
+          <li><strong>Course number:</strong> Add the course number, such as 15-112.</li>
+          <li><strong>Return date:</strong> Pick a date within two weeks.</li>
+        </ul>
+        <h4>Worth Knowing</h4>
+        <ul class="cmu-notes">
+          <li><strong>Tripod:</strong> It's checked out until Friday, so the kit comes without one.</li>
+        </ul>
+        <h4>Looks Good</h4>
+        <ul class="cmu-checks">
+          <li><strong>Andrew ID:</strong> Signed in as ac00.</li>
+        </ul>
+      </div>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Start each fix with a verb that says what to do, such as &ldquo;Add&rdquo; or
+                &ldquo;Pick,&rdquo; not what&rsquo;s wrong. Leave out a heading whose list is empty.
+              </p>
+            </div>
             <h3 id="checks-plain">Plain List</h3>
             <p>
               When each item starts with its own label, such as a pill, add <code>cmu-plain</code>
@@ -491,6 +530,7 @@
               >
             </h2>
             <p>Instructions to follow in order, with the step numbers in red circles.</p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>ol.cmu-steps</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -539,6 +579,7 @@
                 section at the top of the page.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-callout</code> with <code>cmu-label</code>, <code>cmu-callout--blue</code>,
               <code>cmu-callout--green</code>, <code>cmu-callout--gold</code>,
@@ -596,6 +637,7 @@
               except in app tables below 1200px. Choose a color from the
               <a href="conventions.html#colors">color guide</a>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-pill</code>, <code>cmu-pill--green</code>, <code>cmu-pill--amber</code>
             </p>
@@ -646,6 +688,7 @@
                 picture; a screen reader would read a credit there as part of it.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>figure.image</code>, <code>figcaption</code>, <code>floatright</code>,
               <code>floatleft</code>
@@ -700,11 +743,12 @@
                 of two or three in a <a href="tops.html#hero">Split Hero</a>.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>figure.cmu-shot</code>, <code>cmu-shot--browser</code>,
               <code>cmu-shot--phone</code>, <code>cmu-shots</code>, <code>data-cmu-address</code>
             </p>
-            <h3 id="screenshots-browser">A Border or a Browser Window</h3>
+            <h3 id="screenshots-browser">Border or a Browser Window</h3>
             <p>
               Add <code>cmu-shot--browser</code> for a browser window, with a bar and three dots
               across the top; the window is as wide as the screenshot, never wider than the column.
@@ -756,7 +800,9 @@
               a phone, or the steps of a task. A phone keeps its width and the others share the
               rest; a browser window beside a phone is cropped to the phone's height, so their
               captions line up. Frames line up by their tops; a screenshot without a frame lines up
-              with the image in a browser window. On a narrow screen, they go one per line:
+              with the image in a browser window. A <code>div</code> inside the
+              <code>cmu-shots</code> stacks figures in one column. On a narrow screen, they go one
+              per line:
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -785,6 +831,7 @@
               <a href="#screenshots">screenshot</a> in a <code>div.cmu-example</code>; the picture
               is centered on the mat, however narrow it is.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-example</code>, <code>cmu-label</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -809,6 +856,7 @@
               image, then a <code>cmu-link-preview-text</code> with the site, the title in
               <code>&lt;strong&gt;</code> and the description:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-link-preview</code>, <code>cmu-link-preview-text</code>
             </p>
@@ -840,6 +888,7 @@
               <code>cmu-transparent</code> to the image, or to a <code>&lt;figure&gt;</code> holding
               it, with or without a <a href="#screenshots">screenshot</a> frame.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-transparent</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -864,6 +913,7 @@
               opens at full width and scrolls. The enlarged image uses the image's alt text, so
               write that as usual. It works on a screenshot in any frame, a photo or a plain image.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>data-cmu-zoom</code>, <code>cmu-zoom</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -913,8 +963,9 @@
                 Add <code>loading="lazy"</code> so the video loads only when someone scrolls to it.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>iframe</code>, <code>grid column2 grey</code></p>
-            <h3 id="videos-alone">A Video on Its Own</h3>
+            <h3 id="videos-alone">Video on Its Own</h3>
             <p>A video across the column:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -924,7 +975,7 @@
         </div>
         <div class="content wide">
           <div>
-            <h3 id="videos-beside">A Video Beside Its Description</h3>
+            <h3 id="videos-beside">Video Beside Its Description</h3>
             <p>A video and a few sentences about it, in a gray section:</p>
           </div>
         </div>
@@ -979,6 +1030,7 @@
                 the frame then stays blank; check it on a test page first.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-embed</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -999,6 +1051,7 @@
               nested code stays easy to follow. Put the text inside <code>&lt;code&gt;</code>, and
               write <code>&amp;lt;</code> for each <code>&lt;</code> in HTML.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>pre.cmu-snippet</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -1026,6 +1079,7 @@
               <p class="cmu-label">Style</p>
               <p>Say what the toggle shows, such as &ldquo;See the Whole Page.&rdquo;</p>
             </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-peek</code>, <code>cmu-more</code>, <code>cmu-more-link</code>,
               <code>cmu-more-closed</code>, <code>cmu-more-open</code>
@@ -1083,11 +1137,12 @@
                 and tells the user to press Ctrl+C or Command+C.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>data-cmu-copy</code>, <code>cmu-copyable</code>, <code>cmu-copy</code>,
               <code>cmu-snippet</code>, <code>cmu-copy-row</code>, <code>btn</code>
             </p>
-            <h3 id="copy-icon">An Icon for Code</h3>
+            <h3 id="copy-icon">Icon for Code</h3>
             <p>
               Code gets an icon in its corner, where people who copy code expect it. Put the block
               and the button in a <code>cmu-copyable</code> box, and name the button with
@@ -1101,7 +1156,7 @@
           <button class="cmu-copy" type="button" data-cmu-copy="#kit-copy-html" aria-label="Copy HTML" title="Copy HTML"></button>
         </div>
       </div>
-            <h3 id="copy-named">A Named Button for Anything Else</h3>
+            <h3 id="copy-named">Named Button for Anything Else</h3>
             <p>
               Anything else, such as a link to share, an address to paste or a code to type
               somewhere else, gets a named button beside the block, for people who don't copy code
@@ -1138,6 +1193,7 @@
               an <code>id</code> for the button to copy; it copies the whole prompt whether the fold
               is open or not.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-agent</code>, <code>cmu-copy</code>, <code>cmu-more</code>
             </p>
@@ -1173,6 +1229,7 @@
               have it take the cards' place instead. Try a past date. It depends on
               <code>cmu-app.js</code>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-countdown</code>, <code>data-cmu-countdown</code>,
               <code>cmu-countdown-done</code>, <code>cmu-countdown--replace</code>
@@ -1223,10 +1280,14 @@
               </li>
               <li>
                 <strong>No icons in buttons.</strong> The only icon-only buttons are the kit's copy,
-                close, sorting arrows, the question card's arrows and a table row's ⋯ menu.
+                close, sorting arrows, the question card's arrows and a table row's ⋯ menu. The one
+                icon beside a button's words is a sign-in service's mark on its own sign-in button,
+                such as Google's or the university's C, on a
+                <a href="accounts.html#sign-in-page">sign-in page</a>.
               </li>
               <li><strong>Never use an icon alone</strong> to tell things apart.</li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>bi</code>, <code>bi-</code><em>name</em>, <code>floatright</code>
             </p>
@@ -1293,6 +1354,7 @@
                 question mark.
               </p>
             </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>collapsed</code></p>
             <h3 id="faq-short">One Topic</h3>
             <p>All the questions together, each opening in place:</p>

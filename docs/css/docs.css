@@ -34,6 +34,12 @@
   border: 0;
   background: none;
 }
+/* Unless it's a plain white layout that would pass for the docs page's own
+   content (a heading and a sidebar): then it's boxed like other examples */
+.kit-demo--wide.kit-demo--boxed {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--cmu-line);
+}
 /* Examples side by side, wrapping on phones */
 .kit-demo > :last-child:not(dialog) {
   margin-bottom: 0;
@@ -58,14 +64,13 @@
   margin: 0;
   max-width: 100%;
 }
-.kit-classes::before {
-  content: "Classes: ";
-  color: var(--cmu-muted);
+/* The "Classes" label (a cmu-label) sits right above its list */
+.kit-classes-label {
+  margin: 0 0 0.25rem;
 }
 .kit-classes {
   margin: 0 0 0.5rem;
   color: var(--cmu-muted);
-  font-size: 0.9rem;
 }
 .kit-classes code {
   color: var(--cmu-ink);
@@ -283,4 +288,19 @@ td > .kit-where {
     z-index: 20;
     background: #fff;
   }
+}
+
+/* An example page, live in a frame scaled down to fit (docs.js): laid out
+   at its desktop width, so the template's iframe rule (max-width: 100%)
+   is lifted */
+.kit-page-frame {
+  overflow: hidden;
+  border: 1px solid var(--cmu-line);
+  margin: 0 0 1.75rem;
+}
+.kit-page-frame iframe {
+  display: block;
+  max-width: none;
+  border: 0;
+  transform-origin: 0 0;
 }

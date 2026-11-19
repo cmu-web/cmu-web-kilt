@@ -196,6 +196,7 @@
               all, so don't count on the pattern to set a section apart. In Cascade, it's a
               section's <strong>Background Image</strong>: Globe or Plaid.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>globe</code>, <code>plaid</code>, with a color</p>
             <div class="kit-swatches kit-swatches--tall">
               <div class="red invert globe">red invert globe</div>
@@ -227,6 +228,7 @@
               Use <code>rule-bottom</code> for a line below a heading, as in the
               <a href="sidebars.html#quick-links">sidebar</a>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>rule-top</code>, <code>rule-bottom</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -266,8 +268,9 @@
               page, often with the globe. It's a <code>.content wide</code> block with a color; give
               it an <code>id</code> to link to it.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>content wide</code>, <code>red invert globe</code></p>
-            <h3 id="bar-heading">A Heading</h3>
+            <h3 id="bar-heading">Heading</h3>
             <p>The section holds just a heading:</p>
           </div>
         </div>
@@ -290,7 +293,7 @@
                 content.
               </p>
             </div>
-            <h3 id="bar-statement">A Statement Instead of a Heading</h3>
+            <h3 id="bar-statement">Statement Instead of a Heading</h3>
             <p>
               For a statement instead of a heading, such as a mission, use a lighter section with
               the text centered: <code>grey plaid</code>, which the template fades so dark text
@@ -331,6 +334,7 @@
               grid: each card's heading, words and link sit at its bottom, lined up across the row,
               and the picture is centered in the space above.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
               <code>boxes</code>, <code>cmu-grid-full</code>, <code>cmu-cards-bottom</code>
@@ -445,6 +449,7 @@
                 dot.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid</code>, <code>grey</code>, <code>boxes</code>,
               <code>cmu-cards-bottom</code>
@@ -501,6 +506,7 @@
               the width allows; <code>cmu-paths--two</code> keeps a pair side by side. The
               call-to-action line (<code>cta</code>) is the template's own.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-paths</code>, <code>cmu-paths--two</code>, <code>cmu-path</code>
             </p>
@@ -542,6 +548,7 @@
               Two wide buttons side by side for the two things most people come to do. Each is a
               <code>btn wide</code> inside an <code>&lt;h2&gt;</code>, which makes its text large.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid column2</code>, <code>btn wide</code>, <code>aligncenter</code>
             </p>
@@ -577,6 +584,7 @@
               deserves its own words. Phrase the titles as the end of the heading's sentence: "I
               want to&hellip; Borrow a Camera."
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid column3 boxes</code>, a linked <code>&lt;h2&gt;</code>
             </p>
@@ -619,6 +627,7 @@
               the page, not here. A column can start with an <code>&lt;h1&gt;</code>, which shows as
               a small bold label.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid column3 red invert nav</code>, <code>nav-list</code>
             </p>
@@ -680,6 +689,7 @@
                 <strong>Not on a page short enough to see at a glance.</strong>
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid column3 nav cmu-on-this-page</code>, <code>cmu-label</code>,
               <code>nav-list</code>
@@ -727,6 +737,7 @@
               A process in a few numbered columns, for an overview. For instructions people follow,
               use numbered steps instead.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>ol.cmu-flow</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -753,6 +764,7 @@
               <code>red invert</code>: the first column holds the image. On red, use the white
               outline button, <code>btn ghost</code>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>grid column2 red invert</code>, <code>btn ghost</code></p>
           </div>
         </div>
@@ -784,6 +796,7 @@
               <a href="content.html#screenshots">Screenshots</a>) to draw the screenshot in a
               browser window, like the hero's art, as the <a href="gallery.html">Gallery</a> does.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-split</code>, <code>figure.cmu-shot</code>, <code>cmu-shot--browser</code>
             </p>
@@ -811,9 +824,9 @@
               >
             </h2>
             <p>
-              A tall image, such as a screenshot of a whole page or a diagram, with callouts beside
-              it. Each callout is pinned next to the part it describes and overlaps the image's edge
-              a little, so people can read it part by part.
+              An image, such as a screenshot or a diagram, with numbered callouts that name its
+              parts, so people can read it part by part. Align each callout beside its part of a
+              tall image, or pin each one to its part with a numbered marker.
             </p>
             <ul class="cmu-checks">
               <li>
@@ -822,13 +835,21 @@
                 part has its own page, add a call to action linking to it.
               </li>
               <li>
-                <strong>Position each callout.</strong> Set <code>--cmu-at</code> to the middle of
-                the part it describes: 0 is the top of the image, 0.5 is halfway down, and 1 is the
-                bottom.
+                <strong>Line up callouts on a tall image.</strong> Set <code>--cmu-at</code> on each
+                callout to the middle of the part it describes: 0 is the top of the image, 0.5 is
+                halfway down, and 1 is the bottom. Keep the introduction short enough to end above
+                the first callout.
               </li>
               <li>
-                <strong>Keep the introduction short.</strong> Put it in the same column as the
-                callouts, with enough room to end above the first one.
+                <strong>Pin parts that sit side by side.</strong> Add
+                <code>cmu-annotated--pins</code>, give each callout an <code>id</code>, and put an
+                <code>a.cmu-annotated-pin</code> with the callout's number in the figure after the
+                image for each part, linking to its callout. Set <code>--cmu-x</code> and
+                <code>--cmu-y</code> to the middle of the part: 0 to 1 across and down the image. A
+                negative <code>--cmu-y</code> puts a pin on a browser window's bar, above the image.
+                Clicking a pin outlines its callout, and on narrow screens, where the callouts drop
+                below the image, scrolls to it. Name each pin with an <code>aria-label</code>, such
+                as "Note 1, Site Name." The image keeps its own size.
               </li>
               <li>
                 <strong>Give longer text more room.</strong> Below 50rem (800px), the component
@@ -840,11 +861,16 @@
             <p>
               <a class="cta" href="conventions.html#service-home">See How This Guide Uses It</a>
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-annotated</code>, <code>cmu-annotated-text</code>,
               <code>cmu-annotated-notes</code>, <code>cmu-annotated--wide</code>,
-              <code>--cmu-at</code>, <code>cmu-callout</code>
+              <code>--cmu-at</code>, <code>cmu-annotated--pins</code>,
+              <code>cmu-annotated-pin</code>, <code>--cmu-x</code>, <code>--cmu-y</code>,
+              <code>cmu-callout</code>
             </p>
+            <h3 id="annotated-aligned">Aligned Callouts</h3>
+            <p>Each callout lines up beside its part of a tall image:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-annotated">
@@ -871,6 +897,61 @@
           <figure class="cmu-shot">
             <a href="images/annotated-page.svg" data-cmu-zoom><img src="images/annotated-page.svg" alt="A drawing of a page on CMU's template, top to bottom: a red strip, the site name and tabs, a gray section with a heading, a button and a photo, the page's text with a sidebar box, and a dark footer." width="600" height="900"></a>
             <figcaption>Select the drawing to enlarge it.</figcaption>
+          </figure>
+        </div>
+      </div>
+            <h3 id="annotated-pinned">Pinned Callouts</h3>
+            <p>Each callout has a numbered pin on its part, anywhere on the image:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-annotated cmu-annotated--pins">
+          <div class="cmu-annotated-text">
+            <p>The top of a home page on CMU's template.</p>
+            <ol class="cmu-annotated-notes">
+              <li class="cmu-callout" id="example-note-1">
+                <p class="cmu-label">1. Red Strip</p>
+                <p>The template's strip with the CMU wordmark, on every page.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-2">
+                <p class="cmu-label">2. Menu Button</p>
+                <p>Opens the menu, with every page of the site.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-3">
+                <p class="cmu-label">3. Site Name</p>
+                <p>The site's name, linking to its home page.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-4">
+                <p class="cmu-label">4. Tagline</p>
+                <p>A short line about the site, under its name.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-5">
+                <p class="cmu-label">5. Tabs</p>
+                <p>The site's main sections, one tab each.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-6">
+                <p class="cmu-label">6. Hero Heading</p>
+                <p>What the site is for, in a few words.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-7">
+                <p class="cmu-label">7. Hero Text</p>
+                <p>A sentence that says a little more.</p>
+              </li>
+              <li class="cmu-callout" id="example-note-8">
+                <p class="cmu-label">8. Screenshots</p>
+                <p>What the site looks like in use.</p>
+              </li>
+            </ol>
+          </div>
+          <figure class="cmu-shot cmu-shot--browser">
+            <img src="images/example-browser.jpg" alt="The top of a home page on CMU's template: the site name and tabs, then a hero with a heading beside screenshots." width="600" height="338">
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.6; --cmu-y: 0.027" href="#example-note-1" aria-label="Note 1, Red Strip">1</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.87; --cmu-y: 0.045" href="#example-note-2" aria-label="Note 2, Menu Button">2</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.5; --cmu-y: 0.12" href="#example-note-3" aria-label="Note 3, Site Name">3</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.36; --cmu-y: 0.2" href="#example-note-4" aria-label="Note 4, Tagline">4</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.5; --cmu-y: 0.335" href="#example-note-5" aria-label="Note 5, Tabs">5</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.2; --cmu-y: 0.43" href="#example-note-6" aria-label="Note 6, Hero Heading">6</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.47; --cmu-y: 0.88" href="#example-note-7" aria-label="Note 7, Hero Text">7</a>
+            <a class="cmu-annotated-pin" style="--cmu-x: 0.93; --cmu-y: 0.5" href="#example-note-8" aria-label="Note 8, Screenshots">8</a>
           </figure>
         </div>
       </div>
@@ -902,6 +983,7 @@
               <a class="external" href="https://placemellon.andrew.cmu.edu/">PlaceMellon</a>
               while you build, and swap in the real ones when they're ready.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
               <code>photos</code>, <code>photo</code>
@@ -972,6 +1054,7 @@
               A <code>content wide</code> block holding an <code>&lt;hr&gt;</code> separates each
               pair.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>circle</code>, <code>grid column2</code></p>
           </div>
         </div>
@@ -1031,6 +1114,7 @@
               Use these sparingly. People rarely look past the first slide, so put the most
               important one first, and don't put anything people need in a later slide.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>js-flickityCustom</code>, <code>grid column2</code></p>
 
             <h3 id="carousel-default">Default Carousel</h3>
@@ -1156,6 +1240,7 @@
                 <strong>Pictures the same shape</strong> keep the stage from jumping as it changes.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-scroll-gallery</code>, <code>cmu-scroll-gallery--slide</code>,
               <code>data-cmu-scroll-gallery</code>, <code>cmu-scroll-gallery-step</code>
@@ -1298,6 +1383,7 @@
                 <a href="conventions.html#ap">Conventions</a> for dates.
               </p>
             </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid column4 darkgreen boxes</code>, <code>floatright</code>,
               <code>aligncenter</code>, <code>bi</code>
@@ -1368,6 +1454,7 @@
                 >, not the quote. Use a square photo; the kit crops other shapes to a square.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-testimonial</code>, <code>cmu-lightgrey</code></p>
           </div>
         </div>
@@ -1430,6 +1517,7 @@
                 as a tip or a warning, use a <a href="content.html#callout">callout</a>.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>content wide</code>, <code>darkgrey invert</code>, <code>gold</code>,
               <code>green invert</code>, <code>blue invert</code>
@@ -1450,7 +1538,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="announcements-notice">A Short Notice</h3>
+            <h3 id="announcements-notice">Short Notice</h3>
             <p>One line in gold:</p>
           </div>
         </div>
@@ -1478,7 +1566,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="announcements-cta">A Call to Action</h3>
+            <h3 id="announcements-cta">Call to Action</h3>
             <p>A question and a call to action, in green:</p>
           </div>
         </div>
@@ -1554,6 +1642,7 @@
                 the section open.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-closable</code>, <code>cmu-closable-text</code>,
               <code>cmu-closable-actions</code>, <code>cmu-close</code>,
@@ -1612,6 +1701,7 @@
               A few common questions and short answers in columns, followed by a link to the full
               <a href="content.html#faq">FAQ</a>.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-faq-teaser</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">

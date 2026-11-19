@@ -101,8 +101,8 @@
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
                 <li><a href="#tabs">Tabs</a></li>
+                <li><a href="#which-nav">Navigation, Tabs or Sidebar?</a></li>
                 <li><a href="#breadcrumbs">Breadcrumbs</a></li>
                 <li><a href="#content-area">Content and Sidebar</a></li>
               </ul>
@@ -198,10 +198,31 @@
                     <div class="cmu-sub-options">
                       <ul>
                         <li>
-                          <input type="checkbox" id="kit-try-photo" data-kit-key="photo" /><label
-                            for="kit-try-photo"
-                            >Photo</label
-                          >
+                          <input
+                            type="radio"
+                            name="kit-try-picture"
+                            id="kit-try-pic-none"
+                            value="off"
+                            data-kit-key="photo"
+                          /><label for="kit-try-pic-none">No Picture</label>
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            name="kit-try-picture"
+                            id="kit-try-photo"
+                            value="on"
+                            data-kit-key="photo"
+                          /><label for="kit-try-photo">Photo</label>
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            name="kit-try-picture"
+                            id="kit-try-initials"
+                            value="initials"
+                            data-kit-key="photo"
+                          /><label for="kit-try-initials">Initials</label>
                         </li>
                         <li>
                           <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
@@ -294,6 +315,7 @@
               <code>&lt;h2&gt;</code> names who runs it, such as a department, as a link to their
               site or as plain text. It can also be a slogan, as on these docs.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>#sitename</code>, <code>sitetitle</code></p>
             <figure class="cmu-shot cmu-shot--browser">
               <img
@@ -355,6 +377,7 @@
               The template also puts a copy at the top of the menu, and on phones shows it as a row
               under the wordmark.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>search</code>, <code>search-form</code>, <code>searchSite</code>
             </p>
@@ -421,6 +444,7 @@
                 sub-list. Phones use only the menu.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>nav#nav</code>, <code>active</code>, <code>secondary</code>,
               <code>external</code>
@@ -520,6 +544,82 @@
               <p>Keep menu labels short, in Title Case.</p>
             </div>
 
+            <h2 id="tabs" class="rule-top">
+              Tabs
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              Links between views of the same page, such as semesters. Mark the current one with
+              <code>aria-current="page"</code>. Use a <code>div</code> with
+              <code>role="navigation"</code>, not a <code>nav</code>: the template takes the borders
+              off every link in a <code>nav</code>, including the underline that marks the current
+              tab. To fold a long row, put the rest in a
+              <code>details.cmu-more.cmu-tabs-more</code> at the end, like a
+              <a href="lists.html#more">folded list</a>: a "2 More" link stays at the end of the
+              first row, and when it opens, the rest wrap onto the next line and the link says Show
+              Fewer. Keep the current tab out of the folded part, so it always shows.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-tabs</code>, <code>cmu-tabs-more</code></p>
+            <h3 id="tabs-links">Tabs That Link</h3>
+            <p>Each tab goes to its own page, with the current one marked:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-tabs" role="navigation" aria-label="Semester">
+          <a href="#tabs" aria-current="page">Spring 2027</a>
+          <a href="#tabs">Fall 2026</a>
+          <a href="#tabs">Summer 2026</a>
+          <details class="cmu-more cmu-tabs-more">
+            <summary><span class="cmu-more-link cta"><span class="cmu-more-closed">2 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
+            <div>
+              <a href="#tabs">Spring 2026</a>
+              <a href="#tabs">Fall 2025</a>
+            </div>
+          </details>
+        </div>
+      </div>
+            <h3 id="tab-panels">Tab Panels</h3>
+            <p>
+              Tabs can also switch what shows in place, such as the same steps for different
+              platforms. Then each tab is a <code>button</code> with <code>role="tab"</code> in a
+              row with <code>role="tablist"</code>, and each panel a <code>div</code> with
+              <code>role="tabpanel"</code>, hidden until its tab is picked. The kit's script
+              switches them, with the arrow keys too. Give the row a <code>data-cmu-tabs</code> name
+              and each tab a <code>data-cmu-tab</code> value, and every row with that name on the
+              page switches together, and the choice is remembered across pages. A link to a
+              panel&rsquo;s <code>id</code>, or to anything inside a panel, opens that panel and
+              remembers the choice, as a click would, so one link can send people straight to the
+              right tab. Then the address moves to the tab row&rsquo;s own <code>id</code>, if it
+              has one, so a reload keeps whatever tab people pick next. Without the script, every
+              panel shows.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-tabs</code>, <code>data-cmu-tabs</code>, <code>data-cmu-tab</code>
+            </p>
+            <p>Here, the same steps for Mac, Windows and Linux:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-tabs" role="tablist" id="kit-os" aria-label="Get the app" data-cmu-tabs="kit-demo-os">
+          <button type="button" role="tab" id="kit-os-mac-tab" aria-controls="kit-os-mac" aria-selected="true" data-cmu-tab="mac">Mac</button>
+          <button type="button" role="tab" id="kit-os-windows-tab" aria-controls="kit-os-windows" aria-selected="false" data-cmu-tab="windows">Windows</button>
+          <button type="button" role="tab" id="kit-os-linux-tab" aria-controls="kit-os-linux" aria-selected="false" data-cmu-tab="linux">Linux</button>
+        </div>
+        <div role="tabpanel" id="kit-os-mac" aria-labelledby="kit-os-mac-tab">
+          <p>Open Self Service and choose Install under Campus Printing.</p>
+        </div>
+        <div role="tabpanel" id="kit-os-windows" aria-labelledby="kit-os-windows-tab" hidden>
+          <p>Open Software Center and choose Install under Campus Printing.</p>
+        </div>
+        <div role="tabpanel" id="kit-os-linux" aria-labelledby="kit-os-linux-tab" hidden>
+          <p>Download the Campus Printing package for your distribution and install it with your package manager.</p>
+        </div>
+      </div>
+
             <h2 id="which-nav" class="rule-top">Navigation, Tabs or Sidebar?</h2>
             <p>
               <strong>Pages of the site</strong> go in the navigation, which the template shows as
@@ -563,84 +663,6 @@
                 height="470"
               />
             </figure>
-            <p>
-              <strong>The current page</strong> goes in the <a href="#breadcrumbs">breadcrumbs</a>,
-              when a page sits below another.
-            </p>
-
-            <h2 id="tabs" class="rule-top">
-              Tabs
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              Links between views of the same page, such as semesters. Mark the current one with
-              <code>aria-current="page"</code>. Use a <code>div</code> with
-              <code>role="navigation"</code>, not a <code>nav</code>: the template takes the borders
-              off every link in a <code>nav</code>, including the underline that marks the current
-              tab. To fold a long row, put the rest in a
-              <code>details.cmu-more.cmu-tabs-more</code> at the end, like a
-              <a href="lists.html#more">folded list</a>: a "2 More" link stays at the end of the
-              first row, and when it opens, the rest wrap onto the next line and the link says Show
-              Fewer. Keep the current tab out of the folded part, so it always shows.
-            </p>
-            <p class="kit-classes"><code>cmu-tabs</code>, <code>cmu-tabs-more</code></p>
-            <h3 id="tabs-links">Tabs That Link</h3>
-            <p>Each tab goes to its own page, with the current one marked:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-tabs" role="navigation" aria-label="Semester">
-          <a href="#tabs" aria-current="page">Spring 2027</a>
-          <a href="#tabs">Fall 2026</a>
-          <a href="#tabs">Summer 2026</a>
-          <details class="cmu-more cmu-tabs-more">
-            <summary><span class="cmu-more-link cta"><span class="cmu-more-closed">2 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
-            <div>
-              <a href="#tabs">Spring 2026</a>
-              <a href="#tabs">Fall 2025</a>
-            </div>
-          </details>
-        </div>
-      </div>
-            <h3 id="tab-panels">Tab Panels</h3>
-            <p>
-              Tabs can also switch what shows in place, such as the same steps for different
-              platforms. Then each tab is a <code>button</code> with <code>role="tab"</code> in a
-              row with <code>role="tablist"</code>, and each panel a <code>div</code> with
-              <code>role="tabpanel"</code>, hidden until its tab is picked. The kit's script
-              switches them, with the arrow keys too. Give the row a <code>data-cmu-tabs</code> name
-              and each tab a <code>data-cmu-tab</code> value, and every row with that name on the
-              page switches together, and the choice is remembered across pages. A link to a
-              panel&rsquo;s <code>id</code>, or to anything inside a panel, opens that panel and
-              remembers the choice, as a click would, so one link can send people straight to the
-              right tab. Then the address moves to the tab row&rsquo;s own <code>id</code>, if it
-              has one, so a reload keeps whatever tab people pick next. Without the script, every
-              panel shows.
-            </p>
-            <p class="kit-classes">
-              <code>cmu-tabs</code>, <code>data-cmu-tabs</code>, <code>data-cmu-tab</code>
-            </p>
-            <p>Here, the same steps for Mac, Windows and Linux:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-tabs" role="tablist" id="kit-os" aria-label="Get the app" data-cmu-tabs="kit-demo-os">
-          <button type="button" role="tab" id="kit-os-mac-tab" aria-controls="kit-os-mac" aria-selected="true" data-cmu-tab="mac">Mac</button>
-          <button type="button" role="tab" id="kit-os-windows-tab" aria-controls="kit-os-windows" aria-selected="false" data-cmu-tab="windows">Windows</button>
-          <button type="button" role="tab" id="kit-os-linux-tab" aria-controls="kit-os-linux" aria-selected="false" data-cmu-tab="linux">Linux</button>
-        </div>
-        <div role="tabpanel" id="kit-os-mac" aria-labelledby="kit-os-mac-tab">
-          <p>Open Self Service and choose Install under Campus Printing.</p>
-        </div>
-        <div role="tabpanel" id="kit-os-windows" aria-labelledby="kit-os-windows-tab" hidden>
-          <p>Open Software Center and choose Install under Campus Printing.</p>
-        </div>
-        <div role="tabpanel" id="kit-os-linux" aria-labelledby="kit-os-linux-tab" hidden>
-          <p>Download the Campus Printing package for your distribution and install it with your package manager.</p>
-        </div>
-      </div>
 
             <h2 id="breadcrumbs" class="rule-top">
               Breadcrumbs
@@ -652,7 +674,10 @@
                 ></span
               >
             </h2>
-            <p>Breadcrumbs show the path from the site's home to the current page.</p>
+            <p>
+              Breadcrumbs show the path from the site's home to the current page. Use them when a
+              page sits below another.
+            </p>
             <ul class="cmu-checks">
               <li><strong>Place the trail first</strong> inside <code>#content</code>.</li>
               <li>
@@ -665,6 +690,7 @@
               </li>
               <li><strong>Omit breadcrumbs on the home page.</strong></li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>breadcrumbs</code></p>
             <figure class="cmu-shot cmu-shot--browser">
               <img
@@ -699,6 +725,7 @@
               <code>&lt;div&gt;</code> inside it, and for a sidebar, add a second
               <code>div.sidebar</code> beside it; on phones the sidebar drops below.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>content</code>, <code>wide</code>, <code>sidebar</code></p>
             <figure class="cmu-shot cmu-shot--browser">
               <img
@@ -1007,6 +1034,7 @@
               actions go at the bottom, the main one first, on the left, like every other row of
               buttons:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-panel</code>, <code>cmu-panel-header</code>, <code>cmu-panel-body</code>,
               <code>cmu-panel-footer</code>

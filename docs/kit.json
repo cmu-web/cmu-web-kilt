@@ -26,8 +26,13 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#account",
       "labels": ["App"],
-      "description": "The signed-in user's name (or Sign In) in the template's roof, the strip across the top, beside the menu button, and again in the menu. The roof's copy hides when the menu opens and below 768px, where the menu has it instead. Signed out, it looks like the template's header links. Signed in, add cmu-account-open: it's plain text that opens the menu. If the bar also has the template's search, put the Sign In link (or your name) after the search form; the kit places it between the search and the menu button.\n\nA home page can also offer sign-in at the top of its sidebar, as a large button or a red box; see Sign In below for when to use which.\n\nSigned in, the menu starts with the user's name, with Preferences (if the app has any) and Sign Out on a line under it, and a rule between them and the rest of the menu.",
-      "notes": [],
+      "description": "A Sign In link in the roof, beside the menu button, that becomes the user's name once they sign in.\n\nAlways “Sign In” and “Sign Out,” never “Log In,” on buttons, links and the menu.\n\nTry It on This Site's Header\n\nAdditional ways to encourage signing in are the Sign-In Button and Sign-In Box.",
+      "notes": [
+        "Signed out, it's styled like the template's header links.",
+        "Signed in, it's plain text (cmu-account-open) that opens the menu, and the Sign-In Button and Box go away.",
+        "With the template's search, put it after the search form; the kit places it between the search and the menu button.",
+        "Below 768px, and while the menu is open, the roof's copy hides; the menu has it."
+      ],
       "classes": ["cmu-account", "cmu-account-open", "cmu-account-menu", "cmu-account-name"],
       "examples": [
         "<!-- In .roof, after the wordmark. Signed out: -->\n<a class=\"cmu-account\" href=\"/login\">Sign In</a>\n<!-- Signed in: -->\n<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\"\n   onclick=\"document.querySelector('.roof .menu-btn').click(); return false;\">Andrew Carnegie</a>\n\n<!-- First item in nav#nav > ul. The template shows li.secondary only in the menu.\n     An <a> without href gets the menu's spacing but isn't a link. -->\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
@@ -72,11 +77,11 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#annotated",
       "labels": ["CMS"],
-      "description": "A tall image, such as a screenshot of a whole page or a diagram, with callouts beside it. Each callout is pinned next to the part it describes and overlaps the image's edge a little, so people can read it part by part.\n\nSee How This Guide Uses It",
+      "description": "An image, such as a screenshot or a diagram, with numbered callouts that name its parts, so people can read it part by part. Align each callout beside its part of a tall image, or pin each one to its part with a numbered marker.\n\nSee How This Guide Uses It\n\nEach callout lines up beside its part of a tall image:",
       "notes": [
         "Name each part. Use a callout with a cmu-label title. If a part has its own page, add a call to action linking to it.",
-        "Position each callout. Set --cmu-at to the middle of the part it describes: 0 is the top of the image, 0.5 is halfway down, and 1 is the bottom.",
-        "Keep the introduction short. Put it in the same column as the callouts, with enough room to end above the first one.",
+        "Line up callouts on a tall image. Set --cmu-at on each callout to the middle of the part it describes: 0 is the top of the image, 0.5 is halfway down, and 1 is the bottom. Keep the introduction short enough to end above the first callout.",
+        "Pin parts that sit side by side. Add cmu-annotated--pins, give each callout an id, and put an a.cmu-annotated-pin with the callout's number in the figure after the image for each part, linking to its callout. Set --cmu-x and --cmu-y to the middle of the part: 0 to 1 across and down the image. A negative --cmu-y puts a pin on a browser window's bar, above the image. Clicking a pin outlines its callout, and on narrow screens, where the callouts drop below the image, scrolls to it. Name each pin with an aria-label, such as \"Note 1, Site Name.\" The image keeps its own size.",
         "Give longer text more room. Below 50rem (800px), the component stacks the introduction, callouts and image. Add cmu-annotated--wide for longer introductions or callouts; it keeps them stacked until the component has 70rem (1120px) of space."
       ],
       "classes": [
@@ -85,10 +90,15 @@
         "cmu-annotated-notes",
         "cmu-annotated--wide",
         "--cmu-at",
+        "cmu-annotated--pins",
+        "cmu-annotated-pin",
+        "--cmu-x",
+        "--cmu-y",
         "cmu-callout"
       ],
       "examples": [
-        "<div class=\"cmu-annotated\">\n  <div class=\"cmu-annotated-text\">\n    <ol class=\"cmu-annotated-notes\">\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.1\">\n        <p class=\"cmu-label\">1. Header</p>\n        <p>The red strip, then the site's name and its navigation.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.305\">\n        <p class=\"cmu-label\">2. A Section</p>\n        <p>A full-width section with its own color, here a hero with a heading, a button and a photo.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.6\">\n        <p class=\"cmu-label\">3. Content and Sidebar</p>\n        <p>The page's own text, with boxes beside it for links, contacts or signing in.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.9\">\n        <p class=\"cmu-label\">4. Footer</p>\n        <p>The office's address and links, the same on every page.</p>\n      </li>\n    </ol>\n  </div>\n  <figure class=\"cmu-shot\">\n    <a href=\"images/annotated-page.svg\" data-cmu-zoom><img src=\"images/annotated-page.svg\" alt=\"A drawing of a page on CMU's template, top to bottom: a red strip, the site name and tabs, a gray section with a heading, a button and a photo, the page's text with a sidebar box, and a dark footer.\" width=\"600\" height=\"900\"></a>\n    <figcaption>Select the drawing to enlarge it.</figcaption>\n  </figure>\n</div>"
+        "<div class=\"cmu-annotated\">\n  <div class=\"cmu-annotated-text\">\n    <ol class=\"cmu-annotated-notes\">\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.1\">\n        <p class=\"cmu-label\">1. Header</p>\n        <p>The red strip, then the site's name and its navigation.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.305\">\n        <p class=\"cmu-label\">2. A Section</p>\n        <p>A full-width section with its own color, here a hero with a heading, a button and a photo.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.6\">\n        <p class=\"cmu-label\">3. Content and Sidebar</p>\n        <p>The page's own text, with boxes beside it for links, contacts or signing in.</p>\n      </li>\n      <li class=\"cmu-callout\" style=\"--cmu-at: 0.9\">\n        <p class=\"cmu-label\">4. Footer</p>\n        <p>The office's address and links, the same on every page.</p>\n      </li>\n    </ol>\n  </div>\n  <figure class=\"cmu-shot\">\n    <a href=\"images/annotated-page.svg\" data-cmu-zoom><img src=\"images/annotated-page.svg\" alt=\"A drawing of a page on CMU's template, top to bottom: a red strip, the site name and tabs, a gray section with a heading, a button and a photo, the page's text with a sidebar box, and a dark footer.\" width=\"600\" height=\"900\"></a>\n    <figcaption>Select the drawing to enlarge it.</figcaption>\n  </figure>\n</div>",
+        "<div class=\"cmu-annotated cmu-annotated--pins\">\n  <div class=\"cmu-annotated-text\">\n    <p>The top of a home page on CMU's template.</p>\n    <ol class=\"cmu-annotated-notes\">\n      <li class=\"cmu-callout\" id=\"example-note-1\">\n        <p class=\"cmu-label\">1. Red Strip</p>\n        <p>The template's strip with the CMU wordmark, on every page.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-2\">\n        <p class=\"cmu-label\">2. Menu Button</p>\n        <p>Opens the menu, with every page of the site.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-3\">\n        <p class=\"cmu-label\">3. Site Name</p>\n        <p>The site's name, linking to its home page.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-4\">\n        <p class=\"cmu-label\">4. Tagline</p>\n        <p>A short line about the site, under its name.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-5\">\n        <p class=\"cmu-label\">5. Tabs</p>\n        <p>The site's main sections, one tab each.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-6\">\n        <p class=\"cmu-label\">6. Hero Heading</p>\n        <p>What the site is for, in a few words.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-7\">\n        <p class=\"cmu-label\">7. Hero Text</p>\n        <p>A sentence that says a little more.</p>\n      </li>\n      <li class=\"cmu-callout\" id=\"example-note-8\">\n        <p class=\"cmu-label\">8. Screenshots</p>\n        <p>What the site looks like in use.</p>\n      </li>\n    </ol>\n  </div>\n  <figure class=\"cmu-shot cmu-shot--browser\">\n    <img src=\"images/example-browser.jpg\" alt=\"The top of a home page on CMU's template: the site name and tabs, then a hero with a heading beside screenshots.\" width=\"600\" height=\"338\">\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.6; --cmu-y: 0.027\" href=\"#example-note-1\" aria-label=\"Note 1, Red Strip\">1</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.87; --cmu-y: 0.045\" href=\"#example-note-2\" aria-label=\"Note 2, Menu Button\">2</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.5; --cmu-y: 0.12\" href=\"#example-note-3\" aria-label=\"Note 3, Site Name\">3</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.36; --cmu-y: 0.2\" href=\"#example-note-4\" aria-label=\"Note 4, Tagline\">4</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.5; --cmu-y: 0.335\" href=\"#example-note-5\" aria-label=\"Note 5, Tabs\">5</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.2; --cmu-y: 0.43\" href=\"#example-note-6\" aria-label=\"Note 6, Hero Heading\">6</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.47; --cmu-y: 0.88\" href=\"#example-note-7\" aria-label=\"Note 7, Hero Text\">7</a>\n    <a class=\"cmu-annotated-pin\" style=\"--cmu-x: 0.93; --cmu-y: 0.5\" href=\"#example-note-8\" aria-label=\"Note 8, Screenshots\">8</a>\n  </figure>\n</div>"
       ],
       "frameworks": {}
     },
@@ -226,7 +236,7 @@
       "page": "Page Layout",
       "url": "https://webkilt.andrew.cmu.edu/0/layout.html#breadcrumbs",
       "labels": ["Template"],
-      "description": "Breadcrumbs show the path from the site's home to the current page.\n\nSeparate the steps with &nbsp;&rsaquo;&nbsp; ( › ), as Cascade does, so a step never starts a new line with the arrow.",
+      "description": "Breadcrumbs show the path from the site's home to the current page. Use them when a page sits below another.\n\nSeparate the steps with &nbsp;&rsaquo;&nbsp; ( › ), as Cascade does, so a step never starts a new line with the arrow.",
       "notes": [
         "Place the trail first inside #content.",
         "Link each preceding step. Leave the current page as plain text at the end.",
@@ -245,12 +255,13 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#checks",
       "labels": ["CMS"],
-      "description": "Three kinds of list, for three jobs. Start each item with a short bold phrase when it helps people scan.\n\nFor describing things, such as the parts of a component or the options there are. Use the template's own list: a plain <ul> with no class, which gets gray open circles:",
+      "description": "A kind of list for each job. Start each item with a short bold phrase when it helps people scan.\n\nFor describing things, such as the parts of a component or the options there are. Use the template's own list: a plain <ul> with no class, which gets gray open circles:",
       "notes": [],
-      "classes": ["ul", "ul.cmu-checks", "ul.cmu-plain"],
+      "classes": ["ul", "ul.cmu-checks", "ul.cmu-fixes", "ul.cmu-notes", "ul.cmu-plain"],
       "examples": [
         "<ul>\n  <li><strong>Borrowing for a class?</strong> Give the course number, and you can keep it for a week.</li>\n  <li><strong>Late returns</strong> pause your borrowing until the equipment is back.</li>\n</ul>",
         "<p>Every camera kit includes:</p>\n<ul class=\"cmu-checks\">\n  <li><strong>A camera body</strong> with a zoom lens</li>\n  <li><strong>Two batteries</strong> and a charger</li>\n  <li><strong>A tripod</strong> and a carrying case</li>\n</ul>",
+        "<h4>To Fix</h4>\n<ul class=\"cmu-fixes\">\n  <li><strong>Course number:</strong> Add the course number, such as 15-112.</li>\n  <li><strong>Return date:</strong> Pick a date within two weeks.</li>\n</ul>\n<h4>Worth Knowing</h4>\n<ul class=\"cmu-notes\">\n  <li><strong>Tripod:</strong> It's checked out until Friday, so the kit comes without one.</li>\n</ul>\n<h4>Looks Good</h4>\n<ul class=\"cmu-checks\">\n  <li><strong>Andrew ID:</strong> Signed in as ac00.</li>\n</ul>",
         "<ul class=\"cmu-plain\">\n  <li><span class=\"cmu-pill cmu-pill--green\">Available</span> Ready to borrow today.</li>\n  <li><span class=\"cmu-pill cmu-pill--amber\">Reserved</span> Someone has it until Friday.</li>\n  <li><span class=\"cmu-pill\">Retired</span> No longer lent out.</li>\n</ul>"
       ],
       "frameworks": {}
@@ -594,6 +605,41 @@
       "frameworks": {}
     },
     {
+      "id": "developer-sign-in",
+      "name": "Developer Sign-In",
+      "page": "Accounts",
+      "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#developer-sign-in",
+      "labels": ["App", "Script"],
+      "description": "A page that stands in for single sign-on while you build an app. Outside production, Sign In comes here instead of going to the identity provider: pick a test account to sign in as that person. It takes the place of the Sign-In Page until real sign-in is set up, and it's built the same way.\n\nLabel it “Development Mode” and head it “Pick a Test Account.” Give each role a few words on what it can do, starting with what that person sees. Mark the current person “You.”\n\nThe whole page, embedded. Pick someone, and the You tab moves to them:\n\nThe example page\n\nOpen the Example Page\n\nAdd the URLs only when DEBUG is on:\n\nDraw the routes only outside production, and refuse them in the controller too:\n\nThe server draws this page and signs the user in, not {framework}'s components: serve the HTML tab's page from it. Add its routes only when NODE_ENV isn't production. With Express:\n\nWith a picture, use <img class=\"cmu-profile-picture\" alt=\"\"> in place of the initials.",
+      "notes": [
+        "Never in production. Add the page's routes only outside production, and refuse them in the controller too, so a slip in the routes can't open it.",
+        "Send the user back to the page they came from (?return_to=), as real sign-in does.",
+        "With more than about 10 people, add a search box over the buttons, with data-cmu-filter set to the list's id and a count under it, as with a filtered table.",
+        "Start each button's name with hidden words for screen readers (<span class=\"sr-only\">Sign in as </span>), so the button reads “Sign in as Margaret Morrison” and then the role."
+      ],
+      "classes": [
+        "cmu-sign-in-page--dev",
+        "cmu-dev-people",
+        "cmu-dev-card",
+        "cmu-dev-card--out",
+        "cmu-dev-you",
+        "aria-current"
+      ],
+      "examples": [
+        "<body class=\"cmu-app\">\n  <div id=\"container\">\n    <header>\n      <div class=\"roof\">\n        <div>\n          <a class=\"wordmark\" href=\"https://www.cmu.edu/\">Carnegie Mellon University</a>\n        </div>\n      </div>\n    </header>\n    <main id=\"content\" class=\"cmu-sign-in-page cmu-sign-in-page--dev cmu-sign-in-page--photo\"\n      style=\"--cmu-sign-in-photo: url('/images/photo.jpg')\">\n      <div class=\"content\">\n        <div>\n          <h1>Sign In</h1>\n          <p>to&nbsp;sweepstakes.<wbr>example.cmu.edu</p>\n        </div>\n        <div class=\"cmu-sign-in-card\">\n          <p class=\"cmu-label\">Development Mode</p>\n          <h2>Pick a Test Account</h2>\n          <ul class=\"cmu-dev-people\">\n            <li aria-current=\"true\">\n              <div class=\"cmu-dev-card\">\n                <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\">AC</i>\n                <strong>Andrew Carnegie</strong>\n                <span>Sweepstakes Chair</span>\n                <small>Everything, including settings and acting as someone else.</small>\n                <span class=\"cmu-dev-you\">You</span>\n              </div>\n            </li>\n            <li>\n              <form method=\"post\" action=\"/dev/sign_in/2\">\n                <input type=\"hidden\" name=\"return_to\" value=\"/teams\">\n                <button type=\"submit\" class=\"cmu-dev-card btn ghost\">\n                  <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\">MM</i>\n                  <strong><span class=\"sr-only\">Sign in as </span>Margaret Morrison</strong>\n                  <span>Team Captain</span>\n                  <small>Their team's roster, buggies and roll times.</small>\n                </button>\n              </form>\n            </li>\n            <li>\n              <form method=\"post\" action=\"/dev/sign_in/3\">\n                <input type=\"hidden\" name=\"return_to\" value=\"/teams\">\n                <button type=\"submit\" class=\"cmu-dev-card btn ghost\">\n                  <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\">AM</i>\n                  <strong><span class=\"sr-only\">Sign in as </span>Andrew Mellon</strong>\n                  <span>Driver</span>\n                  <small>Their own heats and roll times.</small>\n                </button>\n              </form>\n            </li>\n            <li>\n              <form method=\"post\" action=\"/dev/sign_in/4\">\n                <input type=\"hidden\" name=\"return_to\" value=\"/teams\">\n                <button type=\"submit\" class=\"cmu-dev-card btn ghost\">\n                  <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\">TM</i>\n                  <strong><span class=\"sr-only\">Sign in as </span>Test Mechanic</strong>\n                  <span>Mechanic</span>\n                  <small>Safety inspections for every team's buggy.</small>\n                </button>\n              </form>\n            </li>\n            <li>\n              <form method=\"post\" action=\"/dev/sign_in/5\">\n                <input type=\"hidden\" name=\"return_to\" value=\"/teams\">\n                <button type=\"submit\" class=\"cmu-dev-card btn ghost\">\n                  <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\">TS</i>\n                  <strong><span class=\"sr-only\">Sign in as </span>Test Spectator</strong>\n                  <span>Spectator</span>\n                  <small>Signed in, with no team yet.</small>\n                </button>\n              </form>\n            </li>\n            <li>\n              <form method=\"post\" action=\"/dev/sign_out\">\n                <input type=\"hidden\" name=\"return_to\" value=\"/teams\">\n                <button type=\"submit\" class=\"cmu-dev-card cmu-dev-card--out btn ghost\">\n                  <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\"></i>\n                  <strong>Signed Out</strong>\n                  <span>Visitor</span>\n                  <small>See what a visitor sees.</small>\n                </button>\n              </form>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </main>\n    <div class=\"cmu-sign-in-footer\" role=\"contentinfo\">\n      <ul>\n        <li>Need help? Email <a href=\"mailto:example@cmu.edu\">example@cmu.edu</a></li>\n        <li><a href=\"https://www.cmu.edu/legal/\">Legal Info</a></li>\n      </ul>\n    </div>\n    <!-- No menu, but the template's script expects one -->\n    <nav id=\"nav\" hidden><ul></ul></nav>\n  </div>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/list.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js\"></script>\n  <script src=\"https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.15/js/cmu-app.js\" integrity=\"sha384-T8n5PZtfWXQ/7ZGicShA+skDAVcih7BnNTbdgCoSAHV8usVHJbZ+RnubDOwmeb13\" crossorigin=\"anonymous\"></script>\n</body>"
+      ],
+      "frameworks": {
+        "Django": {
+          "text": "Add the URLs only when DEBUG is on:",
+          "code": "# urls.py\nif settings.DEBUG:\n    urlpatterns += [\n        path(\"dev/sign-in/\", views.dev_sign_in, name=\"dev_sign_in\"),\n        path(\"dev/sign-in/<int:pk>/\", views.dev_sign_in_as, name=\"dev_sign_in_as\"),\n    ]\n\n# views.py\n@require_POST\ndef dev_sign_in_as(request, pk):\n    if not settings.DEBUG:\n        raise Http404\n    login(request, get_user_model().objects.get(pk=pk))\n    to = request.POST.get(\"return_to\", \"/\")\n    return redirect(to if url_has_allowed_host_and_scheme(to, None) else \"/\")"
+        },
+        "Rails": {
+          "text": "Draw the routes only outside production, and refuse them in the controller too:",
+          "code": "# config/routes.rb\nunless Rails.env.production?\n  get \"dev/sign_in\", to: \"dev_sessions#new\", as: :dev_sign_in\n  post \"dev/sign_in/:id\", to: \"dev_sessions#create\", as: :dev_sign_in_as\nend\n\n# app/controllers/dev_sessions_controller.rb\nclass DevSessionsController < ApplicationController\n  before_action { head :not_found if Rails.env.production? }\n\n  def new\n    @people = User.where(test_person: true)\n  end\n\n  def create\n    session[:user_id] = User.find(params[:id]).id\n    path = params[:return_to].to_s\n    redirect_to path.start_with?(\"/\") && !path.start_with?(\"//\") ? path : root_path\n  end\nend\n\n<%# Sign In, in the header %>\n<%= link_to \"Sign In\", Rails.env.production? ? login_path : dev_sign_in_path(return_to: request.fullpath) %>"
+        }
+      }
+    },
+    {
       "id": "dialog",
       "name": "Dialog",
       "page": "Messages and Progress",
@@ -668,12 +714,12 @@
       "page": "Messages and Progress",
       "url": "https://webkilt.andrew.cmu.edu/0/messages.html#errors",
       "labels": ["CMS"],
-      "description": "When a page can't be shown, say what happened in plain words and give people a way forward, inside the usual header, navigation and footer. Send the real HTTP status with the page, so browsers, search engines and monitoring see the error too.\n\nWhen the address doesn't match a page:",
+      "description": "When a page can't be shown, say what happened in plain words and give people a way forward, inside the usual header, navigation and footer. Send the real HTTP status with the page, so browsers, search engines and monitoring see the error too. The app sends 403 and 404 in its own pages. The web server in front of it sends 502, 503 and 504 when the app is down or not answering, so keep those as plain files that ship with the app, in its own look.\n\nWhen the address doesn't match a page:",
       "notes": [
         "404, Not Found: The address is wrong or the page moved. Offer the home page and the site's search, or its main list.",
         "500, Something Went Wrong: The problem is on your end, so say so. Offer to try again, and say who to contact if it keeps happening. Serve it as a plain file the web server can send even when the app is down.",
         "503, Down for Maintenance: Say when it will be back, in AP style: \"until 6 p.m. Eastern.\" The web server sends this one too.",
-        "403, No Access: The user is signed in, but the page isn't for them. Say who it's for, not what's on it, how to get access if they should have it and where to go instead. Someone who isn't signed in yet should get the Sign In box instead.",
+        "403, No Access: The user is signed in, but the page isn't for them. Say who it's for, not what's on it, how to get access if they should have it and where to go instead. Someone who isn't signed in yet should get the Sign-In Box instead.",
         "Keep codes and details out of the heading. The number can go in small text at the bottom, for anyone reporting it; stack traces and server messages belong in the logs."
       ],
       "classes": ["cmu-lead", "cmu-cta-row", "cmu-muted"],
@@ -1020,7 +1066,7 @@
       "description": "Icons help people scan, such as beside an event's details or one on each card in a row of cards. Load the icon stylesheet to use them. Each is an <i> with bi and its name from Bootstrap Icons, such as bi-calendar-event, and takes the size and color of the text around it.\n\nAn event's date, place and audience, each with an icon:",
       "notes": [
         "Add aria-hidden=\"true\", since the words beside an icon already say what it means.",
-        "No icons in buttons. The only icon-only buttons are the kit's copy, close, sorting arrows, the question card's arrows and a table row's ⋯ menu.",
+        "No icons in buttons. The only icon-only buttons are the kit's copy, close, sorting arrows, the question card's arrows and a table row's ⋯ menu. The one icon beside a button's words is a sign-in service's mark on its own sign-in button, such as Google's or the university's C, on a sign-in page.",
         "Never use an icon alone to tell things apart."
       ],
       "classes": ["bi", "bi-", "floatright"],
@@ -1297,6 +1343,20 @@
       "frameworks": {}
     },
     {
+      "id": "or",
+      "name": "Or Divider",
+      "page": "Forms",
+      "url": "https://webkilt.andrew.cmu.edu/0/forms.html#or",
+      "labels": ["CMS"],
+      "description": "A line across with “or” in it, between two ways to do the same thing: upload a file or type it in, pick a team or start one. What comes after it is the second way, usually a cta. The Sign-In Page uses one under its buttons.\n\nWrite “or” in lowercase; the divider sets it in capitals. Use it only between two ways to the same result, not to split a page into parts.",
+      "notes": [],
+      "classes": ["cmu-or"],
+      "examples": [
+        "<form>\n  <label for=\"kit-or-sheet\">Roll Time Sheet</label>\n  <input type=\"file\" id=\"kit-or-sheet\" name=\"sheet\" accept=\".csv\">\n  <p class=\"cmu-hint\">The CSV file from the timing booth.</p>\n  <p class=\"cmu-or\">or</p>\n  <p><a class=\"cta\" href=\"#or\">Enter Roll Times by Hand</a></p>\n</form>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "setup",
       "name": "Page Setup and Forms",
       "page": "Forms",
@@ -1413,7 +1473,7 @@
       "page": "People",
       "url": "https://webkilt.andrew.cmu.edu/0/people.html#portrait-grid",
       "labels": ["Template"],
-      "description": "Portraits with each person's name and title under them, for people without bio pages: nothing links. Use portraits of the same shape, so the names line up. The name is right under each portrait, so the portrait gets empty alt. Until someone's portrait is ready, use PlaceMellon's bio placeholder; don't show an empty frame.\n\nTall portraits, such as 600 × 750, three or four across, with the name in bold and the title on the next line. It's a grid column4 (or column3) with a div for each person:",
+      "description": "Portraits with each person's name and title under them, for people without bio pages: nothing links. Use portraits of the same shape, so the names line up. The name is right under each portrait, so the portrait gets empty alt. Until someone's portrait is ready, use PlaceMellon's bio placeholder.\n\nTall portraits, such as 600 × 750, three or four across, with the name in bold and the title on the next line. It's a grid column4 (or column3) with a div for each person:",
       "notes": [],
       "classes": ["grid", "column3", "column4"],
       "examples": [
@@ -1442,11 +1502,17 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#photo",
       "labels": ["App"],
-      "description": "The signed-in user's photo, also called an avatar or account photo. When the app has it, put it before their name, round: small in the roof, and larger on the right of the menu's account block. Add cmu-profile-picture to the image, with empty alt text, since their name is right beside it. For a user without a photo, use PlaceMellon's default profile picture or leave the image out; don't show an empty frame. Try it on this site's header.",
+      "description": "A round picture of the signed-in user, also called an avatar or account photo, before their name in the roof and the menu. Their initials can stand in for a photo. Try it on this site's header.",
       "notes": [],
-      "classes": ["cmu-profile-picture"],
+      "classes": [
+        "cmu-profile-picture",
+        "cmu-profile-initials",
+        "data-cmu-name",
+        "data-cmu-initials",
+        "--cmu-size"
+      ],
       "examples": [
-        "<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\" …><img class=\"cmu-profile-picture\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\"><img class=\"cmu-profile-picture\" src=\"/photos/ac00.jpg\" alt=\"\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
+        "<p>\n  <img class=\"cmu-profile-picture\" src=\"https://placemellon.andrew.cmu.edu/56?profile\" alt=\"\">\n  <i class=\"cmu-profile-picture cmu-profile-initials\" aria-hidden=\"true\" data-cmu-name=\"Andrew Carnegie\"></i>\n</p>\n<p>\n  <img class=\"cmu-profile-picture\" style=\"--cmu-size: 56px\" src=\"https://placemellon.andrew.cmu.edu/112?profile\" alt=\"\">\n  <i class=\"cmu-profile-picture cmu-profile-initials\" style=\"--cmu-size: 56px\" aria-hidden=\"true\" data-cmu-name=\"Margaret Morrison\"></i>\n</p>"
       ],
       "frameworks": {}
     },
@@ -1678,19 +1744,68 @@
       "frameworks": {}
     },
     {
-      "id": "sign-in",
-      "name": "Sign In",
+      "id": "sign-in-box",
+      "name": "Sign-In Box",
       "page": "Accounts",
-      "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in",
+      "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in-box",
       "labels": ["Template"],
-      "description": "Every page has the Sign In link in the header, beside the menu button. A home page can also offer sign-in at the top of its sidebar, in one of two ways, depending on how much the page does for people who aren't signed in.\n\nFor a page that's useful signed out, where signing in adds more, such as a search anyone can use that shows more once the user signs in. One large outline button at the top of the sidebar, beside the page's lead. It's the template's simple sidebar box, with btn ghost wide in an <h1>.\n\nHere, in the sidebar of a search page:",
+      "description": "For a page that does little until the user signs in. A red box says what signing in lets them do, with one wide outline Sign In button, and an optional note under it about who can sign in. It's the template's sidebar box with red invert, and btn ghost wide in an <h4>.\n\nHere, beside a page that does little until the user signs in:",
+      "notes": [],
+      "classes": ["sidebar", "red invert", "btn ghost wide", "left-rule"],
+      "examples": [
+        "<div class=\"content\">\n  <div>\n    <h2>Watch the Safety Video</h2>\n    <p>Every driver, pusher and flagger watches it before their first freeroll. It covers helmet and harness checks, hand signals on the course and what to do when a buggy spins&nbsp;out.</p>\n  </div>\n</div>\n<div class=\"content\">\n  <div>\n    <figure class=\"image\">\n      <img src=\"https://placemellon.andrew.cmu.edu/900/450?solid&amp;text\" alt=\"Video placeholder.\">\n    </figure>\n  </div><div class=\"sidebar\">\n    <div class=\"red invert\">\n      <h1>Sign In to Watch</h1>\n      <p>Sign in with your Andrew account to watch the safety video and sign the&nbsp;waiver.</p>\n      <h4><a class=\"btn ghost wide\" href=\"#sign-in-box\">Sign In</a></h4>\n    </div>\n    <div class=\"left-rule\">\n      <p>An active @andrew.cmu.edu or @alumni.cmu.edu account is required to sign&nbsp;in.</p>\n    </div>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "sign-in-button",
+      "name": "Sign-In Button",
+      "page": "Accounts",
+      "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in-button",
+      "labels": ["Template"],
+      "description": "For a page anyone can use, but that does more once the user signs in. One large outline button at the top of the sidebar, beside the page's lead. It's the template's simple sidebar box, with btn ghost wide in an <h1>.\n\nHere, in the sidebar of a search page:",
       "notes": [],
       "classes": ["sidebar", "simple", "btn ghost wide"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <h1>Find a Syllabus</h1>\n    <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <h1><a class=\"btn ghost wide\" href=\"#sign-in-button\">Sign In</a></h1>\n    </div>\n  </div>\n</div>",
-        "<div class=\"content\">\n  <div>\n    <h2>Watch the Safety Video</h2>\n    <p>The page's own content goes here, beside the box.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"red invert\">\n      <h1>Sign In to Watch</h1>\n      <p>Sign in with your Andrew ID to watch the safety video and sign the&nbsp;waiver.</p>\n      <h4><a class=\"btn ghost wide\" href=\"#sign-in-box\">Sign In</a></h4>\n    </div>\n    <div class=\"left-rule\">\n      <p>An active @andrew.cmu.edu account is required to sign in.</p>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <h1>Find a Syllabus</h1>\n    <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <h1><a class=\"btn ghost wide\" href=\"#sign-in-button\">Sign In</a></h1>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
+    },
+    {
+      "id": "sign-in-page",
+      "name": "Sign-In Page",
+      "page": "Accounts",
+      "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in-page",
+      "labels": ["App"],
+      "description": "A standalone page where the user picks how to sign in. When an Andrew account isn't the only way in, every Sign In link and button comes here instead of going straight to CMU's single sign-on. In development, the Developer Sign-In takes its place.\n\nThe heading should be “Sign In” with no period. Button text for sign-in options should be Title Case, with a prompt to sign in followed by the service name, e.g., “Sign In With Google.”\n\nThe whole page, embedded:\n\nThe example page\n\nOpen the Example Page\n\ndjango-allauth starts sign-in with a POST, so each sign-in option is a form with the button in it. The rest of the page is the HTML tab's.\n\nOmniAuth starts sign-in with a POST, so each sign-in option is a button_to: a form with the button in it. Turbo stays out of it, since sign-in leaves for another site. The rest of the page is the HTML tab's.\n\nThe Sign-In Page is a whole page, not a component: serve the HTML tab's page as an HTML file of its own, such as public/login.html, which the dev server and the build serve as it is.\n\nMake the HTML tab's page an Astro page, such as src/pages/login.astro, with is:inline on the template's scripts, so Astro leaves them as they are.\n\nFor a background photo, add cmu-sign-in-page--photo to main and put the photo in its style: style=\"--cmu-sign-in-photo: url('/images/photo.jpg')\". Start its address with / or https://. A relative address points at cmu-app.css, not your page, so the photo won't load. Any shape works: the photo fills the space, and wide screens crop more from its bottom than its top. Use one at least 2,000 pixels wide, saved as a JPEG under about 500 KB.",
+      "notes": [
+        "Group the sign-in options. Add cmu-sign-in-break to an item that starts a new group, such as the Andrew account button after the social ones.",
+        "A sign-in service's mark is the one icon allowed beside a button's words, since each service asks for it on its sign-in button. Use its SVG code instead of an <img> in the button, so it takes the text color. The SVG for a social service's mark comes from Bootstrap Icons, and for an Andrew account, from PlaceMellon's Sign-In Icon.",
+        "Explain a non-obvious account option in a hint under its button."
+      ],
+      "classes": [
+        "cmu-sign-in-page",
+        "cmu-sign-in-card",
+        "cmu-sign-in-break",
+        "cmu-or",
+        "cmu-sign-in-footer",
+        "cmu-sign-in-page--photo",
+        "--cmu-sign-in-photo",
+        "btn ghost wide"
+      ],
+      "examples": [
+        "<body class=\"cmu-app\">\n  <div id=\"container\">\n    <header>\n      <div class=\"roof\">\n        <div>\n          <a class=\"wordmark\" href=\"https://www.cmu.edu/\">Carnegie Mellon University</a>\n        </div>\n      </div>\n    </header>\n    <main id=\"content\" class=\"cmu-sign-in-page\">\n      <div class=\"content\">\n        <div>\n          <h1>Sign In</h1>\n          <p>to sweepstakes.example.cmu.edu</p>\n        </div>\n        <div class=\"cmu-sign-in-card\">\n          <ul class=\"cmu-plain\">\n            <li>\n              <a class=\"btn ghost wide\" href=\"/auth/google\"><svg class=\"cmu-sign-in-mark\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\">…</svg>Sign In With Google</a>\n            </li>\n            <li>\n              <a class=\"btn ghost wide\" href=\"/auth/linkedin\"><svg class=\"cmu-sign-in-mark\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\">…</svg>Sign In With LinkedIn</a>\n            </li>\n            <li class=\"cmu-sign-in-break\">\n              <a class=\"btn ghost wide\" href=\"/auth/andrew\">Sign In With Your Andrew Account</a>\n              <p class=\"cmu-hint\">New to CMU? Learn about <a class=\"external\" href=\"…\">Andrew accounts</a>.</p>\n            </li>\n          </ul>\n          <p class=\"cmu-or\">or</p>\n          <p><a class=\"cta\" href=\"/guest\">Sign In With a Guest Account</a></p>\n        </div>\n      </div>\n    </main>\n    <div class=\"cmu-sign-in-footer\" role=\"contentinfo\">\n      <ul>\n        <li>Need help? Email <a href=\"mailto:example@cmu.edu\">example@cmu.edu</a></li>\n        <li><a href=\"https://www.cmu.edu/legal/\">Legal Info</a></li>\n      </ul>\n    </div>\n    <!-- No menu, but the template's script expects one -->\n    <nav id=\"nav\" hidden><ul></ul></nav>\n  </div>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/list.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js\"></script>\n</body>"
+      ],
+      "frameworks": {
+        "Django": {
+          "text": "django-allauth starts sign-in with a POST, so each sign-in option is a form with the button in it. The rest of the page is the HTML tab's.",
+          "code": "{% load socialaccount %}\n<ul class=\"cmu-plain\">\n  <li>\n    <form method=\"post\" action=\"{% provider_login_url 'google' %}\">\n      {% csrf_token %}\n      <button type=\"submit\" class=\"btn ghost wide\"><svg class=\"cmu-sign-in-mark\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\">…</svg>Sign In With Google</button>\n    </form>\n  </li>\n  <li>\n    <form method=\"post\" action=\"{% provider_login_url 'linkedin' %}\">\n      {% csrf_token %}\n      <button type=\"submit\" class=\"btn ghost wide\"><svg class=\"cmu-sign-in-mark\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\">…</svg>Sign In With LinkedIn</button>\n    </form>\n  </li>\n  <li class=\"cmu-sign-in-break\">\n    <form method=\"post\" action=\"{% provider_login_url 'microsoft' %}\">\n      {% csrf_token %}\n      <button type=\"submit\" class=\"btn ghost wide\">Sign In With Your Andrew Account</button>\n    </form>\n    <p class=\"cmu-hint\">New to CMU? Learn about <a class=\"external\" href=\"…\">Andrew accounts</a>.</p>\n  </li>\n</ul>"
+        },
+        "Rails": {
+          "text": "OmniAuth starts sign-in with a POST, so each sign-in option is a button_to: a form with the button in it. Turbo stays out of it, since sign-in leaves for another site. The rest of the page is the HTML tab's.",
+          "code": "<ul class=\"cmu-plain\">\n  <li>\n    <%= button_to \"/auth/google_oauth2\", class: \"btn ghost wide\", form: { data: { turbo: false } } do %>\n      <svg class=\"cmu-sign-in-mark\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\">…</svg>Sign In With Google\n    <% end %>\n  </li>\n  <li>\n    <%= button_to \"/auth/linkedin\", class: \"btn ghost wide\", form: { data: { turbo: false } } do %>\n      <svg class=\"cmu-sign-in-mark\" viewBox=\"0 0 16 16\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\">…</svg>Sign In With LinkedIn\n    <% end %>\n  </li>\n  <li class=\"cmu-sign-in-break\">\n    <%= button_to \"/auth/entra_id\", class: \"btn ghost wide\", form: { data: { turbo: false } } do %>\n      Sign In With Your Andrew Account\n    <% end %>\n    <p class=\"cmu-hint\">New to CMU? Learn about <a class=\"external\" href=\"…\">Andrew accounts</a>.</p>\n  </li>\n</ul>"
+        }
+      }
     },
     {
       "id": "video-hero",
@@ -1866,7 +1981,9 @@
       "notes": [],
       "classes": ["table.cmu-full", "table.cmu-compare"],
       "examples": [
-        "<table class=\"alternate cmu-full cmu-compare\">\n  <thead><tr><th scope=\"col\">Before</th><th scope=\"col\">Now</th></tr></thead>\n  <tbody>\n    <tr><td>One file per section</td><td>One file can cover many sections</td></tr>\n    <tr><td>Count modules to see where you stand</td><td>A completion bar and status filters</td></tr>\n  </tbody>\n</table>"
+        "<table class=\"alternate cmu-full cmu-compare\">\n  <thead><tr><th scope=\"col\">Before</th><th scope=\"col\">Now</th></tr></thead>\n  <tbody>\n    <tr><td>One file per section</td><td>One file can cover many sections</td></tr>\n    <tr><td>Count modules to see where you stand</td><td>A completion bar and status filters</td></tr>\n  </tbody>\n</table>",
+        "<table class=\"alternate cmu-full\" id=\"kit-sort-table\" data-cmu-table=\"kit-sort\" data-cmu-noun=\"checkout\">\n  <thead><tr>\n    <th scope=\"col\" data-sort-key=\"person\"><button type=\"button\" class=\"cmu-sort\">Person<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" data-sort-key=\"item\"><button type=\"button\" class=\"cmu-sort\">Item<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" data-sort-key=\"due\"><button type=\"button\" class=\"cmu-sort\">Due<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" class=\"num\" data-sort-key=\"fee\"><button type=\"button\" class=\"cmu-sort\">Fee<span class=\"cmu-sort-arrow\"></span></button></th>\n  </tr></thead>\n  <tbody>\n    <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td data-sort-value=\"2027-04-08\">April 8</td><td class=\"num\">$15.00</td></tr>\n    <tr><td>Margaret Morrison</td><td>Scissor Lift</td><td data-sort-value=\"2027-04-06\">April 6</td><td class=\"num\">$120.00</td></tr>\n    <tr><td>Andrew Mellon</td><td>Extension Cord</td><td data-sort-value=\"2027-04-10\">April 10</td><td class=\"num\">$5.00</td></tr>\n    <tr><td>Margaret Morrison</td><td>Hard Hat</td><td data-sort-value=\"2027-04-09\">April 9</td><td class=\"num\">$0.00</td></tr>\n  </tbody>\n</table>",
+        "<div class=\"cmu-search-bar\">\n  <p>Search by person, item or organization.</p>\n  <label for=\"kit-checkout-search\" class=\"sr-only\">Find a Checkout</label>\n  <input type=\"text\" id=\"kit-checkout-search\" placeholder=\"Find a checkout&hellip;\" data-cmu-filter=\"kit-filter-table\">\n</div>\n<table class=\"alternate cmu-full\" id=\"kit-filter-table\" data-cmu-table=\"kit-filter\" data-cmu-noun=\"checkout\">\n  <thead>\n    <tr>\n      <th scope=\"col\" data-sort-key=\"person\"><button type=\"button\" class=\"cmu-sort\">Person<span class=\"cmu-sort-arrow\"></span></button></th>\n      <th scope=\"col\" data-sort-key=\"item\"><button type=\"button\" class=\"cmu-sort\">Item<span class=\"cmu-sort-arrow\"></span></button></th>\n      <th scope=\"col\" data-cmu-column=\"organization\">Organization</th>\n    </tr>\n    <tr class=\"cmu-filter-row\">\n      <td><label for=\"kit-f-person\" class=\"sr-only\">Filter by Person</label><input type=\"text\" id=\"kit-f-person\" data-cmu-filter-column=\"person\" placeholder=\"Person\"></td>\n      <td><label for=\"kit-f-item\" class=\"sr-only\">Filter by Item</label><input type=\"text\" id=\"kit-f-item\" data-cmu-filter-column=\"item\" placeholder=\"Item\"></td>\n      <td><label for=\"kit-f-org\" class=\"sr-only\">Filter by Organization</label><input type=\"text\" id=\"kit-f-org\" data-cmu-filter-column=\"organization\" placeholder=\"Organization\"></td>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td>Booth Crew</td></tr>\n    <tr data-keywords=\"aerial work platform\"><td>Margaret Morrison</td><td>Scissor Lift</td><td>Lighting Crew</td></tr>\n    <tr><td>Andrew Mellon</td><td>Extension Cord</td><td>Buggy Team</td></tr>\n    <tr><td>Margaret Morrison</td><td>Hard Hat</td><td>Booth Crew</td></tr>\n    <tr><td>Andrew Carnegie</td><td>Ladder</td><td>Lighting Crew</td></tr>\n  </tbody>\n</table>\n<p class=\"cmu-results-count\" data-cmu-count=\"kit-filter-table\" aria-live=\"polite\">Showing all 5 checkouts</p>"
       ],
       "frameworks": {}
     },
@@ -2078,7 +2195,7 @@
     {
       "id": "links",
       "heading": "Buttons and Links",
-      "text": "The template gives buttons, calls to action and ordinary links different visual weight. Match that weight with words that say what happens next: start with a verb and name the task. A button right beside its field can be the verb alone, such as Add or Check, since the field’s label names the task (see Field With a Button).\nToo Vague\n\"Options,\" \"Syllabus Upload\" or \"Learn More\" makes people guess what comes next.\nReady to Use\n\"See the Options,\" \"Upload Syllabus\" or \"Read the Instructor Guide.\"\nA link goes somewhere; a button does something. Use a link (<a>) even when it looks like a button, and a <button> for an action even when it looks like a link: screen readers and keyboards treat them differently. These examples lead to real kit pages:\nInstall the Kit\nThe main action: a btn link, in Title Case. It can lead to a page on this site, your app, its sign-in or a request form in another system.\nExplore the Content Blocks\nA next step on this site: a call to action (cta), in Title Case. Put one at the end of the section, after the information that supports it.\nBrowse the code on GitHub\nAnother site: an ordinary external link, in sentence case. A link gets cta or external, never both. With a possessive, link what's owned, not the owner: Carnegie Mellon's latest news.\n- A link in a sentence is a few words, the ones that say where it goes, never the whole sentence.\n- A button and a call to action side by side go in one paragraph, button first; the kit spaces them as in a hero.\n- Buttons line up on the left, under what they act on, with the main one first. The one exception is the question card: back on the left, forward on the right.\n- A thin rule goes over buttons that finish a whole box: a dialog, a framed panel or a question card. The kit draws it. Buttons loose in a page, such as a form's Submit or a call-to-action row, get no rule.\n- Link a home page by its folder, never index.html: A site's home is ./ from its own pages and ../ from a page one folder down, and another site's is its folder's address, such as https://www.cmu.edu/syllabusregistry/. The address stays short and stays right if the site moves. Use ./, not /, which skips past a site that isn't at the server's root.\n- Never write \"click here.\" A link should make sense on its own, because people scan links and screen readers list them: \"Read the Instructor Guide,\" not \"Click here for the guide.\" Give links on the same page different words, so that list doesn't read \"Read More, Read More, Read More.\"\n- Label special destinations. After a link that requires sign-in, add [login required] as plain text outside the link. After a file link, add its type, such as [PDF]. These labels tell people what to expect before they select the link.\n- Omit [login required] when the link text already makes it clear, as in \"Sign In to See Your Courses.\" Use only one label: a PDF that also requires sign-in gets [login required] for people who aren't signed in, and [PDF] once they are."
+      "text": "The template gives buttons, calls to action and ordinary links different visual weight. Match that weight with words that say what happens next: start with a verb and name the task. A button right beside its field can be the verb alone, such as Add or Check, since the field’s label names the task (see Field With a Button).\nToo Vague\n\"Options,\" \"Syllabus Upload\" or \"Learn More\" makes people guess what comes next.\nReady to Use\n\"See the Options,\" \"Upload Syllabus\" or \"Read the Instructor Guide.\"\nA link goes somewhere; a button does something. Use a link (<a>) even when it looks like a button, and a <button> for an action even when it looks like a link: screen readers and keyboards treat them differently. These examples lead to real kit pages:\nInstall the Kit\nThe main action: a btn link, in Title Case. It can lead to a page on this site, your app, its sign-in or a request form in another system.\nExplore the Content Blocks\nA next step on this site: a call to action (cta), in Title Case. Put one at the end of the section, after the information that supports it.\nBrowse the code on GitHub\nAnother site: an ordinary external link, in sentence case. A link gets cta or external, never both. With a possessive, link what's owned, not the owner: Carnegie Mellon's latest news.\n- A link in a sentence is a few words, the ones that say where it goes, never the whole sentence.\n- A button and a call to action side by side go in one paragraph, button first; the kit spaces them as in a hero.\n- Buttons line up on the left, under what they act on, with the main one first. The one exception is the question card: back on the left, forward on the right.\n- A thin rule goes over buttons that finish a whole box: a dialog, a framed panel or a question card. The kit draws it. Buttons loose in a page, such as a form's Submit or a call-to-action row, get no rule.\n- Link a home page by its folder, never index.html: A site's home is ./ from its own pages and ../ from a page one folder down, and another site's is its folder's address, such as https://www.cmu.edu/syllabusregistry/. The address stays short and stays right if the site moves. Use ./, not /, which skips past a site that isn't at the server's root.\n- Never write \"click here.\" A link should make sense on its own, because people scan links and screen readers list them: \"Read the Instructor Guide,\" not \"Click here for the guide.\" Give links on the same page different words, so that list doesn't read \"Read More, Read More, Read More.\"\n- Label special destinations. After a link that requires sign-in, add [login required] as plain text outside the link. After a file link, add its type, such as [PDF]. An email link's text is the address itself, such as example@cmu.edu, so people know it opens their email and can copy it if it doesn't. These labels tell people what to expect before they select the link.\n- Omit [login required] when the link text already makes it clear, as in \"Sign In to See Your Courses.\" Use only one label: a PDF that also requires sign-in gets [login required] for people who aren't signed in, and [PDF] once they are."
     },
     {
       "id": "instructions",
@@ -2103,7 +2220,7 @@
     {
       "id": "colors",
       "heading": "Colors",
-      "text": "Keep a site to one or two colors, and use each for the same job everywhere, such as red for every sign-in box. Color goes on whole sections and boxes, not on text, and the template sets its text color to match. Two tools do it: the template's color classes for sections and boxes, and the kit's color variables for your own stylesheet. A section can also take a background pattern, the globe or the plaid.\nA color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add invert for white text on every color except grey and gold, which take dark text. Under each class is the brand color it is, from brand.cmu.edu, or \"template\" where cmu.edu uses its own shade, a little darker so white text on it stays readable. See also the kit's color variables.\nred, darkgrey, grey, blue, teal, green, darkgreen, gold, and the kit's cmu-lightgrey\n<div class=\"sidebar\"> <div class=\"teal invert\"> … </div> </div> <div class=\"grid column3 blue invert boxes\"> … </div> Color Variables Use these custom properties in your own stylesheet instead of copying the values, so every site moves together if they change. Each comes from one of three places:\n- Brand: CMU's official colors, from brand.cmu.edu, such as Carnegie Red and the Tartan palette's threads.\n- Template: the colors cmu.edu's template draws on the web. Some are brand colors exactly; others are a shade darker so text on them stays readable, such as its green, close to Green Thread. The template's own color classes are on the color classes.\n- Kit: pale tints for backgrounds and dark shades for small text on them, such as the green of a \"Syllabus Available\" pill. They aren't brand colors: no brand color is pale enough for a background behind text, or dark enough for small text on a tint, in every hue. Use them only for those jobs, and a brand or template color for anything large, such as a section or a bar."
+      "text": "Keep a site to one or two colors, and use each for the same job everywhere, such as red for every sign-in box. Color goes on whole sections and boxes, not on text, and the template sets its text color to match. Two tools do it: the template's color classes for sections and boxes, and the kit's color variables for your own stylesheet. A section can also take a background pattern, the globe or the plaid.\nA color class goes on a sidebar box or on a whole grid; boxes inside a grid stay white. Add invert for white text on every color except grey and gold, which take dark text. Under each class is the brand color it is, from brand.cmu.edu, or \"template\" where cmu.edu uses its own shade, a little darker so white text on it stays readable. See also the kit's color variables.\nClasses\nred, darkgrey, grey, blue, teal, green, darkgreen, gold, and the kit's cmu-lightgrey\n<div class=\"sidebar\"> <div class=\"teal invert\"> … </div> </div> <div class=\"grid column3 blue invert boxes\"> … </div> Color Variables Use these custom properties in your own stylesheet instead of copying the values, so every site moves together if they change. Each comes from one of three places:\n- Brand: CMU's official colors, from brand.cmu.edu, such as Carnegie Red and the Tartan palette's threads.\n- Template: the colors cmu.edu's template draws on the web. Some are brand colors exactly; others are a shade darker so text on them stays readable, such as its green, close to Green Thread. The template's own color classes are on the color classes.\n- Kit: pale tints for backgrounds and dark shades for small text on them, such as the green of a \"Syllabus Available\" pill. They aren't brand colors: no brand color is pale enough for a background behind text, or dark enough for small text on a tint, in every hue. Use them only for those jobs, and a brand or template color for anything large, such as a section or a bar."
     },
     {
       "id": "classes",

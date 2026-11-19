@@ -16,14 +16,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="The person using an app: their name in the header, signing in, their preferences, pages they can't open and acting as someone else."
+      content="The person using an app: their name in the header, signing in, their preferences, pages they can't open, acting as someone else and test accounts to sign in with while you build."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Accounts - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="The person using an app: their name in the header, signing in, their preferences, pages they can't open and acting as someone else."
+      content="The person using an app: their name in the header, signing in, their preferences, pages they can't open, acting as someone else and test accounts to sign in with while you build."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/accounts.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -82,136 +82,10 @@
             <h1>Accounts</h1>
             <p class="cmu-lead">
               The person using an app: their name in the header, signing in, their preferences,
-              pages they can't open and acting as someone else.
+              pages they can't open, acting as someone else and test accounts to sign in with while
+              you build.
             </p>
 
-            <h2 id="sign-in" class="rule-top">
-              Sign In
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              Every page has the <a href="#account">Sign In link</a> in the header, beside the menu
-              button. A home page can also offer sign-in at the top of its sidebar, in one of two
-              ways, depending on how much the page does for people who aren't signed in.
-            </p>
-
-            <h3 id="sign-in-button">A Sign In Button</h3>
-            <p>
-              For a page that's useful signed out, where signing in adds more, such as a search
-              anyone can use that shows more once the user signs in. One large outline button at the
-              top of the sidebar, beside the page's lead. It's the template's
-              <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
-              <code>&lt;h1&gt;</code>.
-            </p>
-            <p class="kit-classes">
-              <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>
-            </p>
-            <p>Here, in the sidebar of a search page:</p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="content">
-          <div>
-            <h1>Find a Syllabus</h1>
-            <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>
-          </div><div class="sidebar">
-            <div class="simple">
-              <h1><a class="btn ghost wide" href="#sign-in-button">Sign In</a></h1>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <h3 id="sign-in-box">A Sign In Box</h3>
-            <p>
-              For a page that does little until the user signs in. A red box says what signing in
-              lets them do, with one wide outline Sign In button, and a note under it about who can
-              sign in. It's the template's sidebar box with <code>red invert</code>, and
-              <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
-            </p>
-            <p class="kit-classes">
-              <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
-              <code>left-rule</code>
-            </p>
-            <p>Here, beside a page that does little until the user signs in:</p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="content">
-          <div>
-            <h2>Watch the Safety Video</h2>
-            <p>The page's own content goes here, beside the box.</p>
-          </div><div class="sidebar">
-            <div class="red invert">
-              <h1>Sign In to Watch</h1>
-              <p>Sign in with your Andrew ID to watch the safety video and sign the&nbsp;waiver.</p>
-              <h4><a class="btn ghost wide" href="#sign-in-box">Sign In</a></h4>
-            </div>
-            <div class="left-rule">
-              <p>An active @andrew.cmu.edu account is required to sign in.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <p>
-              If signing in posts a form, use a
-              <code>&lt;button class="btn ghost wide"&gt;</code> in place of the link. With
-              <code>cmu-app.css</code>, the two look the same.
-            </p>
-
-            <h3 id="sign-in-which">Which Sign In to Use</h3>
-            <ul class="cmu-checks">
-              <li>
-                <strong>The button</strong> is for a page people can use without signing in. The
-                page's own content comes first, and the button is there for the extras.
-              </li>
-              <li>
-                <strong>The box</strong> is for a page with little to show until the user signs in.
-                Say what signing in lets them do, not just that they must.
-              </li>
-              <li>
-                <strong>The header link alone</strong> is enough past the home page, and on pages
-                where signing in adds nothing.
-              </li>
-              <li>
-                <strong>A link to a page that requires signing in</strong> stays visible, with
-                <code>[login required]</code> after it, not hidden.
-              </li>
-            </ul>
-            <h3 id="signed-in">Once They're Signed In</h3>
-            <ul class="cmu-checks">
-              <li>
-                <strong>The button and the box go away,</strong> and the header shows the user's
-                name instead of Sign In (see <a href="#account">Account Status</a>).
-              </li>
-              <li id="no-access">
-                <strong>A signed-in user without access</strong> gets the
-                <a href="messages.html#no-access">403 page</a> instead: who the page is for, how to
-                request access and where to go next.
-              </li>
-            </ul>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>
-                Always &ldquo;Sign In&rdquo; and &ldquo;Sign Out,&rdquo; never &ldquo;Log In,&rdquo;
-                on buttons, links and the menu.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="content wide">
-          <div>
             <h2 id="account" class="rule-top">
               Account Status
               <span class="kit-where"
@@ -221,36 +95,72 @@
               >
             </h2>
             <p>
-              The signed-in user's name (or Sign In) in the template's roof, the strip across the
-              top, beside the menu button, and again in the menu. The roof's copy hides when the
-              menu opens and below 768px, where the menu has it instead. Signed out, it looks like
-              the template's header links. Signed in, add <code>cmu-account-open</code>: it's plain
-              text that opens the menu. If the bar also has the template's
-              <a href="layout.html#search">search</a>, put the Sign In link (or your name) after the
-              search form; the kit places it between the search and the menu button.
+              A Sign In link in the roof, beside the menu button, that becomes the user's name once
+              they sign in.
             </p>
-            <figure class="cmu-shot">
-              <img
-                src="images/account-signed-out.png"
-                alt="The red roof signed out: the Carnegie Mellon University wordmark on the left, and Sign In beside the menu button on the right."
-                width="1248"
-                height="39"
-              />
-              <figcaption>Signed out: Sign In, beside the menu button.</figcaption>
-            </figure>
-            <figure class="cmu-shot">
-              <img
-                src="images/account-signed-in.png"
-                alt="The red roof signed in: the wordmark on the left, and the name Andrew Carnegie beside the menu button on the right."
-                width="1248"
-                height="39"
-              />
-              <figcaption>Signed in: your name, which opens the menu.</figcaption>
-            </figure>
-            <p>
-              A home page can also offer sign-in at the top of its sidebar, as a large button or a
-              red box; see <a href="#sign-in">Sign In</a> below for when to use which.
-            </p>
+            <div class="cmu-shots">
+              <figure class="cmu-shot">
+                <img
+                  src="images/account-signed-out.png"
+                  alt="The right end of the red roof signed out: Sign In beside the menu button."
+                  width="300"
+                  height="39"
+                />
+                <figcaption>Signed out: Sign In, beside the menu button.</figcaption>
+              </figure>
+              <div>
+                <figure class="cmu-shot">
+                  <img
+                    src="images/account-signed-in.png"
+                    alt="The right end of the red roof signed in: the name Andrew Carnegie beside the menu button."
+                    width="300"
+                    height="39"
+                  />
+                  <figcaption>Signed in: your name, which opens the menu.</figcaption>
+                </figure>
+                <figure class="cmu-shot">
+                  <img
+                    src="images/account-menu.png"
+                    alt="The menu open, signed in: the roof without the name, then Andrew Carnegie with a picture, Preferences and Sign Out under the name, then a rule and the first of the menu's links."
+                    width="300"
+                    height="174"
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    Menu open: the name, with <a href="#preferences">Preferences</a> (if the app has
+                    any) and Sign Out under it.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <ul>
+              <li><strong>Signed out,</strong> it's styled like the template's header links.</li>
+              <li>
+                <strong>Signed in,</strong> it's plain text (<code>cmu-account-open</code>) that
+                opens the menu, and the Sign-In Button and Box go away.
+              </li>
+              <li id="no-access">
+                <strong>A signed-in user without access</strong> gets the
+                <a href="messages.html#no-access">403 page</a> instead: who the page is for, how to
+                request access and where to go next.
+              </li>
+              <li>
+                <strong>With the template's <a href="layout.html#search">search</a>,</strong> put it
+                after the search form; the kit places it between the search and the menu button.
+              </li>
+              <li>
+                <strong>Below 768px, and while the menu is open,</strong> the roof's copy hides; the
+                menu has it.
+              </li>
+            </ul>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Always &ldquo;Sign In&rdquo; and &ldquo;Sign Out,&rdquo; never &ldquo;Log In,&rdquo;
+                on buttons, links and the menu.
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-account</code>, <code>cmu-account-open</code>,
               <code>cmu-account-menu</code>, <code>cmu-account-name</code>
@@ -269,9 +179,12 @@
   &lt;a href="/logout"&gt;Sign Out&lt;/a&gt;
 &lt;/li&gt;</code></pre>
             <p>
-              Signed in, the menu starts with the user's name, with
-              <a href="#preferences">Preferences</a> (if the app has any) and Sign Out on a line
-              under it, and a rule between them and the rest of the menu.
+              <a class="cta" href="layout.html#try-header">Try It on This Site's Header</a>
+            </p>
+            <p>
+              Additional ways to encourage signing in are the
+              <a href="#sign-in-button">Sign-In Button</a> and
+              <a href="#sign-in-box">Sign-In Box</a>.
             </p>
 
             <h2 id="photo" class="rule-top">
@@ -283,29 +196,632 @@
               >
             </h2>
             <p>
-              The signed-in user's photo, also called an avatar or account photo. When the app has
-              it, put it before their name, round: small in the roof, and larger on the right of the
-              menu's account block. Add
-              <code>cmu-profile-picture</code> to the image, with empty <code>alt</code> text, since
-              their name is right beside it. For a user without a photo, use PlaceMellon's
+              A round picture of the signed-in user, also called an avatar or account photo, before
+              their name in the roof and the menu. Their initials can stand in for a photo. Try it
+              on <a href="layout.html#try-header">this site's header</a>.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-profile-picture</code>, <code>cmu-profile-initials</code>,
+              <code>data-cmu-name</code>, <code>data-cmu-initials</code>, <code>--cmu-size</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+              <p>
+                <img class="cmu-profile-picture" src="https://placemellon.andrew.cmu.edu/56?profile" alt="">
+                <i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true" data-cmu-name="Andrew Carnegie"></i>
+              </p>
+              <p>
+                <img class="cmu-profile-picture" style="--cmu-size: 56px" src="https://placemellon.andrew.cmu.edu/112?profile" alt="">
+                <i class="cmu-profile-picture cmu-profile-initials" style="--cmu-size: 56px" aria-hidden="true" data-cmu-name="Margaret Morrison"></i>
+              </p>
+            </div>
+            <p>
+              Put it before the name, at the start of the roof's account link and of
+              <code>cmu-account-name</code> in the menu (see <a href="#account">Account</a>). A
+              photo gets empty <code>alt</code> text, since the name is right beside it; initials
+              are hidden from screen readers. With the name in <code>data-cmu-name</code>, the kit
+              writes the first letters of the first and last names, so Andrew Carnegie is AC and
+              Henry Clay Frick is HF. It reads &ldquo;Carnegie, Andrew&rdquo; the same way and skips
+              a suffix such as Jr. If the app already has initials, put them in
+              <code>data-cmu-initials</code> instead, and the kit uses them as they are. For another
+              size, set <code>--cmu-size</code>. For a picture without photos, PlaceMellon has a
               <a
                 class="external"
                 href="https://placemellon.andrew.cmu.edu/assets.html#scotty-profile"
                 >default profile picture</a
-              >
-              or leave the image out; don't show an empty frame. Try it on
-              <a href="layout.html#try-header">this site's header</a>.
+              >.
             </p>
-            <p class="kit-classes"><code>cmu-profile-picture</code></p>
-            <pre
-              class="kit-code"
-            ><code>&lt;a class="cmu-account cmu-account-open" href="accounts.html#nav" aria-label="Menu for Andrew Carnegie" &hellip;&gt;&lt;img class="cmu-profile-picture" src="/photos/ac00.jpg" alt=""&gt;Andrew Carnegie&lt;/a&gt;
+            <h2 id="sign-in-button" class="rule-top">
+              Sign-In Button
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              For a page anyone can use, but that does more once the user signs in. One large
+              outline button at the top of the sidebar, beside the page's lead. It's the template's
+              <code>simple</code> sidebar box, with <code>btn ghost wide</code> in an
+              <code>&lt;h1&gt;</code>.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>simple</code>, <code>btn ghost wide</code>
+            </p>
+            <p>Here, in the sidebar of a search page:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide kit-demo--boxed">
+        <div class="content">
+          <div>
+            <h1>Find a Syllabus</h1>
+            <p>Search by course number or title. Sign in to view syllabi and&nbsp;instructors.</p>
+          </div><div class="sidebar">
+            <div class="simple">
+              <h1><a class="btn ghost wide" href="#sign-in-button">Sign In</a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="sign-in-box" class="rule-top">
+              Sign-In Box
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              For a page that does little until the user signs in. A red box says what signing in
+              lets them do, with one wide outline Sign In button, and an optional note under it
+              about who can sign in. It's the template's sidebar box with <code>red invert</code>,
+              and <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
+              <code>left-rule</code>
+            </p>
+            <p>Here, beside a page that does little until the user signs in:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide kit-demo--boxed">
+        <div class="content">
+          <div>
+            <h2>Watch the Safety Video</h2>
+            <p>Every driver, pusher and flagger watches it before their first freeroll. It covers helmet and harness checks, hand signals on the course and what to do when a buggy spins&nbsp;out.</p>
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <figure class="image">
+              <img src="https://placemellon.andrew.cmu.edu/900/450?solid&amp;text" alt="Video placeholder.">
+            </figure>
+          </div><div class="sidebar">
+            <div class="red invert">
+              <h1>Sign In to Watch</h1>
+              <p>Sign in with your Andrew account to watch the safety video and sign the&nbsp;waiver.</p>
+              <h4><a class="btn ghost wide" href="#sign-in-box">Sign In</a></h4>
+            </div>
+            <div class="left-rule">
+              <p>An active @andrew.cmu.edu or @alumni.cmu.edu account is required to sign&nbsp;in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>
+              If signing in posts a form, use a
+              <code>&lt;button class="btn ghost wide"&gt;</code> in place of the link. With
+              <code>cmu-app.css</code>, the two look the same.
+            </p>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h2 id="sign-in-page" class="rule-top">
+              Sign-In Page
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A standalone page where the user picks how to sign in. When an Andrew account isn't
+              the only way in, every Sign In link and button comes here instead of going straight to
+              CMU's single sign-on. In development, the
+              <a href="#developer-sign-in">Developer Sign-In</a> takes its place.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Group the sign-in options.</strong> Add <code>cmu-sign-in-break</code> to an
+                item that starts a new group, such as the Andrew account button after the social
+                ones.
+              </li>
+              <li>
+                <strong>A sign-in service's mark</strong> is the one icon allowed beside a button's
+                words, since each service asks for it on its sign-in button. Use its SVG code
+                instead of an <code>&lt;img&gt;</code> in the button, so it takes the text color.
+                The SVG for a social service's mark comes from Bootstrap Icons, and for an Andrew
+                account, from PlaceMellon's
+                <a
+                  class="external"
+                  href="https://placemellon.andrew.cmu.edu/assets.html#sign-in-icon"
+                  >Sign-In Icon</a
+                >.
+              </li>
+              <li>
+                <strong>Explain a non-obvious account option</strong> in a hint under its button.
+              </li>
+            </ul>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                The heading should be &ldquo;Sign In&rdquo; with no period. Button text for sign-in
+                options should be Title Case, with a prompt to sign in followed by the service name,
+                e.g., &ldquo;Sign In With Google.&rdquo;
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-sign-in-page</code>, <code>cmu-sign-in-card</code>,
+              <code>cmu-sign-in-break</code>, <code>cmu-or</code>, <code>cmu-sign-in-footer</code>,
+              <code>cmu-sign-in-page--photo</code>, <code>--cmu-sign-in-photo</code>,
+              <code>btn ghost wide</code>
+            </p>
+            <p>The whole page, embedded:</p>
+            <div
+              class="kit-page-frame"
+              data-src="examples/sign-in-page.html"
+              data-frame-width="1280"
+              data-title="The Sign-In Page for a Buggy app"
+            >
+              <p><a href="examples/sign-in-page.html">The example page</a></p>
+            </div>
+            <p><a class="cta" href="examples/sign-in-page.html">Open the Example Page</a></p>
+            <div class="cmu-peek">
+              <pre class="kit-code" data-kit-demo-code><code>&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;header&gt;
+      &lt;div class="roof"&gt;
+        &lt;div&gt;
+          &lt;a class="wordmark" href="https://www.cmu.edu/"&gt;Carnegie Mellon University&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;main id="content" class="cmu-sign-in-page"&gt;
+      &lt;div class="content"&gt;
+        &lt;div&gt;
+          &lt;h1&gt;Sign In&lt;/h1&gt;
+          &lt;p&gt;to sweepstakes.example.cmu.edu&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="cmu-sign-in-card"&gt;
+          &lt;ul class="cmu-plain"&gt;
+            &lt;li&gt;
+              &lt;a class="btn ghost wide" href="/auth/google"&gt;&lt;svg class="cmu-sign-in-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"&gt;&hellip;&lt;/svg&gt;Sign In With Google&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;a class="btn ghost wide" href="/auth/linkedin"&gt;&lt;svg class="cmu-sign-in-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"&gt;&hellip;&lt;/svg&gt;Sign In With LinkedIn&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="cmu-sign-in-break"&gt;
+              &lt;a class="btn ghost wide" href="/auth/andrew"&gt;Sign In With Your Andrew Account&lt;/a&gt;
+              &lt;p class="cmu-hint"&gt;New to CMU? Learn about &lt;a class="external" href="&hellip;"&gt;Andrew accounts&lt;/a&gt;.&lt;/p&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;p class="cmu-or"&gt;or&lt;/p&gt;
+          &lt;p&gt;&lt;a class="cta" href="/guest"&gt;Sign In With a Guest Account&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;div class="cmu-sign-in-footer" role="contentinfo"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Need help? Email &lt;a href="mailto:example@cmu.edu"&gt;example@cmu.edu&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.cmu.edu/legal/"&gt;Legal Info&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- No menu, but the template's script expects one --&gt;
+    &lt;nav id="nav" hidden&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/nav&gt;
+  &lt;/div&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+              <details class="cmu-more">
+                <summary>
+                  <span class="cmu-more-link"
+                    ><span class="cmu-more-closed">See the Whole Page</span
+                    ><span class="cmu-more-open">Hide the Whole Page</span></span
+                  >
+                </summary>
+              </details>
+            </div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p class="kit-unavailable">This component isn't available in Cascade.</p>
+            </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p class="kit-unavailable">This component isn't available in WordPress.</p>
+            </div>
+            <div class="kit-cms" data-cms="Another CMS">
+              <p class="cmu-label kit-cms-label">In another CMS</p>
+              <p class="kit-unavailable">This component isn't available in another CMS.</p>
+            </div>
+            <div class="kit-framework" data-framework="Django">
+              <p class="cmu-label kit-framework-label">In Django</p>
+              <p>
+                django-allauth starts sign-in with a POST, so each sign-in option is a form with the
+                button in it. The rest of the page is the HTML tab's.
+              </p>
+              <pre class="kit-code"><code>{% load socialaccount %}
+&lt;ul class="cmu-plain"&gt;
+  &lt;li&gt;
+    &lt;form method="post" action="{% provider_login_url 'google' %}"&gt;
+      {% csrf_token %}
+      &lt;button type="submit" class="btn ghost wide"&gt;&lt;svg class="cmu-sign-in-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"&gt;&hellip;&lt;/svg&gt;Sign In With Google&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;form method="post" action="{% provider_login_url 'linkedin' %}"&gt;
+      {% csrf_token %}
+      &lt;button type="submit" class="btn ghost wide"&gt;&lt;svg class="cmu-sign-in-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"&gt;&hellip;&lt;/svg&gt;Sign In With LinkedIn&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/li&gt;
+  &lt;li class="cmu-sign-in-break"&gt;
+    &lt;form method="post" action="{% provider_login_url 'microsoft' %}"&gt;
+      {% csrf_token %}
+      &lt;button type="submit" class="btn ghost wide"&gt;Sign In With Your Andrew Account&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;p class="cmu-hint"&gt;New to CMU? Learn about &lt;a class="external" href="&hellip;"&gt;Andrew accounts&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>
+                OmniAuth starts sign-in with a POST, so each sign-in option is a
+                <code>button_to</code>: a form with the button in it. Turbo stays out of it, since
+                sign-in leaves for another site. The rest of the page is the HTML tab's.
+              </p>
+              <pre class="kit-code"><code>&lt;ul class="cmu-plain"&gt;
+  &lt;li&gt;
+    &lt;%= button_to "/auth/google_oauth2", class: "btn ghost wide", form: { data: { turbo: false } } do %&gt;
+      &lt;svg class="cmu-sign-in-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"&gt;&hellip;&lt;/svg&gt;Sign In With Google
+    &lt;% end %&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;%= button_to "/auth/linkedin", class: "btn ghost wide", form: { data: { turbo: false } } do %&gt;
+      &lt;svg class="cmu-sign-in-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"&gt;&hellip;&lt;/svg&gt;Sign In With LinkedIn
+    &lt;% end %&gt;
+  &lt;/li&gt;
+  &lt;li class="cmu-sign-in-break"&gt;
+    &lt;%= button_to "/auth/entra_id", class: "btn ghost wide", form: { data: { turbo: false } } do %&gt;
+      Sign In With Your Andrew Account
+    &lt;% end %&gt;
+    &lt;p class="cmu-hint"&gt;New to CMU? Learn about &lt;a class="external" href="&hellip;"&gt;Andrew accounts&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="React Svelte Vue" data-kit-no-code>
+              <p class="cmu-label kit-framework-label">In {framework}</p>
+              <p>
+                The Sign-In Page is a whole page, not a component: serve the HTML tab's page as an
+                HTML file of its own, such as <code>public/login.html</code>, which the dev server
+                and the build serve as it is.
+              </p>
+            </div>
+            <div class="kit-framework" data-framework="Astro" data-kit-no-code>
+              <p class="cmu-label kit-framework-label">In Astro</p>
+              <p>
+                Make the HTML tab's page an Astro page, such as <code>src/pages/login.astro</code>,
+                with <code>is:inline</code> on the template's scripts, so Astro leaves them as they
+                are.
+              </p>
+            </div>
+            <p>
+              For a background photo, add <code>cmu-sign-in-page--photo</code> to
+              <code>main</code> and put the photo in its <code>style</code>:
+              <code>style="--cmu-sign-in-photo: url('/images/photo.jpg')"</code>. Start its address
+              with <code>/</code> or <code>https://</code>. A relative address points at
+              <code>cmu-app.css</code>, not your page, so the photo won't load. Any shape works: the
+              photo fills the space, and wide screens crop more from its bottom than its top. Use
+              one at least 2,000 pixels wide, saved as a JPEG under about 500 KB.
+            </p>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h2 id="developer-sign-in" class="rule-top">
+              Developer Sign-In
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              A page that stands in for single sign-on while you build an app. Outside production,
+              Sign In comes here instead of going to the identity provider: pick a test account to
+              sign in as that person. It takes the place of the
+              <a href="#sign-in-page">Sign-In Page</a> until real sign-in is set up, and it's built
+              the same way.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Never in production.</strong> Add the page's routes only outside production,
+                <em>and</em> refuse them in the controller too, so a slip in the routes can't open
+                it.
+              </li>
+              <li>
+                <strong>Send the user back</strong> to the page they came from
+                (<code>?return_to=</code>), as real sign-in does.
+              </li>
+              <li>
+                <strong>With more than about 10 people,</strong> add a search box over the buttons,
+                with <code>data-cmu-filter</code> set to the list's id and a count under it, as with
+                a <a href="lists.html#table-filtering">filtered table</a>.
+              </li>
+              <li>
+                <strong>Start each button's name with hidden words</strong> for screen readers
+                (<code>&lt;span class="sr-only"&gt;Sign in as &lt;/span&gt;</code>), so the button
+                reads &ldquo;Sign in as Margaret Morrison&rdquo; and then the role.
+              </li>
+            </ul>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Label it &ldquo;Development Mode&rdquo; and head it &ldquo;Pick a Test
+                Account.&rdquo; Give each role a few words on what it can do, starting with what
+                that person sees. Mark the current person &ldquo;You.&rdquo;
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-sign-in-page--dev</code>, <code>cmu-dev-people</code>,
+              <code>cmu-dev-card</code>, <code>cmu-dev-card--out</code>, <code>cmu-dev-you</code>,
+              <code>aria-current</code>, with the <a href="#sign-in-page">Sign-In Page</a>'s classes
+            </p>
+            <p>The whole page, embedded. Pick someone, and the You tab moves to them:</p>
+            <div
+              class="kit-page-frame"
+              data-src="examples/developer-sign-in.html"
+              data-frame-width="1280"
+              data-title="Developer Sign-In for a Buggy app"
+            >
+              <p><a href="examples/developer-sign-in.html">The example page</a></p>
+            </div>
+            <p><a class="cta" href="examples/developer-sign-in.html">Open the Example Page</a></p>
+            <div class="cmu-peek">
+              <pre class="kit-code" data-kit-demo-code><code>&lt;body class="cmu-app"&gt;
+  &lt;div id="container"&gt;
+    &lt;header&gt;
+      &lt;div class="roof"&gt;
+        &lt;div&gt;
+          &lt;a class="wordmark" href="https://www.cmu.edu/"&gt;Carnegie Mellon University&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;main id="content" class="cmu-sign-in-page cmu-sign-in-page--dev cmu-sign-in-page--photo"
+      style="--cmu-sign-in-photo: url('/images/photo.jpg')"&gt;
+      &lt;div class="content"&gt;
+        &lt;div&gt;
+          &lt;h1&gt;Sign In&lt;/h1&gt;
+          &lt;p&gt;to&amp;nbsp;sweepstakes.&lt;wbr&gt;example.cmu.edu&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="cmu-sign-in-card"&gt;
+          &lt;p class="cmu-label"&gt;Development Mode&lt;/p&gt;
+          &lt;h2&gt;Pick a Test Account&lt;/h2&gt;
+          &lt;ul class="cmu-dev-people"&gt;
+            &lt;li aria-current="true"&gt;
+              &lt;div class="cmu-dev-card"&gt;
+                &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;AC&lt;/i&gt;
+                &lt;strong&gt;Andrew Carnegie&lt;/strong&gt;
+                &lt;span&gt;Sweepstakes Chair&lt;/span&gt;
+                &lt;small&gt;Everything, including settings and acting as someone else.&lt;/small&gt;
+                &lt;span class="cmu-dev-you"&gt;You&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;form method="post" action="/dev/sign_in/2"&gt;
+                &lt;input type="hidden" name="return_to" value="/teams"&gt;
+                &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
+                  &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;MM&lt;/i&gt;
+                  &lt;strong&gt;&lt;span class="sr-only"&gt;Sign in as &lt;/span&gt;Margaret Morrison&lt;/strong&gt;
+                  &lt;span&gt;Team Captain&lt;/span&gt;
+                  &lt;small&gt;Their team's roster, buggies and roll times.&lt;/small&gt;
+                &lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;form method="post" action="/dev/sign_in/3"&gt;
+                &lt;input type="hidden" name="return_to" value="/teams"&gt;
+                &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
+                  &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;AM&lt;/i&gt;
+                  &lt;strong&gt;&lt;span class="sr-only"&gt;Sign in as &lt;/span&gt;Andrew Mellon&lt;/strong&gt;
+                  &lt;span&gt;Driver&lt;/span&gt;
+                  &lt;small&gt;Their own heats and roll times.&lt;/small&gt;
+                &lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;form method="post" action="/dev/sign_in/4"&gt;
+                &lt;input type="hidden" name="return_to" value="/teams"&gt;
+                &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
+                  &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;TM&lt;/i&gt;
+                  &lt;strong&gt;&lt;span class="sr-only"&gt;Sign in as &lt;/span&gt;Test Mechanic&lt;/strong&gt;
+                  &lt;span&gt;Mechanic&lt;/span&gt;
+                  &lt;small&gt;Safety inspections for every team's buggy.&lt;/small&gt;
+                &lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;form method="post" action="/dev/sign_in/5"&gt;
+                &lt;input type="hidden" name="return_to" value="/teams"&gt;
+                &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
+                  &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;TS&lt;/i&gt;
+                  &lt;strong&gt;&lt;span class="sr-only"&gt;Sign in as &lt;/span&gt;Test Spectator&lt;/strong&gt;
+                  &lt;span&gt;Spectator&lt;/span&gt;
+                  &lt;small&gt;Signed in, with no team yet.&lt;/small&gt;
+                &lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;form method="post" action="/dev/sign_out"&gt;
+                &lt;input type="hidden" name="return_to" value="/teams"&gt;
+                &lt;button type="submit" class="cmu-dev-card cmu-dev-card--out btn ghost"&gt;
+                  &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;&lt;/i&gt;
+                  &lt;strong&gt;Signed Out&lt;/strong&gt;
+                  &lt;span&gt;Visitor&lt;/span&gt;
+                  &lt;small&gt;See what a visitor sees.&lt;/small&gt;
+                &lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;div class="cmu-sign-in-footer" role="contentinfo"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Need help? Email &lt;a href="mailto:example@cmu.edu"&gt;example@cmu.edu&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://www.cmu.edu/legal/"&gt;Legal Info&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- No menu, but the template's script expects one --&gt;
+    &lt;nav id="nav" hidden&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/nav&gt;
+  &lt;/div&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.15/js/cmu-app.js" integrity="sha384-T8n5PZtfWXQ/7ZGicShA+skDAVcih7BnNTbdgCoSAHV8usVHJbZ+RnubDOwmeb13" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+              <details class="cmu-more">
+                <summary>
+                  <span class="cmu-more-link"
+                    ><span class="cmu-more-closed">See the Whole Page</span
+                    ><span class="cmu-more-open">Hide the Whole Page</span></span
+                  >
+                </summary>
+              </details>
+            </div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p class="kit-unavailable">This component isn't available in Cascade.</p>
+            </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p class="kit-unavailable">This component isn't available in WordPress.</p>
+            </div>
+            <div class="kit-cms" data-cms="Another CMS">
+              <p class="cmu-label kit-cms-label">In another CMS</p>
+              <p class="kit-unavailable">This component isn't available in another CMS.</p>
+            </div>
+            <div class="kit-framework" data-framework="Django">
+              <p class="cmu-label kit-framework-label">In Django</p>
+              <p>Add the URLs only when <code>DEBUG</code> is on:</p>
+              <pre class="kit-code"><code># urls.py
+if settings.DEBUG:
+    urlpatterns += [
+        path("dev/sign-in/", views.dev_sign_in, name="dev_sign_in"),
+        path("dev/sign-in/&lt;int:pk&gt;/", views.dev_sign_in_as, name="dev_sign_in_as"),
+    ]
 
-&lt;li class="secondary cmu-account-menu"&gt;
-  &lt;a class="cmu-account-name"&gt;&lt;img class="cmu-profile-picture" src="/photos/ac00.jpg" alt=""&gt;Andrew Carnegie&lt;/a&gt;
-  &lt;a href="/preferences"&gt;Preferences&lt;/a&gt;
-  &lt;a href="/logout"&gt;Sign Out&lt;/a&gt;
-&lt;/li&gt;</code></pre>
+# views.py
+@require_POST
+def dev_sign_in_as(request, pk):
+    if not settings.DEBUG:
+        raise Http404
+    login(request, get_user_model().objects.get(pk=pk))
+    to = request.POST.get("return_to", "/")
+    return redirect(to if url_has_allowed_host_and_scheme(to, None) else "/")</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>Draw the routes only outside production, and refuse them in the controller too:</p>
+              <pre class="kit-code"><code># config/routes.rb
+unless Rails.env.production?
+  get "dev/sign_in", to: "dev_sessions#new", as: :dev_sign_in
+  post "dev/sign_in/:id", to: "dev_sessions#create", as: :dev_sign_in_as
+end
+
+# app/controllers/dev_sessions_controller.rb
+class DevSessionsController &lt; ApplicationController
+  before_action { head :not_found if Rails.env.production? }
+
+  def new
+    @people = User.where(test_person: true)
+  end
+
+  def create
+    session[:user_id] = User.find(params[:id]).id
+    path = params[:return_to].to_s
+    redirect_to path.start_with?("/") &amp;&amp; !path.start_with?("//") ? path : root_path
+  end
+end
+
+&lt;%# Sign In, in the header %&gt;
+&lt;%= link_to "Sign In", Rails.env.production? ? login_path : dev_sign_in_path(return_to: request.fullpath) %&gt;</code></pre>
+            </div>
+            <div class="kit-framework" data-framework="React Astro Svelte Vue" data-kit-no-code>
+              <p class="cmu-label kit-framework-label">In {framework}</p>
+              <p>
+                The server draws this page and signs the user in, not {framework}'s components:
+                serve the HTML tab's page from it. Add its routes only when
+                <code>NODE_ENV</code> isn't production. With Express:
+              </p>
+              <pre class="kit-code"><code>if (process.env.NODE_ENV !== "production") {
+  app.get("/dev/sign-in", (req, res) =&gt;
+    res.render("dev-sign-in", { people: testPeople, returnTo: req.query.return_to }));
+  app.post("/dev/sign-in/:id", (req, res) =&gt; {
+    req.session.userId = req.params.id;
+    const to = String(req.body.return_to || "/");
+    res.redirect(to.startsWith("/") &amp;&amp; !to.startsWith("//") ? to : "/");
+  });
+}</code></pre>
+            </div>
+            <p>
+              With a picture, use <code>&lt;img class="cmu-profile-picture" alt=""&gt;</code> in
+              place of the initials.
+            </p>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h2 id="sign-in-which" class="rule-top">Link, Button or Box?</h2>
+            <p>
+              <strong>Pages past the home page,</strong> and pages where signing in adds nothing,
+              get the header's Sign In link alone.
+            </p>
+            <p>
+              <strong>A page people can use without signing in</strong> gets the
+              <a href="#sign-in-button">Sign-In Button</a>. The page's own content comes first, and
+              the button is there for the extras.
+            </p>
+            <p>
+              <strong>A page with little to show until the user signs in</strong> gets the
+              <a href="#sign-in-box">Sign-In Box</a>, which says what signing in lets them do, not
+              just that they must.
+            </p>
+            <p>
+              <strong>A site with more than one way in,</strong> such as Andrew accounts and Google,
+              sends every Sign In to the <a href="#sign-in-page">Sign-In Page</a>, where the user
+              picks one, instead of straight to CMU's single sign-on.
+            </p>
+            <p>
+              <strong>A link to a page that requires signing in</strong> stays visible, with
+              <code>[login required]</code> after it, not hidden.
+            </p>
 
             <h2 id="preferences" class="rule-top">
               Preferences
@@ -375,6 +891,7 @@
                 for campus emergencies.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-acting-as</code>, <code>cmu-acting-bar</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -387,7 +904,7 @@
               <button type="button" class="btn ghost" data-kit-acting>
                 Show the Frame on This Page
               </button>
-              <a class="cta" href="layout.html#try-header">Try It With the Rest of the Header</a>
+              <a class="cta" href="layout.html#try-header">Try It on This Site's Header</a>
             </p>
           </div>
         </div>

@@ -38,6 +38,17 @@ The [conventions](https://webkilt.andrew.cmu.edu/0/conventions.html) are the
 reference for naming, writing and page structure. Use them for the docs
 and examples too, including AP style and made-up example content.
 
+**Example content.** Made-up people are Andrew Carnegie (ac00) first, then
+Margaret Morrison (mm00) and Andrew Mellon (am00). When an example needs an
+app, it's **Buggy**, a made-up site for the Spring Carnival Sweepstakes (the
+buggy races): teams, drivers, heats, roll times and race-day news. Older pages
+still use other scenarios; move them to Buggy when they next change.
+
+**Example pages.** `docs/examples/` holds whole pages that don't fit inside
+a docs page, such as an interstitial. An example people can click is shown
+live in a frame (`kit-page-frame`); a static one is a screenshot.
+Components stay live in the docs themselves.
+
 ## Two Versions
 
 The kit has two versions, each on its own long-lived branch:

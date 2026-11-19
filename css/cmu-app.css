@@ -230,7 +230,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-field-button > .cmu-suggest {
   background: #fff;
   border: 1px solid var(--cmu-line);
   border-top: 0;
-  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
+  box-shadow: var(--cmu-shadow);
 }
 :is(#content, body) .cmu-suggest-list[hidden] {
   display: none;
@@ -377,21 +377,41 @@ nav#nav li.cmu-account-menu > .cmu-account-name + a {
 /* The signed-in user's photo (cmu-profile-picture): small and round before their
    name in the roof, larger on the right of the menu's account block */
 .cmu-profile-picture {
-  width: 28px;
-  height: 28px;
+  /* Any size: set --cmu-size on the picture (or a parent) */
+  --cmu-size: 28px;
+  width: var(--cmu-size);
+  height: var(--cmu-size);
   border-radius: 50%;
   object-fit: cover;
   flex: 0 0 auto;
+  /* Photo or initials, the same line up beside text */
+  vertical-align: middle;
 }
 .roof .cmu-account .cmu-profile-picture {
   margin-right: 0.5em;
+}
+/* Initials in place of a photo (cmu-profile-initials): the same circle,
+   gray, with one or two letters sized to the circle */
+.cmu-profile-initials {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cmu-gray-tint);
+  color: var(--cmu-ink);
+  /* The letters scale with the circle. An <i>, since the template's script
+     strips style (and so --cmu-size) from spans */
+  font-size: calc(var(--cmu-size) * 0.38);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
 }
 nav li.cmu-account-menu .cmu-profile-picture {
   position: absolute;
   top: 50%;
   right: 1.5rem;
-  width: 56px;
-  height: 56px;
+  --cmu-size: 56px;
   transform: translateY(-50%);
 }
 
@@ -472,14 +492,7 @@ nav li.cmu-account-menu .cmu-profile-picture {
   gap: 0 1.75em;
 }
 
-/* Small text */
-.cmu-muted,
-.cmu-hint {
-  color: var(--cmu-muted);
-}
-.cmu-hint {
-  font-size: 0.85em;
-}
+/* Small text (.cmu-muted, .cmu-hint): in cmu-cms.css */
 /* On a dark section (invert), small text is the section's own light color,
    a little dimmed, instead of a gray it can't be read against */
 .invert :is(.cmu-muted, .cmu-hint) {
@@ -494,6 +507,11 @@ body:is(.cmu-app, .cmu-framed) :is(input, select, textarea):has(+ p.cmu-hint) {
 body:is(.cmu-app, .cmu-framed) :is(input, select, textarea, fieldset > ul) + p.cmu-hint {
   padding: 0;
   margin: 0.35rem 0 2rem;
+}
+/* What follows a hint, such as a form's button, starts at the hint's 2rem:
+   the template's padding on every <p> goes, so it isn't added on top */
+body:is(.cmu-app, .cmu-framed) p.cmu-hint + p {
+  padding-top: 0;
 }
 body:is(.cmu-app, .cmu-framed) fieldset > ul + p.cmu-hint:last-child,
 body:is(.cmu-app, .cmu-framed) fieldset > p.cmu-hint:last-child {
@@ -1626,6 +1644,31 @@ th[aria-sort] .cmu-sort {
   font-size: 0.7em;
   vertical-align: 0.15em;
 }
+/* Column filters: a row in the table's head, one field under each heading
+   that has one. The template's header row keeps its look above it. */
+table.alternate thead tr.cmu-filter-row th,
+table.alternate thead tr.cmu-filter-row td {
+  background: #fff;
+  font-weight: normal;
+}
+tr.cmu-filter-row input {
+  width: 100%;
+  min-width: 5em;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+}
+/* Sticky header: the head stays at the top of the window while a long table
+   scrolls. It needs the table not to scroll sideways, so it works from 768px
+   up with cmu-full. */
+@media (min-width: 768px) {
+  table.cmu-sticky thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+    box-shadow: 0 1px 0 var(--cmu-line);
+  }
+}
 /* Row checkbox: the whole cell is its click target. The label fills the
    cell, so it has no width of its own to hold the column open: the side
    padding plus min-width (the box) do that. */
@@ -1670,8 +1713,8 @@ table .cmu-select-cell label input[type="checkbox"] {
 .cmu-search-bar p {
   margin: 0 0 0.5em;
 }
-.cmu-search-bar input[type="text"],
-body:is(.cmu-app, .cmu-framed) .cmu-search-bar input[type="text"] {
+.cmu-search-bar input:is([type="text"], [type="search"]),
+body:is(.cmu-app, .cmu-framed) .cmu-search-bar input:is([type="text"], [type="search"]) {
   width: 100%;
   margin-bottom: 0;
 }
@@ -2123,4 +2166,463 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-search > input {
 .cmu-panel-footer .btn,
 .cmu-panel-footer button {
   margin: 0;
+}
+
+/* Sign-In Page: a page of its own in front of a site or app, with each way
+   to sign in. The roof with only the wordmark; then, on a soft gray
+   background with the template's plaid, the heading on the left and a white
+   card on the right, a red bar across its top, holding a large outline
+   button for each way in and an optional quieter link under them; a small
+   footer last. On phones the heading sits above the card. */
+/* The Sign-In Page's sizes, in one place so the math stays together. Not
+   settings: the docs offer only the photo (--cmu-sign-in-photo) */
+:root:has(main.cmu-sign-in-page) {
+  /* The centered column the wordmark, heading and card line up to: the
+     template's own column, so the card lines up with the roof's wordmark.
+     The card takes its right half beside the heading */
+  --cmu-sign-in-width: 71.25rem;
+  /* Extra space above and below the wordmark */
+  --cmu-sign-in-roof-padding: 1rem;
+  /* How far below the card's top the heading starts, beside the card */
+  --cmu-sign-in-heading-offset: 4.5rem;
+  /* The card: its red bar, the space inside it (wider screens, phones), its
+     buttons' height and the gap between buttons (wider screens, phones) */
+  --cmu-sign-in-bar: 1rem;
+  --cmu-sign-in-card-padding: 3rem;
+  --cmu-sign-in-card-padding-phone: 1.5rem;
+  --cmu-sign-in-button-height: 5.5rem;
+  --cmu-sign-in-button-gap: 2rem;
+  --cmu-sign-in-button-gap-phone: 1.25rem;
+  /* With a photo, on phones and tablets: the height of the band behind the
+     heading */
+  --cmu-sign-in-band-height: min(32rem, 60vw + 6rem);
+}
+.cmu-sign-in-page {
+  /* The card's padding at this size, so a stacked heading can line up with
+     the card's buttons */
+  --cmu-sign-in-card-inset: var(--cmu-sign-in-card-padding-phone);
+  background:
+    url("https://www.cmu.edu/common/standard-v6/images/bg-plaid-big.png") center / cover,
+    linear-gradient(180deg, #c9cdd1, var(--cmu-tint) 70%);
+  background-blend-mode: soft-light, normal;
+  padding: 2rem 0 4rem;
+}
+/* The template's own column (div.content), so the heading lines up with
+   the wordmark as on every other page: the heading on the left half, the
+   card the right half */
+:is(#content, body) .cmu-sign-in-page > div.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Side by side from laptop width; phones and tablets stack the heading
+   over the card */
+@media (min-width: 1025px) {
+  .cmu-sign-in-page {
+    padding: 2.125rem 0 6rem;
+  }
+  :is(#content, body) .cmu-sign-in-page > div.content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+  }
+  /* The card stays the size it is at the template's narrowest wide column,
+     at the column's right edge, so its buttons don't keep growing. Its
+     padding counts inside its width, so it never reaches into the heading's
+     column */
+  .cmu-sign-in-page > div > .cmu-sign-in-card {
+    box-sizing: border-box;
+    justify-self: end;
+    width: 100%;
+    max-width: calc(var(--cmu-sign-in-width) / 2);
+  }
+  /* Room between a long heading line and the card */
+  .cmu-sign-in-page > div > :first-child {
+    padding-right: 3rem;
+  }
+}
+/* With a photo (cmu-sign-in-page--photo, and the photo in
+   --cmu-sign-in-photo on the same element): the photo fills the page behind
+   the card, as a strip across the top of the page, darkened at the top where
+   the white heading sits. Give
+   the photo a full or site-root address (such as /images/photo.jpg): a
+   relative one would resolve against this stylesheet, not the page */
+@media (min-width: 1025px) {
+  .cmu-sign-in-page--photo {
+    position: relative;
+    isolation: isolate;
+    background: var(--cmu-tint);
+  }
+  /* The photo fills the page behind the card, from under the roof to the
+     footer, whatever its shape: it covers the space, and on screens wider
+     than the photo it loses more from the bottom than the top. It's darkest
+     at the top, where the white heading sits */
+  .cmu-sign-in-page--photo::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.22) 30%, rgba(0, 0, 0, 0)) 0 0 /
+        100% 26rem no-repeat,
+      var(--cmu-sign-in-photo) center 15% / cover no-repeat;
+  }
+}
+/* Stacked, the heading lines up with the card's buttons */
+@media (max-width: 1024.98px) {
+  .cmu-sign-in-page > div > div:first-child {
+    padding-inline: var(--cmu-sign-in-card-inset);
+  }
+}
+/* Stacked, the photo is a full-width band behind the heading, and the card
+   sits centered on its bottom edge, its red bar on the photo */
+@media (max-width: 1024.98px) {
+  /* #content: the template pads #content's top on phones */
+  #content.cmu-sign-in-page--photo {
+    padding-top: 0;
+    background: var(--cmu-tint);
+  }
+  :is(#content, body) .cmu-sign-in-page--photo > div.content {
+    padding-right: 0;
+    padding-left: 0;
+    gap: 0;
+  }
+  .cmu-sign-in-page--photo > div > div:not(.cmu-sign-in-card) {
+    box-sizing: border-box;
+    min-height: var(--cmu-sign-in-band-height);
+    /* Lined up with the buttons of the centered card below */
+    padding: 2rem
+      calc((100% - min(var(--cmu-sign-in-width) / 2, 96%)) / 2 + var(--cmu-sign-in-card-inset)) 4rem;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0.05)),
+      var(--cmu-sign-in-photo) center top / cover no-repeat;
+  }
+  .cmu-sign-in-page--photo > div > .cmu-sign-in-card {
+    box-sizing: border-box;
+    width: min(calc(var(--cmu-sign-in-width) / 2), 96%);
+    margin: -2.5rem auto 0;
+  }
+}
+.cmu-sign-in-page.cmu-sign-in-page--photo > div > :first-child,
+.cmu-sign-in-page.cmu-sign-in-page--photo > div > :first-child > * {
+  color: #fff;
+  /* A tight edge for the letters and a wide halo that quiets a busy photo
+     behind them */
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 0 16px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(0, 0, 0, 0.5);
+}
+/* A taller roof than other pages: with no site name or tabs under it, the
+   wordmark strip is the page's whole header */
+header:has(+ main.cmu-sign-in-page) .roof {
+  padding-top: var(--cmu-sign-in-roof-padding);
+  padding-bottom: var(--cmu-sign-in-roof-padding);
+}
+
+.cmu-sign-in-page h1 {
+  margin: 0;
+  padding: 0;
+  color: var(--cmu-ink);
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+.cmu-sign-in-page h1 + p {
+  margin: 1.55rem 0 0;
+  padding: 0;
+  color: var(--cmu-ink);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+/* Beside the card, the heading sits a little below the card's top */
+@media (min-width: 1025px) {
+  .cmu-sign-in-page h1 {
+    margin-top: var(--cmu-sign-in-heading-offset);
+  }
+}
+.cmu-sign-in-card {
+  padding: 2.5rem var(--cmu-sign-in-card-inset) 2rem;
+  background: #fff;
+  box-shadow: var(--cmu-shadow);
+}
+/* The template gives a div.content's first child 60% of the width; the
+   heading fills its own grid column instead */
+:is(#content, body) .cmu-sign-in-page > .content > :first-child:not(.cmu-sign-in-card) {
+  width: auto;
+}
+/* The template zeroes the bottom padding of a div.content's last child,
+   which the card is */
+:is(#content, body) .cmu-sign-in-page > .content > .cmu-sign-in-card {
+  padding-bottom: 2rem;
+}
+/* The red bar across the top, with the template's plaid laid over it */
+.cmu-sign-in-card::before {
+  content: "";
+  display: block;
+  height: var(--cmu-sign-in-bar);
+  margin: -2.5rem calc(-1 * var(--cmu-sign-in-card-inset)) 2rem;
+  background: var(--cmu-red) url("https://www.cmu.edu/common/standard-v6/images/bg-plaid-big.png")
+    no-repeat center 31% / 150%;
+}
+/* A ul.cmu-plain, without the template's indent */
+.cmu-sign-in-card > ul {
+  margin: 0;
+  padding: 0;
+}
+.cmu-sign-in-card > ul > li {
+  margin: 0 0 var(--cmu-sign-in-button-gap-phone);
+  padding: 0;
+}
+/* A card that ends with its list ends flush, without a last gap */
+.cmu-sign-in-card > ul:last-child > li:last-child {
+  margin-bottom: 0;
+}
+/* A gap before the university's own sign-in, set apart from outside ones.
+   Not a setting of its own: a multiple of the button gap, so it scales with
+   the buttons but always reads as a break between kinds of account */
+.cmu-sign-in-card > ul > li.cmu-sign-in-break {
+  margin-top: calc(var(--cmu-sign-in-button-gap-phone) * 2);
+}
+/* Big, even tap targets at every size: the template's button shrinks on
+   phones, where a sign-in button most needs room. A sign-in that starts with
+   a POST is a form with a button in it (Rails' button_to, Django's allauth),
+   so a button fills the row like a link. Developer Sign-In's people are
+   buttons of their own size */
+.cmu-sign-in-card form {
+  margin: 0;
+}
+.cmu-sign-in-card :is(a, button).btn:not(.cmu-dev-card) {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: var(--cmu-sign-in-button-height);
+  margin: 0;
+  /* The height comes from the setting, not the template's padding: one line
+     of words centered in it, and a label that wraps grows the button */
+  padding-block: max(0px, calc((var(--cmu-sign-in-button-height) - 1lh - 4px) / 2));
+}
+/* A provider's own mark before its name, as its sign-in branding asks: an
+   inline SVG, in the text color, staying with the first word if the label
+   wraps */
+.cmu-sign-in-mark {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.5em;
+  vertical-align: -0.2em;
+}
+/* A hint under a button, as under a field: what the account is, for people
+   who might not have one */
+.cmu-sign-in-card > ul > li > .cmu-hint {
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+/* The quieter option under the list: an "or" divider (cmu-or) and a cta.
+   The divider's line does the separating, so it needs less room above it
+   than the university's sign-in gets (the last item's own gap collapses
+   into this) */
+:is(#content, body) .cmu-sign-in-card > ul + .cmu-or {
+  margin-top: calc(var(--cmu-sign-in-button-gap-phone) * 1.5);
+}
+.cmu-sign-in-card > .cmu-or + p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+/* Beside the heading on wider screens, the card has more room inside */
+@media (min-width: 768px) {
+  .cmu-sign-in-page {
+    --cmu-sign-in-card-inset: var(--cmu-sign-in-card-padding);
+  }
+  .cmu-sign-in-card {
+    padding: 2.5rem var(--cmu-sign-in-card-padding) 2.5rem;
+  }
+  :is(#content, body) .cmu-sign-in-page > .content > .cmu-sign-in-card {
+    padding-bottom: 2.5rem;
+  }
+  :is(#content, body) .cmu-sign-in-card > ul + .cmu-or {
+    margin-top: calc(var(--cmu-sign-in-button-gap) * 1.5);
+  }
+  .cmu-sign-in-card::before {
+    margin: -2.5rem calc(-1 * var(--cmu-sign-in-card-padding)) var(--cmu-sign-in-card-padding);
+  }
+  .cmu-sign-in-card > ul > li {
+    margin-bottom: var(--cmu-sign-in-button-gap);
+  }
+  .cmu-sign-in-card > ul > li.cmu-sign-in-break {
+    margin-top: calc(var(--cmu-sign-in-button-gap) * 2);
+  }
+}
+.cmu-sign-in-footer {
+  padding: 2rem 2% 3rem;
+  background: #fff;
+  border-top: 1px solid var(--cmu-line);
+  text-align: center;
+}
+.cmu-sign-in-footer ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+  margin: 0;
+  padding: 0;
+}
+.cmu-sign-in-footer li {
+  margin: 0;
+  padding: 0;
+}
+.cmu-sign-in-footer li::before {
+  content: none;
+}
+
+/* Developer Sign-In: the Sign-In Page standing in for single sign-on while
+   you build an app (cmu-sign-in-page--dev, below). Never in production. */
+/* The people: a grid of cards, one on phones */
+.cmu-dev-people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cmu-dev-people > li {
+  margin: 0;
+  padding: 0;
+}
+.cmu-dev-people > li[hidden] {
+  display: none;
+}
+.cmu-dev-people form {
+  height: 100%;
+  margin: 0;
+}
+/* A person's card: the whole card is the Sign In button. Undoes the
+   template's button look */
+.cmu-dev-people .cmu-dev-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: start;
+  gap: 0.15rem 0.85rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+  color: var(--cmu-ink);
+  font: inherit;
+  letter-spacing: normal;
+  line-height: 1.4;
+  text-align: left;
+  text-transform: none;
+}
+/* The current person's card isn't a button, but it has the buttons' 2px
+   border, so it doesn't change size when You moves */
+.cmu-dev-people .cmu-dev-card:not(.btn) {
+  border: 2px solid var(--cmu-line);
+}
+.cmu-dev-people button.cmu-dev-card {
+  cursor: pointer;
+}
+.cmu-dev-people button.cmu-dev-card:not(.btn):hover {
+  border-color: var(--cmu-ink);
+  background: #fff;
+  color: var(--cmu-ink);
+}
+.cmu-dev-people button.cmu-dev-card:focus-visible {
+  outline: 3px solid var(--cmu-red);
+  outline-offset: 2px;
+}
+.cmu-dev-card > * {
+  grid-column: 2;
+  margin: 0;
+}
+/* The picture (cmu-profile-picture) or initials, beside the name */
+.cmu-dev-card > .cmu-profile-picture {
+  --cmu-size: 2.75rem;
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+.cmu-dev-card strong {
+  font-size: 1.1rem;
+}
+.cmu-dev-card small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--cmu-gray);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+/* The person signed in now: outlined, marked You, and not a button */
+.cmu-dev-people > li[aria-current] .cmu-dev-card {
+  outline: 3px solid var(--cmu-gold);
+  outline-offset: -3px;
+  border-color: var(--cmu-gold);
+}
+.cmu-dev-people .cmu-dev-card {
+  position: relative;
+}
+/* You: a small gold tab on the outline, so it takes no room from the name */
+.cmu-dev-you {
+  position: absolute;
+  top: 0;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  padding: 0 0.45rem;
+  background: var(--cmu-gold);
+  color: var(--cmu-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+/* Developer Sign-In on the Sign-In Page (cmu-sign-in-page--dev): caution
+   tape in place of the red bar, and the people one to a row in the card,
+   spaced like its sign-in buttons */
+.cmu-sign-in-page--dev .cmu-sign-in-card::before {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--cmu-gold) 0 0.75rem,
+    var(--cmu-ink) 0.75rem 1.5rem
+  );
+}
+/* The people two across when there's room, one on phones; the hint under
+   each stays with its person */
+.cmu-sign-in-card > .cmu-dev-people {
+  /* Never more than two across: each column at least half the card */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, max(16rem, calc(50% - 0.75rem))), 1fr));
+  gap: 1.5rem;
+}
+.cmu-sign-in-card > .cmu-dev-people > li {
+  margin: 0;
+}
+
+/* A wider card on wider screens: the heading takes two-fifths */
+@media (min-width: 1025px) {
+  :is(#content, body) .cmu-sign-in-page--dev > div.content {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+  /* The dev card is wider, for its people two across */
+  .cmu-sign-in-page--dev > div > .cmu-sign-in-card {
+    max-width: calc(var(--cmu-sign-in-width) * 0.75);
+  }
+}
+/* Development Mode, at the top of the card under the tape */
+.cmu-sign-in-card > .cmu-label:first-child {
+  margin: 0 0 1rem;
+  padding: 0;
+}
+/* Signed Out: an empty circle where a picture goes */
+.cmu-dev-card--out .cmu-profile-initials {
+  background: #fff;
+  border: 2px dashed var(--cmu-line);
 }

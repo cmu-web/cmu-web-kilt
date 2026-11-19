@@ -32,6 +32,8 @@
   --cmu-link: #941120; /* the template's link color */
   --cmu-link-hover: #f00;
   --cmu-blue-tint: #e9eff7;
+  /* The soft shadow under a card, callout or window */
+  --cmu-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
   /* Checkboxes, radio buttons, sliders and progress bars in CMU red instead
      of the browser's blue */
   accent-color: var(--cmu-red);
@@ -101,7 +103,9 @@ nav#nav:focus {
   margin-top: 0;
   padding-top: 0;
 }
-.cmu-label {
+/* The or divider's "or" (cmu-or) is set as a label too */
+.cmu-label,
+.cmu-or {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -120,6 +124,30 @@ nav#nav:focus {
 :is(p, div, legend).cmu-label:not(.grid > *) + * {
   margin-top: 0;
   padding-top: 0;
+}
+/* Small text: a muted note, or a hint under a field or button */
+.cmu-muted,
+.cmu-hint {
+  color: var(--cmu-muted);
+}
+.cmu-hint {
+  font-size: 0.85em;
+}
+/* Or divider: a line across with "or" in it, between two ways to do the
+   same thing. What comes after it is the second way. */
+:is(#content, body) .cmu-or {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0 1.25rem;
+  padding: 0;
+  color: var(--cmu-muted);
+}
+.cmu-or::before,
+.cmu-or::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--cmu-line);
 }
 .cmu-lead {
   font-size: 1.2rem;
@@ -646,25 +674,25 @@ img.cmu-transparent,
 .cmu-annotated-notes > li.cmu-callout {
   margin: 0 0 0.75rem;
   padding: 1rem 1.25rem;
-  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
+  box-shadow: var(--cmu-shadow);
 }
 /* Title, words and call to action, one above another in every callout */
 .cmu-annotated-notes > li.cmu-callout > p {
   flex-basis: 100%;
 }
 @container (min-width: 50rem) {
-  .cmu-annotated:not(.cmu-annotated--wide) > figure {
+  .cmu-annotated:not(.cmu-annotated--wide, .cmu-annotated--pins) > figure {
     position: relative;
     width: 56%;
     margin: 0 0 0 auto;
   }
   /* The caption hangs below the screenshot, so the callouts line up with
      the image alone */
-  .cmu-annotated:not(.cmu-annotated--wide) > figure > figcaption {
+  .cmu-annotated:not(.cmu-annotated--wide, .cmu-annotated--pins) > figure > figcaption {
     position: absolute;
     top: 100%;
   }
-  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-text {
+  .cmu-annotated:not(.cmu-annotated--wide, .cmu-annotated--pins) .cmu-annotated-text {
     position: absolute;
     top: 0;
     bottom: 2.25rem; /* the image alone, not the caption\'s room */
@@ -673,13 +701,15 @@ img.cmu-transparent,
     z-index: 1;
   }
   /* Text above the callouts stays clear of the screenshot */
-  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-text > p {
+  .cmu-annotated:not(.cmu-annotated--wide, .cmu-annotated--pins) .cmu-annotated-text > p {
     margin-right: 13%;
   }
-  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-notes {
+  .cmu-annotated:not(.cmu-annotated--wide, .cmu-annotated--pins) .cmu-annotated-notes {
     margin: 0;
   }
-  .cmu-annotated:not(.cmu-annotated--wide) .cmu-annotated-notes > li.cmu-callout {
+  .cmu-annotated:not(.cmu-annotated--wide, .cmu-annotated--pins)
+    .cmu-annotated-notes
+    > li.cmu-callout {
     position: absolute;
     left: 0;
     right: 0;
@@ -690,18 +720,18 @@ img.cmu-transparent,
 }
 /* --wide, for long text or callouts: side by side only from 70rem */
 @container (min-width: 70rem) {
-  .cmu-annotated--wide > figure {
+  .cmu-annotated--wide:not(.cmu-annotated--pins) > figure {
     position: relative;
     width: 56%;
     margin: 0 0 0 auto;
   }
   /* The caption hangs below the screenshot, so the callouts line up with
      the image alone */
-  .cmu-annotated--wide > figure > figcaption {
+  .cmu-annotated--wide:not(.cmu-annotated--pins) > figure > figcaption {
     position: absolute;
     top: 100%;
   }
-  .cmu-annotated--wide .cmu-annotated-text {
+  .cmu-annotated--wide:not(.cmu-annotated--pins) .cmu-annotated-text {
     position: absolute;
     top: 0;
     bottom: 2.25rem; /* the image alone, not the caption\'s room */
@@ -710,19 +740,146 @@ img.cmu-transparent,
     z-index: 1;
   }
   /* Text above the callouts stays clear of the screenshot */
-  .cmu-annotated--wide .cmu-annotated-text > p {
+  .cmu-annotated--wide:not(.cmu-annotated--pins) .cmu-annotated-text > p {
     margin-right: 13%;
   }
-  .cmu-annotated--wide .cmu-annotated-notes {
+  .cmu-annotated--wide:not(.cmu-annotated--pins) .cmu-annotated-notes {
     margin: 0;
   }
-  .cmu-annotated--wide .cmu-annotated-notes > li.cmu-callout {
+  .cmu-annotated--wide:not(.cmu-annotated--pins) .cmu-annotated-notes > li.cmu-callout {
     position: absolute;
     left: 0;
     right: 0;
     top: calc(var(--cmu-annotated-bar) + (100% - var(--cmu-annotated-bar)) * var(--cmu-at, 0));
     margin: 0;
     transform: translateY(-50%);
+  }
+}
+
+/* --pins: numbered pins on the image instead of callouts lined up beside
+   it. Each pin (i.cmu-annotated-pin, aria-hidden, in the figure after
+   the image; an i, since the template's script strips style from spans) sits at --cmu-x and --cmu-y (0 to 1 across and down the image)
+   and repeats its callout's number. The callouts stack in order, so
+   --cmu-at isn't used, and the image keeps its own size. Narrow: the
+   introduction, the image, then the callouts. From 50rem (70rem with
+   --wide): the text on the left and the image on the right. */
+.cmu-annotated--pins {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  /* Dense, so on wide screens the image fills the space beside the callouts */
+  grid-auto-flow: row dense;
+  column-gap: 2.5rem;
+  align-items: start;
+}
+/* The text's parts become the component's own items. Narrow: each spans
+   the width, with the image between the introduction and the callouts */
+.cmu-annotated--pins > .cmu-annotated-text {
+  display: contents;
+}
+.cmu-annotated--pins > .cmu-annotated-text > * {
+  grid-column: 1 / -1;
+}
+.cmu-annotated--pins > .cmu-annotated-text > .cmu-annotated-notes {
+  order: 2;
+}
+.cmu-annotated--pins > figure {
+  order: 1;
+  grid-column: 1 / -1;
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+.cmu-annotated--pins > figure img {
+  max-width: 100%;
+  height: auto;
+}
+/* The caption hangs below, so the pins measure the image alone */
+.cmu-annotated--pins > figure > figcaption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.cmu-annotated-pin {
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--cmu-x, 0) * 100%);
+  top: calc(var(--cmu-annotated-bar) + (100% - var(--cmu-annotated-bar)) * var(--cmu-y, 0));
+  box-sizing: border-box;
+  min-width: 1.75em;
+  height: 1.75em;
+  padding: 0 0.4em;
+  border-radius: 0.875em;
+  background: var(--cmu-red);
+  color: #fff;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.75em;
+  text-align: center;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 2px 6px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+/* A pin can link to its callout: clicking it outlines the callout, and on
+   narrow screens, where the callouts sit below the image, scrolls to it */
+a.cmu-annotated-pin {
+  pointer-events: auto;
+  text-decoration: none;
+  border: 0;
+}
+a.cmu-annotated-pin:is(:hover, :focus-visible) {
+  color: #fff;
+  background: var(--cmu-link);
+  outline: none;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--cmu-red),
+    0 2px 6px rgba(0, 0, 0, 0.35);
+}
+.cmu-annotated-notes > li:is(:target, .cmu-annotated-current) {
+  outline: 3px solid var(--cmu-red);
+  outline-offset: 2px;
+  scroll-margin-top: 1.5rem;
+}
+@container (min-width: 50rem) {
+  /* The introduction spans the top; below it, the callouts and the image
+     side by side. The image starts level with the first callout and stays in
+     view while the callouts scroll past, until the last one */
+  .cmu-annotated--pins:not(.cmu-annotated--wide) > .cmu-annotated-text > * {
+    order: 0;
+  }
+  .cmu-annotated--pins:not(.cmu-annotated--wide) > .cmu-annotated-text > .cmu-annotated-notes {
+    grid-column: 1;
+  }
+  .cmu-annotated--pins:not(.cmu-annotated--wide) > figure {
+    grid-column: 2;
+    order: 0;
+    max-width: 56cqi;
+    margin: 0;
+    position: sticky;
+    top: 1rem;
+  }
+}
+@container (min-width: 70rem) {
+  /* The introduction spans the top; below it, the callouts and the image
+     side by side. The image starts level with the first callout and stays in
+     view while the callouts scroll past, until the last one */
+  .cmu-annotated--pins.cmu-annotated--wide > .cmu-annotated-text > * {
+    order: 0;
+  }
+  .cmu-annotated--pins.cmu-annotated--wide > .cmu-annotated-text > .cmu-annotated-notes {
+    grid-column: 1;
+  }
+  .cmu-annotated--pins.cmu-annotated--wide > figure {
+    grid-column: 2;
+    order: 0;
+    max-width: 56cqi;
+    margin: 0;
+    position: sticky;
+    top: 1rem;
   }
 }
 
@@ -735,7 +892,7 @@ img.cmu-transparent,
   display: block;
   box-sizing: border-box;
   border: 1px solid var(--cmu-line);
-  box-shadow: 0 6px 18px rgba(23, 44, 75, 0.1);
+  box-shadow: var(--cmu-shadow);
 }
 /* The window is as wide as its screenshot, never wider than the column */
 .cmu-shot--browser {
@@ -814,11 +971,30 @@ img.cmu-transparent,
   min-width: 0;
   margin: 0;
 }
+/* A div in it is one column of figures stacked, such as two states of the
+   same thing */
+.cmu-shots > div {
+  display: flex;
+  flex: 1 1 15rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+.cmu-shots > div > figure {
+  margin: 0;
+}
 .cmu-shots > .cmu-shot--phone {
   flex: 0 0 auto;
 }
-.cmu-shots > figure:not(.cmu-shot--phone) img {
+/* A screenshot fills a browser window's frame; any other shrinks to fit
+   but never shows bigger than its own size */
+.cmu-shots .cmu-shot--browser img {
   width: 100%;
+  height: auto;
+}
+.cmu-shots :is(> figure, > div > figure):not(.cmu-shot--phone):not(.cmu-shot--browser) img {
+  width: auto;
+  max-width: 100%;
   height: auto;
 }
 .cmu-shots:has(> .cmu-shot--browser) > figure:not(.cmu-shot--browser):not(.cmu-shot--phone) {
@@ -1625,7 +1801,7 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   margin-top: auto;
 }
 
-/* Lists: check marks, numbered steps */
+/* Lists: check marks, fixes, notes, numbered steps */
 /* Plain list: no bullets, for a list whose items each start with their own
    label, such as a pill or a bold term. Items keep the template's indent. */
 ul.cmu-plain {
@@ -1633,15 +1809,17 @@ ul.cmu-plain {
 }
 /* Replace the template's list indent, including its extra indent from the
    tenth ordered item onward. Nested ordinary lists keep their own indent. */
-:is(#content, body) :is(.cmu-flow, .cmu-steps, .cmu-checks) > li {
+:is(#content, body) :is(.cmu-flow, .cmu-steps, .cmu-checks, .cmu-fixes, .cmu-notes) > li {
   margin-left: 0;
 }
-.cmu-checks {
+.cmu-checks,
+.cmu-fixes,
+.cmu-notes {
   list-style: none;
   margin: 0 0 1rem;
   padding: 0;
 }
-.cmu-checks > li {
+:is(.cmu-checks, .cmu-fixes, .cmu-notes) > li {
   position: relative;
   padding: 0 0 0.7rem 1.7rem;
   line-height: 1.5;
@@ -1656,6 +1834,37 @@ ul.cmu-plain {
   border: solid var(--cmu-red);
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
+}
+/* Fix and note lists: an exclamation point and an "i" drawn in strokes as
+   thick as the check mark's, amber for what to fix and gray for what's worth
+   knowing. ::before is the top part, ::after the bottom. */
+:is(.cmu-fixes, .cmu-notes) > li::before,
+:is(.cmu-fixes, .cmu-notes) > li::after {
+  content: "";
+  position: absolute;
+  left: 0.55rem;
+  width: 3px;
+  background: var(--cmu-amber);
+}
+.cmu-notes > li::before,
+.cmu-notes > li::after {
+  background: var(--cmu-gray);
+}
+.cmu-fixes > li::before {
+  top: 0.3em;
+  height: 0.62em;
+}
+.cmu-fixes > li::after {
+  top: 1.05em;
+  height: 3px;
+}
+.cmu-notes > li::before {
+  top: 0.3em;
+  height: 3px;
+}
+.cmu-notes > li::after {
+  top: 0.55em;
+  height: 0.67em;
 }
 
 ol.cmu-steps {

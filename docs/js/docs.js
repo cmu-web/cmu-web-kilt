@@ -148,6 +148,10 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
       el.removeAttribute(name);
     });
   });
+  // Initials the kit wrote, so the code shows the element empty
+  copy.querySelectorAll("[data-cmu-name], [data-cmu-initials]").forEach(function (el) {
+    el.textContent = "";
+  });
   copy.querySelectorAll(".cmu-countdown-on").forEach(function (el) {
     el.classList.remove("cmu-countdown-on", "cmu-countdown-ended");
   });
@@ -171,7 +175,8 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
       return l.slice(indent);
     })
     .join("\n")
-    .replace(/=""/g, "")
+    // Empty values drop (hidden="" is just hidden), except alt, where empty means something
+    .replace(/ (?!alt=)([\w-]+)=""/g, " $1")
     .replace(/ data-preview/g, "")
     .replace(/ data-kit-[\w-]+="[^"]*"/g, "");
   pre.appendChild(code);
@@ -556,7 +561,7 @@ function cmsPanel(blocks) {
 }
 function frameworkPanel(pre) {
   var found = [],
-    next = pre.nextElementSibling;
+    next = peekOf(pre).nextElementSibling;
   while (next && next.matches(".kit-cms, .kit-framework")) {
     if (next.classList.contains("kit-framework")) found.push(next);
     next = next.nextElementSibling;
@@ -570,7 +575,7 @@ function frameworkPanel(pre) {
       return b.dataset.framework.split(/\s+/).indexOf(name) >= 0;
     });
     var whole = mine.filter(function (b) {
-      return b.querySelector("pre");
+      return b.querySelector("pre") && !b.hasAttribute("data-kit-no-code");
     })[0];
     if (whole) {
       whole.dataset.framework = name;
@@ -583,16 +588,38 @@ function frameworkPanel(pre) {
     var notes = mine.map(function (b) {
       return b.innerHTML.replace(/\{framework\}/g, name);
     });
+    // A note marked data-kit-no-code says what to do instead, with any code
+    // of its own, and no copy of the HTML follows it
+    var bare = mine.some(function (b) {
+      return b.hasAttribute("data-kit-no-code");
+    });
+    if (bare) block.classList.add("kit-framework--note");
     block.innerHTML =
       (notes.length ? notes.join("") : "<p>" + frameworkText(name, section) + "</p>") +
-      '<pre class="kit-code"><code>' +
-      escapeHtml(name === "React" ? toJsx(html) : name === "Astro" ? toAstro(html) : html) +
-      "</code></pre>";
+      (bare
+        ? ""
+        : '<pre class="kit-code"><code>' +
+          escapeHtml(name === "React" ? toJsx(html) : name === "Astro" ? toAstro(html) : html) +
+          "</code></pre>");
     mine.forEach(function (b) {
       b.remove();
     });
     return block;
   });
+  // A folded HTML tab folds the frameworks made from it the same way. One
+  // written for its framework shows only its own part, so it stays open
+  var fold = peekOf(pre) !== pre && peekOf(pre).querySelector(":scope > .cmu-more");
+  if (fold)
+    found.forEach(function (block) {
+      var code =
+        block.matches(".kit-framework--made:not(.kit-framework--note)") &&
+        block.querySelector(":scope > pre");
+      if (!code) return;
+      var peek = document.createElement("div");
+      peek.className = "cmu-peek";
+      code.before(peek);
+      peek.append(code, fold.cloneNode(true));
+    });
   var panel = document.createElement("div"),
     id = "kit-framework-" + ++frameworkPanels,
     choice = frameworkChoice();
@@ -703,9 +730,14 @@ document.querySelectorAll(".kit-options").forEach(function (set) {
   window.addEventListener("hashchange", fromHash);
 });
 
+// A long demo's code can be folded (cmu-peek): the fold goes into the HTML
+// tab with it, and the CMS and Framework blocks follow the fold
+function peekOf(pre) {
+  return pre.parentNode.matches(".cmu-peek") ? pre.parentNode : pre;
+}
 document.querySelectorAll("pre.kit-code[data-kit-demo-code]").forEach(function (pre, n) {
   var given = {};
-  var next = pre.nextElementSibling;
+  var next = peekOf(pre).nextElementSibling;
   while (next && next.matches(".kit-cms, .kit-framework")) {
     if (next.classList.contains("kit-cms")) given[next.dataset.cms] = next;
     next = next.nextElementSibling;
@@ -724,9 +756,9 @@ document.querySelectorAll("pre.kit-code[data-kit-demo-code]").forEach(function (
   list.setAttribute("aria-label", "How to make it");
   list.setAttribute("data-cmu-tabs", "kit-how");
   list.id = "kit-how-" + n; // the address moves here after a link into one of its tabs
-  pre.before(set);
+  peekOf(pre).before(set);
   set.appendChild(list);
-  [{ key: "html", label: "HTML", el: pre }]
+  [{ key: "html", label: "HTML", el: peekOf(pre) }]
     .concat(blocks.length ? [{ key: "cms", label: "CMS", el: cmsPanel(blocks) }] : [])
     .concat(framework ? [{ key: "framework", label: "Framework", el: framework }] : [])
     .forEach(function (item, i) {
@@ -931,7 +963,9 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
         pic =
           state.photo === "on"
             ? '<img class="cmu-profile-picture" src="images/scotty.png" alt="">'
-            : "",
+            : state.photo === "initials"
+              ? '<i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true">AC</i>'
+              : "",
         prefs = state.prefs === "on" ? '<a href="accounts.html#preferences">Preferences</a>' : "";
       var a = html(
         inn
@@ -1375,3 +1409,47 @@ document.querySelectorAll("pre.kit-code").forEach(function (pre, n) {
   button.setAttribute("title", "Copy Code");
   box.appendChild(button);
 });
+
+// An example page shown live in the docs: a frame on the page itself, laid
+// out at data-frame-width (a desktop) and scaled down to fit the column, as
+// tall as the page. It's the real page, so it never goes stale like a
+// screenshot would.
+(function () {
+  document.querySelectorAll(".kit-page-frame[data-src]").forEach(function (box) {
+    var desktop = Number(box.dataset.frameWidth) || 1280,
+      frame = document.createElement("iframe");
+    frame.loading = "lazy";
+    frame.src = box.dataset.src;
+    frame.title = box.dataset.title || "Example page";
+    box.replaceChildren(frame);
+    var fit = function () {
+      var doc = frame.contentDocument;
+      if (!doc || !doc.body) return;
+      // On a phone, a desktop shrunk to a third is unreadable: show the
+      // page's own phone layout at full size instead
+      var wide = box.clientWidth < 600 ? box.clientWidth : desktop;
+      frame.style.width = wide + "px";
+      var scale = Math.min(1, box.clientWidth / wide),
+        // The template's #container holds the whole page. Its #overlay is
+        // as tall as the frame, so the page's scrollHeight would only grow
+        page = doc.getElementById("container"),
+        tall = page
+          ? Math.ceil(page.getBoundingClientRect().bottom)
+          : doc.documentElement.scrollHeight;
+      frame.style.height = tall + "px";
+      frame.style.transform = "scale(" + scale + ")";
+      box.style.height = Math.ceil(tall * scale) + "px";
+    };
+    frame.addEventListener("load", function () {
+      fit();
+      // Fonts, images and the page's own changes move its height. Watch what's
+      // in the body, not the body itself: the template can fix the body's
+      // height, so it wouldn't grow with them
+      var watch = new ResizeObserver(fit);
+      Array.prototype.forEach.call(frame.contentDocument.body.children, function (el) {
+        watch.observe(el);
+      });
+    });
+    window.addEventListener("resize", fit);
+  });
+})();
