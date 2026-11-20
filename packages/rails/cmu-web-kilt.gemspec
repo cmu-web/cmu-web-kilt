@@ -5,7 +5,7 @@ require_relative 'lib/cmu_web_kilt/version'
 Gem::Specification.new do |spec|
   spec.name = 'cmu-web-kilt'
   spec.version = CmuWebKilt::VERSION
-  spec.authors = ['Carnegie Mellon University']
+  spec.authors = ['CMU Web']
   spec.summary = 'Carnegie Mellon Web Kilt assets for Rails applications'
   spec.description = 'Page and app components that extend Carnegie Mellon University\'s web template, packaged for the Rails asset pipeline.'
   spec.homepage = 'https://webkilt.andrew.cmu.edu/'
