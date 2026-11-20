@@ -31,21 +31,13 @@ makes them available to jsDelivr; it also triggers the documentation build
 for `0.x`, and the Rails gem's publication to RubyGems. It does not update
 applications that already use the kit.
 
-### Set Up RubyGems Publishing
+### RubyGems Publishing
 
-The [RubyGems workflow](.github/workflows/rubygems.yml) publishes the gem with
-trusted publishing, so there's no API key, but RubyGems.org has to trust it
-first. Do this once, before the first tag that should publish the gem:
-
-1. Sign in to RubyGems.org with an account that has multi-factor
-   authentication on.
-2. Under Trusted Publishers, add a pending trusted publisher for the gem
-   `cmu-web-kilt`: GitHub Actions, owner `cmu-web`, repository
-   `cmu-web-kilt`, workflow `rubygems.yml` and environment `rubygems`.
-
-The first successful run creates the gem on RubyGems.org, owned by that
-account. Until then, the workflow fails on each tag; the kit's own release
-isn't affected.
+The [Publish Gem workflow](.github/workflows/publish-gem.yml) publishes the gem from
+each version tag with trusted publishing, so there's no API key. RubyGems.org
+trusts it as: GitHub Actions, owner `cmu-web`, repository `cmu-web-kilt`,
+workflow `publish-gem.yml` and environment `rubygems`. Renaming the workflow file
+stops publishing until that trusted publisher is changed to match.
 
 ### Check a Release
 
@@ -86,21 +78,21 @@ version's files or integrity hashes.
 
 ## Publish the Documentation
 
-The [Pages workflow](.github/workflows/pages.yml) runs on pushes to `0.x`
+The [Publish Test Copy workflow](.github/workflows/publish-test-copy.yml) runs on pushes to `0.x`
 and can be run manually. It copies `docs/` to the site root, then adds the
 kit's CSS and JavaScript to the site's `css/` and `js/` folders. This is the
 layout served locally by `npm run docs`.
 
-After a push, check the Pages workflow and open the changed pages at
+After a push, check the Publish Test Copy workflow and open the changed pages at
 https://cmu-web.github.io/cmu-web-kilt/0/. Check a live example as well as the
 page text when assets changed. The public documentation address is
 https://webkilt.andrew.cmu.edu/0/; hosting at that address is managed outside
-the Pages workflow in this repository. It serves each template line's docs
+the Publish Test Copy workflow in this repository. It serves each template line's docs
 under its own number (line 0 at /0/), each from a pinned release tag, so
 docs-only changes reach it with the next release. The site's root redirects
 to the newest line; other paths outside a line are not found.
 
-The Pages workflow publishes independently of the check workflow. Check a
+The Publish Test Copy workflow publishes independently of the Check Code workflow. Check a
 change before pushing it to `0.x`; a later validation failure does not
 undo publication. To correct a published docs change, push a follow-up fix
 or revert. Keep release tags in place.

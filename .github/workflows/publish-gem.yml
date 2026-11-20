@@ -1,4 +1,4 @@
-name: RubyGems
+name: Publish Gem
 
 # Publishes the Rails gem from each release tag, at the tag's version, after
 # its tests pass. RubyGems.org trusts this workflow (trusted publishing), so
@@ -13,6 +13,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment: rubygems
     permissions:
       contents: read

@@ -210,7 +210,7 @@ license and the version from `package.json` into the gem, and the build
 writes to `packages/rails/pkg/`. `rake clean` removes the copies, so a path
 gem uses the repository's files again. See
 [the gem's README](packages/rails/README.md#compatibility-and-integration-coverage)
-for integration coverage and [the CI workflow](.github/workflows/check.yml)
+for integration coverage and [the Check Code workflow](.github/workflows/check-code.yml)
 for the test matrix.
 
 ## Prepare a Release

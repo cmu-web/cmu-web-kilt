@@ -1,5 +1,5 @@
 // Serves the docs as the site publishes them: docs/ at the root, with the
-// kit's own css/ and js/ beside the docs' (see .github/workflows/pages.yml).
+// kit's own css/ and js/ beside the docs' (see .github/workflows/publish-test-copy.yml).
 //   npm run docs              http://127.0.0.1:8123/
 //   node tools/serve.mjs 9000 another port
 import { createServer } from "node:http";

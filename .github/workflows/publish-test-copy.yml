@@ -1,4 +1,4 @@
-name: Pages
+name: Publish Test Copy
 
 # Publishes the docs under /0/ (template line 0), with the kit's own files
 # beside the docs' in css/ and js/, and a root page that sends visitors to
@@ -22,6 +22,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

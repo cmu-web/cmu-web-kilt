@@ -1,9 +1,11 @@
-name: Check
+# Lints and tests the kit (npm run check) and the Rails gem on each supported
+# Ruby and Rails, on every push, pull request and version tag, and weekly.
+name: Check Code
 
 on:
   push:
     branches: [0.x]
-    tags: ["*"]
+    tags: ["[0-9]*"]
   pull_request:
   workflow_dispatch:
   # Weekly, so a change to CMU's live template that collides with one of the
@@ -17,6 +19,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -28,6 +31,7 @@ jobs:
 
   rails-gem:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
       matrix:
         # The oldest Ruby the gem supports and a current one
