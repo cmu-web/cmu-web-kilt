@@ -2595,11 +2595,7 @@ header:has(+ main.cmu-sign-in-page) .roof {
    tape in place of the red bar, and the people one to a row in the card,
    spaced like its sign-in buttons */
 .cmu-sign-in-page--dev .cmu-sign-in-card::before {
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--cmu-gold) 0 0.75rem,
-    var(--cmu-ink) 0.75rem 1.5rem
-  );
+  background: var(--cmu-tape);
 }
 /* The people two across when there's room, one on phones; the hint under
    each stays with its person */

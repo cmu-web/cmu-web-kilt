@@ -144,28 +144,31 @@
               >
             </h2>
             <p>
-              A slim gold strip at the top of the header, on every page, for a state that lasts
-              until it's turned off: development mode, a preview of unpublished changes or extra
-              content switched on. Where a flash message reports what just happened, the site bar
-              says what's still true.
+              A slim gold bar at the top of every page, for a state that lasts until someone turns
+              it off. Useful for a preview of unpublished changes, extra content switched on or a
+              test account in development.
             </p>
             <ul class="cmu-checks">
               <li>
-                <strong>Put it first in the <code>&lt;header&gt;</code></strong
-                >, in the layout every page uses, so it's on every page or none. There it gets the
-                template's side margins and lines up with the wordmark.
+                <strong>First in the header.</strong> Put it first in <code>&lt;header&gt;</code>,
+                in the layout every page uses, so it's on every page or none. There it lines up with
+                the wordmark.
               </li>
               <li>
-                <strong>One short line</strong>: what's on, then why it matters if that isn't
-                obvious. Name the state in bold. Its button and cta go in a second paragraph, which
-                sits at the right.
+                <strong>One short line.</strong> Name the state in bold, then say why it matters if
+                that isn't obvious. The button and call to action go in a second paragraph, at the
+                right.
               </li>
               <li>
-                <strong>A button to end the state</strong>, named for what it does, such as Stop
-                Previewing. It's solid; make it ghost (<code>ghost</code>) when ending the state is
-                the lesser choice. When there's more than one thing to turn off, the button turns
-                them all off, and a cta goes to the place to choose. Development mode has nothing to
-                turn off, so it gets neither.
+                <strong>A button ends the state,</strong> named for what it does, such as Stop
+                Previewing. Make it ghost (<code>ghost</code>) when ending the state is the lesser
+                choice. With several things on, the button turns them all off.
+              </li>
+              <li>
+                <strong>A call to action changes it,</strong> going to the place to choose, such as
+                Choose Which Years to Show. A state with nothing to turn off gets only the call to
+                action; a test account's goes to
+                <a href="accounts.html#developer-sign-in">Developer Sign-In</a>.
               </li>
               <li>
                 <strong>Not for acting as another user.</strong> That has its own frame and bar,
@@ -179,10 +182,13 @@
               </li>
             </ul>
             <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-site-bar</code>, <code>ghost</code> on its button</p>
+            <p class="kit-classes">
+              <code>cmu-site-bar</code>, <code>ghost</code> on its button,
+              <code>cmu-site-bar--tape</code>
+            </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-site-bar"><p><strong>Development Mode:</strong> sign-in is off, and the data is made up.</p></div>
+        <div class="cmu-site-bar"><p><strong>Preview:</strong> you're seeing changes that aren't published yet.</p><p><button type="button" class="ghost">Stop Previewing</button></p></div>
       </div>
             <div class="kit-cms" data-cms="WordPress">
               <p class="cmu-label kit-cms-label">In WordPress</p>
@@ -193,24 +199,37 @@
             </div>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-site-bar"><p><strong>Preview:</strong> you're seeing changes that aren't published yet.</p><p><button type="button" class="ghost">Stop Previewing</button></p></div>
+        <div class="cmu-site-bar"><p><strong>Showing the 2026 races.</strong></p><p><a class="cta" href="#site-bar">Choose Another Year</a></p></div>
       </div>
             <!-- prettier-ignore -->
             <div class="kit-demo">
-        <div class="cmu-site-bar"><p><strong>Showing archived courses</strong> from three past semesters.</p><p><button type="button">Hide All</button><a class="cta" href="#site-bar">Choose Which to Show</a></p></div>
+        <div class="cmu-site-bar"><p><strong>Showing past heats</strong> from the last three years.</p><p><button type="button">Hide All</button><a class="cta" href="#site-bar">Choose Which Years to Show</a></p></div>
+      </div>
+            <p>
+              A development or staging copy can add caution tape, a bar with no words
+              (<code>cmu-site-bar--tape</code>, with <code>aria-hidden="true"</code>), so a
+              screenshot of it can't pass for the real site. It goes first in the header, above a
+              gold bar if there's one:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-site-bar cmu-site-bar--tape" aria-hidden="true"></div>
+      </div>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-site-bar cmu-site-bar--tape" aria-hidden="true"></div><div class="cmu-site-bar"><p><strong>Test account:</strong> Margaret Morrison, Team Captain.</p><p><a class="cta" href="accounts.html#developer-sign-in">Switch Test Account</a></p></div>
       </div>
             <p>In the layout, the bar goes first in the header, above the roof:</p>
             <pre class="kit-code"><code>&lt;header&gt;
+  &lt;div class="cmu-site-bar cmu-site-bar--tape" aria-hidden="true"&gt;&lt;/div&gt;
   &lt;div class="cmu-site-bar"&gt;
-    &lt;p&gt;&lt;strong&gt;Development Mode:&lt;/strong&gt; sign-in is off, and the data is made up.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Test account:&lt;/strong&gt; Margaret Morrison, Team Captain.&lt;/p&gt;
+    &lt;p&gt;&lt;a class="cta" href="/dev/sign_in"&gt;Switch Test Account&lt;/a&gt;&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="roof red invert"&gt; &hellip; &lt;/div&gt;
   &lt;div id="sitename"&gt; &hellip; &lt;/div&gt;
 &lt;/header&gt;</code></pre>
             <p>
-              <button type="button" class="btn ghost" data-kit-sitebar>
-                Show the Bar on This Page
-              </button>
               <a class="cta" href="layout.html#try-header">Try It on This Site's Header</a>
             </p>
 
@@ -339,6 +358,12 @@
                 <strong>Keep codes and details out of the heading.</strong> The number can go in
                 small text at the bottom, for anyone reporting it; stack traces and server messages
                 belong in the logs.
+              </li>
+              <li>
+                <strong>Keep error pages out of search results</strong> with
+                <code>&lt;meta name="robots" content="noindex"&gt;</code> in the page's
+                <code>&lt;head&gt;</code>. Search engines don't index a page served with an error
+                status, but an error page that can also be reached directly, returning 200, can be.
               </li>
             </ul>
             <p class="cmu-label kit-classes-label">Classes</p>

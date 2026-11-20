@@ -891,6 +891,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     prefs: "on",
     acting: "off",
     sitebar: "off",
+    tape: "off",
     logo: "off",
   };
   var state = Object.assign({}, DEFAULTS);
@@ -908,8 +909,11 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     '<form class="cmu-acting-bar kit-try-added"><p>You\u2019re acting as Andrew Carnegie (ac00)</p>' +
     '<button type="submit" class="btn ghost small">Stop Acting as Andrew Carnegie</button></form>';
   var siteBar =
-    '<div class="cmu-site-bar kit-try-added"><p><strong>Development Mode:</strong> ' +
-    "sign-in is off, and the data is made up.</p></div>";
+    '<div class="cmu-site-bar kit-try-added"><p><strong>Test account:</strong> ' +
+    "Margaret Morrison, Team Captain.</p>" +
+    '<p><a class="cta" href="accounts.html#developer-sign-in">Switch Test Account</a></p></div>';
+  var tapeBar =
+    '<div class="cmu-site-bar cmu-site-bar--tape kit-try-added" aria-hidden="true"></div>';
   var searchForm =
     '<form action="https://search.cmu.edu" class="search search-form kit-try-added" method="get">' +
     '<label><span>Search</span> <input aria-label="Search" name="q" placeholder="Search"></label>' +
@@ -994,10 +998,10 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
         );
       });
     }
-    if (state.sitebar === "on") {
-      var header = document.querySelector("#container > header");
-      if (header) header.prepend(html(siteBar));
-    }
+    // The gold bar, then the tape above it: the tape is always first
+    var header = document.querySelector("#container > header");
+    if (header && state.sitebar === "on") header.prepend(html(siteBar));
+    if (header && state.tape === "on") header.prepend(html(tapeBar));
     var acting = state.acting === "on";
     document.body.classList.toggle("cmu-acting-as", acting);
     if (acting) {
@@ -1015,9 +1019,6 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     });
     document.querySelectorAll("[data-kit-acting]").forEach(function (b) {
       b.textContent = acting ? "Hide the Frame" : "Show the Frame on This Page";
-    });
-    document.querySelectorAll("[data-kit-sitebar]").forEach(function (b) {
-      b.textContent = state.sitebar === "on" ? "Hide the Bar" : "Show the Bar on This Page";
     });
   }
   function set(k, v) {
@@ -1040,11 +1041,6 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
   document.querySelectorAll("[data-kit-acting]").forEach(function (b) {
     b.addEventListener("click", function () {
       set("acting", state.acting === "on" ? "off" : "on");
-    });
-  });
-  document.querySelectorAll("[data-kit-sitebar]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      set("sitebar", state.sitebar === "on" ? "off" : "on");
     });
   });
   document.querySelectorAll("[data-kit-reset]").forEach(function (b) {

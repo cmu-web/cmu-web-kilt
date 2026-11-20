@@ -32,6 +32,13 @@
   --cmu-link: #941120; /* the template's link color */
   --cmu-link-hover: #f00;
   --cmu-blue-tint: #e9eff7;
+  /* Caution tape, gold and ink, for something not yet for real: a
+     development copy (cmu-site-bar--tape) or Developer Sign-In */
+  --cmu-tape: repeating-linear-gradient(
+    -45deg,
+    var(--cmu-gold) 0 0.75rem,
+    var(--cmu-ink) 0.75rem 1.5rem
+  );
   /* The soft shadow under a card, callout or window */
   --cmu-shadow: 0 6px 18px rgba(23, 44, 75, 0.12);
   /* Checkboxes, radio buttons, sliders and progress bars in CMU red instead
@@ -1989,6 +1996,16 @@ table.cmu-compare {
   margin: 0.1rem 0 0.1rem 1.25rem;
   font-size: 0.8rem;
   vertical-align: baseline;
+}
+
+/* Tape (cmu-site-bar--tape): the site bar as a strip of caution tape with
+   no words, for a development or staging copy that shouldn't pass for the
+   real site in a screenshot. Empty and aria-hidden, first in <header> */
+.cmu-site-bar.cmu-site-bar--tape {
+  height: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: var(--cmu-tape);
 }
 
 /* Pills: gray unless given a tone */
