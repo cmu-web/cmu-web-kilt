@@ -1944,6 +1944,10 @@ table.cmu-compare {
   align-items: center;
   justify-content: space-between;
   gap: 0.2rem 1.5rem;
+  /* As tall as a bar with a button (its line, padding, border and margin
+     below), so a bar is the same height whatever it holds */
+  box-sizing: border-box;
+  min-height: calc(0.8rem * 1.4 + 0.4rem + 2px + 0.6rem);
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
   background: var(--cmu-gold);
@@ -2006,6 +2010,7 @@ table.cmu-compare {
   padding-top: 0;
   padding-bottom: 0;
   background: var(--cmu-tape);
+  min-height: 0;
 }
 
 /* Pills: gray unless given a tone */
