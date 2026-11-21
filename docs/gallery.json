@@ -48,9 +48,9 @@
   },
   {
     "id": "minecraft",
-    "name": "Minecraft Multiplayer Server",
+    "name": "Minecraft (Service Description)",
     "url": "https://minecraft.alumni.cmu.edu/",
-    "link": "Visit the Minecraft Multiplayer Server",
+    "link": "Visit the Minecraft service description",
     "image": "images/gallery-minecraft.jpg",
     "zoom": "images/hero-mc.jpg",
     "alt": "The Minecraft Multiplayer Server home page: a slideshow of the CMU letters built in Minecraft.",
