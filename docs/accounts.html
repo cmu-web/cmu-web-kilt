@@ -141,6 +141,11 @@
                 form of its own. It looks the same as the link.
               </li>
               <li>
+                <strong>Where signing out is a POST,</strong> which keeps another site from signing
+                the user out, Sign Out in the menu is a <code>&lt;button&gt;</code> in a form of its
+                own. It looks the same as the link.
+              </li>
+              <li>
                 <strong>Signed in,</strong> it's plain text (<code>cmu-account-open</code>) that
                 opens the menu, and the Sign-In Button and Box go away.
               </li>
@@ -182,6 +187,8 @@
   &lt;a class="cmu-account-name"&gt;Andrew Carnegie&lt;/a&gt;
   &lt;a href="/preferences"&gt;Preferences&lt;/a&gt;
   &lt;a href="/logout"&gt;Sign Out&lt;/a&gt;
+  &lt;!-- Or, signing out with a POST: --&gt;
+  &lt;form method="post" action="/logout"&gt;&lt;button type="submit"&gt;Sign Out&lt;/button&gt;&lt;/form&gt;
 &lt;/li&gt;</code></pre>
             <p>
               <a class="cta" href="layout.html#try-header">Try It on This Site's Header</a>

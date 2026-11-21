@@ -357,7 +357,8 @@ nav#nav li.cmu-account-menu {
   padding: 0.9rem 0;
   border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
 }
-nav#nav li.cmu-account-menu > a {
+nav#nav li.cmu-account-menu > a,
+nav#nav li.cmu-account-menu > form > button {
   display: inline-block;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
@@ -369,13 +370,15 @@ nav#nav li.cmu-account-menu > .cmu-account-name {
   font-size: 1.2em;
   font-weight: 700;
 }
-nav#nav li.cmu-account-menu:has(.cmu-profile-picture) > a {
+nav#nav li.cmu-account-menu:has(.cmu-profile-picture) > a,
+nav#nav li.cmu-account-menu:has(.cmu-profile-picture) > form > button {
   max-width: calc(100% - 56px - 3rem); /* clear of the photo */
 }
 /* Preferences and Sign Out a step larger than the menu's links. The
    template indents menu links 2em; at these larger sizes, scale it back so
    the name and Preferences line up with the menu */
-nav#nav li.cmu-account-menu > .cmu-account-name ~ a {
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a,
+nav#nav li.cmu-account-menu > .cmu-account-name ~ form > button {
   margin-right: 0.5em;
   padding-left: 0.4em;
   padding-right: 0.4em;
@@ -386,10 +389,12 @@ nav#nav li.cmu-account-menu > .cmu-account-name {
 }
 /* A short line between Preferences and Sign Out, in the gap between them;
    decoration, so screen readers skip it */
-nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a {
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a,
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ form > button {
   position: relative;
 }
-nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a::before {
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a::before,
+nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ form > button::before {
   content: "" / "";
   position: absolute;
   top: 30%;
@@ -399,8 +404,44 @@ nav#nav li.cmu-account-menu > .cmu-account-name ~ a ~ a::before {
 }
 /* The indent goes outside Preferences, so its pressed and focus highlight
    sits evenly around the word, as Sign Out's does */
-nav#nav li.cmu-account-menu > .cmu-account-name + a {
+nav#nav li.cmu-account-menu > .cmu-account-name + a,
+nav#nav li.cmu-account-menu > .cmu-account-name + form > button {
   margin-left: calc(2em / 1.1 - 0.4em);
+}
+/* Sign Out as a button, in a form of its own, where signing out is a POST
+   (so another site can't sign the user out): the form steps out of the
+   layout and the button takes the link's look. The template gives menu
+   links their line height and a forced bottom padding; buttons get neither,
+   so they're set here. */
+nav#nav li.cmu-account-menu > form:has(> button) {
+  display: contents;
+}
+nav#nav li.cmu-account-menu > form > button,
+nav#nav li.cmu-account-menu > form > button:hover {
+  min-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.5em;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+/* On phones the template spaces out menu links, and only links, so the
+   button follows */
+@media (max-width: 767px) {
+  nav#nav li.cmu-account-menu > form > button,
+  nav#nav li.cmu-account-menu > form > button:hover {
+    letter-spacing: 0.05em;
+  }
 }
 .cmu-account-name,
 .cmu-account-name:hover {
