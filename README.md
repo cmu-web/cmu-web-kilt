@@ -14,9 +14,9 @@ The kit starts with what CMU's template already does, documents the markup
 and adds components where you need more. Your CMS pages and custom apps can
 share the same visual language without rebuilding the basics for each project.
 
-It's two stylesheets and a browser script: plain CSS and JavaScript, with
-no build step or required JavaScript framework. Use the pieces you need
-alongside the template and keep your application's own data and behavior.
+It's lightweight: plain CSS and JavaScript, with no build step or required
+JavaScript framework. Use the pieces you need alongside the template and keep
+your application's own data and behavior.
 
 ### Start With What You're Building
 
