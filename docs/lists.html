@@ -18,14 +18,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Finding things in a long list: search, filters, tables with and without actions, files to download, Load More and pages, and folded lists."
+      content="Tables with and without actions, files to download and folded lists, and the tools for finding things in a long one: search, filters, Load More and pages."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Lists and Tables - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Finding things in a long list: search, filters, tables with and without actions, files to download, Load More and pages, and folded lists."
+      content="Tables with and without actions, files to download and folded lists, and the tools for finding things in a long one: search, filters, Load More and pages."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/lists.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -83,8 +83,8 @@
           <div>
             <h1>Lists and Tables</h1>
             <p class="cmu-lead">
-              Finding things in a long list: search, filters, tables with and without actions, files
-              to download, Load More and pages, and folded lists.
+              Tables with and without actions, files to download and folded lists, and the tools for
+              finding things in a long one: search, filters, Load More and pages.
             </p>
           </div>
         </div>
@@ -94,149 +94,32 @@
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#search">Search</a></li>
-                <li><a href="#filters">Filters</a></li>
                 <li><a href="#tables">Tables</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="nav-list">
-              <ul>
                 <li><a href="#table-actions">Tables With Actions</a></li>
                 <li><a href="#files">File Table</a></li>
-                <li><a href="#load-more">Load More</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#pagination">Pagination</a></li>
                 <li><a href="#more">Folded Lists</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#filters">Filters</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#load-more">Load More</a></li>
+                <li><a href="#pagination">Pagination</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="content wide">
           <div>
-            <h2 id="search" class="rule-top">
-              Search
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              One search box over a list: a sentence saying what the user can search by, then a box
-              across the full width, searching as people type. The sentence does the label's job on
-              screen, so the
-              <code>&lt;label&gt;</code> is for screen readers only (<code>sr-only</code>). The
-              placeholder says what you'll find, ending in an ellipsis.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-search-bar</code>, <code>sr-only</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-search-bar">
-          <p>Search by course number or title.</p>
-          <label for="kit-search" class="sr-only">Find a Syllabus</label>
-          <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;" data-kit-filter="kit-search-rows" data-kit-count="kit-search-count" data-kit-noun="section">
-        </div>
-          <table class="alternate cmu-full">
-            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
-            <tbody id="kit-search-rows">
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-            </tbody>
-          </table>
-          <p class="cmu-muted" id="kit-search-count" aria-live="polite">Showing all 6 sections</p>
-      </div>
-            <ul>
-              <li>
-                <strong>One box</strong> over a list is a search.
-                <strong>Several groups</strong> side by side, such as a search box and checkboxes,
-                are <a href="#filters">filters</a>, each with its own small label.
-              </li>
-              <li>
-                <strong>Say how many are showing</strong> under the list, in the same words
-                everywhere: "Showing 20 of 312 sections," "Showing all 312 sections," "Showing 1
-                section," and with nothing found, the template's own "Sorry, no results to display."
-              </li>
-            </ul>
-
-            <h2 id="filters" class="rule-top">
-              Filters
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              A row of filter groups above a list, each with a small label over a search box or
-              checkboxes. A group with a text box takes the row's spare width; two or more split it,
-              and wrap on a narrow screen. For a single search box, use a
-              <a href="#search">search</a> instead.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>cmu-filters</code>, <code>cmu-filter-group</code>,
-              <code>cmu-filter-checks</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-filters" data-kit-filters="kit-filter-rows" data-kit-count="kit-filter-count" data-kit-noun="section">
-          <div class="cmu-filter-group">
-            <label class="cmu-label" for="kit-find">Find Sections</label>
-            <input type="text" id="kit-find" placeholder="Course number or title">
-          </div>
-          <div class="cmu-filter-group">
-            <div class="cmu-label">Status</div>
-            <div class="cmu-filter-checks">
-              <label><input type="checkbox" value="available"> Available</label>
-              <label><input type="checkbox" value="unavailable"> Unavailable</label>
-            </div>
-          </div>
-        </div>
-          <table class="alternate cmu-full">
-            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
-            <tbody id="kit-filter-rows">
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-            </tbody>
-          </table>
-          <p class="cmu-muted" id="kit-filter-count" aria-live="polite">Showing all 6 sections</p>
-      </div>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Filter as people type</strong>, and say how many rows are showing under the
-                table (see <a href="#load-more">Load More</a>).
-              </li>
-              <li>
-                <strong>Keep the stripes even:</strong> Move hidden rows to the end of the table, so
-                <code>table.alternate</code> still alternates.
-              </li>
-              <li>
-                <strong>Put the filters in the URL</strong>, so a filtered list can be bookmarked
-                and shared.
-              </li>
-              <li>
-                <strong>To match words that aren't shown</strong>, such as other names for the same
-                thing, put them in a <code>data-keywords</code> attribute on the row for your filter
-                to read, not in a hidden cell.
-              </li>
-            </ul>
-
             <h2 id="tables" class="rule-top">
               Tables
               <span class="kit-where"
@@ -572,6 +455,166 @@
         </table>
       </div>
 
+            <h2 id="more" class="rule-top">
+              Folded Lists
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A <code>&lt;details&gt;</code> whose summary reads as a line of text ending in a bold
+              toggle with a chevron, which points down while closed, flips up when open and turns
+              red on hover. It opens right there, so it doesn't look like a call to action to
+              another page. Closed, the toggle names what's hidden; open, it says how to fold it
+              back. It slides open and closed where the browser supports that (not for people who
+              turn motion down). <a href="layout.html#tabs">Tabs</a> fold the same way.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-more</code>, <code>cmu-more-link</code>, <code>cmu-more-closed</code>,
+              <code>cmu-more-open</code>
+            </p>
+            <h3 id="more-list">Folded List</h3>
+            <p>The first few items, then the count of the rest; open, the whole list shows:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <details class="cmu-more">
+          <summary><span class="cmu-more-closed">ARC, CS, ECE and</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">6 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
+          <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>
+        </details>
+      </div>
+            <h3 id="more-block">Folded Block</h3>
+            <p>
+              A question that leads to something people may want to read, such as a long prompt or
+              the full terms, then a toggle that names it. Nothing on the line moves: only the
+              toggle's words change, and the block slides open under it:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <details class="cmu-more">
+          <summary>Want to read it first? <span class="cmu-more-link"><span class="cmu-more-closed">See the Prompt</span><span class="cmu-more-open">Hide the Prompt</span></span></summary>
+          <pre class="cmu-snippet"><code>Use the Carnegie Mellon Web Kilt for this page. Read https://webkilt.andrew.cmu.edu/ first, start from its Prototypes section and keep its class names as they are.</code></pre>
+        </details>
+      </div>
+            <h2 id="search" class="rule-top">
+              Search
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              One search box over a list: a sentence saying what the user can search by, then a box
+              across the full width, searching as people type. The sentence does the label's job on
+              screen, so the
+              <code>&lt;label&gt;</code> is for screen readers only (<code>sr-only</code>). The
+              placeholder says what you'll find, ending in an ellipsis.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-search-bar</code>, <code>sr-only</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-search-bar">
+          <p>Search by course number or title.</p>
+          <label for="kit-search" class="sr-only">Find a Syllabus</label>
+          <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;" data-kit-filter="kit-search-rows" data-kit-count="kit-search-count" data-kit-noun="section">
+        </div>
+          <table class="alternate cmu-full">
+            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
+            <tbody id="kit-search-rows">
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+            </tbody>
+          </table>
+          <p class="cmu-muted" id="kit-search-count" aria-live="polite">Showing all 6 sections</p>
+      </div>
+            <ul>
+              <li>
+                <strong>One box</strong> over a list is a search.
+                <strong>Several groups</strong> side by side, such as a search box and checkboxes,
+                are <a href="#filters">filters</a>, each with its own small label.
+              </li>
+              <li>
+                <strong>Say how many are showing</strong> under the list, in the same words
+                everywhere: "Showing 20 of 312 sections," "Showing all 312 sections," "Showing 1
+                section," and with nothing found, the template's own "Sorry, no results to display."
+              </li>
+            </ul>
+
+            <h2 id="filters" class="rule-top">
+              Filters
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A row of filter groups above a list, each with a small label over a search box or
+              checkboxes. A group with a text box takes the row's spare width; two or more split it,
+              and wrap on a narrow screen. For a single search box, use a
+              <a href="#search">search</a> instead.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-filters</code>, <code>cmu-filter-group</code>,
+              <code>cmu-filter-checks</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-filters" data-kit-filters="kit-filter-rows" data-kit-count="kit-filter-count" data-kit-noun="section">
+          <div class="cmu-filter-group">
+            <label class="cmu-label" for="kit-find">Find Sections</label>
+            <input type="text" id="kit-find" placeholder="Course number or title">
+          </div>
+          <div class="cmu-filter-group">
+            <div class="cmu-label">Status</div>
+            <div class="cmu-filter-checks">
+              <label><input type="checkbox" value="available"> Available</label>
+              <label><input type="checkbox" value="unavailable"> Unavailable</label>
+            </div>
+          </div>
+        </div>
+          <table class="alternate cmu-full">
+            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
+            <tbody id="kit-filter-rows">
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+            </tbody>
+          </table>
+          <p class="cmu-muted" id="kit-filter-count" aria-live="polite">Showing all 6 sections</p>
+      </div>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Filter as people type</strong>, and say how many rows are showing under the
+                table (see <a href="#load-more">Load More</a>).
+              </li>
+              <li>
+                <strong>Keep the stripes even:</strong> Move hidden rows to the end of the table, so
+                <code>table.alternate</code> still alternates.
+              </li>
+              <li>
+                <strong>Put the filters in the URL</strong>, so a filtered list can be bookmarked
+                and shared.
+              </li>
+              <li>
+                <strong>To match words that aren't shown</strong>, such as other names for the same
+                thing, put them in a <code>data-keywords</code> attribute on the row for your filter
+                to read, not in a hidden cell.
+              </li>
+            </ul>
+
             <h2 id="load-more" class="rule-top">
               Load More
               <span class="kit-where"
@@ -720,50 +763,6 @@
           </ol>
         </div>
       </div>
-
-            <h2 id="more" class="rule-top">
-              Folded Lists
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              A <code>&lt;details&gt;</code> whose summary reads as a line of text ending in a bold
-              toggle with a chevron, which points down while closed, flips up when open and turns
-              red on hover. It opens right there, so it doesn't look like a call to action to
-              another page. Closed, the toggle names what's hidden; open, it says how to fold it
-              back. It slides open and closed where the browser supports that (not for people who
-              turn motion down). <a href="layout.html#tabs">Tabs</a> fold the same way.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>cmu-more</code>, <code>cmu-more-link</code>, <code>cmu-more-closed</code>,
-              <code>cmu-more-open</code>
-            </p>
-            <h3 id="more-list">Folded List</h3>
-            <p>The first few items, then the count of the rest; open, the whole list shows:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <details class="cmu-more">
-          <summary><span class="cmu-more-closed">ARC, CS, ECE and</span> <span class="cmu-more-link cta"><span class="cmu-more-closed">6 More</span><span class="cmu-more-open">Show Fewer</span></span></summary>
-          <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>
-        </details>
-      </div>
-            <h3 id="more-block">Folded Block</h3>
-            <p>
-              A question that leads to something people may want to read, such as a long prompt or
-              the full terms, then a toggle that names it. Nothing on the line moves: only the
-              toggle's words change, and the block slides open under it:
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <details class="cmu-more">
-          <summary>Want to read it first? <span class="cmu-more-link"><span class="cmu-more-closed">See the Prompt</span><span class="cmu-more-open">Hide the Prompt</span></span></summary>
-          <pre class="cmu-snippet"><code>Use the Carnegie Mellon Web Kilt for this page. Read https://webkilt.andrew.cmu.edu/ first, start from its Prototypes section and keep its class names as they are.</code></pre>
-        </details>
-      </div>
           </div>
         </div>
       </main>
@@ -805,7 +804,7 @@
                   <li><a href="pathways.html">Pathways</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="content.html">Content</a></li>
-                  <li><a href="images.html">Images and Video</a></li>
+                  <li><a href="media.html">Media and Embeds</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>

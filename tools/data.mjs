@@ -44,7 +44,7 @@ const PAGES = [
   "pathways.html",
   "buttons.html",
   "content.html",
-  "images.html",
+  "media.html",
   "sidebars.html",
   "people.html",
   "news.html",

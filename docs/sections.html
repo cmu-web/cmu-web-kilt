@@ -114,7 +114,7 @@
             <div class="nav-list">
               <ul>
                 <li><a href="#bar">Section Bar</a></li>
-                <li><a href="#grid">Cards on Gray</a></li>
+                <li><a href="#card-grid">Card Grid</a></li>
                 <li><a href="#flow">How It Works</a></li>
                 <li><a href="#feature">Feature Section</a></li>
                 <li><a href="#split">Text With a Screenshot</a></li>
@@ -163,17 +163,17 @@
                 <code>cmu-hero-art--stack</code>. They're cropped to the same shape from the top,
                 and the last one is in front, so put the main one last. To let people see one up
                 close, link it to its full-size image with <code>data-cmu-zoom</code> (see
-                <a href="images.html#zoom">Enlarge on Click</a>).
+                <a href="media.html#zoom">Enlarge on Click</a>).
               </li>
               <li>
                 <strong>A screenshot and a phone</strong>, with <code>cmu-hero-art--phone</code>:
                 the page in a browser window, with the same page on a phone in front of it. Use one
                 of each; anything after the phone doesn't show. The phone is a
-                <a href="images.html#screenshots-phone">phone screenshot</a> (<code
+                <a href="media.html#screenshots-phone">phone screenshot</a> (<code
                   >figure.cmu-shot cmu-shot--phone</code
                 >). With one screenshot or a phone, <code>data-cmu-address</code> on the art shows
                 the page's address in the browser bar (see
-                <a href="images.html#screenshots-browser">Screenshots</a>).
+                <a href="media.html#screenshots-browser">Screenshots</a>).
               </li>
               <li>
                 <strong>A photo</strong> with no frame, with <code>cmu-hero-art--plain</code>: the
@@ -609,8 +609,8 @@
       </div>
         <div class="content wide">
           <div>
-            <h2 id="grid" class="rule-top">
-              Cards on Gray
+            <h2 id="card-grid" class="rule-top">
+              Card Grid
               <span class="kit-where"
                 ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
@@ -619,43 +619,48 @@
               A grid is two, three or four columns that stack on phones. With
               <code>grey boxes</code>, each column is a white card in a gray section. An
               <code>&lt;h1&gt;</code> first in the grid is the section's heading, across the top.
-              Keep the cards short, each leading somewhere. For a line across the section's full
-              width, such as an introduction under the heading or a link to see more after the
-              cards, use <code>&lt;p class="cmu-grid-full"&gt;</code> (the kit's only addition
-              here). For which color to use, see <a href="conventions.html#colors">Colors</a>.
+              Keep the cards short; a card that leads somewhere ends with a call to action. To send
+              people to other pages, use <a href="pathways.html#paths">Path Cards</a>. For a line
+              across the section's full width, such as an introduction under the heading or a link
+              to see more after the cards, use <code>&lt;p class="cmu-grid-full"&gt;</code> (the
+              kit's only addition here). For which color to use, see
+              <a href="conventions.html#colors">Colors</a>.
             </p>
             <p>
               When the cards' pictures differ in height, add <code>cmu-cards-bottom</code> to the
               grid: each card's heading, words and link sit at its bottom, lined up across the row,
-              and the picture is centered in the space above.
+              and the picture is centered in the space above. To keep everything at the top and line
+              up only the links, add <code>cmu-cards-links</code> instead: each card's last
+              paragraph, its link or call to action, sits at the card's bottom.
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>grid</code>, <code>column2</code>, <code>column3</code>, <code>column4</code>,
-              <code>boxes</code>, <code>cmu-grid-full</code>, <code>cmu-cards-bottom</code>
+              <code>boxes</code>, <code>cmu-grid-full</code>, <code>cmu-cards-bottom</code>,
+              <code>cmu-cards-links</code>
             </p>
-            <h3 id="grid-text">Text Only</h3>
-            <p>Each card a heading, a sentence and a link:</p>
+            <h3 id="card-grid-text">Text Only</h3>
+            <p>
+              Each card a heading and a sentence, with a call to action where it leads somewhere:
+            </p>
           </div>
         </div>
         <!-- prettier-ignore -->
         <div class="kit-demo kit-demo--wide">
         <div class="grid column3 grey boxes">
-          <h1>Ways to Get Started</h1>
+          <h1>Buggy Facts</h1>
           <div>
-            <h2>Write a Syllabus</h2>
-            <p>Communicate expectations, policies and a roadmap for the course.</p>
-            <p><a class="cta" href="#grid">Get Started</a></p>
+            <h2>Since 1920</h2>
+            <p>Teams have raced buggies through Schenley Park nearly every spring since 1920.</p>
           </div>
           <div>
-            <h2>Design a Course</h2>
-            <p>Set learning objectives and align assessments with them.</p>
-            <p><a class="cta" href="#grid">See Course Design Strategies</a></p>
+            <h2>Headfirst</h2>
+            <p>Drivers ride lying down, headfirst, inches above the road.</p>
           </div>
           <div>
-            <h2>Teach It</h2>
-            <p>Strategies for the classroom, in person and online.</p>
-            <p><a class="cta" href="#grid">See Strategies</a></p>
+            <h2>Race Days</h2>
+            <p>Heats run on the Friday and Saturday mornings of Spring Carnival.</p>
+            <p><a class="cta" href="#card-grid">See the Roll Times</a></p>
           </div>
         </div>
       </div>
@@ -663,13 +668,13 @@
           <p class="cmu-label kit-cms-label">In WordPress</p>
           <p>
             Insert
-            <strong>Patterns &rsaquo; Carnegie Mellon Web Kilt &rsaquo; Cards on Gray</strong> on a
-            page with the <strong>Full-Width Sections</strong> template, then change the cards.
+            <strong>Patterns &rsaquo; Carnegie Mellon Web Kilt &rsaquo; Card Grid</strong> on a page
+            with the <strong>Full-Width Sections</strong> template, then change the cards.
           </p>
         </div>
         <div class="content wide">
           <div>
-            <h3 id="grid-bottom">Pictures of Different Heights</h3>
+            <h3 id="card-grid-bottom">Pictures of Different Heights</h3>
             <p>Add <code>cmu-cards-bottom</code> to the grid:</p>
           </div>
         </div>
@@ -680,19 +685,48 @@
             <img src="https://placemellon.andrew.cmu.edu/480/270?category=campus" alt="Placeholder photo of the Carnegie Mellon campus." width="480" height="270">
             <h2>Campus Tours</h2>
             <p>Walk the campus with a student guide.</p>
-            <p><a class="cta" href="#grid">Book a Tour</a></p>
+            <p><a class="cta" href="#card-grid">Book a Tour</a></p>
           </div>
           <div>
             <img src="https://placemellon.andrew.cmu.edu/360/450?category=life" alt="Placeholder photo of student life at Carnegie Mellon." width="360" height="450">
             <h2>Student Life</h2>
             <p>Clubs, events and traditions.</p>
-            <p><a class="cta" href="#grid">Find a Club</a></p>
+            <p><a class="cta" href="#card-grid">Find a Club</a></p>
           </div>
           <div>
             <img src="https://placemellon.andrew.cmu.edu/160?scotty=profile" alt="Scotty in a round profile picture." width="160" height="160">
             <h2>Meet Scotty</h2>
             <p>The university's mascot, at every game.</p>
-            <p><a class="cta" href="#grid">See the Schedule</a></p>
+            <p><a class="cta" href="#card-grid">See the Schedule</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="card-grid-links">Links Lined Up</h3>
+            <p>Add <code>cmu-cards-links</code> to the grid:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 grey boxes cmu-cards-links">
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/480/270?category=campus" alt="Placeholder photo of the Carnegie Mellon campus." width="480" height="270">
+            <h2>Roll Times</h2>
+            <p>Every heat's time, posted within minutes of the finish.</p>
+            <p><a class="cta" href="#card-grid-links">See the Roll Times</a></p>
+          </div>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/480/360?category=life" alt="Placeholder photo of student life at Carnegie Mellon." width="480" height="360">
+            <h2>Teams</h2>
+            <p>Each team's buggies, drivers and pushers, with a page for every organization that races.</p>
+            <p><a class="cta" href="#card-grid-links">Find a Team</a></p>
+          </div>
+          <div>
+            <img src="https://placemellon.andrew.cmu.edu/480/270?category=campus" alt="Placeholder photo of the Carnegie Mellon campus." width="480" height="270">
+            <h2>Race Days</h2>
+            <p>Heats run on the Friday and Saturday mornings of Spring Carnival.</p>
+            <p><a class="cta" href="#card-grid-links">See the Schedule</a></p>
           </div>
         </div>
       </div>
@@ -789,7 +823,7 @@
             <p>
               Two columns: text on the left, a framed screenshot with a caption on the right. One
               column below 760px. Add <code>cmu-shot--browser</code> (see
-              <a href="images.html#screenshots">Screenshots</a>) to draw the screenshot in a browser
+              <a href="media.html#screenshots">Screenshots</a>) to draw the screenshot in a browser
               window, like the hero's art, as the <a href="gallery.html">Gallery</a> does.
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
@@ -1026,7 +1060,7 @@
             <div class="kit-cms" data-cms="Cascade">
               <p class="cmu-label kit-cms-label">In Cascade</p>
               <p>
-                A Grid section, as for <a href="#grid">Cards on Gray</a>, with its Type set to
+                A Grid section, as for <a href="#card-grid">Card Grid</a>, with its Type set to
                 <strong>Photo</strong>. Each photo has an Image (700 wide, all the same size), Alt
                 Text, a Headline over the photo and a Link. For people, a Bio Index can build it
                 from their bio pages: choose Grid, then Photo (see
@@ -1514,7 +1548,7 @@
                   <li><a href="pathways.html">Pathways</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="content.html">Content</a></li>
-                  <li><a href="images.html">Images and Video</a></li>
+                  <li><a href="media.html">Media and Embeds</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>

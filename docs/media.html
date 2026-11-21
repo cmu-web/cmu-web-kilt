@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Images and Video - Components - Carnegie Mellon Web Kilt - Carnegie Mellon University
+      Media and Embeds - Components - Carnegie Mellon Web Kilt - Carnegie Mellon University
     </title>
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
@@ -22,12 +22,12 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
-    <meta property="og:title" content="Images and Video - Carnegie Mellon Web Kilt" />
+    <meta property="og:title" content="Media and Embeds - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
       content="Photos, screenshots, videos and embedded pages inside a section: captions and credits, browser and phone frames, and images that enlarge on click."
     />
-    <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/images.html" />
+    <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/media.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -84,16 +84,64 @@
         <div class="breadcrumbs">
           <a href="./">Carnegie Mellon Web Kilt</a>&nbsp;&rsaquo;&nbsp;<a href="components.html"
             >Components</a
-          >&nbsp;&rsaquo;&nbsp;Images and Video
+          >&nbsp;&rsaquo;&nbsp;Media and Embeds
         </div>
         <div class="content wide">
           <div>
-            <h1>Images and Video</h1>
+            <h1>Media and Embeds</h1>
             <p class="cmu-lead">
               Photos, screenshots, videos and embedded pages inside a section: captions and credits,
               browser and phone frames, and images that enlarge on click.
             </p>
 
+            <h2 id="photo" class="rule-top">
+              Photos
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A photo in the page. The template fits it to its column, on phones too.
+              <strong>A photo across the top of a page?</strong> Use the
+              <a href="sections.html#photo-hero">Full-Width Photo Hero</a>; for several photos, the
+              <a href="sections.html#photos">Photo Grid</a>.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Write alt text</strong> that says what's in the photo. A photo that's only
+                decoration gets an empty one (<code>alt=""</code>).
+              </li>
+              <li>
+                <strong>Keep its <code>width</code> and <code>height</code></strong
+                >, so the page doesn't jump as the photo loads.
+              </li>
+              <li>
+                Add <code>loading="lazy"</code> to a photo further down the page, so it loads only
+                when someone scrolls to it.
+              </li>
+            </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>img</code></p>
+            <p>A photo across the column:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p><img src="https://placemellon.andrew.cmu.edu/1200/675?category=campus" alt="Placeholder photo of the Carnegie Mellon campus." width="1200" height="675"></p>
+      </div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>Insert an image in the page's content, and fill in its alt text.</p>
+            </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p>
+                Insert an <strong>Image</strong> block, and fill in its
+                <strong>Alternative text</strong>.
+              </p>
+            </div>
             <h2 id="captions" class="rule-top">
               Photo Captions and Credits
               <span class="kit-where"
@@ -169,7 +217,7 @@
               template's photo captions. Ideally, the screenshot shows the page's top, roof and all.
               Always write alt text that says what's on it.
             </p>
-            <ul class="cmu-checks">
+            <ul>
               <li>
                 <strong>To let people see it up close,</strong> link it to its full-size image; see
                 <a href="#zoom">Enlarge on Click</a>.
@@ -388,6 +436,8 @@
               YouTube's embed code (Share, then Embed) and keep its
               <code>width</code> and <code>height</code>: the template's script fits the video to
               its column and keeps that shape, on phones too.
+              <strong>Video across the top of a page?</strong> Use the
+              <a href="sections.html#video-hero">Silent Video Hero</a>.
             </p>
             <ul class="cmu-checks">
               <li>
@@ -523,7 +573,7 @@
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="content.html">Content</a></li>
                   <li class="active">
-                    <a href="images.html" aria-current="page">Images and Video</a>
+                    <a href="media.html" aria-current="page">Media and Embeds</a>
                   </li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>

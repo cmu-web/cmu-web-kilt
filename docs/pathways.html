@@ -16,14 +16,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Sections that send people on to their next step: path cards, big buttons, an I Want To list, link banks, a coming-soon card and an FAQ teaser."
+      content="Sections that send people on to their next step: path cards, an I Want To list, link banks, a coming-soon card and an FAQ teaser."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Pathways - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Sections that send people on to their next step: path cards, big buttons, an I Want To list, link banks, a coming-soon card and an FAQ teaser."
+      content="Sections that send people on to their next step: path cards, an I Want To list, link banks, a coming-soon card and an FAQ teaser."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/pathways.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -88,8 +88,8 @@
           <div>
             <h1>Pathways</h1>
             <p class="cmu-lead">
-              Sections that send people on to their next step: path cards, big buttons, an I Want To
-              list, link banks, a coming-soon card and an FAQ teaser.
+              Sections that send people on to their next step: path cards, an I Want To list, link
+              banks, a coming-soon card and an FAQ teaser.
             </p>
 
             <h2 id="paths" class="rule-top">
@@ -101,7 +101,8 @@
             <p>
               Whole-card links that send each audience to its own page. They fit as many columns as
               the width allows; <code>cmu-paths--two</code> keeps a pair side by side. The
-              call-to-action line (<code>cta</code>) is the template's own.
+              call-to-action line (<code>cta</code>) is the template's own. For a page with just two
+              main destinations, use <a href="buttons.html#big-buttons">Big Buttons</a>.
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
@@ -131,38 +132,6 @@
         </div>
       </div>
 
-            <h2 id="big-buttons" class="rule-top">
-              Big Buttons
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              Two wide buttons side by side for the two things most people come to do. Each is a
-              <code>btn wide</code> inside an <code>&lt;h2&gt;</code>, which makes its text large.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>grid column2</code>, <code>btn wide</code>, <code>aligncenter</code>
-            </p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="grid column2">
-          <div>
-            <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Have a Question? Join the Queue</a></h2>
-          </div><div>
-            <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Course Staff? Open Office Hours</a></h2>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
             <h2 id="i-want" class="rule-top">
               I Want To&hellip;
               <span class="kit-where"
@@ -332,7 +301,7 @@
             </h2>
             <p>
               A card for something not decided yet: an open spot, a speaker to be announced or a
-              call for suggestions. This is a <a href="sections.html#grid">Cards on Gray</a> card,
+              call for suggestions. This is a <a href="sections.html#card-grid">Card Grid</a> card,
               with one of PlaceMellon's Scotty question marks as its picture:
             </p>
             <ul>
@@ -407,12 +376,16 @@
             <div class="kit-demo">
         <div class="cmu-faq-teaser">
           <div>
-            <h3>Who Can See My Question?</h3>
-            <p>Only your course's staff. Other students see just how many are ahead of them.</p>
+            <h3>When Are Roll Times Posted?</h3>
+            <p>Within minutes of each heat's finish, on the team's page and the schedule.</p>
           </div>
           <div>
-            <h3>Can I Leave the Queue?</h3>
-            <p>Yes, at any time. Your place goes to the next person.</p>
+            <h3>Can We Change Our Drivers?</h3>
+            <p>Yes, until the Wednesday before Spring Carnival. After that, ask the Sweepstakes chair.</p>
+          </div>
+          <div>
+            <h3>Who Can See Our Times?</h3>
+            <p>Everyone. Roll times are public once they're posted.</p>
           </div>
         </div>
         <p><a class="cta" href="#qa">See All Questions</a></p>
@@ -458,7 +431,7 @@
                   <li class="active"><a href="pathways.html" aria-current="page">Pathways</a></li>
                   <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="content.html">Content</a></li>
-                  <li><a href="images.html">Images and Video</a></li>
+                  <li><a href="media.html">Media and Embeds</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>
