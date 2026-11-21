@@ -26,6 +26,7 @@
     "opengraph": "node tools/opengraph.mjs",
     "preview": "node tools/preview.mjs",
     "release": "node tools/versions.mjs",
+    "test:browser": "node --test tools/turbo.browser.test.mjs",
     "test:initials": "node --test tools/initials.test.mjs",
     "test:preview": "node --test tools/preview.test.mjs"
   },
@@ -35,6 +36,7 @@
     "@j178/prek": "^0.5.11",
     "eslint": "^10.15.0",
     "globals": "^17.14.0",
+    "playwright": "1.65.1",
     "prettier": "^3.10.1"
   },
   "integrity": {

@@ -113,6 +113,30 @@
     );
   });
 
+  // Escape and the menu: the template's Escape listener calls the menu's
+  // toggle without the argument that makes it act, so Escape never closes
+  // the menu. Close it here, with the menu's button as the template does (so
+  // its label and aria-pressed follow), and stop the template's listeners:
+  // the template's script adds one each time it runs, and Turbo runs it on
+  // every page it shows, so if CMU fixes theirs they'd toggle the menu more
+  // than once. With the menu closed, Escape reaches the page as usual. Added
+  // once, even if this script runs again.
+  if (!document.cmuMenuEscape) {
+    document.cmuMenuEscape = true;
+    document.addEventListener(
+      "keyup",
+      function (e) {
+        if ((e.key !== "Escape" && e.code !== "Escape") || !document.body) return;
+        if (!document.body.classList.contains("menu-on")) return;
+        e.stopImmediatePropagation();
+        var button =
+          document.querySelector(".roof .menu-btn") || document.querySelector(".menu-btn");
+        if (button) button.click();
+      },
+      true,
+    );
+  }
+
   // In-page links: the template's script turns href="#id" into
   // javascript:void(0) (keeping the target in data-jump) and scrolls with its
   // own animation, so the address never shows the section and Back doesn't
