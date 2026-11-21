@@ -76,6 +76,12 @@ body:is(.cmu-app, .cmu-framed) fieldset {
   margin: 0 0 2em 0;
   min-width: 0;
 } /* browsers default to min-content, which overflows narrow columns */
+/* The fieldset's margin spaces it from what follows, so a paragraph that
+   ends it (a link, a note) adds none of the template's own below it */
+body:is(.cmu-app, .cmu-framed) fieldset > p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 body:is(.cmu-app, .cmu-framed) input[type="checkbox"],
 body:is(.cmu-app, .cmu-framed) input[type="radio"] {
   max-width: 100%;
