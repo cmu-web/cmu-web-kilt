@@ -1,12 +1,22 @@
 {
-  "name": "cmu-web-kilt",
+  "name": "@cmu-web/kilt",
   "version": "0.8.23",
   "description": "Components for pages on Carnegie Mellon's web template: CMS sites and web apps.",
   "license": "BSD-3-Clause",
+  "homepage": "https://webkilt.andrew.cmu.edu/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmu-web/cmu-web-kilt.git"
+  },
+  "bugs": "https://github.com/cmu-web/cmu-web-kilt/issues",
   "files": [
     "css",
     "js"
   ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:gallery && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:preview && npm run test:initials",
     "check:template": "node tools/check-template.mjs",
@@ -30,7 +40,6 @@
     "test:initials": "node --test tools/initials.test.mjs",
     "test:preview": "node --test tools/preview.test.mjs"
   },
-  "private": true,
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@j178/prek": "^0.5.11",

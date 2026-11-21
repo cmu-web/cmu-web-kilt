@@ -339,6 +339,15 @@ Publish GitHub release notes from the tag once verification passes. Include
 migration steps for breaking changes. Deployments can then update their
 pinned version, dependency or vendored files and check the affected pages.
 
+### npm
+
+The [Publish npm workflow](.github/workflows/publish-npm.yml) publishes the
+browser files and `package.json`, with the release's integrity hashes, to npm
+as `@cmu-web/kilt` from each version tag, with trusted publishing and
+provenance. npmjs.com trusts it as: GitHub Actions, owner `cmu-web`,
+repository `cmu-web-kilt` and workflow `publish-npm.yml`. Apps that depend on
+the package get a Dependabot pull request for each release.
+
 ### Update Jekyll & Plaid
 
 Jekyll & Plaid loads a default Web Kilt release, so a site built on it gets
