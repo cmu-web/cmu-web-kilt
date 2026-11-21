@@ -17,7 +17,7 @@ generator and sets up CMU Web Style (`cmu-web-style`), the shared RuboCop
 and erb_lint settings:
 
 ```console
-rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.22/packages/rails/templates/app.rb
+rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.23/packages/rails/templates/app.rb
 ```
 
 In an app you already have, add the gem and run the generator. It asks for
