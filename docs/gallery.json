@@ -1,0 +1,101 @@
+[
+  {
+    "id": "canvas",
+    "name": "Canvas (Service Description)",
+    "url": "https://www.cmu.edu/canvas/",
+    "link": "Visit the Canvas service description",
+    "alt": "Placeholder for a screenshot of the Canvas service description.",
+    "summary": "The Cascade site for CMU's Canvas: how to sign in, request a course and get help.",
+    "pills": ["CMS", "Cascade"]
+  },
+  {
+    "id": "course-requests",
+    "name": "Canvas Course Requests",
+    "url": "https://requests.eberly.cmu.edu/canvas/",
+    "link": "Visit Canvas Course Requests",
+    "login": true,
+    "alt": "Placeholder for a screenshot of Canvas Course Requests.",
+    "summary": "Where instructors request a Canvas course site for an upcoming semester.",
+    "pills": ["App", "Node"]
+  },
+  {
+    "id": "learning-sign-in",
+    "name": "Sign In to learning.cmu.edu",
+    "url": "https://www.tli.cmu.edu/login/learning/",
+    "link": "Visit the learning.cmu.edu sign-in page",
+    "image": "images/gallery-learning.webp",
+    "alt": "The learning.cmu.edu sign-in page: Sign In over a photo of students on the Cut, beside a card with Google, LinkedIn and Andrew account buttons.",
+    "summary": "The sign-in page for learning.cmu.edu, with a button for each way in: Google, LinkedIn and an Andrew account, or a Canvas-specific account.",
+    "pills": ["App", "HTML"]
+  },
+  {
+    "id": "core4",
+    "name": "Core4 Student Dashboard",
+    "url": "https://my.core.cmu.edu/",
+    "link": "Visit the Core4 Student Dashboard",
+    "alt": "Placeholder for a screenshot of Core4 Student Dashboard.",
+    "summary": "Where students see how their courses and experiences build the four Core Competencies.",
+    "pills": ["App"]
+  },
+  {
+    "id": "eberly-seminars",
+    "name": "Eberly Programs",
+    "url": "https://seminars.eberly.cmu.edu/",
+    "link": "Visit Eberly Programs",
+    "alt": "Placeholder for a screenshot of Eberly Programs.",
+    "summary": "Where graduate students, postdocs and staff sign up for the Eberly Center's teaching seminars and workshops.",
+    "pills": ["App", "Rails"]
+  },
+  {
+    "id": "minecraft",
+    "name": "Minecraft Multiplayer Server",
+    "url": "https://minecraft.alumni.cmu.edu/",
+    "link": "Visit the Minecraft Multiplayer Server",
+    "image": "images/gallery-minecraft.jpg",
+    "zoom": "images/hero-mc.jpg",
+    "alt": "The Minecraft Multiplayer Server home page: a slideshow of the CMU letters built in Minecraft.",
+    "summary": "How to join Carnegie Mellon's Minecraft server, and its events. Built from the template and the kit, with no CSS of its own.",
+    "pills": ["CMS", "HTML"]
+  },
+  {
+    "id": "placemellon",
+    "name": "PlaceMellon",
+    "url": "https://placemellon.andrew.cmu.edu/",
+    "link": "Visit PlaceMellon",
+    "image": "https://placemellon.andrew.cmu.edu/images/cmu-web-preview.webp",
+    "alt": "The PlaceMellon home page.",
+    "summary": "Placeholder photos of Carnegie Mellon at any size, for mockups and prototypes. Its docs use only the template and the kit.",
+    "pills": ["App", "Node"]
+  },
+  {
+    "id": "binder",
+    "name": "Spring Carnival Binder",
+    "url": "https://binder.springcarnival.org/",
+    "link": "Visit Binder",
+    "image": "images/gallery-binder.jpg",
+    "zoom": "images/hero-binder.jpg",
+    "alt": "The Spring Carnival Binder home page: a countdown to Move On beside a red Sign in to Binder box.",
+    "summary": "Spring Carnival's booth and operations app, where organizations watch the safety video and sign the waiver.",
+    "pills": ["App", "Rails"]
+  },
+  {
+    "id": "syllabus-registry",
+    "name": "Syllabus Registry",
+    "url": "https://syllabus-registry.tli.cmu.edu/",
+    "link": "Visit the Syllabus Registry",
+    "image": "images/gallery-syllabus-registry.jpg",
+    "alt": "The Syllabus Registry home page: a search box over a table of course sections with status pills, and filters on the left.",
+    "summary": "Where CMU instructors post their syllabi and students find them: a Cascade site and a web app that match. The kit started here.",
+    "pills": ["App", "Node"]
+  },
+  {
+    "id": "syllabus-registry-info",
+    "name": "Syllabus Registry (Service Description)",
+    "url": "https://www.cmu.edu/syllabusregistry/",
+    "link": "Visit the Syllabus Registry service description",
+    "image": "images/gallery-syllabus-registry-info.jpg",
+    "alt": "The Syllabus Registry's Cascade home page: a hero with a Sign in to the Syllabus Registry button beside a screenshot of the course table.",
+    "summary": "The Syllabus Registry's Cascade site, for students, instructors and department admins, with a hero that leads into the app.",
+    "pills": ["CMS", "Cascade"]
+  }
+]
