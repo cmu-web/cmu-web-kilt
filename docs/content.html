@@ -386,11 +386,15 @@
               A short status label. Gray by default; green for done or available, amber for waiting
               or missing. Use amber, not red: a missing item isn't an error. Pills stay on one line,
               except in app tables below 1200px. Choose a color from the
-              <a href="conventions.html#colors">color guide</a>.
+              <a href="conventions.html#colors">color guide</a>. For a label that isn't a status,
+              use blue for what something is and outline for a plain tag beside it, as the
+              <a href="gallery.html">Gallery</a> labels each site. To put pills beside a heading,
+              wrap them in <code>cmu-pills</code>, which keeps them together when the heading wraps.
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
-              <code>cmu-pill</code>, <code>cmu-pill--green</code>, <code>cmu-pill--amber</code>
+              <code>cmu-pill</code>, <code>cmu-pill--green</code>, <code>cmu-pill--amber</code>,
+              <code>cmu-pill--blue</code>, <code>cmu-pill--outline</code>, <code>cmu-pills</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -399,6 +403,10 @@
           <span class="cmu-pill cmu-pill--amber">Syllabus Unavailable</span>
           <span class="cmu-pill">No Syllabus Expected</span>
         </p>
+        <h3>
+          Sweepstakes Roll Times
+          <span class="cmu-pills"><span class="cmu-pill cmu-pill--green">App</span><span class="cmu-pill cmu-pill--outline">Rails</span></span>
+        </h3>
       </div>
 
             <h2 id="snippet" class="rule-top">

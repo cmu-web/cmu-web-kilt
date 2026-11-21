@@ -15,17 +15,18 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import * as prettier from "prettier";
 
-// Every pill a card can have, with its class and tooltip. Other projects'
-// gallery.json files use the same list.
+// Every pill a card can have, with its classes (the Kilt's own pill, so any
+// site can show them) and tooltip. Other projects' gallery.json files use the
+// same list, and the CMU Web gallery's tools/gallery.py mirrors it.
 export const PILLS = {
-  CMS: ["kit-where-cms", "A content site"],
-  App: ["kit-where-app", "A web app"],
-  Cascade: ["kit-where-stack", "Built in Cascade"],
-  HTML: ["kit-where-stack", "Hand-written HTML pages"],
-  Jekyll: ["kit-where-stack", "Built with Jekyll on GitHub Pages"],
-  Node: ["kit-where-stack", "A Node app"],
-  Rails: ["kit-where-stack", "A Ruby on Rails app"],
-  WordPress: ["kit-where-stack", "Built in WordPress"],
+  CMS: ["cmu-pill cmu-pill--blue", "A content site"],
+  App: ["cmu-pill cmu-pill--green", "A web app"],
+  Cascade: ["cmu-pill cmu-pill--outline", "Built in Cascade"],
+  HTML: ["cmu-pill cmu-pill--outline", "Hand-written HTML pages"],
+  Jekyll: ["cmu-pill cmu-pill--outline", "Built with Jekyll on GitHub Pages"],
+  Node: ["cmu-pill cmu-pill--outline", "A Node app"],
+  Rails: ["cmu-pill cmu-pill--outline", "A Ruby on Rails app"],
+  WordPress: ["cmu-pill cmu-pill--outline", "Built in WordPress"],
 };
 // Longest summary. Cards in a row line up their links whatever the length
 // (cmu-cards-links), but a long summary still makes one card tower over the
