@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T56TMJLK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buttons - Components - Carnegie Mellon Web Kilt - Carnegie Mellon University</title>
+    <!-- Link previews: written by tools/opengraph.mjs -->
+    <meta
+      name="description"
+      content="Buttons for the actions on a page, calls to action for the next step and email links that keep the address out of the page."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
+    <meta property="og:title" content="Buttons - Carnegie Mellon Web Kilt" />
+    <meta
+      property="og:description"
+      content="Buttons for the actions on a page, calls to action for the next step and email links that keep the address out of the page."
+    />
+    <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/buttons.html" />
+    <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, next to screenshots of three sites built with it."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- End of link previews -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk"
+      crossorigin="anonymous"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js cmu-app">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="./">Carnegie Mellon Web Kilt</a></span>
+          <h2>Tailored to the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="./">Carnegie Mellon Web Kilt</a>&nbsp;&rsaquo;&nbsp;<a href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;Buttons
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Buttons</h1>
+            <p class="cmu-lead">
+              Buttons for the actions on a page, calls to action for the next step and email links
+              that keep the address out of the page.
+            </p>
+
+            <h2 id="buttons" class="rule-top">
+              Buttons and Links
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A solid button for the main action on a page, ghost buttons for the rest and a call to
+              action (<code>cta</code>) for a link that should stand out from the text.
+              <code>external</code> marks a link to another site. For a section of two large buttons
+              for the things most people come to do, use
+              <a href="pathways.html#big-buttons">Big Buttons</a>.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>btn</code>, <code>ghost</code>, <code>small</code>, <code>wide</code>,
+              <code>cta</code>, <code>external</code>
+            </p>
+            <h3 id="buttons-on-white">On a White Background</h3>
+            <p>Buttons, calls to action and links on the page's white background:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p>
+          <a class="btn" href="#buttons">Reserve a Camera</a>
+          <a class="btn ghost" href="#buttons">See Loan Policies</a>
+          <button type="button" class="btn small">Renew</button>
+          <button type="button" class="btn small ghost">Return</button>
+        </p>
+        <p><a class="btn wide" href="#buttons">Browse Equipment</a></p>
+        <p><a class="cta" href="#buttons">See the Checkout Desk Hours</a></p>
+        <p><a class="external" href="https://www.cmu.edu/">A link to another site</a></p>
+      </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p>
+                Add a <strong>Buttons</strong> block, select a button and choose its style under
+                <strong>Styles</strong>: <strong>Button</strong> for the main action,
+                <strong>Ghost Button</strong> for a second one.
+              </p>
+            </div>
+            <h3 id="buttons-on-color">On a Background Color</h3>
+            <p>
+              The solid button is see-through black, so it takes on the section's color: dark red on
+              red, darker gray on gray. In a red or dark section (<code>invert</code>), a
+              <code>ghost</code> button turns into a white outline. As anywhere else, the solid one
+              is the main action and ghost buttons are the rest.
+            </p>
+            <p>Here, on gray and on red:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide red invert">
+          <div>
+            <p><a class="btn" href="#buttons-on-color">Reserve a Camera</a> <a class="btn ghost" href="#buttons-on-color">See Loan Policies</a></p>
+          </div>
+        </div>
+        <div class="content wide grey">
+          <div>
+            <p><a class="btn" href="#buttons-on-color">Reserve a Camera</a> <a class="btn ghost" href="#buttons-on-color">See Loan Policies</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <p>
+              Use <code>&lt;button class="btn"&gt;</code> for things that happen on the page and
+              <code>&lt;a class="btn"&gt;</code> for things that go somewhere.
+            </p>
+            <p>
+              A button is the page's main action and can go wherever that action happens, such as an
+              app's sign-in or a request form in another system. A call to action is a next step on
+              your own site or app. Any other link to another site is an ordinary
+              <code>external</code> link in sentence case, as in the last row; a link is a
+              <code>cta</code> or <code>external</code>, never both.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Start a button&rsquo;s words with a verb that says what people will do, in Title
+                Case. Let the action lead; echoing the destination page&rsquo;s heading is nice when
+                it fits, but not required.
+              </p>
+            </div>
+            <table class="alternate cmu-full">
+              <thead>
+                <tr>
+                  <th scope="col">Do</th>
+                  <th scope="col">Don't</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Add Categories, Random Photos and More</td>
+                  <td>Categories, random photos and more</td>
+                </tr>
+                <tr>
+                  <td>See the Loan Policies</td>
+                  <td>Learn More</td>
+                </tr>
+                <tr>
+                  <td>Load More Sections</td>
+                  <td>Load More</td>
+                </tr>
+                <tr>
+                  <td>Upload Syllabus</td>
+                  <td>Syllabus Upload</td>
+                </tr>
+                <tr>
+                  <td><a class="external" href="#buttons">Browse the code on GitHub</a></td>
+                  <td><a class="cta" href="#buttons">Browse the Code</a> (to GitHub)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2 id="link-button" class="rule-top">
+              Link Button
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A button that looks like a link, for a small action in place (such as a form post)
+              among plain links, where a full button would be too heavy. It still behaves like a
+              button. Signing out isn't one of these: it goes in the
+              <a href="accounts.html#account">menu</a>.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-link-button</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p>Camera kit, May 4-6: <a href="#link-button">View</a> | <button type="button" class="cmu-link-button">Cancel Reservation</button></p>
+      </div>
+
+            <h2 id="button-note" class="rule-top">
+              Button With a Note
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A short note beside a button, centered on it top to bottom, saying what the button
+              does or what to expect. On a narrow screen the note wraps under the button. Keep it to
+              a sentence; anything longer goes above the button. Right under a photo
+              (<code>figure.image</code>), it sits close to the photo it acts on, as with a Show
+              Another Photo button; the note is optional.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-button-note</code>, <code>cmu-hint</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-button-note">
+          <button type="button" class="btn ghost">Show Another Photo</button>
+          <p class="cmu-hint">A random address picks a new photo each time it loads.</p>
+        </div>
+      </div>
+
+            <h2 id="cta-row" class="rule-top">
+              Call-to-Action Row
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Lines up a button, a call to action and an optional note, in a hero or anywhere on a
+              page. A paragraph with just a button and then a call to action gets the same spacing
+              without it. The note (<code>cmu-cta-note</code>) can answer the one question the
+              button raises, such as what to sign in with; keep it to a short line.
+            </p>
+            <p>
+              An app page's actions, such as New Semester on a list of semesters, go in a row like
+              this under the heading and its lead, never beside the heading.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-cta-row</code>, <code>cmu-cta-note</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-cta-row">
+          <a class="btn" href="#cta-row">Reserve a Camera</a>
+          <a class="cta" href="#cta-row">See What's Available</a>
+          <p class="cmu-cta-note">Loans last three days.</p>
+        </div>
+      </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p>
+                Add a <strong>Buttons</strong> block with a button styled
+                <strong>Button</strong> and one styled <strong>Call to Action</strong>, and give the
+                Buttons block the <strong>Additional CSS Class</strong> <code>cmu-cta-row</code>.
+                For the note, add a <strong>Paragraph</strong> right after it with the class
+                <code>cmu-cta-note</code>; the theme moves it into the row.
+              </p>
+            </div>
+
+            <h2 id="email" class="rule-top">
+              Email Links
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              An email link whose address isn't in the page's HTML, so very simple scrapers can't
+              harvest it. Write the address with <code>(through)</code> for the <code>@</code> in
+              <code>data-cmu-email</code>, and give the link words that name the person or office,
+              such as "Email Andrew Carnegie." <code>cmu-app.js</code> fills in the address only
+              when someone points at, focuses or taps the link, so scrapers that just load the page
+              don't get it, and it leaves the words alone. Without the script, it's plain text.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Use it for people,</strong> such as staff or student workers on a team page.
+                A shared office address people should copy, like a help desk's, can just be shown.
+              </li>
+              <li>
+                <strong>Alternative to the template's email link,</strong>
+                <code>span.protect</code>, which only displays "Email" with an envelope icon.
+              </li>
+            </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>data-cmu-email</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
+      </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kilt<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li>
+                <a href="install.html">Install</a>
+                <ul>
+                  <li><a href="quirks.html">Template Quirks</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="pathways.html">Pathways</a></li>
+                  <li class="active"><a href="buttons.html" aria-current="page">Buttons</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="images.html">Images and Video</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="accounts.html">Accounts</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

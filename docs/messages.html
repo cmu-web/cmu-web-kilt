@@ -18,14 +18,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="Telling people what happened, showing that something is loading, asking for a file in a dialog and showing how far along something is."
+      content="Telling people what happened or what everyone should know first, showing that something is loading, asking for a file in a dialog and showing how far along something is."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Messages and Progress - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="Telling people what happened, showing that something is loading, asking for a file in a dialog and showing how far along something is."
+      content="Telling people what happened or what everyone should know first, showing that something is loading, asking for a file in a dialog and showing how far along something is."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/messages.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -83,8 +83,9 @@
           <div>
             <h1>Messages and Progress</h1>
             <p class="cmu-lead">
-              Telling people what happened, showing that something is loading, asking for a file in
-              a dialog and showing how far along something is.
+              Telling people what happened or what everyone should know first, showing that
+              something is loading, asking for a file in a dialog and showing how far along
+              something is.
             </p>
 
             <h2 id="flash" class="rule-top">
@@ -116,9 +117,9 @@
               </li>
               <li>
                 <strong>Not for standing notices</strong> that everyone should see, such as who a
-                page is for: those are <a href="sections.html#announcements">announcements</a>, the
-                template's full-width sections. An aside within a page's content, such as a tip or a
-                warning, is a <a href="content.html#callout">callout</a>.
+                page is for: those are <a href="#announcements">announcements</a>, the template's
+                full-width sections. An aside within a page's content, such as a tip or a warning,
+                is a <a href="content.html#callout">callout</a>.
               </li>
             </ul>
             <p class="cmu-label kit-classes-label">Classes</p>
@@ -177,8 +178,8 @@
               </li>
               <li>
                 <strong>Not for news or emergencies.</strong> A standing notice for everyone is an
-                <a href="sections.html#announcements">announcement</a>, and a campus emergency is
-                CMU's alert bar.
+                <a href="#announcements">announcement</a>, and a campus emergency is CMU's alert
+                bar.
               </li>
             </ul>
             <p class="cmu-label kit-classes-label">Classes</p>
@@ -230,8 +231,227 @@
   &lt;div id="sitename"&gt; &hellip; &lt;/div&gt;
 &lt;/header&gt;</code></pre>
             <p>
-              <a class="cta" href="layout.html#try-header">Try It on This Site's Header</a>
+              <a class="cta" href="layout.html?sitebar=account#try-header"
+                >Try It on This Site's Header</a
+              >
             </p>
+
+            <h2 id="announcements" class="rule-top">
+              Announcements
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              A full-width section across the top of a page, right under the breadcrumbs, for
+              something everyone who comes to the page should know first: who the page is for, a
+              deadline, a change. Site authors write it and take it down; it says the same thing to
+              everyone. It's a <code>content wide</code> block in a template color. Keep to one at a
+              time, and a sentence or two.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Dark gray</strong> (<code>darkgrey invert</code>) for who a page is for,
+                with the text in bold.
+              </li>
+              <li>
+                <strong>Gold</strong> for a time-sensitive update, with a bold lead-in. Gold takes
+                dark text and no <code>invert</code>. When the whole notice is one short statement,
+                make it a centered <code>&lt;h3&gt;</code> instead; center it with the template's
+                <code>aligncenter</code>, not an inline style.
+              </li>
+              <li>
+                <strong>Green</strong> (<code>green invert</code>) for something newly available,
+                with a call to action when there's a next step people can take.
+              </li>
+              <li>
+                <strong>Blue</strong> (<code>blue invert</code>) for a note set apart lower on the
+                page, with an <code>&lt;h4&gt;</code> for small bold capitals.
+              </li>
+              <li>
+                <strong>Not red:</strong> A red section reads as a campus alert. And not for the
+                result of something someone just did: that's a <a href="#flash">flash message</a>.
+                For an aside within a section, such as a tip or a warning, use a
+                <a href="content.html#callout">callout</a>.
+              </li>
+            </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>content wide</code>, <code>darkgrey invert</code>, <code>gold</code>,
+              <code>green invert</code>, <code>blue invert</code>
+            </p>
+            <h3 id="announcements-audience">Who This Page Is For</h3>
+            <p>
+              A note in dark gray that says who the page is for and where everyone else should go:
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide darkgrey invert">
+          <div>
+            <p><strong>Students: this page is for instructors and department administrators. Syllabi are available in <a href="#announcements">the syllabus registry</a>.</strong></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="announcements-notice">Short Notice</h3>
+            <p>One line in gold:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide gold">
+          <div>
+            <p><strong>Finals Week:</strong> Office hours follow <a href="#announcements">a reduced schedule</a> from May 4 to 12.</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="announcements-centered">Centered</h3>
+            <p>A notice centered with <code>aligncenter</code>:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide gold">
+          <div>
+            <h3 class="aligncenter">Camera kits are limited this month. More arrive by mid-September; check back here for updates.</h3>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="announcements-cta">Call to Action</h3>
+            <p>A question and a call to action, in green:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide green invert">
+          <div>
+            <p>Ready for your next class project? <a class="cta" href="#announcements">Reserve a Camera Kit</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="announcements-heading">With a Heading</h3>
+            <p>A longer notice with a heading, in blue:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide blue invert">
+          <div>
+            <h4>Holiday Hours</h4>
+            <p>The checkout desk closes Dec. 19 and reopens Jan. 12. Return borrowed equipment <a href="#announcements">before the break</a>.</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>
+                In the page's content, add a section with the green <strong>+</strong> on any
+                section, then set its <strong>Type</strong> to Wide and its
+                <strong>Style</strong> to Dark Grey, Gold, Green or Blue. Move it up to sit first on
+                the page, with the arrows on its section.
+              </p>
+            </div>
+
+            <h2 id="closable" class="rule-top">
+              Closable Section
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h2>
+            <p>
+              An <a href="#announcements">announcement</a> people can close: a heading, a sentence
+              or two, an optional button and an &times; at the right, on a color. Use it as a
+              full-width section, like an announcement, or as a block inside the page's content. On
+              phones the &times; moves to the top corner and the button runs the full width.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Name the close button</strong> with <code>aria-label</code> and
+                <code>title</code>, such as "Close Self-Guided Tours." It's an icon only, so the
+                label is all a screen reader says, and the title shows as a tooltip.
+              </li>
+              <li>
+                <strong>Add <code>data-cmu-closable</code> with a name</strong> to keep it closed in
+                that browser. Use a new name when the content changes, so people who closed the old
+                one see the new one. Without it, it's closed only until the page reloads.
+              </li>
+              <li>
+                <strong>The heading takes the level that fits where it is</strong>; it looks the
+                same at any level.
+              </li>
+              <li>
+                <strong>A ghost button</strong> (<code>btn ghost</code>) reads well on a dark color.
+              </li>
+              <li>
+                <strong>Closing sends a <code>cmu-close</code> event</strong> from the section, so a
+                page's script can act on it, too. Call <code>preventDefault()</code> on it to keep
+                the section open.
+              </li>
+            </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-closable</code>, <code>cmu-closable-text</code>,
+              <code>cmu-closable-actions</code>, <code>cmu-close</code>,
+              <code>data-cmu-closable</code>
+            </p>
+            <h3 id="closable-button">Full Width, With a Button</h3>
+            <p>A full-width section in dark gray, with a ghost button:</p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="content wide darkgrey invert cmu-closable">
+          <div>
+            <div class="cmu-closable-text">
+              <h2>Self-Guided Tours</h2>
+              <p>Walk the campus art collection at your own pace, with a map and audio for each piece.</p>
+            </div>
+            <p class="cmu-closable-actions"><a class="btn ghost" href="#closable">Take a Tour</a></p>
+            <button type="button" class="cmu-close" aria-label="Close Self-Guided Tours" title="Close Self-Guided Tours"></button>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h3 id="closable-text">In the Content, Without a Button</h3>
+            <p>
+              A block inside the page's content, with only the heading, the text and the &times;:
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="darkgrey invert cmu-closable">
+          <div>
+            <div class="cmu-closable-text">
+              <h3>New This Semester</h3>
+              <p>Equipment loans now last two weeks instead of one.</p>
+            </div>
+            <button type="button" class="cmu-close" aria-label="Close New This Semester" title="Close New This Semester"></button>
+          </div>
+        </div>
+      </div>
+            <p>
+              The demos here don't remember being closed, so they come back when you reload. Keep
+              one closed with a name:
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;div class="content wide darkgrey invert cmu-closable" data-cmu-closable="tours-2026"&gt;</code></pre>
 
             <h2 id="loading" class="rule-top">
               Loading
@@ -557,9 +777,11 @@
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
-                  <li><a href="tops.html">Page Tops</a></li>
                   <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="pathways.html">Pathways</a></li>
+                  <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="content.html">Content</a></li>
+                  <li><a href="images.html">Images and Video</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>

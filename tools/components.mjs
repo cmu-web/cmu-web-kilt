@@ -11,9 +11,11 @@ const docs = new URL("../docs/", import.meta.url);
 const read = (f) => readFileSync(new URL(f, docs), "utf8");
 // The topic pages, in the order the Components page lists them
 const PAGES = [
-  "tops.html",
   "sections.html",
+  "pathways.html",
+  "buttons.html",
   "content.html",
+  "images.html",
   "sidebars.html",
   "people.html",
   "news.html",

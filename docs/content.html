@@ -16,14 +16,14 @@
     <!-- Link previews: written by tools/opengraph.mjs -->
     <meta
       name="description"
-      content="What goes inside a section: buttons and links, steps and lists, callouts, pills, screenshots, videos, code, countdowns and icons."
+      content="What goes inside a section: leads and small text, lists and steps, callouts, pills, code, countdowns, icons and FAQs."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
     <meta property="og:title" content="Content - Carnegie Mellon Web Kilt" />
     <meta
       property="og:description"
-      content="What goes inside a section: buttons and links, steps and lists, callouts, pills, screenshots, videos, code, countdowns and icons."
+      content="What goes inside a section: leads and small text, lists and steps, callouts, pills, code, countdowns, icons and FAQs."
     />
     <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/content.html" />
     <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
@@ -88,8 +88,8 @@
           <div>
             <h1>Content</h1>
             <p class="cmu-lead">
-              What goes inside a section: buttons and links, steps and lists, callouts, pills,
-              screenshots, videos, code, countdowns and icons.
+              What goes inside a section: leads and small text, lists and steps, callouts, pills,
+              code, countdowns, icons and FAQs.
             </p>
           </div>
         </div>
@@ -99,41 +99,28 @@
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#buttons">Buttons and Links</a></li>
-                <li><a href="#link-button">Link Button</a></li>
-                <li><a href="#button-note">Button With a Note</a></li>
-                <li><a href="#cta-row">Call-to-Action Row</a></li>
-                <li><a href="#email">Email Links</a></li>
                 <li><a href="#eyebrow-lead">Eyebrow and Lead</a></li>
                 <li><a href="#text">Small Text</a></li>
                 <li><a href="#checks">Bullet, Check and Plain Lists</a></li>
                 <li><a href="#steps">Numbered Steps</a></li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div class="nav-list">
-              <ul>
                 <li><a href="#callout">Callout and Note</a></li>
-                <li><a href="#pills">Pills</a></li>
-                <li><a href="#captions">Photo Captions and Credits</a></li>
-                <li><a href="#screenshots">Screenshots</a></li>
-                <li><a href="#example">Examples</a></li>
-                <li><a href="#link-preview-card">Link Preview Card</a></li>
-                <li><a href="#transparent">Transparent Images</a></li>
-                <li><a href="#zoom">Enlarge on Click</a></li>
-                <li><a href="#videos">Videos</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#embed">Embedded Page</a></li>
+                <li><a href="#pills">Pills</a></li>
                 <li><a href="#snippet">Code Block</a></li>
                 <li><a href="#peek">Long Code Block</a></li>
                 <li><a href="#copy">Copy Button</a></li>
                 <li><a href="#agent-prompt">AI Agent Prompt</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
                 <li><a href="#countdown">Countdown</a></li>
                 <li><a href="#icons">Icons</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -144,241 +131,6 @@
         </div>
         <div class="content wide">
           <div>
-            <h2 id="buttons" class="rule-top">
-              Buttons and Links
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              A solid button for the main action on a page, ghost buttons for the rest and a call to
-              action (<code>cta</code>) for a link that should stand out from the text.
-              <code>external</code> marks a link to another site.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>btn</code>, <code>ghost</code>, <code>small</code>, <code>wide</code>,
-              <code>cta</code>, <code>external</code>
-            </p>
-            <h3 id="buttons-on-white">On a White Background</h3>
-            <p>Buttons, calls to action and links on the page's white background:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <p>
-          <a class="btn" href="#buttons">Reserve a Camera</a>
-          <a class="btn ghost" href="#buttons">See Loan Policies</a>
-          <button type="button" class="btn small">Renew</button>
-          <button type="button" class="btn small ghost">Return</button>
-        </p>
-        <p><a class="btn wide" href="#buttons">Browse Equipment</a></p>
-        <p><a class="cta" href="#buttons">See the Checkout Desk Hours</a></p>
-        <p><a class="external" href="https://www.cmu.edu/">A link to another site</a></p>
-      </div>
-            <div class="kit-cms" data-cms="WordPress">
-              <p class="cmu-label kit-cms-label">In WordPress</p>
-              <p>
-                Add a <strong>Buttons</strong> block, select a button and choose its style under
-                <strong>Styles</strong>: <strong>Button</strong> for the main action,
-                <strong>Ghost Button</strong> for a second one.
-              </p>
-            </div>
-            <h3 id="buttons-on-color">On a Background Color</h3>
-            <p>
-              The solid button is see-through black, so it takes on the section's color: dark red on
-              red, darker gray on gray. In a red or dark section (<code>invert</code>), a
-              <code>ghost</code> button turns into a white outline. As anywhere else, the solid one
-              is the main action and ghost buttons are the rest.
-            </p>
-            <p>Here, on gray and on red:</p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="content wide red invert">
-          <div>
-            <p><a class="btn" href="#buttons-on-color">Reserve a Camera</a> <a class="btn ghost" href="#buttons-on-color">See Loan Policies</a></p>
-          </div>
-        </div>
-        <div class="content wide grey">
-          <div>
-            <p><a class="btn" href="#buttons-on-color">Reserve a Camera</a> <a class="btn ghost" href="#buttons-on-color">See Loan Policies</a></p>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <p>
-              Use <code>&lt;button class="btn"&gt;</code> for things that happen on the page and
-              <code>&lt;a class="btn"&gt;</code> for things that go somewhere.
-            </p>
-            <p>
-              A button is the page's main action and can go wherever that action happens, such as an
-              app's sign-in or a request form in another system. A call to action is a next step on
-              your own site or app. Any other link to another site is an ordinary
-              <code>external</code> link in sentence case, as in the last row; a link is a
-              <code>cta</code> or <code>external</code>, never both.
-            </p>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>
-                Start a button&rsquo;s words with a verb that says what people will do, in Title
-                Case. Let the action lead; echoing the destination page&rsquo;s heading is nice when
-                it fits, but not required.
-              </p>
-            </div>
-            <table class="alternate cmu-full">
-              <thead>
-                <tr>
-                  <th scope="col">Do</th>
-                  <th scope="col">Don't</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Add Categories, Random Photos and More</td>
-                  <td>Categories, random photos and more</td>
-                </tr>
-                <tr>
-                  <td>See the Loan Policies</td>
-                  <td>Learn More</td>
-                </tr>
-                <tr>
-                  <td>Load More Sections</td>
-                  <td>Load More</td>
-                </tr>
-                <tr>
-                  <td>Upload Syllabus</td>
-                  <td>Syllabus Upload</td>
-                </tr>
-                <tr>
-                  <td><a class="external" href="#buttons">Browse the code on GitHub</a></td>
-                  <td><a class="cta" href="#buttons">Browse the Code</a> (to GitHub)</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h2 id="link-button" class="rule-top">
-              Link Button
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              A button that looks like a link, for a small action in place (such as a form post)
-              among plain links, where a full button would be too heavy. It still behaves like a
-              button. Signing out isn't one of these: it goes in the
-              <a href="accounts.html#account">menu</a>.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-link-button</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <p>Camera kit, May 4-6: <a href="#link-button">View</a> | <button type="button" class="cmu-link-button">Cancel Reservation</button></p>
-      </div>
-
-            <h2 id="button-note" class="rule-top">
-              Button With a Note
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
-            <p>
-              A short note beside a button, centered on it top to bottom, saying what the button
-              does or what to expect. On a narrow screen the note wraps under the button. Keep it to
-              a sentence; anything longer goes above the button. Right under a photo
-              (<code>figure.image</code>), it sits close to the photo it acts on, as with a Show
-              Another Photo button; the note is optional.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-button-note</code>, <code>cmu-hint</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-button-note">
-          <button type="button" class="btn ghost">Show Another Photo</button>
-          <p class="cmu-hint">A random address picks a new photo each time it loads.</p>
-        </div>
-      </div>
-
-            <h2 id="cta-row" class="rule-top">
-              Call-to-Action Row
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              Lines up a button, a call to action and an optional note, in a hero or anywhere on a
-              page. A paragraph with just a button and then a call to action gets the same spacing
-              without it. The note (<code>cmu-cta-note</code>) can answer the one question the
-              button raises, such as what to sign in with; keep it to a short line.
-            </p>
-            <p>
-              An app page's actions, such as New Semester on a list of semesters, go in a row like
-              this under the heading and its lead, never beside the heading.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-cta-row</code>, <code>cmu-cta-note</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-cta-row">
-          <a class="btn" href="#cta-row">Reserve a Camera</a>
-          <a class="cta" href="#cta-row">See What's Available</a>
-          <p class="cmu-cta-note">Loans last three days.</p>
-        </div>
-      </div>
-            <div class="kit-cms" data-cms="WordPress">
-              <p class="cmu-label kit-cms-label">In WordPress</p>
-              <p>
-                Add a <strong>Buttons</strong> block with a button styled
-                <strong>Button</strong> and one styled <strong>Call to Action</strong>, and give the
-                Buttons block the <strong>Additional CSS Class</strong> <code>cmu-cta-row</code>.
-                For the note, add a <strong>Paragraph</strong> right after it with the class
-                <code>cmu-cta-note</code>; the theme moves it into the row.
-              </p>
-            </div>
-
-            <h2 id="email" class="rule-top">
-              Email Links
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
-              >
-            </h2>
-            <p>
-              An email link whose address isn't in the page's HTML, so very simple scrapers can't
-              harvest it. Write the address with <code>(through)</code> for the <code>@</code> in
-              <code>data-cmu-email</code>, and give the link words that name the person or office,
-              such as "Email Andrew Carnegie." <code>cmu-app.js</code> fills in the address only
-              when someone points at, focuses or taps the link, so scrapers that just load the page
-              don't get it, and it leaves the words alone. Without the script, it's plain text.
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Use it for people,</strong> such as staff or student workers on a team page.
-                A shared office address people should copy, like a help desk's, can just be shown.
-              </li>
-              <li>
-                <strong>Alternative to the template's email link,</strong>
-                <code>span.protect</code>, which only displays "Email" with an envelope icon.
-              </li>
-            </ul>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>data-cmu-email</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <p><a data-cmu-email="ac00(through)andrew.cmu.edu">Email Andrew Carnegie</a></p>
-      </div>
-
             <h2 id="eyebrow-lead" class="rule-top">
               Eyebrow and Lead
               <span class="kit-where"
@@ -575,7 +327,7 @@
               </li>
               <li>
                 <strong>Not a notice everyone should see first</strong>, such as who a page is for
-                or a deadline: that's an <a href="sections.html#announcements">announcement</a>, a
+                or a deadline: that's an <a href="messages.html#announcements">announcement</a>, a
                 section at the top of the page.
               </li>
             </ul>
@@ -648,394 +400,6 @@
           <span class="cmu-pill cmu-pill--amber">Syllabus Unavailable</span>
           <span class="cmu-pill">No Syllabus Expected</span>
         </p>
-      </div>
-
-            <h2 id="captions" class="rule-top">
-              Photo Captions and Credits
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              A photo with a caption under it. Use Cascade's image block, or
-              <code>figure.image</code> with a <code>&lt;figcaption&gt;</code>: the template sets
-              the caption in italics and spaces the figure from the text below. Put
-              <code>floatright</code> or <code>floatleft</code> on the image to set the figure
-              beside the text at half width; on phones it goes full width.
-            </p>
-            <p>
-              Credits go at the end of the caption, in parentheses, in the caption's own style; CMU
-              sites don't use a separate credit line or credit class.
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Photos by University Communications &amp; Marketing</strong> need no credit.
-              </li>
-              <li>
-                <strong>Someone else's photo or work:</strong> "(Courtesy of Name)" for a photo
-                given to you, or "(Photo: Name)" for a photographer.
-              </li>
-              <li>
-                <strong>Creative Commons:</strong> Name the author, link the source and the license,
-                and say if you changed it: "(Photo:&nbsp;Author, CC&nbsp;BY&nbsp;4.0, cropped)."
-              </li>
-              <li>
-                <strong>Never put the credit in the alt text.</strong> Alt text describes the
-                picture; a screen reader would read a credit there as part of it.
-              </li>
-            </ul>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>figure.image</code>, <code>figcaption</code>, <code>floatright</code>,
-              <code>floatleft</code>
-            </p>
-            <h3 id="captions-under">Under the Photo</h3>
-            <p>A caption under the photo, with its credit:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="image">
-          <img src="https://placemellon.andrew.cmu.edu/900/600?category=campus" alt="Placeholder photo of the Carnegie Mellon campus.">
-          <figcaption>Students test a sensor array outside Hamerschlag Hall. (Photo:&nbsp;<a href="#captions">Alex Rivera</a>, <a class="external" href="https://creativecommons.org/licenses/by/4.0/">CC&nbsp;BY&nbsp;4.0</a>, cropped)</figcaption>
-        </figure>
-      </div>
-            <h3 id="captions-beside">Beside the Text</h3>
-            <p>A photo floated beside the text with <code>floatright</code>:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="image">
-          <img class="floatright" src="https://placemellon.andrew.cmu.edu/900/600?category=life" alt="Placeholder photo of Carnegie Mellon student life.">
-          <figcaption>The checkout desk in Hunt Library. (Courtesy of University Libraries)</figcaption>
-        </figure>
-        <p>The page's own text goes here, beside the photo. The figure floats right at half width from 550px up, and the text wraps around it.</p>
-      </div>
-            <h2 id="screenshots" class="rule-top">
-              Screenshots
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              A screenshot of a page or an app, set off from the page around it with a thin border
-              and a soft shadow, in a <code>figure.cmu-shot</code>. It can be drawn in a browser
-              window or a phone. A <code>&lt;figcaption&gt;</code> under it is italic, like the
-              template's photo captions. Ideally, the screenshot shows the page's top, roof and all.
-              Always write alt text that says what's on it.
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>To let people see it up close,</strong> link it to its full-size image; see
-                <a href="#zoom">Enlarge on Click</a>.
-              </li>
-              <li>
-                <strong>To pair it with a short explanation,</strong> use
-                <a href="sections.html#split">Text With a Screenshot</a>.
-              </li>
-              <li>
-                <strong>To show two or three side by side,</strong> put them in a
-                <code>cmu-shots</code>; see <a href="#screenshots-side">Side by Side</a>.
-              </li>
-              <li>
-                <strong>To feature it at the top of a page,</strong> use one screenshot or a stack
-                of two or three in a <a href="tops.html#hero">Split Hero</a>.
-              </li>
-            </ul>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>figure.cmu-shot</code>, <code>cmu-shot--browser</code>,
-              <code>cmu-shot--phone</code>, <code>cmu-shots</code>, <code>data-cmu-address</code>
-            </p>
-            <h3 id="screenshots-browser">Border or a Browser Window</h3>
-            <p>
-              Add <code>cmu-shot--browser</code> for a browser window, with a bar and three dots
-              across the top; the window is as wide as the screenshot, never wider than the column.
-              To show the page's address in the bar, add <code>data-cmu-address</code> with it, such
-              as <code>www.cmu.edu/example/</code>; leave off the <code>https://</code>. It's
-              decorative, so the alt text still says what's on the screenshot:
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-      <div class="cmu-shots">
-        <figure class="cmu-shot">
-          <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
-          <figcaption>With a border.</figcaption>
-        </figure>
-        <figure class="cmu-shot cmu-shot--browser">
-          <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
-          <figcaption>In a browser window.</figcaption>
-        </figure>
-        <figure class="cmu-shot cmu-shot--browser" data-cmu-address="www.cmu.edu/example/">
-          <img src="images/gallery-syllabus-registry.jpg" alt="A home page with a search box over a table of course sections, with filters on the left." width="480">
-          <figcaption>In a browser window, with an address.</figcaption>
-        </figure>
-      </div>
-      </div>
-            <h3 id="screenshots-phone">In a Phone Frame</h3>
-            <p>
-              Add <code>cmu-shot--phone</code> for a page as it looks on a phone. Make the
-              screenshot 430 &times; 790 pixels (or twice that for a sharper image), with a phone's
-              status bar across the top for the camera cutout to sit over. FencePost's
-              <a
-                class="external"
-                href="https://fencepost.andrew.cmu.edu/screenshots.html?kind=phone"
-                >phone shot</a
-              >
-              makes exactly that. The screen is a bit shorter than a real phone's, so a taller
-              screenshot shows only its top. The frame is never wider than 18rem:
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="cmu-shot cmu-shot--phone">
-          <img src="images/example-phone.jpg" alt="The Web Kilt's home page on a phone: the site name, then Made to Measure for CMU Sites and Apps with its buttons." width="860" height="1580">
-          <figcaption>A page on a phone.</figcaption>
-        </figure>
-      </div>
-            <h3 id="screenshots-side">Side by Side</h3>
-            <p>
-              Put two or three screenshots in a <code>&lt;div class="cmu-shots"&gt;</code> to set
-              them side by side, each with its own caption, such as the same page on a computer and
-              a phone, or the steps of a task. A phone keeps its width and the others share the
-              rest; a browser window beside a phone is cropped to the phone's height, so their
-              captions line up. Frames line up by their tops; a screenshot without a frame lines up
-              with the image in a browser window. A <code>div</code> inside the
-              <code>cmu-shots</code> stacks figures in one column. On a narrow screen, they go one
-              per line:
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-      <div class="cmu-shots">
-        <figure class="cmu-shot cmu-shot--browser">
-          <img src="images/example-browser.jpg" alt="The Web Kilt's home page on a wide screen: Made to Measure for CMU Sites and Apps, beside screenshots of three CMU sites." width="1200" height="675">
-          <figcaption>On a computer.</figcaption>
-        </figure>
-        <figure class="cmu-shot cmu-shot--phone">
-          <img src="images/example-phone.jpg" alt="The Web Kilt's home page on a phone: the site name, then Made to Measure for CMU Sites and Apps with its buttons." width="860" height="1580">
-          <figcaption>On a phone.</figcaption>
-        </figure>
-      </div>
-      </div>
-
-            <h2 id="example" class="rule-top">
-              Examples
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              A screenshot or picture of something in use, on a light gray mat with a small label at
-              its top, so it reads apart from the thing itself. Use it beside an image people copy
-              or download, to show where it goes. Put a <code>cmu-label</code> and the
-              <a href="#screenshots">screenshot</a> in a <code>div.cmu-example</code>; the picture
-              is centered on the mat, however narrow it is.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-example</code>, <code>cmu-label</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-example">
-          <p class="cmu-label">Example</p>
-          <figure class="cmu-shot">
-            <img src="images/example-profile-picture.png" alt="Scotty as Andrew Carnegie's picture: small beside the name in the red bar, larger in the open menu." width="300" height="397">
-          </figure>
-        </div>
-      </div>
-
-            <h2 id="link-preview-card" class="rule-top">
-              Link Preview Card
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              A picture of how a shared link looks in Slack, Teams or a social post, for a page that
-              explains or checks <a href="previews.html">link previews</a>. Put a
-              <code>cmu-link-preview</code> in a <a href="#screenshots">screenshot</a> frame: the
-              image, then a <code>cmu-link-preview-text</code> with the site, the title in
-              <code>&lt;strong&gt;</code> and the description:
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>cmu-link-preview</code>, <code>cmu-link-preview-text</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="cmu-shot">
-          <div class="cmu-link-preview">
-            <img src="images/preview.jpg" width="1200" height="630" alt="The Web Kilt home page, with the heading Made to Measure for CMU Sites and Apps beside screenshots of three CMU sites.">
-            <div class="cmu-link-preview-text">
-              <span>webkilt.andrew.cmu.edu</span>
-              <strong>Carnegie Mellon Web Kilt</strong>
-              <span>Components for CMU sites and apps, built on the university's web template.</span>
-            </div>
-          </div>
-        </figure>
-      </div>
-
-            <h2 id="transparent" class="rule-top">
-              Transparent Images
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              An image with see-through parts, such as a logo, a cutout or a generated image, over a
-              light checkerboard, the way image editors show transparency. Use it where people pick
-              or check an image, such as a preview of one they're about to download; on an ordinary
-              page, let the image sit on the page's own background. Add
-              <code>cmu-transparent</code> to the image, or to a <code>&lt;figure&gt;</code> holding
-              it, with or without a <a href="#screenshots">screenshot</a> frame.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-transparent</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <figure class="cmu-transparent">
-          <img src="images/scotty.png" alt="Scotty as a round profile picture, with see-through corners." width="160" height="160">
-        </figure>
-      </div>
-
-            <h2 id="zoom" class="rule-top">
-              Enlarge on Click
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span
-                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
-              >
-            </h2>
-            <p>
-              A screenshot or a photo that people can select to see up close. Link the image to its
-              full-size version and add <code>data-cmu-zoom</code>: selecting it opens the image
-              over the page, with the page dimmed behind it. Escape, the close button or a click or
-              tap anywhere closes it, and focus goes back to the image. Without the script, the link
-              opens the image itself. An image much taller than the window, such as a whole page,
-              opens at full width and scrolls. The enlarged image uses the image's alt text, so
-              write that as usual. It works on a screenshot in any frame, a photo or a plain image.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>data-cmu-zoom</code>, <code>cmu-zoom</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-      <div class="cmu-shots">
-        <figure class="cmu-shot cmu-shot--browser">
-          <a href="images/hero-mc.jpg" data-cmu-zoom><img src="images/hero-mc.jpg" alt="A home page with a slideshow of the CMU letters built in Minecraft." width="480"></a>
-          <figcaption>Select the screenshot to enlarge it.</figcaption>
-        </figure>
-        <figure class="image">
-          <a href="https://placemellon.andrew.cmu.edu/1200/900?category=campus" data-cmu-zoom><img src="https://placemellon.andrew.cmu.edu/1200/900?category=campus" alt="Placeholder photo of the Carnegie Mellon campus." width="480"></a>
-          <figcaption>Select the photo to enlarge it.</figcaption>
-        </figure>
-      </div>
-      </div>
-
-            <h2 id="videos" class="rule-top">
-              Videos
-              <span class="kit-where"
-                ><span
-                  class="kit-where-template"
-                  title="In the template's main stylesheet and script; nothing from the kit"
-                  >Template</span
-                ></span
-              >
-            </h2>
-            <p>
-              A YouTube video in the page, or beside a few sentences about it in a section. Paste
-              YouTube's embed code (Share, then Embed) and keep its
-              <code>width</code> and <code>height</code>: the template's script fits the video to
-              its column and keeps that shape, on phones too.
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Give it a <code>title</code></strong> that names the video, not "YouTube
-                video player": screen readers announce it for the frame.
-              </li>
-              <li>
-                <strong>Use <code>youtube-nocookie.com</code></strong> in the address instead of
-                <code>youtube.com</code>, so YouTube doesn't set its tracking cookies until someone
-                plays the video.
-              </li>
-              <li>
-                <strong>Turn on captions</strong> in YouTube, and check them: automatic captions get
-                names and terms wrong.
-              </li>
-              <li>
-                Add <code>loading="lazy"</code> so the video loads only when someone scrolls to it.
-              </li>
-            </ul>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>iframe</code>, <code>grid column2 grey</code></p>
-            <h3 id="videos-alone">Video on Its Own</h3>
-            <p>A video across the column:</p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/qq7J92y0wws" title="Carnegie Mellon University and the I'm fine. Project" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-      </div>
-          </div>
-        </div>
-        <div class="content wide">
-          <div>
-            <h3 id="videos-beside">Video Beside Its Description</h3>
-            <p>A video and a few sentences about it, in a gray section:</p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="kit-demo kit-demo--wide">
-        <div class="grid column2 grey">
-          <div>
-            <iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/qq7J92y0wws" title="Carnegie Mellon University and the I'm fine. Project" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-          </div><div>
-            <h2>CMU and the I'm fine. Project</h2>
-            <p>A few sentences about the video: who's in it, and why to watch.</p>
-          </div>
-        </div>
-      </div>
-        <div class="content wide">
-          <div>
-            <h2 id="embed" class="rule-top">
-              Embedded Page
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
-            <p>
-              A page from another site shown in a frame, such as a dashboard or a form. Give the
-              <code>&lt;iframe&gt;</code> the <code>cmu-embed</code> class, and it fills its column
-              at any screen size; set its height in the <code>height</code> attribute, tall enough
-              for what's in it. The template sizes YouTube and other video frames itself (see
-              <a href="#videos">Videos</a>), but no others.
-            </p>
-            <ul class="cmu-checks">
-              <li>
-                <strong>Give it a <code>title</code></strong> that names what's in it: screen
-                readers announce it for the frame.
-              </li>
-              <li>
-                <strong>Link to it below</strong>, as an ordinary <code>external</code> link, for
-                people who'd rather open it in a tab of its own, and for phones, where a tall frame
-                is hard to scroll.
-              </li>
-              <li>
-                <strong>Add <code>loading="lazy"</code></strong> so it loads only when someone
-                scrolls to it.
-              </li>
-              <li>
-                <strong>Set <code>height</code> to a number of pixels</strong>, such as
-                <code>height="700"</code>, with no units or CSS in it. Leave out
-                <code>frameborder</code> and <code>scrolling</code>, which are obsolete; the class
-                handles the border and the width.
-              </li>
-              <li>
-                <strong>Embed only pages that allow it.</strong> Many sites forbid being framed, and
-                the frame then stays blank; check it on a test page first.
-              </li>
-            </ul>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-embed</code></p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <iframe class="cmu-embed" src="https://carnegie-mellon-university-um.app.poweredbyenergycap.com/app/embedded?key=ZW5jLXB1YmxpYy1kYXNoYm9hcmR8UHJvZHVjdGlvbg%3D%3D.Y211fDEwMjQ%3D.NmQ2ZGU5YzYtYTAyYS00MjU1LTllZDMtNzAyYzM1ZWZiNTE4&amp;showGlobalFilter=1&amp;dashboardId=1538&amp;dashboardType=USER" title="Carnegie Mellon energy use dashboard" height="700" loading="lazy"></iframe>
-        <p><a class="external" href="https://carnegie-mellon-university-um.app.poweredbyenergycap.com/app/embedded?key=ZW5jLXB1YmxpYy1kYXNoYm9hcmR8UHJvZHVjdGlvbg%3D%3D.Y211fDEwMjQ%3D.NmQ2ZGU5YzYtYTAyYS00MjU1LTllZDMtNzAyYzM1ZWZiNTE4&amp;showGlobalFilter=1&amp;dashboardId=1538&amp;dashboardType=USER">Open the energy dashboard on its own page</a></p>
       </div>
 
             <h2 id="snippet" class="rule-top">
@@ -1343,7 +707,7 @@
               until someone selects it. Give each question an <code>id</code>, and a link such as
               <code>faq.html#miss-turn</code> opens the page with that answer showing. To show a few
               questions on another page, such as a home page, use an
-              <a href="sections.html#qa">FAQ teaser</a>.
+              <a href="pathways.html#qa">FAQ teaser</a>.
             </p>
             <div class="cmu-callout">
               <p class="cmu-label">Style</p>
@@ -1489,9 +853,11 @@
               <li class="active">
                 <a href="components.html">Components</a>
                 <ul>
-                  <li><a href="tops.html">Page Tops</a></li>
                   <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="pathways.html">Pathways</a></li>
+                  <li><a href="buttons.html">Buttons</a></li>
                   <li class="active"><a href="content.html" aria-current="page">Content</a></li>
+                  <li><a href="images.html">Images and Video</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>

@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T56TMJLK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathways - Components - Carnegie Mellon Web Kilt - Carnegie Mellon University</title>
+    <!-- Link previews: written by tools/opengraph.mjs -->
+    <meta
+      name="description"
+      content="Sections that send people on to their next step: path cards, big buttons, an I Want To list, link banks, a coming-soon card and an FAQ teaser."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Carnegie Mellon Web Kilt" />
+    <meta property="og:title" content="Pathways - Carnegie Mellon Web Kilt" />
+    <meta
+      property="og:description"
+      content="Sections that send people on to their next step: path cards, big buttons, an I Want To list, link banks, a coming-soon card and an FAQ teaser."
+    />
+    <meta property="og:url" content="https://webkilt.andrew.cmu.edu/0/pathways.html" />
+    <meta property="og:image" content="https://webkilt.andrew.cmu.edu/0/images/preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Carnegie Mellon Web Kilt's home page: Made to Measure for CMU Sites and Apps, next to screenshots of three sites built with it."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- End of link previews -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk"
+      crossorigin="anonymous"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/docs.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+    <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+  </head>
+  <body class="no-js cmu-app">
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="./">Carnegie Mellon Web Kilt</a></span>
+          <h2>Tailored to the CMU web template</h2>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="breadcrumbs">
+          <a href="./">Carnegie Mellon Web Kilt</a>&nbsp;&rsaquo;&nbsp;<a href="components.html"
+            >Components</a
+          >&nbsp;&rsaquo;&nbsp;Pathways
+        </div>
+        <div class="content wide">
+          <div>
+            <h1>Pathways</h1>
+            <p class="cmu-lead">
+              Sections that send people on to their next step: path cards, big buttons, an I Want To
+              list, link banks, a coming-soon card and an FAQ teaser.
+            </p>
+
+            <h2 id="paths" class="rule-top">
+              Path Cards
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Whole-card links that send each audience to its own page. They fit as many columns as
+              the width allows; <code>cmu-paths--two</code> keeps a pair side by side. The
+              call-to-action line (<code>cta</code>) is the template's own.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-paths</code>, <code>cmu-paths--two</code>, <code>cmu-path</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-paths">
+          <a class="cmu-path" href="#paths">
+            <span class="cmu-eyebrow">Students</span>
+            <strong>Find a Syllabus</strong>
+            <span>Search by course number, title or instructor.</span>
+            <span class="cta">See How to Browse</span>
+          </a>
+          <a class="cmu-path" href="#paths">
+            <span class="cmu-eyebrow">Instructors</span>
+            <strong>Add Your Syllabus</strong>
+            <span>Upload a file on the web, or pick it from Canvas.</span>
+            <span class="cta">Read the Instructor Guide</span>
+          </a>
+          <a class="cmu-path" href="#paths">
+            <span class="cmu-eyebrow">Administrators</span>
+            <strong>Track Your Department</strong>
+            <span>See what's missing and upload for many sections at once.</span>
+            <span class="cta">Read the Quick-Start Guide</span>
+          </a>
+        </div>
+      </div>
+
+            <h2 id="big-buttons" class="rule-top">
+              Big Buttons
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Two wide buttons side by side for the two things most people come to do. Each is a
+              <code>btn wide</code> inside an <code>&lt;h2&gt;</code>, which makes its text large.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>grid column2</code>, <code>btn wide</code>, <code>aligncenter</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column2">
+          <div>
+            <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Have a Question? Join the Queue</a></h2>
+          </div><div>
+            <h2 class="aligncenter"><a class="btn wide" href="#big-buttons">Course Staff? Open Office Hours</a></h2>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="i-want" class="rule-top">
+              I Want To&hellip;
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              The same grid without a color: white boxes with a thin border on the page's own
+              background, headed by what people come to do. Here each box's title is the link, in
+              the template's red, instead of a call to action (<code>cta</code>) under the text. Use
+              linked titles when the title says it all, and a call to action when the action
+              deserves its own words. Phrase the titles as the end of the heading's sentence: "I
+              want to&hellip; Borrow a Camera."
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>grid column3 boxes</code>, a linked <code>&lt;h2&gt;</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 boxes">
+          <h1>I Want To&hellip;</h1>
+          <div>
+            <h2><a href="#i-want">Borrow a Camera</a></h2>
+            <p>Cameras, lenses and tripods for any CMU course, free for up to a week.</p>
+          </div>
+          <div>
+            <h2><a href="#i-want">Reserve a Laptop</a></h2>
+            <p>Pick a day and a laptop, and it's ready at the desk when you arrive.</p>
+          </div>
+          <div>
+            <h2><a href="#i-want">Return Equipment</a></h2>
+            <p>Drop it off at the desk, or see when it's due.</p>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="link-bank" class="rule-top">
+              Link Bank
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h2>
+            <p>
+              Red columns of links at the bottom of a page, to the site's main pages and its
+              neighbors. It's a grid with <code>nav</code>, and each column a <code>nav-list</code>;
+              <code>darkgrey invert</code> works too. Keep it to links: a way into an app goes in
+              the page, not here. A column can start with an <code>&lt;h1&gt;</code>, which shows as
+              a small bold label.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>grid column3 red invert nav</code>, <code>nav-list</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 red invert nav">
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#link-bank">Join a Queue</a></li>
+                <li><a href="#link-bank">For Students</a></li>
+                <li><a href="#link-bank">For Course Staff</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#link-bank">Frequently Asked Questions</a></li>
+                <li><a href="#link-bank">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#link-bank">Teach, Learn, Innovate</a></li>
+                <li><a href="#link-bank">Course Schedule</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="on-this-page-bank" class="rule-top">
+              On This Page Link Bank
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              Links to the sections of a long page, in columns under its intro, for a page whose
+              content uses the full width, such as wide tables or examples. It's a white
+              <a href="#link-bank">link bank</a> with <code>cmu-on-this-page</code> and a
+              <code>cmu-label</code> first: the label takes a row of its own over the columns, and
+              the link bank drops the template's top and bottom padding, which only gives a section
+              with a background room. The links stay the page's usual red, so they read as links.
+            </p>
+            <ul class="cmu-checks">
+              <li>
+                <strong>Not on a page with a sidebar:</strong> there, the
+                <a href="sidebars.html#on-this-page">On This Page</a> box goes at the top of the
+                sidebar.
+              </li>
+              <li>
+                <strong>Not on a page short enough to see at a glance.</strong>
+              </li>
+            </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>grid column3 nav cmu-on-this-page</code>, <code>cmu-label</code>,
+              <code>nav-list</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+        <div class="grid column3 nav cmu-on-this-page">
+          <p class="cmu-label">On This Page</p>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#on-this-page-bank">Borrowing Equipment</a></li>
+                <li><a href="#on-this-page-bank">Reserving a Room</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#on-this-page-bank">Printing</a></li>
+                <li><a href="#on-this-page-bank">Software</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="nav-list">
+              <ul>
+                <li><a href="#on-this-page-bank">Getting Help</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="content wide">
+          <div>
+            <h2 id="question-mark-card" class="rule-top">
+              Question Mark / Coming Soon Card
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A card for something not decided yet: an open spot, a speaker to be announced or a
+              call for suggestions. This is a <a href="sections.html#grid">Cards on Gray</a> card,
+              with one of PlaceMellon's Scotty question marks as its picture:
+            </p>
+            <ul>
+              <li>
+                <code>?scotty=recumbent&amp;question</code>: Scotty in a play bow beside the
+                question mark.
+              </li>
+              <li>
+                <code>?scotty=rampant&amp;question</code>: Scotty standing up as the question mark's
+                dot.
+              </li>
+            </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>grid</code>, <code>grey</code>, <code>boxes</code>,
+              <code>cmu-cards-bottom</code>
+            </p>
+          </div>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="kit-demo kit-demo--wide">
+          <div class="grid column2 grey boxes cmu-cards-bottom">
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/480/270?category=classrooms" alt="Placeholder photo of a Carnegie Mellon classroom." width="480" height="270">
+              <h2>Spring Seminar</h2>
+              <p>Active learning in large classes.</p>
+              <p><a class="cta" href="#question-mark-card">See the Spring Seminar</a></p>
+            </div>
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/480/270?scotty=recumbent&amp;question" alt="" width="480" height="270">
+              <h2>Summer Seminar</h2>
+              <p>Speaker to be announced in April.</p>
+              <p><a class="cta" href="#question-mark-card">See Past Speakers</a></p>
+            </div>
+          </div>
+          <div class="grid column3 grey boxes cmu-cards-bottom">
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/360/480?category=life" alt="Placeholder photo of student life at Carnegie Mellon." width="360" height="480">
+              <h2>Fall Workshop</h2>
+              <p>Feedback on drafts, from peers and staff.</p>
+              <p><a class="cta" href="#question-mark-card">See the Fall Workshop</a></p>
+            </div>
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/360/480?category=labs" alt="Placeholder photo of a Carnegie Mellon lab." width="360" height="480">
+              <h2>Winter Workshop</h2>
+              <p>Research methods for first projects.</p>
+              <p><a class="cta" href="#question-mark-card">See the Winter Workshop</a></p>
+            </div>
+            <div>
+              <img src="https://placemellon.andrew.cmu.edu/360/480?scotty=rampant&amp;question" alt="" width="360" height="480">
+              <h2>Spring Workshop</h2>
+              <p>The topic is up to you. Tell us what you'd like to learn.</p>
+              <p><a class="cta" href="#question-mark-card">Suggest a Topic</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="content wide">
+          <div>
+            <h2 id="qa" class="rule-top">
+              FAQ Teaser
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h2>
+            <p>
+              A few common questions and short answers in columns, followed by a link to the full
+              <a href="content.html#faq">FAQ</a>.
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-faq-teaser</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-faq-teaser">
+          <div>
+            <h3>Who Can See My Question?</h3>
+            <p>Only your course's staff. Other students see just how many are ahead of them.</p>
+          </div>
+          <div>
+            <h3>Can I Leave the Queue?</h3>
+            <p>Yes, at any time. Your place goes to the next person.</p>
+          </div>
+        </div>
+        <p><a class="cta" href="#qa">See All Questions</a></p>
+      </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Carnegie Mellon Web Kilt<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh,
+            PA 15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+          <ul>
+            <li>&copy; 2026 Carnegie Mellon University</li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li>
+                <a href="install.html">Install</a>
+                <ul>
+                  <li><a href="quirks.html">Template Quirks</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="layout.html">Page Layout</a>
+                <ul>
+                  <li><a href="previews.html">Link Previews / Open Graph</a></li>
+                </ul>
+              </li>
+              <li class="active">
+                <a href="components.html">Components</a>
+                <ul>
+                  <li><a href="sections.html">Page Sections</a></li>
+                  <li class="active"><a href="pathways.html" aria-current="page">Pathways</a></li>
+                  <li><a href="buttons.html">Buttons</a></li>
+                  <li><a href="content.html">Content</a></li>
+                  <li><a href="images.html">Images and Video</a></li>
+                  <li><a href="sidebars.html">Sidebars</a></li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="news.html">News and Events</a></li>
+                  <li><a href="lists.html">Lists and Tables</a></li>
+                  <li><a href="forms.html">Forms</a></li>
+                  <li><a href="messages.html">Messages and Progress</a></li>
+                  <li><a href="accounts.html">Accounts</a></li>
+                </ul>
+              </li>
+              <li><a href="conventions.html">Conventions</a></li>
+              <li><a href="about.html">About</a></li>
+              <li class="secondary"><a href="gallery.html">Gallery</a></li>
+              <li class="secondary"><a href="partner.html">Get Help With Your Project</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="js/cmu-app.js"></script>
+    <script src="js/docs.js"></script>
+  </body>
+</html>

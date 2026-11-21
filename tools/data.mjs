@@ -40,9 +40,11 @@ const { version, integrity = {} } = JSON.parse(
 
 // The topic pages, as tools/components.mjs lists them
 const PAGES = [
-  "tops.html",
   "sections.html",
+  "pathways.html",
+  "buttons.html",
   "content.html",
+  "images.html",
   "sidebars.html",
   "people.html",
   "news.html",

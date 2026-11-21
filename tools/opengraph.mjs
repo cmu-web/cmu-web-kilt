@@ -54,6 +54,8 @@ const stale = [];
 for (const file of readdirSync(docs).filter((f) => f.endsWith(".html"))) {
   const path = fileURLToPath(new URL(file, docs));
   const html = readFileSync(path, "utf8");
+  // A page that only sends people on to another one gets no preview
+  if (html.includes('http-equiv="refresh"')) continue;
   // Read the page without the tags this wrote last time
   const bare = html.replace(new RegExp(`\\s*${START}[\\s\\S]*?${END}`), "");
   const next = bare.replace(/(<\/title>)/, "$1\n" + tags(file, bare));

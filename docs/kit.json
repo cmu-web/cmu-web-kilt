@@ -35,7 +35,7 @@
       ],
       "classes": ["cmu-account", "cmu-account-open", "cmu-account-menu", "cmu-account-name"],
       "examples": [
-        "<!-- In .roof, after the wordmark. Signed out: -->\n<a class=\"cmu-account\" href=\"/login\">Sign In</a>\n<!-- Signed in: -->\n<a class=\"cmu-account cmu-account-open\" href=\"accounts.html#nav\" aria-label=\"Menu for Andrew Carnegie\"\n   onclick=\"document.querySelector('.roof .menu-btn').click(); return false;\">Andrew Carnegie</a>\n\n<!-- First item in nav#nav > ul. The template shows li.secondary only in the menu.\n     An <a> without href gets the menu's spacing but isn't a link. -->\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
+        "<!-- In .roof, after the wordmark. Signed out: -->\n<a class=\"cmu-account\" href=\"/login\">Sign In</a>\n<!-- Signed in: -->\n<a class=\"cmu-account cmu-account-open\" href=\"#nav\" aria-label=\"Menu for Andrew Carnegie\"\n   onclick=\"document.querySelector('.roof .menu-btn').click(); return false;\">Andrew Carnegie</a>\n\n<!-- First item in nav#nav > ul. The template shows li.secondary only in the menu.\n     An <a> without href gets the menu's spacing but isn't a link. -->\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
       ],
       "frameworks": {}
     },
@@ -105,8 +105,8 @@
     {
       "id": "announcements",
       "name": "Announcements",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#announcements",
+      "page": "Messages and Progress",
+      "url": "https://webkilt.andrew.cmu.edu/0/messages.html#announcements",
       "labels": ["Template"],
       "description": "A full-width section across the top of a page, right under the breadcrumbs, for something everyone who comes to the page should know first: who the page is for, a deadline, a change. Site authors write it and take it down; it says the same thing to everyone. It's a content wide block in a template color. Keep to one at a time, and a sentence or two.\n\nA note in dark gray that says who the page is for and where everyone else should go:",
       "notes": [
@@ -157,8 +157,8 @@
     {
       "id": "big-buttons",
       "name": "Big Buttons",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#big-buttons",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#big-buttons",
       "labels": ["Template"],
       "description": "Two wide buttons side by side for the two things most people come to do. Each is a btn wide inside an <h2>, which makes its text large.",
       "notes": [],
@@ -284,8 +284,8 @@
     {
       "id": "button-note",
       "name": "Button With a Note",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#button-note",
+      "page": "Buttons",
+      "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#button-note",
       "labels": ["App"],
       "description": "A short note beside a button, centered on it top to bottom, saying what the button does or what to expect. On a narrow screen the note wraps under the button. Keep it to a sentence; anything longer goes above the button. Right under a photo (figure.image), it sits close to the photo it acts on, as with a Show Another Photo button; the note is optional.",
       "notes": [],
@@ -298,10 +298,10 @@
     {
       "id": "buttons",
       "name": "Buttons and Links",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#buttons",
+      "page": "Buttons",
+      "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#buttons",
       "labels": ["Template"],
-      "description": "A solid button for the main action on a page, ghost buttons for the rest and a call to action (cta) for a link that should stand out from the text. external marks a link to another site.\n\nButtons, calls to action and links on the page's white background:",
+      "description": "A solid button for the main action on a page, ghost buttons for the rest and a call to action (cta) for a link that should stand out from the text. external marks a link to another site. For a section of two large buttons for the things most people come to do, use Big Buttons.\n\nButtons, calls to action and links on the page's white background:",
       "notes": [],
       "classes": ["btn", "ghost", "small", "wide", "cta", "external"],
       "examples": [
@@ -313,8 +313,8 @@
     {
       "id": "cta-row",
       "name": "Call-to-Action Row",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#cta-row",
+      "page": "Buttons",
+      "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#cta-row",
       "labels": ["CMS"],
       "description": "Lines up a button, a call to action and an optional note, in a hero or anywhere on a page. A paragraph with just a button and then a call to action gets the same spacing without it. The note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with; keep it to a short line.\n\nAn app page's actions, such as New Semester on a list of semesters, go in a row like this under the heading and its lead, never beside the heading.",
       "notes": [],
@@ -447,8 +447,8 @@
     {
       "id": "closable",
       "name": "Closable Section",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#closable",
+      "page": "Messages and Progress",
+      "url": "https://webkilt.andrew.cmu.edu/0/messages.html#closable",
       "labels": ["CMS", "Script"],
       "description": "An announcement people can close: a heading, a sentence or two, an optional button and an × at the right, on a color. Use it as a full-width section, like an announcement, or as a block inside the page's content. On phones the × moves to the top corner and the button runs the full width.\n\nA full-width section in dark gray, with a ghost button:",
       "notes": [
@@ -660,8 +660,8 @@
     {
       "id": "email",
       "name": "Email Links",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#email",
+      "page": "Buttons",
+      "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#email",
       "labels": ["Template", "Script"],
       "description": "An email link whose address isn't in the page's HTML, so very simple scrapers can't harvest it. Write the address with (through) for the @ in data-cmu-email, and give the link words that name the person or office, such as \"Email Andrew Carnegie.\" cmu-app.js fills in the address only when someone points at, focuses or taps the link, so scrapers that just load the page don't get it, and it leaves the words alone. Without the script, it's plain text.",
       "notes": [
@@ -677,8 +677,8 @@
     {
       "id": "embed",
       "name": "Embedded Page",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#embed",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#embed",
       "labels": ["CMS"],
       "description": "A page from another site shown in a frame, such as a dashboard or a form. Give the <iframe> the cmu-embed class, and it fills its column at any screen size; set its height in the height attribute, tall enough for what's in it. The template sizes YouTube and other video frames itself (see Videos), but no others.",
       "notes": [
@@ -697,8 +697,8 @@
     {
       "id": "zoom",
       "name": "Enlarge on Click",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#zoom",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#zoom",
       "labels": ["CMS", "Script"],
       "description": "A screenshot or a photo that people can select to see up close. Link the image to its full-size version and add data-cmu-zoom: selecting it opens the image over the page, with the page dimmed behind it. Escape, the close button or a click or tap anywhere closes it, and focus goes back to the image. Without the script, the link opens the image itself. An image much taller than the window, such as a whole page, opens at full width and scrolls. The enlarged image uses the image's alt text, so write that as usual. It works on a screenshot in any frame, a photo or a plain image.",
       "notes": [],
@@ -761,9 +761,11 @@
         "© 2026 Carnegie Mellon University",
         "Install Template Quirks",
         "Page Layout Link Previews / Open Graph",
-        "Page Tops",
         "Page Sections",
+        "Pathways",
+        "Buttons",
         "Content",
+        "Images and Video",
         "Sidebars",
         "People",
         "Lists and Tables",
@@ -782,8 +784,8 @@
     {
       "id": "example",
       "name": "Examples",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#example",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#example",
       "labels": ["CMS"],
       "description": "A screenshot or picture of something in use, on a light gray mat with a small label at its top, so it reads apart from the thing itself. Use it beside an image people copy or download, to show where it goes. Put a cmu-label and the screenshot in a div.cmu-example; the picture is centered on the mat, however narrow it is.",
       "notes": [],
@@ -825,8 +827,8 @@
     {
       "id": "qa",
       "name": "FAQ Teaser",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#qa",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#qa",
       "labels": ["CMS"],
       "description": "A few common questions and short answers in columns, followed by a link to the full FAQ.",
       "notes": [],
@@ -994,8 +996,8 @@
     {
       "id": "photo-hero",
       "name": "Full-Width Photo Hero",
-      "page": "Page Tops",
-      "url": "https://webkilt.andrew.cmu.edu/0/tops.html#photo-hero",
+      "page": "Page Sections",
+      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#photo-hero",
       "labels": ["Template"],
       "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 × 600 version in style for phones, and a 1400 × 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark box (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white strip near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.\n\nA line of text in a dark box, with an optional second line under it:",
       "notes": [],
@@ -1047,8 +1049,8 @@
     {
       "id": "i-want",
       "name": "I Want To…",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#i-want",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#i-want",
       "labels": ["Template"],
       "description": "The same grid without a color: white boxes with a thin border on the page's own background, headed by what people come to do. Here each box's title is the link, in the template's red, instead of a call to action (cta) under the text. Use linked titles when the title says it all, and a call to action when the action deserves its own words. Phrase the titles as the end of the heading's sentence: \"I want to… Borrow a Camera.\"",
       "notes": [],
@@ -1126,8 +1128,8 @@
     {
       "id": "link-bank",
       "name": "Link Bank",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#link-bank",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#link-bank",
       "labels": ["Template"],
       "description": "Red columns of links at the bottom of a page, to the site's main pages and its neighbors. It's a grid with nav, and each column a nav-list; darkgrey invert works too. Keep it to links: a way into an app goes in the page, not here. A column can start with an <h1>, which shows as a small bold label.",
       "notes": [],
@@ -1140,8 +1142,8 @@
     {
       "id": "link-button",
       "name": "Link Button",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#link-button",
+      "page": "Buttons",
+      "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#link-button",
       "labels": ["App"],
       "description": "A button that looks like a link, for a small action in place (such as a form post) among plain links, where a full button would be too heavy. It still behaves like a button. Signing out isn't one of these: it goes in the menu.",
       "notes": [],
@@ -1168,8 +1170,8 @@
     {
       "id": "link-preview-card",
       "name": "Link Preview Card",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#link-preview-card",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#link-preview-card",
       "labels": ["CMS"],
       "description": "A picture of how a shared link looks in Slack, Teams or a social post, for a page that explains or checks link previews. Put a cmu-link-preview in a screenshot frame: the image, then a cmu-link-preview-text with the site, the title in <strong> and the description:",
       "notes": [],
@@ -1314,8 +1316,8 @@
     {
       "id": "on-this-page-bank",
       "name": "On This Page Link Bank",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#on-this-page-bank",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#on-this-page-bank",
       "labels": ["CMS"],
       "description": "Links to the sections of a long page, in columns under its intro, for a page whose content uses the full width, such as wide tables or examples. It's a white link bank with cmu-on-this-page and a cmu-label first: the label takes a row of its own over the columns, and the link bank drops the template's top and bottom padding, which only gives a section with a background room. The links stay the page's usual red, so they read as links.",
       "notes": [
@@ -1395,8 +1397,8 @@
     {
       "id": "paths",
       "name": "Path Cards",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#paths",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#paths",
       "labels": ["CMS"],
       "description": "Whole-card links that send each audience to its own page. They fit as many columns as the width allows; cmu-paths--two keeps a pair side by side. The call-to-action line (cta) is the template's own.",
       "notes": [],
@@ -1423,8 +1425,8 @@
     {
       "id": "captions",
       "name": "Photo Captions and Credits",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#captions",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#captions",
       "labels": ["Template"],
       "description": "A photo with a caption under it. Use Cascade's image block, or figure.image with a <figcaption>: the template sets the caption in italics and spaces the figure from the text below. Put floatright or floatleft on the image to set the figure beside the text at half width; on phones it goes full width.\n\nCredits go at the end of the caption, in parentheses, in the caption's own style; CMU sites don't use a separate credit line or credit class.\n\nA caption under the photo, with its credit:",
       "notes": [
@@ -1576,8 +1578,8 @@
     {
       "id": "question-mark-card",
       "name": "Question Mark / Coming Soon Card",
-      "page": "Page Sections",
-      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#question-mark-card",
+      "page": "Pathways",
+      "url": "https://webkilt.andrew.cmu.edu/0/pathways.html#question-mark-card",
       "labels": ["CMS"],
       "description": "A card for something not decided yet: an open spot, a speaker to be announced or a call for suggestions. This is a Cards on Gray card, with one of PlaceMellon's Scotty question marks as its picture:",
       "notes": [
@@ -1607,8 +1609,8 @@
     {
       "id": "screenshots",
       "name": "Screenshots",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#screenshots",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#screenshots",
       "labels": ["CMS"],
       "description": "A screenshot of a page or an app, set off from the page around it with a thin border and a soft shadow, in a figure.cmu-shot. It can be drawn in a browser window or a phone. A <figcaption> under it is italic, like the template's photo captions. Ideally, the screenshot shows the page's top, roof and all. Always write alt text that says what's on it.\n\nAdd cmu-shot--browser for a browser window, with a bar and three dots across the top; the window is as wide as the screenshot, never wider than the column. To show the page's address in the bar, add data-cmu-address with it, such as www.cmu.edu/example/; leave off the https://. It's decorative, so the alt text still says what's on the screenshot:",
       "notes": [
@@ -1811,8 +1813,8 @@
     {
       "id": "video-hero",
       "name": "Silent Video Hero",
-      "page": "Page Tops",
-      "url": "https://webkilt.andrew.cmu.edu/0/tops.html#video-hero",
+      "page": "Page Sections",
+      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#video-hero",
       "labels": ["Template"],
       "description": "A photo hero with a silent video looping behind it: add tubular and a YouTube video's id in data-vid, and the template plays the video and adds a pause button. Keep the photo: it shows while the video loads, on phones and wherever the video can't play. Pick a few seconds of motion that loops cleanly and works without sound. Load YouTube's player and the template's video script after the template's scripts; a university-provided CMS site adds them itself:\n\nMany CMU videos are wide-screen, wider than 16:9, and YouTube pads them with black bars above and below. Add cmu-video-wide to the hero to give it a wide-screen shape (2.5 to 1), so the bars fall outside it. Check the video at a wide and a narrow window; a video close to 16:9 doesn't need it.",
       "notes": [],
@@ -1932,8 +1934,8 @@
     {
       "id": "hero",
       "name": "Split Hero",
-      "page": "Page Tops",
-      "url": "https://webkilt.andrew.cmu.edu/0/tops.html#hero",
+      "page": "Page Sections",
+      "url": "https://webkilt.andrew.cmu.edu/0/sections.html#hero",
       "labels": ["CMS", "Script"],
       "description": "The top of a home page: copy on the left, art on the right. It becomes one column below 820px. Use it at the top of a service description's home page. Lead with a tagline that says what the app does, then a button for the main action and a \"Get Started\" call to action that jumps to the first section below, headed Get Started. The tagline is the page's <h1>, and so is each section's heading after it (see Stacking Sections). Under the buttons, an optional note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with. Keep it to a short line, and leave it out when the page answers it further down. The art can be:\n\nThe rule along the top and the tint behind the copy are CMU red. To set one site's hero apart from another's, add an accent from the CMU tartan's threads: cmu-hero--blue, cmu-hero--teal, cmu-hero--green or cmu-hero--gold. Use one accent across a site.\n\nOne screenshot beside the words:",
       "notes": [
@@ -2097,8 +2099,8 @@
     {
       "id": "transparent",
       "name": "Transparent Images",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#transparent",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#transparent",
       "labels": ["CMS"],
       "description": "An image with see-through parts, such as a logo, a cutout or a generated image, over a light checkerboard, the way image editors show transparency. Use it where people pick or check an image, such as a preview of one they're about to download; on an ordinary page, let the image sit on the page's own background. Add cmu-transparent to the image, or to a <figure> holding it, with or without a screenshot frame.",
       "notes": [],
@@ -2111,8 +2113,8 @@
     {
       "id": "videos",
       "name": "Videos",
-      "page": "Content",
-      "url": "https://webkilt.andrew.cmu.edu/0/content.html#videos",
+      "page": "Images and Video",
+      "url": "https://webkilt.andrew.cmu.edu/0/images.html#videos",
       "labels": ["Template"],
       "description": "A YouTube video in the page, or beside a few sentences about it in a section. Paste YouTube's embed code (Share, then Embed) and keep its width and height: the template's script fits the video to its column and keeps that shape, on phones too.\n\nA video across the column:",
       "notes": [
