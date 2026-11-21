@@ -1808,6 +1808,18 @@ p:not(.cmu-label):has(+ :is(.cmu-snippet, .cmu-copyable)) {
   margin-top: auto;
 }
 
+/* Cards with their links lined up (cmu-cards-links): each card's last
+   paragraph, its link or call to action, sits at the card's bottom, so the
+   links line up across a row; the picture, heading and words stay at the
+   top, as in any card */
+.grid.boxes.cmu-cards-links > div {
+  display: flex;
+  flex-direction: column;
+}
+.grid.boxes.cmu-cards-links > div > :last-child {
+  margin-top: auto;
+}
+
 /* Lists: check marks, fixes, notes, numbered steps */
 /* Plain list: no bullets, for a list whose items each start with their own
    label, such as a pill or a bold term. Items keep the template's indent. */
