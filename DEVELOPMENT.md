@@ -346,7 +346,9 @@ browser files and `package.json`, with the release's integrity hashes, to npm
 as `@cmu-web/kilt` from each version tag, with trusted publishing and
 provenance. npmjs.com trusts it as: GitHub Actions, owner `cmu-web`,
 repository `cmu-web-kilt` and workflow `publish-npm.yml`. Apps that depend on
-the package get a Dependabot pull request for each release.
+the package get a Dependabot pull request for each release. The package ships
+the `cmu-web-kilt-links` command, which keeps an app's jsDelivr links and
+hashes on the installed release (`--check` fails on a stale one).
 
 ### Update Jekyll & Plaid
 

@@ -12,7 +12,7 @@ export default [
   },
   {
     // Command-line tools and this configuration run in Node
-    files: ["tools/**/*.mjs", "eslint.config.mjs"],
+    files: ["tools/**/*.mjs", "bin/**/*.mjs", "eslint.config.mjs"],
     languageOptions: { sourceType: "module", globals: globals.node },
   },
 ];

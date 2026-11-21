@@ -803,18 +803,23 @@ end</code></pre>
                 <div class="kit-option" id="node" data-option="Node" data-label="Node 22 and Later">
                   <h4 class="kit-option-label">In Node</h4>
                   <p>
-                    Copy the files in, as above, or install the tagged release from GitHub so the
-                    version sits in <code>package.json</code>. Installing from GitHub only works
-                    where npm is allowed to fetch from it; many build machines aren't.
+                    Copy the files in, as above, or install the kit from npm, so the version sits in
+                    <code>package.json</code> and Dependabot or Renovate can propose each release:
                   </p>
-                  <pre
-                    class="kit-code"
-                  ><code>npm install github:cmu-web/cmu-web-kilt#0.8.23</code></pre>
+                  <pre class="kit-code"><code>npm install @cmu-web/kilt</code></pre>
                   <p>Then serve its files. With Express:</p>
                   <pre class="kit-code"><code>const path = require("path");
-const kit = path.dirname(require.resolve("cmu-web-kilt/package.json"));
+const kit = path.dirname(require.resolve("@cmu-web/kilt/package.json"));
 app.use("/vendor/cmu-web-kilt-0.8.23/css", express.static(path.join(kit, "css")));
 app.use("/vendor/cmu-web-kilt-0.8.23/js", express.static(path.join(kit, "js")));</code></pre>
+                  <p>
+                    <strong>Linking to jsDelivr instead?</strong> The package's
+                    <code>cmu-web-kilt-links</code> command keeps those links on the installed
+                    release, integrity hashes included. Run it after each upgrade, and with
+                    <code>--check</code> in your checks, so a stale link fails the build:
+                  </p>
+                  <pre class="kit-code"><code>"kilt": "cmu-web-kilt-links docs",
+"check:kilt": "cmu-web-kilt-links --check docs"</code></pre>
                 </div>
               </div>
             </div>
@@ -933,9 +938,10 @@ app.use("/vendor/cmu-web-kilt-0.8.23/js", express.static(path.join(kit, "js")));
                   >. For a major version, they list every renamed or removed class.
                 </li>
                 <li>
-                  Change the version in <code>package.json</code> and run <code>npm install</code>,
-                  or copy the new release into your vendor folder and change the folder&rsquo;s name
-                  in your links.
+                  Change the version in <code>package.json</code> and run
+                  <code>npm install</code> (and <code>cmu-web-kilt-links</code>, if you link to
+                  jsDelivr), or copy the new release into your vendor folder and change the
+                  folder&rsquo;s name in your links.
                 </li>
                 <li>Check your pages before you deploy.</li>
               </ol>

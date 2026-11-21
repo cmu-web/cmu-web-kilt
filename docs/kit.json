@@ -2211,8 +2211,9 @@
       "{% load static %}\n<link href=\"{% static 'vendor/cmu-web-kilt-0.8.23/css/cmu-cms.css' %}\" rel=\"stylesheet\">\n<link href=\"{% static 'vendor/cmu-web-kilt-0.8.23/css/cmu-app.css' %}\" rel=\"stylesheet\">\n<!-- Optional: Bootstrap Icons, for components labeled Icons -->\n<link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css\" integrity=\"sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk\" crossorigin=\"anonymous\" rel=\"stylesheet\">\n<script src=\"{% static 'vendor/cmu-web-kilt-0.8.23/js/cmu-app.js' %}\"></script>"
     ],
     "node": [
-      "npm install github:cmu-web/cmu-web-kilt#0.8.23",
-      "const path = require(\"path\");\nconst kit = path.dirname(require.resolve(\"cmu-web-kilt/package.json\"));\napp.use(\"/vendor/cmu-web-kilt-0.8.23/css\", express.static(path.join(kit, \"css\")));\napp.use(\"/vendor/cmu-web-kilt-0.8.23/js\", express.static(path.join(kit, \"js\")));"
+      "npm install @cmu-web/kilt",
+      "const path = require(\"path\");\nconst kit = path.dirname(require.resolve(\"@cmu-web/kilt/package.json\"));\napp.use(\"/vendor/cmu-web-kilt-0.8.23/css\", express.static(path.join(kit, \"css\")));\napp.use(\"/vendor/cmu-web-kilt-0.8.23/js\", express.static(path.join(kit, \"js\")));",
+      "\"kilt\": \"cmu-web-kilt-links docs\",\n\"check:kilt\": \"cmu-web-kilt-links --check docs\""
     ]
   },
   "conventions": [

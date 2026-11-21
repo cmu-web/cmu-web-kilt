@@ -10,15 +10,19 @@
   },
   "bugs": "https://github.com/cmu-web/cmu-web-kilt/issues",
   "files": [
+    "bin",
     "css",
     "js"
   ],
+  "bin": {
+    "cmu-web-kilt-links": "bin/cmu-web-kilt-links.mjs"
+  },
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
   "scripts": {
-    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:gallery && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:preview && npm run test:initials",
+    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:gallery && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:preview && npm run test:initials && npm run test:links",
     "check:template": "node tools/check-template.mjs",
     "check:versions": "node tools/versions.mjs",
     "check:components": "node tools/components.mjs --check",
@@ -38,7 +42,8 @@
     "release": "node tools/versions.mjs",
     "test:browser": "node --test tools/turbo.browser.test.mjs",
     "test:initials": "node --test tools/initials.test.mjs",
-    "test:preview": "node --test tools/preview.test.mjs"
+    "test:preview": "node --test tools/preview.test.mjs",
+    "test:links": "node --test tools/links.test.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
