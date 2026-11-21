@@ -301,6 +301,25 @@ body:is(.cmu-app, .cmu-framed) :is(.cmu-field-row, .cmu-field-button, .cmu-sugge
 .roof.invert .cmu-account:hover {
   color: rgba(255, 255, 255, 0.8);
 }
+/* Sign In as a button, in its own form, where sign-in starts with a POST
+   (OmniAuth, django-allauth): the form steps out of the layout and the
+   button looks like the link */
+.roof form:has(> button.cmu-account) {
+  display: contents;
+}
+.roof button.cmu-account,
+.roof button.cmu-account:hover {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+}
 /* The name leaves the roof when the menu opens (as the menu button does);
    the menu's account item has it instead. Below 768px the template's
    wordmark fills the roof, so there it's only in the menu. */
@@ -310,25 +329,19 @@ body:is(.cmu-app, .cmu-framed) :is(.cmu-field-row, .cmu-field-button, .cmu-sugge
 /* With the template's search as well: search, then the account, then the
    menu button. Both join the roof's flex row instead of sitting on top of
    each other at the right. */
-.roof > div:has(> .cmu-account) > form.search {
+.roof > div:has(> .cmu-account, > form > .cmu-account) > form.search {
   position: relative;
   right: auto;
   margin-left: auto;
   align-self: stretch;
   height: auto;
 }
-.roof > div:has(> form.search) > .cmu-account {
+.roof > div:has(> form.search) > .cmu-account,
+.roof > div:has(> form.search) > form > .cmu-account {
   position: static;
   flex: 0 0 auto;
   max-width: 12em;
   margin: 0 3.4em 0 1.25em;
-}
-/* The search makes the roof taller, and the template pins the menu button
-   near its top: center the button too, so it lines up with the name */
-.roof > div:has(> form.search):has(> .cmu-account) > .menu-btn {
-  top: 50%;
-  margin-top: 0;
-  transform: translateY(-50%);
 }
 @media (max-width: 767px) {
   .roof .cmu-account {
