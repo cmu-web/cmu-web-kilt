@@ -132,10 +132,11 @@
                 >), with no space or line break between them. Otherwise it drops below.
               </li>
               <li>
-                <strong>A formatter can undo that.</strong> Prettier and similar tools put a line
-                break between those pairs. Put <code>&lt;!-- prettier-ignore --&gt;</code> right
-                before the site name's <code>&lt;div&gt;</code> and before the
-                <code>.content</code> block, so it leaves them as written.
+                <strong>&hellip;but a formatter can undo that.</strong> Prettier and similar tools
+                put a line break between those pairs. Put
+                <code>&lt;!-- prettier-ignore --&gt;</code> right before the site name's
+                <code>&lt;div&gt;</code> and before the <code>.content</code> block, so it leaves
+                them as written.
               </li>
             </ul>
             <h2 id="styles" class="rule-top">Styles</h2>
@@ -149,6 +150,19 @@
                 <strong>Classes that set <code>display</code> beat <code>hidden</code>.</strong>
                 <code>.btn</code> and others override a bare <code>hidden</code> attribute. The kit
                 makes <code>hidden</code> always hide.
+              </li>
+              <li>
+                <strong>Search's magnifier is white.</strong> It shows on a red or gray roof but
+                disappears on a white one. The kit darkens it there.
+              </li>
+              <li>
+                <strong>Any field with the placeholder &ldquo;Search&rdquo;</strong> gets that white
+                magnifier inside it, where it can't be seen. Except in the site search at the top of
+                the page, the kit draws the same magnifier in gray, in every search box.
+              </li>
+              <li>
+                <strong>The external-link mark and contact icons are dark,</strong> made for white
+                pages. The kit makes them white on a dark section.
               </li>
             </ul>
           </div>

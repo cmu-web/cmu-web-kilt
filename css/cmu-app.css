@@ -113,6 +113,13 @@ body:is(.cmu-app, .cmu-framed)
   box-sizing: border-box;
   max-width: 100%;
 }
+/* Except the template's site search: its field's width plus its padding fill
+   the search box, and the magnifier sits over that padding. Counted inside
+   the width, the field comes up short and the magnifier lands outside it. */
+body:is(.cmu-app, .cmu-framed) form.search input {
+  box-sizing: content-box;
+  max-width: none;
+}
 body:is(.cmu-app, .cmu-framed) select.inline,
 body:is(.cmu-app, .cmu-framed) input[type="text"].inline {
   width: auto;
@@ -315,6 +322,13 @@ body:is(.cmu-app, .cmu-framed) :is(.cmu-field-row, .cmu-field-button, .cmu-sugge
   flex: 0 0 auto;
   max-width: 12em;
   margin: 0 3.4em 0 1.25em;
+}
+/* The search makes the roof taller, and the template pins the menu button
+   near its top: center the button too, so it lines up with the name */
+.roof > div:has(> form.search):has(> .cmu-account) > .menu-btn {
+  top: 50%;
+  margin-top: 0;
+  transform: translateY(-50%);
 }
 @media (max-width: 767px) {
   .roof .cmu-account {
@@ -2326,6 +2340,15 @@ body:is(.cmu-app, .cmu-framed) .cmu-tap-search > input {
     0 1px 3px rgba(0, 0, 0, 0.7),
     0 0 16px rgba(0, 0, 0, 0.6),
     0 0 40px rgba(0, 0, 0, 0.5);
+}
+/* The site's address, linked to its public page: white like the words around
+   it, underlined so it still reads as a link */
+.cmu-sign-in-page.cmu-sign-in-page--photo > div > :first-child a {
+  border-bottom: 0;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 /* A taller roof than other pages: with no site name or tabs under it, the
    wordmark strip is the page's whole header */

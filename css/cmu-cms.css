@@ -13,6 +13,40 @@
   display: none !important;
 }
 
+/* Search in a white roof: the template's magnifier is a white picture, made
+   for the dark search box in a red or gray roof (invert). In a white roof the
+   box is light gray and the magnifier disappears, so darken it. */
+.roof:not(.invert) .search button {
+  filter: brightness(0.33);
+}
+/* A search field's magnifier. The template paints its white one into every
+   field whose placeholder is "Search", where it can't be seen on a white
+   page and typed text runs under it. Instead: the template's own drawing
+   (images/icon-magnify.png), redrawn as an SVG in the kit's muted gray, on
+   every search: search fields, that placeholder, the Search bar, a text box
+   in a Filters group and a box that filters a table. npm run check:template
+   fails if the template's picture changes. The roof's search keeps the
+   template's. */
+input:is([type="search"], [placeholder="Search"], [data-cmu-filter]):not(.roof *),
+:is(.cmu-search-bar, .cmu-filter-group) > input[type="text"] {
+  padding-right: 2.25em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 49'%3E%3Ccircle cx='15' cy='14.75' r='13' fill='none' stroke='%235b6670' stroke-width='4'/%3E%3Cpath d='M26.7 35.2 31.9 44.6' stroke='%235b6670' stroke-width='7.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: right 0.7em center;
+  background-repeat: no-repeat;
+  background-size: auto 1.1em;
+}
+
+/* Template icons on a dark section (invert): the external-link mark is dark
+   gray and the contact icons (phone, fax, map pin) are black, made for white
+   pages. Make them white, as the template does for the link mark in its
+   menu. */
+.invert a.external::after {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+.invert .icon::before {
+  filter: invert(1);
+}
+
 :root {
   --cmu-red: #c41230;
   --cmu-ink: #22262a;
@@ -593,6 +627,13 @@ img.cmu-transparent,
 #content h2.collapsed + div {
   margin-top: 0 !important;
   padding-top: 1em;
+}
+/* A heading's text in a rule-bottom span, as each FAQ topic has: the span is
+   inline, so the template draws its rule under every line and a heading that
+   wraps gets a rule through its second line. As an inline block, it's one
+   rule under the last line, as wide as the longest. */
+:is(h1, h2, h3) > .rule-bottom {
+  display: inline-block;
 }
 
 /* FAQ teaser: a few questions and answers in columns, before a link to the FAQ */
@@ -2043,6 +2084,28 @@ table.cmu-compare {
 .cmu-pill--amber {
   background: var(--cmu-amber-tint);
   color: var(--cmu-amber);
+}
+/* Labels that aren't a status: blue for what something is, outline for a
+   plain tag beside it, such as what a site is built with */
+.cmu-pill--blue {
+  background: var(--cmu-blue-tint);
+  color: var(--cmu-blue);
+}
+.cmu-pill--outline {
+  background: #fff;
+  color: var(--cmu-muted);
+  box-shadow: inset 0 0 0 1px var(--cmu-line);
+}
+/* Pills beside a heading's text: kept together, wrapping as one group. The
+   space before the group sets it apart, and drops away when it wraps, so a
+   group on its own line starts flush. */
+.cmu-pills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  vertical-align: middle;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  line-height: 1.4;
 }
 
 /* Article (cmu-article): the top of a single news story or post, as CMU's
