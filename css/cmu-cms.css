@@ -878,7 +878,7 @@ a.cmu-annotated-pin {
   text-decoration: none;
   border: 0;
 }
-a.cmu-annotated-pin:is(:hover, :focus-visible, .cmu-annotated-lit) {
+a.cmu-annotated-pin:is(:hover, :focus-visible, .cmu-annotated-lit, .cmu-annotated-current) {
   color: #fff;
   background: var(--cmu-link);
   outline: none;
@@ -889,13 +889,18 @@ a.cmu-annotated-pin:is(:hover, :focus-visible, .cmu-annotated-lit) {
 }
 /* A pin and its callout light each other (cmu-app.js): pointing at a pin
    gives its callout the pins' red, pointing at a callout lights its pin, and
-   clicking a pin keeps its callout red until it's clicked again */
+   clicking either one keeps both lit, and clears any other pair, until it's
+   clicked again */
 .cmu-annotated-notes > li.cmu-callout:is(:target, .cmu-annotated-lit, .cmu-annotated-current) {
   background: var(--cmu-red-tint);
   border-left-color: var(--cmu-red);
 }
 .cmu-annotated-notes > li:target {
   scroll-margin-top: 1.5rem;
+}
+/* A callout with a pin answers a click as its pin does */
+.cmu-annotated--pins .cmu-annotated-notes > li.cmu-callout[id] {
+  cursor: pointer;
 }
 @container (min-width: 50rem) {
   /* The introduction spans the top; below it, the callouts and the image

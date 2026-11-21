@@ -878,10 +878,10 @@
                 <code>--cmu-y</code> to the middle of the part: 0 to 1 across and down the image. A
                 negative <code>--cmu-y</code> puts a pin on a browser window's bar, above the image.
                 Pointing at a pin turns its callout the pins' red, and pointing at a callout lights
-                its pin. Clicking a pin keeps its callout red until it's clicked again, and on
-                narrow screens, where the callouts drop below the image, scrolls to it. Name each
-                pin with an <code>aria-label</code>, such as "Note 1, Site Name." The image keeps
-                its own size.
+                its pin. Clicking a pin or its callout keeps both lit, and clears any other pair,
+                until either is clicked again; on narrow screens, where the callouts drop below the
+                image, a pin also scrolls to its callout. Name each pin with an
+                <code>aria-label</code>, such as "Note 1, Site Name." The image keeps its own size.
               </li>
               <li>
                 <strong>Give longer text more room.</strong> Below 50rem (800px), the component

@@ -1395,8 +1395,10 @@
   startTabs(document);
   // Annotated Image pins: a pin links to its callout. Pointing at a pin (or
   // focusing it) lights its callout, and pointing at a callout lights its
-  // pin. Clicking a pin whose callout is in view toggles the callout's color
-  // instead of jumping the page there; out of view, the link scrolls to it.
+  // pin. Clicking a pin or its callout selects the pair, keeping both lit and
+  // clearing any other pair in the same image; clicking the selected pair
+  // again clears it. A pin whose callout is out of view, on narrow screens,
+  // still scrolls there, and selects it.
   function annotatedPair(target) {
     var pin = target.closest && target.closest("a.cmu-annotated-pin");
     if (pin) return { pin: pin, note: document.getElementById(pin.hash.slice(1)) };
@@ -1431,16 +1433,27 @@
   document.addEventListener(
     "click",
     function (e) {
-      var pin = e.target.closest && e.target.closest("a.cmu-annotated-pin");
-      if (!pin) return;
-      var note = document.getElementById(pin.hash.slice(1));
-      if (!note) return;
-      var box = note.getBoundingClientRect();
-      if (box.top < 0 || box.bottom > window.innerHeight) return;
-      // Capture, so the template's own scrolling for # links never sees it
-      e.preventDefault();
-      e.stopPropagation();
-      note.classList.toggle("cmu-annotated-current");
+      var found = annotatedPair(e.target);
+      if (!found || !found.pin || !found.note) return;
+      // A link inside a callout still works as a link
+      if (!e.target.closest("a.cmu-annotated-pin") && e.target.closest("a, button")) return;
+      var selected = found.note.classList.contains("cmu-annotated-current");
+      var box = found.note.closest(".cmu-annotated") || document;
+      box.querySelectorAll(".cmu-annotated-current").forEach(function (el) {
+        el.classList.remove("cmu-annotated-current");
+      });
+      if (!selected) {
+        found.pin.classList.add("cmu-annotated-current");
+        found.note.classList.add("cmu-annotated-current");
+      }
+      if (e.target.closest("a.cmu-annotated-pin")) {
+        // A callout in view: stay put. Out of view: let the link scroll to it
+        var r = found.note.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > window.innerHeight) return;
+        // Capture, so the template's own scrolling for # links never sees it
+        e.preventDefault();
+        e.stopPropagation();
+      }
     },
     true,
   );
