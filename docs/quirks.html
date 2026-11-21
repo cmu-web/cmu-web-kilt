@@ -101,6 +101,19 @@
             <h2 id="script" class="rule-top">The Template's Script</h2>
             <ul>
               <li>
+                <strong>Escape doesn't close the menu.</strong> The script's Escape listener calls
+                the menu's toggle without the argument that makes it act. The kit closes the menu on
+                Escape. Under Turbo, the script runs again on every page Turbo shows and adds
+                another listener each time; the kit answers Escape before any of them, so the menu
+                toggles once even if the template's listener is fixed.
+              </li>
+              <li>
+                <strong>Under Turbo, a page from Turbo's cache breaks the header.</strong> The
+                script rearranges the header each time it runs, and a cached page was already
+                rearranged. Turn the cache off, as
+                <a href="install.html#rails">the Rails install</a> shows.
+              </li>
+              <li>
                 <strong>It clears local storage on every page.</strong> When it sets up its list
                 filters, it empties the browser's local storage, whether or not the page has
                 filters. On a server that many sites share, that wipes what all of them saved. Keep

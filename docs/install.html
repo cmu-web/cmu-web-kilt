@@ -718,6 +718,7 @@ import Layout from "../layouts/Layout.astro";
   &lt;title&gt;&lt;%= content_for(:title) || "Your App" %&gt; - Carnegie Mellon University&lt;/title&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
   &lt;%= csrf_meta_tags %&gt;
+  &lt;meta name="turbo-cache-control" content="no-cache"&gt;
   &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
   &lt;link href="/vendor/cmu-web-kilt-0.8.21/css/cmu-cms.css" rel="stylesheet"&gt;
@@ -737,6 +738,17 @@ import Layout from "../layouts/Layout.astro";
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                  <p>
+                    <strong>With Turbo,</strong> as Rails apps have by default, the template's
+                    scripts run again on every page Turbo shows. The kit's script makes Escape close
+                    the menu either way. Keep the <code>turbo-cache-control</code> line in the
+                    layout's <code>&lt;head&gt;</code>: the template's script rearranges the header
+                    each time it runs, and a page Turbo restores from its cache was already
+                    rearranged.
+                  </p>
+                  <pre
+                    class="kit-code"
+                  ><code>&lt;meta name="turbo-cache-control" content="no-cache"&gt;</code></pre>
                 </div>
                 <div
                   class="kit-option"

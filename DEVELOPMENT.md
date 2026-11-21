@@ -140,6 +140,11 @@ workflow runs the same command on every push and pull request, and weekly to
 catch template changes, and also runs the Rails package's tests (see
 [Work on the Rails Package](#work-on-the-rails-package)).
 
+Browser tests are their own command, `npm run test:browser`. They need
+Playwright's Chromium (`npx playwright install chromium`, once) and the
+network, since they load the template's scripts and Turbo. Run them when you
+change `js/cmu-app.js`; the Check Code workflow runs them too.
+
 ### When a Check Fails
 
 | Failure                               | Next Step                                                                                       |
