@@ -1,0 +1,25 @@
+<%# locals: (user:, items:, current:) -%>
+<%# The footer: the site's name and address, then the navigation in the third
+    column, where the template's script finds it %>
+<% config = CmuWebKilt.config %>
+<footer class="grid column3 invert">
+  <div>
+    <p>
+      <%= safe_join([ config.site_name, *config.footer_lines ].uniq, tag.br) %>
+    </p>
+    <ul>
+      <% if config.contact_email %>
+        <li><%= mail_to config.contact_email %></li>
+      <% end %>
+      <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+      <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+    </ul>
+    <ul>
+      <li>&copy; <%= Time.zone.today.year %> Carnegie Mellon University</li>
+    </ul>
+  </div>
+  <div></div>
+  <div>
+    <%= render "cmu/navigation", user:, items:, current: %>
+  </div>
+</footer>

@@ -1,0 +1,35 @@
+# Who's signed in, for every request: Current.user, from the session
+module CmuSignIn
+  extend ActiveSupport::Concern
+
+  included do
+    before_action :load_signed_in_user
+  end
+
+  private
+
+  def load_signed_in_user
+    Current.user = SignedInUser.from_session(session[:user])
+  end
+
+  # A new session for each sign-in, so an old session ID can't carry over
+  def sign_in_user(user)
+    reset_session
+    session[:user] = user.to_session
+  end
+
+  def sign_out_user
+    reset_session
+  end
+
+  # A path on this site only, from a return address or a referrer
+  def safe_return_to(value)
+    uri = URI.parse(value.to_s)
+    return if uri.host.present? && uri.host != request.host
+    return unless uri.path.to_s.start_with?("/") && !uri.path.start_with?("//")
+
+    uri.query ? "#{uri.path}?#{uri.query}" : uri.path
+  rescue URI::InvalidURIError
+    nil
+  end
+end

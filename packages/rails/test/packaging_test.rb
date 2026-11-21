@@ -21,6 +21,13 @@ class PackagingTest < Minitest::Test
       end
       assert File.file?(File.join(directory, 'lib/cmu_web_kilt/engine.rb'))
       assert File.file?(File.join(directory, 'config/importmap.rb'))
+      # The layout, the install generator and the template for new apps
+      %w[app/views/layouts/cmu/application.html.erb app/views/cmu/_roof.html.erb
+         lib/generators/cmu_web_kilt/install/install_generator.rb
+         lib/generators/cmu_web_kilt/install/templates/sessions_controller.rb.tt
+         templates/app.rb].each do |file|
+        assert File.file?(File.join(directory, file)), "The gem has no #{file}"
+      end
       refute package.spec.files.any? { |file| file.start_with?('docs/', 'node_modules/', 'test/') }
       version = JSON.parse(File.read(File.join(KIT, 'package.json'))).fetch('version')
       assert_equal version, package.spec.version.to_s

@@ -1,0 +1,30 @@
+<% if @provider == "entra_id" -%>
+# Sign-in through Entra ID with Andrew accounts. Outside development, set
+# ENTRA_CLIENT_ID and ENTRA_CLIENT_SECRET from the app's Entra registration,
+# and ENTRA_TENANT_ID, CMU's tenant: SessionsController lets in only accounts
+# from that tenant whose sign-in name ends in @andrew.cmu.edu, and no one
+# while it's unset.
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :entra_id,
+           client_id: ENV["ENTRA_CLIENT_ID"],
+           client_secret: ENV["ENTRA_CLIENT_SECRET"],
+           tenant_id: ENV["ENTRA_TENANT_ID"]
+end
+<% else -%>
+# Sign-in through SAML with Andrew accounts. Outside development, set
+# SAML_SP_ENTITY_ID (this app's entity ID), and SAML_IDP_SSO_URL and
+# SAML_IDP_CERT from the identity provider. They're read here, not fetched
+# from the provider's metadata, so the app starts without reaching it.
+# eduPersonPrincipalName (ac00@andrew.cmu.edu) is the account's sign-in name,
+# which SessionsController checks with CmuWebKilt::AndrewAccount.
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :saml,
+           sp_entity_id: ENV["SAML_SP_ENTITY_ID"],
+           idp_sso_service_url: ENV["SAML_IDP_SSO_URL"],
+           idp_cert: ENV["SAML_IDP_CERT"],
+           attribute_statements: {
+             eppn: [ "urn:oid:1.3.6.1.4.1.5923.1.1.1.6", "eduPersonPrincipalName" ],
+             name: [ "urn:oid:2.16.840.1.113730.3.1.241", "displayName", "cn" ]
+           }
+end
+<% end -%>

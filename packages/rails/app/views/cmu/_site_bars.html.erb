@@ -1,0 +1,22 @@
+<%# locals: (user:) -%>
+<%# First in the header: caution tape anywhere but production, then which
+    test account is signed in through developer sign-in %>
+<% unless Rails.env.production? %>
+  <div class="cmu-site-bar cmu-site-bar--tape" aria-hidden="true"></div>
+<% end %>
+<% if user && (account = cmu_test_account) %>
+  <div class="cmu-site-bar">
+    <p>
+      <strong>Test account:</strong>
+      <%= account[:name] %>, <%= account[:role] %>.
+    </p>
+    <% if cmu_route?(:dev_sign_in) %>
+      <p>
+        <%= link_to "Switch Test Account",
+                    main_app.dev_sign_in_path(return_to: request.fullpath),
+                    class: "cta",
+                    data: { turbo: false } %>
+      </p>
+    <% end %>
+  </div>
+<% end %>

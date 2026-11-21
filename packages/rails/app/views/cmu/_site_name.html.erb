@@ -1,0 +1,13 @@
+<%# The site name and tagline, with the logo beside them if there is one. The
+    logo's link has to touch the closing </div>, or it drops below the
+    name. %>
+<% config = CmuWebKilt.config %>
+<div id="sitename">
+  <div>
+    <span class="sitetitle"><%= link_to config.site_name, main_app.root_path %></span>
+    <% if config.tagline.present? %>
+      <h2><%= config.tagline %></h2>
+    <% end %>
+  </div><% if config.logo %><%= link_to image_tag(config.logo, alt: config.logo_alt.to_s),
+                                        config.logo_url || main_app.root_path %><% end %>
+</div>

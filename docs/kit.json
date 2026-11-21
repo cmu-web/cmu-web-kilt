@@ -30,13 +30,14 @@
       "notes": [
         "Signed out, it's styled like the template's header links.",
         "Where sign-in starts with a POST, as with OmniAuth and django-allauth, Sign In is a <button class=\"cmu-account\"> in a form of its own. It looks the same as the link.",
+        "Where signing out is a POST, which keeps another site from signing the user out, Sign Out in the menu is a <button> in a form of its own. It looks the same as the link.",
         "Signed in, it's plain text (cmu-account-open) that opens the menu, and the Sign-In Button and Box go away.",
         "With the template's search, put it after the search form; the kit places it between the search and the menu button.",
         "Below 768px, and while the menu is open, the roof's copy hides; the menu has it."
       ],
       "classes": ["cmu-account", "cmu-account-open", "cmu-account-menu", "cmu-account-name"],
       "examples": [
-        "<!-- In .roof, after the wordmark. Signed out: -->\n<a class=\"cmu-account\" href=\"/login\">Sign In</a>\n<!-- Signed in: -->\n<a class=\"cmu-account cmu-account-open\" href=\"#nav\" aria-label=\"Menu for Andrew Carnegie\"\n   onclick=\"document.querySelector('.roof .menu-btn').click(); return false;\">Andrew Carnegie</a>\n\n<!-- First item in nav#nav > ul. The template shows li.secondary only in the menu.\n     An <a> without href gets the menu's spacing but isn't a link. -->\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n</li>"
+        "<!-- In .roof, after the wordmark. Signed out: -->\n<a class=\"cmu-account\" href=\"/login\">Sign In</a>\n<!-- Signed in: -->\n<a class=\"cmu-account cmu-account-open\" href=\"#nav\" aria-label=\"Menu for Andrew Carnegie\"\n   onclick=\"document.querySelector('.roof .menu-btn').click(); return false;\">Andrew Carnegie</a>\n\n<!-- First item in nav#nav > ul. The template shows li.secondary only in the menu.\n     An <a> without href gets the menu's spacing but isn't a link. -->\n<li class=\"secondary cmu-account-menu\">\n  <a class=\"cmu-account-name\">Andrew Carnegie</a>\n  <a href=\"/preferences\">Preferences</a>\n  <a href=\"/logout\">Sign Out</a>\n  <!-- Or, signing out with a POST: -->\n  <form method=\"post\" action=\"/logout\"><button type=\"submit\">Sign Out</button></form>\n</li>"
       ],
       "frameworks": {}
     },
@@ -2201,7 +2202,9 @@
       "---\n// src/pages/index.astro\nimport Layout from \"../layouts/Layout.astro\";\n---\n<Layout title=\"Your Site\">\n  <div class=\"cmu-hero\">\n    ...\n  </div>\n</Layout>"
     ],
     "rails": [
-      "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <title><%= content_for(:title) || \"Your App\" %> - Carnegie Mellon University</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <%= csrf_meta_tags %>\n  <meta name=\"turbo-cache-control\" content=\"no-cache\">\n  <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic\" rel=\"stylesheet\">\n  <link href=\"https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css\" media=\"screen\" rel=\"stylesheet\">\n  <link href=\"/vendor/cmu-web-kilt-0.8.21/css/cmu-cms.css\" rel=\"stylesheet\">\n  <link href=\"/vendor/cmu-web-kilt-0.8.21/css/cmu-app.css\" rel=\"stylesheet\">\n  <script src=\"/vendor/cmu-web-kilt-0.8.21/js/cmu-app.js\" defer></script>\n  <%= stylesheet_link_tag \"application\" %>\n  <%= javascript_importmap_tags %>\n</head>\n<body class=\"cmu-app\">\n  <div id=\"container\">\n    <!-- The template's header -->\n    <main id=\"content\"><%= yield %></main>\n    <!-- The template's footer -->\n  </div>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/list.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js\"></script>\n  <script src=\"https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js\"></script>\n</body>\n</html>",
+      "rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.21/packages/rails/templates/app.rb",
+      "bundle add cmu-web-kilt\nbin/rails generate cmu_web_kilt:install --site-name=\"Spring Carnival Sweepstakes\" \\\n  --tabs=\"Teams,Drivers,Heats\" --roof=red --sign-in=entra",
+      "CmuWebKilt.configure do |config|\n  config.site_name = \"Spring Carnival Sweepstakes\"\n  config.tagline = \"Teams, drivers, heats and roll times\"\n  config.roof = :red # :white, :red or :gray\n  config.contact_email = \"example@cmu.edu\"\n  config.google_tag = \"GTM-XXXXXXXX\" # production only\nend",
       "<meta name=\"turbo-cache-control\" content=\"no-cache\">"
     ],
     "django": [

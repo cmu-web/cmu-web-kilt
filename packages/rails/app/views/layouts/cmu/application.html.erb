@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<%# The Carnegie Mellon Web Kilt's page (layout.html#skeleton): CMU's template,
+    the kit, then the app's own styles; the navigation in the footer, which
+    the template's script copies into the header tabs and the menu. An app's
+    layouts/application.html.erb renders this one; its views add to the
+    <head> with content_for :head. %>
+<% user = cmu_user %>
+<% items = cmu_nav_items %>
+<html lang="en">
+  <head>
+    <%= render "cmu/head" %>
+  </head>
+  <%= tag.body class: [ "no-js", "cmu-app", { "cmu-acting-as": cmu_acting_as? } ] do %>
+    <%= render "cmu/google_tag_noscript" %>
+    <div id="container">
+      <header>
+        <%= render "cmu/site_bars", user: %>
+        <%= render "cmu/roof", user: %>
+        <%= render "cmu/site_name" %>
+      </header>
+      <main id="content">
+        <%= render "cmu/breadcrumbs", trail: cmu_breadcrumb_trail %>
+        <%= render "cmu/flash", messages: flash %>
+        <%= yield %>
+      </main>
+      <%= render "cmu/footer", user:, items:, current: cmu_nav_current(items) %>
+    </div>
+    <%= render "cmu/acting_bar", user: user if cmu_acting_as? %>
+    <%= yield :cmu_body_end %>
+    <%= render "cmu/template_scripts" %>
+  <% end %>
+</html>

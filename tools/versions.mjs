@@ -1,5 +1,6 @@
 // The docs and README show the current release in every copy-paste example
-// (cmu-web-kilt@X.Y.Z, cmu-web-kilt#X.Y.Z, V=X.Y.Z). This keeps them equal to
+// (cmu-web-kilt@X.Y.Z, cmu-web-kilt#X.Y.Z, V=X.Y.Z), and the Rails template
+// for new apps names it (KILT_VERSION = 'X.Y.Z'). This keeps them equal to
 // package.json's version, and gives every <link> or <script> that loads a
 // pinned file from jsDelivr its integrity hash, so browsers refuse a changed
 // file.
@@ -17,12 +18,13 @@ const root = new URL("../", import.meta.url);
 const files = [
   "README.md",
   "packages/rails/README.md",
+  "packages/rails/templates/app.rb",
   ...readdirSync(new URL("docs/", root))
     .filter((f) => f.endsWith(".html"))
     .map((f) => "docs/" + f),
 ];
 const MENTION =
-  /(cmu-web-kilt?[@#]|cmu-web-kilt?-(?=\d+\.\d+\.\d+(?:\.gem|\/))|\bV=)(\d+\.\d+\.\d+)/g;
+  /(cmu-web-kilt?[@#]|cmu-web-kilt?-(?=\d+\.\d+\.\d+(?:\.gem|\/))|\bV=|\bKILT_VERSION = ')(\d+\.\d+\.\d+)/g;
 const KIT_FILES = ["css/cmu-cms.css", "css/cmu-app.css", "js/cmu-app.js"];
 // Bootstrap Icons, which the docs load from jsDelivr's npm copy. Its hash only
 // changes with its version; checked against the npm package itself.

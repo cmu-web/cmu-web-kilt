@@ -704,40 +704,71 @@ import Layout from "../layouts/Layout.astro";
                 >
                   <h4 class="kit-option-label">In Rails</h4>
                   <p>
-                    Copy the kit's <code>css/</code> and <code>js/</code> into
-                    <code>public/vendor/cmu-web-kilt-0.8.21/</code> and link them from your layout.
-                    Load <code>cmu-app.js</code> in the <code>&lt;head&gt;</code> with
-                    <code>defer</code>, so Turbo keeps it from page to page; it starts the
-                    components on each new page, and on pages Turbo restores from its cache. The
-                    template's own scripts stay at the end of <code>&lt;body&gt;</code>, where Turbo
-                    runs them for each page.
+                    Use the kit's gem, <code>cmu-web-kilt</code>. It serves the kit's files through
+                    the asset pipeline and brings the kit's whole page: the header and footer, the
+                    navigation, the breadcrumbs, flash messages and sign-in. A new app starts from
+                    the kit's template, which adds the gem, runs its install generator and sets up
+                    CMU Web Style, the shared RuboCop and erb_lint settings:
                   </p>
-                  <pre class="kit-code"><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;title&gt;&lt;%= content_for(:title) || "Your App" %&gt; - Carnegie Mellon University&lt;/title&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;%= csrf_meta_tags %&gt;
-  &lt;meta name="turbo-cache-control" content="no-cache"&gt;
-  &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
-  &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.21/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.21/css/cmu-app.css" rel="stylesheet"&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.21/js/cmu-app.js" defer&gt;&lt;/script&gt;
-  &lt;%= stylesheet_link_tag "application" %&gt;
-  &lt;%= javascript_importmap_tags %&gt;
-&lt;/head&gt;
-&lt;body class="cmu-app"&gt;
-  &lt;div id="container"&gt;
-    &lt;!-- The template's header --&gt;
-    &lt;main id="content"&gt;&lt;%= yield %&gt;&lt;/main&gt;
-    &lt;!-- The template's footer --&gt;
-  &lt;/div&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
-  &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+                  <pre
+                    class="kit-code"
+                  ><code>rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.21/packages/rails/templates/app.rb</code></pre>
+                  <p>
+                    In an app you already have, add the gem and run the generator. It asks for the
+                    site's name, tagline, tabs, roof and sign-in, or takes them as options, and
+                    writes the app's layout, settings and navigation, a page for each tab, sign-in
+                    and tests:
+                  </p>
+                  <pre class="kit-code"><code>bundle add cmu-web-kilt
+bin/rails generate cmu_web_kilt:install --site-name="Spring Carnival Sweepstakes" \
+  --tabs="Teams,Drivers,Heats" --roof=red --sign-in=entra</code></pre>
+                  <p>
+                    The site's settings are in <code>config/initializers/cmu_web_kilt.rb</code>:
+                  </p>
+                  <pre class="kit-code"><code>CmuWebKilt.configure do |config|
+  config.site_name = "Spring Carnival Sweepstakes"
+  config.tagline = "Teams, drivers, heats and roll times"
+  config.roof = :red # :white, :red or :gray
+  config.contact_email = "example@cmu.edu"
+  config.google_tag = "GTM-XXXXXXXX" # production only
+end</code></pre>
+                  <p>
+                    <strong>The app's part</strong> is a few helpers in
+                    <code>app/helpers/cmu_helper.rb</code>, each with a default:
+                    <code>cmu_user</code>, the signed-in user, and <code>cmu_nav_tree</code>, the
+                    navigation, where an item's <code>if:</code> says who sees it. Define
+                    <code>cmu_profile_path</code>, <code>cmu_search_path</code>,
+                    <code>cmu_acting_as?</code> with <code>cmu_stop_acting_path</code>, and
+                    <code>cmu_test_account</code> when the app has them. A view adds to the page's
+                    title and breadcrumbs with <code>cmu_title</code> and
+                    <code>cmu_breadcrumb</code>, and names its tab with <code>cmu_nav</code> when
+                    its address can't.
+                  </p>
+                  <p>
+                    <strong>Sign-in</strong> is Entra ID, SAML or none
+                    (<code>--sign-in=entra</code>, <code>saml</code> or <code>none</code>). Either
+                    provider lets in only Andrew accounts, by the sign-in name it vouches for, which
+                    has to end in <code>@andrew.cmu.edu</code>: from Entra ID, an account in CMU's
+                    tenant (<code>ENTRA_TENANT_ID</code>), and from SAML, eduPersonPrincipalName. An
+                    email address is never the source, since a guest account sets its own. In
+                    development and test, the
+                    <a href="accounts.html#developer-sign-in">Developer Sign-In</a> takes its place,
+                    with made-up test accounts in <code>config/test_accounts.yml</code>; an app with
+                    several ways in uses the <a href="accounts.html#sign-in-page">Sign-In Page</a>.
+                  </p>
+                  <p>
+                    <strong>The Google tag</strong> loads in production only. Run a staging copy as
+                    its own Rails environment, such as <code>staging</code>, so its visits stay out
+                    of the numbers.
+                  </p>
+                  <p>
+                    To use only the kit's files, with a layout of your own, see the gem's
+                    <a
+                      class="external"
+                      href="https://github.com/cmu-web/cmu-web-kilt/tree/0.x/packages/rails#readme"
+                      >README</a
+                    >.
+                  </p>
                   <p>
                     <strong>With Turbo,</strong> as Rails apps have by default, the template's
                     scripts run again on every page Turbo shows. The kit's script makes Escape close

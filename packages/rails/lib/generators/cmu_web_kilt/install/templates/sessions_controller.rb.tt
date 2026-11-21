@@ -1,0 +1,31 @@
+# Signing in and out. <%= @provider ? "#{@provider == 'entra_id' ? 'Entra ID' : 'SAML'} signs people in with their Andrew accounts" : 'Developer sign-in is the only way in' %><%= @provider && options[:dev_sign_in] ? ';' : '.' %>
+<% if @provider && options[:dev_sign_in] -%>
+# developer sign-in stands in for it in development and test.
+<% end -%>
+class SessionsController < ApplicationController
+<% if @provider -%>
+  # Some identity providers, such as SAML ones, send people back with a POST
+  skip_forgery_protection only: :create
+
+  def create
+    auth = request.env["omniauth.auth"]
+    andrew_id = <%= @provider == "entra_id" ? 'CmuWebKilt::AndrewAccount.from_entra(auth, tenant_id: ENV["ENTRA_TENANT_ID"])' : "CmuWebKilt::AndrewAccount.from_saml(auth)" %>
+    unless andrew_id
+      return redirect_to root_path, alert: "Sign in with your Andrew account, such as ac00@andrew.cmu.edu."
+    end
+
+    sign_in_user SignedInUser.new(andrew_id:, name: auth.info.name.presence || andrew_id,
+                                  email: "#{andrew_id}@andrew.cmu.edu", test_role: nil)
+    redirect_to safe_return_to(request.env["omniauth.origin"]) || root_path
+  end
+
+  def failure
+    redirect_to root_path, alert: "Sign-in didn't work. Try again in a few minutes."
+  end
+
+<% end -%>
+  def destroy
+    sign_out_user
+    redirect_to root_path, notice: "You signed out."
+  end
+end

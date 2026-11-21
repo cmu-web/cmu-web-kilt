@@ -6,14 +6,17 @@ Gem::Specification.new do |spec|
   spec.name = 'cmu-web-kilt'
   spec.version = CmuWebKilt::VERSION
   spec.authors = ['CMU Web']
-  spec.summary = 'Carnegie Mellon Web Kilt assets for Rails applications'
-  spec.description = 'Page and app components that extend Carnegie Mellon University\'s web template, packaged for the Rails asset pipeline.'
+  spec.summary = 'The Carnegie Mellon Web Kilt for Rails applications'
+  spec.description = 'Page and app components that extend Carnegie Mellon University\'s web template, ' \
+                     'packaged for the Rails asset pipeline, with the kit\'s page layout, an install ' \
+                     'generator and a template for new apps.'
   spec.homepage = 'https://webkilt.andrew.cmu.edu/'
   spec.license = 'BSD-3-Clause'
   spec.required_ruby_version = '>= 3.2'
 
   # css/, js/, LICENSE and VERSION are copied in from the kit by rake assets
-  spec.files = Dir['lib/**/*.rb', 'config/importmap.rb', 'css/*.css', 'js/*.js'] +
+  spec.files = Dir['lib/**/*.rb', 'lib/generators/**/templates/*', 'app/views/**/*.erb',
+                   'templates/*.rb', 'config/importmap.rb', 'css/*.css', 'js/*.js'] +
                %w[LICENSE README.md VERSION]
   spec.require_paths = ['lib']
   spec.metadata = {

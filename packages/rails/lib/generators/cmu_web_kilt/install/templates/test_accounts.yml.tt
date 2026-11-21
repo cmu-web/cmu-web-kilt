@@ -1,0 +1,10 @@
+# Test accounts for developer sign-in, one per role, each with a sentence on
+# what it can do, starting with what that person sees. Made-up people only.
+- andrew_id: ac00
+  name: Andrew Carnegie
+  role: Administrator
+  can: Everything, including settings.
+- andrew_id: mm00
+  name: Margaret Morrison
+  role: Member
+  can: Their own work, mostly to look at.

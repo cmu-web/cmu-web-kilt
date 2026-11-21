@@ -1,0 +1,14 @@
+# The site's navigation, drawn by the kit's layout (cmu-web-kilt) on every
+# page. Each item: label:, url:, and optional key:, secondary: (menu only),
+# children: and if:, a lambda run in the view that says whether the user
+# sees it. Keep to about six top-level items, and put actions such as New
+# Program on their pages, not here.
+module NavigationItemsHelper
+  def cmu_nav_tree
+    [
+<% @tabs.each_with_index do |tab, index| -%>
+      { label: <%= tab[:label].inspect %>, url: <%= tab[:route] %>_path }<%= "," if index < @tabs.size - 1 %>
+<% end -%>
+    ]
+  end
+end

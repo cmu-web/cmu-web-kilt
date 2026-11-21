@@ -1,0 +1,5 @@
+<div class="content wide">
+  <div>
+    <h1><%%= CmuWebKilt.config.site_name %></h1>
+  </div>
+</div>

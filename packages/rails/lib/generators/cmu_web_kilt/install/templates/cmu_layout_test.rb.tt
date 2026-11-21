@@ -1,0 +1,97 @@
+require "test_helper"
+
+# The kit's layout (cmu-web-kilt): the header, the navigation and sign-in
+class CmuLayoutTest < ActionDispatch::IntegrationTest
+  test "the home page has the kit's header, title and navigation" do
+    get root_path
+
+    assert_response :success
+    assert_select "title", /<%= Regexp.escape(@site_name) %>/
+    assert_select "header .roof .wordmark"
+    assert_select "footer nav#nav"
+  end
+<% @tabs.each do |tab| -%>
+
+  test <%= "the #{tab[:label]} tab opens its page".inspect %> do
+    get <%= tab[:route] %>_path
+
+    assert_response :success
+    assert_select "nav#nav li.active > a", text: <%= tab[:label].inspect %>
+  end
+<% end -%>
+<% if @provider -%>
+
+  test "an Andrew account signs in" do
+    sign_in_with <%= @provider == "entra_id" ? '"ac00@andrew.cmu.edu", tenant: ENV.fetch("ENTRA_TENANT_ID", "cmu-tenant")' : '"ac00@andrew.cmu.edu"' %>
+    get root_path
+
+    assert_select ".roof .cmu-account-open", text: "Andrew Carnegie"
+  end
+
+  test "a guest's own address doesn't sign in" do
+    sign_in_with "ac00@gmail.com"<%= ', tenant: ENV.fetch("ENTRA_TENANT_ID", "cmu-tenant")' if @provider == "entra_id" %>
+
+    assert_redirected_to root_path
+    assert_equal "Sign in with your Andrew account, such as ac00@andrew.cmu.edu.", flash[:alert]
+  end
+
+  test "an @cmu.edu alias doesn't sign in" do
+    sign_in_with "andrew.carnegie@cmu.edu"<%= ', tenant: ENV.fetch("ENTRA_TENANT_ID", "cmu-tenant")' if @provider == "entra_id" %>
+
+    assert_redirected_to root_path
+    assert_nil session[:user]
+  end
+<% if @provider == "entra_id" -%>
+
+  test "an account from another tenant doesn't sign in" do
+    sign_in_with "ac00@andrew.cmu.edu", tenant: "another-tenant"
+
+    assert_redirected_to root_path
+    assert_nil session[:user]
+  end
+<% end -%>
+<% end -%>
+<% if options[:dev_sign_in] -%>
+
+  test "developer sign-in signs in a test account" do
+    post dev_sign_in_as_path("ac00")
+    get root_path
+
+    assert_select ".roof .cmu-account-open", text: "Andrew Carnegie"
+    assert_select ".cmu-site-bar", /Test account:/
+  end
+
+  %w[staging production].each do |env|
+    test "developer sign-in isn't there in #{env}" do
+      with_rails_env(env) { get dev_sign_in_path }
+
+      assert_response :not_found
+    end
+  end
+<% end -%>
+<% if @provider -%>
+
+  private
+
+  # A sign-in as the identity provider would send it back, through OmniAuth's
+  # test mode
+  def sign_in_with(name<%= ", tenant:" if @provider == "entra_id" %>)
+    OmniAuth.config.test_mode = true
+<% if @provider == "entra_id" -%>
+    ENV["ENTRA_TENANT_ID"] ||= "cmu-tenant"
+    OmniAuth.config.mock_auth[:entra_id] = OmniAuth::AuthHash.new(
+      provider: "entra_id", uid: "#{tenant}#{name}",
+      info: { name: "Andrew Carnegie", email: name },
+      extra: { raw_info: { "tid" => tenant, "preferred_username" => name } }
+    )
+<% else -%>
+    OmniAuth.config.mock_auth[:saml] = OmniAuth::AuthHash.new(
+      provider: "saml", uid: name, info: { name: "Andrew Carnegie", eppn: name }
+    )
+<% end -%>
+    get "/auth/<%= @provider %>/callback"
+  ensure
+    OmniAuth.config.test_mode = false
+  end
+<% end -%>
+end

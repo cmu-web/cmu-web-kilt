@@ -1,0 +1,37 @@
+<%# The <head>: CMU's template first, then the kit, then the app's own styles %>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><%= cmu_document_title %></title>
+<%= render "cmu/google_tag" %>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%# The template's scripts rearrange the header and the menu when they run,
+    and Turbo runs them again on each page it shows. A page Turbo kept in its
+    cache is already rearranged, so Back fetches a fresh page instead. %>
+<meta name="turbo-cache-control" content="no-cache" />
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic"
+  rel="stylesheet"
+/>
+<link
+  href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+  media="screen"
+  rel="stylesheet"
+/>
+<link
+  href="https://www.cmu.edu/common/standard-v6/css/print.min.css"
+  media="print"
+  rel="stylesheet"
+/>
+<% if (icon = CmuWebKilt.config.favicon) %>
+  <%= favicon_link_tag icon %>
+<% else %>
+  <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+  <link href="https://www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed" />
+  <meta content="#9f0000" name="msapplication-TileColor" />
+  <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
+<% end %>
+<%= stylesheet_link_tag "cmu-cms", "cmu-app", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag(*CmuWebKilt.config.stylesheets, "data-turbo-track": "reload") %>
+<%= javascript_importmap_tags %>
+<%= yield :head %>

@@ -1,0 +1,5 @@
+<%# locals: (trail:) -%>
+<%# First in the page's content; none where a view added no steps %>
+<% if trail.present? %>
+  <div class="breadcrumbs"><%= trail %></div>
+<% end %>

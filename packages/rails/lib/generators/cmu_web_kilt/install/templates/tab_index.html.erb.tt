@@ -1,0 +1,8 @@
+<%% cmu_title <%= @tab[:label].inspect %> %>
+<%% cmu_breadcrumb <%= @tab[:label].inspect %> %>
+
+<div class="content wide">
+  <div>
+    <h1><%= ERB::Util.html_escape(@tab[:label]) %></h1>
+  </div>
+</div>

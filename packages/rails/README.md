@@ -1,20 +1,47 @@
 # Use the Kit in Rails
 
-Use the asset gem when you want Rails to serve and fingerprint the kit's
-files alongside your application's assets. It registers the stylesheets
-and browser script and, for importmap apps, supplies a pin. Your layout
-still loads CMU's template and decides which files to include.
+The `cmu-web-kilt` gem serves the kit's files through the Rails asset
+pipeline and, for importmap apps, supplies a pin. It also brings the kit's
+whole page: a layout with CMU's header and footer, the navigation,
+breadcrumbs, flash messages and sign-in, an install generator that sets an
+app up on it, and a template for new apps.
 
 The gem and its source repository are both named `cmu-web-kilt`; the gem
 lives in the repository's `packages/rails/`. Each kit release publishes the
 gem at the same version, with the same files the CDN serves.
+
+## Start an App
+
+A new app starts from the kit's template. It adds the gem, runs the install
+generator and sets up CMU Web Style (`cmu-web-style`), the shared RuboCop
+and erb_lint settings:
+
+```console
+rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.21/packages/rails/templates/app.rb
+```
+
+In an app you already have, add the gem and run the generator. It asks for
+the site's name, tagline, tabs, roof and sign-in (Entra ID, SAML or none),
+or takes them as options, and writes the app's layout, settings,
+navigation, a page for each tab, sign-in, developer sign-in and tests:
+
+```console
+bundle add cmu-web-kilt
+bin/rails generate cmu_web_kilt:install --site-name="Spring Carnival Sweepstakes" \
+  --tabs="Teams,Drivers,Heats" --roof=red --sign-in=entra
+```
+
+The [Rails installation guide](https://webkilt.andrew.cmu.edu/0/install.html#rails)
+covers the settings, the helpers an app defines and sign-in. The rest of
+this README is for an app that keeps its own layout and uses only the
+kit's files.
 
 ## Connect Your Application
 
 Add the gem to your application's `Gemfile`:
 
 ```ruby
-gem 'cmu-web-kilt', '~> 0.6'
+gem 'cmu-web-kilt', '~> 0.8'
 ```
 
 Run `bundle install` and restart Rails. Keep `Gemfile.lock` with your
@@ -101,10 +128,14 @@ cache (0.5.0 and later).
 ## Compatibility and Integration Coverage
 
 The gem supports Ruby 3.2 and later with Rails 7.2 through 8.x. CI tests
-Rails 7.2, 8.0 and 8.1 with Propshaft, on Ruby 3.2 and 3.4. The suite builds and unpacks the gem, serves its
-assets and precompiles them, and checks importmap pins and application
-overrides. It also checks booting without importmap or an asset pipeline.
-Booting without a pipeline does not make asset helpers available.
+Rails 7.2, 8.0 and 8.1 with Propshaft, on Ruby 3.2 and 3.4. The suite builds
+and unpacks the gem, serves its assets and precompiles them, and checks
+importmap pins and application overrides. It also checks booting without
+importmap or an asset pipeline; booting without a pipeline does not make
+asset helpers available. It renders the layout in a small app (the site
+name, the roof, the navigation's current item and hidden sections, and the
+Google tag in production only), runs the install generator with each
+sign-in choice, and checks that only Andrew accounts sign in.
 
 The engine registers Sprockets assets too, but Sprockets is not covered by
 the integration suite. Run your application's own precompilation and browser

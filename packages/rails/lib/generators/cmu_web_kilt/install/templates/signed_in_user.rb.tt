@@ -1,0 +1,16 @@
+# Who's signed in, kept in the session: someone from the identity provider,
+# or a test account from developer sign-in. An app with its own user model
+# looks its user up in SessionsController#create and CmuSignIn instead.
+SignedInUser = Data.define(:andrew_id, :name, :email, :test_role) do
+  def self.from_session(value)
+    return unless value.is_a?(Hash)
+
+    attributes = value.symbolize_keys
+    new(andrew_id: attributes[:andrew_id], name: attributes[:name],
+        email: attributes[:email], test_role: attributes[:test_role])
+  end
+
+  def to_session
+    to_h.stringify_keys
+  end
+end

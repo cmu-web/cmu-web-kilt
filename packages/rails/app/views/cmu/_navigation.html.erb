@@ -1,0 +1,8 @@
+<%# locals: (user:, items:, current:) -%>
+<%# nav#nav: the account first (menu only), then the sections %>
+<nav id="nav">
+  <ul>
+    <%= render "cmu/account_menu", user: %>
+    <%= render partial: "cmu/nav_item", collection: items, as: :item, locals: { current: } %>
+  </ul>
+</nav>

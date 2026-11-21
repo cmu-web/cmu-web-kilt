@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<%# The kit's Sign-In Page layout (accounts.html#sign-in-page), for a sign-in
+    or developer sign-in page: a roof with only the wordmark, the page and a
+    small footer. %>
+<html lang="en">
+  <head>
+    <%= render "cmu/head" %>
+  </head>
+  <body class="no-js cmu-app">
+    <div id="container">
+      <header>
+        <div class="roof<%= " #{CmuWebKilt.config.roof_class}" if CmuWebKilt.config.roof_class %>">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+          </div>
+        </div>
+      </header>
+      <%= yield %>
+      <div class="cmu-sign-in-footer" role="contentinfo">
+        <ul>
+          <% if (email = CmuWebKilt.config.contact_email) %>
+            <li>Need help? Email <%= mail_to email %></li>
+          <% end %>
+          <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+        </ul>
+      </div>
+      <%# No menu, but the template's script expects one %>
+      <nav id="nav" hidden><ul></ul></nav>
+    </div>
+    <%= render "cmu/template_scripts" %>
+  </body>
+</html>

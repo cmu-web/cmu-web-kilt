@@ -1,0 +1,4 @@
+class <%= @tab[:route].camelize %>Controller < ApplicationController
+  def index
+  end
+end

@@ -1,0 +1,28 @@
+# Developer sign-in (the kit's Developer Sign-In): in development and test,
+# Sign In comes here instead of single sign-on. Pick a test account from
+# config/test_accounts.yml and go back to the page you were on. The routes
+# are drawn only there, and this refuses everywhere else too.
+class DevSessionsController < ApplicationController
+  before_action { head :not_found unless Rails.env.local? }
+  layout "cmu/sign_in"
+
+  def new
+    @accounts = test_accounts
+    @return_to = safe_return_to(params[:return_to].presence || request.referer)
+  end
+
+  def create
+    account = test_accounts.find { |a| a["andrew_id"] == params[:andrew_id] }
+    return head(:not_found) unless account
+
+    sign_in_user SignedInUser.new(andrew_id: account["andrew_id"], name: account["name"],
+                                  email: "#{account['andrew_id']}@andrew.cmu.edu", test_role: account["role"])
+    redirect_to safe_return_to(params[:return_to]) || root_path
+  end
+
+  private
+
+  def test_accounts
+    YAML.load_file(Rails.root.join("config/test_accounts.yml"))
+  end
+end

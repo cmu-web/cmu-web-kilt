@@ -1,0 +1,19 @@
+<%# locals: (user:) -%>
+<%# First in the menu: the signed-in user's name, their page and Sign Out, or
+    Sign In. The template shows li.secondary only in the menu. %>
+<li class="secondary cmu-account-menu">
+  <% if user %>
+    <a class="cmu-account-name"><%= render "cmu/initials", name: user.name %><%= user.name %></a>
+    <% if (profile = cmu_profile_path) %>
+      <%= link_to "Profile", profile %>
+    <% end %>
+    <% if cmu_route?(:logout) %>
+      <%# A button that sends DELETE, so another site can't sign the user out;
+          the kit styles it like the menu's links. The app's routes keep GET
+          too, for a plain link. %>
+      <%= button_to main_app.logout_path, method: :delete, form: { data: { turbo: false } } do %>Sign Out<% end %>
+    <% end %>
+  <% elsif cmu_route?(:login) %>
+    <%= button_to "Sign In", main_app.login_path, class: "btn ghost small", form: { data: { turbo: false } } %>
+  <% end %>
+</li>

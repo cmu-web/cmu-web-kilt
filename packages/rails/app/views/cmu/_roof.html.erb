@@ -1,0 +1,37 @@
+<%# locals: (user:) -%>
+<%# The roof: the wordmark, the app's search, the account and the menu
+    button, last. Signed in, the name opens the menu. Signed out, Sign In is
+    a button in a form, since sign-in starts with a POST. %>
+<% roof = CmuWebKilt.config.roof_class %>
+<div class="roof<%= " #{roof}" if roof %>">
+  <div>
+    <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+    <% if user && (search = cmu_search_path) %>
+      <%= form_with url: search, method: :get, class: "search search-form" do %>
+        <label
+          ><span>Search</span>
+          <input aria-label="Search" name="q" placeholder="Search"
+        /></label>
+        <button title="Search" type="submit">Search</button>
+      <% end %>
+    <% end %>
+    <% if user %>
+      <a
+        class="cmu-account cmu-account-open"
+        href="#nav"
+        aria-label="Menu for <%= user.name %>"
+        onclick="document.querySelector('.roof .menu-btn').click(); return false;"
+        ><%= render "cmu/initials", name: user.name %><%= user.name %></a
+      >
+    <% elsif cmu_route?(:login) %>
+      <%= button_to "Sign In", main_app.login_path, class: "cmu-account", form: { data: { turbo: false } } %>
+    <% end %>
+    <button
+      aria-label="toggle menu"
+      aria-pressed="false"
+      class="menu-btn"
+      href="#nav"
+      ><b>&#8212;</b><b>&#8212;</b><b>&#8212;</b></button
+    >
+  </div>
+</div>

@@ -204,8 +204,10 @@ This asset is independent of the Open Graph image, `images/preview.jpg`.
 
 ## Work on the Rails Package
 
-The gem lives in `packages/rails/`. For engine or packaging changes,
-install Ruby and Bundler, then run:
+The gem lives in `packages/rails/`: the asset engine, the kit's layout and
+its helpers (`app/views/`, `lib/cmu_web_kilt/`), the install generator
+(`lib/generators/`) and the template for new apps (`templates/app.rb`). For
+changes to any of them, install Ruby and Bundler, then run:
 
 ```bash
 cd packages/rails
@@ -221,6 +223,23 @@ gem uses the repository's files again. See
 [the gem's README](packages/rails/README.md#compatibility-and-integration-coverage)
 for integration coverage and [the Check Code workflow](.github/workflows/check-code.yml)
 for the test matrix.
+
+The tests render the layout in a small app (`test/layout_app.rb`) and run
+the generator in a throwaway one (`test/generator_app.rb`) without
+installing anything. Before a release that changes the layout, the
+generator or the template, also make a real app from the template with the
+checkout, and run its own checks:
+
+```bash
+CMU_WEB_KILT_PATH="$PWD/packages/rails" CMU_WEB_STYLE_PATH="$PWD/../cmu-web-style" \
+  CMU_SITE_NAME="Spring Carnival Sweepstakes" CMU_TABS="Teams,Drivers,Heats" CMU_SIGN_IN=entra \
+  rails new /tmp/sweepstakes -m packages/rails/templates/app.rb
+cd /tmp/sweepstakes && bin/rails test && bin/rubocop && bundle exec erb_lint --lint-all
+```
+
+`CMU_WEB_STYLE_PATH` points at a checkout of `cmu-web-style`; leave it out
+to use the released gem. The template's `KILT_VERSION` and its address in
+the docs are set by `npm run release`.
 
 ## Publish the Docs
 

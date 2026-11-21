@@ -1,0 +1,4 @@
+class Current < ActiveSupport::CurrentAttributes
+  # The signed-in user, set by CmuSignIn on each request
+  attribute :user
+end

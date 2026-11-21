@@ -1,0 +1,17 @@
+# The app's side of the Carnegie Mellon Web Kilt's layout (cmu-web-kilt).
+# The gem has a default for each hook (CmuWebKilt::HooksHelper); define one
+# here to replace it, such as cmu_profile_path or cmu_search_path.
+module CmuHelper
+  # The signed-in user, or nil when signed out
+  def cmu_user
+    Current.user
+  end
+<% if options[:dev_sign_in] -%>
+
+  # The test account signed in through developer sign-in, for the gold bar
+  def cmu_test_account
+    user = Current.user
+    { name: user.name, role: user.test_role } if user&.test_role
+  end
+<% end -%>
+end
