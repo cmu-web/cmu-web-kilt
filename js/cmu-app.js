@@ -1393,8 +1393,41 @@
 
   startCountdowns(document);
   startTabs(document);
-  // Annotated Image pins: a pin links to its callout. When the callout is
-  // already in view, outline it in place instead of jumping the page there
+  // Annotated Image pins: a pin links to its callout. Pointing at a pin (or
+  // focusing it) lights its callout, and pointing at a callout lights its
+  // pin. Clicking a pin whose callout is in view toggles the callout's color
+  // instead of jumping the page there; out of view, the link scrolls to it.
+  function annotatedPair(target) {
+    var pin = target.closest && target.closest("a.cmu-annotated-pin");
+    if (pin) return { pin: pin, note: document.getElementById(pin.hash.slice(1)) };
+    var note = target.closest && target.closest(".cmu-annotated-notes > li[id]");
+    if (!note) return null;
+    var box = note.closest(".cmu-annotated");
+    return {
+      note: note,
+      pin: box && box.querySelector('a.cmu-annotated-pin[href="#' + note.id + '"]'),
+    };
+  }
+  [
+    ["mouseover", true],
+    ["mouseout", false],
+    ["focusin", true],
+    ["focusout", false],
+  ].forEach(function (pair) {
+    document.addEventListener(pair[0], function (e) {
+      var found = annotatedPair(e.target);
+      if (!found || !found.pin || !found.note) return;
+      // Moving within the pin or the callout isn't leaving it
+      if (
+        !pair[1] &&
+        e.relatedTarget &&
+        (found.pin.contains(e.relatedTarget) || found.note.contains(e.relatedTarget))
+      )
+        return;
+      found.pin.classList.toggle("cmu-annotated-lit", pair[1]);
+      found.note.classList.toggle("cmu-annotated-lit", pair[1]);
+    });
+  });
   document.addEventListener(
     "click",
     function (e) {
@@ -1407,11 +1440,7 @@
       // Capture, so the template's own scrolling for # links never sees it
       e.preventDefault();
       e.stopPropagation();
-      var list = note.parentElement;
-      list.querySelectorAll(".cmu-annotated-current").forEach(function (li) {
-        li.classList.remove("cmu-annotated-current");
-      });
-      note.classList.add("cmu-annotated-current");
+      note.classList.toggle("cmu-annotated-current");
     },
     true,
   );
