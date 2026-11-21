@@ -125,17 +125,15 @@
             <h2 id="try-header">The Header</h2>
             <p>
               Change this site's own header to see the options, then open the menu to see what moves
-              there. Your choices stay as you browse the rest of these pages, until you reset them
-              or close the tab.
+              there. Your choices stay as you browse the rest of these pages, until you reset them.
             </p>
-          </div>
-        </div>
-        <!-- prettier-ignore -->
-        <div class="content">
-          <div>
             <form class="kit-try">
               <fieldset>
                 <legend>Roof</legend>
+                <p class="cmu-hint">
+                  <code>red invert</code>, <code>darkgrey invert</code> or no class. Cascade sets it
+                  in the setup block.
+                </p>
                 <ul>
                   <li>
                     <input
@@ -165,9 +163,16 @@
                     /><label for="kit-try-roof-white">White</label>
                   </li>
                 </ul>
+                <p class="kit-try-more">
+                  <a class="cta" href="#skeleton">See the Roof's Markup</a>
+                </p>
               </fieldset>
               <fieldset>
                 <legend>Account Status</legend>
+                <p class="cmu-hint">
+                  Sign In or the user's name, in the roof; in the menu on phones. Acting as another
+                  user frames the window.
+                </p>
                 <ul>
                   <li>
                     <input
@@ -196,34 +201,12 @@
                       data-kit-key="account"
                     /><label for="kit-try-acc-in">Signed In</label>
                     <div class="cmu-sub-options">
+                      <select id="kit-try-picture" aria-label="Picture" data-kit-key="photo">
+                        <option value="off">No Picture</option>
+                        <option value="on">Photo</option>
+                        <option value="initials">Initials</option>
+                      </select>
                       <ul>
-                        <li>
-                          <input
-                            type="radio"
-                            name="kit-try-picture"
-                            id="kit-try-pic-none"
-                            value="off"
-                            data-kit-key="photo"
-                          /><label for="kit-try-pic-none">No Picture</label>
-                        </li>
-                        <li>
-                          <input
-                            type="radio"
-                            name="kit-try-picture"
-                            id="kit-try-photo"
-                            value="on"
-                            data-kit-key="photo"
-                          /><label for="kit-try-photo">Photo</label>
-                        </li>
-                        <li>
-                          <input
-                            type="radio"
-                            name="kit-try-picture"
-                            id="kit-try-initials"
-                            value="initials"
-                            data-kit-key="photo"
-                          /><label for="kit-try-initials">Initials</label>
-                        </li>
                         <li>
                           <input type="checkbox" id="kit-try-prefs" data-kit-key="prefs" /><label
                             for="kit-try-prefs"
@@ -233,10 +216,22 @@
                       </ul>
                     </div>
                   </li>
+                  <li>
+                    <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
+                      for="kit-try-acting"
+                      >Acting as Another User</label
+                    >
+                  </li>
                 </ul>
+                <p class="kit-try-more">
+                  <a class="cta" href="accounts.html#account">See Account Status</a>
+                </p>
               </fieldset>
               <fieldset>
                 <legend>Extras</legend>
+                <p class="cmu-hint">
+                  A logo beside the site's name, and search left of the menu button.
+                </p>
                 <ul>
                   <li>
                     <input type="checkbox" id="kit-try-logo" data-kit-key="logo" /><label
@@ -250,61 +245,51 @@
                       >Search</label
                     >
                   </li>
-                  <li>
-                    <input type="checkbox" id="kit-try-acting" data-kit-key="acting" /><label
-                      for="kit-try-acting"
-                      >Acting as Another User</label
-                    >
-                  </li>
-                  <li>
-                    <input type="checkbox" id="kit-try-sitebar" data-kit-key="sitebar" /><label
-                      for="kit-try-sitebar"
-                      >Site Bar</label
-                    >
-                  </li>
-                  <li>
-                    <input type="checkbox" id="kit-try-tape" data-kit-key="tape" /><label
-                      for="kit-try-tape"
-                      >Caution Tape</label
-                    >
-                  </li>
                 </ul>
+                <p class="kit-try-more">
+                  <a class="cta" href="#site-name">Continue to Site Name</a>
+                </p>
               </fieldset>
-              <p><button type="button" class="btn ghost" data-kit-reset>Reset</button></p>
+              <fieldset>
+                <legend>Site Bar</legend>
+                <p class="cmu-hint">
+                  Above the roof, for a state that lasts until someone turns it off.
+                </p>
+                <select id="kit-try-sitebar" aria-label="Site Bar" data-kit-key="sitebar">
+                  <option value="off">None</option>
+                  <optgroup label="Site Bar">
+                    <option value="preview">Ghost Button</option>
+                    <option value="year">Call to Action</option>
+                    <option value="heats">Button and Call to Action</option>
+                  </optgroup>
+                  <optgroup label="Caution Tape">
+                    <option value="tape">Alone</option>
+                    <option value="account">With a Test Account</option>
+                  </optgroup>
+                </select>
+                <p class="cmu-hint kit-try-bar-note" aria-live="polite"></p>
+                <p class="kit-try-more">
+                  <a class="cta" href="messages.html#site-bar">See the Site Bar</a>
+                </p>
+              </fieldset>
+              <div class="kit-try-code">
+                <p>The HTML for the header you've picked:</p>
+                <div class="cmu-peek" style="--cmu-peek-lines: 3">
+                  <pre class="kit-code"><code data-kit-header-code></code></pre>
+                  <details class="cmu-more">
+                    <summary>
+                      <span class="cmu-more-link"
+                        ><span class="cmu-more-closed">See the Whole Header</span
+                        ><span class="cmu-more-open">Hide the Whole Header</span></span
+                      >
+                    </summary>
+                  </details>
+                </div>
+              </div>
+              <p class="kit-try-reset">
+                <button type="button" class="btn" data-kit-reset>Reset the Header</button>
+              </p>
             </form>
-          </div><div class="sidebar">
-            <div class="left-rule">
-              <h2>The Parts</h2>
-              <ul>
-                <li>
-                  <strong>Roof:</strong> CMU's wordmark strip, in <code>red invert</code>,
-                  <code>darkgrey invert</code> or white, with no color class. Cascade sets it in the
-                  setup block.
-                </li>
-                <li>
-                  <strong>Logo:</strong> beside the site's name; below it on phones. See
-                  <a href="#site-name">Site Name</a>.
-                </li>
-                <li>
-                  <strong>Search:</strong> left of the menu button. See
-                  <a href="#search">Site Search</a>.
-                </li>
-                <li>
-                  <strong>Account:</strong> Sign In or the user's name in the roof; in the menu only
-                  on phones. See <a href="accounts.html#account">Account Status</a>.
-                </li>
-                <li>
-                  <strong>Acting as another user:</strong> frames the window. See
-                  <a href="accounts.html#acting-as">Acting as Another User</a>.
-                </li>
-                <li>
-                  <strong>Site bar:</strong> a gold strip above the roof, for a state such as a test account in development, with a call to action. See <a href="messages.html#site-bar">Site Bar</a>.
-                </li>
-                <li>
-                  <strong>Caution tape:</strong> a strip with no words above everything else, for a development or staging copy. See <a href="messages.html#site-bar">Site Bar</a>.
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
         <div class="content wide">
@@ -660,7 +645,7 @@
               <a href="sidebars.html#on-this-page">On This Page</a> box at the top of the sidebar,
               as on <a href="conventions.html">Conventions</a>, or, when the content uses the full
               width, in an
-              <a href="sections.html#on-this-page-bank">On This Page link bank</a> under the intro,
+              <a href="pathways.html#on-this-page-bank">On This Page link bank</a> under the intro,
               as on <a href="forms.html">Forms</a>. Leave them off pages short enough to see at a
               glance.
             </p>
@@ -1107,9 +1092,11 @@
               <li>
                 <a href="components.html">Components</a>
                 <ul>
-                  <li><a href="tops.html">Page Tops</a></li>
                   <li><a href="sections.html">Page Sections</a></li>
+                  <li><a href="pathways.html">Pathways</a></li>
+                  <li><a href="buttons.html">Buttons</a></li>
                   <li><a href="content.html">Content</a></li>
+                  <li><a href="images.html">Images and Video</a></li>
                   <li><a href="sidebars.html">Sidebars</a></li>
                   <li><a href="people.html">People</a></li>
                   <li><a href="news.html">News and Events</a></li>

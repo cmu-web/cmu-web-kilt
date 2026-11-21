@@ -1,5 +1,71 @@
 // Docs only: show each live example's markup under it, so every example is
 // written once. Elements marked data-demo-skip are left out of the code.
+
+// Sections that moved to another page: a link to one on its old page goes on
+// to its new page, so old links keep working
+var MOVED = {
+  "content.html": {
+    "buttons.html": [
+      "button-note",
+      "buttons",
+      "buttons-on-color",
+      "buttons-on-white",
+      "cta-row",
+      "email",
+      "link-button",
+    ],
+    "images.html": [
+      "captions",
+      "captions-beside",
+      "captions-under",
+      "embed",
+      "example",
+      "link-preview-card",
+      "screenshots",
+      "screenshots-browser",
+      "screenshots-phone",
+      "screenshots-side",
+      "transparent",
+      "videos",
+      "videos-alone",
+      "videos-beside",
+      "zoom",
+    ],
+  },
+  "sections.html": {
+    "messages.html": [
+      "announcements",
+      "announcements-audience",
+      "announcements-centered",
+      "announcements-cta",
+      "announcements-heading",
+      "announcements-notice",
+      "closable",
+      "closable-button",
+      "closable-text",
+    ],
+    "pathways.html": [
+      "big-buttons",
+      "i-want",
+      "link-bank",
+      "on-this-page-bank",
+      "paths",
+      "qa",
+      "question-mark-card",
+    ],
+  },
+};
+function toMoved() {
+  var id = location.hash.slice(1);
+  if (!id || document.getElementById(id)) return;
+  var here = MOVED[location.pathname.split("/").pop()] || {};
+  Object.keys(here).forEach(function (page) {
+    if (here[page].indexOf(id) >= 0) location.replace(page + location.hash);
+  });
+}
+toMoved();
+window.addEventListener("hashchange", toMoved);
+
 // A section's background classes: its color, invert for dark ones and its pattern
 var BAND = [
   "grey",
@@ -878,7 +944,8 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
 });
 
 // Try the header (Page Layout): the roof's color, the search box, signed in
-// or out, acting as another user and a site bar, on the real header of every
+// or out, acting as another user, a site bar and caution tape (alone, or
+// above the test account's bar), on the real header of every
 // docs page. Choices last while you browse the docs, until Reset.
 (function () {
   var roof = document.querySelector(".roof");
@@ -891,7 +958,6 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     prefs: "on",
     acting: "off",
     sitebar: "off",
-    tape: "off",
     logo: "off",
   };
   var state = Object.assign({}, DEFAULTS);
@@ -900,24 +966,65 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
   } catch {
     /* storage can be blocked; keep going */
   }
+  var siteBarNames = ["preview", "year", "heats", "tape", "account"];
+  // Older choices: the site bar was on or off (on was the test account),
+  // and the tape was a checkbox of its own
+  if (state.sitebar === "on") state.sitebar = "account";
+  if (state.tape === "on" && state.sitebar === "off") state.sitebar = "tape";
+  delete state.tape;
+  // A link can pick the site bar: layout.html?sitebar=account#try-header
+  var asked = new URLSearchParams(location.search).get("sitebar");
+  if (asked === "off" || siteBarNames.indexOf(asked) >= 0) {
+    state.sitebar = asked;
+    try {
+      sessionStorage.setItem("kit-header", JSON.stringify(state));
+    } catch {
+      /* storage can be blocked; keep going */
+    }
+  }
   // "Signed in, with photo" used to be a choice of its own
   if (state.account === "photo") {
     state.account = "in";
     state.photo = "on";
   }
   var actingBar =
-    '<form class="cmu-acting-bar kit-try-added"><p>You\u2019re acting as Andrew Carnegie (ac00)</p>' +
+    '<form class="cmu-acting-bar kit-try-added" method="post" action="/stop-acting"><p>You\u2019re acting as Andrew Carnegie (ac00)</p>' +
     '<button type="submit" class="btn ghost small">Stop Acting as Andrew Carnegie</button></form>';
-  var siteBar =
-    '<div class="cmu-site-bar kit-try-added"><p><strong>Test account:</strong> ' +
-    "Margaret Morrison, Team Captain.</p>" +
-    '<p><a class="cta" href="accounts.html#developer-sign-in">Switch Test Account</a></p></div>';
+  // The Site Bar's examples (Messages), by the Try It choice
+  var siteBars = {
+    preview:
+      "<p><strong>Preview:</strong> you\u2019re seeing changes that aren\u2019t published yet.</p>" +
+      '<p><button type="button" class="ghost" data-kit-bar-off>Stop Previewing</button></p>',
+    year:
+      "<p><strong>Showing the 2026 races.</strong></p>" +
+      '<p><a class="cta" href="messages.html#site-bar" data-kit-href="/races/years">Choose Another Year</a></p>',
+    heats:
+      "<p><strong>Showing past heats</strong> from the last three years.</p>" +
+      '<p><button type="button" data-kit-bar-off>Hide All</button>' +
+      '<a class="cta" href="messages.html#site-bar" data-kit-href="/heats/years">Choose Which Years to Show</a></p>',
+    account:
+      "<p><strong>Test account:</strong> Margaret Morrison, Team Captain.</p>" +
+      '<p><a class="cta" href="accounts.html#developer-sign-in" data-kit-href="/dev/sign_in">Switch Test Account</a></p>',
+  };
+  // Under the menu, the example each choice shows
+  var siteBarNotes = {
+    off: "",
+    preview: "A preview. The ghost button ends it.",
+    year: "A year's results. The call to action goes to where you choose another.",
+    heats: "Past heats. The button hides them; the call to action chooses which.",
+    tape: "A development or staging copy, on every page.",
+    account: "A test account in development. The call to action switches it.",
+  };
   var tapeBar =
     '<div class="cmu-site-bar cmu-site-bar--tape kit-try-added" aria-hidden="true"></div>';
   var searchForm =
-    '<form action="https://search.cmu.edu" class="search search-form kit-try-added" method="get">' +
+    '<form action="https://search.cmu.edu" class="search search-form kit-try-added" method="get" name="customForm">' +
+    '<input name="form_id" type="hidden" value="basic-form">' +
+    '<input name="site" type="hidden" value="">' +
+    '<input name="ie" type="hidden" value="UTF-8">' +
     '<label><span>Search</span> <input aria-label="Search" name="q" placeholder="Search"></label>' +
-    '<button title="Submit" type="submit">Search</button></form>';
+    '<button title="Submit" type="submit">Search</button>' +
+    '<label class="searchSite"><span>Search this site only</span> <input checked name="site" type="checkbox" value="your-site-id"></label></form>';
   function html(h) {
     var t = document.createElement("template");
     t.innerHTML = h;
@@ -939,7 +1046,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       sitename.appendChild(
         html(
           // A placeholder from PlaceMellon: Scotty on white, about as tall as the name and h2
-          '<a class="kit-try-logo" href="https://placemellon.andrew.cmu.edu/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty=bust" width="110" height="110" alt="Logo placeholder"></a>',
+          '<a class="kit-try-logo" href="https://placemellon.andrew.cmu.edu/" data-kit-href="https://www.cmu.edu/your-unit/"><img src="https://placemellon.andrew.cmu.edu/110.svg?scotty=bust" data-kit-src="/images/your-logo.png" width="110" height="110" alt="Logo placeholder" data-kit-alt="Your Unit"></a>',
         ),
       );
     } else if (!on && wrap) {
@@ -947,6 +1054,100 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       while (wrap.firstChild) sitename.insertBefore(wrap.firstChild, wrap);
       wrap.remove();
     }
+  }
+  // The HTML for the header as picked, from the pieces on the page: each
+  // copied, without the Try It's own classes and with its real address
+  // (data-kit-href, data-kit-src, data-kit-alt) in place of the docs' own
+  var BLOCKS = ["DIV", "FORM", "UL", "LI"];
+  function clean(el) {
+    var c = el.cloneNode(true);
+    [c].concat(Array.prototype.slice.call(c.querySelectorAll("*"))).forEach(function (n) {
+      n.classList.remove("kit-try-added", "kit-try-logo");
+      if (!n.classList.length) n.removeAttribute("class");
+      ["href", "src", "alt"].forEach(function (a) {
+        var real = n.getAttribute("data-kit-" + a);
+        if (real !== null) n.setAttribute(a, real);
+        n.removeAttribute("data-kit-" + a);
+      });
+      n.removeAttribute("data-kit-bar-off");
+    });
+    return c;
+  }
+  function code(el, pad) {
+    // An attribute with no value is written bare (checked, not checked="")
+    var tag = el.outerHTML.replace(/ (checked|hidden|disabled)=""/g, " $1");
+    if (BLOCKS.indexOf(el.tagName) < 0 || !el.children.length) return pad + tag;
+    var open = tag.slice(0, tag.indexOf(">") + 1);
+    return [pad + open]
+      .concat(
+        Array.prototype.map.call(el.children, function (child) {
+          return code(child, pad + "  ");
+        }),
+      )
+      .concat(pad + "</" + el.tagName.toLowerCase() + ">")
+      .join("\n");
+  }
+  function headerCode() {
+    var header = document.querySelector("#container > header");
+    var piece = function (sel) {
+      var el = header && header.querySelector(sel);
+      return el ? clean(el) : null;
+    };
+    var pad = "      ";
+    var roofClass = { red: "roof red invert", gray: "roof darkgrey invert", white: "roof" }[
+      state.roof
+    ];
+    var lines = ["<header>"];
+    var tape = piece(".cmu-site-bar--tape"),
+      bar = piece(".cmu-site-bar:not(.cmu-site-bar--tape)");
+    if (tape) lines.push(code(tape, "  "));
+    if (bar) lines.push(code(bar, "  "));
+    lines.push('  <div class="' + roofClass + '">', "    <div>");
+    lines.push(
+      pad + '<a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>',
+    );
+    var search = piece(".roof .search-form"),
+      account = piece(".roof .cmu-account");
+    if (search) lines.push(code(search, pad));
+    if (account) lines.push(code(account, pad));
+    lines.push(
+      pad +
+        '<button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav"><b>&#8212;</b><b>&#8212;</b><b>&#8212;</b></button>',
+      "    </div>",
+      "  </div>",
+      '  <div id="sitename">',
+    );
+    var name = [
+      '<span class="sitetitle"><a href="/">Buggy</a></span>',
+      "<h2>Spring Carnival Sweepstakes</h2>",
+    ];
+    var logo = piece(".kit-try-logo");
+    if (logo)
+      lines.push(
+        "    <div>",
+        "      " + name[0],
+        "      " + name[1],
+        "    </div>" + logo.outerHTML,
+      );
+    else lines.push("    " + name[0], "    " + name[1]);
+    lines.push("  </div>", "</header>");
+    var found = document.querySelector(".cmu-account-menu"),
+      item = found && clean(found);
+    if (item) lines.push("", "<!-- First in the footer's nav#nav > ul -->", code(item, ""));
+    var acting = document.querySelector("body > .cmu-acting-bar");
+    if (acting)
+      lines.push(
+        "",
+        "<!-- Acting as another user: cmu-acting-as on <body>, and at its end -->",
+        code(clean(acting), ""),
+      );
+    return lines.join("\n");
+  }
+  function showCode() {
+    document.querySelectorAll("[data-kit-header-code]").forEach(function (c) {
+      c.textContent = headerCode();
+      lineUpCode(c);
+    });
   }
   function apply() {
     document.querySelectorAll(".kit-try-added").forEach(function (el) {
@@ -966,23 +1167,22 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       var inn = state.account === "in",
         pic =
           state.photo === "on"
-            ? '<img class="cmu-profile-picture" src="images/scotty.png" alt="">'
+            ? '<img class="cmu-profile-picture" src="images/scotty.png" data-kit-src="/users/ac00/photo.jpg" alt="">'
             : state.photo === "initials"
               ? '<i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true">AC</i>'
               : "",
-        prefs = state.prefs === "on" ? '<a href="accounts.html#preferences">Preferences</a>' : "";
+        prefs =
+          state.prefs === "on"
+            ? '<a href="accounts.html#preferences" data-kit-href="/preferences">Preferences</a>'
+            : "";
       var a = html(
         inn
-          ? '<a class="cmu-account cmu-account-open kit-try-added" href="#nav">' +
+          ? '<a class="cmu-account cmu-account-open kit-try-added" href="#nav" aria-label="Menu for Andrew Carnegie"' +
+              " onclick=\"document.querySelector('.roof .menu-btn').click(); return false;\">" +
               pic +
               "Andrew Carnegie</a>"
-          : '<a class="cmu-account kit-try-added" href="layout.html#try-header">Sign In</a>',
+          : '<a class="cmu-account kit-try-added" href="layout.html#try-header" data-kit-href="/login">Sign In</a>',
       );
-      if (inn)
-        a.addEventListener("click", function (e) {
-          e.preventDefault();
-          roof.querySelector(".menu-btn").click();
-        });
       row.appendChild(a);
       menuLists().forEach(function (ul) {
         ul.prepend(
@@ -992,16 +1192,28 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
                   pic +
                   "Andrew Carnegie</a>" +
                   prefs +
-                  '<a href="layout.html#try-header">Sign Out</a></li>'
-              : '<li class="secondary cmu-account-menu kit-try-added"><a href="layout.html#try-header">Sign In</a></li>',
+                  '<a href="layout.html#try-header" data-kit-href="/logout">Sign Out</a></li>'
+              : '<li class="secondary cmu-account-menu kit-try-added"><a href="layout.html#try-header" data-kit-href="/login">Sign In</a></li>',
           ),
         );
       });
     }
     // The gold bar, then the tape above it: the tape is always first
     var header = document.querySelector("#container > header");
-    if (header && state.sitebar === "on") header.prepend(html(siteBar));
-    if (header && state.tape === "on") header.prepend(html(tapeBar));
+    if (header && siteBars[state.sitebar]) {
+      var sb = html(
+        '<div class="cmu-site-bar kit-try-added">' + siteBars[state.sitebar] + "</div>",
+      );
+      // Its button ends the state, as on a real site
+      sb.querySelectorAll("[data-kit-bar-off]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          set("sitebar", "off");
+        });
+      });
+      header.prepend(sb);
+    }
+    if (header && (state.sitebar === "account" || state.sitebar === "tape"))
+      header.prepend(html(tapeBar));
     var acting = state.acting === "on";
     document.body.classList.toggle("cmu-acting-as", acting);
     if (acting) {
@@ -1012,10 +1224,16 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       });
       document.body.appendChild(bar);
     }
-    // The form shows the state: radio buttons by value, checkboxes on or off
+    // The form shows the state: a menu and radio buttons by value,
+    // checkboxes on or off
     document.querySelectorAll("[data-kit-key]").forEach(function (input) {
       var v = state[input.dataset.kitKey];
-      input.checked = input.type === "radio" ? v === input.value : v === "on";
+      if (input.tagName === "SELECT") input.value = v;
+      else input.checked = input.type === "radio" ? v === input.value : v === "on";
+    });
+    showCode();
+    document.querySelectorAll(".kit-try-bar-note").forEach(function (p) {
+      p.textContent = siteBarNotes[state.sitebar] || "";
     });
     document.querySelectorAll("[data-kit-acting]").forEach(function (b) {
       b.textContent = acting ? "Hide the Frame" : "Show the Frame on This Page";
@@ -1034,7 +1252,11 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
     input.addEventListener("change", function () {
       set(
         input.dataset.kitKey,
-        input.type === "radio" ? input.value : input.checked ? "on" : "off",
+        input.type === "radio" || input.tagName === "SELECT"
+          ? input.value
+          : input.checked
+            ? "on"
+            : "off",
       );
     });
   });
@@ -1181,7 +1403,7 @@ else setTimeout(unHeroNav);
 // Code blocks, examples' and written ones alike: one block per line, so a
 // long line wraps with its continuation hanging under its own indent instead
 // of scrolling. The newlines between them keep copied code as it was.
-document.querySelectorAll("pre.kit-code > code").forEach(function (code) {
+function lineUpCode(code) {
   var lines = code.textContent.split("\n");
   code.textContent = "";
   lines.forEach(function (l, i) {
@@ -1197,7 +1419,8 @@ document.querySelectorAll("pre.kit-code > code").forEach(function (code) {
     line.textContent = l;
     code.appendChild(line);
   });
-});
+}
+document.querySelectorAll("pre.kit-code > code").forEach(lineUpCode);
 
 // A heading's labels (kit-where) never sit on a line by themselves: they wrap
 // together with the heading's last word
