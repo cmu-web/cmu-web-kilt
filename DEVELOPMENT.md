@@ -106,6 +106,7 @@ Run the commands that apply to the source you changed, in this order:
 | ----------------------------------------------------------------------- | -------------------- | ---------------------------------------------------- |
 | Component headings, requirements or class lists                         | `npm run components` | Updates the Components table                         |
 | Page titles or descriptions                                             | `npm run opengraph`  | Updates link preview metadata                        |
+| The Gallery's sites, in `docs/gallery.json`                             | `npm run gallery`    | Updates the Gallery's cards                          |
 | Components, examples, installation snippets, conventions or the version | `npm run data`       | Updates `docs/kit.json` for tools that read the docs |
 
 Include generated changes with their source. Edit the source HTML to fix a
@@ -313,6 +314,21 @@ minified variants have different bytes and integrity hashes.
 Publish GitHub release notes from the tag once verification passes. Include
 migration steps for breaking changes. Deployments can then update their
 pinned version, dependency or vendored files and check the affected pages.
+
+### Update Jekyll & Plaid
+
+Jekyll & Plaid loads a default Web Kilt release, so a site built on it gets
+the kit's changes only when that default moves. After the CDN check, in the
+`cmu-web-jekyll-and-plaid` checkout:
+
+1. Set the default to the new release in `_includes/cmu/settings.html`, and
+   in the comment in `_layouts/default.html` that names it.
+2. Build Jekyll & Plaid's docs (see its DEVELOPMENT.md) and look at a page.
+3. Commit and push to `0.x`.
+
+A site that loads Jekyll & Plaid's `0.x` branch, as the CMU Web home page
+does, gets the new release with that push; other sites get it with Jekyll &
+Plaid's next release.
 
 ### Correct a Bad Release
 
