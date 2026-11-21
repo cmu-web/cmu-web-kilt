@@ -855,7 +855,7 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
   input.addEventListener("input", run);
 });
 document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
-  var text = box.querySelector('input[type="text"]'),
+  var text = box.querySelector('input[type="search"], input[type="text"]'),
     checks = box.querySelectorAll('input[type="checkbox"]');
   var run = kitFilter(
     document.getElementById(box.dataset.kitFilters),
@@ -955,11 +955,9 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
   var searchForm =
     '<form action="https://search.cmu.edu" class="search search-form kit-try-added" method="get" name="customForm">' +
     '<input name="form_id" type="hidden" value="basic-form">' +
-    '<input name="site" type="hidden" value="">' +
     '<input name="ie" type="hidden" value="UTF-8">' +
     '<label><span>Search</span> <input aria-label="Search" name="q" placeholder="Search"></label>' +
-    '<button title="Submit" type="submit">Search</button>' +
-    '<label class="searchSite"><span>Search this site only</span> <input checked name="site" type="checkbox" value="your-site-id"></label></form>';
+    '<button title="Search" type="submit">Search</button></form>';
   function html(h) {
     var t = document.createElement("template");
     t.innerHTML = h;
