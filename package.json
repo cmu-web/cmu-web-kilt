@@ -32,10 +32,10 @@
   "private": true,
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@j178/prek": "^0.5.7",
-    "eslint": "^10.13.0",
-    "globals": "^17.13.0",
-    "prettier": "^3.9.10"
+    "@j178/prek": "^0.5.11",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1"
   },
   "integrity": {
     "css/cmu-cms.css": "sha384-f742FtT79skabMuOiITDs2R4Q5rQQRG3UNzfbPfuitl8QzMj7hlgmyoVuyQMmXZO",
