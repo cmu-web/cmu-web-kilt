@@ -87,7 +87,7 @@ if (next) {
   git commit -am "chore: release ${next}"
   git tag -a ${next} -m "Carnegie Mellon Web Kilt ${next}"
   git push origin 0.x ${next}
-Then check jsDelivr (DEPLOYMENT.md#check-a-release) and add release notes on GitHub.`);
+Then check jsDelivr (DEVELOPMENT.md#check-the-cdn) and add release notes on GitHub.`);
 } else {
   const wrong = [];
   for (const f of files) {

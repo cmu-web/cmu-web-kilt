@@ -1,25 +1,24 @@
 # Contributing
 
-You can help by reporting a problem, improving an example, proposing a
-component or sharing a site built with the kit. Start with the
-[issue forms](https://github.com/cmu-web/cmu-web-kilt/issues/new/choose);
-you don't need a code change to contribute.
+For setup and checks, see [Development](DEVELOPMENT.md).
 
-## Bring a Use Case
+## Report a Problem
 
-For a bug, include the affected page or a small markup example, your
-browser, what happened and what you expected. For a visual problem, include
-a screenshot and the viewport size.
+Check existing issues first, then
+[report a problem](https://github.com/cmu-web/cmu-web-kilt/issues/new?template=bug_report.yml).
+For a visual problem, include a screenshot and the viewport size. You don't
+need a code change to contribute.
 
-For a new component, describe the task it helps someone complete. Link a
-CMU page that handles the task well if you know one. Discuss changes to
-existing markup or behavior before implementing them: other sites may
-already depend on it.
+To propose a component,
+[request one](https://github.com/cmu-web/cmu-web-kilt/issues/new?template=feature_request.yml):
+describe the task it helps someone complete, and link a CMU page that
+handles the task well if you know one. Discuss changes to existing markup or
+behavior before making them, since other sites may already depend on it.
 
 For the [gallery](https://webkilt.andrew.cmu.edu/0/gallery.html), use the
-[Gallery form](https://docs.google.com/forms/d/e/1FAIpQLSdSdq2bVAyNyiUcqXex-Kr686RGS4_4pn0liGEi0cI9y48wHg/viewform) for a public site or app whose owner is happy to
-have it listed. We take the screenshot from a public page; it must not expose
-private information.
+[Gallery form](https://docs.google.com/forms/d/e/1FAIpQLSdSdq2bVAyNyiUcqXex-Kr686RGS4_4pn0liGEi0cI9y48wHg/viewform)
+for a public site or app whose owner is happy to have it listed. We take the
+screenshot from a public page; it must not expose private information.
 
 ## Decide What Belongs in the Kit
 
@@ -34,17 +33,7 @@ change. Existing class names, custom properties and `data-cmu-*` hooks are
 interfaces used by other sites; explain any incompatible change and how
 consumers would migrate.
 
-The [conventions](https://webkilt.andrew.cmu.edu/0/conventions.html) are the
-reference for naming, writing and page structure. Use them for the docs
-and examples too, including AP style and made-up example content.
-
-**Example content.** Made-up people are Andrew Carnegie (ac00) first, then
-Margaret Morrison (mm00) and Andrew Mellon (am00). When an example needs an
-app, it's **Buggy**, a made-up site for the Spring Carnival Sweepstakes (the
-buggy races): teams, drivers, heats, roll times and race-day news. Older pages
-still use other scenarios; move them to Buggy when they next change.
-
-**Example pages.** `docs/examples/` holds whole pages that don't fit inside
+**Example pages:** `docs/examples/` holds whole pages that don't fit inside
 a docs page, such as an interstitial. An example people can click is shown
 live in a frame (`kit-page-frame`); a static one is a screenshot.
 Components stay live in the docs themselves.
@@ -65,19 +54,35 @@ Code that doesn't depend on the template, such as most of `cmu-app.js`, goes
 in its own commits, so it can be copied to the other branch cleanly. Styles
 and docs that do depend on it stay on their own branch.
 
-## Send a Change for Review
+## Submit a Pull Request
 
-Use [Development](DEVELOPMENT.md) to set up a checkout and work through the
-edit, preview and check cycle. Branch from the version's branch (see Two
-Versions) and open the pull request against it, with one problem or addition
-per pull request.
+- Use [Development](DEVELOPMENT.md) to set up a checkout and work through the
+  edit, preview and check cycle.
+- Branch from the version's branch (see Two Versions) and open the pull
+  request against it, with one problem or addition per pull request.
+- Explain what prompted the change, what a user will experience and how you
+  checked it.
+- Include before-and-after screenshots for visual changes, and call out
+  changes consumers need to make.
+- Run `npm run check` before submitting (it needs network access). The Check
+  Code workflow runs it again on the pull request, with the Rails package's
+  tests. Passing checks supplement browser review of layout and behavior.
 
-Explain what prompted the change, what a user will experience and how you
-checked it. Include before-and-after screenshots for visual changes and
-call out changes consumers need to make. Run the full checks before
-submitting; passing checks supplement browser review of layout and behavior.
+## Code and Writing Style
 
-Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-for commit subjects. Release preparation and publishing are maintainer
-tasks, covered in [Development](DEVELOPMENT.md#prepare-a-release) and
-[Deployment](DEPLOYMENT.md).
+- Follow the Web Kilt's
+  [conventions](https://webkilt.andrew.cmu.edu/0/conventions.html) for naming,
+  writing and page structure, in the docs and examples too: AP style, and
+  Title Case for headings, buttons and labels.
+- **Example content:** Made-up people are Andrew Carnegie (ac00) first, then
+  Margaret Morrison (mm00) and Andrew Mellon (am00). When an example needs an
+  app, it's **Buggy**, a made-up site for the Spring Carnival Sweepstakes (the
+  buggy races): teams, drivers, heats, roll times and race-day news. Older
+  pages still use other scenarios; move them to Buggy when they next change.
+- Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+  for commit subjects.
+
+## CMU's Names and Marks
+
+CMU's names, marks and artwork aren't covered by the license. Use them only
+as the project already does.
