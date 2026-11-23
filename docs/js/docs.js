@@ -939,7 +939,7 @@ document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
       '<a class="cta" href="messages.html#site-bar" data-kit-href="/heats/years">Choose Which Years to Show</a></p>',
     account:
       "<p><strong>Test account:</strong> Margaret Morrison, Team Captain.</p>" +
-      '<p><a class="cta" href="accounts.html#developer-sign-in" data-kit-href="/dev/sign_in">Switch Test Account</a></p>',
+      '<p><a class="cta" href="accounts.html#developer-sign-in" data-kit-href="/login">Switch Test Account</a></p>',
   };
   // Under the menu, the example each choice shows
   var siteBarNotes = {

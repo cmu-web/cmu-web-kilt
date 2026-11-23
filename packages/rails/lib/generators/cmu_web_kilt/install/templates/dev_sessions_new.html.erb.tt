@@ -22,7 +22,7 @@
                 <span class="cmu-dev-you">You</span>
               </div>
             <%% else %>
-              <%%= form_with url: dev_sign_in_as_path(account["andrew_id"]), method: :post, data: { turbo: false } do %>
+              <%%= form_with url: dev_login_as_path(account["andrew_id"]), method: :post, data: { turbo: false } do %>
                 <%%= hidden_field_tag :return_to, @return_to, id: nil %>
                 <button type="submit" class="cmu-dev-card btn ghost">
                   <i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true" data-cmu-name="<%%= account["name"] %>"></i>

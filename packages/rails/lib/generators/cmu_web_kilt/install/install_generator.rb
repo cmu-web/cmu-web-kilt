@@ -121,11 +121,11 @@ module CmuWebKilt
         template 'dev_sessions_new.html.erb.tt', 'app/views/dev_sessions/new.html.erb'
         template 'test_accounts.yml.tt', 'config/test_accounts.yml'
         route <<~RUBY
-          # Developer sign-in: drawn only in development and test
+          # Developer sign-in, at /login: drawn only in development and test
           # (DevSessionsController refuses everywhere else too)
           if Rails.env.local?
-            match "dev/sign_in", to: "dev_sessions#new", as: :dev_sign_in, via: %i[get post]
-            post "dev/sign_in/:andrew_id", to: "dev_sessions#create", as: :dev_sign_in_as
+            match "login", to: "dev_sessions#new", as: :dev_login, via: %i[get post]
+            post "login/:andrew_id", to: "dev_sessions#create", as: :dev_login_as
           end
         RUBY
       end
@@ -194,7 +194,7 @@ module CmuWebKilt
           return <<~RUBY
             # Sign-in (cmu-web-kilt): developer sign-in only, in development and test
             if Rails.env.local?
-              direct(:login) { "/dev/sign_in" }
+              direct(:login) { "/login" }
               get "logout", to: "sessions#destroy"
               delete "logout", to: "sessions#destroy"
             end
@@ -202,7 +202,7 @@ module CmuWebKilt
         end
 
         login = %("/auth/#{@provider}")
-        login = %(Rails.env.local? ? "/dev/sign_in" : #{login}) if options[:dev_sign_in]
+        login = %(Rails.env.local? ? "/login" : #{login}) if options[:dev_sign_in]
         <<~RUBY
           # Sign-in (cmu-web-kilt): #{if options[:dev_sign_in]
                                         'developer sign-in in development and test, '

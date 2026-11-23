@@ -651,7 +651,7 @@
               &lt;/div&gt;
             &lt;/li&gt;
             &lt;li&gt;
-              &lt;form method="post" action="/dev/sign_in/2"&gt;
+              &lt;form method="post" action="/login/2"&gt;
                 &lt;input type="hidden" name="return_to" value="/teams"&gt;
                 &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
                   &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;MM&lt;/i&gt;
@@ -662,7 +662,7 @@
               &lt;/form&gt;
             &lt;/li&gt;
             &lt;li&gt;
-              &lt;form method="post" action="/dev/sign_in/3"&gt;
+              &lt;form method="post" action="/login/3"&gt;
                 &lt;input type="hidden" name="return_to" value="/teams"&gt;
                 &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
                   &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;AM&lt;/i&gt;
@@ -673,7 +673,7 @@
               &lt;/form&gt;
             &lt;/li&gt;
             &lt;li&gt;
-              &lt;form method="post" action="/dev/sign_in/4"&gt;
+              &lt;form method="post" action="/login/4"&gt;
                 &lt;input type="hidden" name="return_to" value="/teams"&gt;
                 &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
                   &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;TM&lt;/i&gt;
@@ -684,7 +684,7 @@
               &lt;/form&gt;
             &lt;/li&gt;
             &lt;li&gt;
-              &lt;form method="post" action="/dev/sign_in/5"&gt;
+              &lt;form method="post" action="/login/5"&gt;
                 &lt;input type="hidden" name="return_to" value="/teams"&gt;
                 &lt;button type="submit" class="cmu-dev-card btn ghost"&gt;
                   &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;TS&lt;/i&gt;
@@ -695,7 +695,7 @@
               &lt;/form&gt;
             &lt;/li&gt;
             &lt;li&gt;
-              &lt;form method="post" action="/dev/sign_out"&gt;
+              &lt;form method="post" action="/logout"&gt;
                 &lt;input type="hidden" name="return_to" value="/teams"&gt;
                 &lt;button type="submit" class="cmu-dev-card cmu-dev-card--out btn ghost"&gt;
                   &lt;i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true"&gt;&lt;/i&gt;
@@ -746,17 +746,20 @@
             </div>
             <div class="kit-framework" data-framework="Django">
               <p class="cmu-label kit-framework-label">In Django</p>
-              <p>Add the URLs only when <code>DEBUG</code> is on:</p>
+              <p>
+                Add the URLs only when <code>DEBUG</code> is on, ahead of the app's own sign-in, so
+                <code>/login/</code> is this page in development:
+              </p>
               <pre class="kit-code"><code># urls.py
 if settings.DEBUG:
-    urlpatterns += [
-        path("dev/sign-in/", views.dev_sign_in, name="dev_sign_in"),
-        path("dev/sign-in/&lt;int:pk&gt;/", views.dev_sign_in_as, name="dev_sign_in_as"),
-    ]
+    urlpatterns = [
+        path("login/", views.dev_login, name="dev_login"),
+        path("login/&lt;int:pk&gt;/", views.dev_login_as, name="dev_login_as"),
+    ] + urlpatterns
 
 # views.py
 @require_POST
-def dev_sign_in_as(request, pk):
+def dev_login_as(request, pk):
     if not settings.DEBUG:
         raise Http404
     login(request, get_user_model().objects.get(pk=pk))
@@ -765,11 +768,15 @@ def dev_sign_in_as(request, pk):
             </div>
             <div class="kit-framework" data-framework="Rails">
               <p class="cmu-label kit-framework-label">In Rails</p>
-              <p>Draw the routes only outside production, and refuse them in the controller too:</p>
+              <p>
+                Draw the routes only outside production, before the app's own sign-in, so
+                <code>/login</code> is this page in development, and refuse them in the controller
+                too:
+              </p>
               <pre class="kit-code"><code># config/routes.rb
 unless Rails.env.production?
-  get "dev/sign_in", to: "dev_sessions#new", as: :dev_sign_in
-  post "dev/sign_in/:id", to: "dev_sessions#create", as: :dev_sign_in_as
+  get "login", to: "dev_sessions#new", as: :dev_login
+  post "login/:id", to: "dev_sessions#create", as: :dev_login_as
 end
 
 # app/controllers/dev_sessions_controller.rb
@@ -788,19 +795,20 @@ class DevSessionsController &lt; ApplicationController
 end
 
 &lt;%# Sign In, in the header %&gt;
-&lt;%= link_to "Sign In", Rails.env.production? ? login_path : dev_sign_in_path(return_to: request.fullpath) %&gt;</code></pre>
+&lt;%= link_to "Sign In", Rails.env.production? ? login_path : dev_login_path(return_to: request.fullpath) %&gt;</code></pre>
             </div>
             <div class="kit-framework" data-framework="React Astro Svelte Vue" data-kit-no-code>
               <p class="cmu-label kit-framework-label">In {framework}</p>
               <p>
                 The server draws this page and signs the user in, not {framework}'s components:
                 serve the HTML tab's page from it. Add its routes only when
-                <code>NODE_ENV</code> isn't production. With Express:
+                <code>NODE_ENV</code> isn't production, before the app's own sign-in, so
+                <code>/login</code> is this page in development. With Express:
               </p>
               <pre class="kit-code"><code>if (process.env.NODE_ENV !== "production") {
-  app.get("/dev/sign-in", (req, res) =&gt;
+  app.get("/login", (req, res) =&gt;
     res.render("dev-sign-in", { people: testPeople, returnTo: req.query.return_to }));
-  app.post("/dev/sign-in/:id", (req, res) =&gt; {
+  app.post("/login/:id", (req, res) =&gt; {
     req.session.userId = req.params.id;
     const to = String(req.body.return_to || "/");
     res.redirect(to.startsWith("/") &amp;&amp; !to.startsWith("//") ? to : "/");

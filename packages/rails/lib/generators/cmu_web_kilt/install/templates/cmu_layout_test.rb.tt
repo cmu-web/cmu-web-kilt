@@ -54,7 +54,7 @@ class CmuLayoutTest < ActionDispatch::IntegrationTest
 <% if options[:dev_sign_in] -%>
 
   test "developer sign-in signs in a test account" do
-    post dev_sign_in_as_path("ac00")
+    post dev_login_as_path("ac00")
     get root_path
 
     assert_select ".roof .cmu-account-open", text: "Andrew Carnegie"
@@ -63,7 +63,7 @@ class CmuLayoutTest < ActionDispatch::IntegrationTest
 
   %w[staging production].each do |env|
     test "developer sign-in isn't there in #{env}" do
-      with_rails_env(env) { get dev_sign_in_path }
+      with_rails_env(env) { get dev_login_path }
 
       assert_response :not_found
     end

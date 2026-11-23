@@ -10,10 +10,10 @@
       <strong>Test account:</strong>
       <%= account[:name] %>, <%= account[:role] %>.
     </p>
-    <% if cmu_route?(:dev_sign_in) %>
+    <% if cmu_route?(:dev_login) %>
       <p>
         <%= link_to "Switch Test Account",
-                    main_app.dev_sign_in_path(return_to: request.fullpath),
+                    main_app.dev_login_path(return_to: request.fullpath),
                     class: "cta",
                     data: { turbo: false } %>
       </p>
