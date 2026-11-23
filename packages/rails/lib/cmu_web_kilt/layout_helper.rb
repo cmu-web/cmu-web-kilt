@@ -52,6 +52,12 @@ module CmuWebKilt
       "cmu-flash cmu-flash--#{tone}"
     end
 
+    # An error interrupts a screen reader (alert); anything else waits its
+    # turn (status)
+    def cmu_flash_role(name)
+      %w[alert error].include?(name.to_s) ? 'alert' : 'status'
+    end
+
     # Whether the app has a route, such as login, for the parts of the
     # layout that need one
     def cmu_route?(name)

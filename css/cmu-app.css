@@ -1072,6 +1072,17 @@ body.cmu-acting-as .scrolltop {
   border-color: var(--cmu-gold);
   color: var(--cmu-amber);
 }
+/* The template makes div[role="alert"] and p[role="alert"] red with
+   !important; each flash keeps its own color */
+.cmu-flash.cmu-flash--error {
+  color: var(--cmu-red) !important;
+}
+.cmu-flash.cmu-flash--success {
+  color: var(--cmu-green) !important;
+}
+.cmu-flash.cmu-flash--notice {
+  color: var(--cmu-amber) !important;
+}
 
 /* A <button class="btn"> where a form needs one, such as a sign-in that
    must POST: wide fills its line, as a.btn.wide does, and in a heading

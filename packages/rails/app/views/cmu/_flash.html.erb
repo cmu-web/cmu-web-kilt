@@ -4,7 +4,7 @@
   <div class="content wide">
     <div>
       <% messages.each do |name, message| %>
-        <div class="<%= cmu_flash_class(name) %>" role="alert"><%= message %></div>
+        <div class="<%= cmu_flash_class(name) %>" role="<%= cmu_flash_role(name) %>"><%= message %></div>
       <% end %>
     </div>
   </div>

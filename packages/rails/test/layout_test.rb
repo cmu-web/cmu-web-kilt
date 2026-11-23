@@ -73,6 +73,12 @@ class LayoutTest < Minitest::Test
     assert_nil production.at('.cmu-site-bar--tape'), 'No caution tape in production'
   end
 
+  def test_an_error_is_an_alert_and_a_notice_is_a_status
+    page = @pages.fetch('/roll-times')
+    assert_equal 'status', page.at('.cmu-flash--success')['role']
+    assert_equal 'alert', page.at('.cmu-flash--error')['role']
+  end
+
   def self.pages_in(environment, extra = {})
     @pages_in ||= {}
     @pages_in[[environment, extra]] ||= begin

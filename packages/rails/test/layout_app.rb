@@ -80,8 +80,11 @@ Dir.mktmpdir('cmu-web-kilt-layout') do |directory|
       render inline: '<p>Page</p>', layout: true
     end
 
-    # A page whose address isn't under its tab names the tab
+    # A page whose address isn't under its tab names the tab, and shows a
+    # notice and an error
     def roll_times
+      flash.now[:notice] = 'Heat saved.'
+      flash.now[:alert] = 'That heat is full.'
       render inline: '<% cmu_nav "teams" %><p>Roll times</p>', layout: true
     end
   end
