@@ -1906,7 +1906,7 @@ ul.cmu-plain {
   transform: rotate(45deg);
 }
 /* Fix and note lists: an exclamation point and an "i" drawn in strokes as
-   thick as the check mark's, amber for what to fix and gray for what's worth
+   thick as the check mark's, red for what to fix and gray for what's worth
    knowing. ::before is the top part, ::after the bottom. */
 :is(.cmu-fixes, .cmu-notes) > li::before,
 :is(.cmu-fixes, .cmu-notes) > li::after {
@@ -1914,7 +1914,7 @@ ul.cmu-plain {
   position: absolute;
   left: 0.55rem;
   width: 3px;
-  background: var(--cmu-amber);
+  background: var(--cmu-red);
 }
 .cmu-notes > li::before,
 .cmu-notes > li::after {
