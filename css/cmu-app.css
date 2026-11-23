@@ -1774,6 +1774,13 @@ tr.cmu-filter-row input {
   box-sizing: border-box;
   font-size: 0.875rem;
 }
+/* 16px text on touch screens: iOS zooms the page in on a field with smaller
+   text */
+@media (pointer: coarse) {
+  tr.cmu-filter-row input {
+    font-size: 1rem;
+  }
+}
 /* Sticky header: the head stays at the top of the window while a long table
    scrolls. It needs the table not to scroll sideways, so it works from 768px
    up with cmu-full. */
@@ -3016,6 +3023,8 @@ body.cmu-acting-as .cmu-chat {
   background: none;
   color: inherit;
   font: inherit;
+  /* 16px text: iOS zooms the page in on a field with smaller text */
+  font-size: 1rem;
   resize: none;
   field-sizing: content;
 }
