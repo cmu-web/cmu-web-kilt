@@ -34,6 +34,23 @@ module CmuWebKilt
       nil
     end
 
+    # Keep this page's menu closed when it opens, or let the template open
+    # it, whatever config.menu_closed says for the site. In a view:
+    #   <% cmu_menu :open %>
+    def cmu_menu(state)
+      raise ArgumentError, "cmu_menu takes :open or :closed, not #{state.inspect}" unless %i[open closed].include?(state)
+
+      content_for(:cmu_menu, state.to_s, flush: true)
+      nil
+    end
+
+    # "closed" for the body's data-cmu-menu, or nil to leave the menu to
+    # the template
+    def cmu_menu_attribute
+      state = content_for(:cmu_menu).presence || (CmuWebKilt.config.menu_closed ? 'closed' : 'open')
+      state == 'closed' ? 'closed' : nil
+    end
+
     def cmu_breadcrumb_trail
       steps = content_for(:cmu_breadcrumbs)
       return if steps.blank?

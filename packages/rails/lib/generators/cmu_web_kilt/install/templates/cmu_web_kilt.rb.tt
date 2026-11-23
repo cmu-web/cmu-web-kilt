@@ -20,6 +20,9 @@ CmuWebKilt.configure do |config|
   config.favicon = nil
   # A Google Tag Manager container (GTM-...), loaded in production only
   config.google_tag = nil
+  # Keep the menu closed when a page opens; on a wide screen the template
+  # opens it on a page in a submenu
+  config.menu_closed = false
   # The app's own stylesheets, after the kit's: names, or :app for all of
   # app/assets/stylesheets (Propshaft 1.0 and later)
   config.stylesheets = <%= (propshaft = Gem.loaded_specs["propshaft"]) && propshaft.version >= Gem::Version.new("1.0") ? "[ :app ]" : '[ "application" ]' %>

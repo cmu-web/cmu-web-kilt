@@ -10,7 +10,8 @@
   <head>
     <%= render "cmu/head" %>
   </head>
-  <%= tag.body class: [ "no-js", "cmu-app", { "cmu-acting-as": cmu_acting_as? } ] do %>
+  <%= tag.body class: [ "no-js", "cmu-app", { "cmu-acting-as": cmu_acting_as? } ],
+               data: { cmu_menu: cmu_menu_attribute } do %>
     <%= render "cmu/google_tag_noscript" %>
     <div id="container">
       <header>

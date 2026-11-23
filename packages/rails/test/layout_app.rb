@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 # A small app on the kit's layout, run in a separate process: it renders the
-# pages named on the command line and prints them as JSON. RAILS_ENV and
-# GOOGLE_TAG set the environment and the Google tag.
+# pages named on the command line and prints them as JSON. RAILS_ENV,
+# GOOGLE_TAG and MENU_CLOSED set the environment, the Google tag and
+# config.menu_closed.
 require 'tmpdir'
 require 'fileutils'
 require 'json'
@@ -35,6 +36,7 @@ Dir.mktmpdir('cmu-web-kilt-layout') do |directory|
     config.tagline = 'Teams, drivers, heats and roll times'
     config.roof = :red
     config.google_tag = ENV.fetch('GOOGLE_TAG', nil)
+    config.menu_closed = ENV['MENU_CLOSED'] == '1'
     # No stylesheet of its own
     config.stylesheets = []
   end
@@ -85,7 +87,7 @@ Dir.mktmpdir('cmu-web-kilt-layout') do |directory|
     def roll_times
       flash.now[:notice] = 'Heat saved.'
       flash.now[:alert] = 'That heat is full.'
-      render inline: '<% cmu_nav "teams" %><p>Roll times</p>', layout: true
+      render inline: '<% cmu_nav "teams" %><% cmu_menu :closed %><p>Roll times</p>', layout: true
     end
   end
   Object.const_set(:PagesController, pages)

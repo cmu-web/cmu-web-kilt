@@ -73,10 +73,20 @@ class LayoutTest < Minitest::Test
     assert_nil production.at('.cmu-site-bar--tape'), 'No caution tape in production'
   end
 
+  def test_the_menu_closed_setting_marks_the_body
+    assert_nil @pages.fetch('/').at('body')['data-cmu-menu'], 'The menu is the template\'s by default'
+    closed = self.class.pages_in('test', 'MENU_CLOSED' => '1').fetch('/')
+    assert_equal 'closed', closed.at('body')['data-cmu-menu']
+  end
+
   def test_an_error_is_an_alert_and_a_notice_is_a_status
     page = @pages.fetch('/roll-times')
     assert_equal 'status', page.at('.cmu-flash--success')['role']
     assert_equal 'alert', page.at('.cmu-flash--error')['role']
+  end
+
+  def test_a_view_sets_its_own_menu
+    assert_equal 'closed', @pages.fetch('/roll-times').at('body')['data-cmu-menu']
   end
 
   def self.pages_in(environment, extra = {})

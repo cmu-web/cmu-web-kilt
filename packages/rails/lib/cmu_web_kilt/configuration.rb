@@ -34,11 +34,15 @@ module CmuWebKilt
     # stylesheet_link_tag, or :app for all of app/assets/stylesheets
     # (Propshaft 1.0 and later)
     attr_accessor :stylesheets
+    # Keep the menu closed when a page opens; the template otherwise opens
+    # it on a wide screen in a submenu (data-cmu-menu="closed" on <body>)
+    attr_accessor :menu_closed
 
     def initialize
       @site_name = 'Carnegie Mellon University'
       @roof = :white
       @stylesheets = ['application']
+      @menu_closed = false
       @footer_lines = ['Carnegie Mellon University', '5000 Forbes Avenue', 'Pittsburgh, PA 15213']
     end
 

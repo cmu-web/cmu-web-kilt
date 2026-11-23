@@ -2221,3 +2221,10 @@ table.cmu-compare {
   color: var(--cmu-muted);
   font-size: 0.9em;
 }
+
+/* While cmu-app.js closes the menu the template opened by itself
+   (data-cmu-menu="closed"), the menu and page don't slide */
+.cmu-menu-still,
+.cmu-menu-still * {
+  transition: none !important;
+}

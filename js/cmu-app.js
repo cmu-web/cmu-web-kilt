@@ -137,6 +137,81 @@
     );
   }
 
+  // Menu closed on load: <body data-cmu-menu="closed">. On a screen wider
+  // than 960 pixels, the template opens its menu by itself when the page is
+  // in a submenu, is a tab with a submenu or is a menu-only item. With this
+  // attribute, the menu starts closed. The template's opening is made
+  // instant (shouldAnimateMenu), and when it opens the menu before the user
+  // has clicked or pressed a key, the menu's button closes it in the same
+  // frame, so its label and aria-pressed follow, and focus leaves the hidden
+  // menu for the top of the page. Turbo runs the template again on each page
+  // it shows, loading its script after the page appears, so the watch starts
+  // again with each page.
+  function menuClosed(body) {
+    return !!body && body.getAttribute("data-cmu-menu") === "closed";
+  }
+  function instantMenu() {
+    try {
+      sessionStorage.setItem("shouldAnimateMenu", "false");
+    } catch {
+      // Storage blocked: the menu slides in, then closes
+    }
+  }
+  var menuWatch;
+  function stopMenuWatch() {
+    if (menuWatch) menuWatch.disconnect();
+    menuWatch = null;
+  }
+  // The template measures the open menu before the watch sees it, so closing
+  // would slide it shut; cmu-menu-still turns transitions off until two
+  // frames after
+  function closeMenu() {
+    stopMenuWatch();
+    var root = document.documentElement;
+    var button = document.querySelector(".roof .menu-btn") || document.querySelector(".menu-btn");
+    root.classList.add("cmu-menu-still");
+    if (button) button.click();
+    void root.offsetWidth;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        root.classList.remove("cmu-menu-still");
+      });
+    });
+    var focused = document.activeElement;
+    if (focused && focused.closest && focused.closest("nav.tree")) {
+      var body = document.body;
+      body.setAttribute("tabindex", "-1");
+      body.focus({ preventScroll: true });
+      body.blur();
+      body.removeAttribute("tabindex");
+    }
+  }
+  function watchMenu() {
+    stopMenuWatch();
+    var body = document.body;
+    if (!menuClosed(body) || !window.MutationObserver) return;
+    instantMenu();
+    if (body.classList.contains("menu-on")) {
+      closeMenu();
+      return;
+    }
+    menuWatch = new MutationObserver(function () {
+      if (body.classList.contains("menu-on")) closeMenu();
+    });
+    menuWatch.observe(body, { attributes: true, attributeFilter: ["class"] });
+  }
+  // A menu the user opens stays open
+  ["pointerdown", "keydown"].forEach(function (type) {
+    document.addEventListener(type, stopMenuWatch, true);
+  });
+  // Loaded in <head>, before the body exists: start once it does
+  if (document.body) watchMenu();
+  else document.addEventListener("DOMContentLoaded", watchMenu);
+  document.addEventListener("turbo:before-render", function (e) {
+    if (e.detail && menuClosed(e.detail.newBody)) instantMenu();
+  });
+  document.addEventListener("turbo:render", watchMenu);
+
   // In-page links: the template's script turns href="#id" into
   // javascript:void(0) (keeping the target in data-jump) and scrolls with its
   // own animation, so the address never shows the section and Back doesn't

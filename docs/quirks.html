@@ -54,7 +54,7 @@
     <meta content="#9f0000" name="msapplication-TileColor" />
     <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
   </head>
-  <body class="no-js">
+  <body class="no-js" data-cmu-menu="closed">
     <div id="container">
       <header>
         <div class="roof red invert">
@@ -106,6 +106,13 @@
                 Escape. Under Turbo, the script runs again on every page Turbo shows and adds
                 another listener each time; the kit answers Escape before any of them, so the menu
                 toggles once even if the template's listener is fixed.
+              </li>
+              <li>
+                <strong>It opens the menu by itself.</strong> On a screen wider than 960 pixels, the
+                script opens the menu when the page is in a submenu, is a tab with a submenu or is a
+                menu-only item, and the menu covers half the page. With <code>cmu-app.js</code>, add
+                <code>data-cmu-menu="closed"</code> to <code>&lt;body&gt;</code> and the menu starts
+                closed, under Turbo too. Opened by hand, it still shows where the page is.
               </li>
               <li>
                 <strong>Under Turbo, a page from Turbo's cache breaks the header.</strong> The

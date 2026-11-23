@@ -54,7 +54,7 @@
     <meta content="#9f0000" name="msapplication-TileColor" />
     <meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage" />
   </head>
-  <body class="no-js">
+  <body class="no-js" data-cmu-menu="closed">
     <div id="container">
       <header>
         <div class="roof red invert">
@@ -731,6 +731,7 @@ bin/rails generate cmu_web_kilt:install --site-name="Spring Carnival Sweepstakes
   config.roof = :red # :white, :red or :gray
   config.contact_email = "example@cmu.edu"
   config.google_tag = "GTM-XXXXXXXX" # production only
+  config.menu_closed = true # see Template Quirks
 end</code></pre>
                   <p>
                     <strong>The app's part</strong> is a few helpers in
@@ -741,8 +742,10 @@ end</code></pre>
                     <code>cmu_acting_as?</code> with <code>cmu_stop_acting_path</code>, and
                     <code>cmu_test_account</code> when the app has them. A view adds to the page's
                     title and breadcrumbs with <code>cmu_title</code> and
-                    <code>cmu_breadcrumb</code>, and names its tab with <code>cmu_nav</code> when
-                    its address can't.
+                    <code>cmu_breadcrumb</code>, names its tab with <code>cmu_nav</code> when its
+                    address can't, and overrides <code>config.menu_closed</code> for its page with
+                    <code>cmu_menu :closed</code> or <code>cmu_menu :open</code> (see
+                    <a href="quirks.html#script">Template Quirks</a>).
                   </p>
                   <p>
                     <strong>Sign-in</strong> is Entra ID, SAML or none
