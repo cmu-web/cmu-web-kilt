@@ -174,8 +174,8 @@
   &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
 
   &lt;!-- The kit, after the template --&gt;
-  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/css/cmu-cms.css" integrity="sha384-zOTLMByHk6q956nLCf4pDG1cOUPqc7KBFVsp+Pc21Dmv/7LTb/U9TPHOMwrwoI2b" crossorigin="anonymous" rel="stylesheet"&gt;
-  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/css/cmu-app.css" integrity="sha384-dnXGzcz4qDkJAdXoxpQ3JIcsQALV7a49EhCv7LUGtFR5Ss4jbecJHQn9RlYdJjj5" crossorigin="anonymous" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/css/cmu-cms.css" integrity="sha384-LIVlnwpFZ85qeR3bUtsanQE+zGu5kfDo8jC1ZHRWwuUQCCzcL4a0H1qPVeFoLVju" crossorigin="anonymous" rel="stylesheet"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/css/cmu-app.css" integrity="sha384-qPy8JNUnNTR1GfukfN6ueQteBOkzuxWB0MHNVNP5vR2h6P+Ofkghl5zEwAqOYouP" crossorigin="anonymous" rel="stylesheet"&gt;  &lt;!-- apps only --&gt;
   &lt;!-- Optional: Bootstrap Icons, if the page uses icons --&gt;
   &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
   &lt;!-- Your own stylesheet, last --&gt;
@@ -258,7 +258,7 @@
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
 &lt;!-- The kit's script, last, for copy buttons, countdowns and screenshots that enlarge --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/js/cmu-app.js" integrity="sha384-sXajIZAZhy1vudkOQPsUNdClpCRearnIVZN8gkIpT03A2dzoQ5vi4EMZCstd/te/" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/js/cmu-app.js" integrity="sha384-2rrCJjbHKDM0Jk/5lx7uQxL7iqJQ+9eh8jQgJG3fS0tejTSfMv2zFpmXQqW0VB+g" crossorigin="anonymous"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
                     <!-- whole-page:end -->
@@ -298,8 +298,8 @@
   &lt;meta content="#9f0000" name="msapplication-TileColor"&gt;
   &lt;meta content="https://www.cmu.edu/favicon-144.png" name="msapplication-TileImage"&gt;
   &lt;!-- Carnegie Mellon Web Kilt --&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.25/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.25/css/cmu-app.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.26/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.26/css/cmu-app.css" rel="stylesheet"&gt;
   &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
   &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
   &lt;!-- Your app --&gt;
@@ -312,7 +312,7 @@
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.25/js/cmu-app.js"&gt;&lt;/script&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.26/js/cmu-app.js"&gt;&lt;/script&gt;
 &lt;/body&gt;</code></pre>
                   <p>
                     Use <code>&lt;link&gt;</code> tags, not <code>@import</code>, which loads files
@@ -327,7 +327,7 @@
                     with the version in the folder name so it's obvious which one you have, and
                     commit them:
                   </p>
-                  <pre class="kit-code"><code>V=0.8.25
+                  <pre class="kit-code"><code>V=0.8.26
 D=static/vendor/cmu-web-kilt-$V
 mkdir -p $D/css $D/js
 for f in css/cmu-cms.css css/cmu-app.css js/cmu-app.js; do
@@ -380,7 +380,7 @@ done</code></pre>
                       <code>head-includes</code>, check <strong>Advanced editor</strong>, paste the
                       kit's lines and save it:
                       <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/css/cmu-cms.css" integrity="sha384-zOTLMByHk6q956nLCf4pDG1cOUPqc7KBFVsp+Pc21Dmv/7LTb/U9TPHOMwrwoI2b" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/css/cmu-cms.css" integrity="sha384-LIVlnwpFZ85qeR3bUtsanQE+zGu5kfDo8jC1ZHRWwuUQCCzcL4a0H1qPVeFoLVju" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
 &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
 &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet" type="text/css"/&gt;</code></pre>
                       <figure class="cmu-shot">
@@ -396,7 +396,7 @@ done</code></pre>
                       For components labeled Script, make a second text block,
                       <code>body-end-includes</code>, the same way:
                       <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/js/cmu-app.js" integrity="sha384-sXajIZAZhy1vudkOQPsUNdClpCRearnIVZN8gkIpT03A2dzoQ5vi4EMZCstd/te/" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/js/cmu-app.js" integrity="sha384-2rrCJjbHKDM0Jk/5lx7uQxL7iqJQ+9eh8jQgJG3fS0tejTSfMv2zFpmXQqW0VB+g" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
                       <figure class="cmu-shot">
                         <img
                           src="images/install-cascade-end.png"
@@ -494,7 +494,7 @@ done</code></pre>
                   </p>
                   <p>In the head, after the template's stylesheet:</p>
                   <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/css/cmu-cms.css" integrity="sha384-zOTLMByHk6q956nLCf4pDG1cOUPqc7KBFVsp+Pc21Dmv/7LTb/U9TPHOMwrwoI2b" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
+&lt;link href="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/css/cmu-cms.css" integrity="sha384-LIVlnwpFZ85qeR3bUtsanQE+zGu5kfDo8jC1ZHRWwuUQCCzcL4a0H1qPVeFoLVju" crossorigin="anonymous" media="screen" rel="stylesheet" type="text/css"/&gt;
 &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
 &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet" type="text/css"/&gt;</code></pre>
                   <p>
@@ -503,7 +503,7 @@ done</code></pre>
                     <code>&lt;/body&gt;</code>:
                   </p>
                   <pre class="kit-code"><code>&lt;!-- Carnegie Mellon Web Kilt --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/js/cmu-app.js" integrity="sha384-sXajIZAZhy1vudkOQPsUNdClpCRearnIVZN8gkIpT03A2dzoQ5vi4EMZCstd/te/" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/js/cmu-app.js" integrity="sha384-2rrCJjbHKDM0Jk/5lx7uQxL7iqJQ+9eh8jQgJG3fS0tejTSfMv2zFpmXQqW0VB+g" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
                   <p>
                     Paste components into a page's HTML source. Keep a separate, site-specific
                     stylesheet for anything particular to the site. We don't recommend overriding
@@ -530,7 +530,7 @@ done</code></pre>
                   <h4 class="kit-option-label">In React</h4>
                   <p>
                     Copy the kit's <code>css/</code> and <code>js/</code> into
-                    <code>public/vendor/cmu-web-kilt-0.8.25/</code> and load everything in
+                    <code>public/vendor/cmu-web-kilt-0.8.26/</code> and load everything in
                     <code>index.html</code>, not from components: the template's scripts and
                     <code>cmu-app.js</code> run once for the page, and the kit starts components as
                     React renders them. Render the app into the template's
@@ -548,8 +548,8 @@ done</code></pre>
   &lt;title&gt;Your App - Carnegie Mellon University&lt;/title&gt;
   &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.25/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.25/css/cmu-app.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.26/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.26/css/cmu-app.css" rel="stylesheet"&gt;
 &lt;/head&gt;
 &lt;body class="cmu-app"&gt;
   &lt;div id="container"&gt;
@@ -560,7 +560,7 @@ done</code></pre>
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.25/js/cmu-app.js"&gt;&lt;/script&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.26/js/cmu-app.js"&gt;&lt;/script&gt;
   &lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -569,7 +569,7 @@ done</code></pre>
                   <h4 class="kit-option-label">In Svelte</h4>
                   <p>
                     In SvelteKit, copy the kit's <code>css/</code> and <code>js/</code> into
-                    <code>static/vendor/cmu-web-kilt-0.8.25/</code> and load everything in
+                    <code>static/vendor/cmu-web-kilt-0.8.26/</code> and load everything in
                     <code>src/app.html</code>. The app renders into the template's
                     <code>&lt;main id="content"&gt;</code>, and the kit starts components as Svelte
                     renders them; keep the template's header and footer in <code>app.html</code>,
@@ -582,8 +582,8 @@ done</code></pre>
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
   &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.25/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.25/css/cmu-app.css" rel="stylesheet"&gt;
+  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.26/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.26/css/cmu-app.css" rel="stylesheet"&gt;
   %sveltekit.head%
 &lt;/head&gt;
 &lt;body class="cmu-app"&gt;
@@ -595,7 +595,7 @@ done</code></pre>
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.25/js/cmu-app.js"&gt;&lt;/script&gt;
+  &lt;script src="%sveltekit.assets%/vendor/cmu-web-kilt-0.8.26/js/cmu-app.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
                 </div>
@@ -603,7 +603,7 @@ done</code></pre>
                   <h4 class="kit-option-label">In Vue</h4>
                   <p>
                     Copy the kit's <code>css/</code> and <code>js/</code> into
-                    <code>public/vendor/cmu-web-kilt-0.8.25/</code> and load everything in
+                    <code>public/vendor/cmu-web-kilt-0.8.26/</code> and load everything in
                     <code>index.html</code>, not from components: the template's scripts and
                     <code>cmu-app.js</code> run once for the page, and the kit starts components as
                     Vue renders them. Mount the app on the template's
@@ -619,8 +619,8 @@ done</code></pre>
   &lt;title&gt;Your App - Carnegie Mellon University&lt;/title&gt;
   &lt;link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,700,700italic" rel="stylesheet"&gt;
   &lt;link href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.25/css/cmu-cms.css" rel="stylesheet"&gt;
-  &lt;link href="/vendor/cmu-web-kilt-0.8.25/css/cmu-app.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.26/css/cmu-cms.css" rel="stylesheet"&gt;
+  &lt;link href="/vendor/cmu-web-kilt-0.8.26/css/cmu-app.css" rel="stylesheet"&gt;
 &lt;/head&gt;
 &lt;body class="cmu-app"&gt;
   &lt;div id="container"&gt;
@@ -631,7 +631,7 @@ done</code></pre>
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"&gt;&lt;/script&gt;
   &lt;script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"&gt;&lt;/script&gt;
-  &lt;script src="/vendor/cmu-web-kilt-0.8.25/js/cmu-app.js"&gt;&lt;/script&gt;
+  &lt;script src="/vendor/cmu-web-kilt-0.8.26/js/cmu-app.js"&gt;&lt;/script&gt;
   &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -645,7 +645,7 @@ done</code></pre>
                   <h4 class="kit-option-label">In Astro</h4>
                   <p>
                     Copy the kit's <code>css/</code> and <code>js/</code> into
-                    <code>public/vendor/cmu-web-kilt-0.8.25/</code> and load everything in one
+                    <code>public/vendor/cmu-web-kilt-0.8.26/</code> and load everything in one
                     layout that every page uses. Mark the scripts <code>is:inline</code>, so Astro
                     leaves them as they are instead of bundling them, and build their addresses from
                     <code>import.meta.env.BASE_URL</code>, so they still work when the site is
@@ -712,7 +712,7 @@ import Layout from "../layouts/Layout.astro";
                   </p>
                   <pre
                     class="kit-code"
-                  ><code>rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.25/packages/rails/templates/app.rb</code></pre>
+                  ><code>rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.26/packages/rails/templates/app.rb</code></pre>
                   <p>
                     In an app you already have, add the gem and run the generator. It asks for the
                     site's name, tagline, tabs, roof and sign-in, or takes them as options, and
@@ -843,8 +843,8 @@ def kilt(request):
                   <p>Then serve its files. With Express:</p>
                   <pre class="kit-code"><code>const path = require("path");
 const kit = path.dirname(require.resolve("@cmu-web/kilt/package.json"));
-app.use("/vendor/cmu-web-kilt-0.8.25/css", express.static(path.join(kit, "css")));
-app.use("/vendor/cmu-web-kilt-0.8.25/js", express.static(path.join(kit, "js")));</code></pre>
+app.use("/vendor/cmu-web-kilt-0.8.26/css", express.static(path.join(kit, "css")));
+app.use("/vendor/cmu-web-kilt-0.8.26/js", express.static(path.join(kit, "js")));</code></pre>
                   <p>
                     <strong>Linking to jsDelivr instead?</strong> The package's
                     <code>cmu-web-kilt-links</code> command keeps those links on the installed
