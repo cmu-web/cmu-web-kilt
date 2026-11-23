@@ -292,6 +292,7 @@ body:is(.cmu-app, .cmu-framed) :is(.cmu-field-row, .cmu-field-button, .cmu-sugge
   color: rgba(0, 0, 0, 0.65);
 }
 .roof .cmu-account:not(.cmu-account-open):hover {
+  font-weight: 700;
   color: #c00;
 }
 /* On a red roof (roof red invert), white either way: dark text on red is hard to read */
