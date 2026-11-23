@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Open Office Hours - Office Hours - Carnegie Mellon University</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://www.cmu.edu/common/standard-v6/css/main.6.7.min.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../css/cmu-cms.css" rel="stylesheet" type="text/css" />
+    <link href="../css/cmu-app.css" rel="stylesheet" type="text/css" />
+    <link href="https://www.cmu.edu/favicon.ico" rel="icon" />
+  </head>
+  <body class="no-js cmu-app">
+    <!-- An example of the navigation in Page Layout's code sample, on its own.
+         See layout.html#navigation -->
+    <div id="container">
+      <header>
+        <div class="roof red invert">
+          <div>
+            <a class="wordmark" href="https://www.cmu.edu/">Carnegie Mellon University</a>
+            <button aria-label="toggle menu" aria-pressed="false" class="menu-btn" href="#nav">
+              <b>&#8212;</b><b>&#8212;</b><b>&#8212;</b>
+            </button>
+          </div>
+        </div>
+        <div id="sitename">
+          <span class="sitetitle"><a href="#">Office Hours</a></span>
+        </div>
+      </header>
+
+      <main id="content">
+        <div class="content">
+          <div>
+            <h1>Open Office Hours</h1>
+            <p>
+              Start a queue when your office hours begin. Students in your course join it from the
+              course's page and see their place in line.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="grid column3 invert">
+        <div>
+          <p>
+            Office Hours<br />Carnegie Mellon University<br />5000 Forbes Avenue<br />Pittsburgh, PA
+            15213
+          </p>
+          <ul>
+            <li><a href="https://www.cmu.edu/legal/">Legal Info</a></li>
+            <li><a href="https://www.cmu.edu/">www.cmu.edu</a></li>
+          </ul>
+        </div>
+        <div></div>
+        <div>
+          <nav id="nav">
+            <ul>
+              <li><a href="/queues">Queues</a></li>
+              <li><a href="/my-courses">My Courses</a></li>
+              <li>
+                <a href="/help">Help</a>
+                <ul>
+                  <li><a href="/help/students">For Students</a></li>
+                  <li>
+                    <a href="/help/staff">For Course Staff</a>
+                    <ul>
+                      <li class="active">
+                        <a href="/help/staff/open" aria-current="page">Open Office Hours</a>
+                      </li>
+                      <li><a href="/help/staff/canvas">Link It From Canvas</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a class="external" href="https://www.cmu.edu/canvas/">Canvas</a></li>
+              <li class="secondary">
+                <a class="external" href="https://www.cmu.edu/tli-office/"
+                  >Teach, Learn, Innovate</a
+                >
+              </li>
+              <li class="secondary"><a href="/logout">Sign Out</a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.cmu.edu/common/standard-v6/js/list.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/jquery-1.10.1.min.js"></script>
+    <script src="https://www.cmu.edu/common/standard-v6/js/main.6.7.min.js"></script>
+    <script src="../js/cmu-app.js"></script>
+    <script>
+      // The example's own links go nowhere; links to other sites still work
+      document.addEventListener("click", function (e) {
+        var link = e.target.closest("a[href^='/']");
+        if (link) e.preventDefault();
+      });
+    </script>
+  </body>
+</html>

@@ -1201,6 +1201,20 @@
       "frameworks": {}
     },
     {
+      "id": "link-labels",
+      "name": "Link Labels",
+      "page": "Buttons",
+      "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#link-labels",
+      "labels": ["Template"],
+      "description": "Plain text after a link that says what's behind it: [login required] for a page that asks people to sign in, and the file's type, such as [PDF], for a file. The label goes outside the link, so the link's words stay the destination's name. Buttons and Links says when to leave it off.",
+      "notes": [],
+      "classes": [],
+      "examples": [
+        "<ul>\n  <li><a href=\"#link-labels\">Spring Carnival Sweepstakes Roster</a> [login required]</li>\n  <li><a href=\"#link-labels\">Heat Schedule</a> [PDF]</li>\n</ul>"
+      ],
+      "frameworks": {}
+    },
+    {
       "id": "link-list",
       "name": "Link List",
       "page": "Sidebars",
@@ -1422,6 +1436,20 @@
       "classes": ["body.cmu-app", "body.cmu-framed"],
       "examples": [
         "<div class=\"content\">\n  <div>\n    <form>\n      <label for=\"kit-sem\">Semester</label>\n      <select id=\"kit-sem\"><option>Spring 2027</option><option>Fall 2026</option></select>\n      <label for=\"kit-course\">Course Number</label>\n      <input type=\"text\" id=\"kit-course\" placeholder=\"Such as 15-112\" aria-describedby=\"kit-course-hint\">\n      <p class=\"cmu-hint\" id=\"kit-course-hint\">The department and course number, with a hyphen.</p>\n      <fieldset>\n        <legend>Campus</legend>\n        <ul>\n          <li><input type=\"checkbox\" id=\"kit-a\" checked><label for=\"kit-a\">Pittsburgh</label></li>\n          <li><input type=\"checkbox\" id=\"kit-b\"><label for=\"kit-b\">Qatar</label></li>\n          <li><input type=\"checkbox\" id=\"kit-c\"><label for=\"kit-c\">Silicon Valley</label></li>\n        </ul>\n      </fieldset>\n      <p><button type=\"submit\" class=\"btn\">Save</button> <a class=\"btn ghost\" href=\"#setup\">Cancel</a></p>\n    </form>\n  </div>\n</div>"
+      ],
+      "frameworks": {}
+    },
+    {
+      "id": "page-size",
+      "name": "Page Size",
+      "page": "Lists and Tables",
+      "url": "https://webkilt.andrew.cmu.edu/0/lists.html#page-size",
+      "labels": ["App"],
+      "description": "A menu of how many results each page shows, centered under the pager. Use it only when the app has to offer one, such as a host app that always shows its own; otherwise, pick a page size and leave the menu out. Wrap it in a <form> with the class when changing it reloads the list.\n\nLabel it “Rows per page” under a table and “Per page” under anything else, in sentence case. List a few sizes, such as 10, 25, 50 and 100.\n\nUnder a table's count and pager:",
+      "notes": [],
+      "classes": ["cmu-page-size"],
+      "examples": [
+        "<p class=\"cmu-results-count\">Showing 1-25 of 312 sections</p>\n<div class=\"cmu-pager\" role=\"navigation\" aria-label=\"Pages\">\n  <ol>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" aria-disabled=\"true\" aria-label=\"First page\">&laquo;</a></li>\n    <li><a class=\"cmu-pager-arrow\" aria-disabled=\"true\" aria-label=\"Previous page\">&lsaquo;</a></li>\n    <li><a href=\"?page=1\" aria-current=\"page\">1</a></li>\n    <li><a href=\"?page=2\">2</a></li>\n    <li><a href=\"?page=3\">3</a></li>\n    <li><a href=\"?page=4\">4</a></li>\n    <li><a href=\"?page=5\">5</a></li>\n    <li><span>&hellip;</span></li>\n    <li><a href=\"?page=13\">13</a></li>\n    <li><a class=\"cmu-pager-arrow\" href=\"?page=2\" rel=\"next\" aria-label=\"Next page\">&rsaquo;</a></li>\n    <li class=\"cmu-pager-end\"><a class=\"cmu-pager-arrow\" href=\"?page=13\" aria-label=\"Last page\">&raquo;</a></li>\n  </ol>\n</div>\n<div class=\"cmu-page-size\">\n  <label for=\"kit-page-size\">Rows per page</label>\n  <select id=\"kit-page-size\">\n    <option>10</option>\n    <option selected>25</option>\n    <option>50</option>\n    <option>100</option>\n  </select>\n</div>"
       ],
       "frameworks": {}
     },

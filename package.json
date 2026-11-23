@@ -22,7 +22,7 @@
     "provenance": true
   },
   "scripts": {
-    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:gallery && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:preview && npm run test:initials && npm run test:links",
+    "check": "npm run lint && npm run format:check && npm run check:versions && npm run check:components && npm run check:gallery && npm run check:template && npm run check:opengraph && npm run check:data && npm run test:preview && npm run test:initials && npm run test:links && npm run test:examples",
     "check:template": "node tools/check-template.mjs",
     "check:versions": "node tools/versions.mjs",
     "check:components": "node tools/components.mjs --check",
@@ -43,7 +43,8 @@
     "test:browser": "node --test tools/turbo.browser.test.mjs",
     "test:initials": "node --test tools/initials.test.mjs",
     "test:preview": "node --test tools/preview.test.mjs",
-    "test:links": "node --test tools/links.test.mjs"
+    "test:links": "node --test tools/links.test.mjs",
+    "test:examples": "node --test tools/examples.test.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

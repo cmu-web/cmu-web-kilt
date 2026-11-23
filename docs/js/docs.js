@@ -1581,7 +1581,8 @@ document.querySelectorAll("pre.kit-code").forEach(function (pre, n) {
       if (!doc || !doc.body) return;
       // On a phone, a desktop shrunk to a third is unreadable: show the
       // page's own phone layout at full size instead
-      var wide = box.clientWidth < 600 ? box.clientWidth : desktop;
+      // Wider than a desktop, the page lays out at the column's width
+      var wide = box.clientWidth < 600 ? box.clientWidth : Math.max(desktop, box.clientWidth);
       frame.style.width = wide + "px";
       var scale = Math.min(1, box.clientWidth / wide),
         // The template's #container holds the whole page. Its #overlay is
@@ -1604,7 +1605,9 @@ document.querySelectorAll("pre.kit-code").forEach(function (pre, n) {
         watch.observe(el);
       });
     });
-    window.addEventListener("resize", fit);
+    // The page's own layout can change the column's width after the frame
+    // loads, so the frame refits whenever its box changes size
+    new ResizeObserver(fit).observe(box);
   });
 })();
 

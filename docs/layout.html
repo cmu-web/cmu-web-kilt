@@ -454,13 +454,26 @@
                 The header tabs, and the menu open with the current section expanded.
               </figcaption>
             </figure>
+            <div class="cmu-callout cmu-callout--green">
+              <p class="cmu-label">Tip</p>
+              <p>The home page isn't in the list: the site name links to it.</p>
+            </div>
             <p>
               Nest pages the way the site is organized: the top level holds a few sections, and each
               section's pages go in a sub-list under it, as deep as the site needs. The tabs then
-              stay short, and the menu shows the whole site with the current section open. The home
-              page isn't in the list: the site name links to it.
+              stay short, and the menu shows the whole site with the current section open.
             </p>
-            <pre class="kit-code"><code>&lt;nav id="nav"&gt;
+            <p>The same navigation on a page, with Open Office Hours as the current page:</p>
+            <div
+              class="kit-page-frame"
+              data-src="examples/navigation.html"
+              data-frame-width="1280"
+              data-title="An example page with this navigation"
+            >
+              <p><a href="examples/navigation.html">The example page</a></p>
+            </div>
+            <p><a class="cta" href="examples/navigation.html">Open the Example Page</a></p>
+            <pre class="kit-code" data-kit-demo-code><code>&lt;nav id="nav"&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href="/queues"&gt;Queues&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/my-courses"&gt;My Courses&lt;/a&gt;&lt;/li&gt;
@@ -477,10 +490,47 @@
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
+    &lt;li&gt;&lt;a class="external" href="https://www.cmu.edu/canvas/"&gt;Canvas&lt;/a&gt;&lt;/li&gt;
     &lt;li class="secondary"&gt;&lt;a class="external" href="https://www.cmu.edu/tli-office/"&gt;Teach, Learn, Innovate&lt;/a&gt;&lt;/li&gt;
     &lt;li class="secondary"&gt;&lt;a href="/logout"&gt;Sign Out&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>Cascade builds the navigation from the site's pages and folders.</p>
+            </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p>
+                The theme builds the navigation from the site's menu in
+                <strong>Appearance</strong> &rsaquo; <strong>Editor</strong> &rsaquo;
+                <strong>Navigation</strong>. Give an item the <strong>Additional CSS Class</strong>
+                <code>secondary</code> to keep it in the menu only.
+              </p>
+            </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>
+                The gem's layout draws <code>nav#nav</code> from the app's
+                <code>cmu_nav_tree</code>. It marks the current page, adds <code>external</code> to
+                a link to another site and puts Sign In or Sign Out in the menu.
+              </p>
+              <pre class="kit-code"><code>def cmu_nav_tree
+  [
+    { label: "Queues", url: queues_path },
+    { label: "My Courses", url: my_courses_path },
+    { label: "Help", url: help_path, children: [
+      { label: "For Students", url: help_students_path },
+      { label: "For Course Staff", url: help_staff_path, children: [
+        { label: "Open Office Hours", url: help_staff_open_path },
+        { label: "Link It From Canvas", url: help_staff_canvas_path }
+      ] }
+    ] },
+    { label: "Canvas", url: "https://www.cmu.edu/canvas/" },
+    { label: "Teach, Learn, Innovate", url: "https://www.cmu.edu/tli-office/", secondary: true }
+  ]
+end</code></pre>
+            </div>
             <table class="alternate cmu-full">
               <thead>
                 <tr>
@@ -523,7 +573,10 @@
                 </tr>
                 <tr>
                   <td class="cmu-fit"><code>a.external</code></td>
-                  <td>Adds the template's leave-site icon to a link to another site.</td>
+                  <td>
+                    Adds the template's leave-site icon to a link to another site, in the menu and
+                    on its tab.
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -695,9 +748,30 @@
               />
               <figcaption>Breadcrumbs on a page three levels down.</figcaption>
             </figure>
-            <pre class="kit-code"><code>&lt;div class="breadcrumbs"&gt;
+            <pre class="kit-code" data-kit-demo-code><code>&lt;div class="breadcrumbs"&gt;
   &lt;a href="/"&gt;Office Hours Queue&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;&lt;a href="/help"&gt;Help&lt;/a&gt;&amp;nbsp;&amp;rsaquo;&amp;nbsp;For Course Staff
 &lt;/div&gt;</code></pre>
+            <div class="kit-cms" data-cms="Cascade">
+              <p class="cmu-label kit-cms-label">In Cascade</p>
+              <p>Cascade adds the breadcrumbs from the page's folders.</p>
+            </div>
+            <div class="kit-cms" data-cms="WordPress">
+              <p class="cmu-label kit-cms-label">In WordPress</p>
+              <p>
+                The theme writes the trail on every page but the home page: the site's name, the
+                page's parent pages, then the page.
+              </p>
+            </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>
+                The gem's layout writes the trail: the site's name, then the steps a view adds with
+                <code>cmu_breadcrumb</code>, the last as plain text.
+              </p>
+              <pre
+                class="kit-code"
+              ><code>&lt;% cmu_breadcrumb link_to("Help", help_path), "For Course Staff" %&gt;</code></pre>
+            </div>
             <p>
               Separate the steps with
               <code>&amp;nbsp;&amp;rsaquo;&amp;nbsp;</code> (&nbsp;&rsaquo;&nbsp;), as Cascade does,
