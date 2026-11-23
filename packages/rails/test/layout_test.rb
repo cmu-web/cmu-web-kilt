@@ -51,8 +51,14 @@ class LayoutTest < Minitest::Test
   def test_hidden_items_and_a_hidden_sections_visible_pages
     labels = @pages.fetch('/').css('nav#nav > ul > li:not(.cmu-account-menu) > a').map(&:text)
     # Officials and Settings are hidden; Officials' Heats moves up a level
-    assert_equal %w[Teams Drivers Heats], labels
+    assert_equal %w[Teams Drivers Heats Rules], labels
     assert_equal ['Heats'], current_items('/heats')
+  end
+
+  def test_a_link_to_another_site_gets_the_external_class
+    links = @pages.fetch('/').css('nav#nav > ul > li > a').to_h { |a| [a.text, a['class']] }
+    assert_equal 'external', links['Rules']
+    assert_nil links['Teams']
   end
 
   def test_sign_out_is_a_button_that_sends_delete

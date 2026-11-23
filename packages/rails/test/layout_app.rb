@@ -69,7 +69,9 @@ Dir.mktmpdir('cmu-web-kilt-layout') do |directory|
         # A section this user can't see: its visible page moves up a level
         { label: 'Officials', url: '/officials', if: -> { false },
           children: [{ label: 'Heats', url: '/heats' }] },
-        { label: 'Settings', url: '/settings', secondary: true, if: -> { false } }
+        { label: 'Settings', url: '/settings', secondary: true, if: -> { false } },
+        # Another site's page
+        { label: 'Rules', url: 'https://www.cmu.edu/' }
       ]
     end
   end

@@ -737,7 +737,8 @@ end</code></pre>
                     <strong>The app's part</strong> is a few helpers in
                     <code>app/helpers/cmu_helper.rb</code>, each with a default:
                     <code>cmu_user</code>, the signed-in user, and <code>cmu_nav_tree</code>, the
-                    navigation, where an item's <code>if:</code> says who sees it. Define
+                    navigation, where an item's <code>if:</code> says who sees it and an item whose
+                    <code>url</code> is another site's gets the template's leave-site icon. Define
                     <code>cmu_profile_path</code>, <code>cmu_search_path</code>,
                     <code>cmu_acting_as?</code> with <code>cmu_stop_acting_path</code>, and
                     <code>cmu_test_account</code> when the app has them. A view adds to the page's
