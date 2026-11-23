@@ -278,8 +278,8 @@
       "notes": [],
       "classes": ["red invert", "simple", "btn wide", "ghost"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"red invert\">\n      <a class=\"btn ghost wide\" href=\"#button-box\">Download the Loan Policies [PDF]</a>\n    </div>\n  </div>\n</div>",
-        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <a class=\"btn wide\" href=\"#button-box\">Reserve a Camera Kit</a>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"red invert\">\n      <a class=\"btn ghost wide\" href=\"#button-box\">Download the Race Rules [PDF]</a>\n    </div>\n  </div>\n</div>",
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"simple\">\n      <a class=\"btn wide\" href=\"#button-box\">Register a Team</a>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -589,7 +589,7 @@
       "notes": [],
       "classes": ["darkgrey invert", "rule-bottom"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"darkgrey invert\">\n      <h2 class=\"rule-bottom\">Questions?</h2>\n      <p>The checkout desk answers email within one business&nbsp;day.</p>\n      <p><a class=\"cta\" href=\"#dark-box\">Email the Checkout Desk</a></p>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"darkgrey invert\">\n      <h2 class=\"rule-bottom\">Questions?</h2>\n      <p>The Sweepstakes chair answers email within one business&nbsp;day.</p>\n      <p><a class=\"cta\" href=\"#dark-box\">Email the Sweepstakes Chair</a></p>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1032,7 +1032,7 @@
       "notes": [],
       "classes": ["grey"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"grey\">\n      <h2>Need Help?</h2>\n      <p>The checkout desk is open weekdays, 9 a.m.-5 p.m., in Hunt Library.</p>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"grey\">\n      <h2>Need Help?</h2>\n      <p>The Sweepstakes office is open weekdays, 9 a.m.-5 p.m., in the Cohon Center.</p>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
@@ -1631,7 +1631,7 @@
       "notes": [],
       "classes": ["list left-rule"],
       "examples": [
-        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list left-rule\">\n      <h1>Quick Links</h1>\n      <ul>\n        <li><a href=\"#quick-links\">Browse Equipment</a></li>\n        <li><a href=\"#quick-links\">My Reservations</a></li>\n        <li><a href=\"#quick-links\">Loan Policies</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
+        "<div class=\"content\">\n  <div>\n    <p>Your page's content.</p>\n  </div><div class=\"sidebar\">\n    <div class=\"list left-rule\">\n      <h1>Quick Links</h1>\n      <ul>\n        <li><a href=\"#quick-links\">Heat Schedule</a></li>\n        <li><a href=\"#quick-links\">My Team</a></li>\n        <li><a href=\"#quick-links\">Roll Times</a></li>\n      </ul>\n    </div>\n  </div>\n</div>"
       ],
       "frameworks": {}
     },
