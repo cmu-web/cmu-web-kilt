@@ -434,7 +434,7 @@ p:has(> .btn + .cta) > .btn {
 /* Card links: one per audience or option */
 .cmu-paths {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: 1.25rem;
   margin: 0 0 3.5rem;
 }
