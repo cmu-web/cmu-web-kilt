@@ -431,13 +431,19 @@
               <li>
                 <strong>Header tabs</strong> under the site name, from 768px up: the first ten
                 top-level items, without their sub-lists. The current page's tab is red and
-                underlined.
+                underlined. <strong>Note:</strong> The home page isn't a tab; the site name links to
+                it.
               </li>
               <li>
                 <strong>The menu</strong> that slides out from the menu button, with every item and
-                sub-list. Phones use only the menu.
+                sub-list. Phones use only the menu. To show the signed-in person beside the menu
+                button, see <a href="accounts.html#account">Account Status</a>.
               </li>
             </ul>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>Keep menu labels short, in Title Case.</p>
+            </div>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>nav#nav</code>, <code>active</code>, <code>secondary</code>,
@@ -451,19 +457,15 @@
                 height="560"
               />
               <figcaption>
-                The header tabs, and the menu open with the current section expanded.
+                This site's header tabs, and its menu open with Components, a section, expanded.
               </figcaption>
             </figure>
-            <div class="cmu-callout cmu-callout--green">
-              <p class="cmu-label">Tip</p>
-              <p>The home page isn't in the list: the site name links to it.</p>
-            </div>
             <p>
               Nest pages the way the site is organized: the top level holds a few sections, and each
-              section's pages go in a sub-list under it, as deep as the site needs. The tabs then
-              stay short, and the menu shows the whole site with the current section open.
+              section's pages go in a sub-list under it, as deep as the site needs. Keep to about
+              six top-level items so the tabs fit on one row. The menu shows the whole site with the
+              current section open:
             </p>
-            <p>The same navigation on a page, with Open Office Hours as the current page:</p>
             <div
               class="kit-page-frame"
               data-src="examples/navigation.html"
@@ -580,16 +582,6 @@ end</code></pre>
                 </tr>
               </tbody>
             </table>
-            <p>
-              This site's own menu is an example: Components is a section, with its pages under it.
-              Keep to about six top-level items so the tabs fit on one row. To show the signed-in
-              person beside the menu button, see
-              <a href="accounts.html#account">Account Status</a>.
-            </p>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>Keep menu labels short, in Title Case.</p>
-            </div>
 
             <h2 id="tabs" class="rule-top">
               Tabs
