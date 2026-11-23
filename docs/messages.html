@@ -544,6 +544,131 @@
           </form>
         </dialog>
       </div>
+            <h2 id="chat" class="rule-top">
+              Chat
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A chat in the page&rsquo;s bottom-right corner, with the app&rsquo;s own mascot. The
+              kit draws the launcher and the panel and handles opening, closing, sending and
+              waiting. The app answers each question, from a list of answers, a search or a chatbot
+              service.
+            </p>
+            <ul>
+              <li>
+                <strong>Name:</strong> Chatterbuggy, unless you give it your own, in
+                <code>.cmu-chat-title</code> and in the launcher&rsquo;s words and
+                <code>title</code>.
+              </li>
+              <li>
+                <strong>Mascot:</strong> <code>data-cmu-chat-mascot</code> on
+                <code>.cmu-chat</code> names a square picture, at least 96 &times; 96, shown in a
+                circle on the launcher and beside each reply. While the panel is open, the launcher
+                turns white, and <code>data-cmu-chat-mascot-open</code> can name a wide picture for
+                it, about 2:1; without one, your mascot stays in its circle. With no mascot at all,
+                it&rsquo;s Chatterbuggy, the kit&rsquo;s own buggy: facing you while closed, racing
+                while open. CMU&rsquo;s marks, its mascot included, aren&rsquo;t covered by the
+                kit&rsquo;s license.
+              </li>
+              <li>
+                <strong>Colors:</strong> replies are <code>--cmu-chat-reply</code>, a pale peach
+                that suits Chatterbuggy, and the user&rsquo;s messages <code>--cmu-chat-you</code>,
+                a pale blue. With your own mascot, set <code>--cmu-chat-reply</code> on
+                <code>.cmu-chat</code> to a pale tint of its color.
+              </li>
+              <li>
+                <strong>Answering:</strong> listen for <code>cmu-chat-send</code> on
+                <code>.cmu-chat</code>. <code>event.detail.text</code> is the question, and
+                <code>detail.reply(text)</code> adds a reply and returns its bubble, to fill in as
+                an answer arrives. Or add <code>.cmu-chat-message</code> elements to
+                <code>.cmu-chat-log</code> yourself, such as from the server.
+              </li>
+              <li>
+                <strong>Choices</strong> are buttons in a <code>.cmu-chat-choices</code> after a
+                reply. Each sends its words as the user&rsquo;s message, with its
+                <code>value</code> as <code>detail.value</code>.
+              </li>
+              <li>
+                <strong>Waiting:</strong> from a question until its reply, the log is
+                <code>aria-busy</code> and shows typing dots. Screen readers read the reply when it
+                arrives.
+              </li>
+              <li>
+                <strong>Keyboard:</strong> Enter sends and Shift+Enter starts a new line. Escape
+                closes the panel and returns to the launcher.
+              </li>
+              <li>
+                <strong>Across pages:</strong> a panel with an <code>id</code> opens again on the
+                next page in the same tab. Keeping the conversation is up to the app.
+              </li>
+              <li>
+                <strong>On phones,</strong> the panel fills the screen and the launcher is a circle
+                with the mascot. Its words stay for screen readers and in its tooltip.
+              </li>
+            </ul>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Use the mascot&rsquo;s name on the launcher: Ask Chatterbuggy. The first reply says
+                what the chat can answer and asks people not to share private information. Choices
+                start with a verb, since each one becomes the user&rsquo;s message.
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-chat</code>, <code>cmu-chat-launcher</code>,
+              <code>cmu-chat-launcher-text</code>, <code>cmu-chat-panel</code>,
+              <code>cmu-chat-header</code>, <code>cmu-chat-title</code>,
+              <code>cmu-chat-close</code>, <code>cmu-chat-log</code>, <code>cmu-chat-message</code>,
+              <code>cmu-chat-message--user</code>, <code>cmu-chat-bubble</code>,
+              <code>cmu-chat-choices</code>, <code>cmu-chat-form</code>, <code>cmu-chat-send</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p data-demo-skip><button type="button" class="btn small" data-kit-try-chat>Show Chatterbuggy on This Page</button></p>
+        <div class="cmu-chat">
+          <section class="cmu-chat-panel" id="kit-chat" aria-labelledby="kit-chat-title" hidden>
+            <div class="cmu-chat-header">
+              <p class="cmu-chat-title" id="kit-chat-title">Chatterbuggy</p>
+              <button type="button" class="cmu-chat-close" aria-label="Close Chat" title="Close Chat">&times;</button>
+            </div>
+            <div class="cmu-chat-log" role="log" aria-label="Conversation">
+              <div class="cmu-chat-message">
+                <div class="cmu-chat-bubble">Hi. I&rsquo;m Chatterbuggy. Pick a topic or ask a question about the Sweepstakes.</div>
+              </div>
+              <div class="cmu-chat-message">
+                <div class="cmu-chat-bubble"><strong>Privacy:</strong> Please don&rsquo;t share private or personal information with me.</div>
+              </div>
+              <div class="cmu-chat-choices">
+                <button type="button" value="heats">Show Heats</button>
+                <button type="button" value="roll-times">Find Roll Times</button>
+                <button type="button" value="teams">Join a Team</button>
+                <button type="button" value="more">Show More Topics</button>
+              </div>
+            </div>
+            <form class="cmu-chat-form">
+              <label class="sr-only" for="kit-chat-question">Question</label>
+              <textarea id="kit-chat-question" rows="1" placeholder="Ask a question"></textarea>
+              <button type="submit" class="cmu-chat-send" aria-label="Send" title="Send"></button>
+            </form>
+          </section>
+          <button type="button" class="cmu-chat-launcher" aria-controls="kit-chat" aria-expanded="false" title="Ask Chatterbuggy"><span class="cmu-chat-launcher-text">Ask Chatterbuggy</span></button>
+        </div>
+      </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <p>
+                Give <code>.cmu-chat</code> an <code>id</code> and
+                <code>data-turbo-permanent</code>, so the chat stays put, conversation and all, as
+                Turbo changes pages. To answer from the server, give <code>.cmu-chat-log</code> an
+                <code>id</code> and have a Turbo Stream append a <code>.cmu-chat-message</code> to
+                it.
+              </p>
+            </div>
             <h2 id="errors" class="rule-top">
               Error Pages
               <span class="kit-where"

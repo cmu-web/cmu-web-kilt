@@ -407,6 +407,49 @@
       "frameworks": {}
     },
     {
+      "id": "chat",
+      "name": "Chat",
+      "page": "Messages and Progress",
+      "url": "https://webkilt.andrew.cmu.edu/0/messages.html#chat",
+      "labels": ["App"],
+      "description": "A chat in the page’s bottom-right corner, with the app’s own mascot. The kit draws the launcher and the panel and handles opening, closing, sending and waiting. The app answers each question, from a list of answers, a search or a chatbot service.\n\nUse the mascot’s name on the launcher: Ask Chatterbuggy. The first reply says what the chat can answer and asks people not to share private information. Choices start with a verb, since each one becomes the user’s message.",
+      "notes": [
+        "Name: Chatterbuggy, unless you give it your own, in .cmu-chat-title and in the launcher’s words and title.",
+        "Mascot: data-cmu-chat-mascot on .cmu-chat names a square picture, at least 96 × 96, shown in a circle on the launcher and beside each reply. While the panel is open, the launcher turns white, and data-cmu-chat-mascot-open can name a wide picture for it, about 2:1; without one, your mascot stays in its circle. With no mascot at all, it’s Chatterbuggy, the kit’s own buggy: facing you while closed, racing while open. CMU’s marks, its mascot included, aren’t covered by the kit’s license.",
+        "Colors: replies are --cmu-chat-reply, a pale peach that suits Chatterbuggy, and the user’s messages --cmu-chat-you, a pale blue. With your own mascot, set --cmu-chat-reply on .cmu-chat to a pale tint of its color.",
+        "Answering: listen for cmu-chat-send on .cmu-chat. event.detail.text is the question, and detail.reply(text) adds a reply and returns its bubble, to fill in as an answer arrives. Or add .cmu-chat-message elements to .cmu-chat-log yourself, such as from the server.",
+        "Choices are buttons in a .cmu-chat-choices after a reply. Each sends its words as the user’s message, with its value as detail.value.",
+        "Waiting: from a question until its reply, the log is aria-busy and shows typing dots. Screen readers read the reply when it arrives.",
+        "Keyboard: Enter sends and Shift+Enter starts a new line. Escape closes the panel and returns to the launcher.",
+        "Across pages: a panel with an id opens again on the next page in the same tab. Keeping the conversation is up to the app.",
+        "On phones, the panel fills the screen and the launcher is a circle with the mascot. Its words stay for screen readers and in its tooltip."
+      ],
+      "classes": [
+        "cmu-chat",
+        "cmu-chat-launcher",
+        "cmu-chat-launcher-text",
+        "cmu-chat-panel",
+        "cmu-chat-header",
+        "cmu-chat-title",
+        "cmu-chat-close",
+        "cmu-chat-log",
+        "cmu-chat-message",
+        "cmu-chat-message--user",
+        "cmu-chat-bubble",
+        "cmu-chat-choices",
+        "cmu-chat-form",
+        "cmu-chat-send"
+      ],
+      "examples": [
+        "<div class=\"cmu-chat\">\n  <section class=\"cmu-chat-panel\" id=\"kit-chat\" aria-labelledby=\"kit-chat-title\" hidden>\n    <div class=\"cmu-chat-header\">\n      <p class=\"cmu-chat-title\" id=\"kit-chat-title\">Chatterbuggy</p>\n      <button type=\"button\" class=\"cmu-chat-close\" aria-label=\"Close Chat\" title=\"Close Chat\">&times;</button>\n    </div>\n    <div class=\"cmu-chat-log\" role=\"log\" aria-label=\"Conversation\">\n      <div class=\"cmu-chat-message\">\n        <div class=\"cmu-chat-bubble\">Hi. I&rsquo;m Chatterbuggy. Pick a topic or ask a question about the Sweepstakes.</div>\n      </div>\n      <div class=\"cmu-chat-message\">\n        <div class=\"cmu-chat-bubble\"><strong>Privacy:</strong> Please don&rsquo;t share private or personal information with me.</div>\n      </div>\n      <div class=\"cmu-chat-choices\">\n        <button type=\"button\" value=\"heats\">Show Heats</button>\n        <button type=\"button\" value=\"roll-times\">Find Roll Times</button>\n        <button type=\"button\" value=\"teams\">Join a Team</button>\n        <button type=\"button\" value=\"more\">Show More Topics</button>\n      </div>\n    </div>\n    <form class=\"cmu-chat-form\">\n      <label class=\"sr-only\" for=\"kit-chat-question\">Question</label>\n      <textarea id=\"kit-chat-question\" rows=\"1\" placeholder=\"Ask a question\"></textarea>\n      <button type=\"submit\" class=\"cmu-chat-send\" aria-label=\"Send\" title=\"Send\"></button>\n    </form>\n  </section>\n  <button type=\"button\" class=\"cmu-chat-launcher\" aria-controls=\"kit-chat\" aria-expanded=\"false\" title=\"Ask Chatterbuggy\"><span class=\"cmu-chat-launcher-text\">Ask Chatterbuggy</span></button>\n</div>"
+      ],
+      "frameworks": {
+        "Rails": {
+          "text": "Give .cmu-chat an id and data-turbo-permanent, so the chat stays put, conversation and all, as Turbo changes pages. To answer from the server, give .cmu-chat-log an id and have a Turbo Stream append a .cmu-chat-message to it."
+        }
+      }
+    },
+    {
       "id": "choice-grid",
       "name": "Choice Grid",
       "page": "Forms",

@@ -179,6 +179,8 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
     // Empty values drop (hidden="" is just hidden), except alt, where empty means something
     .replace(/ (?!alt=)([\w-]+)=""/g, " $1")
     .replace(/ data-preview/g, "")
+    // State classes the kit's script adds, such as a chat's
+    .replace(/ cmu-chat--(open|wide)/g, "")
     .replace(/ data-kit-[\w-]+="[^"]*"/g, "");
   pre.appendChild(code);
   demo.kitCode = code;
@@ -1605,3 +1607,85 @@ document.querySelectorAll("pre.kit-code").forEach(function (pre, n) {
     window.addEventListener("resize", fit);
   });
 })();
+
+// The chat's example shows open in place, without taking focus. Show
+// Chatterbuggy on This Page moves the same chat, conversation and all, to the
+// page's corner, closed; Hide Chatterbuggy puts it back. Chatterbuggy answers
+// from a few made-up topics.
+function kitChatInline(chat, inline) {
+  var panel = chat.querySelector(".cmu-chat-panel");
+  chat.classList.toggle("kit-inline", inline);
+  chat.classList.toggle("cmu-chat--open", inline);
+  panel.hidden = !inline;
+  chat.querySelector(".cmu-chat-launcher").setAttribute("aria-expanded", String(inline));
+}
+document.querySelectorAll(".kit-demo .cmu-chat").forEach(function (chat) {
+  var demo = chat.closest(".kit-demo"),
+    button = document.querySelector("[data-kit-try-chat]");
+  kitChatInline(chat, true);
+  if (button)
+    button.addEventListener("click", function () {
+      var docked = chat.parentElement === document.body;
+      // While it's away, a note the same size keeps its place in the example
+      var spot = demo.querySelector(".kit-chat-spot");
+      if (docked) {
+        if (spot) spot.replaceWith(chat);
+        else demo.appendChild(chat);
+      } else {
+        spot = document.createElement("div");
+        spot.className = "kit-chat-spot";
+        spot.textContent = "Chatterbuggy is in this page\u2019s bottom-right corner.";
+        spot.style.height = chat.offsetHeight + "px";
+        chat.replaceWith(spot);
+        document.body.appendChild(chat);
+      }
+      kitChatInline(chat, docked);
+      button.textContent = docked ? "Show Chatterbuggy on This Page" : "Hide Chatterbuggy";
+    });
+  var answers = {
+    heats:
+      "Heats run Friday and Saturday mornings of Carnival, starting at 8 a.m. Each heat races two or three buggies.",
+    "roll-times":
+      "Roll times post on the Results page within an hour of each heat. The fastest prelim time sets the finals order.",
+    teams:
+      "Teams sign up through their organization's buggy chair. Drivers and pushers join through the team.",
+  };
+  chat.addEventListener("cmu-chat-send", function (e) {
+    var key = e.detail.value || "";
+    if (!key) {
+      var text = e.detail.text.toLowerCase();
+      key = /heat/.test(text)
+        ? "heats"
+        : /roll|time|result/.test(text)
+          ? "roll-times"
+          : /team|join|driver|push/.test(text)
+            ? "teams"
+            : "";
+    }
+    setTimeout(function () {
+      if (answers[key]) {
+        e.detail.reply(answers[key]);
+        return;
+      }
+      e.detail.reply(
+        key === "more"
+          ? "Pick a topic below or ask me a question."
+          : "I can answer questions about heats, roll times and teams. Pick a topic below.",
+      );
+      var choices = document.createElement("div");
+      choices.className = "cmu-chat-choices";
+      [
+        ["heats", "Show Heats"],
+        ["roll-times", "Find Roll Times"],
+        ["teams", "Join a Team"],
+      ].forEach(function (c) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.value = c[0];
+        b.textContent = c[1];
+        choices.appendChild(b);
+      });
+      chat.querySelector(".cmu-chat-log").appendChild(choices);
+    }, 900);
+  });
+});

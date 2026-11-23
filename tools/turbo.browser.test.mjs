@@ -1,7 +1,7 @@
 // Browser test for js/cmu-app.js: Escape closes the template's menu, once,
 // including under Turbo, which runs the template's scripts again on every
-// page it shows and so adds another of their Escape listeners each time. It
-// needs Playwright's Chromium and the network (the template's scripts load
+// page it shows and so adds another of their Escape listeners each time; and
+// the chat sends, closes and stays open across Turbo's pages. It needs Playwright's Chromium and the network (the template's scripts load
 // from www.cmu.edu, Turbo from jsDelivr).
 //   npx playwright install chromium   (once)
 //   npm run test:browser
@@ -29,6 +29,25 @@ const body = docsPage.slice(
   docsPage.indexOf(`<script src="${SCRIPTS[0]}"`),
 );
 
+// A chat that Turbo keeps from page to page
+const CHAT = `<div class="cmu-chat" id="chat" data-turbo-permanent>
+    <section class="cmu-chat-panel" id="chat-panel" aria-labelledby="chat-title" hidden>
+      <div class="cmu-chat-header">
+        <p class="cmu-chat-title" id="chat-title">Chatterbuggy</p>
+        <button type="button" class="cmu-chat-close" aria-label="Close Chat" title="Close Chat">&times;</button>
+      </div>
+      <div class="cmu-chat-log" role="log" aria-label="Conversation">
+        <div class="cmu-chat-choices"><button type="button" value="heats">Show Heats</button></div>
+      </div>
+      <form class="cmu-chat-form">
+        <label class="sr-only" for="chat-question">Question</label>
+        <textarea id="chat-question" rows="1"></textarea>
+        <button type="submit" class="cmu-chat-send" aria-label="Send" title="Send"></button>
+      </form>
+    </section>
+    <button type="button" class="cmu-chat-launcher" aria-controls="chat-panel" aria-expanded="false" title="Ask Chatterbuggy"><span class="cmu-chat-launcher-text">Ask Chatterbuggy</span></button>
+  </div>`;
+
 // Numbered pages that link to the next one, with Turbo, as a Rails app has
 // it, and the kit's script once in the head with defer, as the Rails install
 // loads it. Under /plain/ the kit is left out, to show the template alone.
@@ -46,6 +65,7 @@ function page(kit, number) {
 </head>
 <body class="no-js">${body}
   <p><a id="next" href="${kit ? "/kit" : "/plain"}/${number + 1}">Next Page</a></p>
+  ${kit ? CHAT : ""}
   ${SCRIPTS.map((src) => `<script src="${src}"></script>`).join("\n  ")}
 </body>
 </html>`;
@@ -167,5 +187,78 @@ test("with the menu closed, Escape reaches the page's own listeners", async () =
   await tab.keyboard.press("Escape");
   assert.equal(await tab.evaluate(() => window.escapes), 1);
   assert.equal(await menuOn(tab), false);
+  await tab.close();
+});
+
+const chatState = (tab) =>
+  tab.evaluate(() => ({
+    open: !document.querySelector("#chat-panel").hidden,
+    expanded: document.querySelector(".cmu-chat-launcher").getAttribute("aria-expanded"),
+    busy: document.querySelector(".cmu-chat-log").getAttribute("aria-busy"),
+    messages: [...document.querySelectorAll(".cmu-chat-message")].map((m) => m.textContent),
+  }));
+
+test("the chat sends, waits for a reply and closes on Escape, leaving the menu", async () => {
+  const tab = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  await tab.goto(`${base}/kit/1`, { waitUntil: "load" });
+  await settle(tab);
+  if (!(await menuOn(tab))) await toggleMenu(tab);
+  await settle(tab);
+  await tab.evaluate(() => {
+    document.querySelector("#chat").addEventListener("cmu-chat-send", (e) => {
+      window.sent = { text: e.detail.text, value: e.detail.value };
+      window.reply = e.detail.reply;
+    });
+  });
+  await tab.$eval(".cmu-chat-launcher", (b) => b.click());
+  let state = await chatState(tab);
+  assert.equal(state.open, true, "the launcher opens the panel");
+  assert.equal(state.expanded, "true");
+  assert.equal(
+    await tab.evaluate(() => document.activeElement.id),
+    "chat-question",
+    "the question box has focus",
+  );
+  await tab.keyboard.type("When are heats?");
+  await tab.keyboard.press("Enter");
+  state = await chatState(tab);
+  assert.deepEqual(state.messages, ["When are heats?"], "Enter sends");
+  assert.equal(state.busy, "true", "the log waits");
+  assert.deepEqual(await tab.evaluate(() => window.sent), {
+    text: "When are heats?",
+    value: undefined,
+  });
+  await tab.evaluate(() => window.reply("Friday and Saturday mornings."));
+  await tab.waitForFunction(() => !document.querySelector(".cmu-chat-log[aria-busy]"));
+  await tab.$eval('.cmu-chat-choices button[value="heats"]', (b) => b.click());
+  assert.deepEqual(await tab.evaluate(() => window.sent), { text: "Show Heats", value: "heats" });
+  await tab.focus("#chat-question");
+  await tab.keyboard.press("Escape");
+  await settle(tab);
+  state = await chatState(tab);
+  assert.equal(state.open, false, "Escape closes the panel");
+  assert.equal(
+    await tab.evaluate(() => document.activeElement.className),
+    "cmu-chat-launcher",
+    "focus returns to the launcher",
+  );
+  assert.equal(await menuOn(tab), true, "the same Escape leaves the menu open");
+  await tab.close();
+});
+
+test("under Turbo, an open chat stays open with its conversation", async () => {
+  const tab = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  await tab.goto(`${base}/kit/1`, { waitUntil: "load" });
+  await settle(tab);
+  await tab.$eval(".cmu-chat-launcher", (b) => b.click());
+  await tab.$eval('.cmu-chat-choices button[value="heats"]', (b) => b.click());
+  for (let visits = 2; visits <= 3; visits++) {
+    await visit(tab);
+    const state = await chatState(tab);
+    assert.equal(state.open, true, `visit ${visits}: open`);
+    assert.deepEqual(state.messages, ["Show Heats"], `visit ${visits}: the conversation stays`);
+  }
+  await tab.$eval(".cmu-chat-launcher", (b) => b.click());
+  assert.equal((await chatState(tab)).open, false, "one click closes it");
   await tab.close();
 });

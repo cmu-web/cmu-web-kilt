@@ -127,6 +127,11 @@
       "keyup",
       function (e) {
         if ((e.key !== "Escape" && e.code !== "Escape") || !document.body) return;
+        // An Escape that closed a chat's panel leaves the menu as it is
+        if (document.cmuChatEscape) {
+          document.cmuChatEscape = false;
+          return;
+        }
         if (!document.body.classList.contains("menu-on")) return;
         e.stopImmediatePropagation();
         var button =
@@ -1532,16 +1537,203 @@
     },
     true,
   );
+  // Chat: <div class="cmu-chat" data-cmu-chat-mascot="mascot.png">
+  // with a section.cmu-chat-panel (hidden) and a button.cmu-chat-launcher
+  // aria-controls'd to it. The launcher opens and closes the panel; Escape
+  // and the close button close it and return to the launcher. A question,
+  // typed or a button in .cmu-chat-choices, joins the log as the user's
+  // message and fires cmu-chat-send on the .cmu-chat, with detail.text, the
+  // button's value as detail.value, and detail.reply(text or node), which
+  // adds a reply and returns its bubble. The app can also add replies to
+  // .cmu-chat-log itself, such as from a Turbo Stream. The log is aria-busy,
+  // showing typing dots, from a question until a reply arrives. A panel with
+  // an id stays open across pages in the same tab.
+  function chatParts(root) {
+    return {
+      panel: root.querySelector(".cmu-chat-panel"),
+      launcher: root.querySelector(".cmu-chat-launcher"),
+      log: root.querySelector(".cmu-chat-log"),
+      input: root.querySelector(".cmu-chat-form textarea, .cmu-chat-form input"),
+    };
+  }
+  function chatPicture(root, attribute, property) {
+    var src = root.getAttribute(attribute);
+    if (src)
+      root.style.setProperty(
+        property,
+        'url("' + new URL(src, document.baseURI).href.replace(/"/g, "%22") + '")',
+      );
+    else root.style.removeProperty(property);
+    return !!src;
+  }
+  // The wide picture on the open launcher: the app's own, or Chatterbuggy's
+  // when the app has no mascot; an app's mascot alone stays in its circle
+  function chatMascot(root) {
+    var mascot = chatPicture(root, "data-cmu-chat-mascot", "--cmu-chat-mascot"),
+      open = chatPicture(root, "data-cmu-chat-mascot-open", "--cmu-chat-mascot-open");
+    root.classList.toggle("cmu-chat--wide", open || !mascot);
+  }
+  function chatRemember(panel, open) {
+    if (!panel.id) return;
+    try {
+      if (open) sessionStorage.setItem("cmu-chat:" + panel.id, "open");
+      else sessionStorage.removeItem("cmu-chat:" + panel.id);
+    } catch {
+      // Storage off: the panel starts closed on the next page
+    }
+  }
+  function chatScroll(log, node) {
+    if (!log) return;
+    var end = log.scrollHeight - log.clientHeight;
+    if (!node || node.classList.contains("cmu-chat-message--user")) {
+      log.scrollTop = end;
+      return;
+    }
+    // A reply, with any choices after it, shows as much as fits from the
+    // top of the first reply since the user's last message
+    var first = log.firstElementChild;
+    for (var el = log.lastElementChild; el; el = el.previousElementSibling)
+      if (el.classList.contains("cmu-chat-message--user")) {
+        first = el.nextElementSibling || el;
+        break;
+      }
+    log.scrollTop = Math.min(end, first.offsetTop - 16);
+  }
+  function chatOpen(root, open, focus) {
+    var p = chatParts(root);
+    if (!p.panel) return;
+    p.panel.hidden = !open;
+    if (p.launcher) p.launcher.setAttribute("aria-expanded", String(open));
+    root.classList.toggle("cmu-chat--open", open);
+    chatRemember(p.panel, open);
+    if (open) {
+      chatScroll(p.log);
+      if (focus && p.input) p.input.focus();
+    } else if (focus && p.launcher) p.launcher.focus();
+  }
+  function chatMessage(content, user) {
+    var message = document.createElement("div"),
+      bubble = document.createElement("div");
+    message.className = "cmu-chat-message" + (user ? " cmu-chat-message--user" : "");
+    bubble.className = "cmu-chat-bubble";
+    if (typeof content === "string") bubble.textContent = content;
+    else if (content) bubble.appendChild(content);
+    message.appendChild(bubble);
+    return message;
+  }
+  function chatSend(root, text, value) {
+    var p = chatParts(root);
+    if (!p.log) return;
+    p.log.appendChild(chatMessage(text, true));
+    p.log.setAttribute("aria-busy", "true");
+    chatScroll(p.log);
+    root.dispatchEvent(
+      new CustomEvent("cmu-chat-send", {
+        bubbles: true,
+        detail: {
+          text: text,
+          value: value,
+          reply: function (content) {
+            var message = chatMessage(content, false);
+            p.log.appendChild(message);
+            return message.firstChild;
+          },
+        },
+      }),
+    );
+  }
+  // A reply added to a log, by detail.reply() or by the app, ends the wait
+  function chatAdded(log, nodes) {
+    nodes.forEach(function (n) {
+      if (n.nodeType !== 1 || n.classList.contains("cmu-chat-message--user")) return;
+      log.removeAttribute("aria-busy");
+      chatScroll(log, n);
+    });
+  }
+  function startChats(scope) {
+    var roots = [];
+    if (scope.matches && scope.matches(".cmu-chat")) roots.push(scope);
+    if (scope.querySelectorAll)
+      roots = roots.concat(Array.from(scope.querySelectorAll(".cmu-chat")));
+    roots.forEach(function (root) {
+      chatMascot(root);
+      var p = chatParts(root);
+      if (!p.panel || !p.panel.id) return;
+      var open = false;
+      try {
+        open = sessionStorage.getItem("cmu-chat:" + p.panel.id) === "open";
+      } catch {
+        // Storage off: start closed
+      }
+      if (open && p.panel.hidden) chatOpen(root, true, false);
+    });
+  }
+  // Added once, even if this script runs again: a second listener would
+  // open and close the panel on the same click
+  if (!document.cmuChat) {
+    document.cmuChat = true;
+    document.addEventListener("click", chatClick);
+    document.addEventListener("submit", chatSubmit);
+    document.addEventListener("keydown", chatKey);
+  }
+  function chatClick(e) {
+    var root = e.target.closest && e.target.closest(".cmu-chat");
+    if (!root) return;
+    var p = chatParts(root);
+    if (e.target.closest(".cmu-chat-launcher")) chatOpen(root, !!(p.panel && p.panel.hidden), true);
+    else if (e.target.closest(".cmu-chat-close")) chatOpen(root, false, true);
+    else {
+      var choice = e.target.closest(".cmu-chat-choices button");
+      if (choice && !choice.disabled && choice.type !== "submit")
+        chatSend(root, choice.textContent.trim(), choice.value || undefined);
+    }
+  }
+  function chatSubmit(e) {
+    var form = e.target.closest && e.target.closest(".cmu-chat-form");
+    var root = form && form.closest(".cmu-chat");
+    if (!root) return;
+    e.preventDefault();
+    var input = chatParts(root).input,
+      text = input ? input.value.trim() : "";
+    if (!text) return;
+    input.value = "";
+    chatSend(root, text);
+  }
+  function chatKey(e) {
+    var root = e.target.closest && e.target.closest(".cmu-chat");
+    if (!root) return;
+    if (e.key === "Escape" && e.target.closest(".cmu-chat-panel")) {
+      e.preventDefault();
+      document.cmuChatEscape = true;
+      chatOpen(root, false, true);
+    } else if (
+      e.key === "Enter" &&
+      !e.shiftKey &&
+      !e.isComposing &&
+      e.target.matches(".cmu-chat-form textarea")
+    ) {
+      // Enter sends; Shift+Enter starts a new line
+      e.preventDefault();
+      e.target.form.requestSubmit();
+    }
+  }
   tabsFromHash();
   window.addEventListener("hashchange", tabsFromHash);
   startScrollGalleries(document);
   startTables(document);
-  // Countdowns, sorting lists, email links, tabs and tables added later start, a
-  // countdown whose date changes restarts, and suggestion lists show new options
+  startChats(document);
+  // Countdowns, sorting lists, email links, tabs, tables and chats added later
+  // start, a countdown whose date changes restarts, a chat whose pictures
+  // change shows them, chat replies end the wait and suggestion lists show new options
   new MutationObserver(function (changes) {
     changes.forEach(function (c) {
-      if (c.type === "attributes") countdown(c.target);
-      else {
+      if (c.type === "attributes") {
+        if (c.attributeName.indexOf("data-cmu-chat-mascot") === 0) chatMascot(c.target);
+        else countdown(c.target);
+      } else {
+        // Replies added to a chat log
+        if (c.target.classList && c.target.classList.contains("cmu-chat-log"))
+          chatAdded(c.target, c.addedNodes);
         // A suggestion list's options changed
         if (c.target.classList && c.target.classList.contains("cmu-suggest-list"))
           suggestRefresh(c.target);
@@ -1553,6 +1745,7 @@
           startTabs(n);
           startScrollGalleries(n);
           startTables(n);
+          startChats(n);
         });
       }
     });
@@ -1560,6 +1753,6 @@
     childList: true,
     subtree: true,
     attributes: true,
-    attributeFilter: ["data-cmu-countdown"],
+    attributeFilter: ["data-cmu-countdown", "data-cmu-chat-mascot", "data-cmu-chat-mascot-open"],
   });
 })();
