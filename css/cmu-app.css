@@ -1681,6 +1681,37 @@ button.btn.wide {
 .cmu-pager span {
   color: var(--cmu-muted);
 }
+/* Page Size (<div class="cmu-page-size">, or a <form> when it submits): a
+   small, muted "Rows per page" label and menu, centered under the pager */
+.cmu-page-size {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.75em 0 0;
+  color: var(--cmu-muted);
+  font-size: 0.9em;
+}
+#content .cmu-page-size label,
+.cmu-page-size label {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-transform: none;
+  color: inherit;
+}
+#content .cmu-page-size select,
+.cmu-page-size select {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.2em 0.4em;
+  font-size: inherit;
+}
 @media (max-width: 600px) {
   .cmu-pager .cmu-pager-end {
     display: none;

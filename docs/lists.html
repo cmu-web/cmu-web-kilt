@@ -764,6 +764,60 @@
           </ol>
         </div>
       </div>
+
+            <h2 id="page-size" class="rule-top">
+              Page Size
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              A menu of how many results each page shows, centered under the
+              <a href="#pagination">pager</a>. Use it only when the app has to offer one, such as a
+              host app that always shows its own; otherwise, pick a page size and leave the menu
+              out. Wrap it in a <code>&lt;form&gt;</code> with the class when changing it reloads
+              the list.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Label it &ldquo;Rows per page&rdquo; under a table and &ldquo;Per page&rdquo; under
+                anything else, in sentence case. List a few sizes, such as 10, 25, 50 and 100.
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-page-size</code></p>
+            <p>Under a table's count and pager:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <p class="cmu-results-count">Showing 1-25 of 312 sections</p>
+        <div class="cmu-pager" role="navigation" aria-label="Pages">
+          <ol>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" aria-disabled="true" aria-label="First page">&laquo;</a></li>
+            <li><a class="cmu-pager-arrow" aria-disabled="true" aria-label="Previous page">&lsaquo;</a></li>
+            <li><a href="?page=1" aria-current="page">1</a></li>
+            <li><a href="?page=2">2</a></li>
+            <li><a href="?page=3">3</a></li>
+            <li><a href="?page=4">4</a></li>
+            <li><a href="?page=5">5</a></li>
+            <li><span>&hellip;</span></li>
+            <li><a href="?page=13">13</a></li>
+            <li><a class="cmu-pager-arrow" href="?page=2" rel="next" aria-label="Next page">&rsaquo;</a></li>
+            <li class="cmu-pager-end"><a class="cmu-pager-arrow" href="?page=13" aria-label="Last page">&raquo;</a></li>
+          </ol>
+        </div>
+        <div class="cmu-page-size">
+          <label for="kit-page-size">Rows per page</label>
+          <select id="kit-page-size">
+            <option>10</option>
+            <option selected>25</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+        </div>
+      </div>
           </div>
         </div>
       </main>
