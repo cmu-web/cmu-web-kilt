@@ -4,3 +4,6 @@ docs/images/
 packages/rails/pkg/
 packages/rails/css/
 packages/rails/js/
+packages/python/src/cmu_web_kilt/static/
+packages/python/src/cmu_web_kilt/package.json
+packages/python/dist/

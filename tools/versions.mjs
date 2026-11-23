@@ -18,6 +18,7 @@ const root = new URL("../", import.meta.url);
 const files = [
   "README.md",
   "packages/rails/README.md",
+  "packages/python/README.md",
   "packages/rails/templates/app.rb",
   ...readdirSync(new URL("docs/", root))
     .filter((f) => f.endsWith(".html"))

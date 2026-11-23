@@ -7,3 +7,9 @@ packages/rails/css/
 packages/rails/js/
 packages/rails/LICENSE
 packages/rails/VERSION
+# The Python package's build: copies of the kit's files (hatch_build.py)
+packages/python/LICENSE
+packages/python/src/cmu_web_kilt/package.json
+packages/python/src/cmu_web_kilt/static/
+packages/python/dist/
+__pycache__/

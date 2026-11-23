@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cmu-web-kilt"
+# The kit's version, from package.json (hatch_build.py)
+dynamic = ["version"]
+description = "The Carnegie Mellon Web Kilt's browser files and integrity hashes, for Python and Django apps"
+readme = "README.md"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "CMU Web" }]
+classifiers = [
+  "Framework :: Django",
+  "Programming Language :: Python :: 3",
+  "Topic :: Internet :: WWW/HTTP",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://webkilt.andrew.cmu.edu/"
+Source = "https://github.com/cmu-web/cmu-web-kilt"
+Issues = "https://github.com/cmu-web/cmu-web-kilt/issues"
+
+[tool.hatch.metadata.hooks.custom]
+
+# The kit's files are copied in by hatch_build.py and ignored by git, so
+# they're named here to be packaged anyway
+[tool.hatch.build]
+artifacts = ["src/cmu_web_kilt/static/", "src/cmu_web_kilt/package.json", "LICENSE"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cmu_web_kilt"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "tests/", "hatch_build.py", "README.md", "LICENSE"]

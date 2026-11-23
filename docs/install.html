@@ -789,16 +789,46 @@ end</code></pre>
                 >
                   <h4 class="kit-option-label">In Django</h4>
                   <p>
-                    Copy the files into one of your Django apps' <code>static</code> folders, as
-                    above. <code>collectstatic</code> picks them up, and your base template links
+                    Install the kit from PyPI, so the version sits in your requirements and
+                    Dependabot or Renovate can propose each release, and add it to
+                    <code>INSTALLED_APPS</code>:
+                  </p>
+                  <pre class="kit-code"><code>pip install cmu-web-kilt</code></pre>
+                  <pre class="kit-code"><code>INSTALLED_APPS = [
+    # ...
+    "cmu_web_kilt",
+]</code></pre>
+                  <p>
+                    <code>collectstatic</code> picks up its files, and your base template links
                     them:
                   </p>
                   <pre class="kit-code"><code>{% load static %}
-&lt;link href="{% static 'vendor/cmu-web-kilt-0.8.24/css/cmu-cms.css' %}" rel="stylesheet"&gt;
-&lt;link href="{% static 'vendor/cmu-web-kilt-0.8.24/css/cmu-app.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'cmu-web-kilt/css/cmu-cms.css' %}" rel="stylesheet"&gt;
+&lt;link href="{% static 'cmu-web-kilt/css/cmu-app.css' %}" rel="stylesheet"&gt;
 &lt;!-- Optional: Bootstrap Icons, for components labeled Icons --&gt;
 &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous" rel="stylesheet"&gt;
-&lt;script src="{% static 'vendor/cmu-web-kilt-0.8.24/js/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="{% static 'cmu-web-kilt/js/cmu-app.js' %}"&gt;&lt;/script&gt;</code></pre>
+                  <p>
+                    Outside Django, <code>cmu_web_kilt.STATIC_DIR</code> is the folder that holds
+                    <code>css/</code> and <code>js/</code>. Or copy the files into a
+                    <code>static</code> folder, as above, and link them by their folder.
+                  </p>
+                  <p>
+                    <strong>Linking to jsDelivr instead?</strong> The package's
+                    <code>cdn_url</code> and <code>INTEGRITY</code> give each file's address for the
+                    installed release and its hash. A context processor can hand them to every
+                    template:
+                  </p>
+                  <pre class="kit-code"><code>import cmu_web_kilt
+
+def kilt(request):
+    def link(file):
+        return {"url": cmu_web_kilt.cdn_url(file), "integrity": cmu_web_kilt.INTEGRITY[file]}
+    return {"kilt_cms": link("css/cmu-cms.css"), "kilt_app": link("css/cmu-app.css"),
+            "kilt_js": link("js/cmu-app.js")}</code></pre>
+                  <pre
+                    class="kit-code"
+                  ><code>&lt;link href="{{ kilt_cms.url }}" integrity="{{ kilt_cms.integrity }}" crossorigin="anonymous" rel="stylesheet"&gt;</code></pre>
                 </div>
                 <div class="kit-option" id="node" data-option="Node" data-label="Node 22 and Later">
                   <h4 class="kit-option-label">In Node</h4>
@@ -940,8 +970,9 @@ app.use("/vendor/cmu-web-kilt-0.8.24/js", express.static(path.join(kit, "js")));
                 <li>
                   Change the version in <code>package.json</code> and run
                   <code>npm install</code> (and <code>cmu-web-kilt-links</code>, if you link to
-                  jsDelivr), or copy the new release into your vendor folder and change the
-                  folder&rsquo;s name in your links.
+                  jsDelivr), change it in your Python requirements and run <code>pip install</code>,
+                  or copy the new release into your vendor folder and change the folder&rsquo;s name
+                  in your links.
                 </li>
                 <li>Check your pages before you deploy.</li>
               </ol>

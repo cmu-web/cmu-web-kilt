@@ -37,6 +37,7 @@ layout. An HTML file opened directly from disk does not reproduce that setup.
 | The docs site's styling and behavior     | `docs/css/` and `docs/js/` |
 | The preview server, generators or checks | `tools/`                   |
 | The Rails gem                            | `packages/rails/`          |
+| The Python package                       | `packages/python/`         |
 
 ## Make the Change Where It Belongs
 
@@ -299,7 +300,7 @@ git push origin 0.x "$kit_version"
 
 Tags have no `v`. The push publishes the files through GitHub and
 makes them available to jsDelivr; it also triggers the documentation build
-for `0.x`, and the Rails gem's publication to RubyGems. It does not update
+for `0.x`, and the kit's publication to RubyGems, npm and PyPI. It does not update
 applications that already use the kit.
 
 ### The Gem
@@ -349,6 +350,23 @@ repository `cmu-web-kilt` and workflow `publish-npm.yml`. Apps that depend on
 the package get a Dependabot pull request for each release. The package ships
 the `cmu-web-kilt-links` command, which keeps an app's jsDelivr links and
 hashes on the installed release (`--check` fails on a stale one).
+
+### PyPI
+
+The [Publish PyPI workflow](.github/workflows/publish-pypi.yml) publishes
+the Python package, `cmu-web-kilt`, from each version tag, after its tests
+pass. It carries the browser files, laid out as a Django app's static
+files, and `package.json`, so the package's `VERSION` and `INTEGRITY` are
+the release's. PyPI trusts the workflow as: GitHub Actions, owner `cmu-web`,
+repository `cmu-web-kilt`, workflow `publish-pypi.yml` and environment
+`pypi`. The package's first release needs a pending publisher with those
+fields. `packages/python/hatch_build.py` copies the files and the version in
+at build time; to check a change:
+
+```bash
+python -m pip install build
+python -m unittest discover packages/python/tests
+```
 
 ### Update Jekyll & Plaid
 

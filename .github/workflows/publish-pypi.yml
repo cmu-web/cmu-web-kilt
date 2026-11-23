@@ -1,0 +1,50 @@
+name: Publish PyPI
+
+# Publishes the Python package, cmu-web-kilt, from each release tag, at the
+# tag's version, after its tests pass, so Python and Django apps can depend on
+# it and Dependabot proposes each release. PyPI trusts this workflow (trusted
+# publishing), so there's no token to store, and each file carries an
+# attestation: a signed record of the workflow that built it.
+on:
+  push:
+    tags: ["[0-9]*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.14"
+      - name: Check the tag matches package.json
+        run: test "$(python -c 'import json; print(json.load(open("package.json"))["version"])')" = "$GITHUB_REF_NAME"
+      - run: python -m pip install build
+      # At a tag, the files also have to match the release's integrity hashes
+      - run: python -m unittest discover packages/python/tests
+        env:
+          KILT_RELEASE: "1"
+      - run: python -m build --outdir dist packages/python
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dist
+          path: dist/
+
+  # A separate job, so only the upload gets the identity token
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
