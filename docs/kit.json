@@ -65,7 +65,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#agent-prompt",
       "labels": ["App", "Script"],
-      "description": "A prompt for people to paste into an AI coding agent, such as the steps to set up a tool in their project. The kit puts a robot before the heading. A sentence says what the prompt does and ends with a lone copy button, and the prompt itself sits folded under it in a folded list, so people can read it before they paste it. Put the prompt in a code element with an id for the button to copy; it copies the whole prompt whether the fold is open or not.",
+      "description": "A prompt for people to paste into an AI coding agent, such as the steps to set up a tool in their project. The kit puts a robot before the heading. A sentence says what the prompt does and ends with a lone copy button, and the prompt itself sits folded under it in a folded list, so people can read it before they paste it. Put the prompt in a code element with an id for the button to copy; it copies the whole prompt whether the fold is open or not. On a home page, it's the last h2 in the Get Started section, after the other h2s.",
       "notes": [],
       "classes": ["cmu-agent", "cmu-copy", "cmu-more"],
       "examples": [
@@ -323,7 +323,7 @@
       "page": "Buttons",
       "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#cta-row",
       "labels": ["CMS"],
-      "description": "Lines up a button, a call to action and an optional note, in a hero or anywhere on a page. A paragraph with just a button and then a call to action gets the same spacing without it. The note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with; keep it to a short line.\n\nAn app page's actions go in a row like this under its heading and lead. A list's button for making a new item goes after its search box or filters instead, as a create button.",
+      "description": "Lines up a button, a call to action and an optional note, in a hero or anywhere on a page. A paragraph with just a button and then a call to action gets the same spacing without it, and a paragraph with just a call to action gets as much space below it as above when a heading follows. The note (cmu-cta-note) can answer the one question the button raises, such as what to sign in with; keep it to a short line.\n\nAn app page's actions go in a row like this under its heading and lead. A list's button for making a new item goes after its search box or filters instead, as a create button.",
       "notes": [],
       "classes": ["cmu-cta-row", "cmu-cta-note"],
       "examples": [

@@ -218,6 +218,11 @@ p:has(> .btn + .cta) > .btn {
   color: var(--cmu-muted);
   font-size: 0.95rem;
 }
+/* A paragraph with only a call to action, followed by a heading: as much
+   space below the call to action as above it */
+p:has(> .cta:only-child):has(+ :is(h2, h3, h4, .cmu-agent)) {
+  margin-bottom: 1.3rem;
+}
 
 /* Hero card: copy on the left, a screenshot in a browser frame on the right */
 .cmu-hero {
@@ -1158,30 +1163,35 @@ a[data-cmu-zoom] {
    box while it's pressed, and the ring covers a screenshot's 1px border
    instead of leaving it as a light gap inside the ring */
 :is(#content, body)
-  :is(a[data-cmu-zoom], .cmu-shot > a:not(.btn):not(.cta):not(.box):not(.scrolldown)):active:not(
-    :focus-visible
-  ) {
+  :is(
+    a[data-cmu-zoom],
+    .cmu-shot > a:not(.btn):not(.cta):not(.box):not(.scrolldown):not(.cmu-annotated-pin)
+  ):active:not(:focus-visible) {
   outline: none !important;
   background: none !important;
 }
-:is(#content, body) .cmu-shot > a:not(.btn):not(.cta):not(.box):not(.scrolldown):focus-visible {
+:is(#content, body)
+  .cmu-shot
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):not(.cmu-annotated-pin):focus-visible {
   outline-offset: -1px;
 }
 /* In a browser-window screenshot, the ring goes around the whole window: the
    link's overlay reaches up over the bar, the figure's ::before (1.6rem plus
    its 1px top border) */
-:is(#content, body) .cmu-shot--browser > a:not(.btn):not(.cta):not(.box):not(.scrolldown) {
+:is(#content, body)
+  .cmu-shot--browser
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):not(.cmu-annotated-pin) {
   position: relative;
   overflow: visible !important;
 }
 :is(#content, body)
   .cmu-shot--browser
-  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):focus-visible {
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):not(.cmu-annotated-pin):focus-visible {
   outline: none !important;
 }
 :is(#content, body)
   .cmu-shot--browser
-  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):focus-visible::after {
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):not(.cmu-annotated-pin):focus-visible::after {
   content: "";
   position: absolute;
   inset: calc(-1.6rem - 1px) 0 0;
