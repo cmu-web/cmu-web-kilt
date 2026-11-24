@@ -4,7 +4,7 @@
   <div class="content">
     <div>
       <h1>Sign In</h1>
-      <p>to&nbsp;<%%= CmuWebKilt.config.site_name %></p>
+      <p>to&nbsp;<%%= link_to request.host, main_app.root_path %></p>
     </div>
     <div class="cmu-sign-in-card">
       <p class="cmu-label">Development Mode</p>
