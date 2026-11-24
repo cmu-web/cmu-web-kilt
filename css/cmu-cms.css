@@ -190,6 +190,12 @@ nav#nav:focus {
   flex: 1;
   border-top: 1px solid var(--cmu-line);
 }
+/* In a form, the divider is as wide as the form's widest field, so the "or"
+   sits under the field it's the other way to */
+form:has(> .cmu-or) {
+  width: fit-content;
+  max-width: 100%;
+}
 .cmu-lead {
   font-size: 1.2rem;
   line-height: 1.55;

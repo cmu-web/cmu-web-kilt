@@ -1448,7 +1448,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#or",
       "labels": ["CMS"],
-      "description": "A line across with “or” in it, between two ways to do the same thing: upload a file or type it in, pick a team or start one. What comes after it is the second way, usually a cta. The Sign-In Page uses one under its buttons.\n\nWrite “or” in lowercase; the divider sets it in capitals. Use it only between two ways to the same result, not to split a page into parts.",
+      "description": "A line across with “or” in it, between two ways to do the same thing: upload a file or type it in, pick a team or start one. What comes after it is the second way, usually a cta. In a form, the divider is as wide as the form's widest field, so the “or” sits under the field it's the other way to. The Sign-In Page uses one under its buttons.\n\nWrite “or” in lowercase; the divider sets it in capitals. Use it only between two ways to the same result, not to split a page into parts.",
       "notes": [],
       "classes": ["cmu-or"],
       "examples": [
