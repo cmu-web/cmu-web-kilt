@@ -106,6 +106,7 @@
                 <li><a href="#more">Folded Lists</a></li>
                 <li><a href="#search">Search</a></li>
                 <li><a href="#filters">Filters</a></li>
+                <li><a href="#create-button">Create Button</a></li>
               </ul>
             </div>
           </div>
@@ -114,6 +115,7 @@
               <ul>
                 <li><a href="#load-more">Load More</a></li>
                 <li><a href="#pagination">Pagination</a></li>
+                <li><a href="#page-size">Page Size</a></li>
               </ul>
             </div>
           </div>
@@ -211,9 +213,8 @@
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-search-bar">
-          <p>Search by person, item or organization.</p>
-          <label for="kit-checkout-search" class="sr-only">Find a Checkout</label>
-          <input type="text" id="kit-checkout-search" placeholder="Find a checkout&hellip;" data-cmu-filter="kit-filter-table">
+          <label for="kit-checkout-search" class="cmu-label">Find Checkouts</label>
+          <input type="text" id="kit-checkout-search" placeholder="Person, item or organization" data-cmu-filter="kit-filter-table">
         </div>
         <table class="alternate cmu-full" id="kit-filter-table" data-cmu-table="kit-filter" data-cmu-noun="checkout">
           <thead>
@@ -248,11 +249,7 @@
             </p>
             <div class="cmu-callout">
               <p class="cmu-label">Style</p>
-              <p>
-                Use the same words as other counts: &ldquo;Showing all 5 checkouts,&rdquo;
-                &ldquo;Showing 2 of 5 checkouts,&rdquo; &ldquo;Showing 1 checkout&rdquo; and, with
-                nothing found, the template's &ldquo;Sorry, no results to display.&rdquo;
-              </p>
+              <p>Use the same words as other counts, as in <a href="#search">search</a>.</p>
             </div>
 
             <h3 id="table-address">The View in the Address</h3>
@@ -507,21 +504,31 @@
               >
             </h2>
             <p>
-              One search box over a list: a sentence saying what the user can search by, then a box
-              across the full width, searching as people type. The sentence does the label's job on
-              screen, so the
-              <code>&lt;label&gt;</code> is for screen readers only (<code>sr-only</code>). The
-              placeholder says what you'll find, ending in an ellipsis. The box gets the template's
-              magnifier, in gray.
+              One search box over a list, across the full width, searching as people type. A small
+              label over the search box says what it finds, and the placeholder says what the user
+              can search by. The search box gets the template's magnifier, and a count of what's
+              showing goes under the list. For several search boxes or checkboxes side by side, use
+              <a href="#filters">filters</a>. To give the list a button that makes a new item, add a
+              <a href="#create-button">create button</a> after the search box.
             </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Use consistent wording to show how many results are visible: &ldquo;Showing 20 of
+                312 sections,&rdquo; &ldquo;Showing all 312 sections&rdquo; or &ldquo;Showing 1
+                section.&rdquo; With no results, use the template's &ldquo;Sorry, no results to
+                display.&rdquo;
+              </p>
+            </div>
             <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-search-bar</code>, <code>sr-only</code></p>
+            <p class="kit-classes">
+              <code>cmu-search-bar</code>, <code>cmu-label</code>, <code>cmu-results-count</code>
+            </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-search-bar">
-          <p>Search by course number or title.</p>
-          <label for="kit-search" class="sr-only">Find a Syllabus</label>
-          <input type="text" id="kit-search" placeholder="Find a syllabus&hellip;" data-kit-filter="kit-search-rows" data-kit-count="kit-search-count" data-kit-noun="section">
+          <label for="kit-search" class="cmu-label">Find Sections</label>
+          <input type="text" id="kit-search" placeholder="Course number or title" data-kit-filter="kit-search-rows" data-kit-count="kit-search-count" data-kit-noun="section">
         </div>
           <table class="alternate cmu-full">
             <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
@@ -534,20 +541,8 @@
               <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
             </tbody>
           </table>
-          <p class="cmu-muted" id="kit-search-count" aria-live="polite">Showing all 6 sections</p>
+          <p class="cmu-results-count" id="kit-search-count" aria-live="polite">Showing all 6 sections</p>
       </div>
-            <ul>
-              <li>
-                <strong>One box</strong> over a list is a search.
-                <strong>Several groups</strong> side by side, such as a search box and checkboxes,
-                are <a href="#filters">filters</a>, each with its own small label.
-              </li>
-              <li>
-                <strong>Say how many are showing</strong> under the list, in the same words
-                everywhere: "Showing 20 of 312 sections," "Showing all 312 sections," "Showing 1
-                section," and with nothing found, the template's own "Sorry, no results to display."
-              </li>
-            </ul>
 
             <h2 id="filters" class="rule-top">
               Filters
@@ -558,48 +553,16 @@
               >
             </h2>
             <p>
-              A row of filter groups above a list, each with a small label over a search box or
-              checkboxes. A group with a text box takes the row's spare width; two or more split it,
-              and wrap on a narrow screen. For a single search box, use a
+              A row of filter groups above a list, each with a small label over a search box, a
+              drop-down menu, or a row of checkboxes or radio buttons. A group with a search box
+              takes the row's spare width; two or more split it, and wrap on a narrow screen. For a
+              single search box, use a
               <a href="#search">search</a> instead.
             </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>cmu-filters</code>, <code>cmu-filter-group</code>,
-              <code>cmu-filter-checks</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-        <div class="cmu-filters" data-kit-filters="kit-filter-rows" data-kit-count="kit-filter-count" data-kit-noun="section">
-          <div class="cmu-filter-group">
-            <label class="cmu-label" for="kit-find">Find Sections</label>
-            <input type="text" id="kit-find" placeholder="Course number or title">
-          </div>
-          <div class="cmu-filter-group">
-            <div class="cmu-label">Status</div>
-            <div class="cmu-filter-checks">
-              <label><input type="checkbox" value="available"> Available</label>
-              <label><input type="checkbox" value="unavailable"> Unavailable</label>
-            </div>
-          </div>
-        </div>
-          <table class="alternate cmu-full">
-            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
-            <tbody id="kit-filter-rows">
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-              <tr data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
-            </tbody>
-          </table>
-          <p class="cmu-muted" id="kit-filter-count" aria-live="polite">Showing all 6 sections</p>
-      </div>
             <ul class="cmu-checks">
               <li>
-                <strong>Filter as people type</strong>, and say how many rows are showing under the
-                table (see <a href="#load-more">Load More</a>).
+                <strong>Filter as people type or choose</strong>, and say how many rows are showing
+                under the table, in the same words as a <a href="#search">search</a>.
               </li>
               <li>
                 <strong>Keep the stripes even:</strong> Move hidden rows to the end of the table, so
@@ -615,6 +578,181 @@
                 to read, not in a hidden cell.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-filters</code>, <code>cmu-filter-group</code>,
+              <code>cmu-filter-checks</code>
+            </p>
+
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-filters" data-kit-filters="kit-filter-rows" data-kit-count="kit-filter-count" data-kit-noun="section">
+          <div class="cmu-filter-group">
+            <label class="cmu-label" for="kit-find">Find Sections</label>
+            <input type="text" id="kit-find" placeholder="Course number or title">
+          </div>
+          <div class="cmu-filter-group">
+            <label class="cmu-label" for="kit-department">Department</label>
+            <select id="kit-department" name="department">
+              <option value="">All Departments</option>
+              <option value="arc">Architecture</option>
+              <option value="cs">Computer Science</option>
+              <option value="eng">English</option>
+              <option value="math">Mathematical Sciences</option>
+              <option value="psy">Psychology</option>
+            </select>
+          </div>
+          <div class="cmu-filter-group">
+            <div class="cmu-label">Semester</div>
+            <div class="cmu-filter-checks">
+              <label><input type="radio" name="semester" value="" checked> All</label>
+              <label><input type="radio" name="semester" value="fall"> Fall</label>
+              <label><input type="radio" name="semester" value="spring"> Spring</label>
+            </div>
+          </div>
+          <div class="cmu-filter-group">
+            <div class="cmu-label">Status</div>
+            <div class="cmu-filter-checks">
+              <label><input type="checkbox" name="status" value="available"> Available</label>
+              <label><input type="checkbox" name="status" value="unavailable"> Unavailable</label>
+            </div>
+          </div>
+        </div>
+          <table class="alternate cmu-full">
+            <thead><tr><th scope="col">Course</th><th scope="col">Title</th><th scope="col">Status</th></tr></thead>
+            <tbody id="kit-filter-rows">
+              <tr data-semester="fall" data-department="cs" data-status="available"><td class="cmu-fit"><span class="cmu-code">15-112</span></td><td>Fundamentals of Programming</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-semester="spring" data-department="cs" data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">15-122</span></td><td>Principles of Imperative Computation</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-semester="fall" data-department="math" data-status="available"><td class="cmu-fit"><span class="cmu-code">21-120</span></td><td>Differential and Integral Calculus</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-semester="spring" data-department="arc" data-status="unavailable"><td class="cmu-fit"><span class="cmu-code">48-100</span></td><td>Architecture Design Studio</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--amber">Unavailable</span></td></tr>
+              <tr data-semester="fall" data-department="eng" data-status="available"><td class="cmu-fit"><span class="cmu-code">76-101</span></td><td>Interpretation and Argument</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+              <tr data-semester="spring" data-department="psy" data-status="available"><td class="cmu-fit"><span class="cmu-code">85-102</span></td><td>Introduction to Psychology</td><td class="cmu-fit"><span class="cmu-pill cmu-pill--green">Available</span></td></tr>
+            </tbody>
+          </table>
+          <p class="cmu-results-count" id="kit-filter-count" aria-live="polite">Showing all 6 sections</p>
+      </div>
+
+            <h2 id="create-button" class="rule-top">
+              Create Button
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h2>
+            <p>
+              Use one create button for each list that people can add to, after its
+              <a href="#search">search</a> box or <a href="#filters">filters</a>. It's built like a
+              <a href="forms.html#field-button">field with a button</a>, but set apart, since it
+              doesn't act on them. Without a search box or filters, it goes under the heading and
+              lead. A call to action can follow it in the same
+              <a href="buttons.html#cta-row">row</a>.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Start the button with a verb and name the item: Create Heat, never Create alone.
+                &ldquo;Create&rdquo; makes a new item from a blank form; &ldquo;Add&rdquo; puts
+                something that already exists into the list (Add Driver, from the people at CMU).
+                &ldquo;New&rdquo; belongs in the form's heading (New Heat), not on the button.
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-search-bar</code>, <code>cmu-filters</code>, <code>cmu-empty</code>
+            </p>
+
+            <h3 id="create-button-search">With a Search</h3>
+            <p>A list of heats, with its button beside the search:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <h1>Heats</h1>
+        <p class="cmu-lead">This year's heats, with each team's roll times.</p>
+        <div class="cmu-search-bar">
+          <label for="kit-heat-search" class="cmu-label">Find Heats</label>
+          <input type="text" id="kit-heat-search" placeholder="Heat or day" data-kit-filter="kit-heat-rows">
+          <a class="btn" href="#create-button">Create Heat</a>
+        </div>
+        <table class="alternate cmu-full">
+          <thead>
+            <tr><th scope="col">Heat</th><th scope="col">Day</th><th scope="col">Teams</th></tr>
+          </thead>
+          <tbody id="kit-heat-rows">
+            <tr><td><a href="#create-button">Men's Prelims, Heat&nbsp;1</a></td><td>Friday, 8&nbsp;a.m.</td><td>3</td></tr>
+            <tr><td><a href="#create-button">Women's Prelims, Heat&nbsp;1</a></td><td>Friday, 9&nbsp;a.m.</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <pre class="kit-code"><code>&lt;div class="cmu-search-bar"&gt;
+  &lt;label for="heat-search" class="cmu-label"&gt;Find Heats&lt;/label&gt;
+  &lt;input type="text" id="heat-search" placeholder="Heat or day" data-cmu-filter="heats"&gt;
+  &lt;%= link_to "Create Heat", new_heat_path, class: "btn" %&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3 id="create-button-filters">With Filters</h3>
+            <p>The same list with filters, and its button at the end of the row:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-filters" data-kit-filters="kit-heat-filter-rows" data-kit-count="kit-heat-filter-count" data-kit-noun="heat">
+          <div class="cmu-filter-group">
+            <label class="cmu-label" for="kit-heat-day">Day</label>
+            <select id="kit-heat-day" name="day">
+              <option value="">All Days</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+            </select>
+          </div>
+          <div class="cmu-filter-group">
+            <div class="cmu-label">Division</div>
+            <div class="cmu-filter-checks">
+              <label><input type="checkbox" name="division" value="men"> Men's</label>
+              <label><input type="checkbox" name="division" value="women"> Women's</label>
+            </div>
+          </div>
+          <a class="btn" href="#create-button-filters">Create Heat</a>
+        </div>
+        <table class="alternate cmu-full">
+          <thead><tr><th scope="col">Heat</th><th scope="col">Day</th><th scope="col">Teams</th></tr></thead>
+          <tbody id="kit-heat-filter-rows">
+            <tr data-day="friday" data-division="men"><td><a href="#create-button-filters">Men's Prelims, Heat&nbsp;1</a></td><td>Friday, 8&nbsp;a.m.</td><td>3</td></tr>
+            <tr data-day="friday" data-division="women"><td><a href="#create-button-filters">Women's Prelims, Heat&nbsp;1</a></td><td>Friday, 9&nbsp;a.m.</td><td>3</td></tr>
+            <tr data-day="saturday" data-division="men"><td><a href="#create-button-filters">Men's Finals</a></td><td>Saturday, 8&nbsp;a.m.</td><td>3</td></tr>
+            <tr data-day="saturday" data-division="women"><td><a href="#create-button-filters">Women's Finals</a></td><td>Saturday, 9&nbsp;a.m.</td><td>3</td></tr>
+          </tbody>
+        </table>
+        <p class="cmu-results-count" id="kit-heat-filter-count" aria-live="polite">Showing all 4 heats</p>
+      </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <pre class="kit-code"><code>&lt;div class="cmu-filters"&gt;
+  &lt;!-- The filter groups --&gt;
+  &lt;%= link_to "Create Heat", new_heat_path, class: "btn" %&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3 id="create-button-empty">With No Items Yet</h3>
+            <p>When the list is empty, its empty message repeats the same button:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <h1>Heats</h1>
+        <p class="cmu-lead">This year's heats, with each team's roll times.</p>
+        <div class="cmu-empty">
+          <p>No heats yet.</p>
+          <p><a class="btn" href="#create-button">Create Heat</a></p>
+        </div>
+      </div>
+            <div class="kit-framework" data-framework="Rails">
+              <p class="cmu-label kit-framework-label">In Rails</p>
+              <pre class="kit-code"><code>&lt;% if @heats.empty? %&gt;
+  &lt;div class="cmu-empty"&gt;
+    &lt;p&gt;No heats yet.&lt;/p&gt;
+    &lt;p&gt;&lt;%= link_to "Create Heat", new_heat_path, class: "btn" %&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;</code></pre>
+            </div>
 
             <h2 id="load-more" class="rule-top">
               Load More

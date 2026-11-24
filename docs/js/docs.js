@@ -818,8 +818,10 @@ document.querySelectorAll("[data-open-dialog]").forEach(function (b) {
 // Demo filters. An input with data-kit-filter="list id" hides the list's
 // items (or a table body's rows) that don't match its text or data-keywords.
 // A cmu-filters box with data-kit-filters="table body id" also hides rows
-// whose data-status isn't among the checked boxes. Hidden rows go to the end,
-// so table.alternate's stripes stay even, and a count says how many show.
+// whose data attribute, named by a menu's, checkbox's or radio button's name,
+// isn't among the values picked under that name (an empty value picks all).
+// Hidden rows go to the end, so table.alternate's stripes stay even, and a
+// count says how many show.
 function kitFilter(list, count, noun, keep) {
   var items = Array.prototype.slice.call(list.children);
   return function () {
@@ -858,22 +860,23 @@ document.querySelectorAll("[data-kit-filter]").forEach(function (input) {
 });
 document.querySelectorAll("[data-kit-filters]").forEach(function (box) {
   var text = box.querySelector('input[type="search"], input[type="text"]'),
-    checks = box.querySelectorAll('input[type="checkbox"]');
+    choices = box.querySelectorAll('select, input[type="checkbox"], input[type="radio"]');
   var run = kitFilter(
     document.getElementById(box.dataset.kitFilters),
     document.getElementById(box.dataset.kitCount),
     box.dataset.kitNoun || "item",
     function (el) {
-      var on = Array.prototype.filter
-        .call(checks, function (c) {
-          return c.checked;
-        })
-        .map(function (c) {
-          return c.value;
-        });
+      var picked = {};
+      Array.prototype.forEach.call(choices, function (c) {
+        var on = c.tagName === "SELECT" || c.checked;
+        if (!on || !c.value) return;
+        (picked[c.name] = picked[c.name] || []).push(c.value);
+      });
       return (
-        kitMatches(el, text.value.trim().toLowerCase()) &&
-        (!on.length || on.indexOf(el.dataset.status) >= 0)
+        (!text || kitMatches(el, text.value.trim().toLowerCase())) &&
+        Object.keys(picked).every(function (k) {
+          return picked[k].indexOf(el.dataset[k]) >= 0;
+        })
       );
     },
   );

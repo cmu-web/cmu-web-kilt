@@ -1837,10 +1837,91 @@ table .cmu-select-cell label input[type="checkbox"] {
 .cmu-search-bar p {
   margin: 0 0 0.5em;
 }
+/* The small label over the box, as over a filter group's */
+body:is(.cmu-app, .cmu-framed) .cmu-search-bar > .cmu-label,
+.cmu-search-bar > .cmu-label {
+  display: block;
+  margin: 0 0 0.25em;
+}
 .cmu-search-bar input:is([type="text"], [type="search"]),
 body:is(.cmu-app, .cmu-framed) .cmu-search-bar input:is([type="text"], [type="search"]) {
   width: 100%;
   margin-bottom: 0;
+}
+/* With the list's button (Page Actions) after the box: built like Field
+   With a Button (cmu-field-button), with a wider gap, since the button
+   doesn't act on the box. On a phone the button goes under the box, as wide
+   as the box */
+.cmu-search-bar:has(> .btn) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--cmu-create-gap);
+}
+.cmu-search-bar:has(> .btn) > :is(p, .cmu-label) {
+  flex: 0 0 100%;
+}
+body:is(.cmu-app, .cmu-framed) .cmu-search-bar:has(> .btn) > input,
+.cmu-search-bar:has(> .btn) > input {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+#content .cmu-search-bar > .btn {
+  display: inline-flex;
+  box-sizing: border-box;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Before the button, in the middle of the gap: "or" after a search box, and a
+   thin line, the button's full height, after filters */
+#content :is(.cmu-search-bar, .cmu-filters) > .btn {
+  position: relative;
+  overflow: visible;
+}
+#content .cmu-search-bar > .btn::before {
+  content: "or";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--cmu-create-gap) / -2);
+  transform: translate(-50%, -50%);
+  color: var(--cmu-muted);
+  font-weight: normal;
+  text-transform: none;
+}
+#content .cmu-filters > .btn::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: calc(var(--cmu-create-gap) / -2 - 0.5px);
+  border-left: 1px solid var(--cmu-line);
+}
+.cmu-search-bar:has(> .btn) {
+  --cmu-create-gap: 3rem;
+}
+.cmu-filters:has(> .btn) {
+  --cmu-create-gap: 1.5rem;
+}
+@media (max-width: 480px) {
+  #content .cmu-search-bar > .btn {
+    flex: 0 0 100%;
+    margin-top: 2.5rem;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+  }
+  /* "or" centered between the box and the button */
+  #content .cmu-search-bar > .btn::before {
+    top: calc(-1.25rem - 2px);
+    left: 50%;
+  }
+  #content .cmu-filters > .btn::before {
+    content: none;
+  }
 }
 
 /* People list: a small round headshot beside each name and title, as on
@@ -1877,7 +1958,7 @@ body:is(.cmu-app, .cmu-framed) .cmu-search-bar input:is([type="text"], [type="se
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 1em 1.5em;
+  gap: 1em 1.5rem;
   margin-bottom: 1em;
 }
 .cmu-filter-group {
@@ -1909,9 +1990,44 @@ body:is(.cmu-app, .cmu-framed) .cmu-filter-group > .cmu-label {
   align-items: center;
   gap: 0.25em;
 }
+/* A drop-down menu is as wide as its choices, level with a search box */
+body:is(.cmu-app, .cmu-framed) .cmu-filter-group > select {
+  width: auto;
+  min-height: 2.2rem;
+  margin: 0;
+}
+/* On a phone it's as wide as a search box above it */
+@media (max-width: 480px) {
+  .cmu-filter-group:has(> select) {
+    flex: 1 1 100%;
+  }
+  body:is(.cmu-app, .cmu-framed) .cmu-filter-group > select {
+    width: 100%;
+  }
+}
 body:is(.cmu-app, .cmu-framed) .cmu-filter-group input[type="text"] {
   min-width: 15em;
   margin: 0;
+}
+/* A create button at the right end of the row, level with the text box
+   under the labels */
+#content .cmu-filters > .btn {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-self: flex-end;
+  align-items: center;
+  margin: 0 0 0 auto;
+  min-height: 2.2rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media (max-width: 480px) {
+  #content .cmu-filters > .btn {
+    flex: 0 0 100%;
+    justify-content: center;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+  }
 }
 
 /* Bulk bar: a tinted bar on top of a table, the selection count then the
