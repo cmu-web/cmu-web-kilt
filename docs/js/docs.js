@@ -144,6 +144,14 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
   copy.querySelectorAll(".cmu-countdown-clock, .cmu-sort-moves").forEach(function (el) {
     el.remove();
   });
+  // A sort arrow the kit drew, so the code shows the arrow empty
+  copy.querySelectorAll(".cmu-sort-arrow").forEach(function (el) {
+    el.textContent = "";
+  });
+  // A code block's lines the kit split for hanging indents, back to its text
+  copy.querySelectorAll(".cmu-line").forEach(function (el) {
+    el.replaceWith(el.textContent);
+  });
   copy.querySelectorAll("a[data-cmu-email]").forEach(function (el) {
     ["href", "role", "tabindex"].forEach(function (name) {
       el.removeAttribute(name);
@@ -184,6 +192,17 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
     .replace(/ data-kit-[\w-]+="[^"]*"/g, "");
   pre.appendChild(code);
   demo.kitCode = code;
+  // A long example (data-kit-peek on the demo): its code folds in a cmu-peek
+  var node = pre;
+  if (demo.hasAttribute("data-kit-peek")) {
+    node = document.createElement("div");
+    node.className = "cmu-peek";
+    node.innerHTML =
+      '<details class="cmu-more"><summary><span class="cmu-more-link">' +
+      '<span class="cmu-more-closed">See the Whole Example</span>' +
+      '<span class="cmu-more-open">Hide the Whole Example</span></span></summary></details>';
+    node.prepend(pre);
+  }
   // A wide example is a real page section, edge to edge, shown at its real
   // size: its code goes at the top of the text block after it, or of its notes
   // (a kit-follow block right after it), never inside the section.
@@ -212,10 +231,10 @@ document.querySelectorAll(".kit-demo").forEach(function (demo) {
       next.appendChild(document.createElement("div"));
       demo.after(next);
     }
-    next.firstElementChild.prepend(pre);
-    pre.after.apply(pre, extras);
+    next.firstElementChild.prepend(node);
+    node.after.apply(node, extras);
   } else {
-    demo.after(pre);
+    demo.after(node);
   }
 });
 
@@ -260,7 +279,11 @@ function showCms(name) {
     set.kitShow && set.kitShow(name);
   });
 }
-var sections = Array.prototype.slice.call(document.querySelectorAll("h2.rule-top[id]"));
+// The headings that say where a component works: each section's h2, and an
+// h3 with its own labels (kit-where) for a component inside a section
+var sections = Array.prototype.slice.call(
+  document.querySelectorAll("h2.rule-top[id], h3[id]:has(.kit-where)"),
+);
 function sectionOf(el) {
   var found = null;
   sections.forEach(function (h) {
@@ -1253,8 +1276,9 @@ document.querySelectorAll("table[data-kit-sortable]").forEach(function (table) {
   }
   var key = 0,
     dir = 1;
+  // A component's row ("Tables: Sorting") sorts right after its section's
   function cell(r, i) {
-    return r.cells[i].textContent.trim().toLowerCase();
+    return r.cells[i].textContent.trim().toLowerCase().replace(/: /g, "\u0001");
   }
   function render() {
     var q = input ? input.value.trim().toLowerCase() : "",

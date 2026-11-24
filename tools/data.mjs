@@ -122,6 +122,13 @@ function withoutBlocks(html) {
   return html;
 }
 
+// The HTML without its callouts, such as Style callouts' wording rules
+function withoutCallouts(html) {
+  for (let i; (i = html.search(/<div class="cmu-callout"/)) >= 0;)
+    html = html.slice(0, i) + html.slice(i + balanced(html, i).length);
+  return html;
+}
+
 // An example's markup as the docs' HTML tab shows it: the demo's contents,
 // without the docs' own data-kit-* hooks, out-dented
 function example(demo) {
@@ -181,9 +188,21 @@ for (const file of PAGES) {
   const parts = html.split(/<h2 id="(?=[\w-]+" class="rule-top")/).slice(1);
   for (const part of parts) {
     const [whole, id, heading] = part.match(/^([\w-]+)"[^>]*>(.*?)<\/h2\s*>/s);
-    const where = heading.match(/<span class="kit-where"\s*>([\s\S]*)<\/span\s*>/);
-    if (SKIP.has(id) || !where) continue;
     const body = part.slice(whole.length);
+    // Its labels: the heading's, or, when each component in it has an h3 with
+    // labels of its own, all of theirs
+    const labelsIn = (h) =>
+      (h.match(/<span class="kit-where"\s*>([\s\S]*)<\/span\s*>/)?.[1] ?? "").match(
+        /kit-where-\w+/g,
+      ) ?? [];
+    const kinds = new Set(
+      labelsIn(heading).length
+        ? labelsIn(heading)
+        : [...body.matchAll(/<h3 id="[\w-]+"(?![^>]*kit-example)[^>]*>(.*?)<\/h3\s*>/gs)].flatMap(
+            (m) => labelsIn(m[1]),
+          ),
+    );
+    if (SKIP.has(id) || !kinds.size) continue;
     // The section's own text ends where its first example starts
     const firstDemo = body.search(/<div class="kit-demo[" ]/);
     const prose = firstDemo < 0 ? body : body.slice(0, firstDemo);
@@ -200,15 +219,15 @@ for (const file of PAGES) {
     // A section can put its description and classes inside its example, beside
     // the example's sidebar, marked data-demo-skip; read them from there then
     const described = /<p>/.test(prose)
-      ? prose
+      ? withoutCallouts(prose)
       : (body.match(/<p[^>]*data-demo-skip[^>]*>[\s\S]*?<\/p>/g) ?? [])
           .map((p) => p.replace(/ data-demo-skip/, ""))
           .join("\n");
     const classes = [
       ...new Set(
-        [...described.matchAll(/<p class="kit-classes">(.*?)<\/p>/gs)].flatMap((l) =>
-          [...l[1].matchAll(/<code>(.*?)<\/code>/g)].map((c) => decode(c[1])),
-        ),
+        [
+          ...(described + withoutBlocks(body)).matchAll(/<p class="kit-classes">(.*?)<\/p>/gs),
+        ].flatMap((l) => [...l[1].matchAll(/<code>(.*?)<\/code>/g)].map((c) => decode(c[1]))),
       ),
     ];
     components.push({
@@ -216,7 +235,9 @@ for (const file of PAGES) {
       name: text(heading.replace(/<span class="kit-where"\s*>[\s\S]*<\/span\s*>/, "")),
       page,
       url: `https://webkilt.andrew.cmu.edu/0/${file}#${id}`,
-      labels: [...where[1].matchAll(/kit-where-(\w+)/g)].map((m) => LABELS[m[1]] ?? m[1]),
+      labels: Object.keys(LABELS)
+        .filter((k) => kinds.has(`kit-where-${k}`))
+        .map((k) => LABELS[k]),
       description: [...described.matchAll(/<p>([\s\S]*?)<\/p>/g)]
         .map((m) => text(m[1]))
         .join("\n\n"),

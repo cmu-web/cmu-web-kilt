@@ -583,14 +583,19 @@ end</code></pre>
               </tbody>
             </table>
 
-            <h2 id="tabs" class="rule-top">
-              Tabs
+            <h2 id="tabs" class="rule-top">Tabs</h2>
+            <p>
+              A row of tabs: links to other views of the same page, or buttons that switch panels in
+              place.
+            </p>
+            <h3 id="tabs-links">
+              Tabs That Link
               <span class="kit-where"
                 ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
                   >App</span
                 ></span
               >
-            </h2>
+            </h3>
             <p>
               Links between views of the same page, such as semesters. Mark the current one with
               <code>aria-current="page"</code>. Use a <code>div</code> with
@@ -604,7 +609,6 @@ end</code></pre>
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-tabs</code>, <code>cmu-tabs-more</code></p>
-            <h3 id="tabs-links">Tabs That Link</h3>
             <p>Each tab goes to its own page, with the current one marked:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -621,7 +625,14 @@ end</code></pre>
           </details>
         </div>
       </div>
-            <h3 id="tab-panels">Tab Panels</h3>
+            <h3 id="tab-panels">
+              Tab Panels
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h3>
             <p>
               Tabs can also switch what shows in place, such as the same steps for different
               platforms. Then each tab is a <code>button</code> with <code>role="tab"</code> in a

@@ -97,13 +97,13 @@
                 <li><a href="#tables">Tables</a></li>
                 <li><a href="#table-actions">Tables With Actions</a></li>
                 <li><a href="#files">File Table</a></li>
+                <li><a href="#more">Folded Lists</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
-                <li><a href="#more">Folded Lists</a></li>
                 <li><a href="#search">Search</a></li>
                 <li><a href="#filters">Filters</a></li>
                 <li><a href="#create-button">Create Button</a></li>
@@ -122,12 +122,25 @@
         </div>
         <div class="content wide">
           <div>
-            <h2 id="tables" class="rule-top">
-              Tables
+            <h2 id="tables" class="rule-top">Tables</h2>
+            <p>
+              Give every table a header row, with <code>&lt;th scope="col"&gt;</code> for each
+              column, so screen readers can say which column a cell is in. A column of buttons gets
+              a header too, hidden with <code>sr-only</code>, such as "Actions."
+            </p>
+            <p>
+              A table in an app can also sort, filter, count its rows, keep its view in the page's
+              address, keep its head in view and leave the work to the server. Add
+              <code>data-cmu-table</code> to the table, then any of them; each works on its own, and
+              without the script the table shows every row in its first order.
+            </p>
+
+            <h3 id="table-basic">
+              Full-Width and Comparison Tables
               <span class="kit-where"
                 ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
               >
-            </h2>
+            </h3>
             <p>
               Use the template's <code>table.alternate</code> for striped rows. Add
               <code>cmu-full</code> to stretch a table to full width from 768px up (below that, the
@@ -136,11 +149,6 @@
               one-line cell sits level with a wrapped one or a picture beside it; to center pictures
               of different widths across their column too, add the template's
               <code>aligncenter</code> to those cells.
-            </p>
-            <p>
-              Give every table a header row, with <code>&lt;th scope="col"&gt;</code> for each
-              column, so screen readers can say which column a cell is in. A column of buttons gets
-              a header too, hidden with <code>sr-only</code>, such as "Actions."
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>table.cmu-full</code>, <code>table.cmu-compare</code></p>
@@ -155,31 +163,29 @@
         </table>
       </div>
 
-            <p>
-              Options, for a table in an app (they need <code>cmu-app.css</code>,
-              <code>cmu-app</code> on the body and <code>cmu-app.js</code>): add
-              <code>data-cmu-table</code> to the table, then any of sorting, filtering, a count, the
-              view in the page's address, a sticky header and server paging. Each works on its own,
-              and without the script the table shows every row in its first order.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>data-cmu-table</code>, <code>data-sort-key</code>, <code>cmu-sort</code>,
-              <code>cmu-sort-arrow</code>, <code>data-sort-value</code>,
-              <code>data-cmu-filter</code>, <code>data-cmu-filter-column</code>,
-              <code>cmu-filter-row</code>, <code>data-cmu-column</code>, <code>data-keywords</code>,
-              <code>data-cmu-count</code>, <code>data-cmu-noun</code>, <code>cmu-sticky</code>,
-              <code>data-cmu-table-server</code>
-            </p>
-
-            <h3 id="table-sorting">Sorting</h3>
+            <h3 id="table-sorting">
+              Sorting
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h3>
             <p>
               Give a column's heading <code>data-sort-key</code> and put its words in a
               <code>button.cmu-sort</code> with an empty <code>span.cmu-sort-arrow</code>. Clicking
               sorts by that column, and clicking again reverses it; the heading turns red, shows
               &#9650; or &#9660; and gets <code>aria-sort</code>. Numbers sort as numbers, even with
               a dollar sign or commas. For a cell whose words don't sort well, such as a date, put
-              the value to sort by in <code>data-sort-value</code>. Click a heading:
+              the value to sort by in <code>data-sort-value</code>. A table can arrive sorted: mark
+              that column's heading with <code>aria-sort="ascending"</code> or
+              <code>"descending"</code>, leave its arrow empty, and the kit draws the arrow and
+              starts from that sort, so the first click reverses it. Click a heading:
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>data-cmu-table</code>, <code>data-sort-key</code>, <code>cmu-sort</code>,
+              <code>cmu-sort-arrow</code>, <code>data-sort-value</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -198,7 +204,14 @@
           </tbody>
         </table>
       </div>
-            <h3 id="table-filtering">Filtering</h3>
+            <h3 id="table-filtering">
+              Filtering
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h3>
             <p>
               A search box for the whole table is an <code>&lt;input&gt;</code> with
               <code>data-cmu-filter</code> set to the table's id, placed as a
@@ -209,6 +222,11 @@
               a heading that doesn't sort), and a label for screen readers. Rows match as people
               type, words in a row's <code>data-keywords</code> match too, and hidden rows move to
               the end so the stripes stay even. Type in any of the boxes:
+            </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>data-cmu-filter</code>, <code>data-cmu-filter-column</code>,
+              <code>cmu-filter-row</code>, <code>data-cmu-column</code>, <code>data-keywords</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -239,7 +257,14 @@
         </table>
         <p class="cmu-results-count" data-cmu-count="kit-filter-table" aria-live="polite">Showing all 5 checkouts</p>
       </div>
-            <h3 id="table-count">The Count</h3>
+            <h3 id="table-count">
+              Row Count
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h3>
             <p>
               An element with <code>data-cmu-count</code> set to the table's id, under the table
               with <code>aria-live="polite"</code>, says how many rows show after each change, as in
@@ -251,8 +276,45 @@
               <p class="cmu-label">Style</p>
               <p>Use the same words as other counts, as in <a href="#search">search</a>.</p>
             </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>data-cmu-count</code>, <code>data-cmu-noun</code></p>
+            <p>Type a team or a driver, and the count under the table changes:</p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+        <div class="cmu-search-bar">
+          <label for="kit-count-search" class="cmu-label">Find Teams</label>
+          <input type="text" id="kit-count-search" placeholder="Team or driver" data-cmu-filter="kit-count-table">
+        </div>
+        <table class="alternate cmu-full" id="kit-count-table" data-cmu-table="kit-count" data-cmu-noun="team">
+          <thead>
+            <tr>
+              <th scope="col" data-cmu-column="team">Team</th>
+              <th scope="col" data-cmu-column="driver">Driver</th>
+              <th scope="col" data-cmu-column="heat">Heat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Plaid Pushers</td><td>Andrew Carnegie</td><td>Prelims, Heat 1</td></tr>
+            <tr><td>Red Scarves</td><td>Margaret Morrison</td><td>Prelims, Heat 1</td></tr>
+            <tr><td>Downhill Dynamos</td><td>Andrew Mellon</td><td>Prelims, Heat 1</td></tr>
+            <tr><td>Fence Painters</td><td>Henry Clay Frick</td><td>Prelims, Heat 2</td></tr>
+            <tr><td>Hill One Heroes</td><td>Herbert Simon</td><td>Prelims, Heat 2</td></tr>
+            <tr><td>Tartan Turners</td><td>Allen Newell</td><td>Prelims, Heat 2</td></tr>
+            <tr><td>Bagpipe Brigade</td><td>Arthur Hamerschlag</td><td>Prelims, Heat 3</td></tr>
+            <tr><td>Kiltie Kickers</td><td>Margaret Morrison</td><td>Prelims, Heat 3</td></tr>
+          </tbody>
+        </table>
+        <p class="cmu-results-count" data-cmu-count="kit-count-table" aria-live="polite">Showing all 8 teams</p>
+      </div>
 
-            <h3 id="table-address">The View in the Address</h3>
+            <h3 id="table-address">
+              View in the Address
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h3>
             <p>
               The search, the column filters and the sort go in the page's address as people change
               them, and come back from it when the page loads, so a filtered, sorted table can be
@@ -263,15 +325,72 @@
               (<code>?checkouts[q]=drill</code>). Frameworks such as Rails read these as nested
               parameters.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>data-cmu-table</code></p>
 
-            <h3 id="table-sticky">Sticky Header</h3>
+            <h3 id="table-sticky">
+              Sticky Header
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h3>
             <p>
               Add <code>cmu-sticky</code> to a long table, and its head, with any filter row, stays
               at the top of the window as people scroll down the rows. It works from 768px up, with
-              <code>cmu-full</code>; below that the table scrolls sideways instead.
+              <code>cmu-full</code>; below that the table scrolls sideways instead. Here, every roll
+              time from race day, fastest first; scroll down the rows, then sort by another column:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-sticky</code></p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo" data-kit-peek>
+        <table class="alternate cmu-full cmu-sticky" id="kit-sticky-table" data-cmu-table="kit-sticky">
+          <thead><tr>
+            <th scope="col" data-sort-key="heat"><button type="button" class="cmu-sort">Heat<span class="cmu-sort-arrow"></span></button></th>
+            <th scope="col" data-sort-key="team"><button type="button" class="cmu-sort">Team<span class="cmu-sort-arrow"></span></button></th>
+            <th scope="col" data-sort-key="driver"><button type="button" class="cmu-sort">Driver<span class="cmu-sort-arrow"></span></button></th>
+            <th scope="col" class="num" data-sort-key="time" aria-sort="ascending"><button type="button" class="cmu-sort">Roll Time<span class="cmu-sort-arrow"></span></button></th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Finals, Heat 1</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class="num" data-sort-value="123.06">2:03.06</td></tr>
+            <tr><td>Finals, Heat 1</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class="num" data-sort-value="123.58">2:03.58</td></tr>
+            <tr><td>Prelims, Heat 1</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class="num" data-sort-value="123.80">2:03.80</td></tr>
+            <tr><td>Finals, Heat 2</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class="num" data-sort-value="124.51">2:04.51</td></tr>
+            <tr><td>Prelims, Heat 1</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class="num" data-sort-value="125.44">2:05.44</td></tr>
+            <tr><td>Prelims, Heat 2</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class="num" data-sort-value="125.63">2:05.63</td></tr>
+            <tr><td>Prelims, Heat 2</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class="num" data-sort-value="126.21">2:06.21</td></tr>
+            <tr><td>Finals, Heat 2</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class="num" data-sort-value="126.56">2:06.56</td></tr>
+            <tr><td>Prelims, Heat 3</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class="num" data-sort-value="127.08">2:07.08</td></tr>
+            <tr><td>Finals, Heat 1</td><td>Red Scarves</td><td>Margaret Morrison</td><td class="num" data-sort-value="127.45">2:07.45</td></tr>
+            <tr><td>Finals, Heat 2</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class="num" data-sort-value="127.61">2:07.61</td></tr>
+            <tr><td>Finals, Heat 2</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class="num" data-sort-value="127.72">2:07.72</td></tr>
+            <tr><td>Prelims, Heat 1</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class="num" data-sort-value="128.43">2:08.43</td></tr>
+            <tr><td>Finals, Heat 2</td><td>Red Scarves</td><td>Margaret Morrison</td><td class="num" data-sort-value="128.96">2:08.96</td></tr>
+            <tr><td>Finals, Heat 1</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class="num" data-sort-value="129.13">2:09.13</td></tr>
+            <tr><td>Prelims, Heat 3</td><td>Red Scarves</td><td>Margaret Morrison</td><td class="num" data-sort-value="129.32">2:09.32</td></tr>
+            <tr><td>Finals, Heat 1</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class="num" data-sort-value="131.24">2:11.24</td></tr>
+            <tr><td>Prelims, Heat 2</td><td>Red Scarves</td><td>Margaret Morrison</td><td class="num" data-sort-value="131.42">2:11.42</td></tr>
+            <tr><td>Prelims, Heat 2</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class="num" data-sort-value="133.66">2:13.66</td></tr>
+            <tr><td>Prelims, Heat 2</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class="num" data-sort-value="133.90">2:13.90</td></tr>
+            <tr><td>Prelims, Heat 3</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class="num" data-sort-value="135.77">2:15.77</td></tr>
+            <tr><td>Prelims, Heat 1</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class="num" data-sort-value="136.85">2:16.85</td></tr>
+            <tr><td>Prelims, Heat 3</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class="num" data-sort-value="137.75">2:17.75</td></tr>
+            <tr><td>Prelims, Heat 1</td><td>Red Scarves</td><td>Margaret Morrison</td><td class="num" data-sort-value="138.65">2:18.65</td></tr>
+            <tr><td>Prelims, Heat 3</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class="num" data-sort-value="139.79">2:19.79</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-            <h3 id="table-server">Long Tables</h3>
+            <h3 id="table-server">
+              Long Tables
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ><span class="kit-where-script" title="Requires cmu-app.js">Script</span></span
+              >
+            </h3>
             <p>
               Sorting and filtering in the browser suit a table of up to a few thousand rows sent
               with the page. For a longer one, let the server do it with the same markup and the
@@ -290,13 +409,15 @@
               <li>
                 <strong>Make each sorting heading a link</strong> (<code>a.cmu-sort</code>) to the
                 same page with <code>?sort=</code> set, and mark the current one with
-                <code>aria-sort</code> and its arrow.
+                <code>aria-sort</code>; the kit draws its arrow.
               </li>
               <li>
                 <strong>Page the rows on the server,</strong> with a count over them and a
                 <a href="#pagination">pager</a> or <a href="#load-more">Load More</a> under them.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>data-cmu-table-server</code></p>
 
             <h2 id="table-actions" class="rule-top">
               Tables With Actions
@@ -311,14 +432,6 @@
               actions for the selected rows. Its height is fixed, so buttons appearing don't push
               the table down. Each row gets one button, the next thing to do, and a ⋯ menu with the
               rest; a row with nothing else to do gets no menu.
-            </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>cmu-bulk-bar</code>, <code>cmu-selection-count</code>,
-              <code>cmu-has-selection</code>, <code>cmu-select-cell</code>, <code>cmu-sort</code>,
-              <code>cmu-sort-arrow</code>, <code>cmu-fit</code>, <code>cmu-row-buttons</code>,
-              <code>cmu-row-menu</code>, <code>cmu-row-menu-list</code>, <code>data-cmu-menu</code>,
-              <code>num</code>
             </p>
             <ul>
               <li>
@@ -343,7 +456,7 @@
                 <strong>Selection:</strong> the app's script keeps the count current ("No sections
                 selected" when there are none), adds <code>cmu-has-selection</code> to it when
                 anything is selected and shows each bulk button only when it applies to a selected
-                row, with how many: "Upload Syllabus (2)." Try it above.
+                row, with how many: "Upload Syllabus (2)." Try it below.
               </li>
               <li>
                 <strong>Checkbox cells:</strong> the label fills the cell, so the whole cell is the
@@ -363,6 +476,14 @@
                 ends a line inside a button.
               </li>
             </ul>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-bulk-bar</code>, <code>cmu-selection-count</code>,
+              <code>cmu-has-selection</code>, <code>cmu-select-cell</code>, <code>cmu-sort</code>,
+              <code>cmu-sort-arrow</code>, <code>cmu-fit</code>, <code>cmu-row-buttons</code>,
+              <code>cmu-row-menu</code>, <code>cmu-row-menu-list</code>, <code>data-cmu-menu</code>,
+              <code>num</code>
+            </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <div class="cmu-bulk-bar" data-kit-select="kit-select-rows">
@@ -452,14 +573,7 @@
         </table>
       </div>
 
-            <h2 id="more" class="rule-top">
-              Folded Lists
-              <span class="kit-where"
-                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
-                  >App</span
-                ></span
-              >
-            </h2>
+            <h2 id="more" class="rule-top">Folded Lists</h2>
             <p>
               A <code>&lt;details&gt;</code> whose summary reads as a line of text ending in a bold
               toggle with a chevron, which points down while closed, flips up when open and turns
@@ -473,7 +587,14 @@
               <code>cmu-more</code>, <code>cmu-more-link</code>, <code>cmu-more-closed</code>,
               <code>cmu-more-open</code>
             </p>
-            <h3 id="more-list">Folded List</h3>
+            <h3 id="more-list">
+              Folded List
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h3>
             <p>The first few items, then the count of the rest; open, the whole list shows:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -482,7 +603,14 @@
           <p>ARC, CS, ECE, HIS, HSS, MSE, MUS, PHI, STA</p>
         </details>
       </div>
-            <h3 id="more-block">Folded Block</h3>
+            <h3 id="more-block">
+              Folded Block
+              <span class="kit-where"
+                ><span class="kit-where-app" title="Requires cmu-app.css and cmu-app on body"
+                  >App</span
+                ></span
+              >
+            </h3>
             <p>
               A question that leads to something people may want to read, such as a long prompt or
               the full terms, then a toggle that names it. Nothing on the line moves: only the
@@ -662,7 +790,7 @@
               <code>cmu-search-bar</code>, <code>cmu-filters</code>, <code>cmu-empty</code>
             </p>
 
-            <h3 id="create-button-search">With a Search</h3>
+            <h3 id="create-button-search" class="kit-example">With a Search</h3>
             <p>A list of heats, with its button beside the search:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -692,7 +820,7 @@
 &lt;/div&gt;</code></pre>
             </div>
 
-            <h3 id="create-button-filters">With Filters</h3>
+            <h3 id="create-button-filters" class="kit-example">With Filters</h3>
             <p>The same list with filters, and its button at the end of the row:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -733,7 +861,7 @@
 &lt;/div&gt;</code></pre>
             </div>
 
-            <h3 id="create-button-empty">With No Items Yet</h3>
+            <h3 id="create-button-empty" class="kit-example">With No Items Yet</h3>
             <p>When the list is empty, its empty message repeats the same button:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -834,7 +962,7 @@
             </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>cmu-results-count</code>, <code>cmu-pager</code></p>
-            <h3 id="pagination-start">Near the Start</h3>
+            <h3 id="pagination-start" class="kit-example">Near the Start</h3>
             <p>On page 2, with the results count above it:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -861,7 +989,7 @@
                 The theme puts this pager under the posts on the site's posts page and its archives.
               </p>
             </div>
-            <h3 id="pagination-middle">In the Middle</h3>
+            <h3 id="pagination-middle" class="kit-example">In the Middle</h3>
             <p>On page 8, with the pages around it and the first and last:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -882,7 +1010,7 @@
         </div>
       </div>
 
-            <h3 id="pagination-end">At the End</h3>
+            <h3 id="pagination-end" class="kit-example">At the End</h3>
             <p>On page 16, the last, where the next and last arrows go nowhere:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">

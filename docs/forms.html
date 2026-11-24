@@ -448,14 +448,14 @@
               form asks only what matters. Menus and text boxes inside fill their space, as they
               fill a column elsewhere.
             </p>
-            <h3 id="sub-options-radio">Under Radio Buttons</h3>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>cmu-sub-options</code></p>
+            <h3 id="sub-options-radio" class="kit-example">Under Radio Buttons</h3>
             <p>
               Put the options inside the choice's list item, lined up with its label, in a
               <code>cmu-sub-options</code> block, with the radio button or checkbox right inside the
               list item, before its label. The kit shows them with CSS alone. Pick A Logo:
             </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes"><code>cmu-sub-options</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <form>
@@ -482,7 +482,7 @@
           </fieldset>
         </form>
       </div>
-            <h3 id="sub-options-menu">After a Menu</h3>
+            <h3 id="sub-options-menu" class="kit-example">After a Menu</h3>
             <p>
               For a menu, give the <code>&lt;select&gt;</code> <code>data-cmu-options</code>, then
               after it a rule and a block for each value that has further options, with
@@ -880,12 +880,17 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
                 size limit.
               </li>
             </ul>
+            <p>
+              When uploading is one action on a busy page, such as a row in a table, put the zone in
+              a <a href="messages.html#dialog">dialog</a> that a small button opens, with Cancel as
+              a ghost button that closes it.
+            </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-drop</code>, <code>cmu-drop-pick</code>, <code>cmu-drop-file</code>,
               <code>cmu-drop-over</code>, <code>cmu-drop-has-file</code>
             </p>
-            <h3 id="file-picker-page">On the Page</h3>
+            <h3 id="file-picker-page" class="kit-example">On the Page</h3>
             <p>A drop zone in the page itself:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -929,12 +934,7 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
                 input.
               </p>
             </div>
-            <h3 id="file-picker-dialog">In a Dialog</h3>
-            <p>
-              When uploading is one action on a busy page, such as a row in a table, put the zone in
-              a <a href="messages.html#dialog">dialog</a> that a small button opens, with Cancel as
-              a ghost button that closes it.
-            </p>
+            <h3 id="file-picker-dialog" class="kit-example">In a Dialog</h3>
             <p>Here, in a dialog that a small button opens:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -1057,13 +1057,23 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
                 should clear it after each tap and never log card numbers.
               </li>
             </ul>
+            <p>
+              When tapping is one action on a busy page, such as an attendance list, put the target
+              in a <a href="messages.html#dialog">dialog</a> that a small button opens, with Done as
+              a ghost button that closes it. Give the field <code>autofocus</code>, and the dialog
+              opens ready. (The demo here leaves it off, since this page shows the dialog already
+              open, and the browser would jump down to it.) Since the reader's carriage return
+              submits the form the field is in, put Done in a <code>method="dialog"</code> form of
+              its own; otherwise every tap would close the dialog. A dialog is narrow, so the target
+              stacks there.
+            </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-tap-target</code>, <code>data-cmu-tap</code>, <code>cmu-tap-card</code>,
               <code>cmu-tap-ready</code>, <code>cmu-tap-paused</code>, <code>cmu-tap-result</code>,
               <code>cmu-tap-other</code>, <code>cmu-field-button</code>
             </p>
-            <h3 id="tap-page">On the Page</h3>
+            <h3 id="tap-page" class="kit-example">On the Page</h3>
             <p>A tap target in the page itself:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -1087,17 +1097,7 @@ const steps = ["Delete the email", "Don't click its links", "Report it"];
         </form>
       </div>
             <p>Try it: type a few numbers in the target and press Enter, or search for a name.</p>
-            <h3 id="tap-dialog">In a Dialog</h3>
-            <p>
-              When tapping is one action on a busy page, such as an attendance list, put the target
-              in a <a href="messages.html#dialog">dialog</a> that a small button opens, with Done as
-              a ghost button that closes it. Give the field <code>autofocus</code>, and the dialog
-              opens ready. (The demo here leaves it off, since this page shows the dialog already
-              open, and the browser would jump down to it.) Since the reader's carriage return
-              submits the form the field is in, put Done in a <code>method="dialog"</code> form of
-              its own; otherwise every tap would close the dialog. A dialog is narrow, so the target
-              stacks there.
-            </p>
+            <h3 id="tap-dialog" class="kit-example">In a Dialog</h3>
             <p>Here, in a dialog that a small button opens:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">

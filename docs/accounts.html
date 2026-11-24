@@ -212,22 +212,6 @@
               their name in the roof and the menu. Their initials can stand in for a photo. Try it
               on <a href="layout.html#try-header">this site's header</a>.
             </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>cmu-profile-picture</code>, <code>cmu-profile-initials</code>,
-              <code>data-cmu-name</code>, <code>data-cmu-initials</code>, <code>--cmu-size</code>
-            </p>
-            <!-- prettier-ignore -->
-            <div class="kit-demo">
-              <p>
-                <img class="cmu-profile-picture" src="https://placemellon.andrew.cmu.edu/56?profile" alt="">
-                <i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true" data-cmu-name="Andrew Carnegie"></i>
-              </p>
-              <p>
-                <img class="cmu-profile-picture" style="--cmu-size: 56px" src="https://placemellon.andrew.cmu.edu/112?profile" alt="">
-                <i class="cmu-profile-picture cmu-profile-initials" style="--cmu-size: 56px" aria-hidden="true" data-cmu-name="Margaret Morrison"></i>
-              </p>
-            </div>
             <p>
               Put it before the name, at the start of the roof's account link and of
               <code>cmu-account-name</code> in the menu (see <a href="#account">Account</a>). A
@@ -244,6 +228,22 @@
                 >default profile picture</a
               >.
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>cmu-profile-picture</code>, <code>cmu-profile-initials</code>,
+              <code>data-cmu-name</code>, <code>data-cmu-initials</code>, <code>--cmu-size</code>
+            </p>
+            <!-- prettier-ignore -->
+            <div class="kit-demo">
+              <p>
+                <img class="cmu-profile-picture" src="https://placemellon.andrew.cmu.edu/56?profile" alt="">
+                <i class="cmu-profile-picture cmu-profile-initials" aria-hidden="true" data-cmu-name="Andrew Carnegie"></i>
+              </p>
+              <p>
+                <img class="cmu-profile-picture" style="--cmu-size: 56px" src="https://placemellon.andrew.cmu.edu/112?profile" alt="">
+                <i class="cmu-profile-picture cmu-profile-initials" style="--cmu-size: 56px" aria-hidden="true" data-cmu-name="Margaret Morrison"></i>
+              </p>
+            </div>
             <h2 id="sign-in-button" class="rule-top">
               Sign-In Button
               <span class="kit-where"
@@ -298,6 +298,11 @@
               about who can sign in. It's the template's sidebar box with <code>red invert</code>,
               and <code>btn ghost wide</code> in an <code>&lt;h4&gt;</code>.
             </p>
+            <p>
+              If signing in posts a form, use a
+              <code>&lt;button class="btn ghost wide"&gt;</code> in place of the link. With
+              <code>cmu-app.css</code>, the two look the same.
+            </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>sidebar</code>, <code>red invert</code>, <code>btn ghost wide</code>,
@@ -331,15 +336,6 @@
           </div>
         </div>
       </div>
-        <div class="content wide">
-          <div>
-            <p>
-              If signing in posts a form, use a
-              <code>&lt;button class="btn ghost wide"&gt;</code> in place of the link. With
-              <code>cmu-app.css</code>, the two look the same.
-            </p>
-          </div>
-        </div>
         <div class="content wide">
           <div>
             <h2 id="sign-in-page" class="rule-top">

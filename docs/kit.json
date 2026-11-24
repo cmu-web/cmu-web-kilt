@@ -26,7 +26,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#account",
       "labels": ["App"],
-      "description": "A Sign In link in the roof, beside the menu button, that becomes the user's name once they sign in.\n\nAlways “Sign In” and “Sign Out,” never “Log In,” on buttons, links and the menu.\n\nTry It on This Site's Header\n\nAdditional ways to encourage signing in are the Sign-In Button and Sign-In Box.",
+      "description": "A Sign In link in the roof, beside the menu button, that becomes the user's name once they sign in.\n\nTry It on This Site's Header\n\nAdditional ways to encourage signing in are the Sign-In Button and Sign-In Box.",
       "notes": [
         "Signed out, it's styled like the template's header links.",
         "Where sign-in starts with a POST, as with OmniAuth and django-allauth, Sign In is a <button class=\"cmu-account\"> in a form of its own. It looks the same as the link.",
@@ -134,7 +134,7 @@
       "page": "News and Events",
       "url": "https://webkilt.andrew.cmu.edu/0/news.html#article",
       "labels": ["CMS"],
-      "description": "The top of a single story or post, set the way CMU's news pages set it: the date over the headline, then the byline. A category label and a summary are optional. A lead photo goes right after it, as a captioned photo, and the story follows. Cascade's News Article pages write their own top; the markup is here for apps and other CMSes.\n\nDate it in AP style, “Nov. 16, 2026,” with the full date in the <time> element's datetime. Start the byline with “By” and name the writer the way they sign their work.",
+      "description": "The top of a single story or post, set the way CMU's news pages set it: the date over the headline, then the byline. A category label and a summary are optional. A lead photo goes right after it, as a captioned photo, and the story follows. Cascade's News Article pages write their own top; the markup is here for apps and other CMSes.",
       "notes": [],
       "classes": ["cmu-article", "date", "cmu-label", "cmu-lead", "cmu-byline", "figure.image"],
       "examples": [
@@ -176,7 +176,7 @@
       "page": "People",
       "url": "https://webkilt.andrew.cmu.edu/0/people.html#team",
       "labels": ["Template"],
-      "description": "A grid of the people in an office, each in a white card with a portrait, their name, their title in bold and a link to their full bio. Put the cards on a color, such as blue, to set the group apart as one section of the page. It's a grid column4 boxes (or column3) with an <h1> for the group. Use portraits of the same shape so the names line up; square ones keep the cards short. With no bio pages, leave out the links and the call to action.\n\nWord the link the same way on every card, such as “Read Full Bio.”",
+      "description": "A grid of the people in an office, each in a white card with a portrait, their name, their title in bold and a link to their full bio. Put the cards on a color, such as blue, to set the group apart as one section of the page. It's a grid column4 boxes (or column3) with an <h1> for the group. Use portraits of the same shape so the names line up; square ones keep the cards short. With no bio pages, leave out the links and the call to action.",
       "notes": [],
       "classes": ["grid column4 boxes", "cta"],
       "examples": [
@@ -261,7 +261,7 @@
       "name": "Bullet, Check and Plain Lists",
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#checks",
-      "labels": ["CMS"],
+      "labels": ["Template", "CMS"],
       "description": "A kind of list for each job. Start each item with a short bold phrase when it helps people scan.\n\nFor describing things, such as the parts of a component or the options there are. Use the template's own list: a plain <ul> with no class, which gets gray open circles:",
       "notes": [],
       "classes": ["ul", "ul.cmu-checks", "ul.cmu-fixes", "ul.cmu-notes", "ul.cmu-plain"],
@@ -308,7 +308,7 @@
       "page": "Buttons",
       "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#buttons",
       "labels": ["Template"],
-      "description": "A solid button for the main action on a page, ghost buttons for the rest and a call to action (cta) for a link that should stand out from the text. external marks a link to another site. For the two things most people come to do, see Big Buttons.\n\nButtons, calls to action and links on the page's white background:",
+      "description": "A solid button for the main action on a page, ghost buttons for the rest and a call to action (cta) for a link that should stand out from the text. external marks a link to another site. For the two things most people come to do, see Big Buttons.\n\nThe solid button is see-through black, so it takes on the section's color: dark red on red, darker gray on gray. In a red or dark section (invert), a ghost button turns into a white outline. As anywhere else, the solid one is the main action and ghost buttons are the rest.\n\nUse <button class=\"btn\"> for things that happen on the page and <a class=\"btn\"> for things that go somewhere.\n\nA button is the page's main action and can go wherever that action happens, such as an app's sign-in or a request form in another system. A call to action is a next step on your own site or app. Any other link to another site is an ordinary external link in sentence case, as in the last row of Dos and Don’ts; a link is a cta or external, never both.\n\nButtons, calls to action and links on the page's white background:",
       "notes": [],
       "classes": ["btn", "ghost", "small", "wide", "cta", "external"],
       "examples": [
@@ -417,7 +417,7 @@
       "page": "Messages and Progress",
       "url": "https://webkilt.andrew.cmu.edu/0/messages.html#chat",
       "labels": ["App"],
-      "description": "A chat in the page’s bottom-right corner, with the app’s own mascot. The kit draws the launcher and the panel and handles opening, closing, sending and waiting. The app answers each question, from a list of answers, a search or a chatbot service.\n\nUse the mascot’s name on the launcher: Ask Chatterbuggy. The first reply says what the chat can answer and asks people not to share private information. Choices start with a verb, since each one becomes the user’s message.",
+      "description": "A chat in the page’s bottom-right corner, with the app’s own mascot. The kit draws the launcher and the panel and handles opening, closing, sending and waiting. The app answers each question, from a list of answers, a search or a chatbot service.",
       "notes": [
         "Name: Chatterbuggy, unless you give it your own, in .cmu-chat-title and in the launcher’s words and title.",
         "Mascot: data-cmu-chat-mascot on .cmu-chat names a square picture, at least 96 × 96, shown in a circle on the launcher and beside each reply. While the panel is open, the launcher turns white, and data-cmu-chat-mascot-open can name a wide picture for it, about 2:1; without one, your mascot stays in its circle. With no mascot at all, it’s Chatterbuggy, the kit’s own buggy: facing you while closed, racing while open. CMU’s marks, its mascot included, aren’t covered by the kit’s license.",
@@ -502,7 +502,7 @@
       "page": "Messages and Progress",
       "url": "https://webkilt.andrew.cmu.edu/0/messages.html#closable",
       "labels": ["CMS", "Script"],
-      "description": "An announcement people can close: a heading, a sentence or two, an optional button and an × at the right, on a color. Use it as a full-width section, like an announcement, or as a block inside the page's content. On phones the × moves to the top corner and the button runs the full width.\n\nA full-width section in dark gray, with a ghost button:",
+      "description": "An announcement people can close: a heading, a sentence or two, an optional button and an × at the right, on a color. Use it as a full-width section, like an announcement, or as a block inside the page's content. On phones the × moves to the top corner and the button runs the full width.\n\nThe demos here don't remember being closed, so they come back when you reload. Keep one closed with a name:\n\nA full-width section in dark gray, with a ghost button:",
       "notes": [
         "Name the close button with aria-label and title, such as \"Close Self-Guided Tours.\" It's an icon only, so the label is all a screen reader says, and the title shows as a tooltip.",
         "Add data-cmu-closable with a name to keep it closed in that browser. Use a new name when the content changes, so people who closed the old one see the new one. Without it, it's closed only until the page reloads.",
@@ -579,7 +579,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#copy",
       "labels": ["CMS", "Script"],
-      "description": "Copies a block of text for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. When the user selects a copy button:\n\nCode gets an icon in its corner, where people who copy code expect it. Put the block and the button in a cmu-copyable box, and name the button with aria-label and title, such as \"Copy Code\" or \"Copy HTML,\" for screen readers and the tooltip:",
+      "description": "Copies a block of text for people to paste somewhere else. Give the block an id and point the button's data-cmu-copy at it. When the user selects a copy button:\n\nCode gets an icon in its corner, where people who copy code expect it. Anything else, such as a link to share, an address to paste or a code to type somewhere else, gets a named button beside the block, for people who don't copy code every day. Put the block and the button in a cmu-copy-row, which lines them up like a field with a button.\n\nPut the block and the button in a cmu-copyable box, and name the button with aria-label and title, such as \"Copy Code\" or \"Copy HTML,\" for screen readers and the tooltip:",
       "notes": [
         "It says it worked. An icon turns into a green check, a named button reads \"Copied\" for two seconds and screen readers hear \"Copied.\"",
         "If automatic copying isn't available, the button selects the text and tells the user to press Ctrl+C or Command+C."
@@ -633,7 +633,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#create-button",
       "labels": ["App"],
-      "description": "Use one create button for each list that people can add to, after its search box or filters. It's built like a field with a button, but set apart, since it doesn't act on them. Without a search box or filters, it goes under the heading and lead. A call to action can follow it in the same row.\n\nStart the button with a verb and name the item: Create Heat, never Create alone. “Create” makes a new item from a blank form; “Add” puts something that already exists into the list (Add Driver, from the people at CMU). “New” belongs in the form's heading (New Heat), not on the button.\n\nA list of heats, with its button beside the search:",
+      "description": "Use one create button for each list that people can add to, after its search box or filters. It's built like a field with a button, but set apart, since it doesn't act on them. Without a search box or filters, it goes under the heading and lead. A call to action can follow it in the same row.\n\nA list of heats, with its button beside the search:",
       "notes": [],
       "classes": ["cmu-search-bar", "cmu-filters", "cmu-empty"],
       "examples": [
@@ -670,7 +670,7 @@
       "labels": ["CMS"],
       "description": "A month-and-day block in the style of the events.cmu.edu widgets, for a date that stands on its own or sits over a photo. For a list of dates, use the template's event list; for a calendar of events, embed its events.cmu.edu widget. Use a <time> with a datetime so the full date is in the markup, and add cmu-date--red for a red month.\n\nEach event's date as a block beside its details:",
       "notes": [],
-      "classes": ["cmu-date", "cmu-date-month", "cmu-date-day", "cmu-date--red"],
+      "classes": ["cmu-date", "cmu-date-month", "cmu-date-day", "cmu-date--red", "cmu-event-cards"],
       "examples": [
         "<p>\n  <time class=\"cmu-date\" datetime=\"2027-01-11\"><span class=\"cmu-date-month\">Jan</span> <span class=\"cmu-date-day\">11</span></time>\n  <time class=\"cmu-date cmu-date--red\" datetime=\"2027-01-20\"><span class=\"cmu-date-month\">Jan</span> <span class=\"cmu-date-day\">20</span></time>\n</p>",
         "<ul class=\"cmu-event-cards\">\n  <li>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600?category=classrooms\" alt=\"\">\n    <time class=\"cmu-date cmu-date--red\" datetime=\"2027-01-11\"><span class=\"cmu-date-month\">Jan</span> <span class=\"cmu-date-day\">11</span></time>\n    <h3><a href=\"#dates\">Spring Syllabi Due</a></h3>\n    <p>11:59 p.m.</p>\n  </li>\n  <li>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600?category=life\" alt=\"\">\n    <time class=\"cmu-date cmu-date--red\" datetime=\"2027-01-20\"><span class=\"cmu-date-month\">Jan</span> <span class=\"cmu-date-day\">20</span></time>\n    <h3><a href=\"#dates\">Training for Course Staff</a></h3>\n    <p>2-3 p.m., Zoom</p>\n  </li>\n  <li>\n    <img src=\"https://placemellon.andrew.cmu.edu/900/600?category=labs\" alt=\"\">\n    <time class=\"cmu-date cmu-date--red\" datetime=\"2027-02-03\"><span class=\"cmu-date-month\">Feb</span> <span class=\"cmu-date-day\">3</span></time>\n    <h3><a href=\"#dates\">Camera Kit Workshop</a></h3>\n    <p>Noon-1 p.m., Hunt Library</p>\n  </li>\n</ul>"
@@ -683,7 +683,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#developer-sign-in",
       "labels": ["App", "Script"],
-      "description": "A page that stands in for single sign-on while you build an app. Outside production, Sign In comes here instead of going to the identity provider: pick a test account to sign in as that person. It takes the place of the Sign-In Page until real sign-in is set up, and it's built the same way.\n\nLabel it “Development Mode” and head it “Pick a Test Account.” Give each role a few words on what it can do, starting with what that person sees. Mark the current person “You.”\n\nThe whole page, embedded. Pick someone, and the You tab moves to them:\n\nThe example page\n\nOpen the Example Page\n\nAdd the URLs only when DEBUG is on, ahead of the app's own sign-in, so /login/ is this page in development:\n\nDraw the routes only outside production, before the app's own sign-in, so /login is this page in development, and refuse them in the controller too:\n\nThe server draws this page and signs the user in, not {framework}'s components: serve the HTML tab's page from it. Add its routes only when NODE_ENV isn't production, before the app's own sign-in, so /login is this page in development. With Express:\n\nWith a picture, use <img class=\"cmu-profile-picture\" alt=\"\"> in place of the initials.\n\nWhile the app runs in development, mark every page with the Site Bar's caution tape, so screenshots can't pass for production, and a gold bar naming the test account, with a call to action back to this page.",
+      "description": "A page that stands in for single sign-on while you build an app. Outside production, Sign In comes here instead of going to the identity provider: pick a test account to sign in as that person. It takes the place of the Sign-In Page until real sign-in is set up, and it's built the same way.\n\nThe whole page, embedded. Pick someone, and the You tab moves to them:\n\nThe example page\n\nOpen the Example Page\n\nAdd the URLs only when DEBUG is on, ahead of the app's own sign-in, so /login/ is this page in development:\n\nDraw the routes only outside production, before the app's own sign-in, so /login is this page in development, and refuse them in the controller too:\n\nThe server draws this page and signs the user in, not {framework}'s components: serve the HTML tab's page from it. Add its routes only when NODE_ENV isn't production, before the app's own sign-in, so /login is this page in development. With Express:\n\nWith a picture, use <img class=\"cmu-profile-picture\" alt=\"\"> in place of the initials.\n\nWhile the app runs in development, mark every page with the Site Bar's caution tape, so screenshots can't pass for production, and a gold bar naming the test account, with a call to action back to this page.",
       "notes": [
         "Never in production. Add the page's routes only outside production, and refuse them in the controller too, so a slip in the routes can't open it.",
         "Send the user back to the page they came from (?return_to=), as real sign-in does.",
@@ -876,7 +876,7 @@
       "labels": ["CMS"],
       "description": "",
       "notes": [],
-      "classes": [],
+      "classes": ["cmu-eyebrow", "cmu-lead"],
       "examples": [
         "<p class=\"cmu-eyebrow\">For Students</p>\n<h1>Borrow a Camera</h1>\n<p class=\"cmu-lead\">Reserve one in about a minute, and pick it up at the desk.</p>"
       ],
@@ -888,7 +888,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#faq",
       "labels": ["Template"],
-      "description": "Questions that open to show their answers. Put collapsed on each question's heading, and everything after it, up to the next question, stays hidden until someone selects it. Give each question an id, and a link such as faq.html#miss-turn opens the page with that answer showing. To show a few questions on another page, such as a home page, use an FAQ teaser.\n\nIt's FAQ, never \"FAQs\": the Q already means questions. Title the page Frequently Asked Questions, and use FAQ in links and running text (“see the FAQ”). Phrase each heading as the question someone would ask, ending in a question mark.\n\nAll the questions together, each opening in place:",
+      "description": "Questions that open to show their answers. Put collapsed on each question's heading, and everything after it, up to the next question, stays hidden until someone selects it. Give each question an id, and a link such as faq.html#miss-turn opens the page with that answer showing. To show a few questions on another page, such as a home page, use an FAQ teaser.\n\nFor more questions, divide them by topic. Each topic is its own .content block with an id, headed by an <h1> whose text is in a rule-bottom span, so the rule runs under the words. With more than a few topics, list them in an On This Page box in the first topic's sidebar.\n\nAll the questions together, each opening in place:",
       "notes": [],
       "classes": ["collapsed"],
       "examples": [
@@ -931,7 +931,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#field-button",
       "labels": ["App"],
-      "description": "One text box or menu and the button that acts on it, side by side: adding someone by Andrew ID, looking up a code, running a search that waits for a button or downloading a file in the type chosen. Put the field and a btn in cmu-field-button, with the label right before it as for any field. The field takes the spare width and the button matches its height. A hint goes right after it. To filter a list as people type, with no button, use a search instead; to show text for people to copy, with a Copy button beside it, use a copy row. A list's create button looks like this beside its search box, but names what it makes.\n\nThe button can be one verb, such as Add, Look Up or Check: the label above the box already names what it’s for. Use a full phrase only when the verb alone could mean more than one thing.",
+      "description": "One text box or menu and the button that acts on it, side by side: adding someone by Andrew ID, looking up a code, running a search that waits for a button or downloading a file in the type chosen. Put the field and a btn in cmu-field-button, with the label right before it as for any field. The field takes the spare width and the button matches its height. A hint goes right after it. To filter a list as people type, with no button, use a search instead; to show text for people to copy, with a Copy button beside it, use a copy row. A list's create button looks like this beside its search box, but names what it makes.",
       "notes": [],
       "classes": ["cmu-field-button"],
       "examples": [
@@ -960,7 +960,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#file-picker",
       "labels": ["App", "Script"],
-      "description": "For uploading a file, such as a syllabus or a roster. It's a label wrapping a file input, so it works by click and keyboard as well as by dragging a file onto it, and the file arrives as an ordinary form post.\n\nA drop zone in the page itself:",
+      "description": "For uploading a file, such as a syllabus or a roster. It's a label wrapping a file input, so it works by click and keyboard as well as by dragging a file onto it, and the file arrives as an ordinary form post.\n\nWhen uploading is one action on a busy page, such as a row in a table, put the zone in a dialog that a small button opens, with Cancel as a ghost button that closes it.\n\nA drop zone in the page itself:",
       "notes": [
         "Dragging: the zone turns solid red while a file is over it, and dropping chooses the file. Without the script, people choose by clicking.",
         "Say what was chosen: the script puts the file's name in cmu-drop-file and marks the zone cmu-drop-has-file, so people can catch the wrong file before they send it. Keep the empty cmu-drop-file in the markup: its line holds its place, so the zone doesn't move when a file is chosen.",
@@ -1029,7 +1029,7 @@
       "page": "Messages and Progress",
       "url": "https://webkilt.andrew.cmu.edu/0/messages.html#flash",
       "labels": ["App"],
-      "description": "The result of what someone just did, shown once: \"You're in line: 3 people ahead of you,\" or what went wrong. A tinted box with a rule down its left side: green when it worked, red when it didn't and gold for something to know that's neither, such as a deadline or a change that came with it.",
+      "description": "The result of what someone just did, shown once: \"You're in line: 3 people ahead of you,\" or what went wrong. A tinted box with a rule down its left side: green when it worked, red when it didn't and gold for something to know that's neither, such as a deadline or a change that came with it.\n\nGive an error role=\"alert\", so a screen reader reads it at once, and the others role=\"status\".\n\nCMU's red alert bar at the very top of the page (#campusAlert) is for campus emergencies. Don't use it for an app's messages.",
       "notes": [
         "After a form sends someone to a new page, put it at the top of the page's content, above everything else, and show it only that once.",
         "For an error in one place, such as a dialog or one part of a form, put it right there.",
@@ -1077,7 +1077,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#photo-hero",
       "labels": ["Template"],
-      "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 × 600 version in style for phones, and a 1400 × 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark box (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white strip near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.\n\nA line of text in a dark box, with an optional second line under it:",
+      "description": "A full-width photo at the top of a page, before the breadcrumbs. It's a div.hero with the photo as its background: a 900 × 600 version in style for phones, and a 1400 × 700 version in data-img, which the template's script swaps in on wider screens. Give it role=\"img\" and an aria-label describing the photo. On a page with a hero, the template drops the line under the header's tabs, since the photo sits right below them.\n\nOver the photo, either a line of text in a dark box (div.text, with an <h1> and an optional <h2>), or a white box that links somewhere (a.box, with left or right).\n\nOptions: tall fills the window and adds an arrow down to the page, a p.caption puts a line of text in a white strip near the bottom, and small or large on the box sets its width. mask lays a fine screen over a soft, low-resolution photo.\n\nFor a service description, the kit's split hero with screenshots usually says more than a photo.\n\nA line of text in a dark box, with an optional second line under it:",
       "notes": [],
       "classes": [
         "hero",
@@ -1163,7 +1163,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#tap",
       "labels": ["App", "Script"],
-      "description": "For checking people in or looking them up with their CMU ID card, such as at a desk, a workshop or an exam room. An NFC card reader acts as a keyboard: it types the card's number into whatever has focus, and is assumed to end it with a carriage return (Enter), which submits the form. So the target holds a hidden text field, and the number arrives as an ordinary form post.\n\nA tap target in the page itself:",
+      "description": "For checking people in or looking them up with their CMU ID card, such as at a desk, a workshop or an exam room. An NFC card reader acts as a keyboard: it types the card's number into whatever has focus, and is assumed to end it with a carriage return (Enter), which submits the form. So the target holds a hidden text field, and the number arrives as an ordinary form post.\n\nWhen tapping is one action on a busy page, such as an attendance list, put the target in a dialog that a small button opens, with Done as a ghost button that closes it. Give the field autofocus, and the dialog opens ready. (The demo here leaves it off, since this page shows the dialog already open, and the browser would jump down to it.) Since the reader's carriage return submits the form the field is in, put Done in a method=\"dialog\" form of its own; otherwise every tap would close the dialog. A dialog is narrow, so the target stacks there.\n\nA tap target in the page itself:",
       "notes": [
         "Ready on load: when it's the only ID tap on the page, the field takes focus when the page loads, so the reader works without a click. The target says Ready while the field has focus, and to select it when it doesn't, so a tap never goes nowhere. Selecting anywhere on the target focuses the field, and so does sending the form.",
         "A tap-only page: add data-cmu-tap=\"keep\" on a kiosk or check-in page, and the field also takes focus back whenever nothing else has it. On a page where something else should have focus first, use data-cmu-tap=\"click\", and the field waits to be selected.",
@@ -1237,7 +1237,7 @@
       "page": "Buttons",
       "url": "https://webkilt.andrew.cmu.edu/0/buttons.html#link-labels",
       "labels": ["Template"],
-      "description": "Plain text after a link that says what's behind it: [login required] for a page that asks people to sign in, and the file's type, such as [PDF], for a file. The label goes outside the link, so the link's words stay the destination's name. Buttons and Links says when to leave it off.\n\nWord a call to action so it needs no [login required] label, and don't use a call to action for a file download.\n\nSign In to See Your Courses",
+      "description": "Plain text after a link that says what's behind it: [login required] for a page that asks people to sign in, and the file's type, such as [PDF], for a file. The label goes outside the link, so the link's words stay the destination's name. Buttons and Links says when to leave it off.",
       "notes": [],
       "classes": [],
       "examples": [
@@ -1279,7 +1279,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#load-more",
       "labels": ["App"],
-      "description": "A button under a long list that adds the next batch to it, after a count of what's showing. It suits browsing and search results, where people scan down. For a list people need to come back to a place in, use Pagination instead.\n\nThe app loads the results and updates the count; it doesn't depend on the template's script. Load More is a ghost button half the page wide, and the full width on phones. Hide its paragraph (hidden) once everything is showing.\n\nName what the button loads, with the same noun as the count: “Load More Sections.”",
+      "description": "A button under a long list that adds the next batch to it, after a count of what's showing. It suits browsing and search results, where people scan down. For a list people need to come back to a place in, use Pagination instead.\n\nThe app loads the results and updates the count; it doesn't depend on the template's script. Load More is a ghost button half the page wide, and the full width on phones. Hide its paragraph (hidden) once everything is showing.",
       "notes": [],
       "classes": ["cmu-results-count", "cmu-load-more"],
       "examples": [
@@ -1311,7 +1311,7 @@
       "page": "Content",
       "url": "https://webkilt.andrew.cmu.edu/0/content.html#peek",
       "labels": ["App"],
-      "description": "A code block too long to show at once: its first lines fade out at the bottom, and a toggle under it shows the whole block and folds it back. Put the block (or its copy box) and a cmu-more holding only its summary in a cmu-peek. It shows 10 lines; for another number, set --cmu-peek-lines on it, such as style=\"--cmu-peek-lines: 6\". A copy icon copies the whole block, folded or not.\n\nSay what the toggle shows, such as “See the Whole Page.”",
+      "description": "A code block too long to show at once: its first lines fade out at the bottom, and a toggle under it shows the whole block and folds it back. Put the block (or its copy box) and a cmu-more holding only its summary in a cmu-peek. It shows 10 lines; for another number, set --cmu-peek-lines on it, such as style=\"--cmu-peek-lines: 6\". A copy icon copies the whole block, folded or not.",
       "notes": [],
       "classes": ["cmu-peek", "cmu-more", "cmu-more-link", "cmu-more-closed", "cmu-more-open"],
       "examples": [
@@ -1339,7 +1339,7 @@
       "page": "Page Layout",
       "url": "https://webkilt.andrew.cmu.edu/0/layout.html#navigation",
       "labels": ["Template"],
-      "description": "One list, nav#nav, in the footer's third column. The template's script turns it into two things:\n\nKeep menu labels short, in Title Case.\n\nNest pages the way the site is organized: the top level holds a few sections, and each section's pages go in a sub-list under it, as deep as the site needs. Keep to about six top-level items so the tabs fit on one row. The menu shows the whole site with the current section open:\n\nThe example page\n\nOpen the Example Page\n\nCascade builds the navigation from the site's pages and folders.\n\nThe theme builds the navigation from the site's menu in Appearance › Editor › Navigation. Give an item the Additional CSS Class secondary to keep it in the menu only.\n\nThe gem's layout draws nav#nav from the app's cmu_nav_tree. It marks the current page, adds external to a link to another site and puts Sign In or Sign Out in the menu.",
+      "description": "One list, nav#nav, in the footer's third column. The template's script turns it into two things:\n\nNest pages the way the site is organized: the top level holds a few sections, and each section's pages go in a sub-list under it, as deep as the site needs. Keep to about six top-level items so the tabs fit on one row. The menu shows the whole site with the current section open:\n\nThe example page\n\nOpen the Example Page\n\nCascade builds the navigation from the site's pages and folders.\n\nThe theme builds the navigation from the site's menu in Appearance › Editor › Navigation. Give an item the Additional CSS Class secondary to keep it in the menu only.\n\nThe gem's layout draws nav#nav from the app's cmu_nav_tree. It marks the current page, adds external to a link to another site and puts Sign In or Sign Out in the menu.",
       "notes": [
         "Header tabs under the site name, from 768px up: the first ten top-level items, without their sub-lists. The current page's tab is red and underlined. Note: The home page isn't a tab; the site name links to it.",
         "The menu that slides out from the menu button, with every item and sub-list. Phones use only the menu. To show the signed-in person beside the menu button, see Account Status."
@@ -1361,7 +1361,7 @@
       "page": "News and Events",
       "url": "https://webkilt.andrew.cmu.edu/0/news.html#news",
       "labels": ["Template"],
-      "description": "A grid of linked stories, each with a picture, a date, a title and a sentence. After the first batch, the rest wait behind a Load More button. A CMS's news index usually writes all of this; the markup is here for apps and to show the parts.\n\nName what the button loads: “Load More Stories,” not just “Load More.”",
+      "description": "A grid of linked stories, each with a picture, a date, a title and a sentence. After the first batch, the rest wait behind a Load More button. A CMS's news index usually writes all of this; the markup is here for apps and to show the parts.",
       "notes": [
         "The picture is the background of a div.img, cropped to fill the space, so any shape works.",
         "Load More is the template's: put a .section-id around the grid and mark the items to hold back hide, with the picture in data-img so it loads only when shown. Each click shows 12 more. Try it below: three more are hidden. In an app, use the kit's Load More.",
@@ -1448,7 +1448,7 @@
       "page": "Forms",
       "url": "https://webkilt.andrew.cmu.edu/0/forms.html#or",
       "labels": ["CMS"],
-      "description": "A line across with “or” in it, between two ways to do the same thing: upload a file or type it in, pick a team or start one. What comes after it is the second way, usually a cta. In a form, the divider is as wide as the form's widest field, so the “or” sits under the field it's the other way to. The Sign-In Page uses one under its buttons.\n\nWrite “or” in lowercase; the divider sets it in capitals. Use it only between two ways to the same result, not to split a page into parts.",
+      "description": "A line across with “or” in it, between two ways to do the same thing: upload a file or type it in, pick a team or start one. What comes after it is the second way, usually a cta. In a form, the divider is as wide as the form's widest field, so the “or” sits under the field it's the other way to. The Sign-In Page uses one under its buttons.",
       "notes": [],
       "classes": ["cmu-or"],
       "examples": [
@@ -1481,7 +1481,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#page-size",
       "labels": ["App"],
-      "description": "A menu of how many results each page shows, centered under the pager. Use it only when the app has to offer one, such as a host app that always shows its own; otherwise, pick a page size and leave the menu out. Wrap it in a <form> with the class when changing it reloads the list.\n\nLabel it “Rows per page” under a table and “Per page” under anything else, in sentence case. List a few sizes, such as 10, 25, 50 and 100.\n\nUnder a table's count and pager:",
+      "description": "A menu of how many results each page shows, centered under the pager. Use it only when the app has to offer one, such as a host app that always shows its own; otherwise, pick a page size and leave the menu out. Wrap it in a <form> with the class when changing it reloads the list.\n\nUnder a table's count and pager:",
       "notes": [],
       "classes": ["cmu-page-size"],
       "examples": [
@@ -1525,7 +1525,7 @@
       "page": "People",
       "url": "https://webkilt.andrew.cmu.edu/0/people.html#people-list",
       "labels": ["App"],
-      "description": "A list of people with a small round headshot beside each name and title, for a directory, a team or the instructors of a course. With more than a screenful, put a search above it that matches names, titles and each row's data-keywords as people type, and a count under it. The filter is your app's script; try this one.",
+      "description": "A list of people with a small round headshot beside each name and title, for a directory, a team or the instructors of a course. With more than a screenful, put a search above it that matches names, titles and each row's data-keywords as people type, and a count under it. The filter is your app's script; try this one.\n\nCrop each photo to a square, and the kit makes it round. For someone without a photo, use PlaceMellon's people-list placeholder or leave the image out.",
       "notes": [],
       "classes": ["cmu-people", "cmu-search-bar", "cmu-results-count"],
       "examples": [
@@ -1614,7 +1614,7 @@
       "labels": ["Template"],
       "description": "Portraits with each person's name and title under them, for people without bio pages: nothing links. Use portraits of the same shape, so the names line up. The name is right under each portrait, so the portrait gets empty alt. Until someone's portrait is ready, use PlaceMellon's bio placeholder.\n\nTall portraits, such as 600 × 750, three or four across, with the name in bold and the title on the next line. It's a grid column4 (or column3) with a div for each person:",
       "notes": [],
-      "classes": ["grid", "column3", "column4"],
+      "classes": ["grid", "column3", "column4", "grid column3 grey boxes", "aligncenter"],
       "examples": [
         "<div class=\"grid column4\">\n  <h1>Our Team</h1>\n  <div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Andrew Carnegie</strong><br>Director of Teaching Technology</p>\n  </div><div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Margaret Morrison</strong><br>Teaching Consultant</p>\n  </div><div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Andrew Mellon</strong><br>Data Analyst</p>\n  </div><div>\n    <img src=\"https://placemellon.andrew.cmu.edu/600/750?bio\" alt=\"\" width=\"600\" height=\"750\">\n    <p><strong>Herbert Simon</strong><br>Web Developer</p>\n  </div>\n</div>",
         "<div class=\"grid column3 grey boxes\">\n  <h1>Leadership</h1>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"\" width=\"320\" height=\"320\">\n    <h2>Andrew Carnegie</h2>\n    <h3>Director of Teaching Technology</h3>\n  </div>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"\" width=\"320\" height=\"320\">\n    <h2>Andrew Mellon</h2>\n    <h3>Associate Director, Office Hours Queue</h3>\n  </div>\n  <div class=\"aligncenter\">\n    <img src=\"images/scotty.png\" alt=\"\" width=\"320\" height=\"320\">\n    <h2>Margaret Morrison</h2>\n    <h3>Manager, Equipment Checkout</h3>\n  </div>\n</div>"
@@ -1641,7 +1641,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#photo",
       "labels": ["App"],
-      "description": "A round picture of the signed-in user, also called an avatar or account photo, before their name in the roof and the menu. Their initials can stand in for a photo. Try it on this site's header.",
+      "description": "A round picture of the signed-in user, also called an avatar or account photo, before their name in the roof and the menu. Their initials can stand in for a photo. Try it on this site's header.\n\nPut it before the name, at the start of the roof's account link and of cmu-account-name in the menu (see Account). A photo gets empty alt text, since the name is right beside it; initials are hidden from screen readers. With the name in data-cmu-name, the kit writes the first letters of the first and last names, so Andrew Carnegie is AC and Henry Clay Frick is HF. It reads “Carnegie, Andrew” the same way and skips a suffix such as Jr. If the app already has initials, put them in data-cmu-initials instead, and the kit uses them as they are. For another size, set --cmu-size. For a picture without photos, PlaceMellon has a default profile picture.",
       "notes": [],
       "classes": [
         "cmu-profile-picture",
@@ -1812,7 +1812,7 @@
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#search",
       "labels": ["App"],
-      "description": "One search box over a list, across the full width, searching as people type. A small label over the search box says what it finds, and the placeholder says what the user can search by. The search box gets the template's magnifier, and a count of what's showing goes under the list. For several search boxes or checkboxes side by side, use filters. To give the list a button that makes a new item, add a create button after the search box.\n\nUse consistent wording to show how many results are visible: “Showing 20 of 312 sections,” “Showing all 312 sections” or “Showing 1 section.” With no results, use the template's “Sorry, no results to display.”",
+      "description": "One search box over a list, across the full width, searching as people type. A small label over the search box says what it finds, and the placeholder says what the user can search by. The search box gets the template's magnifier, and a count of what's showing goes under the list. For several search boxes or checkboxes side by side, use filters. To give the list a button that makes a new item, add a create button after the search box.",
       "notes": [],
       "classes": ["cmu-search-bar", "cmu-label", "cmu-results-count"],
       "examples": [
@@ -1845,7 +1845,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#bar",
       "labels": ["Template"],
-      "description": "A full-width bar with a background color and a heading, to start a new part of a long page, often with the globe. It's a .content wide block with a color; give it an id to link to it.\n\nThe section holds just a heading:",
+      "description": "A full-width bar with a background color and a heading, to start a new part of a long page, often with the globe. It's a .content wide block with a color; give it an id to link to it.\n\nFor a statement instead of a heading, such as a mission, use a lighter section with the text centered: grey plaid, which the template fades so dark text stays readable. On phones it's plain white, since the template drops the plaid there (see Background Patterns), so don't count on it to set the statement apart.\n\nThe section holds just a heading:",
       "notes": [],
       "classes": ["content wide", "red invert globe"],
       "examples": [
@@ -1888,7 +1888,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in-box",
       "labels": ["Template"],
-      "description": "For a page that does little until the user signs in. A red box says what signing in lets them do, with one wide outline Sign In button, and an optional note under it about who can sign in. It's the template's sidebar box with red invert, and btn ghost wide in an <h4>.\n\nHere, beside a page that does little until the user signs in:",
+      "description": "For a page that does little until the user signs in. A red box says what signing in lets them do, with one wide outline Sign In button, and an optional note under it about who can sign in. It's the template's sidebar box with red invert, and btn ghost wide in an <h4>.\n\nIf signing in posts a form, use a <button class=\"btn ghost wide\"> in place of the link. With cmu-app.css, the two look the same.\n\nHere, beside a page that does little until the user signs in:",
       "notes": [],
       "classes": ["sidebar", "red invert", "btn ghost wide", "left-rule"],
       "examples": [
@@ -1916,7 +1916,7 @@
       "page": "Accounts",
       "url": "https://webkilt.andrew.cmu.edu/0/accounts.html#sign-in-page",
       "labels": ["App"],
-      "description": "A standalone page where the user picks how to sign in. When an Andrew account isn't the only way in, every Sign In link and button comes here instead of going straight to CMU's single sign-on. In development, the Developer Sign-In takes its place.\n\nThe heading should be “Sign In” with no period. Button text for sign-in options should be Title Case, with a prompt to sign in followed by the service name, e.g., “Sign In With Google.”\n\nThe whole page, embedded:\n\nThe example page\n\nOpen the Example Page\n\ndjango-allauth starts sign-in with a POST, so each sign-in option is a form with the button in it. The rest of the page is the HTML tab's.\n\nOmniAuth starts sign-in with a POST, so each sign-in option is a button_to: a form with the button in it. Turbo stays out of it, since sign-in leaves for another site. The rest of the page is the HTML tab's.\n\nThe Sign-In Page is a whole page, not a component: serve the HTML tab's page as an HTML file of its own, such as public/login.html, which the dev server and the build serve as it is.\n\nMake the HTML tab's page an Astro page, such as src/pages/login.astro, with is:inline on the template's scripts, so Astro leaves them as they are.\n\nFor a background photo, add cmu-sign-in-page--photo to main and put the photo in its style: style=\"--cmu-sign-in-photo: url('/images/photo.jpg')\". The address can be relative to the page, like any other. Any shape works: the photo fills the space, and wide screens crop more from its bottom than its top. Use one at least 2,000 pixels wide and under about 500 KB, as a JPEG, WebP or PNG. A photo is smallest as WebP or JPEG; PNG suits flat artwork.",
+      "description": "A standalone page where the user picks how to sign in. When an Andrew account isn't the only way in, every Sign In link and button comes here instead of going straight to CMU's single sign-on. In development, the Developer Sign-In takes its place.\n\nThe whole page, embedded:\n\nThe example page\n\nOpen the Example Page\n\ndjango-allauth starts sign-in with a POST, so each sign-in option is a form with the button in it. The rest of the page is the HTML tab's.\n\nOmniAuth starts sign-in with a POST, so each sign-in option is a button_to: a form with the button in it. Turbo stays out of it, since sign-in leaves for another site. The rest of the page is the HTML tab's.\n\nThe Sign-In Page is a whole page, not a component: serve the HTML tab's page as an HTML file of its own, such as public/login.html, which the dev server and the build serve as it is.\n\nMake the HTML tab's page an Astro page, such as src/pages/login.astro, with is:inline on the template's scripts, so Astro leaves them as they are.\n\nFor a background photo, add cmu-sign-in-page--photo to main and put the photo in its style: style=\"--cmu-sign-in-photo: url('/images/photo.jpg')\". The address can be relative to the page, like any other. Any shape works: the photo fills the space, and wide screens crop more from its bottom than its top. Use one at least 2,000 pixels wide and under about 500 KB, as a JPEG, WebP or PNG. A photo is smallest as WebP or JPEG; PNG suits flat artwork.",
       "notes": [
         "Group the sign-in options. Add cmu-sign-in-break to an item that starts a new group, such as the Andrew account button after the social ones.",
         "A sign-in service's mark is the one icon allowed beside a button's words, since each service asks for it on its sign-in button. Use its SVG code instead of an <img> in the button, so it takes the text color. The SVG for a social service's mark comes from Bootstrap Icons, and for an Andrew account, from PlaceMellon's Sign-In Icon.",
@@ -2119,14 +2119,33 @@
       "name": "Tables",
       "page": "Lists and Tables",
       "url": "https://webkilt.andrew.cmu.edu/0/lists.html#tables",
-      "labels": ["CMS"],
-      "description": "Use the template's table.alternate for striped rows. Add cmu-full to stretch a table to full width from 768px up (below that, the template lets it scroll sideways). cmu-compare splits a two-column table evenly, for before-and-after comparisons. Cells are centered top to bottom, so a one-line cell sits level with a wrapped one or a picture beside it; to center pictures of different widths across their column too, add the template's aligncenter to those cells.\n\nGive every table a header row, with <th scope=\"col\"> for each column, so screen readers can say which column a cell is in. A column of buttons gets a header too, hidden with sr-only, such as \"Actions.\"",
+      "labels": ["CMS", "App", "Script"],
+      "description": "Give every table a header row, with <th scope=\"col\"> for each column, so screen readers can say which column a cell is in. A column of buttons gets a header too, hidden with sr-only, such as \"Actions.\"\n\nA table in an app can also sort, filter, count its rows, keep its view in the page's address, keep its head in view and leave the work to the server. Add data-cmu-table to the table, then any of them; each works on its own, and without the script the table shows every row in its first order.\n\nUse the template's table.alternate for striped rows. Add cmu-full to stretch a table to full width from 768px up (below that, the template lets it scroll sideways). cmu-compare splits a two-column table evenly, for before-and-after comparisons. Cells are centered top to bottom, so a one-line cell sits level with a wrapped one or a picture beside it; to center pictures of different widths across their column too, add the template's aligncenter to those cells.",
       "notes": [],
-      "classes": ["table.cmu-full", "table.cmu-compare"],
+      "classes": [
+        "table.cmu-full",
+        "table.cmu-compare",
+        "data-cmu-table",
+        "data-sort-key",
+        "cmu-sort",
+        "cmu-sort-arrow",
+        "data-sort-value",
+        "data-cmu-filter",
+        "data-cmu-filter-column",
+        "cmu-filter-row",
+        "data-cmu-column",
+        "data-keywords",
+        "data-cmu-count",
+        "data-cmu-noun",
+        "cmu-sticky",
+        "data-cmu-table-server"
+      ],
       "examples": [
         "<table class=\"alternate cmu-full cmu-compare\">\n  <thead><tr><th scope=\"col\">Before</th><th scope=\"col\">Now</th></tr></thead>\n  <tbody>\n    <tr><td>One file per section</td><td>One file can cover many sections</td></tr>\n    <tr><td>Count modules to see where you stand</td><td>A completion bar and status filters</td></tr>\n  </tbody>\n</table>",
         "<table class=\"alternate cmu-full\" id=\"kit-sort-table\" data-cmu-table=\"kit-sort\" data-cmu-noun=\"checkout\">\n  <thead><tr>\n    <th scope=\"col\" data-sort-key=\"person\"><button type=\"button\" class=\"cmu-sort\">Person<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" data-sort-key=\"item\"><button type=\"button\" class=\"cmu-sort\">Item<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" data-sort-key=\"due\"><button type=\"button\" class=\"cmu-sort\">Due<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" class=\"num\" data-sort-key=\"fee\"><button type=\"button\" class=\"cmu-sort\">Fee<span class=\"cmu-sort-arrow\"></span></button></th>\n  </tr></thead>\n  <tbody>\n    <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td data-sort-value=\"2027-04-08\">April 8</td><td class=\"num\">$15.00</td></tr>\n    <tr><td>Margaret Morrison</td><td>Scissor Lift</td><td data-sort-value=\"2027-04-06\">April 6</td><td class=\"num\">$120.00</td></tr>\n    <tr><td>Andrew Mellon</td><td>Extension Cord</td><td data-sort-value=\"2027-04-10\">April 10</td><td class=\"num\">$5.00</td></tr>\n    <tr><td>Margaret Morrison</td><td>Hard Hat</td><td data-sort-value=\"2027-04-09\">April 9</td><td class=\"num\">$0.00</td></tr>\n  </tbody>\n</table>",
-        "<div class=\"cmu-search-bar\">\n  <label for=\"kit-checkout-search\" class=\"cmu-label\">Find Checkouts</label>\n  <input type=\"text\" id=\"kit-checkout-search\" placeholder=\"Person, item or organization\" data-cmu-filter=\"kit-filter-table\">\n</div>\n<table class=\"alternate cmu-full\" id=\"kit-filter-table\" data-cmu-table=\"kit-filter\" data-cmu-noun=\"checkout\">\n  <thead>\n    <tr>\n      <th scope=\"col\" data-sort-key=\"person\"><button type=\"button\" class=\"cmu-sort\">Person<span class=\"cmu-sort-arrow\"></span></button></th>\n      <th scope=\"col\" data-sort-key=\"item\"><button type=\"button\" class=\"cmu-sort\">Item<span class=\"cmu-sort-arrow\"></span></button></th>\n      <th scope=\"col\" data-cmu-column=\"organization\">Organization</th>\n    </tr>\n    <tr class=\"cmu-filter-row\">\n      <td><label for=\"kit-f-person\" class=\"sr-only\">Filter by Person</label><input type=\"text\" id=\"kit-f-person\" data-cmu-filter-column=\"person\" placeholder=\"Person\"></td>\n      <td><label for=\"kit-f-item\" class=\"sr-only\">Filter by Item</label><input type=\"text\" id=\"kit-f-item\" data-cmu-filter-column=\"item\" placeholder=\"Item\"></td>\n      <td><label for=\"kit-f-org\" class=\"sr-only\">Filter by Organization</label><input type=\"text\" id=\"kit-f-org\" data-cmu-filter-column=\"organization\" placeholder=\"Organization\"></td>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td>Booth Crew</td></tr>\n    <tr data-keywords=\"aerial work platform\"><td>Margaret Morrison</td><td>Scissor Lift</td><td>Lighting Crew</td></tr>\n    <tr><td>Andrew Mellon</td><td>Extension Cord</td><td>Buggy Team</td></tr>\n    <tr><td>Margaret Morrison</td><td>Hard Hat</td><td>Booth Crew</td></tr>\n    <tr><td>Andrew Carnegie</td><td>Ladder</td><td>Lighting Crew</td></tr>\n  </tbody>\n</table>\n<p class=\"cmu-results-count\" data-cmu-count=\"kit-filter-table\" aria-live=\"polite\">Showing all 5 checkouts</p>"
+        "<div class=\"cmu-search-bar\">\n  <label for=\"kit-checkout-search\" class=\"cmu-label\">Find Checkouts</label>\n  <input type=\"text\" id=\"kit-checkout-search\" placeholder=\"Person, item or organization\" data-cmu-filter=\"kit-filter-table\">\n</div>\n<table class=\"alternate cmu-full\" id=\"kit-filter-table\" data-cmu-table=\"kit-filter\" data-cmu-noun=\"checkout\">\n  <thead>\n    <tr>\n      <th scope=\"col\" data-sort-key=\"person\"><button type=\"button\" class=\"cmu-sort\">Person<span class=\"cmu-sort-arrow\"></span></button></th>\n      <th scope=\"col\" data-sort-key=\"item\"><button type=\"button\" class=\"cmu-sort\">Item<span class=\"cmu-sort-arrow\"></span></button></th>\n      <th scope=\"col\" data-cmu-column=\"organization\">Organization</th>\n    </tr>\n    <tr class=\"cmu-filter-row\">\n      <td><label for=\"kit-f-person\" class=\"sr-only\">Filter by Person</label><input type=\"text\" id=\"kit-f-person\" data-cmu-filter-column=\"person\" placeholder=\"Person\"></td>\n      <td><label for=\"kit-f-item\" class=\"sr-only\">Filter by Item</label><input type=\"text\" id=\"kit-f-item\" data-cmu-filter-column=\"item\" placeholder=\"Item\"></td>\n      <td><label for=\"kit-f-org\" class=\"sr-only\">Filter by Organization</label><input type=\"text\" id=\"kit-f-org\" data-cmu-filter-column=\"organization\" placeholder=\"Organization\"></td>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>Andrew Carnegie</td><td>Cordless Drill</td><td>Booth Crew</td></tr>\n    <tr data-keywords=\"aerial work platform\"><td>Margaret Morrison</td><td>Scissor Lift</td><td>Lighting Crew</td></tr>\n    <tr><td>Andrew Mellon</td><td>Extension Cord</td><td>Buggy Team</td></tr>\n    <tr><td>Margaret Morrison</td><td>Hard Hat</td><td>Booth Crew</td></tr>\n    <tr><td>Andrew Carnegie</td><td>Ladder</td><td>Lighting Crew</td></tr>\n  </tbody>\n</table>\n<p class=\"cmu-results-count\" data-cmu-count=\"kit-filter-table\" aria-live=\"polite\">Showing all 5 checkouts</p>",
+        "<div class=\"cmu-search-bar\">\n  <label for=\"kit-count-search\" class=\"cmu-label\">Find Teams</label>\n  <input type=\"text\" id=\"kit-count-search\" placeholder=\"Team or driver\" data-cmu-filter=\"kit-count-table\">\n</div>\n<table class=\"alternate cmu-full\" id=\"kit-count-table\" data-cmu-table=\"kit-count\" data-cmu-noun=\"team\">\n  <thead>\n    <tr>\n      <th scope=\"col\" data-cmu-column=\"team\">Team</th>\n      <th scope=\"col\" data-cmu-column=\"driver\">Driver</th>\n      <th scope=\"col\" data-cmu-column=\"heat\">Heat</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr><td>Plaid Pushers</td><td>Andrew Carnegie</td><td>Prelims, Heat 1</td></tr>\n    <tr><td>Red Scarves</td><td>Margaret Morrison</td><td>Prelims, Heat 1</td></tr>\n    <tr><td>Downhill Dynamos</td><td>Andrew Mellon</td><td>Prelims, Heat 1</td></tr>\n    <tr><td>Fence Painters</td><td>Henry Clay Frick</td><td>Prelims, Heat 2</td></tr>\n    <tr><td>Hill One Heroes</td><td>Herbert Simon</td><td>Prelims, Heat 2</td></tr>\n    <tr><td>Tartan Turners</td><td>Allen Newell</td><td>Prelims, Heat 2</td></tr>\n    <tr><td>Bagpipe Brigade</td><td>Arthur Hamerschlag</td><td>Prelims, Heat 3</td></tr>\n    <tr><td>Kiltie Kickers</td><td>Margaret Morrison</td><td>Prelims, Heat 3</td></tr>\n  </tbody>\n</table>\n<p class=\"cmu-results-count\" data-cmu-count=\"kit-count-table\" aria-live=\"polite\">Showing all 8 teams</p>",
+        "<table class=\"alternate cmu-full cmu-sticky\" id=\"kit-sticky-table\" data-cmu-table=\"kit-sticky\">\n  <thead><tr>\n    <th scope=\"col\" data-sort-key=\"heat\"><button type=\"button\" class=\"cmu-sort\">Heat<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" data-sort-key=\"team\"><button type=\"button\" class=\"cmu-sort\">Team<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" data-sort-key=\"driver\"><button type=\"button\" class=\"cmu-sort\">Driver<span class=\"cmu-sort-arrow\"></span></button></th>\n    <th scope=\"col\" class=\"num\" data-sort-key=\"time\" aria-sort=\"ascending\"><button type=\"button\" class=\"cmu-sort\">Roll Time<span class=\"cmu-sort-arrow\"></span></button></th>\n  </tr></thead>\n  <tbody>\n    <tr><td>Finals, Heat 1</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class=\"num\" data-sort-value=\"123.06\">2:03.06</td></tr>\n    <tr><td>Finals, Heat 1</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class=\"num\" data-sort-value=\"123.58\">2:03.58</td></tr>\n    <tr><td>Prelims, Heat 1</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class=\"num\" data-sort-value=\"123.80\">2:03.80</td></tr>\n    <tr><td>Finals, Heat 2</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class=\"num\" data-sort-value=\"124.51\">2:04.51</td></tr>\n    <tr><td>Prelims, Heat 1</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class=\"num\" data-sort-value=\"125.44\">2:05.44</td></tr>\n    <tr><td>Prelims, Heat 2</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class=\"num\" data-sort-value=\"125.63\">2:05.63</td></tr>\n    <tr><td>Prelims, Heat 2</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class=\"num\" data-sort-value=\"126.21\">2:06.21</td></tr>\n    <tr><td>Finals, Heat 2</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class=\"num\" data-sort-value=\"126.56\">2:06.56</td></tr>\n    <tr><td>Prelims, Heat 3</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class=\"num\" data-sort-value=\"127.08\">2:07.08</td></tr>\n    <tr><td>Finals, Heat 1</td><td>Red Scarves</td><td>Margaret Morrison</td><td class=\"num\" data-sort-value=\"127.45\">2:07.45</td></tr>\n    <tr><td>Finals, Heat 2</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class=\"num\" data-sort-value=\"127.61\">2:07.61</td></tr>\n    <tr><td>Finals, Heat 2</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class=\"num\" data-sort-value=\"127.72\">2:07.72</td></tr>\n    <tr><td>Prelims, Heat 1</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class=\"num\" data-sort-value=\"128.43\">2:08.43</td></tr>\n    <tr><td>Finals, Heat 2</td><td>Red Scarves</td><td>Margaret Morrison</td><td class=\"num\" data-sort-value=\"128.96\">2:08.96</td></tr>\n    <tr><td>Finals, Heat 1</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class=\"num\" data-sort-value=\"129.13\">2:09.13</td></tr>\n    <tr><td>Prelims, Heat 3</td><td>Red Scarves</td><td>Margaret Morrison</td><td class=\"num\" data-sort-value=\"129.32\">2:09.32</td></tr>\n    <tr><td>Finals, Heat 1</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class=\"num\" data-sort-value=\"131.24\">2:11.24</td></tr>\n    <tr><td>Prelims, Heat 2</td><td>Red Scarves</td><td>Margaret Morrison</td><td class=\"num\" data-sort-value=\"131.42\">2:11.42</td></tr>\n    <tr><td>Prelims, Heat 2</td><td>Downhill Dynamos</td><td>Andrew Mellon</td><td class=\"num\" data-sort-value=\"133.66\">2:13.66</td></tr>\n    <tr><td>Prelims, Heat 2</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class=\"num\" data-sort-value=\"133.90\">2:13.90</td></tr>\n    <tr><td>Prelims, Heat 3</td><td>Plaid Pushers</td><td>Andrew Carnegie</td><td class=\"num\" data-sort-value=\"135.77\">2:15.77</td></tr>\n    <tr><td>Prelims, Heat 1</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class=\"num\" data-sort-value=\"136.85\">2:16.85</td></tr>\n    <tr><td>Prelims, Heat 3</td><td>Fence Painters</td><td>Henry Clay Frick</td><td class=\"num\" data-sort-value=\"137.75\">2:17.75</td></tr>\n    <tr><td>Prelims, Heat 1</td><td>Red Scarves</td><td>Margaret Morrison</td><td class=\"num\" data-sort-value=\"138.65\">2:18.65</td></tr>\n    <tr><td>Prelims, Heat 3</td><td>Hill One Heroes</td><td>Herbert Simon</td><td class=\"num\" data-sort-value=\"139.79\">2:19.79</td></tr>\n  </tbody>\n</table>"
       ],
       "frameworks": {}
     },
@@ -2141,7 +2160,7 @@
         "One button per row: solid for something missing (Upload Syllabus), outlined when it's there (Replace Syllabus), at one fixed width and the height of a two-line button so rows stay even.",
         "The ⋯ menu (cmu-row-menu) holds the row's other actions, in the bulk bar's words: a button for each, or a link for one that goes somewhere. Name the ⋯ button for screen readers (\"More actions for 15-112 A\") and give it a matching title. cmu-app.js opens it, one at a time; a click elsewhere or Escape closes it.",
         "Something to open, such as a file, gets a plain link in a column of its own before the actions, with its type after it: \"View [PDF].\" Keep the row's title plain text. Hide the column's header with sr-only and name what the link opens (\"Syllabus\"); the actions column's hidden header is \"Actions.\"",
-        "Selection: the app's script keeps the count current (\"No sections selected\" when there are none), adds cmu-has-selection to it when anything is selected and shows each bulk button only when it applies to a selected row, with how many: \"Upload Syllabus (2).\" Try it above.",
+        "Selection: the app's script keeps the count current (\"No sections selected\" when there are none), adds cmu-has-selection to it when anything is selected and shows each bulk button only when it applies to a selected row, with how many: \"Upload Syllabus (2).\" Try it below.",
         "Checkbox cells: the label fills the cell, so the whole cell is the click target.",
         "Sorting: put data-sort-key on the header and a button.cmu-sort inside it; set aria-sort on the sorted column. For filtering, see Filters.",
         "cmu-fit shrinks a column to its content. num (on th and td) right-aligns numbers.",
@@ -2171,10 +2190,10 @@
       "name": "Tabs",
       "page": "Page Layout",
       "url": "https://webkilt.andrew.cmu.edu/0/layout.html#tabs",
-      "labels": ["App"],
-      "description": "Links between views of the same page, such as semesters. Mark the current one with aria-current=\"page\". Use a div with role=\"navigation\", not a nav: the template takes the borders off every link in a nav, including the underline that marks the current tab. To fold a long row, put the rest in a details.cmu-more.cmu-tabs-more at the end, like a folded list: a \"2 More\" link stays at the end of the first row, and when it opens, the rest wrap onto the next line and the link says Show Fewer. Keep the current tab out of the folded part, so it always shows.\n\nEach tab goes to its own page, with the current one marked:",
+      "labels": ["App", "Script"],
+      "description": "A row of tabs: links to other views of the same page, or buttons that switch panels in place.\n\nLinks between views of the same page, such as semesters. Mark the current one with aria-current=\"page\". Use a div with role=\"navigation\", not a nav: the template takes the borders off every link in a nav, including the underline that marks the current tab. To fold a long row, put the rest in a details.cmu-more.cmu-tabs-more at the end, like a folded list: a \"2 More\" link stays at the end of the first row, and when it opens, the rest wrap onto the next line and the link says Show Fewer. Keep the current tab out of the folded part, so it always shows.\n\nEach tab goes to its own page, with the current one marked:",
       "notes": [],
-      "classes": ["cmu-tabs", "cmu-tabs-more"],
+      "classes": ["cmu-tabs", "cmu-tabs-more", "data-cmu-tabs", "data-cmu-tab"],
       "examples": [
         "<div class=\"cmu-tabs\" role=\"navigation\" aria-label=\"Semester\">\n  <a href=\"#tabs\" aria-current=\"page\">Spring 2027</a>\n  <a href=\"#tabs\">Fall 2026</a>\n  <a href=\"#tabs\">Summer 2026</a>\n  <details class=\"cmu-more cmu-tabs-more\">\n    <summary><span class=\"cmu-more-link cta\"><span class=\"cmu-more-closed\">2 More</span><span class=\"cmu-more-open\">Show Fewer</span></span></summary>\n    <div>\n      <a href=\"#tabs\">Spring 2026</a>\n      <a href=\"#tabs\">Fall 2025</a>\n    </div>\n  </details>\n</div>",
         "<div class=\"cmu-tabs\" role=\"tablist\" id=\"kit-os\" aria-label=\"Get the app\" data-cmu-tabs=\"kit-demo-os\">\n  <button type=\"button\" role=\"tab\" id=\"kit-os-mac-tab\" aria-controls=\"kit-os-mac\" aria-selected=\"true\" data-cmu-tab=\"mac\">Mac</button>\n  <button type=\"button\" role=\"tab\" id=\"kit-os-windows-tab\" aria-controls=\"kit-os-windows\" aria-selected=\"false\" data-cmu-tab=\"windows\">Windows</button>\n  <button type=\"button\" role=\"tab\" id=\"kit-os-linux-tab\" aria-controls=\"kit-os-linux\" aria-selected=\"false\" data-cmu-tab=\"linux\">Linux</button>\n</div>\n<div role=\"tabpanel\" id=\"kit-os-mac\" aria-labelledby=\"kit-os-mac-tab\">\n  <p>Open Self Service and choose Install under Campus Printing.</p>\n</div>\n<div role=\"tabpanel\" id=\"kit-os-windows\" aria-labelledby=\"kit-os-windows-tab\" hidden>\n  <p>Open Software Center and choose Install under Campus Printing.</p>\n</div>\n<div role=\"tabpanel\" id=\"kit-os-linux\" aria-labelledby=\"kit-os-linux-tab\" hidden>\n  <p>Download the Campus Printing package for your distribution and install it with your package manager.</p>\n</div>"
@@ -2219,7 +2238,7 @@
       "page": "Page Sections",
       "url": "https://webkilt.andrew.cmu.edu/0/sections.html#timeline",
       "labels": ["Template", "Icons"],
-      "description": "The steps of a process in date order, a card for each with a small icon, the step's name and its dates, in a dark section. It's a grid column4 darkgreen boxes (or column3) with an <h1>.\n\nWrite date ranges with a hyphen and no spaces, such as “Jan. 11-15”; see Conventions for dates.",
+      "description": "The steps of a process in date order, a card for each with a small icon, the step's name and its dates, in a dark section. It's a grid column4 darkgreen boxes (or column3) with an <h1>.",
       "notes": [
         "Each step's name is an <h2>, right after its icon. Names may wrap to two lines. A name can link to its section further down the page; it then shows in the template's link red.",
         "Choose an icon for each step. Use floatright to place it beside the heading. See Icons for setup and usage.",

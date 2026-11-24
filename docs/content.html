@@ -114,13 +114,13 @@
                 <li><a href="#snippet">Code Block</a></li>
                 <li><a href="#peek">Long Code Block</a></li>
                 <li><a href="#copy">Copy Button</a></li>
-                <li><a href="#agent-prompt">AI Agent Prompt</a></li>
               </ul>
             </div>
           </div>
           <div>
             <div class="nav-list">
               <ul>
+                <li><a href="#agent-prompt">AI Agent Prompt</a></li>
                 <li><a href="#countdown">Countdown</a></li>
                 <li><a href="#icons">Icons</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -188,27 +188,28 @@
         <p class="cmu-empty">No sections match these filters.</p>
       </div>
 
-            <h2 id="checks" class="rule-top">
-              Bullet, Check and Plain Lists
-              <span class="kit-where"
-                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
-              >
-            </h2>
+            <h2 id="checks" class="rule-top">Bullet, Check and Plain Lists</h2>
             <p>
               A kind of list for each job. Start each item with a short bold phrase when it helps
               people scan.
             </p>
-            <p class="cmu-label kit-classes-label">Classes</p>
-            <p class="kit-classes">
-              <code>ul</code>, <code>ul.cmu-checks</code>, <code>ul.cmu-fixes</code>,
-              <code>ul.cmu-notes</code>, <code>ul.cmu-plain</code>
-            </p>
-            <h3 id="checks-bullets">Bullet List</h3>
+            <h3 id="checks-bullets">
+              Bullet List
+              <span class="kit-where"
+                ><span
+                  class="kit-where-template"
+                  title="In the template's main stylesheet and script; nothing from the kit"
+                  >Template</span
+                ></span
+              >
+            </h3>
             <p>
               For describing things, such as the parts of a component or the options there are. Use
               the template's own list: a plain <code>&lt;ul&gt;</code> with no class, which gets
               gray open circles:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>ul</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <ul>
@@ -216,11 +217,18 @@
           <li><strong>Late returns</strong> pause your borrowing until the equipment is back.</li>
         </ul>
       </div>
-            <h3 id="checks-checks">Check List</h3>
+            <h3 id="checks-checks">
+              Check List
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h3>
             <p>
               Use <code>cmu-checks</code> for dos and don'ts or to show what's included, such as the
               contents of a kit. Use it sparingly so the page doesn't read like a to-do list:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>ul.cmu-checks</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <p>Every camera kit includes:</p>
@@ -230,12 +238,28 @@
           <li><strong>A tripod</strong> and a carrying case</li>
         </ul>
       </div>
-            <h3 id="checks-results">Fix and Note Lists</h3>
+            <h3 id="checks-results">
+              Fix and Note Lists
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h3>
             <p>
               For the results of a check, such as a form's problems or a page's settings. Use
               <code>cmu-fixes</code> for what to fix, <code>cmu-notes</code> for what's worth
               knowing and <code>cmu-checks</code> for what passed, in that order, each under its own
               heading:
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>
+                Start each fix with a verb that says what to do, such as &ldquo;Add&rdquo; or
+                &ldquo;Pick,&rdquo; not what&rsquo;s wrong. Leave out a heading whose list is empty.
+              </p>
+            </div>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes">
+              <code>ul.cmu-fixes</code>, <code>ul.cmu-notes</code>, <code>ul.cmu-checks</code>
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -253,18 +277,18 @@
           <li><strong>Andrew ID:</strong> Signed in as ac00.</li>
         </ul>
       </div>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>
-                Start each fix with a verb that says what to do, such as &ldquo;Add&rdquo; or
-                &ldquo;Pick,&rdquo; not what&rsquo;s wrong. Leave out a heading whose list is empty.
-              </p>
-            </div>
-            <h3 id="checks-plain">Plain List</h3>
+            <h3 id="checks-plain">
+              Plain List
+              <span class="kit-where"
+                ><span class="kit-where-cms" title="Requires cmu-cms.css">CMS</span></span
+              >
+            </h3>
             <p>
               When each item starts with its own label, such as a pill, add <code>cmu-plain</code>
               for no bullets:
             </p>
+            <p class="cmu-label kit-classes-label">Classes</p>
+            <p class="kit-classes"><code>ul.cmu-plain</code></p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
         <ul class="cmu-plain">
@@ -508,17 +532,27 @@
                 and tells the user to press Ctrl+C or Command+C.
               </li>
             </ul>
+            <p>
+              Code gets an icon in its corner, where people who copy code expect it. Anything else,
+              such as a link to share, an address to paste or a code to type somewhere else, gets a
+              named button beside the block, for people who don't copy code every day. Put the block
+              and the button in a <code>cmu-copy-row</code>, which lines them up like a
+              <a href="forms.html#field-button">field with a button</a>.
+            </p>
+            <div class="cmu-callout">
+              <p class="cmu-label">Style</p>
+              <p>Say what a named copy button copies, such as &ldquo;Copy Link.&rdquo;</p>
+            </div>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>data-cmu-copy</code>, <code>cmu-copyable</code>, <code>cmu-copy</code>,
               <code>cmu-snippet</code>, <code>cmu-copy-row</code>, <code>btn</code>
             </p>
-            <h3 id="copy-icon">Icon for Code</h3>
+            <h3 id="copy-icon" class="kit-example">As an Icon on Code</h3>
             <p>
-              Code gets an icon in its corner, where people who copy code expect it. Put the block
-              and the button in a <code>cmu-copyable</code> box, and name the button with
-              <code>aria-label</code> and <code>title</code>, such as "Copy Code" or "Copy HTML,"
-              for screen readers and the tooltip:
+              Put the block and the button in a <code>cmu-copyable</code> box, and name the button
+              with <code>aria-label</code> and <code>title</code>, such as "Copy Code" or "Copy
+              HTML," for screen readers and the tooltip:
             </p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -527,17 +561,7 @@
           <button class="cmu-copy" type="button" data-cmu-copy="#kit-copy-html" aria-label="Copy HTML" title="Copy HTML"></button>
         </div>
       </div>
-            <h3 id="copy-named">Named Button for Anything Else</h3>
-            <p>
-              Anything else, such as a link to share, an address to paste or a code to type
-              somewhere else, gets a named button beside the block, for people who don't copy code
-              every day. Put the block and the button in a <code>cmu-copy-row</code>, which lines
-              them up like a <a href="forms.html#field-button">field with a button</a>.
-            </p>
-            <div class="cmu-callout">
-              <p class="cmu-label">Style</p>
-              <p>Say what a named copy button copies, such as &ldquo;Copy Link.&rdquo;</p>
-            </div>
+            <h3 id="copy-named" class="kit-example">As a Named Button</h3>
             <p>Here, a link to share:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -663,7 +687,7 @@
             <p class="kit-classes">
               <code>bi</code>, <code>bi-</code><em>name</em>, <code>floatright</code>
             </p>
-            <h3 id="icons-details">In a List of Details</h3>
+            <h3 id="icons-details" class="kit-example">In a List of Details</h3>
             <p>An event's date, place and audience, each with an icon:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -678,7 +702,7 @@
         </div>
         <div class="content wide">
           <div>
-            <h3 id="icons-cards">On Cards</h3>
+            <h3 id="icons-cards" class="kit-example">On Cards</h3>
             <p>An icon beside each card's heading:</p>
           </div>
         </div>
@@ -717,6 +741,14 @@
               questions on another page, such as a home page, use an
               <a href="pathways.html#qa">FAQ teaser</a>.
             </p>
+            <p>
+              For more questions, divide them by topic. Each topic is its own
+              <code>.content</code> block with an <code>id</code>, headed by an
+              <code>&lt;h1&gt;</code> whose text is in a <code>rule-bottom</code> span, so the rule
+              runs under the words. With more than a few topics, list them in an
+              <a href="sidebars.html#on-this-page">On This Page</a> box in the first topic's
+              sidebar.
+            </p>
             <div class="cmu-callout">
               <p class="cmu-label">Style</p>
               <p>
@@ -728,7 +760,7 @@
             </div>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes"><code>collapsed</code></p>
-            <h3 id="faq-short">One Topic</h3>
+            <h3 id="faq-short" class="kit-example">With One Topic</h3>
             <p>All the questions together, each opening in place:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -758,15 +790,7 @@
                 answer.
               </p>
             </div>
-            <h3 id="faq-long">Several Topics</h3>
-            <p>
-              For more questions, divide them by topic. Each topic is its own
-              <code>.content</code> block with an <code>id</code>, headed by an
-              <code>&lt;h1&gt;</code> whose text is in a <code>rule-bottom</code> span, so the rule
-              runs under the words. With more than a few topics, list them in an
-              <a href="sidebars.html#on-this-page">On This Page</a> box in the first topic's
-              sidebar.
-            </p>
+            <h3 id="faq-long" class="kit-example">With Several Topics</h3>
             <p>Here, the first of several topics:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">

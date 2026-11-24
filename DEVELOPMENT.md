@@ -62,13 +62,30 @@ sidebar, each marked `data-demo-skip` and followed by a plain placeholder
 ("Your page's content."); `tools/data.mjs` reads them from there when nothing
 comes before the demo.
 
-For a new component, copy a neighboring reference section's structure:
+A reference section follows this order, so people find the examples
+quickly and nothing under an example's heading reads as part of a different
+example:
 
-- An `h2` with `id` followed by `class="rule-top"`, a component name and
-  `span.kit-where` requirement labels
-- A short explanation of when to use it
-- A `p.kit-classes` listing the classes and variants
-- A live example with enough content to show the behavior
+1. An `h2` with `id` followed by `class="rule-top"`, a component name and
+   `span.kit-where` requirement labels. When a section's parts are
+   components of their own, each part gets an `h3` with its own labels
+   instead, and the `h2` has none.
+2. The explanation: what it is, when to use it, and anything that holds for
+   every example.
+3. A Style callout for wording rules, if there are any.
+4. The classes: `p.cmu-label.kit-classes-label` and a `p.kit-classes`
+   listing the classes and variants. A part with its own `h3` keeps its own
+   list under its heading.
+5. The examples: one live example, or, for several, an `h3` with
+   `class="kit-example"` for each (the first one included), then one
+   sentence ending in a colon, then the example. Only that example's CMS and
+   framework notes, or a wide example's notes, follow it.
+6. Reference tables, such as options, sizes or dos and don'ts, after the
+   examples, each under a plain `h3` of its own with an optional
+   one-paragraph lead. Nothing that applies to the whole section follows
+   the last example without such a heading.
+
+For a new component, copy a neighboring section that follows it.
 
 Keep the heading's attribute order and requirement labels: the generators
 use them to discover the component and list its dependencies. Use `h1`

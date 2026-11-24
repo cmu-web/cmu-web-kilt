@@ -122,6 +122,14 @@
                 is a <a href="content.html#callout">callout</a>.
               </li>
             </ul>
+            <p>
+              Give an error <code>role="alert"</code>, so a screen reader reads it at once, and the
+              others <code>role="status"</code>.
+            </p>
+            <p>
+              CMU's red alert bar at the very top of the page (<code>#campusAlert</code>) is for
+              campus emergencies. Don't use it for an app's messages.
+            </p>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-flash</code>, <code>cmu-flash--success</code>,
@@ -133,14 +141,6 @@
         <div class="cmu-flash cmu-flash--notice">Reserved. Pick it up at the Hunt Library desk; it closes at 8 p.m. tonight.</div>
         <div class="cmu-flash cmu-flash--error">That camera is already reserved for May 4. Choose another day.</div>
       </div>
-            <p>
-              Give an error <code>role="alert"</code>, so a screen reader reads it at once, and the
-              others <code>role="status"</code>.
-            </p>
-            <p>
-              CMU's red alert bar at the very top of the page (<code>#campusAlert</code>) is for
-              campus emergencies. Don't use it for an app's messages.
-            </p>
 
             <h2 id="site-bar" class="rule-top">
               Site Bar
@@ -288,7 +288,7 @@
               <code>content wide</code>, <code>darkgrey invert</code>, <code>gold</code>,
               <code>green invert</code>, <code>blue invert</code>
             </p>
-            <h3 id="announcements-audience">Who This Page Is For</h3>
+            <h3 id="announcements-audience" class="kit-example">Saying Who the Page Is For</h3>
             <p>
               A note in dark gray that says who the page is for and where everyone else should go:
             </p>
@@ -304,7 +304,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="announcements-notice">Short Notice</h3>
+            <h3 id="announcements-notice" class="kit-example">As a Short Notice</h3>
             <p>One line in gold:</p>
           </div>
         </div>
@@ -318,7 +318,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="announcements-centered">Centered</h3>
+            <h3 id="announcements-centered" class="kit-example">Centered</h3>
             <p>A notice centered with <code>aligncenter</code>:</p>
           </div>
         </div>
@@ -332,7 +332,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="announcements-cta">Call to Action</h3>
+            <h3 id="announcements-cta" class="kit-example">With a Call to Action</h3>
             <p>A question and a call to action, in green:</p>
           </div>
         </div>
@@ -346,7 +346,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="announcements-heading">With a Heading</h3>
+            <h3 id="announcements-heading" class="kit-example">With a Heading</h3>
             <p>A longer notice with a heading, in blue:</p>
           </div>
         </div>
@@ -408,13 +408,20 @@
                 the section open.
               </li>
             </ul>
+            <p>
+              The demos here don't remember being closed, so they come back when you reload. Keep
+              one closed with a name:
+            </p>
+            <pre
+              class="kit-code"
+            ><code>&lt;div class="content wide darkgrey invert cmu-closable" data-cmu-closable="tours-2026"&gt;</code></pre>
             <p class="cmu-label kit-classes-label">Classes</p>
             <p class="kit-classes">
               <code>cmu-closable</code>, <code>cmu-closable-text</code>,
               <code>cmu-closable-actions</code>, <code>cmu-close</code>,
               <code>data-cmu-closable</code>
             </p>
-            <h3 id="closable-button">Full Width, With a Button</h3>
+            <h3 id="closable-button" class="kit-example">Full Width, With a Button</h3>
             <p>A full-width section in dark gray, with a ghost button:</p>
           </div>
         </div>
@@ -433,7 +440,7 @@
       </div>
         <div class="content wide">
           <div>
-            <h3 id="closable-text">In the Content, Without a Button</h3>
+            <h3 id="closable-text" class="kit-example">In the Content, Without a Button</h3>
             <p>
               A block inside the page's content, with only the heading, the text and the &times;:
             </p>
@@ -449,13 +456,6 @@
           </div>
         </div>
       </div>
-            <p>
-              The demos here don't remember being closed, so they come back when you reload. Keep
-              one closed with a name:
-            </p>
-            <pre
-              class="kit-code"
-            ><code>&lt;div class="content wide darkgrey invert cmu-closable" data-cmu-closable="tours-2026"&gt;</code></pre>
 
             <h2 id="loading" class="rule-top">
               Loading
@@ -719,7 +719,7 @@
             <p class="kit-classes">
               <code>cmu-lead</code>, <code>cmu-cta-row</code>, <code>cmu-muted</code>
             </p>
-            <h3 id="errors-404">Page Not Found</h3>
+            <h3 id="errors-404" class="kit-example">When a Page Isn't Found</h3>
             <p>When the address doesn't match a page:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -736,7 +736,7 @@
           </div>
         </div>
       </div>
-            <h3 id="errors-500">Something Went Wrong</h3>
+            <h3 id="errors-500" class="kit-example">When Something Goes Wrong</h3>
             <p>When the problem is on the server:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo">
@@ -754,7 +754,7 @@
         </div>
       </div>
 
-            <h3 id="errors-403">No Access</h3>
+            <h3 id="errors-403" class="kit-example">When Someone Has No Access</h3>
             <p>When the user is signed in but isn't allowed to see the page:</p>
             <!-- prettier-ignore -->
             <div class="kit-demo" id="no-access">
