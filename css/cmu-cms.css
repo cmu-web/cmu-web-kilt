@@ -1154,27 +1154,34 @@ a[data-cmu-zoom] {
   display: block;
 }
 /* The template marks a focused or pressed link with a red background and
-   an important 3px outline. On a zoom link: no box while it's pressed (the
-   click opens the image), and the ring covers a screenshot's 1px border
+   an important 3px outline. On a zoom link or a link around a screenshot: no
+   box while it's pressed, and the ring covers a screenshot's 1px border
    instead of leaving it as a light gap inside the ring */
-:is(#content, body) a[data-cmu-zoom]:active:not(:focus-visible) {
+:is(#content, body)
+  :is(a[data-cmu-zoom], .cmu-shot > a:not(.btn):not(.cta):not(.box):not(.scrolldown)):active:not(
+    :focus-visible
+  ) {
   outline: none !important;
   background: none !important;
 }
-:is(#content, body) .cmu-shot > a[data-cmu-zoom]:focus-visible {
+:is(#content, body) .cmu-shot > a:not(.btn):not(.cta):not(.box):not(.scrolldown):focus-visible {
   outline-offset: -1px;
 }
 /* In a browser-window screenshot, the ring goes around the whole window: the
    link's overlay reaches up over the bar, the figure's ::before (1.6rem plus
    its 1px top border) */
-:is(#content, body) .cmu-shot--browser > a[data-cmu-zoom] {
+:is(#content, body) .cmu-shot--browser > a:not(.btn):not(.cta):not(.box):not(.scrolldown) {
   position: relative;
   overflow: visible !important;
 }
-:is(#content, body) .cmu-shot--browser > a[data-cmu-zoom]:focus-visible {
+:is(#content, body)
+  .cmu-shot--browser
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):focus-visible {
   outline: none !important;
 }
-:is(#content, body) .cmu-shot--browser > a[data-cmu-zoom]:focus-visible::after {
+:is(#content, body)
+  .cmu-shot--browser
+  > a:not(.btn):not(.cta):not(.box):not(.scrolldown):focus-visible::after {
   content: "";
   position: absolute;
   inset: calc(-1.6rem - 1px) 0 0;
