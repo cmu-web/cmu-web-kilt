@@ -2,7 +2,7 @@
 
 # Rails application template for an app on the Carnegie Mellon Web Kilt:
 #
-#   rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.29/packages/rails/templates/app.rb
+#   rails new my-app -m https://cdn.jsdelivr.net/gh/cmu-web/cmu-web-kilt@0.8.30/packages/rails/templates/app.rb
 #
 # It adds the cmu-web-kilt gem at this release, runs its install generator
 # (which asks for the site name, tabs, roof and sign-in), and adds CMU Web's
@@ -13,7 +13,7 @@
 
 require 'shellwords'
 
-KILT_VERSION = '0.8.29'
+KILT_VERSION = '0.8.30'
 
 if ENV['CMU_WEB_KILT_PATH']
   # A checkout of the kit's Rails package, for working on the kit
