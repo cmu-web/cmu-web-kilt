@@ -1614,16 +1614,18 @@ document.querySelectorAll("pre.kit-code").forEach(function (pre, n) {
   });
 })();
 
-// The chat's example shows open in place, without taking focus. Show
+// The chat's example shows open in place, without taking focus; on a phone
+// it starts closed, and its launcher opens it to the whole screen. Show
 // Chatterbuggy on This Page moves the same chat, conversation and all, to the
 // page's corner, closed; Hide Chatterbuggy puts it back. Chatterbuggy answers
 // from a few made-up topics.
 function kitChatInline(chat, inline) {
-  var panel = chat.querySelector(".cmu-chat-panel");
+  var panel = chat.querySelector(".cmu-chat-panel"),
+    open = inline && !window.matchMedia("(max-width: 600px)").matches;
   chat.classList.toggle("kit-inline", inline);
-  chat.classList.toggle("cmu-chat--open", inline);
-  panel.hidden = !inline;
-  chat.querySelector(".cmu-chat-launcher").setAttribute("aria-expanded", String(inline));
+  chat.classList.toggle("cmu-chat--open", open);
+  panel.hidden = !open;
+  chat.querySelector(".cmu-chat-launcher").setAttribute("aria-expanded", String(open));
 }
 document.querySelectorAll(".kit-demo .cmu-chat").forEach(function (chat) {
   var demo = chat.closest(".kit-demo"),

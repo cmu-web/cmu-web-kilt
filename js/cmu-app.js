@@ -1606,10 +1606,27 @@
     if (p.launcher) p.launcher.setAttribute("aria-expanded", String(open));
     root.classList.toggle("cmu-chat--open", open);
     chatRemember(p.panel, open);
+    chatFit();
     if (open) {
       chatScroll(p.log);
       if (focus && p.input) p.input.focus();
     } else if (focus && p.launcher) p.launcher.focus();
+  }
+  // On a phone the open panel takes the screen. It fills the part above the
+  // keyboard (the visual viewport), and the page behind it doesn't scroll.
+  var chatPhone = window.matchMedia("(max-width: 600px)");
+  function chatFit() {
+    var vv = window.visualViewport,
+      panel = Array.prototype.filter.call(
+        document.querySelectorAll(".cmu-chat--open > .cmu-chat-panel"),
+        function (el) {
+          return !el.hidden && chatPhone.matches && getComputedStyle(el).position === "fixed";
+        },
+      )[0];
+    document.documentElement.classList.toggle("cmu-chat-locked", !!panel);
+    if (!panel || !vv) return;
+    panel.style.setProperty("--cmu-chat-top", vv.offsetTop + "px");
+    panel.style.setProperty("--cmu-chat-height", vv.height + "px");
   }
   function chatMessage(content, user) {
     var message = document.createElement("div"),
@@ -1675,6 +1692,11 @@
     document.addEventListener("click", chatClick);
     document.addEventListener("submit", chatSubmit);
     document.addEventListener("keydown", chatKey);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", chatFit);
+      window.visualViewport.addEventListener("scroll", chatFit);
+    }
+    chatPhone.addEventListener("change", chatFit);
   }
   function chatClick(e) {
     var root = e.target.closest && e.target.closest(".cmu-chat");

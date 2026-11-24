@@ -3198,12 +3198,24 @@ body.cmu-acting-as .cmu-chat {
     width: 3rem;
     height: 3rem;
   }
+  /* The script sets the top and height to the part of the screen above the
+     keyboard */
   .cmu-chat-panel {
     position: fixed;
-    inset: 0;
+    inset: var(--cmu-chat-top, 0) 0 auto;
     width: auto;
-    height: auto;
+    height: var(--cmu-chat-height, 100%);
     border-radius: 0;
+    overscroll-behavior: contain;
+  }
+  /* The page behind an open panel stays still, without the template's
+     back-to-top button */
+  html.cmu-chat-locked,
+  html.cmu-chat-locked body {
+    overflow: hidden;
+  }
+  html.cmu-chat-locked .scrolltop {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

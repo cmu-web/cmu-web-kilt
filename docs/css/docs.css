@@ -344,6 +344,20 @@ td > .kit-where {
   height: 28rem;
   border-radius: 6px;
 }
+/* On a phone the example starts closed, with its launcher in place, and opens
+   to the whole screen, as in an app */
+@media (max-width: 600px) {
+  .cmu-chat.kit-inline {
+    min-height: 0;
+  }
+  .cmu-chat.kit-inline .cmu-chat-panel {
+    position: fixed;
+    width: auto;
+    z-index: 1000;
+    height: var(--cmu-chat-height, 100%);
+    border-radius: 0;
+  }
+}
 /* Where the chat was, while it's in the page's corner */
 .kit-demo .kit-chat-spot {
   display: flex;
