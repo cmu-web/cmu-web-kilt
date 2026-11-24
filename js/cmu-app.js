@@ -1205,6 +1205,15 @@
       state.dir = sort.charAt(0) === "-" ? -1 : 1;
       state.sort = sort.replace(/^-/, "");
       tableArrows(t, state.sort, state.dir);
+    } else {
+      // A column the page marks as sorted (aria-sort) starts the sort, so
+      // its arrow shows and a click reverses it
+      var sorted = t.querySelector("th[data-sort-key][aria-sort]");
+      if (sorted) {
+        state.dir = sorted.getAttribute("aria-sort") === "descending" ? -1 : 1;
+        state.sort = sorted.getAttribute("data-sort-key");
+        tableArrows(t, state.sort, state.dir);
+      }
     }
     if (server) {
       // The server filters: typing submits the fields' form after a pause
@@ -1328,7 +1337,7 @@
     // Only when the address or the fields (a page restored from a cache)
     // asked for something; the page's own rows and count stand otherwise
     var asked =
-      state.sort ||
+      sort ||
       f.global.concat(f.columns).some(function (input) {
         return input.value.trim();
       });
