@@ -2,10 +2,11 @@
 // release. It sits in front of the project's running app or static server
 // and points the page's jsDelivr Kilt links at this checkout, so the page
 // shows the Kilt as it is here, on whatever branch is checked out.
-//   node tools/preview.mjs --proxy http://localhost:3000
-//   node tools/preview.mjs --proxy http://localhost:3000 --port 4100
+//   node tools/preview.mjs --proxy http://localhost:3200    at 3201
+//   node tools/preview.mjs --proxy http://localhost:3200 --port 9000
+// It listens on the proxied port plus one unless --port says otherwise.
 // For a static folder, start a server for it first:
-//   python3 -m http.server 4200
+//   python3 -m http.server 8000
 // Development only, with no dependencies. See CONTRIBUTING.md.
 import { createServer, request } from "node:http";
 import { connect } from "node:net";
@@ -142,10 +143,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   };
   const upstream = opt("--proxy");
   if (!upstream) {
-    console.error("Usage: node tools/preview.mjs --proxy http://localhost:3000 [--port 4100]");
+    console.error("Usage: node tools/preview.mjs --proxy http://localhost:3200 [--port 9000]");
     process.exit(1);
   }
-  const port = Number(opt("--port")) || 4100;
+  const port = Number(opt("--port")) || Number(new URL(upstream).port) + 1;
+  if (!port || port === 1) {
+    console.error("Give --port when the --proxy address has no port.");
+    process.exit(1);
+  }
   const here = `http://127.0.0.1:${port}`;
   createPreview({ upstream, here: () => here }).listen(port, "127.0.0.1", () => {
     console.log(`Web Kilt ${describeCheckout()} from ${KILT}`);

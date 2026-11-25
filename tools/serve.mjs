@@ -1,6 +1,6 @@
 // Serves the docs as the site publishes them: docs/ at the root, with the
 // kit's own css/ and js/ beside the docs' (see .github/workflows/publish-test-copy.yml).
-//   npm run docs              http://127.0.0.1:8123/
+//   make run                  http://127.0.0.1:3100/
 //   node tools/serve.mjs 9000 another port
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
@@ -8,7 +8,7 @@ import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const port = Number(process.argv[2]) || 8123;
+const port = Number(process.argv[2]) || 3100;
 const TYPES = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",

@@ -14,13 +14,13 @@ follows that cycle. For what belongs in the kit, start with
 Use the Node version in [`.node-version`](.node-version). From the checkout:
 
 ```bash
-npm ci
-npm run docs
+make setup
+make run
 ```
 
-Open http://127.0.0.1:8123/. Keep the server running while you edit and
+Open http://127.0.0.1:3100/. Keep the server running while you edit and
 reload the page to see changes. To use another port, run
-`npm run docs -- 9000`.
+`make run PORT=9000`. `make` lists the other targets.
 
 There is no browser asset build. The server serves `docs/` as the site root
 and supplies the kit's files under `css/` and `js/`, matching the published
@@ -150,12 +150,13 @@ because of the ignore markers. Additional ignore markers are sometimes
 needed where template elements must touch without whitespace; explain
 those exceptions in a comment.
 
-The everyday check is `npm run check`: it needs nothing beyond `npm ci`, plus
-network access, since it fetches CMU's live template CSS. It runs linting,
-formatting, release version and integrity checks, template class collision
-checks, validation of generated docs and the tools' own tests. The Check Code
-workflow runs the same command on every push and pull request, and weekly to
-catch template changes, and also runs the Rails package's tests (see
+The everyday check is `make check` (`npm run check`): it needs nothing
+beyond `make setup`, plus network access, since it fetches CMU's live
+template CSS. It runs linting, formatting, release version and integrity
+checks, template class collision checks, validation of generated docs and
+the tools' own tests. The Check Code workflow runs the same command on every
+push and pull request, and weekly to catch template changes, and also runs
+the Rails package's tests (see
 [Work on the Rails Package](#work-on-the-rails-package)).
 
 Browser tests are their own command, `npm run test:browser`. They need
@@ -183,16 +184,16 @@ put the preview proxy in front of the project. Start the project as usual,
 then, from this checkout:
 
 ```bash
-npm run preview -- --proxy http://localhost:3000
+npm run preview -- --proxy http://localhost:3200
 ```
 
-It serves the project at http://127.0.0.1:4100/ (`--port` for another)
-with the page's kit links pointed at this checkout, on whatever branch is
-checked out. Reload to see each change. The project itself is untouched:
-its own address still shows the released kit.
+It serves the project on the next port, http://127.0.0.1:3201/ here
+(`--port` for another), with the page's kit links pointed at this checkout,
+on whatever branch is checked out. Reload to see each change. The project
+itself is untouched: its own address still shows the released kit.
 
 For a folder of static pages, start a server for it first, such as
-`python3 -m http.server 4200` in that folder, and proxy that.
+`python3 -m http.server 8000` in that folder, and proxy that.
 
 A project keeps the command in a `preview:kilt` npm script or its README,
 with the right port. It doesn't cover a project that keeps its own copy of
